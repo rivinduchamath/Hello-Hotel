@@ -40,7 +40,7 @@
         <div class="col-md-3 left_col">
             <div class="left_col scroll-view">
                 <div class="navbar nav_title" style="border: 0;">
-                    <a href="Dashboard" class="site_title"> <img style="margin-top: -0px; width: 40px;height: 40px"
+                    <a href="dashboard" class="site_title"> <img style="margin-top: -0px; width: 40px;height: 40px"
                                                                  src="../../images/favicon.ico"><span
                             style="margin-top: 20px;">&nbsp;Hotel Hareesha!</span></a>
                 </div>
@@ -94,6 +94,18 @@
                                     <li><a href="bar">Bar Manage</a></li>
                                 </ul>
                             </li>
+                            <li><a><i class="fa fa-paw"></i> Kitchen<span
+                                    class="fa fa-chevron-down"></span></a>
+                                <ul class="nav child_menu">
+                                    <li><a href="kitchen">Kitchen Manage</a></li>
+                                </ul>
+                            </li>
+                            <li><a><i class="fa fa-shopping-cart"></i> Inventory<span
+                                    class="fa fa-chevron-down"></span></a>
+                                <ul class="nav child_menu">
+                                    <li><a href="inventory">Inventory Manage</a></li>
+                                </ul>
+                            </li>
                         </ul>
                     </div>
                     <div class="menu_section">
@@ -102,7 +114,6 @@
                             <li><a><i class="fa fa-gear"></i> Manage System<span
                                     class="fa fa-chevron-down"></span></a>
                                 <ul class="nav child_menu">
-                                    <li><a href="inventory">Inventory Manage</a></li>
                                     <li><a href="notice">Notice Manage</a></li>
                                     <li><a href="manage">Manager</a></li>
                                     <li><a href="hr">HR</a></li>
@@ -182,7 +193,7 @@
             <div class="">
                 <div class="page-title">
                     <div class="title_left">
-                        <h3>Restaurant Manage
+                        <h3>F&B Manage
                             <small>Welcome To Hotel Hareesha</small>
                         </h3>
                     </div>

@@ -1,12 +1,12 @@
-package lk.sliit.employeeManagement.controller.kitchenController;
+package lk.sliit.employeeManagement.controller.contactsController;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
-public class KitchenController {
-    @GetMapping("/kitchen")
+public class ContactsController {
+    @GetMapping("/contacts")
     public String loginPage(){
-        return "kitchen";
+        return "contacts";
     }
 }

@@ -18,7 +18,7 @@ public class NoticeController { //notice.jsp For All Notice
     @Autowired
     NoticeBO noticeBO;
 
-    @GetMapping("loadNotice")
+    @GetMapping("notice")
     public ModelAndView load(Model model){
         ModelAndView mav = new ModelAndView("notice");
         NoticeDTO dd = noticeBO.findId();
@@ -39,13 +39,13 @@ public class NoticeController { //notice.jsp For All Notice
     @RequestMapping("noticSave")
     public String saveForm(@ModelAttribute NoticeDTO noticeDTO){
            noticeBO.saveNotice(noticeDTO);
-           return "redirect:/loadNotice";
+           return "redirect:/notice";
     }
 
 
     @RequestMapping("delete")
     public String delete(@RequestParam String notId){
             noticeBO.deleteNotice(notId);
-        return "redirect:/loadNotice";
+        return "redirect:/notice";
     }
 }//End Class
