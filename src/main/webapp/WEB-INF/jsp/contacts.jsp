@@ -30,12 +30,15 @@
   </head>
 
   <body class="nav-md" style="cursor: pointer">
+
   <div class="container body">
     <div class="main_container">
       <div class="col-md-3 left_col">
         <div class="left_col scroll-view">
           <div class="navbar nav_title" style="border: 0;">
-            <a href="Dashboard" class="site_title"> <img style="margin-top: -0px; width: 40px;height: 40px" src="../../images/favicon.ico"><span style="margin-top: 20px;">&nbsp;Four Seasons!</span></a>
+            <a href="Dashboard" class="site_title"> <img style="margin-top: -0px; width: 40px;height: 40px"
+                                                         src="../../images/favicon.ico"><span
+                    style="margin-top: 20px;">&nbsp;Hotel Hareesha!</span></a>
           </div>
 
           <div class="clearfix"></div>
@@ -47,7 +50,7 @@
             </div>
             <div class="profile_info">
               <span>Welcome,</span>
-              <h2>  ${loggerName.name}</h2>
+              <h2> ${loggerName.name}</h2>
             </div>
           </div>
           <!-- /menu profile quick info -->
@@ -61,27 +64,30 @@
               <ul class="nav side-menu">
                 <li><a><i class="fa fa-home"></i> Home <span class="fa fa-chevron-down"></span></a>
                   <ul class="nav child_menu">
-                    <li><a href="Dashboard">Dashboard</a></li>
+                    <li><a href="dashboard">Dashboard</a></li>
                   </ul>
                 </li>
-                <li><a><i class="fa fa-edit"></i> Employee <span class="fa fa-chevron-down"></span></a>
+                <li><a><i class="fa fa-tasks"></i> Front Desk <span class="fa fa-chevron-down"></span></a>
                   <ul class="nav child_menu">
-                    <li><a href="tables_dynamic">Employee Manage</a></li>
-                    <li><a href="attendance">Attendance</a></li>
-                    <li><a href="salary">Salary Manage</a></li>
+                    <li><a href="reservations">Reservation</a></li>
+                    <li><a href="banquets">BanquetManagement</a></li>
                   </ul>
                 </li>
-                <li><a><i class="fa fa-desktop"></i> Other Information <span
+                <li><a><i class="fa fa-cutlery"></i> Restaurant<span
                         class="fa fa-chevron-down"></span></a>
                   <ul class="nav child_menu">
-                    <li><a href="sa">General Elements</a></li>
-                    <li><a href="media_gallery">View Images</a></li>
-                    <li><a href="calendar">Calendar</a></li>
+                    <li><a href="foodAndBev">F&B</a></li>
                   </ul>
                 </li>
-                <li><a><i class="fa fa-table"></i> Notice <span class="fa fa-chevron-down"></span></a>
+                <li><a><i class="fa fa-life-buoy"></i> House Keeping <span class="fa fa-chevron-down"></span></a>
                   <ul class="nav child_menu">
-                    <li><a href="notice">View All</a></li>
+                    <li><a href="rooms">Room Manage</a></li>
+                  </ul>
+                </li>
+                <li><a><i class="fa fa-glass"></i> Bar<span
+                        class="fa fa-chevron-down"></span></a>
+                  <ul class="nav child_menu">
+                    <li><a href="bar">Bar Manage</a></li>
                   </ul>
                 </li>
               </ul>
@@ -89,19 +95,31 @@
             <div class="menu_section">
               <h3>Live On</h3>
               <ul class="nav side-menu">
-                <li><a><i class="fa fa-bug"></i> Additional Pages <span
+                <li><a><i class="fa fa-gear"></i> Manage System<span
                         class="fa fa-chevron-down"></span></a>
                   <ul class="nav child_menu">
-                    <li><a href="#">E-commerce</a></li>
-                    <li><a href="projects">Projects</a></li>
+                    <li><a href="inventory">Inventory Manage</a></li>
+                    <li><a href="notice">Notice Manage</a></li>
+                    <li><a href="manage">Manager</a></li>
+                    <li><a href="hr">HR</a></li>
+                  </ul>
+                </li>
+              </ul>
+            </div>
+            <div class="menu_section">
+              <h3>Live On</h3>
+              <ul class="nav side-menu">
+                <li><a><i class="fa fa-anchor"></i> Additional Pages <span
+                        class="fa fa-chevron-down"></span></a>
+                  <ul class="nav child_menu">
                     <li><a href="contacts">Contacts</a></li>
                     <li><a href="profile">Profile</a></li>
                   </ul>
                 </li>
-                <li><a><i class="fa fa-windows"></i> Extras <span class="fa fa-chevron-down"></span></a>
+                <li><a><i class="fa fa-ge"></i> Extras <span class="fa fa-chevron-down"></span></a>
                   <ul class="nav child_menu">
                     <li><a href="login">Login Page</a></li>
-                    <li><a href="pricing_tables.jsp">Pricing Tables</a></li>
+                    <li><a href="pricing">Pricing Tables</a></li>
                   </ul>
                 </li>
               </ul>
@@ -153,6 +171,7 @@
           </nav>
         </div>
       </div>
+      <!-- /top navigation -->
       <!-- /top navigation -->
         <!-- page content -->
         <div class="right_col" role="main">
