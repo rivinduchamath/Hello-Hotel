@@ -182,7 +182,7 @@
             <div class="">
                 <div class="page-title">
                     <div class="title_left">
-                        <h3>Dashboard
+                        <h3>Pricing
                             <small>Welcome To Hotel Hareesha</small>
                         </h3>
                     </div>
