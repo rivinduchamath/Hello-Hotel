@@ -84,7 +84,7 @@
 					</div>
 				</form>
 
-				<div class="login100-more" style="background-image: url('../../images/empindex.jpg');">
+				<div class="login100-more" style="background-image: url('../../images/log.png');">
 					<script>
 
                         function formatTime() {
