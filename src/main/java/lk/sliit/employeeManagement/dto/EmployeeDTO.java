@@ -42,7 +42,10 @@ public class EmployeeDTO {
 
     }
 
-
+    public EmployeeDTO(String idNo, String password) {
+        this.idNo = idNo;
+        this.password = password;
+    }
 
 
     public String getIdNo() {

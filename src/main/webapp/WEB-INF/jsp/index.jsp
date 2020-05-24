@@ -31,7 +31,7 @@
 		<div class="container-login100">
 			<div class="wrap-login100">
 
-				<form class="login100-form validate-form" action="Dashboard">
+				<form class="login100-form validate-form" method="post" action="Dashboard">
 
 					<span class="login100-form-title p-b-43" style="font-family: 'Arial Black';margin-top: 20px">
 						Login to continue
@@ -63,9 +63,7 @@
 
 					<div class="container-login100-form-btn">
 
-						<button  class="login100-form-btn">
-							Login
-									</button>
+						<button  class="login100-form-btn"> Login</button>
 					</div>
 
 					<div class="text-center p-t-46 p-b-20">
