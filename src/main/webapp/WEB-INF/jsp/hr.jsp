@@ -100,7 +100,7 @@
                                     <li><a href="kitchen">Kitchen Manage</a></li>
                                 </ul>
                             </li>
-                            <li><a><i class="fa fa-shopping-cart""></i> Inventory<span
+                            <li><a><i class="fa fa-shopping-cart"></i> Inventory<span
                                     class="fa fa-chevron-down"></span></a>
                                 <ul class="nav child_menu">
                                     <li><a href="inventory">Inventory Manage</a></li>

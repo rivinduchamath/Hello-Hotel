@@ -1,7 +1,5 @@
 package lk.sliit.employeeManagement.controller.noticeController;
 
-
-
 import lk.sliit.employeeManagement.dto.NoticeDTO;
 import lk.sliit.employeeManagement.service.custom.NoticeBO;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,7 +7,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
-
 import java.util.List;
 
 @Controller
@@ -40,6 +37,7 @@ public class NoticeController { //notice.jsp For All Notice
         return "redirect:/notice";
     }
 
+    //  Value name ("noticeId") must be equal
     @RequestMapping(value = "/delete/{noticeId}",method = RequestMethod.GET)
     public String deleteNotice(@PathVariable String noticeId) {
         if(noticeBO.findNoticeById(noticeId) != null){
@@ -52,8 +50,8 @@ public class NoticeController { //notice.jsp For All Notice
     }
 
 /*
-  OR You can Use @RequestParam Annotation  If You Used It
-  Jsp href =  <a href="/delete/?noticeId=${a.noticeId}"> Delete </a>
+  //OR You can Use @RequestParam Annotation. If You Used It
+  //Jsp href =  <a href="/delete/?noticeId=${a.noticeId}"> Delete </a>
 
     @RequestMapping("delete")
     public String deleteNotice(@RequestParam String noticeId) {
