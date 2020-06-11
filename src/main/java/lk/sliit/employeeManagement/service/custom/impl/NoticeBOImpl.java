@@ -54,8 +54,26 @@ public class NoticeBOImpl implements NoticeBO {
     @Override
     public NoticeDTO findId() {
        Notice a = noticeDAO.findTopByOrderByNoticeIdDesc();
-       return new NoticeDTO(
-               a.getNoticeId()
-       );
+      try {
+          return new NoticeDTO(
+                  a.getNoticeId()
+          );
+      }catch (NullPointerException e){
+          System.out.println("No Notice Fond");
+      }
+    return null;
     }
+
+    @Override
+    public NoticeDTO findNoticeById(String noticeId) {
+        Notice notice = noticeDAO.findOne (noticeId);
+        return new NoticeDTO (notice.getNoticeId (),
+                notice.getTitle(),
+                notice.getDescription(),
+                notice.getDate()
+        );
+
+
+
+}
 }

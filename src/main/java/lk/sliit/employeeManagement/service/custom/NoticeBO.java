@@ -14,4 +14,6 @@ public interface NoticeBO extends SuperBO {
     void deleteNotice(String notId);
 
     NoticeDTO findId();
+
+    NoticeDTO findNoticeById(String noticeId);
 }

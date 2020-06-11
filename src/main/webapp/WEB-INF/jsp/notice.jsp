@@ -351,8 +351,9 @@
                           <td>
                             <a style="color: white;font-weight: bold" onclick="getValue();" class="btn btn-info btn-xs">
                               Update </a>
-                            <a href="/delete/?notId=${a.noticeId}" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i>
+                            <a href="delete/${a.noticeId }" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i>
                               Delete </a>
+
                           </td>
                         </tr>
 </c:forEach>
