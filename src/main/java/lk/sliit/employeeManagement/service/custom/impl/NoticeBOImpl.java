@@ -16,6 +16,7 @@ import java.util.List;
 @Transactional
 public class NoticeBOImpl implements NoticeBO {
 
+
     @Autowired
     NoticeDAO noticeDAO;
 
