@@ -19,7 +19,6 @@ public class NoticeBOImpl implements NoticeBO {
     @Autowired
     NoticeDAO noticeDAO;
 
-
     @Override
     public void saveNotice(NoticeDTO noticeDTO) {
         noticeDAO.save(new Notice(
