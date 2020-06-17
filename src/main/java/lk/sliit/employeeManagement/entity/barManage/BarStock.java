@@ -10,20 +10,21 @@ public class BarStock implements SuperEntity {
     @Id
     private String productId;
     private String productName;
-    private int currentAmmount;
+    private int currentAmount;
     private int amountForUnit;
     private double pricePerUnit;
     private int unitCount;
+
 
     public BarStock() {
     }
 
     public BarStock(String productId, String productName,
-                    int currentAmmount, int amountForUnit,
+                    int currentAmount, int amountForUnit,
                     double pricePerUnit, int unitCount) {
         this.productId = productId;
         this.productName = productName;
-        this.currentAmmount = currentAmmount;
+        this.currentAmount = currentAmount;
         this.amountForUnit = amountForUnit;
         this.pricePerUnit = pricePerUnit;
         this.unitCount = unitCount;
@@ -45,12 +46,12 @@ public class BarStock implements SuperEntity {
         this.productName = productName;
     }
 
-    public int getCurrentAmmount() {
-        return currentAmmount;
+    public int getcurrentAmount() {
+        return currentAmount;
     }
 
-    public void setCurrentAmmount(int currentAmmount) {
-        this.currentAmmount = currentAmmount;
+    public void setcurrentAmount(int currentAmount) {
+        this.currentAmount = currentAmount;
     }
 
     public int getAmountForUnit() {

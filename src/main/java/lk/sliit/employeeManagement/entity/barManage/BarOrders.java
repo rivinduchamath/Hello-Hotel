@@ -1,7 +1,6 @@
 package lk.sliit.employeeManagement.entity.barManage;
 
 import lk.sliit.employeeManagement.entity.SuperEntity;
-import lk.sliit.employeeManagement.entity.barManage.BarOrderDetails;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -15,10 +14,12 @@ import java.util.List;
 @Entity
 public class BarOrders implements SuperEntity {
     @Id
-    private String orderId ;
+    private String orderId;
     private Date date;
     private double price;
     private String customerId;
+    @OneToMany(mappedBy = "order", cascade = {CascadeType.PERSIST, CascadeType.REFRESH, CascadeType.DETACH, CascadeType.MERGE})
+    private List<BarOrderDetails> orderDetails = new ArrayList<>();
 
     public BarOrders() {
     }
@@ -60,5 +61,20 @@ public class BarOrders implements SuperEntity {
 
     public void setOrderId(String orderId) {
         this.orderId = orderId;
+    }
+
+    public List<BarOrderDetails> getOrderDetails() {
+        return orderDetails;
+    }
+
+    @Override
+    public String toString() {
+        return "BarOrders{" +
+                "orderId='" + orderId + '\'' +
+                ", date=" + date +
+                ", price=" + price +
+                ", customerId='" + customerId + '\'' +
+                ", orderDetails=" + orderDetails +
+                '}';
     }
 }//End Class
