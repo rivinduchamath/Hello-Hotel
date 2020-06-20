@@ -1,3 +1,4 @@
+
 <%--
   Created by IntelliJ IDEA.
   User: Rivindu Chamath
@@ -19,7 +20,6 @@
 
     <title>Hotel Management </title>
     <link rel="icon" type="image/png" href="../../images/icons/gdfgd.png"/>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.min.js"></script>
     <!-- Bootstrap -->
     <link href="../../vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Font Awesome -->
@@ -31,18 +31,7 @@
         SimpleDateFormat sdf = new SimpleDateFormat ( "dd-MM-yyyy" );
         String date = sdf.format ( new Date ( ) );
     %>
-<style>
-    .large-btn{
-        height:90px;
-        width: 300px;
-        font-family: "Playfair Display", Georgia, "Times New Roman", serif;
-        font-weight: bolder;
-        font-size: 27px;
-    }
-    .large-btn:hover{
-        color: #0f0f0f;
-    }
-</style>
+
 </head>
 
 <body class="nav-md" style="cursor: pointer">
@@ -52,7 +41,8 @@
         <div class="col-md-3 left_col">
             <div class="left_col scroll-view">
                 <div class="navbar nav_title" style="border: 0;">
-                    <a href="dashboard" class="site_title"> <img style="margin-top: -0px; width: 40px;height: 40px" src="../../images/favicon.ico"><span
+                    <a href="dashboard" class="site_title"> <img style="margin-top: -0px; width: 40px;height: 40px"
+                                                                 src="../../images/favicon.ico"><span
                             style="margin-top: 20px;">&nbsp;Hotel Hareesha!</span></a>
                 </div>
 
@@ -204,12 +194,10 @@
             <div class="">
                 <div class="page-title">
                     <div class="title_left">
-                        <h3>Bar Manage
+                        <h3>Bar Management
                             <small>Welcome To Hotel Hareesha</small>
                         </h3>
                     </div>
-
-
 
                     <div class="title_right">
                         <script>
@@ -289,96 +277,11 @@
                             </table>
 
                         </form>
-
                     </div>
                 </div>
-<%-- ////////////////////////////////////////////// BODY /////////////////////////////////////////////////////////////--%>
-
-
-                <button type="button"  class="large-btn btn btn-primary">Order</button>
-                <button type="button"  class="large-btn btn btn-info">Stock</button>
-                <button type="button"  class="large-btn btn btn-success">Bills</button>
-                <button type="button"  class="large-btn btn btn-danger">Income</button>
-
-
-<%--%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Chart Income %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%--%>
-                <div class="col-sm-12 col-md-8 col-lg-7 col-xl-7">
-                <div class="container">
-                    <canvas id="myChart"></canvas>
-                </div>
-
-                <script>
-                    let myChart = document.getElementById('myChart').getContext('2d');
-
-                    // Global Options
-                    Chart.defaults.global.defaultFontFamily = 'Lato';
-                    Chart.defaults.global.defaultFontSize = 18;
-                    Chart.defaults.global.defaultFontColor = '#777';
-
-                    let massPopChart = new Chart(myChart, {
-                        type:'line', // bar, horizontalBar, pie, line, doughnut, radar, polarArea
-                        data:{
-                            labels:['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri','Sat'],
-                            datasets:[{
-                                label:'Population',
-                                data:[
-                                    2,
-                                    4,
-                                    6,
-                                    65,
-                                    6,
-                                    43,
-                                    23
-                                ],
-                                //backgroundColor:'green',
-                                backgroundColor:[
-                                    'rgba(255, 99, 132, 0.6)',
-                                    'rgba(54, 162, 235, 0.6)',
-                                    'rgba(255, 206, 86, 0.6)',
-                                    'rgba(75, 192, 192, 0.6)',
-                                    'rgba(153, 102, 255, 0.6)',
-                                    'rgba(255, 159, 64, 0.6)',
-                                    'rgba(255, 99, 132, 0.6)'
-                                ],
-                                borderWidth:1,
-                                borderColor:'#777',
-                                hoverBorderWidth:3,
-                                hoverBorderColor:'#000'
-                            }]
-                        },
-                        options:{
-                            title:{
-                                display:true,
-                                text:'Week Income',
-                                fontSize:20
-                            },
-                            legend:{
-                                display:false,
-                                position:'right',
-                                labels:{
-                                    fontColor:' #ff5733 '
-                                }
-                            },
-                            layout:{
-                                padding:{
-                                    left:50,
-                                    right:0,
-                                    bottom:0,
-                                    top:0
-                                }
-                            },
-                            tooltips:{
-                                enabled:true
-                            }
-                        }
-                    });
-                </script>
 
 
 
-                </div>
-
-<%--                /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////--%>
 
             </div>
         </div>
