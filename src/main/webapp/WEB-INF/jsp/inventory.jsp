@@ -27,10 +27,22 @@
     <link href="../../build/css/custom.min.css" rel="stylesheet">
 
     <%
-        SimpleDateFormat sdf = new SimpleDateFormat ( "dd-MM-yyyy" );
-        String date = sdf.format ( new Date ( ) );
+        SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
+        String date = sdf.format(new Date());
     %>
+    <style>
+        .large-btn {
+            height: 90px;
+            width: 100%;
+            font-family: "Playfair Display", Georgia, "Times New Roman", serif;
+            font-weight: bolder;
+            font-size: 27px;
+        }
 
+        .large-btn:hover {
+            color: #0f0f0f;
+        }
+    </style>
 </head>
 <body class="nav-md" style="cursor: pointer">
 
@@ -76,21 +88,17 @@
                                     <li><a href="banquets">BanquetManagement</a></li>
                                 </ul>
                             </li>
-                            <li><a><i class="fa fa-cutlery"></i> Restaurant<span
+                            <li><a><i class="fa fa-cutlery"></i> Food and Beverage<span
                                     class="fa fa-chevron-down"></span></a>
                                 <ul class="nav child_menu">
-                                    <li><a href="foodAndBev">F&B</a></li>
+                                    <li><a href="restaurant"> Restaurant </a></li>
+                                    <li><a href="bar">Bar Manage</a></li>
                                 </ul>
                             </li>
-                            <li><a><i class="fa fa-life-buoy"></i> House Keeping <span class="fa fa-chevron-down"></span></a>
+                            <li><a><i class="fa fa-life-buoy"></i> House Keeping <span
+                                    class="fa fa-chevron-down"></span></a>
                                 <ul class="nav child_menu">
                                     <li><a href="rooms">Room Manage</a></li>
-                                </ul>
-                            </li>
-                            <li><a><i class="fa fa-glass"></i> Bar<span
-                                    class="fa fa-chevron-down"></span></a>
-                                <ul class="nav child_menu">
-                                    <li><a href="bar">Bar Manage</a></li>
                                 </ul>
                             </li>
                             <li><a><i class="fa fa-paw"></i> Kitchen<span
@@ -186,6 +194,7 @@
             </div>
         </div>
         <!-- /top navigation -->
+
         <!-- page content -->
         <div class="right_col" role="main">
             <div class="">
@@ -276,10 +285,112 @@
                         </form>
                     </div>
                 </div>
+                <%--//////////////////////////////////////////////////////////////////////////////////////////////////--%>
+                <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
 
 
+                    <div class="col-sm-12 col-md-3 col-lg-3 col-xl-3">
+                        <a href="barStock">
+                            <button type="button" class="large-btn btn btn-primary">Beverage</button></a>
+                    </div>
 
+                    <div class="col-sm-12 col-md-3 col-lg-3 col-xl-3">
+                        <button type="button" class="large-btn btn btn-info">Kitchen</button>
+                    </div>
 
+                    <div class="col-sm-12 col-md-3 col-lg-3 col-xl-3">
+                        <button type="button" class="large-btn btn btn-success">Items</button>
+                    </div>
+
+                    <div class="col-sm-12 col-md-3 col-lg-3 col-xl-3">
+                        <a href="restaurantStock">
+                        <button type="button" class="large-btn btn btn-danger">Restaurant</button>
+                        </a>
+                    </div>
+
+                </div>
+                <%--                    /////////////////////////////////////////////////////--%>
+                <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+
+                    <div class="x_panel">
+                        <div class="x_title">
+                            <h2>Notice Dashboard
+                                <small>Notice</small>
+                            </h2>
+                            <ul class="nav navbar-right panel_toolbox">
+                                <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                                </li>
+                                <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                                       aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                        <a class="dropdown-item" href="#">Settings 1</a>
+                                        <a class="dropdown-item" href="#">Settings 2</a>
+                                    </div>
+                                </li>
+                                <li><a class="close-link"><i class="fa fa-close"></i></a>
+                                </li>
+                            </ul>
+                            <div class="clearfix"></div>
+                        </div>
+                        <div class="x_content">
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <div class="card-box table-responsive">
+                                        <a href="form_validation">
+                                            <button style="float: left;font-weight: bolder"  class="btn btn-success">Today</button>
+                                        </a>
+                                        <a href="form_validation">
+                                            <button style="float: left;font-weight: bolder"  class="btn btn-success">Tomorrow</button>
+                                        </a>
+                                        <a href="form_validation">
+                                            <button style="float: left;font-weight: bolder"  class="active btn btn-primary">Day After Tomorrow</button>
+                                        </a>
+                                        <table id="datatable-buttons" class="table table-striped table-bordered">
+                                            <thead class="thead-light">
+                                            <tr>
+                                                <th>Notice IaaD</th>
+                                                <th>Name</th>
+                                                <th>Description</th>
+                                                <th>Qty</th>
+                                                <th>Price</th>
+                                                <th>Selling Price</th>
+                                                <th>Date</th>
+                                            </tr>
+
+                                            </thead>
+                                            <tbody>
+                                            <%--    <c:forEach items="${listEmployeesTable}" var="e">--%>
+                                            <tr>
+                                                <td>K001</td>
+                                                <td>Red Raw Rice</td>
+                                                <td>Lorem</td>
+                                                <td>33kg</td>
+                                                <td>9246</td>
+                                                <td>7900</td>
+                                                <td>2222/2/2</td>
+                                            </tr>
+
+                                            <tr>
+                                                <td>B001</td>
+                                                <td>Beer</td>
+                                                <td>Lorem</td>
+                                                <td>100</td>
+                                                <td>300</td>
+                                                <td>500</td>
+                                                <td>2222/2/2</td>
+                                            </tr>
+                                            <%--                                                    </c:forEach>--%>
+
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <%--/////////////////////////////////////////////    /////////////////////////////////////////////--%>
             </div>
         </div>
         <!-- /page content -->
@@ -297,13 +408,24 @@
 </div>
 
 
-
 <!-- jQuery -->
 <script src="../../vendors/jquery/dist/jquery.min.js"></script>
 <!-- Bootstrap -->
 <script src="../../vendors/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 <!-- Custom Theme Scripts -->
 <script src="../../build/js/custom.min.js"></script>
+
+<!-- Datatables -->
+<script src="../../vendors/datatables.net/js/jquery.dataTables.min.js"></script>
+<script src="../../vendors/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+<script src="../../vendors/datatables.net-buttons/js/dataTables.buttons.min.js"></script>
+
+
+<script src="../../vendors/datatables.net-buttons/js/buttons.html5.min.js"></script>
+<script src="../../vendors/datatables.net-buttons/js/buttons.print.min.js"></script>
+<script src="../../vendors/datatables.net-fixedheader/js/dataTables.fixedHeader.min.js"></script>
+<script src="../../vendors/datatables.net-keytable/js/dataTables.keyTable.min.js"></script>
+
 
 </body>
 </html>

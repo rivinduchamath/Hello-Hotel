@@ -1,10 +1,4 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: Rivindu Chamath
-  Date: 21-May-20
-  Time: 2:43 AM
-  To change this template use File | Settings | File Templates.
---%>
+
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page import="java.util.Date" %>
@@ -77,21 +71,16 @@
                                     <li><a href="banquets">BanquetManagement</a></li>
                                 </ul>
                             </li>
-                            <li><a><i class="fa fa-cutlery"></i> Restaurant<span
+                            <li><a><i class="fa fa-cutlery"></i> Food and Beverage<span
                                     class="fa fa-chevron-down"></span></a>
                                 <ul class="nav child_menu">
-                                    <li><a href="foodAndBev">F&B</a></li>
+                                    <li><a href="restaurant"> Restaurant </a></li>
+                                    <li><a href="bar">Bar Manage</a></li>
                                 </ul>
                             </li>
                             <li><a><i class="fa fa-life-buoy"></i> House Keeping <span class="fa fa-chevron-down"></span></a>
                                 <ul class="nav child_menu">
                                     <li><a href="rooms">Room Manage</a></li>
-                                </ul>
-                            </li>
-                            <li><a><i class="fa fa-glass"></i> Bar<span
-                                    class="fa fa-chevron-down"></span></a>
-                                <ul class="nav child_menu">
-                                    <li><a href="bar">Bar Manage</a></li>
                                 </ul>
                             </li>
                             <li><a><i class="fa fa-paw"></i> Kitchen<span
@@ -193,7 +182,7 @@
             <div class="">
                 <div class="page-title">
                     <div class="title_left">
-                        <h3>F&B Manage
+                        <h3>Restaurant Management
                             <small>Welcome To Hotel Hareesha</small>
                         </h3>
                     </div>

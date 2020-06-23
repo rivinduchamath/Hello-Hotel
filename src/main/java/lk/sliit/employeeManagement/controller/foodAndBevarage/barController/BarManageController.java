@@ -1,4 +1,4 @@
-package lk.sliit.employeeManagement.controller.barController;
+package lk.sliit.employeeManagement.controller.foodAndBevarage.barController;
 
 import lk.sliit.employeeManagement.controller.SuperController;
 import lk.sliit.employeeManagement.service.custom.IndexLoginBO;

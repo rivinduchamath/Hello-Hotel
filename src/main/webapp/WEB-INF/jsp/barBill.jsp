@@ -1,7 +1,12 @@
+<%--
+  Created by IntelliJ IDEA.
+  User: Chanuka
+--%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page import="java.util.Date" %>
 <%@ page import="java.text.SimpleDateFormat" %>
+
 <html lang="en">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -9,71 +14,26 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <title>Hotel Management </title>
-    <link href="../../vendors/iCheck/skins/flat/green.css" rel="stylesheet">
-    <!-- Bootstrap -->
-    <link href="../../vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Font Awesome -->
-    <link href="../../vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
-    <!-- NProgress -->
-    <link href="../../vendors/nprogress/nprogress.css" rel="stylesheet">
-    <!-- iCheck -->
-    <link href="../../vendors/iCheck/skins/flat/green.css" rel="stylesheet">
     <link rel="icon" type="image/png" href="../../images/icons/gdfgd.png"/>
+    <title>Employee Management </title>
+
     <!-- Bootstrap -->
     <link href="../../vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Font Awesome -->
     <link href="../../vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
     <!-- NProgress -->
     <link href="../../vendors/nprogress/nprogress.css" rel="stylesheet">
-    <!-- iCheck -->
-    <link href="../../vendors/iCheck/skins/flat/green.css" rel="stylesheet">
 
-    <!-- Custom Theme Style -->
-    <link href="../../build/css/custom.min.css" rel="stylesheet">
-    <link href="cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">
-    <link href="../../vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Font Awesome -->
-    <link href="../../vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
-    <!-- NProgress -->
-    <link href="../../vendors/nprogress/nprogress.css" rel="stylesheet">
-    <!-- iCheck -->
-    <link href="../../vendors/iCheck/skins/flat/green.css" rel="stylesheet">
-    <!-- Datatables -->
-
-    <link href="../../vendors/datatables.net-bs/css/dataTables.bootstrap.min.css" rel="stylesheet">
-    <link href="../../vendors/datatables.net-buttons-bs/css/buttons.bootstrap.min.css" rel="stylesheet">
-    <link href="../../vendors/datatables.net-fixedheader-bs/css/fixedHeader.bootstrap.min.css" rel="stylesheet">
-    <link href="../../vendors/datatables.net-responsive-bs/css/responsive.bootstrap.min.css" rel="stylesheet">
-    <link href="../../vendors/datatables.net-scroller-bs/css/scroller.bootstrap.min.css" rel="stylesheet">
-
-    <!-- Custom Theme Style -->
-    <link href="../../build/css/custom.min.css" rel="stylesheet">
-    <link href="../../css/common.css" rel="stylesheet">
-    <!-- Custom Theme Style -->
+    <!-- Custom styling plus plugins -->
     <link href="../../build/css/custom.min.css" rel="stylesheet">
 
     <%
-        SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
-        String date = sdf.format(new Date());
+        SimpleDateFormat sdf = new SimpleDateFormat ( "dd-MM-yyyy" );
+        String date = sdf.format ( new Date ( ) );
     %>
-    <style>
-        .large-btn {
-            height: 90px;
-            width: 100%;
-            font-family: "Playfair Display", Georgia, "Times New Roman", serif;
-            font-weight: bolder;
-            font-size: 27px;
-        }
-
-        .large-btn:hover {
-            color: #0f0f0f;
-        }
-    </style>
 </head>
-<body class="nav-md" style="cursor: pointer">
 
+<body class="nav-md" style="cursor: pointer">
 <div class="container body">
     <div class="main_container">
         <div class="col-md-3 left_col">
@@ -123,8 +83,7 @@
                                     <li><a href="bar">Bar Manage</a></li>
                                 </ul>
                             </li>
-                            <li><a><i class="fa fa-life-buoy"></i> House Keeping <span
-                                    class="fa fa-chevron-down"></span></a>
+                            <li><a><i class="fa fa-life-buoy"></i> House Keeping <span class="fa fa-chevron-down"></span></a>
                                 <ul class="nav child_menu">
                                     <li><a href="rooms">Room Manage</a></li>
                                 </ul>
@@ -222,14 +181,13 @@
             </div>
         </div>
         <!-- /top navigation -->
-
         <!-- page content -->
         <div class="right_col" role="main">
             <div class="">
                 <div class="page-title">
                     <div class="title_left">
-                        <h3>Bar Stock Manage
-                            <small>Welcome To Hotel Hareesha</small>
+                        <h3>Invoice
+                            <small>Submit Payment And Print Bill</small>
                         </h3>
                     </div>
 
@@ -311,186 +269,215 @@
                             </table>
 
                         </form>
-                    </div>
-                </div>
-                <%--//////////////////////////////////////////////////////////////////////////////////////////////////--%>
-                <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
 
+                        <!--////////////////////////-->
 
-                    <div class="col-sm-12 col-md-3 col-lg-3 col-xl-3">
-                        <button type="button" class="large-btn btn btn-primary">Beverage</button>
-                    </div>
-
-                    <div class="col-sm-12 col-md-3 col-lg-3 col-xl-3">
-                        <button type="button" class="large-btn btn btn-info">Kitchen</button>
-                    </div>
-
-                    <div class="col-sm-12 col-md-3 col-lg-3 col-xl-3">
-                        <button type="button" class="large-btn btn btn-success">Items</button>
-                    </div>
-
-                    <div class="col-sm-12 col-md-3 col-lg-3 col-xl-3">
-                        <button type="button" class="large-btn btn btn-danger">Restaurant</button>
-                    </div>
-
-                </div>
-                <%--                    /////////////////////////////////////////////////////--%>
-                <!--////////////////////////////////////////////-->
-                <div class="col-md-6 col-sm-6" style="position: relative;display: inline-block">
-                    <div class="x_panel">
-                        <div class="x_title">
-                            <h2>Rest
-                                <small>Item</small>
-                            </h2>
-                            <ul class="nav navbar-right panel_toolbox">
-                                <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
-                                </li>
-                                <li class="dropdown">
-                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
-                                       aria-expanded="false"><i class="fa fa-wrench"></i></a>
-                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                        <a class="dropdown-item" href="#">Settings 1</a>
-                                        <a class="dropdown-item" href="#">Settings 2</a>
-                                    </div>
-                                </li>
-                                <li><a class="close-link"><i class="fa fa-close"></i></a>
-                                </li>
-                            </ul>
-                            <div class="clearfix"></div>
-                        </div>
-                        <div class="x_content">
-                            <div class="row">
-                                <div class="col-sm-12">
-                                    <div class="card-box table-responsive">
-                                        <p class="text-muted font-13 m-b-30">
-
-                                        </p>
-
-                                        <table id="datatable-responsive"
-                                               class="table table-striped table-bordered dt-responsive nowrap"
-                                               cellspacing="0" width="100%">
-                                            <thead class="thead-dark">
-                                            <tr>
-                                                <th> Name</th>
-                                                <th> ID</th>
-
-                                            </tr>
-                                            </thead>
-                                            <tbody>
-                                            <c:forEach items="${listEmployeesTable}" var="e">
-                                                <tr>
-                                                    <td>e.nam}</td>
-                                                    <td>e.idNo}</td>
-                                                </tr>
-                                            </c:forEach>
-                                            </tbody>
-
-                                        </table>
-
-
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        <!--//////////////////////////-->
                     </div>
                 </div>
 
-                <%--                ///////////////////////////////////Second Table--%>
-                <!--/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////-->
+                <div class="clearfix"></div>
 
-                <div class="col-md-6 col-sm-6" style="float: right; position: relative;display: inline-block">
-                    <div class="x_panel">
-                        <div class="x_title">
-                            <h2>Rest Items
-                                <small>Click CheckBox And Carrt Items
-                                </small>
-                            </h2>
-                            <form method="POST" action="/invoice" name="invoice">
-                                <input style="display: none" type="text" id="itemPay" name="SalaryId">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="x_panel">
+                            <div class="x_title">
+                                <h2>Invoice Print
+                                    <small>Employee invoice</small>
+                                </h2>
                                 <ul class="nav navbar-right panel_toolbox">
                                     <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                                     </li>
-                                    <button type="submit" value="Register" disabled="true"
-                                            style="font-weight: bold;color: white" ; id="name"
-                                            class="btn btn-success "> Submit <i class="fa fa-file-image-o"></i>
-                                    </button>
+                                    <li class="dropdown">
+                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                                           aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                            <a class="dropdown-item" href="#">Settings 1</a>
+                                            <a class="dropdown-item" href="#">Settings 2</a>
+                                        </div>
+                                    </li>
+                                    <li><a class="close-link"><i class="fa fa-close"></i></a>
+                                    </li>
                                 </ul>
+                                <div class="clearfix"></div>
+                            </div>
+                            <div class="x_content">
 
-                            </form>
-
-                            <button onclick="getValue();return false" ;
-                                    style="float: right; font-weight: bold;color: white" ;
-                                    id="btn_enable" class="btn btn-success ">Add Cart <i class="fa fa-plus-circle"></i>
-                            </button>
-
-                            <!--href="/invoice"-->
-                            <div class="clearfix"></div>
-                        </div>
-
-                        <div class="x_content">
-
-                            <div class="row">
-
-                                <div class="col-sm-12">
-
-                                    <div class="card-box table-responsive">
-
-                                        <table id="datatable-buttons"
-                                               class="table table-striped jambo_table bulk_action table-bordered">
-                                            <thead class="thead-dark">
-
-                                            <tr>
-                                                <th>Id</th>
-                                                <th>Name</th>
-                                                <th>price</th>
-                                                <th>Delete</th>
-                                                <th><input type="checkbox" id="check-all" class="flat"></th>
-                                            </tr>
-                                            </thead>
-
-                                            <tbody>
-                                            <%--                                            <c:forEach items="${listEmployeesTableSalary}" var="e">--%>
-                                            <tr>
-                                                <td>sdsds}</td>
-                                                <td>same}</td>
-                                                <td>scSalarx}</td>
-                                                <td><a href=""><span
-                                                        class="glyphicon glyphicon-trash"></span></a></td>
-                                                <td class="a-center ">
-                                                    <input type="checkbox" class="flat checks"
-                                                           name="table_records">
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>sdsds}</td>
-                                                <td>same}</td>
-                                                <td>scSalarx}</td>
-                                                <td><a href=""><span
-                                                        class="glyphicon glyphicon-trash"></span></a></td>
-                                                <td class="a-center ">
-                                                    <input type="checkbox" class="flat checks"
-                                                           name="table_records">
-                                                </td>
-                                            </tr>
-                                            <%--                                            </c:forEach>--%>
-                                            </tbody>
-                                        </table>
+                                <section class="content invoice">
+                                    <!-- title row -->
+                                    <div class="row">
+                                        <div class="  invoice-header">
+                                            <h1>
+                                                <i class="fa fa-globe"></i> Invoice.
+                                                <small><%=date%>
+                                                </small>
+                                            </h1>
+                                        </div>
                                     </div>
-                                </div>
+                                    <!-- info row -->
+                                    <div class="row invoice-info">
+                                        <div class="col-sm-4 invoice-col">
+                                            From
+                                            <address>
+                                                <strong>Chanuka Mullevidana</strong>
+                                                <br>Ambalangoda
+                                                <br>Galle, Sri Lanka
+                                                <br>Phone: 0767188591
+                                                <br>Email: it19166070@my.sliit.lk
+                                            </address>
+                                        </div>
+                                        <!-- /.col -->
+                                        <div class="col-sm-4 invoice-col">
+                                            To
+                                            <address>
+                                                <strong>Rivindu Wijayarathna</strong>
+                                                <br>Yakkalamulla
+                                                <br>Galle, Sri Lanka
+                                                <br>Phone: 0778799940
+                                                <br>Email: it18141948@my.sliit.lk
+                                            </address>
+                                        </div>
+                                        <!-- /.col -->
+                                        <div class="col-sm-4 invoice-col">
+                                            <b>Invoice #007612</b>
+                                            <br>
+                                            <br>
+                                            <b>Order ID:</b> 4F3S8J
+                                            <br>
+                                            <b>Payment Due:</b><%=date%>
+                                            <br>
+                                            <b>Account:</b> 968-34567
+                                        </div>
+                                        <!-- /.col -->
+                                    </div>
+                                    <!-- /.row -->
+
+                                    <!-- Table row -->
+                                    <div class="row">
+                                        <div class="  table">
+                                            <table id="saq" class="table table-striped">
+                                                <thead>
+
+                                                <tr>
+                                                    <th>SalaryId</th>
+                                                    <th>Emp Id</th>
+                                                    <th>Name</th>
+                                                    <th>Basic Salary</th>
+                                                    <th>OT Salary</th>
+                                                    <th>Bonus Salary</th>
+                                                    <th>Tax</th>
+                                                    <th>Total Salary</th>
+                                                </tr>
+                                                </thead>
+                                                <tbody>
+                                                <c:forEach items="${getSalaryData}" var="e">
+                                                    <tr>
+                                                        <td>${e.salaryId}</td>
+                                                        <td>${e.employeeID.idNo}</td>
+                                                        <td>${e.employeeID.name}</td>
+                                                        <td>${e.basicSalary}</td>
+                                                        <td>${e.otHours*e.otRate}</td>
+                                                        <td>${e.bonus}</td>
+                                                        <td>${e.incomeTax}</td>
+                                                        <td>${((e.basicSalary+e.bonus)+(e.otRate*e.otHours))-e.incomeTax}</td>
+                                                    </tr>
+                                                    <script>
+                                                        var aa = aa + ${e.otHours};
+                                                        document.getElementById("demo").innerHTML = 11;
+                                                    </script>
+                                                </c:forEach>
+
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        <!-- /.col -->
+                                    </div>
+                                    <!-- /.row -->
+
+                                    <div class="row">
+                                        <!-- accepted payments column -->
+                                        <div class="col-md-6">
+                                            <p class="lead">Payment Methods:</p>
+                                            <img src="../../images/visa.png" alt="Visa">
+                                            <img src="../../images/mastercard.png" alt="Mastercard">
+                                            <img src="../../images/american-express.png" alt="American Express">
+                                            <img src="../../images/paypal.png" alt="Paypal">
+                                            <p class="text-muted well well-sm no-shadow" style="margin-top: 10px;">
+                                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus
+                                                atque corporis culpa cupiditate dolore doloremque, dolores eaque eos
+                                                ipsam itaque laborum maiores porro quis recusandae, sapiente sequi
+                                                suscipit ullam ut!
+                                            </p>
+                                        </div>
+                                        <!-- /.col -->
+                                        <div class="col-md-6">
+                                            <p class="lead">Amount Due 2/22/2014</p>
+                                            <div class="table-responsive">
+                                                <table class="table">
+                                                    <tbody>
+                                                    <tr>
+                                                        <th style="width:50%">Basic Tot:</th>
+                                                        <td><span id="val2"></span></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>Tax
+                                                            <small style="font-weight: bold"><span id="val9"></span>
+                                                            </small>
+                                                        </th>
+                                                        <td><span id="val3"></span></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>OT Tot:</th>
+                                                        <td><span id="val4"></span></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>Bonus Tot:</th>
+                                                        <td><span id="val5"></span></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>Total:</th>
+                                                        <td><span id="val"></span></td>
+                                                    </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                        <!-- /.col -->
+                                    </div>
+                                    <!-- /.row -->
+
+                                    <!-- this row will not appear when printing -->
+                                    <div class="row no-print">
+                                        <div class=" ">
+
+                                            <form method="POST" action="/deleteInvoiceSalary" name="deleteInvoiceSalary">
+                                                <input style="display: none" type="text" id="itemPay" name="SalaryId">
+                                                <ul class="nav navbar-right panel_toolbox">
+                                                    <button type="submit" value="Register"
+                                                            style="font-weight: bold;color: white" ; id="name" onclick="window.print();"
+                                                            class="btn btn-success "> Submit Payment <i class="fa fa-file-image-o"></i>
+                                                    </button>
+                                                </ul>
+
+                                            </form>
+
+                                        </div>
+                                    </div>
+                                </section>
                             </div>
                         </div>
                     </div>
                 </div>
-                <%--/////////////////////////////////////////////    /////////////////////////////////////////////--%>
             </div>
         </div>
         <!-- /page content -->
 
+
         <!-- footer content -->
         <footer>
             <div class="pull-right">
-                Copyright © Hotel Management 2020.<a href="https://rivinduchamath.github.io/pro/">Created by Rivindu
-                Wijayarathna</a>
+                Copyright © Employee Management 2020.<a href="https://rivinduchamath.github.io/pro/">Created by Chanuka
+                Mullevidana</a>
             </div>
             <div class="clearfix"></div>
         </footer>
@@ -500,45 +487,44 @@
 
 <!-- jQuery -->
 <script src="../../vendors/jquery/dist/jquery.min.js"></script>
+
+<script>
+    var rowCount = document.getElementById('saq').rows.length;
+    var table = document.getElementById("saq"), sumVal2 = 0.0, sumVal3 = 0.0, sumVal4 = 0.0, sumVal5 = 0.0;
+    var sumVal = 0.0;
+    var avgTax = 0.0;    var str = '';
+
+
+    for (var i = 1; i < table.rows.length; i++) {
+        str = str+ (table.rows[i].cells[0].innerHTML)+" ";
+        sumVal = sumVal + parseFloat(table.rows[i].cells[7].innerHTML);
+        sumVal2 = sumVal2 + parseFloat(table.rows[i].cells[3].innerHTML);
+        sumVal3 = sumVal3 + parseFloat(table.rows[i].cells[6].innerHTML);
+        sumVal5 = sumVal5 + parseFloat(table.rows[i].cells[5].innerHTML);
+        sumVal4 = sumVal4 + parseFloat(table.rows[i].cells[4].innerHTML);
+        avgTax = sumVal3 / i;
+    }
+
+
+    document.getElementById("val").innerHTML = "Rs: " + sumVal;
+    document.getElementById("val2").innerHTML = "Rs: " + sumVal2;
+    document.getElementById("val3").innerHTML = "Rs: " + sumVal3;
+    document.getElementById("val5").innerHTML = "Rs: " + sumVal5;
+    document.getElementById("val4").innerHTML = "Rs: " + sumVal4;
+    document.getElementById("val9").innerHTML = "(avg)" + avgTax + "%";
+    $("#itemPay").val(str);
+
+</script>
+
 <!-- Bootstrap -->
 <script src="../../vendors/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 <!-- FastClick -->
 <script src="../../vendors/fastclick/lib/fastclick.js"></script>
 <!-- NProgress -->
 <script src="../../vendors/nprogress/nprogress.js"></script>
-<!-- iCheck -->
-<script src="../../vendors/iCheck/icheck.min.js"></script>
 
-<!-- jQuery -->
-<script src="../../vendors/jquery/dist/jquery.min.js"></script>
-<!-- Bootstrap -->
-<script src="../../vendors/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-<!-- FastClick -->
-<script src="../../vendors/fastclick/lib/fastclick.js"></script>
-<!-- NProgress -->
-<script src="../../vendors/nprogress/nprogress.js"></script>
-<!-- iCheck -->
-<script src="../../vendors/iCheck/icheck.min.js"></script>
-
-
-<!-- Bootstrap -->
-<script src="../../vendors/datatables.net/js/jquery.dataTables.min.js"></script>
-<script src="../../vendors/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
-<script src="../../vendors/datatables.net-buttons/js/dataTables.buttons.min.js"></script>
-<script src="../../vendors/datatables.net-buttons-bs/js/buttons.bootstrap.min.js"></script>
-<script src="../../vendors/datatables.net-buttons/js/buttons.flash.min.js"></script>
-<script src="../../vendors/datatables.net-buttons/js/buttons.html5.min.js"></script>
-<script src="../../vendors/datatables.net-buttons/js/buttons.print.min.js"></script>
-<script src="../../vendors/datatables.net-fixedheader/js/dataTables.fixedHeader.min.js"></script>
-<script src="../../vendors/datatables.net-keytable/js/dataTables.keyTable.min.js"></script>
-<script src="../../vendors/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
-<script src="../../vendors/datatables.net-responsive-bs/js/responsive.bootstrap.js"></script>
-<script src="../../vendors/datatables.net-scroller/js/dataTables.scroller.min.js"></script>
-<script src="../../vendors/jszip/dist/jszip.min.js"></script>
-<script src="../../vendors/iCheck/icheck.min.js"></script>
 <!-- Custom Theme Scripts -->
 <script src="../../build/js/custom.min.js"></script>
-
 
 </body>
 </html>

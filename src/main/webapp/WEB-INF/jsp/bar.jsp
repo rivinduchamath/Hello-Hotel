@@ -28,31 +28,59 @@
     <link href="../../build/css/custom.min.css" rel="stylesheet">
 
     <%
-        SimpleDateFormat sdf = new SimpleDateFormat ( "dd-MM-yyyy" );
-        String date = sdf.format ( new Date ( ) );
+        SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
+        String date = sdf.format(new Date());
     %>
-<style>
-    .large-btn{
-        height:90px;
-        width: 300px;
-        font-family: "Playfair Display", Georgia, "Times New Roman", serif;
-        font-weight: bolder;
-        font-size: 27px;
-    }
-    .large-btn:hover{
-        color: #0f0f0f;
-    }
-</style>
+    <style>
+        .large-btn {
+            height: 90px;
+            width: 100%;
+            font-family: "Playfair Display", Georgia, "Times New Roman", serif;
+            font-weight: bolder;
+            font-size: 27px;
+        }
+
+        .large-btn:hover {
+            color: #0f0f0f;
+        }
+        #backImg{
+            background-image: url("../../images/picture.jpg");
+        }
+        #myVideo {
+            position: fixed;
+            right: 0;
+            bottom: 0;
+            top: 110px;
+            min-width: 100%;
+            min-height: 100%;
+        }
+
+
+        #myBtn {
+            width: 200px;
+            font-size: 18px;
+            padding: 10px;
+            border: none;
+            background: #000;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        #myBtn:hover {
+            background: #ddd;
+            color: black;
+        }
+    </style>
 </head>
 
 <body class="nav-md" style="cursor: pointer">
-
 <div class="container body">
     <div class="main_container">
         <div class="col-md-3 left_col">
             <div class="left_col scroll-view">
                 <div class="navbar nav_title" style="border: 0;">
-                    <a href="dashboard" class="site_title"> <img style="margin-top: -0px; width: 40px;height: 40px" src="../../images/favicon.ico"><span
+                    <a href="dashboard" class="site_title"> <img style="margin-top: -0px; width: 40px;height: 40px"
+                                                                 src="../../images/favicon.ico"><span
                             style="margin-top: 20px;">&nbsp;Hotel Hareesha!</span></a>
                 </div>
 
@@ -88,21 +116,16 @@
                                     <li><a href="banquets">BanquetManagement</a></li>
                                 </ul>
                             </li>
-                            <li><a><i class="fa fa-cutlery"></i> Restaurant<span
+                            <li><a><i class="fa fa-cutlery"></i> Food and Beverage<span
                                     class="fa fa-chevron-down"></span></a>
                                 <ul class="nav child_menu">
-                                    <li><a href="foodAndBev">F&B</a></li>
+                                    <li><a href="restaurant"> Restaurant </a></li>
+                                    <li><a href="bar">Bar Manage</a></li>
                                 </ul>
                             </li>
                             <li><a><i class="fa fa-life-buoy"></i> House Keeping <span class="fa fa-chevron-down"></span></a>
                                 <ul class="nav child_menu">
                                     <li><a href="rooms">Room Manage</a></li>
-                                </ul>
-                            </li>
-                            <li><a><i class="fa fa-glass"></i> Bar<span
-                                    class="fa fa-chevron-down"></span></a>
-                                <ul class="nav child_menu">
-                                    <li><a href="bar">Bar Manage</a></li>
                                 </ul>
                             </li>
                             <li><a><i class="fa fa-paw"></i> Kitchen<span
@@ -200,7 +223,12 @@
         <!-- /top navigation -->
 
         <!-- page content -->
-        <div class="right_col" role="main">
+        <video autoplay muted loop id="myVideo">
+            <source src="../../images/video/red%20wine%20pouring.mp4" type="video/mp4">
+        </video>
+<%--/////////aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa--%>
+        <div id="" class="right_col " role="main" >
+
             <div class="">
                 <div class="page-title">
                     <div class="title_left">
@@ -208,7 +236,6 @@
                             <small>Welcome To Hotel Hareesha</small>
                         </h3>
                     </div>
-
 
 
                     <div class="title_right">
@@ -292,110 +319,128 @@
 
                     </div>
                 </div>
-<%-- ////////////////////////////////////////////// BODY /////////////////////////////////////////////////////////////--%>
+
+                <%-- ////////////////////////////////////////////// BODY /////////////////////////////////////////////////////////////--%>
+                <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
 
 
-                <button type="button"  class="large-btn btn btn-primary">Order</button>
-                <button type="button"  class="large-btn btn btn-info">Stock</button>
-                <button type="button"  class="large-btn btn btn-success">Bills</button>
-                <button type="button"  class="large-btn btn btn-danger">Income</button>
+                    <div class="col-sm-12 col-md-3 col-lg-3 col-xl-3">
+                        <a href="barOrder">
+                            <button type="button" class="large-btn btn btn-primary">Order</button></a>
+                    </div>
 
+                    <div class="col-sm-12 col-md-3 col-lg-3 col-xl-3">
+                        <a href="barStock">
+                            <button type="button" class="large-btn btn btn-info">Stock</button></a>
+                    </div>
 
-<%--%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Chart Income %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%--%>
-                <div class="col-sm-12 col-md-8 col-lg-7 col-xl-7">
-                <div class="container">
-                    <canvas id="myChart"></canvas>
+                    <div class="col-sm-12 col-md-3 col-lg-3 col-xl-3">
+                        <a href="barBill">
+                            <button type="button" class="large-btn btn btn-success">Bills</button></a>
+                    </div>
+
+                    <div class="col-sm-12 col-md-3 col-lg-3 col-xl-3">
+                        <button type="button" class="large-btn btn btn-danger">Income</button>
+                    </div>
+
                 </div>
+                <%--%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Chart Income %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%--%>
+                <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6">
 
-                <script>
-                    let myChart = document.getElementById('myChart').getContext('2d');
+                    <div class="container">
+                        <canvas id="myChart"></canvas>
+                    </div>
 
-                    // Global Options
-                    Chart.defaults.global.defaultFontFamily = 'Lato';
-                    Chart.defaults.global.defaultFontSize = 18;
-                    Chart.defaults.global.defaultFontColor = '#777';
+                    <script>
+                        let myChart = document.getElementById('myChart').getContext('2d');
 
-                    let massPopChart = new Chart(myChart, {
-                        type:'line', // bar, horizontalBar, pie, line, doughnut, radar, polarArea
-                        data:{
-                            labels:['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri','Sat'],
-                            datasets:[{
-                                label:'Population',
-                                data:[
-                                    2,
-                                    4,
-                                    6,
-                                    65,
-                                    6,
-                                    43,
-                                    23
-                                ],
-                                //backgroundColor:'green',
-                                backgroundColor:[
-                                    'rgba(255, 99, 132, 0.6)',
-                                    'rgba(54, 162, 235, 0.6)',
-                                    'rgba(255, 206, 86, 0.6)',
-                                    'rgba(75, 192, 192, 0.6)',
-                                    'rgba(153, 102, 255, 0.6)',
-                                    'rgba(255, 159, 64, 0.6)',
-                                    'rgba(255, 99, 132, 0.6)'
-                                ],
-                                borderWidth:1,
-                                borderColor:'#777',
-                                hoverBorderWidth:3,
-                                hoverBorderColor:'#000'
-                            }]
-                        },
-                        options:{
-                            title:{
-                                display:true,
-                                text:'Week Income',
-                                fontSize:20
+                        // Global Options
+                        Chart.defaults.global.defaultFontFamily = 'Lato';
+                        Chart.defaults.global.defaultFontSize = 18;
+                        Chart.defaults.global.defaultFontColor = '#4A2D27';
+
+                        let massPopChart = new Chart(myChart, {
+                            type: 'line', // bar, horizontalBar, pie, line, doughnut, radar, polarArea
+                            data: {
+                                labels: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
+                                datasets: [{
+                                    label: 'Population',
+                                    data: [
+                                        2,
+                                        4,
+                                        6,
+                                        65,
+                                        6,
+                                        43,
+                                        23
+                                    ],
+                                    //backgroundColor:'green',
+                                    backgroundColor: [
+                                        'rgba(55, 99, 132, 0.6)',
+                                        'rgba(54, 162, 235, 0.6)',
+                                        'rgba(25, 206, 86, 0.6)',
+                                        'rgba(75, 192, 192, 0.6)',
+                                        'rgba(13, 102, 255, 0.6)',
+                                        'rgba(55, 159, 64, 0.6)',
+                                        'rgba(55, 99, 132, 0.6)'
+                                    ],
+                                    borderWidth: 1,
+                                    borderColor: '#4A2D27',
+                                    hoverBorderWidth: 3,
+                                    hoverBorderColor: '#000'
+                                }]
                             },
-                            legend:{
-                                display:false,
-                                position:'right',
-                                labels:{
-                                    fontColor:' #ff5733 '
+                            options: {
+                                title: {
+                                    display: true,
+                                    text: 'Last Week Income',
+                                    fontSize: 20
+                                },
+                                legend: {
+                                    display: false,
+                                    position: 'right',
+                                    labels: {
+                                        fontColor: ' #ff5733 '
+                                    }
+                                },
+                                layout: {
+                                    padding: {
+                                        left: 50,
+                                        right: 0,
+                                        bottom: 0,
+                                        top: 0
+                                    }
+                                },
+                                tooltips: {
+                                    enabled: true
                                 }
-                            },
-                            layout:{
-                                padding:{
-                                    left:50,
-                                    right:0,
-                                    bottom:0,
-                                    top:0
-                                }
-                            },
-                            tooltips:{
-                                enabled:true
                             }
-                        }
-                    });
-                </script>
-
+                        });
+                    </script>
 
 
                 </div>
-
-<%--                /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////--%>
-
             </div>
+            <%--                /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////--%>
+
+
+            <%--////////////////////////////////////////////////////////////--%>
         </div>
-        <!-- /page content -->
-
-        <!-- footer content -->
-        <footer>
-            <div class="pull-right">
-                Copyright © Hotel Management 2020.<a href="https://rivinduchamath.github.io/pro/">Created by Rivindu
-                Wijayarathna</a>
-            </div>
-            <div class="clearfix"></div>
-        </footer>
-        <!-- /footer content -->
     </div>
-</div>
 
+    <!-- /page content -->
+
+    <!-- footer content -->
+    <footer>
+        <div class="pull-right">
+            Copyright © Hotel Management 2020.<a href="https://rivinduchamath.github.io/pro/">Created by Rivindu
+            Wijayarathna</a>
+        </div>
+        <div class="clearfix"></div>
+    </footer>
+    <!-- /footer content -->
+</div>
+</div>
 
 
 <!-- jQuery -->

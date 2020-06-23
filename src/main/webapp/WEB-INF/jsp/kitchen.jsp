@@ -34,7 +34,6 @@
 </head>
 
 <body class="nav-md" style="cursor: pointer">
-
 <div class="container body">
     <div class="main_container">
         <div class="col-md-3 left_col">
@@ -77,21 +76,16 @@
                                     <li><a href="banquets">BanquetManagement</a></li>
                                 </ul>
                             </li>
-                            <li><a><i class="fa fa-cutlery"></i> Restaurant<span
+                            <li><a><i class="fa fa-cutlery"></i> Food and Beverage<span
                                     class="fa fa-chevron-down"></span></a>
                                 <ul class="nav child_menu">
-                                    <li><a href="foodAndBev">F&B</a></li>
+                                    <li><a href="restaurant"> Restaurant </a></li>
+                                    <li><a href="bar">Bar Manage</a></li>
                                 </ul>
                             </li>
                             <li><a><i class="fa fa-life-buoy"></i> House Keeping <span class="fa fa-chevron-down"></span></a>
                                 <ul class="nav child_menu">
                                     <li><a href="rooms">Room Manage</a></li>
-                                </ul>
-                            </li>
-                            <li><a><i class="fa fa-glass"></i> Bar<span
-                                    class="fa fa-chevron-down"></span></a>
-                                <ul class="nav child_menu">
-                                    <li><a href="bar">Bar Manage</a></li>
                                 </ul>
                             </li>
                             <li><a><i class="fa fa-paw"></i> Kitchen<span
