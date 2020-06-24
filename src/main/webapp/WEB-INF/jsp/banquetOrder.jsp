@@ -200,7 +200,7 @@
                 <div class="page-title">
                     <div class="title_left">
                         <h3>Kitchen Manage
-                            <small>Head Chef Dashboard</small>
+                            <small>Banquet Order</small>
                         </h3>
                     </div>
 
@@ -285,28 +285,142 @@
                     </div>
                 </div>
 <%--/////////////////////////////////// Page Body ////////////////////////////////////////--%>
-<%--  Buttons--%>
-
-                <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+<%--  Tables--%>
 
 
-                    <div class="col-sm-12 col-md-4 col-lg-4 col-xl-4">
-                        <a href="chefManagement">
-                            <button type="button" class="large-btn btn btn-dark">Chef Management</button></a>
+                    <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6">
+
+                                    <div >
+                                        <a href="/kitchen">
+                                            <button style="position: relative;margin-right: 0" type="button"
+                                                    class=" btn btn-secondary"><i
+                                                    class="fa fa-backward"></i> Back
+                                            </button>
+                                        </a>
+                                        <div class="x_panel">
+                                            <div class="x_title">
+                                                <h2> Food Pack
+                                                    <small>Food Pack</small>
+                                                </h2>
+                                                <ul class="nav navbar-right panel_toolbox">
+                                                    <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                                                    </li>
+                                                    <li class="dropdown">
+                                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                                                           aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                                                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                                            <a class="dropdown-item" href="#">Settings 1</a>
+                                                            <a class="dropdown-item" href="#">Settings 2</a>
+                                                        </div>
+                                                    </li>
+                                                    <li><a class="close-link"><i class="fa fa-close"></i></a>
+                                                    </li>
+                                                </ul>
+                                                <div class="clearfix"></div>
+                                            </div>
+                                            <div class="x_content">
+                                                <div class="row">
+                                                    <div class="col-sm-12">
+                                                        <div class="card-box datatable-responsive">
+                                                            <p class="text-muted font-13 m-b-30">
+                                                               lorem
+                                                            </p>
+                                                            <table id="datatable-responsive1"
+                                                                   class="table table-striped table-bordered">
+                                                                <tbody>
+                                                                <%--   <c:forEach items="${listEmployeesTableSalarya}" var="e">--%>
+                                                                <tr>
+                                                                    <td>main Rice${e.foodId}</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>chicken Rice${e.foodId}</td>
+                                                                </tr>
+                                                                <%--    </c:forEach>--%>
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
                     </div>
 
-                    <div class="col-sm-12 col-md-4 col-lg-4 col-xl-4">
-                        <a href="banquetOrder">
-                        <button type="button" class="large-btn btn btn-secondary">Banquet Orders</button></a>
-                    </div>
 
-                    <div class="col-sm-12 col-md-4 col-lg-4 col-xl-4">
-                        <a href="foodItemManagement">
-                        <button type="button" class="large-btn btn btn-dark">Food Items Management</button></a>
-                    </div>
 
+<%--Second Table--%>
+                <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6">
+                        <form style="top: 40px;position: relative"  method="POST" action="/addNewFoodItems" name="projectController">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="x_panel">
+                                        <div class="x_title">
+                                            <h2>Food List</h2>
+                                            <ul class="nav navbar-right panel_toolbox">
+                                                <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                                                </li>
+                                                <li class="dropdown">
+                                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                                                       aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                                        <a class="dropdown-item" href="#">Settings 1</a>
+                                                        <a class="dropdown-item" href="#">Settings 2</a>
+                                                    </div>
+                                                </li>
+                                                <li><a class="close-link"><i class="fa fa-close"></i></a>
+                                                </li>
+                                            </ul>
+                                            <div class="clearfix"></div>
+                                        </div>
+                                        <div class="x_content">
+
+                                            <p style="font-weight: bold; font-size: 14px">Click Here To Submit  >>
+                                                &emsp;
+                                                <button class="btn-outline-info" style="width: 16%;font-weight: bolder;color: black;
+                          height:36px; " href="/"
+                                                        onMouseOver="this.style.color='white'; this.style.fontWeight='bold'"
+                                                        onMouseOut="this.style.color='black'; "
+                                                >Submit
+                                                </button>
+
+                                            </p>
+
+                                            <!-- start project list -->
+                                            <table id="datatable-buttons" class="table table-striped table-bordered">
+                                                <thead>
+                                                <tr>
+                                                    <th>Item Id</th>
+                                                    <th>Item Name</th>
+                                                    <th ></th>
+                                                </tr>
+                                                </thead>
+                                                <tbody>
+                                                <%--                                            <c:forEach items="${lias}" var="a">--%>
+                                                <tr>
+                                                    <td>C001${a.itemId}</td>
+                                                    <td>
+                                                        <a>Namee}</a>
+
+                                                    </td>
+                                                    <td><input />
+                                                    </td>
+                                                </tr>
+                                                <%--                                            </c:forEach>--%>
+                                                </tbody>
+                                            </table>
+                                            <!-- end project list -->
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
                 </div>
-<%-- End Buttons--%>
+
+
+            <%-- End Tables--%>
 
 <%--//////////////////////////////////////////////////////////////////////////////////////////////--%>
             </div>

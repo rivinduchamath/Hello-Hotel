@@ -8,14 +8,20 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
-public class KitchenController {
+public class ChefManageController {
     @Autowired
     IndexLoginBO indexLoginBO;
 
-    @GetMapping("/kitchen")
-    public String loginPage(Model model)
+@GetMapping("/chefManagement")
+public String loginPage(Model model)
+{
+    model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
+    return "chefManagement";
+}
+    @GetMapping("/chefList")
+    public String chefList(Model model)
     {
         model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
-        return "kitchen";
+        return "chefList";
     }
 }

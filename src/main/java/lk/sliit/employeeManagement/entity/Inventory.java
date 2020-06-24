@@ -17,7 +17,6 @@ public class Inventory implements SuperEntity {
     private Date date;
     private Date expDate;
 
-
     public Inventory() {
     }
 

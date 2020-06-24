@@ -27,16 +27,13 @@
     <link href="../../build/css/custom.min.css" rel="stylesheet">
 
     <%
-        SimpleDateFormat sdf = new SimpleDateFormat ( "dd-MM-yyyy" );
-        String date = sdf.format ( new Date ( ) );
+        SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
+        String date = sdf.format(new Date());
     %>
     <style>
         .large-btn {
-            height: 90px;
-            width: 100%;
             font-family: "Playfair Display", Georgia, "Times New Roman", serif;
             font-weight: bolder;
-            font-size: 27px;
         }
 
         .large-btn:hover {
@@ -95,7 +92,8 @@
                                     <li><a href="bar">Bar Manage</a></li>
                                 </ul>
                             </li>
-                            <li><a><i class="fa fa-life-buoy"></i> House Keeping <span class="fa fa-chevron-down"></span></a>
+                            <li><a><i class="fa fa-life-buoy"></i> House Keeping <span
+                                    class="fa fa-chevron-down"></span></a>
                                 <ul class="nav child_menu">
                                     <li><a href="rooms">Room Manage</a></li>
                                 </ul>
@@ -200,7 +198,7 @@
                 <div class="page-title">
                     <div class="title_left">
                         <h3>Kitchen Manage
-                            <small>Head Chef Dashboard</small>
+                            <small>Food Item List</small>
                         </h3>
                     </div>
 
@@ -284,31 +282,99 @@
                         </form>
                     </div>
                 </div>
-<%--/////////////////////////////////// Page Body ////////////////////////////////////////--%>
-<%--  Buttons--%>
-
+                <%--/////////////////////////////////// Page Body ////////////////////////////////////////--%>
+                <%--  Buttons--%>
                 <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
 
 
-                    <div class="col-sm-12 col-md-4 col-lg-4 col-xl-4">
-                        <a href="chefManagement">
-                            <button type="button" class="large-btn btn btn-dark">Chef Management</button></a>
-                    </div>
+                    <form method="POST" action="/addNewFoodItems" name="projectController">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="x_panel">
+                                    <div class="x_title">
+                                        <h2>Food List</h2>
+                                        <ul class="nav navbar-right panel_toolbox">
+                                            <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                                            </li>
+                                            <li class="dropdown">
+                                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                                                   aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                                    <a class="dropdown-item" href="#">Settings 1</a>
+                                                    <a class="dropdown-item" href="#">Settings 2</a>
+                                                </div>
+                                            </li>
+                                            <li><a class="close-link"><i class="fa fa-close"></i></a>
+                                            </li>
+                                        </ul>
+                                        <div class="clearfix"></div>
+                                    </div>
+                                    <div class="x_content">
 
-                    <div class="col-sm-12 col-md-4 col-lg-4 col-xl-4">
-                        <a href="banquetOrder">
-                        <button type="button" class="large-btn btn btn-secondary">Banquet Orders</button></a>
-                    </div>
+                                        <p style="font-weight: bold; font-size: 14px">Click Here To Add New Items >>
+                                            &emsp;
+                                            <button class="btn-outline-info" style="width: 12%;font-weight: bolder;color: black;
+                          height:36px; " href="/"
+                                                    onMouseOver="this.style.color='white'; this.style.fontWeight='bold'"
+                                                    onMouseOut="this.style.color='black'; "
+                                            >+New
+                                            </button>
+                                            <a href="/kitchen">
+                                                <button style="position: absolute;right: 0" type="button"
+                                                        class="large-btn btn btn-secondary"><i
+                                                        class="fa fa-backward"></i> Back
+                                                </button>
+                                            </a>
+                                        </p>
 
-                    <div class="col-sm-12 col-md-4 col-lg-4 col-xl-4">
-                        <a href="foodItemManagement">
-                        <button type="button" class="large-btn btn btn-dark">Food Items Management</button></a>
-                    </div>
+                                        <!-- start project list -->
+                                        <table id="datatable-buttons" class="table table-striped table-bordered">
+                                            <thead>
+                                            <tr>
+                                                <th>Item Id</th>
+                                                <th>Item Name</th>
+                                                <th>Time</th>
+                                                <th style="width: 20%">#Edit</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            <%--                                            <c:forEach items="${lias}" var="a">--%>
+                                            <tr>
+                                                <td>C001${a.itemId}</td>
+                                                <td>
+                                                    <a>Name${a.itemName}</a>
 
+                                                </td>
+                                                <td>
+                                                    <ul class="list-inline">
+                                                        <small>Expected ${a.duration}</small>
+                                                    </ul>
+                                                </td>
+                                                <td>
+                                                    <a href="/itemId_detail?projectId=${a.itemId }"
+                                                       class="btn btn-primary btn-xs"><i
+                                                            class="fa fa-folder"></i> View </a>
+                                                    <a href="/edit-ItemId?projectId=${a.itemId }"
+                                                       class="btn btn-info btn-xs"><i class="fa fa-pencil"></i>
+                                                        Edit </a>
+                                                    <a href="/deleteItemId?pid=${a.itemId }"
+                                                       class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i>
+                                                        Delete </a>
+                                                </td>
+                                            </tr>
+                                            <%--                                            </c:forEach>--%>
+                                            </tbody>
+                                        </table>
+                                        <!-- end project list -->
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
                 </div>
-<%-- End Buttons--%>
-
-<%--//////////////////////////////////////////////////////////////////////////////////////////////--%>
+                <%-- End Buttons--%>
+                <%--//////////////////////////////////////////////////////////////////////////////////////////////--%>
             </div>
         </div>
         <!-- /page content -->
@@ -324,7 +390,6 @@
         <!-- /footer content -->
     </div>
 </div>
-
 
 
 <!-- jQuery -->

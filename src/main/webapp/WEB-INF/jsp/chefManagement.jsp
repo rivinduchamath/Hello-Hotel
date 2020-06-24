@@ -200,7 +200,7 @@
                 <div class="page-title">
                     <div class="title_left">
                         <h3>Kitchen Manage
-                            <small>Head Chef Dashboard</small>
+                            <small>Chef Management</small>
                         </h3>
                     </div>
 
@@ -284,30 +284,24 @@
                         </form>
                     </div>
                 </div>
-<%--/////////////////////////////////// Page Body ////////////////////////////////////////--%>
-<%--  Buttons--%>
-
+                <%--/////////////////////////////////// Page Body ////////////////////////////////////////--%>
+                <%--  Buttons--%>
+                <a href="/kitchen">
+                    <button type="button" class="btn btn-secondary"><i class="fa fa-backward"></i> Back</button></a>
                 <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
 
-
-                    <div class="col-sm-12 col-md-4 col-lg-4 col-xl-4">
-                        <a href="chefManagement">
-                            <button type="button" class="large-btn btn btn-dark">Chef Management</button></a>
+                    <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6">
+                        <a href="/chefList">
+                            <button type="button" class="large-btn btn btn-dark">Add Chef to Main Kitchen </button></a>
                     </div>
 
-                    <div class="col-sm-12 col-md-4 col-lg-4 col-xl-4">
-                        <a href="banquetOrder">
-                        <button type="button" class="large-btn btn btn-secondary">Banquet Orders</button></a>
-                    </div>
-
-                    <div class="col-sm-12 col-md-4 col-lg-4 col-xl-4">
-                        <a href="foodItemManagement">
-                        <button type="button" class="large-btn btn btn-dark">Food Items Management</button></a>
+                    <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6">
+                        <a href="/chefList">
+                            <button type="button" class="large-btn btn btn-dark">Add Chef to Restaurant</button></a>
                     </div>
 
                 </div>
-<%-- End Buttons--%>
-
+                <%-- End Buttons--%>
 <%--//////////////////////////////////////////////////////////////////////////////////////////////--%>
             </div>
         </div>
