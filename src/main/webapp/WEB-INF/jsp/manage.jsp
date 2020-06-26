@@ -30,6 +30,14 @@
         SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
         String date = sdf.format(new Date());
     %>
+     <%--Pie Chrat--%>
+    <script src="https://www.amcharts.com/lib/4/core.js"></script>
+    <script src="https://www.amcharts.com/lib/4/charts.js"></script>
+    <script src="https://www.amcharts.com/lib/4/themes/spiritedaway.js"></script>
+    <script src="https://www.amcharts.com/lib/4/themes/moonrisekingdom.js"></script>
+    <script src="https://www.amcharts.com/lib/4/themes/animated.js"></script>
+
+    <%--/Pie Chrat--%>
     <style>
         .large-btn {
             height: 90px;
@@ -41,6 +49,18 @@
 
         .large-btn:hover {
             color: #0f0f0f;
+        }
+        #chartdiv {
+            position: relative;
+            top: 40px;
+            width: 100%;
+            height: 300px;
+        }
+        #chartdiv1 {
+            position: relative;
+            top: 40px;
+            width: 100%;
+            height: 300px;
         }
     </style>
 </head>
@@ -60,7 +80,6 @@
 
         <!-- page content -->
         <div class="right_col" role="main">
-            <div class="">
                 <div class="page-title">
                     <div class="title_left">
                         <h3>System Manage
@@ -154,29 +173,29 @@
 
                     <div class="col-sm-12 col-md-3 col-lg-3 col-xl-3">
                         <a href="barStock">
-                            <button type="button" class="large-btn btn btn-primary">User Manage</button>
+                            <button type="button" class="large-btn btn btn-dark">User Manage</button>
                         </a>
                     </div>
 
                     <div class="col-sm-12 col-md-3 col-lg-3 col-xl-3">
-                        <button type="button" class="large-btn btn btn-info">HR Manage</button>
+                        <button type="button" class="large-btn btn btn-dark">HR Manage</button>
                     </div>
 
                     <div class="col-sm-12 col-md-3 col-lg-3 col-xl-3">
-                        <button type="button" class="large-btn btn btn-success">Food & Beverage</button>
+                        <button type="button" class="large-btn btn btn-dark">Food & Beverage</button>
                     </div>
                     <div class="col-sm-12 col-md-3 col-lg-3 col-xl-3">
-                        <button type="button" class="large-btn btn btn-success">Banquet Manage</button>
+                        <button type="button" class="large-btn btn btn-dark">Banquet Manage</button>
                     </div>
                     <div class="col-sm-12 col-md-4 col-lg-4 col-xl-4">
-                        <button type="button" class="large-btn btn btn-info">House Keeping</button>
+                        <button type="button" class="large-btn btn btn-dark">House Keeping</button>
                     </div>
 
                     <div class="col-sm-12 col-md-4 col-lg-4 col-xl-4">
-                        <button type="button" class="large-btn btn btn-success">Daily Activity Report</button>
+                        <button type="button" class="large-btn btn btn-dark">Daily Activity Report</button>
                     </div>
                     <div class="col-sm-12 col-md-4 col-lg-4 col-xl-4">
-                        <button type="button" class="large-btn btn btn-success">Monthly Activity Report</button>
+                        <button type="button" class="large-btn btn btn-dark">Monthly Activity Report</button>
                     </div>
                 </div>
 
@@ -186,75 +205,18 @@
                 <%--%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Chart Income %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%--%>
                 <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6">
 
-                    <div class="container">
-                        <canvas id="myChart"></canvas>
-                    </div>
-
-                    <script>
-                        let myChart = document.getElementById('myChart').getContext('2d');
-
-                        // Global Options
-                        Chart.defaults.global.defaultFontFamily = 'Lato';
-                        Chart.defaults.global.defaultFontSize = 18;
-                        Chart.defaults.global.defaultFontColor = '#4A2D27';
-
-                        let massPopChart = new Chart(myChart, {
-                            type: 'pie', // bar, horizontalBar, pie, line, doughnut, radar, polarArea
-                            data: {
-                                labels: ['Reservation', 'Restaurant', 'Bar', 'Banquet'],
-                                datasets: [{
-                                    label: 'Population',
-                                    data: [
-                                        2,
-                                        4,
-                                        6,
-                                        6
-                                    ],
-                                    //backgroundColor:'green',
-                                    backgroundColor: [
-                                        'rgba(55, 99, 132, 0.6)',
-                                        'rgba(54, 162, 235, 0.6)',
-                                        'rgba(25, 206, 86, 0.6)',
-                                        'rgba(75, 192, 192, 0.6)'
-                                    ],
-                                    borderWidth: 1,
-                                    borderColor: '#4A2D27',
-                                    hoverBorderWidth: 3,
-                                    hoverBorderColor: '#000'
-                                }]
-                            },
-                            options: {
-                                title: {
-                                    display: true,
-                                    text: 'Today Income',
-                                    fontSize: 20
-                                },
-                                legend: {
-                                    display: false,
-                                    position: 'right',
-                                    labels: {
-                                        fontColor: ' #ff5733 '
-                                    }
-                                },
-                                layout: {
-                                    padding: {
-                                        left: 50,
-                                        right: 0,
-                                        bottom: 0,
-                                        top: 0
-                                    }
-                                },
-                                tooltips: {
-                                    enabled: true
-                                }
-                            }
-                        });
-                    </script>
-
-
+                    <div id="chartdiv"></div><br>
+                    <P><h6>Today Income</h6></P>
                 </div>
+
+                <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6">
+
+                <div id="chartdiv1"></div> <br>
+                    <P><h6>Yesterday Income</h6></P>
             </div>
-            <%--                /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////--%>
+
+            <%--/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////--%>
+
 
 
         </div>
@@ -266,7 +228,90 @@
         <!-- /footer content -->
     </div>
 </div>
+<%--Pie Chart 1--%>
+<script>
+    am4core.ready(function() {
 
+// Themes begin
+            am4core.useTheme(am4themes_moonrisekingdom);
+            am4core.useTheme(am4themes_animated);
+// Themes end
+
+            var chart = am4core.create("chartdiv", am4charts.PieChart3D);
+            chart.hiddenState.properties.opacity = 0; // this creates initial fade-in
+
+            chart.legend = new am4charts.Legend();
+
+            chart.data = [
+                {
+                    country: "Reservation",
+                    litres: 32501.9
+                },
+                {
+                    country: "Restaurant",
+                    litres: 12301.9
+                },
+                {
+                    country: "Bar",
+                    litres: 23201.1
+                },
+                {
+                    country: "Banquet",
+                    litres: 42165.8
+                }
+
+            ];
+
+            var series = chart.series.push(new am4charts.PieSeries3D());
+            series.dataFields.value = "litres";
+            series.dataFields.category = "country";
+
+        });
+</script>
+<%--/Pie Chart 1--%>
+
+<%--Pie Chart 2--%>
+<script>
+    am4core.ready(function() {
+
+// Themes begin
+        am4core.useTheme(am4themes_spiritedaway);
+        am4core.useTheme(am4themes_animated);
+// Themes end
+
+        var chart = am4core.create("chartdiv1", am4charts.PieChart3D);
+        chart.hiddenState.properties.opacity = 0; // this creates initial fade-in
+
+        chart.legend = new am4charts.Legend();
+
+        chart.data = [
+            {
+                country: "Reservation",
+                litres: 35101.9
+            },
+            {
+                country: "Restaurant",
+                litres: 31301.9
+            },
+            {
+                country: "Bar",
+                litres: 22101.1
+            },
+
+            {
+                country: "Banquet",
+                litres: 21150
+            }
+        ];
+
+        var series = chart.series.push(new am4charts.PieSeries3D());
+        series.dataFields.value = "litres";
+        series.dataFields.category = "country";
+
+    });
+
+</script>
+<%--/Pie Chart 2--%>
 
 <!-- jQuery -->
 <script src="../../vendors/jquery/dist/jquery.min.js"></script>
