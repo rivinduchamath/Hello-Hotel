@@ -25,162 +25,38 @@
     <link href="../../vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
     <!-- Custom Theme Style -->
     <link href="../../build/css/custom.min.css" rel="stylesheet">
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.min.js"></script>
     <%
-        SimpleDateFormat sdf = new SimpleDateFormat ( "dd-MM-yyyy" );
-        String date = sdf.format ( new Date ( ) );
+        SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
+        String date = sdf.format(new Date());
     %>
+    <style>
+        .large-btn {
+            height: 90px;
+            width: 100%;
+            font-family: "Playfair Display", Georgia, "Times New Roman", serif;
+            font-weight: bolder;
+            font-size: 27px;
+        }
 
+        .large-btn:hover {
+            color: #0f0f0f;
+        }
+    </style>
 </head>
 
 <body class="nav-md" style="cursor: pointer">
 <div class="container body">
     <div class="main_container">
-        <div class="col-md-3 left_col">
-            <div class="left_col scroll-view">
-                <div class="navbar nav_title" style="border: 0;">
-                    <a href="dashboard" class="site_title"> <img style="margin-top: -0px; width: 40px;height: 40px"
-                                                                 src="../../images/favicon.ico"><span
-                            style="margin-top: 20px;">&nbsp;Hotel Hareesha!</span></a>
-                </div>
 
-                <div class="clearfix"></div>
 
-                <!-- menu profile quick info -->
-                <div class="profile clearfix">
-                    <div class="profile_pic" style=" width: 80px;height: 80px">
-                        <img src="../../images/icons/${loggerName.pic}" alt="..." class="img-circle profile_img">
-                    </div>
-                    <div class="profile_info">
-                        <span>Welcome,</span>
-                        <h2> ${loggerName.name}</h2>
-                    </div>
-                </div>
-                <!-- /menu profile quick info -->
+        <!-- Side header -->
+        <jsp:include page="sideHeader.jsp" />
+        <!-- /Side header -->
 
-                <br/>
-
-                <!-- sidebar menu -->
-                <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
-                    <div class="menu_section">
-                        <h3>General</h3>
-                        <ul class="nav side-menu">
-                            <li><a><i class="fa fa-home"></i> Home <span class="fa fa-chevron-down"></span></a>
-                                <ul class="nav child_menu">
-                                    <li><a href="dashboard">Dashboard</a></li>
-                                </ul>
-                            </li>
-                            <li><a><i class="fa fa-tasks"></i> Front Desk <span class="fa fa-chevron-down"></span></a>
-                                <ul class="nav child_menu">
-                                    <li><a href="reservations">Reservation</a></li>
-                                    <li><a href="banquets">BanquetManagement</a></li>
-                                </ul>
-                            </li>
-                            <li><a><i class="fa fa-cutlery"></i> Food and Beverage<span
-                                    class="fa fa-chevron-down"></span></a>
-                                <ul class="nav child_menu">
-                                    <li><a href="restaurant"> Restaurant </a></li>
-                                    <li><a href="bar">Bar Manage</a></li>
-                                </ul>
-                            </li>
-                            <li><a><i class="fa fa-life-buoy"></i> House Keeping <span class="fa fa-chevron-down"></span></a>
-                                <ul class="nav child_menu">
-                                    <li><a href="rooms">Room Manage</a></li>
-                                </ul>
-                            </li>
-                            <li><a><i class="fa fa-paw"></i> Kitchen<span
-                                    class="fa fa-chevron-down"></span></a>
-                                <ul class="nav child_menu">
-                                    <li><a href="kitchen">Kitchen Manage</a></li>
-                                </ul>
-                            </li>
-                            <li><a><i class="fa fa-shopping-cart"></i> Inventory<span
-                                    class="fa fa-chevron-down"></span></a>
-                                <ul class="nav child_menu">
-                                    <li><a href="inventory">Inventory Manage</a></li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="menu_section">
-                        <h3>Live On</h3>
-                        <ul class="nav side-menu">
-                            <li><a><i class="fa fa-gear"></i> Manage System<span
-                                    class="fa fa-chevron-down"></span></a>
-                                <ul class="nav child_menu">
-                                    <li><a href="notice">Notice Manage</a></li>
-                                    <li><a href="manage">Manager</a></li>
-                                    <li><a href="hr">HR</a></li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="menu_section">
-                        <h3>Live On</h3>
-                        <ul class="nav side-menu">
-                            <li><a><i class="fa fa-anchor"></i> Additional Pages <span
-                                    class="fa fa-chevron-down"></span></a>
-                                <ul class="nav child_menu">
-                                    <li><a href="contacts">Contacts</a></li>
-                                    <li><a href="profile">Profile</a></li>
-                                </ul>
-                            </li>
-                            <li><a><i class="fa fa-ge"></i> Extras <span class="fa fa-chevron-down"></span></a>
-                                <ul class="nav child_menu">
-                                    <li><a href="login">Login Page</a></li>
-                                    <li><a href="pricing">Pricing Tables</a></li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="sidebar-footer hidden-small">
-                    <a data-toggle="tooltip" data-placement="top" title="Settings">
-                        <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
-                    </a>
-                    <a data-toggle="tooltip" data-placement="top" title="FullScreen">
-                        <span class="glyphicon glyphicon-fullscreen" aria-hidden="true"></span>
-                    </a>
-                    <a data-toggle="tooltip" data-placement="top" title="Lock">
-                        <span class="glyphicon glyphicon-eye-close" aria-hidden="true"></span>
-                    </a>
-                    <a data-toggle="tooltip" data-placement="top" title="Logout" href="login">
-                        <span class="glyphicon glyphicon-off" aria-hidden="true"></span>
-                    </a>
-                </div>
-                <!-- /menu footer buttons -->
-            </div>
-        </div>
-
-        <!-- top navigation -->
-        <div class="top_nav">
-            <div class="nav_menu">
-                <div class="nav toggle">
-                    <a id="menu_toggle"><i class="fa fa-bars"></i></a>
-                </div>
-                <nav class="nav navbar-nav">
-                    <ul class=" navbar-right">
-                        <li class="nav-item dropdown open" style="padding-left: 15px;">
-                            <a href="javascript:;" class="user-profile dropdown-toggle" aria-haspopup="true"
-                               id="navbarDropdown" data-toggle="dropdown" aria-expanded="false">
-                                <img src="../../images/icons/${loggerName.pic}" alt="">${loggerName.name}
-                            </a>
-                            <div class="dropdown-menu dropdown-usermenu pull-right" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="javascript:;"> Profile</a>
-                                <a class="dropdown-item" href="javascript:;">
-                                    <span class="badge bg-red pull-right">50%</span>
-                                    <span>Settings</span>
-                                </a>
-                                <a class="dropdown-item" href="javascript:;">Help</a>
-                                <a class="dropdown-item" href="/"><i class="fa fa-sign-out pull-right"></i> Log Out</a>
-                            </div>
-                        </li>
-
-                    </ul>
-                </nav>
-            </div>
-        </div>
-        <!-- /top navigation -->
+        <!-- Top header -->
+        <jsp:include page="topHeader.jsp" />
+        <!-- /Top header -->
 
         <!-- page content -->
         <div class="right_col" role="main">
@@ -272,26 +148,124 @@
                         </form>
                     </div>
                 </div>
+                <%--///////////////////////////////////////////////////////////////////////////////////////////////////////////--%>
+                <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
 
 
+                    <div class="col-sm-12 col-md-3 col-lg-3 col-xl-3">
+                        <a href="barStock">
+                            <button type="button" class="large-btn btn btn-primary">User Manage</button>
+                        </a>
+                    </div>
+
+                    <div class="col-sm-12 col-md-3 col-lg-3 col-xl-3">
+                        <button type="button" class="large-btn btn btn-info">HR Manage</button>
+                    </div>
+
+                    <div class="col-sm-12 col-md-3 col-lg-3 col-xl-3">
+                        <button type="button" class="large-btn btn btn-success">Food & Beverage</button>
+                    </div>
+                    <div class="col-sm-12 col-md-3 col-lg-3 col-xl-3">
+                        <button type="button" class="large-btn btn btn-success">Banquet Manage</button>
+                    </div>
+                    <div class="col-sm-12 col-md-4 col-lg-4 col-xl-4">
+                        <button type="button" class="large-btn btn btn-info">House Keeping</button>
+                    </div>
+
+                    <div class="col-sm-12 col-md-4 col-lg-4 col-xl-4">
+                        <button type="button" class="large-btn btn btn-success">Daily Activity Report</button>
+                    </div>
+                    <div class="col-sm-12 col-md-4 col-lg-4 col-xl-4">
+                        <button type="button" class="large-btn btn btn-success">Monthly Activity Report</button>
+                    </div>
+                </div>
 
 
+                <%--///////////////////////////////////////////////////////////////////////////////////////////////////////////--%>
+
+                <%--%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Chart Income %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%--%>
+                <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6">
+
+                    <div class="container">
+                        <canvas id="myChart"></canvas>
+                    </div>
+
+                    <script>
+                        let myChart = document.getElementById('myChart').getContext('2d');
+
+                        // Global Options
+                        Chart.defaults.global.defaultFontFamily = 'Lato';
+                        Chart.defaults.global.defaultFontSize = 18;
+                        Chart.defaults.global.defaultFontColor = '#4A2D27';
+
+                        let massPopChart = new Chart(myChart, {
+                            type: 'pie', // bar, horizontalBar, pie, line, doughnut, radar, polarArea
+                            data: {
+                                labels: ['Reservation', 'Restaurant', 'Bar', 'Banquet'],
+                                datasets: [{
+                                    label: 'Population',
+                                    data: [
+                                        2,
+                                        4,
+                                        6,
+                                        6
+                                    ],
+                                    //backgroundColor:'green',
+                                    backgroundColor: [
+                                        'rgba(55, 99, 132, 0.6)',
+                                        'rgba(54, 162, 235, 0.6)',
+                                        'rgba(25, 206, 86, 0.6)',
+                                        'rgba(75, 192, 192, 0.6)'
+                                    ],
+                                    borderWidth: 1,
+                                    borderColor: '#4A2D27',
+                                    hoverBorderWidth: 3,
+                                    hoverBorderColor: '#000'
+                                }]
+                            },
+                            options: {
+                                title: {
+                                    display: true,
+                                    text: 'Today Income',
+                                    fontSize: 20
+                                },
+                                legend: {
+                                    display: false,
+                                    position: 'right',
+                                    labels: {
+                                        fontColor: ' #ff5733 '
+                                    }
+                                },
+                                layout: {
+                                    padding: {
+                                        left: 50,
+                                        right: 0,
+                                        bottom: 0,
+                                        top: 0
+                                    }
+                                },
+                                tooltips: {
+                                    enabled: true
+                                }
+                            }
+                        });
+                    </script>
+
+
+                </div>
             </div>
+            <%--                /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////--%>
+
+
+        </div>
         </div>
         <!-- /page content -->
 
         <!-- footer content -->
-        <footer>
-            <div class="pull-right">
-                Copyright © Hotel Management 2020.<a href="https://rivinduchamath.github.io/pro/">Created by Rivindu
-                Wijayarathna</a>
-            </div>
-            <div class="clearfix"></div>
-        </footer>
+    <jsp:include page="footer.jsp" />
         <!-- /footer content -->
     </div>
 </div>
-
 
 
 <!-- jQuery -->
