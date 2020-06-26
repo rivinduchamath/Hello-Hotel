@@ -206,15 +206,12 @@
     </div>
     <!-- /page content -->
 
+
+
     <!-- footer content -->
-    <footer>
-        <div class="pull-right">
-            Copyright © Employee Management 2020.<a href="https://rivinduchamath.github.io/pro/">Created by Chanuka
-            Mullevidana</a>
-        </div>
-        <div class="clearfix"></div>
-    </footer>
+    <jsp:include page="footer.jsp" />
     <!-- /footer content -->
+
 </div>
 </div>
 

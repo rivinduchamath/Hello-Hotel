@@ -202,15 +202,14 @@
         </div>
         <!-- /page content -->
 
-        <!-- footer content -->
-        <footer>
-          <div class="pull-right">
-            Copyright © Employee Management 2020.<a href="https://rivinduchamath.github.io/pro/">Created by Rivindu Wijayarathna</a>
-          </div>
-          <div class="clearfix"></div>
-        </footer>
-        <!-- /footer content -->
-      </div>
+
+
+      <!-- footer content -->
+      <jsp:include page="footer.jsp" />
+      <!-- /footer content -->
+
+
+    </div>
     </div>
 
     <!-- jQuery -->
