@@ -46,7 +46,14 @@
 
         .large-btn:hover {
             color: #0f0f0f;
+            transform: scale(1.05, 1.1);
+            border-color: #0f0f0f !important;
+            border-width: 2px !important;
+            transition: 0.8s ease;
+            -webkit-transition: 0.8s ease;
+            -moz-transition: 0.8s ease;
         }
+
 
         #chartdiv {
             position: relative;
@@ -172,13 +179,13 @@
             <%--Button--%>
             <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
                 <div class="col-sm-12 col-md-3 col-lg-3 col-xl-3">
-                    <a href="manageUser">
-                        <button type="button" class="large-btn btn btn-dark">User Manage</button></a>
+                    <a href="restaurant">
+                        <button type="button" class="large-btn btn btn-dark">Restaurant Control</button></a>
                 </div>
 
                 <div class="col-sm-12 col-md-3 col-lg-3 col-xl-3">
-                    <a href="manageUser">
-                        <button type="button" class="large-btn btn btn-dark">HR Manage</button></a>
+                    <a href="bar">
+                        <button type="button" class="large-btn btn btn-dark">Beverage Control</button></a>
                 </div>
 
                 <div class="col-sm-12 col-md-3 col-lg-3 col-xl-3">
@@ -190,15 +197,18 @@
                         <button type="button" class="large-btn btn btn-dark">Banquet Manage</button></a>
                 </div>
                 <div class="col-sm-12 col-md-4 col-lg-4 col-xl-4">
+                    <br>
                     <a href="manageDailyActivityReport">
                         <button type="button" class="large-btn btn btn-dark">Daily Activity Report</button></a>
                 </div>
 
                 <div class="col-sm-12 col-md-4 col-lg-4 col-xl-4">
+                    <br>
                     <a href="manageMonthlyReport">
                         <button type="button" class="large-btn btn btn-dark">Monthly Activity Report</button></a>
                 </div>
                 <div class="col-sm-12 col-md-4 col-lg-4 col-xl-4">
+                    <br>
                     <a href="manageAnnualReport">
                         <button type="button" class="large-btn btn btn-dark">Annual Report</button></a>
                 </div>
