@@ -47,7 +47,7 @@
       <div class="">
         <div class="page-title">
           <div class="title_left">
-            <h3>Contacts Design</h3>
+            <h3>Contacts Design<small> Hotel Hareesha</small></h3>
           </div>
 
           <div class="title_right">
