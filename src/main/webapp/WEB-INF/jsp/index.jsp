@@ -11,7 +11,7 @@
 <%@ page import = "java.text.SimpleDateFormat" %>
 <html lang="en">
 <head>
-	<title>Hotel Management</title>
+
 	<link rel="icon" type="image/png" href="../../images/icons/gdfgd.png"/>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
