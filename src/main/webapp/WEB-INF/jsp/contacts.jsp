@@ -40,8 +40,6 @@
     <jsp:include page="topHeader.jsp"/>
     <!-- /Top header -->
 
-
-
     <!-- page content -->
     <div class="right_col" role="main">
       <div class="">
