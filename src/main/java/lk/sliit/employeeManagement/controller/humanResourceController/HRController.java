@@ -13,12 +13,9 @@ public class HRController {
     @Autowired
     IndexLoginBO indexLoginBO;
 
-
     @GetMapping("/hr")
-    public String loginPage(Model model)
-    {
+    public String loginPage(Model model) {
         model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
-
         return "hr";
     }
 }
