@@ -24,25 +24,31 @@
     <link href="../../vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
     <!-- Custom Theme Style -->
     <link href="../../build/css/custom.min.css" rel="stylesheet">
-     <%
+    <%
         SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
         String date = sdf.format(new Date());
     %>
-    <%--Pie Chrat--%>
+    <%--Chrat--%>
+
     <script src="https://www.amcharts.com/lib/4/core.js"></script>
     <script src="https://www.amcharts.com/lib/4/charts.js"></script>
     <script src="https://www.amcharts.com/lib/4/themes/spiritedaway.js"></script>
-    <script src="https://www.amcharts.com/lib/4/themes/moonrisekingdom.js"></script>
     <script src="https://www.amcharts.com/lib/4/themes/animated.js"></script>
     <%--/Pie Chrat--%>
 
+    <!-- Datatables -->
+    <link href="../../vendors/datatables.net-bs/css/dataTables.bootstrap.min.css" rel="stylesheet">
+    <link href="../../vendors/datatables.net-buttons-bs/css/buttons.bootstrap.min.css" rel="stylesheet">
+    <link href="../../vendors/datatables.net-fixedheader-bs/css/fixedHeader.bootstrap.min.css" rel="stylesheet">
+    <link href="../../vendors/datatables.net-responsive-bs/css/responsive.bootstrap.min.css" rel="stylesheet">
+
     <style>
         .large-btn {
-            height: 90px;
+            height: 40px;
             width: 100%;
             font-family: "Playfair Display", Georgia, "Times New Roman", serif;
             font-weight: bolder;
-            font-size: 27px;
+
         }
 
         .large-btn:hover {
@@ -53,14 +59,14 @@
             position: relative;
             top: 40px;
             width: 100%;
-            height: 400px;
+            height: 500px;
         }
 
         #chartdiv1 {
             position: relative;
             top: 40px;
             width: 100%;
-            height: 400px;
+            height: 500px;
         }
     </style>
 </head>
@@ -82,13 +88,48 @@
         <div class="right_col" role="main">
             <div class="page-title">
                 <div class="title_left">
-                    <h3>System Manage
+                    <h3>Manage F&B
                         <small>Welcome To Hotel Hareesha</small>
                     </h3>
+                    <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                        <div class="col-6 col-sm-6 col-md-6 col-lg-6 col-xl-3">
+                            <a href="/manage">
+                                <button type="button" class="large-btn btn btn-dark"><i class="fa fa-mail-reply">
+                                    Back</i>
+                                </button>
+                            </a>
+
+                        </div>
+                        <div class="col-6 col-sm-6 col-md-6 col-lg-6 col-xl-3">
+                            <a href="/manageMenu">
+                                <button type="button" class="large-btn btn btn-dark"><i class="fa fa-cutlery"> +Menu</i>
+                                </button>
+                            </a>
+
+                        </div>
+                        <div class="col-6 col-sm-6 col-md-6 col-lg-6 col-xl-3">
+                            <a href="/manageRestaurant">
+                                <button type="button" class="large-btn btn btn-dark"><i class="fa fa-cutlery"> Food
+                                    Sells</i>
+                                </button>
+                            </a>
+
+                        </div>
+                        <div class="col-6 col-sm-6 col-md-6 col-lg-6 col-xl-3">
+                            <a href="/manageMenu">
+                                <button type="button" class="large-btn btn btn-dark"><i class="fa fa-cutlery"> Bar
+                                    Sells</i>
+                                </button>
+                            </a>
+
+                        </div>
+
+                    </div>
                 </div>
 
                 <%--Time--%>
                 <div class="title_right">
+
                     <script>
 
                         function formatTime() {
@@ -170,59 +211,28 @@
             </div>
             <%--/Time--%>
 
-            <%--Button--%>
-            <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
-                <div class="col-sm-12 col-md-3 col-lg-3 col-xl-3">
-                    <a href="manageUser">
-                        <button type="button" class="large-btn btn btn-dark">User Manage</button></a>
-                </div>
+            <%--Table--%>
+            <div class="col-12 col-sm-12 col-md-12 col-lg-7 col-xl-7">
 
-                <div class="col-sm-12 col-md-3 col-lg-3 col-xl-3">
-                    <a href="manageUser">
-                        <button type="button" class="large-btn btn btn-dark">HR Manage</button></a>
-                </div>
 
-                <div class="col-sm-12 col-md-3 col-lg-3 col-xl-3">
-                    <a href="manageF&B">
-                        <button type="button" class="large-btn btn btn-dark">Food & Beverage</button></a>
-                </div>
-                <div class="col-sm-12 col-md-3 col-lg-3 col-xl-3">
-                    <a href="manageUser">
-                        <button type="button" class="large-btn btn btn-dark">Banquet Manage</button></a>
-                </div>
-                <div class="col-sm-12 col-md-4 col-lg-4 col-xl-4">
-                    <a href="manageDailyActivityReport">
-                        <button type="button" class="large-btn btn btn-dark">Daily Activity Report</button></a>
-                </div>
-
-                <div class="col-sm-12 col-md-4 col-lg-4 col-xl-4">
-                    <a href="manageMonthlyReport">
-                        <button type="button" class="large-btn btn btn-dark">Monthly Activity Report</button></a>
-                </div>
-                <div class="col-sm-12 col-md-4 col-lg-4 col-xl-4">
-                    <a href="manageAnnualReport">
-                        <button type="button" class="large-btn btn btn-dark">Annual Report</button></a>
-                </div>
             </div>
-            <%--/Button--%>
 
             <%--///////////////////////////////////////////////////////////////////////////////////////////////////////////--%>
 
             <%--Chart Income--%>
             <%--Chart Today--%>
-            <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6">
 
-                <div id="chartdiv"></div>
-                <br>
-                <P><h6>Today Income</h6></P>
-            </div>
-            <%--/Chart Today--%>
-            <%--Chart Yesterday--%>
-            <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6">
-
-                <div id="chartdiv1"></div>
-                <br>
-                <P><h6>Yesterday Income</h6></P>
+            <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6">
+                    <div id="chartdiv"></div>
+                    <br>
+                    <P><h6>Today Top 5 Selling In Restaurant</h6></P>
+                </div>
+                <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6">
+                    <div id="chartdiv1"></div>
+                    <br>
+                    <P><h6>Today Top 5 Selling in Bar</h6></P>
+                </div>
             </div>
             <%--/Chart Yesterday--%>
             <%--/Chart Income--%>
@@ -239,54 +249,44 @@
     <!-- /footer content -->
 </div>
 </div>
+
+
+<!-- jQuery -->
+<script src="../../vendors/jquery/dist/jquery.min.js"></script>
+<!-- Bootstrap -->
+<script src="../../vendors/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- Datatables -->
+<script src="../../vendors/datatables.net/js/jquery.dataTables.min.js"></script>
+<script src="../../vendors/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+<%--Show Print Buttons--%>
+<script src="../../vendors/datatables.net-buttons/js/dataTables.buttons.min.js"></script>
+<script src="../../vendors/datatables.net-buttons-bs/js/buttons.bootstrap.min.js"></script>
+<script src="../../vendors/datatables.net-buttons/js/buttons.flash.min.js"></script>
+<script src="../../vendors/datatables.net-buttons/js/buttons.html5.min.js"></script>
+<script src="../../vendors/datatables.net-buttons/js/buttons.print.min.js"></script>
+<script src="../../vendors/datatables.net-fixedheader/js/dataTables.fixedHeader.min.js"></script>
+<script src="../../vendors/datatables.net-keytable/js/dataTables.keyTable.min.js"></script>
+<%--Responsive Table--%>
+<script src="../../vendors/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
+<script src="../../vendors/datatables.net-responsive-bs/js/responsive.bootstrap.js"></script>
+<%--<script src="../../vendors/datatables.net-scroller/js/dataTables.scroller.min.js"></script>--%>
+<%--Print--%>
+<script src="../../vendors/jszip/dist/jszip.min.js"></script>
+<!-- Custom Theme Scripts -->
+<script src="../../build/js/custom.min.js"></script>
 <%--Pie Chart 1--%>
+<script src="https://www.amcharts.com/lib/4/core.js"></script>
+<script src="https://www.amcharts.com/lib/4/charts.js"></script>
+<script src="https://www.amcharts.com/lib/4/themes/moonrisekingdom.js"></script>
+<script src="https://www.amcharts.com/lib/4/themes/animated.js"></script>
+
+<!-- Chart code -->
 <script>
     am4core.ready(function () {
 
 // Themes begin
         am4core.useTheme(am4themes_moonrisekingdom);
-        am4core.useTheme(am4themes_animated);
-// Themes end
-
-        var chart = am4core.create("chartdiv", am4charts.PieChart3D);
-        chart.hiddenState.properties.opacity = 0; // this creates initial fade-in
-
-        chart.legend = new am4charts.Legend();
-
-        chart.data = [
-            {
-                country: "Reservation",
-                litres: 32501.9
-            },
-            {
-                country: "Restaurant",
-                litres: 12301.9
-            },
-            {
-                country: "Bar",
-                litres: 23201.1
-            },
-            {
-                country: "Banquet",
-                litres: 42165.8
-            }
-
-        ];
-
-        var series = chart.series.push(new am4charts.PieSeries3D());
-        series.dataFields.value = "litres";
-        series.dataFields.category = "country";
-
-    });
-</script>
-<%--/Pie Chart 1--%>
-
-<%--Pie Chart 2--%>
-<script>
-    am4core.ready(function () {
-
-// Themes begin
-        am4core.useTheme(am4themes_spiritedaway);
         am4core.useTheme(am4themes_animated);
 // Themes end
 
@@ -297,39 +297,94 @@
 
         chart.data = [
             {
-                country: "Reservation",
-                litres: 35101.9
+                country: "Lithuania",
+                litres: 501.9
             },
             {
-                country: "Restaurant",
-                litres: 31301.9
+                country: "Czech Republic",
+                litres: 301.9
             },
             {
-                country: "Bar",
-                litres: 22101.1
+                country: "Ireland",
+                litres: 201.1
             },
-
             {
-                country: "Banquet",
-                litres: 21150
+                country: "Germany",
+                litres: 165.8
+            },
+            {
+                country: "Australia",
+                litres: 139.9
+            },
+            {
+                country: "Austria",
+                litres: 128.3
             }
         ];
+
+        chart.innerRadius = 100;
 
         var series = chart.series.push(new am4charts.PieSeries3D());
         series.dataFields.value = "litres";
         series.dataFields.category = "country";
 
-    });
-
+    }); // end am4core.ready()
 </script>
+<%--/Pie Chart 1--%>
+
+<%--Pie Chart 2--%>
+
+
+<!-- Chart code -->
+<script>
+    am4core.ready(function () {
+
+// Themes begin
+        am4core.useTheme(am4themes_animated);
+// Themes end
+
+        var chart = am4core.create("chartdiv", am4charts.PieChart3D);
+        chart.hiddenState.properties.opacity = 0; // this creates initial fade-in
+
+        chart.legend = new am4charts.Legend();
+
+        chart.data = [
+            {
+                country: "Lithuania",
+                litres: 501.9
+            },
+            {
+                country: "Czech Republic",
+                litres: 301.9
+            },
+            {
+                country: "Ireland",
+                litres: 201.1
+            },
+            {
+                country: "Germany",
+                litres: 165.8
+            },
+            {
+                country: "Australia",
+                litres: 139.9
+            },
+            {
+                country: "Austria",
+                litres: 128.3
+            }
+        ];
+
+        chart.innerRadius = 100;
+
+        var series = chart.series.push(new am4charts.PieSeries3D());
+        series.dataFields.value = "litres";
+        series.dataFields.category = "country";
+
+    }); // end am4core.ready()
+</script>
+
+
 <%--/Pie Chart 2--%>
-
-<!-- jQuery -->
-<script src="../../vendors/jquery/dist/jquery.min.js"></script>
-<!-- Bootstrap -->
-<script src="../../vendors/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-<!-- Custom Theme Scripts -->
-<script src="../../build/js/custom.min.js"></script>
-
 </body>
 </html>
