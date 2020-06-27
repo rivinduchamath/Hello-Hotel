@@ -184,7 +184,7 @@
                                     <small>Click CheckBox And Pay Salary
                                     </small>
                                 </h2>
-                                <form method="POST" action="/invoice" name="invoice">
+                                <form method="POST" action="/barBill" name="barBill">
                                     <input style="display: none" type="text" id="itemPay" name="SalaryId">
                                     <ul class="nav navbar-right panel_toolbox">
                                         <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>

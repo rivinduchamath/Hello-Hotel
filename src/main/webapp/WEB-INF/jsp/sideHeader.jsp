@@ -97,7 +97,6 @@
                     <li><a><i class="fa fa-gear"></i> Manage System<span
                             class="fa fa-chevron-down"></span></a>
                         <ul class="nav child_menu">
-                            <li><a href="notice">Notice Manage</a></li>
                             <li><a href="manage">Manager</a></li>
                             <li><a href="hr">HR</a></li>
                         </ul>

@@ -1,6 +1,8 @@
 package lk.sliit.employeeManagement.dto;
 
-import java.sql.Date;
+import lk.sliit.employeeManagement.entity.Employee;
+
+import java.util.Date;
 
 public class AttendanceDTO {
 
@@ -11,22 +13,61 @@ public class AttendanceDTO {
     private String inTime;
     private String outTime;
     private double overtimeHours;
+    private Employee employeeID;
+    private String empName;
+    private String position;
+    private String pic;
 
 
 
-    public AttendanceDTO() {}
+
+    public AttendanceDTO() {
+    }
 
     public AttendanceDTO(String attendanceId, double salary, Date date,
-                       String inTime, String outTime, double overtimeHours) {
+                         String inTime, String outTime, double overtimeHours,
+                         Employee one) {
         this.attendanceId = attendanceId;
         this.salary = salary;
         this.date = date;
         this.inTime = inTime;
         this.outTime = outTime;
         this.overtimeHours = overtimeHours;
+        this.employeeID = one;
 
     }
 
+    public Employee getEmployeeID() {
+        return employeeID;
+    }
+
+    public void setEmployeeID(Employee employeeID) {
+        this.employeeID = employeeID;
+    }
+
+    public String getEmpName() {
+        return empName;
+    }
+
+    public void setEmpName(String empName) {
+        this.empName = empName;
+    }
+
+    public String getPosition() {
+        return position;
+    }
+
+    public void setPosition(String position) {
+        this.position = position;
+    }
+
+    public String getPic() {
+        return pic;
+    }
+
+    public void setPic(String pic) {
+        this.pic = pic;
+    }
 
     public String getAttendanceId() {
         return attendanceId;

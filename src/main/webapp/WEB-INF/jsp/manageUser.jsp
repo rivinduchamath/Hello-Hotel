@@ -91,10 +91,27 @@
                     <h3>User Manage
                         <small>Welcome To Hotel Hareesha</small>
                     </h3>
+                    <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                    <div class="col-6 col-sm-6 col-md-6 col-lg-4 col-xl-4">
+                        <a  href="/manage">
+                            <button type="button" class="large-btn btn btn-dark"><i class="fa fa-mail-reply"> Back</i>
+                            </button>
+                        </a>
+
+                    </div>
+                    <div class="col-6 col-sm-6 col-md-6 col-lg-4 col-xl-4">
+                        <a  href="/notice">
+                            <button   type="button" class="large-btn btn btn-dark"><i class="fa fa-bookmark"> +Notice</i>
+                            </button>
+                        </a>
+
+                    </div>
+                    </div>
                 </div>
 
                 <%--Time--%>
                 <div class="title_right">
+
                     <script>
 
                         function formatTime() {
@@ -176,17 +193,6 @@
             </div>
             <%--/Time--%>
 
-            <%--Button--%>
-            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
-
-                <div class="col-3 col-sm-3 col-md-2 col-lg-3 col-xl-2">
-                    <a href="/manage">
-                        <button type="button" class="large-btn btn btn-dark"><i class="fa fa-mail-reply"> Back</i>
-                        </button>
-                    </a>
-                </div>
-            </div>
-            <%--/Button--%>
             <%--Input Feilds--%>
             <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
             <div class="col-12 col-sm-12 col-md-12 col-lg-5 col-xl-5">
