@@ -67,8 +67,7 @@
                     <li><a><i class="fa fa-cutlery"></i> Food and Beverage<span
                             class="fa fa-chevron-down"></span></a>
                         <ul class="nav child_menu">
-                            <li><a href="restaurant"> Restaurant </a></li>
-                            <li><a href="bar">Bar Manage</a></li>
+                            <li><a href="foodAndBeverage"> Food & Bev </a></li>
                         </ul>
                     </li>
                     <li><a><i class="fa fa-life-buoy"></i> House Keeping <span
