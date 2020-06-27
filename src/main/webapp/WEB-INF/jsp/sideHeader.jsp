@@ -15,7 +15,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Hotel Management </title>
     <link rel="icon" type="image/png" href="../../images/icons/gdfgd.png"/>
     <!-- Bootstrap -->
     <link href="../../vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -98,7 +97,6 @@
                     <li><a><i class="fa fa-gear"></i> Manage System<span
                             class="fa fa-chevron-down"></span></a>
                         <ul class="nav child_menu">
-                            <li><a href="notice">Notice Manage</a></li>
                             <li><a href="manage">Manager</a></li>
                             <li><a href="hr">HR</a></li>
                         </ul>

@@ -1,4 +1,4 @@
-package lk.sliit.employeeManagement.controller.humanResourceController;
+package lk.sliit.employeeManagement.controller.manageController;
 
 import lk.sliit.employeeManagement.controller.SuperController;
 import lk.sliit.employeeManagement.service.custom.IndexLoginBO;
@@ -8,17 +8,12 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
-public class HRController {
-
+public class ManageUserController {
     @Autowired
     IndexLoginBO indexLoginBO;
-
-
-    @GetMapping("/hr")
-    public String loginPage(Model model)
-    {
+    @GetMapping("/manageUser")
+    public String loginPage(Model model){
         model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
-
-        return "hr";
+        return "manageUser";
     }
 }

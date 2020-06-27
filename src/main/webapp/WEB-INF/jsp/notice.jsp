@@ -199,7 +199,7 @@
                       </tr>
                       </thead>
                       <tbody>
-                      <c:forEach items="${loadTable}" var="a">
+                      <c:forEach items="${loadNoticeTable}" var="a">
                         <tr>
                           <td>${a.noticeId}</td>
                           <td style="font-weight: bold">${a.title}</td>

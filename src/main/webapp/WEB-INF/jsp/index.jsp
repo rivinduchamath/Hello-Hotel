@@ -135,9 +135,9 @@
 						<table class="" >
 
 							<tr >
-								<h5 style="color:#73879C; border: none;position: absolute;margin-top: 430px;text-align: center">
-									<p style="font-size: 40px;font-weight: bold;font-family: Cambria;margin-left: 250px;"> <%=date%></p>
-									<input style="color:#73879C; width: 45%;font-size: 33px;font-weight: bold;font-family: Cambria; border: none;margin-left: 250px;background : none !important;text-align: center" class="" type="text" name="sivam" size="12"><br>
+								<h5 style="color:#73879C; border: none;position: absolute;margin-top: 490px;text-align: center">
+									<p style="font-size: 40px;font-weight: bold;font-family: Cambria;margin-left: 365px;"> <%=date%></p>
+									<input style="color:#73879C; width: 45%;font-size: 33px;font-weight: bold;font-family: Cambria; border: none;margin-left: 365px;background : none !important;text-align: center" class="" type="text" name="sivam" size="12"><br>
 
 								</h5>
 

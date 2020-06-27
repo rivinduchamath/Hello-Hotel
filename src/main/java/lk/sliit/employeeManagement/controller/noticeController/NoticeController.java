@@ -1,6 +1,8 @@
 package lk.sliit.employeeManagement.controller.noticeController;
 
+import lk.sliit.employeeManagement.controller.SuperController;
 import lk.sliit.employeeManagement.dto.NoticeDTO;
+import lk.sliit.employeeManagement.service.custom.IndexLoginBO;
 import lk.sliit.employeeManagement.service.custom.NoticeBO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -14,9 +16,13 @@ public class NoticeController { //notice.jsp For All Notice
 
     @Autowired
     NoticeBO noticeBO;
+    @Autowired
+    IndexLoginBO indexLoginBO;
 
     @GetMapping("notice")
     public ModelAndView load(Model model) {
+        model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
+
         ModelAndView mav = new ModelAndView("notice");
         NoticeDTO dd = noticeBO.findId();
         try {
@@ -26,7 +32,7 @@ public class NoticeController { //notice.jsp For All Notice
             model.addAttribute("noticeID", 1);
         }
         List<NoticeDTO> p = noticeBO.findAll();
-        mav.addObject("loadTable", p);
+        model.addAttribute("loadNoticeTable", p);
 
         return mav;
     }
