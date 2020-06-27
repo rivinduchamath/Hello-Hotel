@@ -1,7 +1,4 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: Minula
---%>
+
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <html lang="en">
