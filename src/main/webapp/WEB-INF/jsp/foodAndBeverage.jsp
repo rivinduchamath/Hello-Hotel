@@ -178,39 +178,28 @@
 
             <%--Button--%>
             <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
-                <div class="col-sm-12 col-md-3 col-lg-3 col-xl-3">
-                    <a href="restaurant">
-                        <button type="button" class="large-btn btn btn-dark">Restaurant Control</button></a>
-                </div>
-
-                <div class="col-sm-12 col-md-3 col-lg-3 col-xl-3">
-                    <a href="bar">
-                        <button type="button" class="large-btn btn btn-dark">Beverage Control</button></a>
-                </div>
-
-                <div class="col-sm-12 col-md-3 col-lg-3 col-xl-3">
-                    <a href="manageF&B">
-                        <button type="button" class="large-btn btn btn-dark">Food & Beverage</button></a>
-                </div>
-                <div class="col-sm-12 col-md-3 col-lg-3 col-xl-3">
-                    <a href="manageUser">
-                        <button type="button" class="large-btn btn btn-dark">Banquet Manage</button></a>
-                </div>
                 <div class="col-sm-12 col-md-4 col-lg-4 col-xl-4">
-                    <br>
-                    <a href="manageDailyActivityReport">
+                    <a href="restaurant">
+                        <button type="button" class="large-btn btn btn-dark">Restaurant</button></a>
+                </div>
+
+                <div class="col-sm-12 col-md-4 col-lg-4 col-xl-4">
+                    <a href="bar">
+                        <button type="button" class="large-btn btn btn-dark">Beverage</button></a>
+                </div>
+
+                <div class="col-sm-12 col-md-4 col-lg-4 col-xl-4">
+                    <a href="manageF&B">
                         <button type="button" class="large-btn btn btn-dark">Daily Activity Report</button></a>
                 </div>
-
-                <div class="col-sm-12 col-md-4 col-lg-4 col-xl-4">
-                    <br>
-                    <a href="manageMonthlyReport">
-                        <button type="button" class="large-btn btn btn-dark">Monthly Activity Report</button></a>
+                <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6">   <br>
+                    <a href="manageUser">
+                        <button type="button" class="large-btn btn btn-dark">Restaurant Inventory</button></a>
                 </div>
-                <div class="col-sm-12 col-md-4 col-lg-4 col-xl-4">
+                <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6">
                     <br>
-                    <a href="manageAnnualReport">
-                        <button type="button" class="large-btn btn btn-dark">Annual Report</button></a>
+                    <a href="manageDailyActivityReport">
+                        <button type="button" class="large-btn btn btn-dark">Beverage Inventory</button></a>
                 </div>
             </div>
             <%--/Button--%>
