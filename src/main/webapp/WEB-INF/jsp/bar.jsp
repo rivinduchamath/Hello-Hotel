@@ -39,12 +39,24 @@
             font-size: 27px;
         }
 
+        #chartdiv {
+            width: 100%;
+            height: 500px;
+        }
+
+        #chartdiv1 {
+            width: 100%;
+            height: 500px;
+        }
+
         .large-btn:hover {
             color: #0f0f0f;
         }
-        #backImg{
+
+        #backImg {
             background-image: url("../../images/picture.jpg");
         }
+
         #myVideo {
             position: fixed;
             right: 0;
@@ -76,19 +88,19 @@
 <div class="container body">
     <div class="main_container">
         <!-- Side header -->
-        <jsp:include page="sideHeader.jsp" />
+        <jsp:include page="sideHeader.jsp"/>
         <!-- /Side header -->
 
         <!-- Top header -->
-        <jsp:include page="topHeader.jsp" />
+        <jsp:include page="topHeader.jsp"/>
         <!-- /Top header -->
 
         <!-- page content -->
         <video autoplay muted loop id="myVideo">
             <source src="../../images/video/red%20wine%20pouring.mp4" type="video/mp4">
         </video>
-<%--/////////aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa--%>
-        <div id="" class="right_col " role="main" >
+        <%--/////////aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa--%>
+        <div id="" class="right_col " role="main">
 
             <div class="">
                 <div class="page-title">
@@ -96,6 +108,15 @@
                         <h3>Bar Manage
                             <small>Welcome To Hotel Hareesha</small>
                         </h3>
+                        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                            <div class="col-6 col-sm-6 col-md-6 col-lg-4 col-xl-4">
+                                <a href="/foodAndBeverage">
+                                    <button type="button" class=" btn btn-dark"><i class="fa fa-mail-reply"> Back</i>
+                                    </button>
+                                </a>
+
+                            </div>
+                        </div>
                     </div>
 
 
@@ -187,117 +208,61 @@
 
                     <div class="col-sm-12 col-md-3 col-lg-3 col-xl-3">
                         <a href="barOrder">
-                            <button type="button" class="large-btn btn btn-primary">Order</button></a>
+                            <button type="button" class="large-btn btn btn-dark">Order</button>
+                        </a>
                     </div>
 
                     <div class="col-sm-12 col-md-3 col-lg-3 col-xl-3">
                         <a href="barStock">
-                            <button type="button" class="large-btn btn btn-info">Stock</button></a>
+                            <button type="button" class="large-btn btn btn-dark">Stock</button>
+                        </a>
                     </div>
 
                     <div class="col-sm-12 col-md-3 col-lg-3 col-xl-3">
                         <a href="barBill">
-                            <button type="button" class="large-btn btn btn-success">Bills</button></a>
+                            <button type="button" class="large-btn btn btn-dark">Bills</button>
+                        </a>
                     </div>
 
                     <div class="col-sm-12 col-md-3 col-lg-3 col-xl-3">
-                        <button type="button" class="large-btn btn btn-danger">Income</button>
+                        <button type="button" class="large-btn btn btn-dark">Income</button>
                     </div>
 
                 </div>
                 <%--%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Chart Income %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%--%>
-                <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6">
+                <%--Chart Income--%>
+                <%--Chart Today--%>
+                <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                    <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6">
 
-                    <div class="container">
-                        <canvas id="myChart"></canvas>
+                        <div id="chartdiv"></div>
+                        <h6>Today Income</h6>
                     </div>
+                    <%--/Chart Today--%>
+                    <%--Chart Yesterday--%>
+                    <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6">
 
-                    <script>
-                        let myChart = document.getElementById('myChart').getContext('2d');
-
-                        // Global Options
-                        Chart.defaults.global.defaultFontFamily = 'Lato';
-                        Chart.defaults.global.defaultFontSize = 18;
-                        Chart.defaults.global.defaultFontColor = '#4A2D27';
-
-                        let massPopChart = new Chart(myChart, {
-                            type: 'line', // bar, horizontalBar, pie, line, doughnut, radar, polarArea
-                            data: {
-                                labels: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
-                                datasets: [{
-                                    label: 'Population',
-                                    data: [
-                                        2,
-                                        4,
-                                        6,
-                                        65,
-                                        6,
-                                        43,
-                                        23
-                                    ],
-                                    //backgroundColor:'green',
-                                    backgroundColor: [
-                                        'rgba(55, 99, 132, 0.6)',
-                                        'rgba(54, 162, 235, 0.6)',
-                                        'rgba(25, 206, 86, 0.6)',
-                                        'rgba(75, 192, 192, 0.6)',
-                                        'rgba(13, 102, 255, 0.6)',
-                                        'rgba(55, 159, 64, 0.6)',
-                                        'rgba(55, 99, 132, 0.6)'
-                                    ],
-                                    borderWidth: 1,
-                                    borderColor: '#4A2D27',
-                                    hoverBorderWidth: 3,
-                                    hoverBorderColor: '#000'
-                                }]
-                            },
-                            options: {
-                                title: {
-                                    display: true,
-                                    text: 'Last Week Income',
-                                    fontSize: 20
-                                },
-                                legend: {
-                                    display: false,
-                                    position: 'right',
-                                    labels: {
-                                        fontColor: ' #ff5733 '
-                                    }
-                                },
-                                layout: {
-                                    padding: {
-                                        left: 50,
-                                        right: 0,
-                                        bottom: 0,
-                                        top: 0
-                                    }
-                                },
-                                tooltips: {
-                                    enabled: true
-                                }
-                            }
-                        });
-                    </script>
-
-
+                        <div id="chartdiv1"></div>
+                       <h6>Yesterday Income</h6>
+                    </div>
+                    <%--/Chart Yesterday--%>
+                    <%--/Chart Income--%>
                 </div>
+                <%--                /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////--%>
+
+
+                <%--////////////////////////////////////////////////////////////--%>
             </div>
-            <%--                /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////--%>
-
-
-            <%--////////////////////////////////////////////////////////////--%>
         </div>
+
+        <!-- /page content -->
+
+
+        <!-- footer content -->
+        <jsp:include page="footer.jsp"/>
+        <!-- /footer content -->
+
     </div>
-
-    <!-- /page content -->
-
-
-
-    <!-- footer content -->
-    <jsp:include page="footer.jsp" />
-    <!-- /footer content -->
-
-</div>
 </div>
 
 
@@ -307,6 +272,171 @@
 <script src="../../vendors/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 <!-- Custom Theme Scripts -->
 <script src="../../build/js/custom.min.js"></script>
+
+<!-- Chart code -->
+<script src="https://www.amcharts.com/lib/4/core.js"></script>
+<script src="https://www.amcharts.com/lib/4/charts.js"></script>
+<script src="https://www.amcharts.com/lib/4/themes/moonrisekingdom.js"></script>
+<script src="https://www.amcharts.com/lib/4/themes/spiritedaway.js"></script>
+<script src="https://www.amcharts.com/lib/4/themes/animated.js"></script>
+<script>
+    am4core.ready(function () {
+
+// Themes begin
+        am4core.useTheme(am4themes_moonrisekingdom);
+        am4core.useTheme(am4themes_animated);
+// Themes end
+
+// Create chart instance
+        var chart = am4core.create("chartdiv", am4charts.XYChart3D);
+
+// Add data
+        chart.data = [{
+            "Date": "Sunday",
+            "income": 4025
+        }, {
+            "Date": "Monday",
+            "income": 1882
+        }, {
+            "Date": "Tuesday",
+            "income": 1809
+        }, {
+            "Date": "Wednesday",
+            "income": 1322
+        }, {
+            "Date": "Thursday",
+            "income": 1122
+        }, {
+            "Date": "Friday",
+            "income": 1114
+        }, {
+            "Date": "Saturday",
+            "income": 984
+        }];
+
+// Create axes
+        let categoryAxis = chart.xAxes.push(new am4charts.CategoryAxis());
+        categoryAxis.dataFields.category = "Date";
+        categoryAxis.renderer.labels.template.rotation = 270;
+        categoryAxis.renderer.labels.template.hideOversized = false;
+        categoryAxis.renderer.minGridDistance = 20;
+        categoryAxis.renderer.labels.template.horizontalCenter = "right";
+        categoryAxis.renderer.labels.template.verticalCenter = "middle";
+        categoryAxis.tooltip.label.rotation = 270;
+        categoryAxis.tooltip.label.horizontalCenter = "right";
+        categoryAxis.tooltip.label.verticalCenter = "middle";
+
+        let valueAxis = chart.yAxes.push(new am4charts.ValueAxis());
+        valueAxis.title.text = "Income";
+        valueAxis.title.fontWeight = "bold";
+
+// Create series
+        var series = chart.series.push(new am4charts.ColumnSeries3D());
+        series.dataFields.valueY = "income";
+        series.dataFields.categoryX = "Date";
+        series.name = "income";
+        series.tooltipText = "{categoryX}: [bold]{valueY}[/]";
+        series.columns.template.fillOpacity = .8;
+
+        var columnTemplate = series.columns.template;
+        columnTemplate.strokeWidth = 2;
+        columnTemplate.strokeOpacity = 1;
+        columnTemplate.stroke = am4core.color("#FFFFFF");
+
+        columnTemplate.adapter.add("fill", function (fill, target) {
+            return chart.colors.getIndex(target.dataItem.index);
+        })
+
+        columnTemplate.adapter.add("stroke", function (stroke, target) {
+            return chart.colors.getIndex(target.dataItem.index);
+        })
+
+        chart.cursor = new am4charts.XYCursor();
+        chart.cursor.lineX.strokeOpacity = 0;
+        chart.cursor.lineY.strokeOpacity = 0;
+
+    }); // end am4core.ready()
+</script>
+
+<script>
+    am4core.ready(function () {
+
+// Themes begin
+        am4core.useTheme(am4themes_spiritedaway);
+        am4core.useTheme(am4themes_animated);
+// Themes end
+
+// Create chart instance
+        var chart = am4core.create("chartdiv1", am4charts.XYChart3D);
+
+// Add data
+        chart.data = [{
+            "Date": "Sunday",
+            "income": 4025
+        }, {
+            "Date": "Monday",
+            "income": 1882
+        }, {
+            "Date": "Tuesday",
+            "income": 1809
+        }, {
+            "Date": "Wednesday",
+            "income": 1322
+        }, {
+            "Date": "Thursday",
+            "income": 1122
+        }, {
+            "Date": "Friday",
+            "income": 1114
+        }, {
+            "Date": "Saturday",
+            "income": 984
+        }];
+
+// Create axes
+        let categoryAxis = chart.xAxes.push(new am4charts.CategoryAxis());
+        categoryAxis.dataFields.category = "Date";
+        categoryAxis.renderer.labels.template.rotation = 270;
+        categoryAxis.renderer.labels.template.hideOversized = false;
+        categoryAxis.renderer.minGridDistance = 20;
+        categoryAxis.renderer.labels.template.horizontalCenter = "right";
+        categoryAxis.renderer.labels.template.verticalCenter = "middle";
+        categoryAxis.tooltip.label.rotation = 270;
+        categoryAxis.tooltip.label.horizontalCenter = "right";
+        categoryAxis.tooltip.label.verticalCenter = "middle";
+
+        let valueAxis = chart.yAxes.push(new am4charts.ValueAxis());
+        valueAxis.title.text = "Income";
+        valueAxis.title.fontWeight = "bold";
+
+// Create series
+        var series = chart.series.push(new am4charts.ColumnSeries3D());
+        series.dataFields.valueY = "income";
+        series.dataFields.categoryX = "Date";
+        series.name = "income";
+        series.tooltipText = "{categoryX}: [bold]{valueY}[/]";
+        series.columns.template.fillOpacity = .8;
+
+        var columnTemplate = series.columns.template;
+        columnTemplate.strokeWidth = 2;
+        columnTemplate.strokeOpacity = 1;
+        columnTemplate.stroke = am4core.color("#FFFFFF");
+
+        columnTemplate.adapter.add("fill", function (fill, target) {
+            return chart.colors.getIndex(target.dataItem.index);
+        })
+
+        columnTemplate.adapter.add("stroke", function (stroke, target) {
+            return chart.colors.getIndex(target.dataItem.index);
+        })
+
+        chart.cursor = new am4charts.XYCursor();
+        chart.cursor.lineX.strokeOpacity = 0;
+        chart.cursor.lineY.strokeOpacity = 0;
+
+    }); // end am4core.ready()
+</script>
+
 
 </body>
 </html>

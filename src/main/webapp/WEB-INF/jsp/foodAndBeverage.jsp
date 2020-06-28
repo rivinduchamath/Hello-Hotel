@@ -178,27 +178,31 @@
 
             <%--Button--%>
             <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
-                <div class="col-sm-12 col-md-4 col-lg-4 col-xl-4">
+                <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6">
                     <a href="restaurant">
                         <button type="button" class="large-btn btn btn-dark">Restaurant</button></a>
                 </div>
 
-                <div class="col-sm-12 col-md-4 col-lg-4 col-xl-4">
+                <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6">
                     <a href="bar">
                         <button type="button" class="large-btn btn btn-dark">Beverage</button></a>
                 </div>
 
-                <div class="col-sm-12 col-md-4 col-lg-4 col-xl-4">
+                <div class="col-sm-12 col-md-3 col-lg-3 col-xl-3"> <br>
                     <a href="manageF&B">
-                        <button type="button" class="large-btn btn btn-dark">Daily Activity Report</button></a>
+                        <button type="button" class="large-btn btn btn-dark">Daily Activity Report Restaurant</button></a>
                 </div>
-                <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6">   <br>
-                    <a href="manageUser">
+                <div class="col-sm-12 col-md-3 col-lg-3 col-xl-3"> <br>
+                    <a href="manageF&B">
+                        <button type="button" class="large-btn btn btn-dark">Daily Activity Report Beverage</button></a>
+                </div>
+                <div class="col-sm-12 col-md-3 col-lg-3 col-xl-3">  <br>
+                    <a href="restaurantStock">
                         <button type="button" class="large-btn btn btn-dark">Restaurant Inventory</button></a>
                 </div>
-                <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6">
+                <div class="col-sm-12 col-md-3 col-lg-3 col-xl-3">
                     <br>
-                    <a href="manageDailyActivityReport">
+                    <a href="barStock">
                         <button type="button" class="large-btn btn btn-dark">Beverage Inventory</button></a>
                 </div>
             </div>

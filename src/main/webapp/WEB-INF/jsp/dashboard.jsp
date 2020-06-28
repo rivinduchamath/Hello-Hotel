@@ -26,10 +26,7 @@
     <link href="../../build/css/custom.min.css" rel="stylesheet">
 
 
-    <script src="https://www.amcharts.com/lib/4/core.js"></script>
-    <script src="https://www.amcharts.com/lib/4/charts.js"></script>
-    <script src="https://www.amcharts.com/lib/4/themes/spiritedaway.js"></script>
-    <script src="https://www.amcharts.com/lib/4/themes/animated.js"></script>
+
     <%
         SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
         String date = sdf.format(new Date());
@@ -340,7 +337,10 @@
 <!-- Custom Theme Scripts -->
 <script src="../../build/js/custom.min.js"></script>
 
-
+<script src="https://www.amcharts.com/lib/4/core.js"></script>
+<script src="https://www.amcharts.com/lib/4/charts.js"></script>
+<script src="https://www.amcharts.com/lib/4/themes/moonrisekingdom.js"></script>
+<script src="https://www.amcharts.com/lib/4/themes/animated.js"></script>
 <%--Pie Chart 2--%>
 <script>
     am4core.ready(function() {
