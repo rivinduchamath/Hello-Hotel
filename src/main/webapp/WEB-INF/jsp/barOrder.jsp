@@ -119,7 +119,7 @@
 
                 <div class="clearfix"></div>
                 <div class=" ">
-                    <div class="col-md-4 col-sm-4 " style="float: left">
+                    <div class="col-sm-12 col-md-12 col-lg-3 col-xl-3"  style="float: left">
                         <form method="POST" action="salarySave" name="salary">
 
 
@@ -173,14 +173,76 @@
 
                        </div>
                     <!--////////////////////////////////////////////-->
+                    <div class="col-sm-12 col-md-12 col-lg-3 col-xl-3" style="position: relative;display: inline-block">
+                        <div class="x_panel">
+                            <div class="x_title">
+                                <h2>Employees
+                                    <small>Users</small>
+                                </h2>
+                                <ul class="nav navbar-right panel_toolbox">
+                                    <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                                    </li>
+                                    <li class="dropdown">
+                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                                           aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                            <a class="dropdown-item" href="#">Settings 1</a>
+                                            <a class="dropdown-item" href="#">Settings 2</a>
+                                        </div>
+                                    </li>
+                                    <li><a class="close-link"><i class="fa fa-close"></i></a>
+                                    </li>
+                                </ul>
+                                <div class="clearfix"></div>
+                            </div>
+                            <div class="x_content">
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <div class="card-box table-responsive">
+                                            <p class="text-muted font-13 m-b-30">
+
+                                            </p>
+
+                                            <table class="table table-hover table-striped">
+                                                <thead class="thead-dark">
+                                                <tr>
+                                                    <th scope="col">#</th>
+                                                    <th scope="col">Name</th>
+                                                </tr>
+                                                </thead>
+                                                <tbody>
+                                                <tr>
+                                                    <th scope="row">dsddsd1</th>
+                                                    <td>Mark</td>
+
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row">2</th>
+                                                    <td>Jacob</td>
+
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row">3</th>
+                                                    <td>Larry</td>
+
+                                                </tr>
+                                                </tbody>
+                                            </table>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
                     <!--/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////-->
 
-                    <div class="col-md-8 col-sm-8" style="float: right; position: relative;display: inline-block">
+                    <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6"  style="float: right; position: relative;display: inline-block">
                         <div class="x_panel">
                             <div class="x_title">
                                 <h2>Bar Orders
-                                    <small>Click CheckBox And Pay Salary
+                                    <small>Click CheckBox And Submit
                                     </small>
                                 </h2>
                                 <form method="POST" action="/barBill" name="barBill">
@@ -197,7 +259,7 @@
                                 </form>
 
                                 <button onclick="getValue();return false" ; style="float: right; font-weight: bold;color: white" ;
-                                        id="btn_enable"    class="btn btn-success ">Add Payment <i class="fa fa-plus-circle"></i></button>
+                                        id="btn_enable"    class="btn btn-success ">Submit <i class="fa fa-plus-circle"></i></button>
 
                                 <!--href="/invoice"-->
                                 <div class="clearfix"></div>
