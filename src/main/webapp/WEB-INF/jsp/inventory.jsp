@@ -154,20 +154,20 @@
 
                     <div class="col-sm-12 col-md-3 col-lg-3 col-xl-3">
                         <a href="barStock">
-                            <button type="button" class="large-btn btn btn-primary">Beverage</button></a>
+                            <button type="button" class="large-btn btn btn-dark">Beverage Stock </button></a>
                     </div>
 
                     <div class="col-sm-12 col-md-3 col-lg-3 col-xl-3">
-                        <button type="button" class="large-btn btn btn-info">Kitchen</button>
+                        <button type="button" class="large-btn btn btn-dark">Kitchen Stock </button>
                     </div>
 
                     <div class="col-sm-12 col-md-3 col-lg-3 col-xl-3">
-                        <button type="button" class="large-btn btn btn-success">Items</button>
+                        <button type="button" class="large-btn btn btn-dark">Items Stock </button>
                     </div>
 
                     <div class="col-sm-12 col-md-3 col-lg-3 col-xl-3">
                         <a href="restaurantStock">
-                        <button type="button" class="large-btn btn btn-danger">Restaurant</button>
+                        <button type="button" class="large-btn btn btn-dark">Restaurant Stock </button>
                         </a>
                     </div>
 

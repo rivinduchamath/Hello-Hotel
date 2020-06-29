@@ -88,11 +88,11 @@
 <div class="container body">
     <div class="main_container">
         <!-- Side header -->
-        <jsp:include page="sideHeader.jsp" />
+        <jsp:include page="sideHeader.jsp"/>
         <!-- /Side header -->
 
         <!-- Top header -->
-        <jsp:include page="topHeader.jsp" />
+        <jsp:include page="topHeader.jsp"/>
         <!-- /Top header -->
 
 
@@ -104,12 +104,23 @@
                         <h3>Bar Orders
                             <small> +New Order</small>
                         </h3>
+                        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                            <div class="col-6 col-sm-6 col-md-6 col-lg-6 col-xl-3">
+                                <a href="/bar">
+                                    <button type="button" class="large-btn btn btn-dark"><i class="fa fa-mail-reply">
+                                        Back</i>
+                                    </button>
+                                </a>
+
+                            </div>
+                        </div>
                     </div>
 
                     <div class="title_right">
                         <div class="col-md-5 col-sm-5   form-group pull-right top_search">
                             <a href="allSalary">
-                                <button  type='submit' class="btn btn-secondary" style="width: 50%;float: right" value="Register" >
+                                <button type='submit' class="btn btn-secondary" style="width: 50%;float: right"
+                                        value="Register">
                                     List All Payment
                                 </button>
                             </a>
@@ -119,59 +130,60 @@
 
                 <div class="clearfix"></div>
                 <div class=" ">
-                    <div class="col-sm-12 col-md-12 col-lg-3 col-xl-3"  style="float: left">
+                    <div class="col-sm-12 col-md-12 col-lg-3 col-xl-3" style="float: left">
                         <form method="POST" action="salarySave" name="salary">
-
 
 
                             <div class="form-group">
                                 <label for="itemCode">Payment Id</label>
                                 <input type="text" class="form-control"
                                        required="required" name="employeeID"
-                                       id="itemCode" placeholder="Payment Id" />
+                                       id="itemCode" placeholder="Payment Id"/>
                             </div>
 
                             <div class="form-group">
                                 <label for="itemCode">Item Name</label>
                                 <input type="text" class="form-control"
                                        required="required" name="basicSalary"
-                                       id="BasicSalary" placeholder="Item Name" />
+                                       id="BasicSalary" placeholder="Item Name"/>
                             </div>
 
                             <div class="form-group">
                                 <label for="itemCode">Qty</label>
                                 <input type="text" class="form-control"
                                        required="required" name="Qty"
-                                       id="OTRate" placeholder="Qty" />
+                                       id="OTRate" placeholder="Qty"/>
                             </div>
                             <div class="form-group">
                                 <label for="itemCode">Price</label>
                                 <input type="text" class="form-control"
                                        required="required" name="otHours"
-                                       id="OTHrs" placeholder="Price" />
+                                       id="OTHrs" placeholder="Price"/>
                             </div>
 
                             <div class="form-group">
                                 <label for="itemCode">Customer ID</label>
                                 <input type="text" class="form-control"
                                        required="required" name="bonus"
-                                       id="MonthlyBonus"  placeholder="Customer ID" />
+                                       id="MonthlyBonus" placeholder="Customer ID"/>
                             </div>
                             <div class="form-group">
                                 <label for="itemCode">Date</label>
                                 <input type="date" class="form-control"
                                        required="required" name="incomeTax"
-                                       id="IncomeTax" placeholder="Date" />
+                                       id="IncomeTax" placeholder="Date"/>
                             </div>
                             <input style="display: none" type="text" id="itemPay1" name="SalaryId">
-                            <button type='submit' class="btn btn-primary" style="width: 50%" value="Register" >
+                            <button type='submit' class="btn btn-primary" style="width: 50%" value="Register">
                                 Submit
                             </button>
-                            <button onclick="document.getElementsByClassName('form-control').value = ''" type='reset' class="btn btn-outline-success" value="">Reset</button>
+                            <button onclick="document.getElementsByClassName('form-control').value = ''" type='reset'
+                                    class="btn btn-outline-success" value="">Reset
+                            </button>
 
                         </form>
 
-                       </div>
+                    </div>
                     <!--////////////////////////////////////////////-->
                     <div class="col-sm-12 col-md-12 col-lg-3 col-xl-3" style="position: relative;display: inline-block">
                         <div class="x_panel">
@@ -238,7 +250,8 @@
 
                     <!--/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////-->
 
-                    <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6"  style="float: right; position: relative;display: inline-block">
+                    <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6"
+                         style="float: right; position: relative;display: inline-block">
                         <div class="x_panel">
                             <div class="x_title">
                                 <h2>Bar Orders
@@ -258,8 +271,10 @@
 
                                 </form>
 
-                                <button onclick="getValue();return false" ; style="float: right; font-weight: bold;color: white" ;
-                                        id="btn_enable"    class="btn btn-success ">Submit <i class="fa fa-plus-circle"></i></button>
+                                <button onclick="getValue();return false" ;
+                                        style="float: right; font-weight: bold;color: white" ;
+                                        id="btn_enable" class="btn btn-success ">Submit <i
+                                        class="fa fa-plus-circle"></i></button>
 
                                 <!--href="/invoice"-->
                                 <div class="clearfix"></div>
@@ -334,7 +349,7 @@
 
 
     <!-- footer content -->
-    <jsp:include page="footer.jsp" />
+    <jsp:include page="footer.jsp"/>
     <!-- /footer content -->
 
 </div>

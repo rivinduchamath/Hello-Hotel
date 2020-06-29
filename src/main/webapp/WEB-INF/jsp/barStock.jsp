@@ -180,19 +180,20 @@
 
 
                     <div class="col-sm-12 col-md-3 col-lg-3 col-xl-3">
-                        <button type="button" class="large-btn btn btn-primary">Beverage</button>
+                        <a href="/bar">
+                            <button type="button" class="large-btn btn btn-dark">Beverage</button></a>
                     </div>
 
                     <div class="col-sm-12 col-md-3 col-lg-3 col-xl-3">
-                        <button type="button" class="large-btn btn btn-info">Kitchen</button>
+                        <button type="button" class="large-btn btn btn-dark">Kitchen</button>
                     </div>
 
                     <div class="col-sm-12 col-md-3 col-lg-3 col-xl-3">
-                        <button type="button" class="large-btn btn btn-success">Items</button>
+                        <button type="button" class="large-btn btn btn-dark">Items</button>
                     </div>
 
                     <div class="col-sm-12 col-md-3 col-lg-3 col-xl-3">
-                        <button type="button" class="large-btn btn btn-danger">Restaurant</button>
+                        <button type="button" class="large-btn btn btn-dark">Restaurant</button>
                     </div>
 
                 </div>

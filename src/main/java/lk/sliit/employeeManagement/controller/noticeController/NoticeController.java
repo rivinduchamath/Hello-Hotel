@@ -16,6 +16,7 @@ public class NoticeController { //notice.jsp For All Notice
 
     @Autowired
     NoticeBO noticeBO;
+
     @Autowired
     IndexLoginBO indexLoginBO;
 
