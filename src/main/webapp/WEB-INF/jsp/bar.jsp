@@ -97,7 +97,7 @@
 
         <!-- page content -->
         <video autoplay muted loop id="myVideo">
-            <source src="../../images/video/red%20wine%20pouring.mp4" type="video/mp4">
+            <source src="../../images/video/bar.mp4" type="video/mp4">
         </video>
         <%--/////////aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa--%>
         <div id="" class="right_col " role="main">
