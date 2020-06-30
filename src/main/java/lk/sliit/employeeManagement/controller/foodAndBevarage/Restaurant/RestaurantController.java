@@ -18,4 +18,14 @@ public class RestaurantController {
         model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
         return "restaurant";
     }
+    @GetMapping("/restaurantOrder")
+    public String restaurantOrders(Model model) {
+        model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
+        return "restaurantOrder";
+    }
+    @GetMapping("/restaurantBill")
+    public String restaurantBill(Model model) {
+        model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
+        return "restaurantBill";
+    }
 }

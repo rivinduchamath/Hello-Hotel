@@ -46,11 +46,11 @@ public class BarStock implements SuperEntity {
         this.productName = productName;
     }
 
-    public int getcurrentAmount() {
+    public int getCurrentAmount() {
         return currentAmount;
     }
 
-    public void setcurrentAmount(int currentAmount) {
+    public void setCurrentAmount(int currentAmount) {
         this.currentAmount = currentAmount;
     }
 

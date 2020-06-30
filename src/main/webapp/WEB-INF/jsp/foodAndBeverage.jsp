@@ -189,11 +189,11 @@
                 </div>
 
                 <div class="col-sm-12 col-md-3 col-lg-3 col-xl-3"> <br>
-                    <a href="manageF&B">
+                    <a href="restaurantDailyActivityReport">
                         <button type="button" class="large-btn btn btn-dark">Daily Activity Report Restaurant</button></a>
                 </div>
                 <div class="col-sm-12 col-md-3 col-lg-3 col-xl-3"> <br>
-                    <a href="manageF&B">
+                    <a href="beverageDailyActivityReport">
                         <button type="button" class="large-btn btn btn-dark">Daily Activity Report Beverage</button></a>
                 </div>
                 <div class="col-sm-12 col-md-3 col-lg-3 col-xl-3">  <br>

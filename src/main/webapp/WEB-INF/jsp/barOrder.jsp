@@ -302,7 +302,7 @@
                                                 </thead>
 
                                                 <tbody>
-                                                <c:forEach items="${listEmployeesTableSalary}" var="e">
+<%--                                                <c:forEach items="${listEmployeesTableSalary}" var="e">--%>
                                                     <tr>
                                                         <td>${e.employeeID.idNo}</td>
                                                         <td>${e.employeeID.name}</td>
@@ -314,7 +314,7 @@
                                                                    value="${e.salaryId}" name="table_records">
                                                         </td>
                                                     </tr>
-                                                </c:forEach>
+<%--                                                </c:forEach>--%>
                                                 </tbody>
                                             </table>
                                         </div>

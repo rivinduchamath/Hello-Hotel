@@ -18,17 +18,20 @@ public class BarOrders implements SuperEntity {
     private Date date;
     private double price;
     private String customerId;
+    private String user;
     @OneToMany(mappedBy = "order", cascade = {CascadeType.PERSIST, CascadeType.REFRESH, CascadeType.DETACH, CascadeType.MERGE})
     private List<BarOrderDetails> orderDetails = new ArrayList<>();
 
     public BarOrders() {
     }
 
-    public BarOrders(String orderId, Date date, double price, String customerId) {
+    public BarOrders(String orderId, Date date, double price, String customerId, String user, List<BarOrderDetails> orderDetails) {
         this.orderId = orderId;
         this.date = date;
         this.price = price;
         this.customerId = customerId;
+        this.user = user;
+        this.orderDetails = orderDetails;
     }
 
     public Date getDate() {
@@ -67,14 +70,12 @@ public class BarOrders implements SuperEntity {
         return orderDetails;
     }
 
-    @Override
-    public String toString() {
-        return "BarOrders{" +
-                "orderId='" + orderId + '\'' +
-                ", date=" + date +
-                ", price=" + price +
-                ", customerId='" + customerId + '\'' +
-                ", orderDetails=" + orderDetails +
-                '}';
+    public String getUser() {
+        return user;
     }
+
+    public void setUser(String user) {
+        this.user = user;
+    }
+
 }//End Class

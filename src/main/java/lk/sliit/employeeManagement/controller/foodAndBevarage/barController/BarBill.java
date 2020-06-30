@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 public class BarBill {
     @Autowired
     IndexLoginBO indexLoginBO;
-    @GetMapping("/barBill")
+    @PostMapping("/barBill")
     public String loginPage(Model model){
 
         model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));

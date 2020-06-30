@@ -61,7 +61,9 @@
             position: fixed;
             right: 0;
             bottom: 0;
-            top: 110px;
+            width: 100%;
+            height: 170%;
+            top: -100px;
             min-width: 100%;
             min-height: 100%;
         }
@@ -97,7 +99,7 @@
 
         <!-- page content -->
         <video autoplay muted loop id="myVideo">
-            <source src="../../images/video/bar.mp4" type="video/mp4">
+            <source src="../../images/video/y2mate.com%20-%20Whisky%20Bar%2088%20%20%20promo%20video_JxZ9iqWVlSE_1080p.mp4" type="video/mp4">
         </video>
         <%--/////////aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa--%>
         <div id="" class="right_col " role="main">

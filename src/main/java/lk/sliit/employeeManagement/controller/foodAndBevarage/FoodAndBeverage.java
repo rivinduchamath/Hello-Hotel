@@ -13,8 +13,18 @@ public class FoodAndBeverage {
     IndexLoginBO indexLoginBO;
 
     @GetMapping("/foodAndBeverage")
-    public String loginPage(Model model) {
+    public String loadFAndB(Model model) {
         model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
         return "foodAndBeverage";
+    }
+    @GetMapping("/beverageDailyActivityReport")
+    public String barDailyReport(Model model) {
+        model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
+        return "beverageDailyActivityReport";
+    }
+    @GetMapping("/restaurantDailyActivityReport")
+    public String restaurantReport(Model model) {
+        model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
+        return "restaurantDailyActivityReport";
     }
 }

@@ -105,7 +105,7 @@
             <div class="">
                 <div class="page-title">
                     <div class="title_left">
-                        <h3>Bar Manage
+                        <h3>Restaurant Manage
                             <small>Welcome To Hotel Hareesha</small>
                         </h3>
                         <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
@@ -207,13 +207,13 @@
 
 
                     <div class="col-sm-12 col-md-3 col-lg-3 col-xl-3">
-                        <a href="barOrder">
+                        <a href="restaurantOrder">
                             <button type="button" class="large-btn btn btn-dark">Order</button>
                         </a>
                     </div>
 
                     <div class="col-sm-12 col-md-3 col-lg-3 col-xl-3">
-                        <a href="barStock">
+                        <a href="restaurantStock">
                             <button type="button" class="large-btn btn btn-dark">Stock</button>
                         </a>
                     </div>
