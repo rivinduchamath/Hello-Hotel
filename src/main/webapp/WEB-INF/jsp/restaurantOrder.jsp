@@ -188,8 +188,8 @@
                     <div class="col-sm-12 col-md-12 col-lg-3 col-xl-3" style="position: relative;display: inline-block">
                         <div class="x_panel">
                             <div class="x_title">
-                                <h2>Employees
-                                    <small>Users</small>
+                                <h2>Foods
+                                    <small>Click Row</small>
                                 </h2>
                                 <ul class="nav navbar-right panel_toolbox">
                                     <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
@@ -199,7 +199,6 @@
                                            aria-expanded="false"><i class="fa fa-wrench"></i></a>
                                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                                             <a class="dropdown-item" href="#">Settings 1</a>
-                                            <a class="dropdown-item" href="#">Settings 2</a>
                                         </div>
                                     </li>
                                     <li><a class="close-link"><i class="fa fa-close"></i></a>
