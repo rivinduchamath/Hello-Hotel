@@ -14,21 +14,37 @@ public class BarOrderDetails implements SuperEntity {
     @ManyToOne(cascade = {CascadeType.PERSIST,CascadeType.REFRESH, CascadeType.DETACH, CascadeType.MERGE})
     @JoinColumn(name="orderId",referencedColumnName = "orderId", insertable = false, updatable = false)
     private BarOrders order;
+    @ManyToOne(cascade = {CascadeType.PERSIST,CascadeType.REFRESH, CascadeType.DETACH, CascadeType.MERGE})
+    @JoinColumn(name="stockId",referencedColumnName = "productId", insertable = false, updatable = false)
+    private BarStock barStock;
 
     public BarOrderDetails() {
     }
 
-    public BarOrderDetails(BarOrderDetailsPK orderDetailPK, int quantity, double unitePrice, BarOrders order) {
+    public BarOrderDetails(BarOrderDetailsPK orderDetailPK, int quantity, double unitePrice, BarOrders order,BarStock barStock) {
         this.orderDetailPK = orderDetailPK;
         this.quantity = quantity;
         this.unitePrice = unitePrice;
         this.order = order;
+        this.barStock = barStock;
     }
-    public BarOrderDetails(String orderId,String productId, int quantity, double unitePrice, BarOrders order) {
+
+
+    public BarOrderDetails(String orderId, String productId, int quantity, double unitePrice, BarOrders order,BarStock barStock) {
         this.orderDetailPK = new BarOrderDetailsPK(orderId,productId);
         this.quantity = quantity;
         this.unitePrice = unitePrice;
         this.order = order;
+        this.barStock = barStock;
+    }
+
+
+    public BarStock getBarStock() {
+        return barStock;
+    }
+
+    public void setBarStock(BarStock barStock) {
+        this.barStock = barStock;
     }
 
     public BarOrderDetailsPK getOrderDetailPK() {

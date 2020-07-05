@@ -1,10 +1,3 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: Rivindu Chamath
-  Date: 21-May-20
-  Time: 2:43 AM
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page import="java.util.Date" %>
@@ -190,42 +183,48 @@
                             <h2>Notice Dashboard
                                 <small>Notice</small>
                             </h2>
-                            <ul class="nav navbar-right ">
-
+                            <ul class="nav navbar-right panel_toolbox">
+                                <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                                </li>
                                 <li class="dropdown">
                                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
                                        aria-expanded="false"><i class="fa fa-wrench"></i></a>
                                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                        <a    type='submit' href="/addInventoryType" value="Register">
-                                            <i  class="fa fa-gear"> </i>
-                                        </a>
+                                        <a class="dropdown-item" href="#">Settings 1</a>
+                                        <a class="dropdown-item" href="#">Settings 2</a>
                                     </div>
+                                </li>
+                                <li><a class="close-link"><i class="fa fa-close"></i></a>
                                 </li>
                             </ul>
                             <div class="clearfix"></div>
                         </div>
                         <div class="x_content">
                             <div class="row">
-
+                                <div class="col-sm-12">
+                                    <div class="card-box table-responsive">
                                         <a href="inventoryToday">
-                                            <button style="float: left;font-weight: bolder" class="btn btn-success">
-                                                Today
+                                            <button style="float: left;font-weight: bolder"
+                                                    class="active btn btn-primary">Today
                                             </button>
                                         </a>
                                         <a href="inventoryTomorrow">
-                                            <button style="float: left;font-weight: bolder" class="btn btn-success">
+                                            <button style="float: left;font-weight: bolder" class=" btn btn-primary">
                                                 Tomorrow
                                             </button>
                                         </a>
-                                        <a href="#">
-                                            <button style="float: left;font-weight: bolder"
-                                                    class="active btn btn-success">Day After Tomorrow
+                                        <a href="inventory">
+                                            <button style="float: left;font-weight: bolder" class=" btn btn-primary">Day
+                                                After Tomorrow
                                             </button>
                                         </a>
+                                        <a type='submit' href="/addInventoryType"
+                                           style="margin-left: 1.5%; width: 12%" value="Register"><img
+                                                style="width: 30%" src="../../images/lg.triple-gears-loading-icon.gif">
 
-                                <div class="col-sm-12">
-                                    <div class="card-box table-responsive">
-                                        <table  style="text-align: center" id="datatable-buttons" class="table table-striped table-bordered">
+                                        </a>
+                                        <table style="text-align: center" id="datatable-buttons"
+                                               class="table table-striped table-bordered">
                                             <thead class="thead-light">
                                             <tr>
                                                 <th>Notice Id</th>
@@ -240,12 +239,12 @@
                                                 <th>Order Holder</th>
                                                 <th>Add Item</th>
                                                 <th>State</th>
-
                                             </tr>
+
 
                                             </thead>
                                             <tbody>
-                                            <c:forEach items="${findDayAfterTomorrowNotice}" var="e">
+                                            <c:forEach items="${findTodayNotice}" var="e">
                                                 <tr>
                                                     <td>${e.noticeId}</td>
                                                     <td>${e.inventoryId}</td>
@@ -253,37 +252,41 @@
                                                     <td>${e.department}</td>
                                                     <td>${e.orderQty}</td>
                                                     <td>${e.qtyOnHand}</td>
-                                                    <td>${e.qtyOnHand}</td>
+                                                    <td>
+                                                            ${e.qtyOnHand > e.orderQty ? 0.0 : e.orderQty-e.qtyOnHand}
+                                                    </td>
                                                     <td>${e.date}</td>
                                                     <td>${e.expDate}</td>
                                                     <td>${e.orderHolder}</td>
                                                     <td style="width: 20%" >
-                                                            <form action="updateQty" method="post">
-                                                                <div class="input-group" >
-                                                                    <input style="display: none" value="${e.inventoryId}" type="text" class="form-control" name="inventoryId">
-                                                                    <input type="number" class="form-control" name="orderQty">
-                                                                    <span class="input-group-btn">
+                                                        <form action="updateQty" method="post">
+                                                            <div class="input-group" >
+                                                                <input style="display: none" value="${e.inventoryId}" type="text" class="form-control" name="inventoryId">
+                                                                <input type="number" class="form-control" name="orderQty">
+                                                                <span class="input-group-btn">
                                                                      <button type="submit" style="font-weight: bolder;
                                                                       background-color: white; color: #b3adad;
                                                                       border: #0f0f0f solid 1px"
                                                                              class="btn">+</button>
                                                                     </span>
-                                                                </div>
-                                                            </form>
+                                                            </div>
+                                                        </form>
                                                     </td>
                                                     <td>
-                                                      <%--  <c:url value="/inventory" var="url">
+                                                     <%--   <c:url value="/inventoryToday" var="url">
                                                             <c:param name="state" value="${e.state}"/>
-                                                        </c:url> <a href="updateStateDayAfterTomorrow/${e.noticeId }"
+                                                        </c:url> <a href="updateStateToday/${e.noticeId }"
                                                                     class="checkbox">--%>
-                                                            ${e.qtyOnHand < e.orderQty ? "Incomplete" : "Complete"}</a>
+                                                             ${e.qtyOnHand < e.orderQty ? "Incomplete" : "Complete"}
 
                                                     </td>
                                                 </tr>
+
+
                                             </c:forEach>
+
                                             </tbody>
                                         </table>
-
                                     </div>
                                 </div>
                             </div>

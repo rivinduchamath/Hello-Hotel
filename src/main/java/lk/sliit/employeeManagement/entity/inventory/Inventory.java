@@ -1,5 +1,6 @@
-package lk.sliit.employeeManagement.entity;
+package lk.sliit.employeeManagement.entity.inventory;
 
+import lk.sliit.employeeManagement.entity.SuperEntity;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import java.sql.Date;
@@ -10,27 +11,30 @@ public class Inventory implements SuperEntity {
     private String inventoryId ;
     private String text;
     private String description;
-    private String orderQty;
+    private double orderQty;
+    private String type;
     private String orderLimit;
     private double getPrice;
     private double sellingPrice;
     private Date date;
-    private Date expDate;
 
-    public Inventory() {
-    }
+    public Inventory() {}
 
-    public Inventory(String inventoryId, String text, String description, String orderQty, String orderLimit, double getPrice, double sellingPrice, Date date, Date expDate) {
+    public Inventory(String inventoryId, String text, String description,
+                     double orderQty, String type, String orderLimit,
+                     double getPrice, double sellingPrice, Date date) {
         this.inventoryId = inventoryId;
         this.text = text;
         this.description = description;
         this.orderQty = orderQty;
+        this.type = type;
         this.orderLimit = orderLimit;
         this.getPrice = getPrice;
         this.sellingPrice = sellingPrice;
         this.date = date;
-        this.expDate = expDate;
+
     }
+
 
     public String getInventoryId() {
         return inventoryId;
@@ -56,11 +60,11 @@ public class Inventory implements SuperEntity {
         this.description = description;
     }
 
-    public String getOrderQty() {
+    public double getOrderQty() {
         return orderQty;
     }
 
-    public void setOrderQty(String orderQty) {
+    public void setOrderQty(double orderQty) {
         this.orderQty = orderQty;
     }
 
@@ -96,12 +100,28 @@ public class Inventory implements SuperEntity {
         this.date = date;
     }
 
-    public Date getExpDate() {
-        return expDate;
+
+    public String getType() {
+        return type;
     }
 
-    public void setExpDate(Date expDate) {
-        this.expDate = expDate;
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    @Override
+    public String toString() {
+        return "Inventory{" +
+                "inventoryId='" + inventoryId + '\'' +
+                ", text='" + text + '\'' +
+                ", description='" + description + '\'' +
+                ", orderQty='" + orderQty + '\'' +
+                ", type='" + type + '\'' +
+                ", orderLimit='" + orderLimit + '\'' +
+                ", getPrice=" + getPrice +
+                ", sellingPrice=" + sellingPrice +
+                ", date=" + date +
+                '}';
     }
 }//End Class
 
