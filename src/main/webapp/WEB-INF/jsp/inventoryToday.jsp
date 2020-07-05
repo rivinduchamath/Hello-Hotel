@@ -220,7 +220,7 @@
                                                class="table table-striped table-bordered">
                                             <thead class="thead-light">
                                             <tr>
-                                                <th>Notice Id</th>
+
                                                 <th>Item Id</th>
                                                 <th>Item Name</th>
                                                 <th>Department</th>
@@ -239,7 +239,7 @@
                                             <tbody>
                                             <c:forEach items="${findTodayNotice}" var="e">
                                                 <tr>
-                                                    <td>${e.noticeId}</td>
+
                                                     <td>${e.inventoryId}</td>
                                                     <td>${e.text}</td>
                                                     <td>${e.department}</td>

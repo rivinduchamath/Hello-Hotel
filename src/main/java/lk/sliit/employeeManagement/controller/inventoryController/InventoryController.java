@@ -120,16 +120,13 @@ public class InventoryController {
                             System.out.println(tomorrowInventoryNoticeDTO.getOrderQty() + "pppppppppppppppppppppppppppppppppppppppppppppppp");
                             System.out.println(todayInventoryNoticeDTO.getOrderQty() + "pppppppppppppppppppppppppppppppppppppppppppppppp");
                             System.out.println(requiredQty + "pppppppppppppppppppppppppppppppppppppppppppppppp");
-
                         }
                     }
-
-
                 }
             }
         } else {
             for (InventoryNoticeDTO tomorrowInventoryNoticeDTO : tomorrow) {
-                System.out.println("3333333333333333333333333333333333333333333333333333333");
+
                 requiredQty = tomorrowInventoryNoticeDTO.getOrderQty() - tomorrowInventoryNoticeDTO.getQtyOnHand();
                 tomorrowInventoryNoticeDTO.setRequiredQty(requiredQty);
             }
@@ -148,7 +145,7 @@ public class InventoryController {
         List<InventoryNoticeDTO> dayAfter = inventoryBO.findDayAfterTomorrowNotice();
 
         int i = dayDTwo(today, tomorrow, dayAfter), x = 0;
-        System.out.println(i + "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaddddddddddddddddddddddd");
+
         if (i > 0) {
             for (InventoryNoticeDTO dayAfterInventoryNoticeDTO : dayAfter) {
                 for (InventoryNoticeDTO tomorrowInventoryNoticeDTO : tomorrow) {
@@ -158,12 +155,11 @@ public class InventoryController {
                             if (requiredQty > dayAfterInventoryNoticeDTO.getQtyOnHand()) {
                                 requiredQty = requiredQty - dayAfterInventoryNoticeDTO.getQtyOnHand();
                                 dayAfterInventoryNoticeDTO.setRequiredQty(requiredQty);
-                                System.out.println("ooooooooooooooooooooooooooooooooooooooooooooooooooooooooo");
+
 
                             } else {
                                 requiredQty = (dayAfterInventoryNoticeDTO.getOrderQty() + todayInventoryNoticeDTO.getOrderQty()) - dayAfterInventoryNoticeDTO.getQtyOnHand();
                                 dayAfterInventoryNoticeDTO.setRequiredQty(requiredQty);
-                                System.out.println(requiredQty + "pppppppppppppppppppppppppppppppppppppppppppppppp");
 
                             }
                         }
@@ -172,11 +168,11 @@ public class InventoryController {
                             if (requiredQty > dayAfterInventoryNoticeDTO.getQtyOnHand()) {
                                 requiredQty = requiredQty - dayAfterInventoryNoticeDTO.getQtyOnHand();
                                 dayAfterInventoryNoticeDTO.setRequiredQty(requiredQty);
-                                System.out.println("qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq");
+
                             } else {
                                 requiredQty = (dayAfterInventoryNoticeDTO.getOrderQty() + tomorrowInventoryNoticeDTO.getOrderQty()) - dayAfterInventoryNoticeDTO.getQtyOnHand();
                                 dayAfterInventoryNoticeDTO.setRequiredQty(requiredQty);
-                                System.out.println(requiredQty + "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeee");
+
                             }
                         }
                         if (dayAfterInventoryNoticeDTO.getInventoryId().equals(tomorrowInventoryNoticeDTO.getInventory()) &&
@@ -187,12 +183,10 @@ public class InventoryController {
                                 requiredQty = requiredQty - dayAfterInventoryNoticeDTO.getQtyOnHand();
                                 dayAfterInventoryNoticeDTO.setRequiredQty(requiredQty);
                                 x = 1;
-                                System.out.println("ttttttttttttttttttttttttttttttttttttttttttt");
-                            } else {
+                                  } else {
                                 requiredQty = (dayAfterInventoryNoticeDTO.getOrderQty() + todayInventoryNoticeDTO.getOrderQty() +
                                         tomorrowInventoryNoticeDTO.getOrderQty()) - dayAfterInventoryNoticeDTO.getQtyOnHand();
                                 dayAfterInventoryNoticeDTO.setRequiredQty(requiredQty);
-                                System.out.println(requiredQty + "yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy");
                                 x = 1;
                             }
                         }
@@ -201,7 +195,6 @@ public class InventoryController {
             }
         } else {
             for (InventoryNoticeDTO dayAfterInventoryNoticeDTO : dayAfter) {
-                System.out.println("3333333333333333333333333333333333333333333333333333333");
                 requiredQty = dayAfterInventoryNoticeDTO.getOrderQty() - dayAfterInventoryNoticeDTO.getQtyOnHand();
                 dayAfterInventoryNoticeDTO.setRequiredQty(requiredQty);
             }
