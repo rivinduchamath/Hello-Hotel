@@ -193,6 +193,7 @@ public class InventoryController {
                         //if NO2
                         if (dayAfterInventoryNoticeDTO.getInventoryId().equals(tomorrowInventoryNoticeDTO.getInventory()) && x == 0) {
                             requiredQty = 0.0;
+
                             if (requiredQty > dayAfterInventoryNoticeDTO.getQtyOnHand()) {
                                 requiredQty = requiredQty - dayAfterInventoryNoticeDTO.getQtyOnHand();
                                 dayAfterInventoryNoticeDTO.setRequiredQty(requiredQty);
