@@ -197,7 +197,7 @@
                                        aria-expanded="false"><i class="fa fa-wrench"></i></a>
                                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                                         <a    type='submit' href="/addInventoryType" value="Register">
-                                            <i  class="fa fa-gear"> </i>
+                                            <i  class="fa fa-gear">  Settings</i>
                                         </a>
                                     </div>
                                 </li>
@@ -208,18 +208,18 @@
                             <div class="row">
 
                                         <a href="inventoryToday">
-                                            <button style="float: left;font-weight: bolder" class="btn btn-success">
+                                            <button style="float: left;font-weight: bolder" class="btn btn-primary">
                                                 Today
                                             </button>
                                         </a>
                                         <a href="inventoryTomorrow">
-                                            <button style="float: left;font-weight: bolder" class="btn btn-success">
+                                            <button style="float: left;font-weight: bolder" class="btn btn-primary">
                                                 Tomorrow
                                             </button>
                                         </a>
                                         <a href="#">
                                             <button style="float: left;font-weight: bolder"
-                                                    class="active btn btn-success">Day After Tomorrow
+                                                    class="active btn btn-primary">Day After Tomorrow
                                             </button>
                                         </a>
 
@@ -240,8 +240,7 @@
                                                 <th>Order Holder</th>
                                                 <th>Add Item</th>
                                                 <th>State</th>
-
-                                            </tr>
+                                             </tr>
 
                                             </thead>
                                             <tbody>
@@ -253,7 +252,7 @@
                                                     <td>${e.department}</td>
                                                     <td>${e.orderQty}</td>
                                                     <td>${e.qtyOnHand}</td>
-                                                    <td>${e.qtyOnHand}</td>
+                                                    <td>${e.requiredQty < 1 ? 0.0 : e.requiredQty}</td>
                                                     <td>${e.date}</td>
                                                     <td>${e.expDate}</td>
                                                     <td>${e.orderHolder}</td>
@@ -276,8 +275,7 @@
                                                             <c:param name="state" value="${e.state}"/>
                                                         </c:url> <a href="updateStateDayAfterTomorrow/${e.noticeId }"
                                                                     class="checkbox">--%>
-                                                            ${e.qtyOnHand < e.orderQty ? "Incomplete" : "Complete"}</a>
-
+                                                              ${1 > e.requiredQty ? "Complete" : "InComplete"}
                                                     </td>
                                                 </tr>
                                             </c:forEach>

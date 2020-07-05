@@ -183,18 +183,15 @@
                             <h2>Notice Dashboard
                                 <small>Notice</small>
                             </h2>
-                            <ul class="nav navbar-right panel_toolbox">
-                                <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
-                                </li>
+                            <ul class="nav navbar-right ">
                                 <li class="dropdown">
                                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
                                        aria-expanded="false"><i class="fa fa-wrench"></i></a>
                                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                        <a class="dropdown-item" href="#">Settings 1</a>
-                                        <a class="dropdown-item" href="#">Settings 2</a>
+                                        <a    type='submit' href="/addInventoryType" value="Register">
+                                            <i  class="fa fa-gear"> Settings </i>
+                                        </a>
                                     </div>
-                                </li>
-                                <li><a class="close-link"><i class="fa fa-close"></i></a>
                                 </li>
                             </ul>
                             <div class="clearfix"></div>
@@ -218,11 +215,7 @@
                                                 After Tomorrow
                                             </button>
                                         </a>
-                                        <a type='submit' href="/addInventoryType"
-                                           style="margin-left: 1.5%; width: 12%" value="Register"><img
-                                                style="width: 30%" src="../../images/lg.triple-gears-loading-icon.gif">
 
-                                        </a>
                                         <table style="text-align: center" id="datatable-buttons"
                                                class="table table-striped table-bordered">
                                             <thead class="thead-light">
@@ -259,7 +252,7 @@
                                                     <td>${e.expDate}</td>
                                                     <td>${e.orderHolder}</td>
                                                     <td style="width: 20%" >
-                                                        <form action="updateQty" method="post">
+                                                        <form action="updateQtyToday" method="post">
                                                             <div class="input-group" >
                                                                 <input style="display: none" value="${e.inventoryId}" type="text" class="form-control" name="inventoryId">
                                                                 <input type="number" class="form-control" name="orderQty">

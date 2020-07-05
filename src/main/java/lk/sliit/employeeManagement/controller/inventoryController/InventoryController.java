@@ -24,14 +24,6 @@ public class InventoryController {
     @Autowired
     InventoryBO inventoryBO;
 
-    @GetMapping("/inventory")
-    public String inventoryDayAfterTomorrow(Model model) {
-        model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
-        List<InventoryNoticeDTO> p = inventoryBO.findDayAfterTomorrowNotice();
-        model.addAttribute("findDayAfterTomorrowNotice", p);
-        return "inventory";
-    }
-
     @GetMapping("/inventoryToday")
     public String inventoryToday(Model model) {
         model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
@@ -40,104 +32,36 @@ public class InventoryController {
         return "inventoryToday";
     }
 
-    @GetMapping("/inventoryTomorrow")
-    public String inventoryTomorrow(Model model) {
-        double requiredQty = 0.0;
-        model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
-        List<InventoryNoticeDTO> today = inventoryBO.findTodayInventoryNotice();
 
-        List<InventoryNoticeDTO> tomorrow = inventoryBO.findTomorrowInventoryNotice();
-        for (InventoryNoticeDTO inventoryNoticeDTO :tomorrow){
-            for (InventoryNoticeDTO todayInventoryNoticeDTO :today){
-               if(inventoryNoticeDTO.getInventoryId().equals(todayInventoryNoticeDTO.getInventory())){
-                      requiredQty = inventoryNoticeDTO.getOrderQty()+ todayInventoryNoticeDTO.getOrderQty();
-                      inventoryNoticeDTO.setRequiredQty(requiredQty);
-               }
-            }
-        }
+    @RequestMapping(value = "/updateQtyTom")
+    public String updateQtyTomorrow(@ModelAttribute InventoryDTO inventoryDTO) {
 
-        model.addAttribute("findTodayNotice", tomorrow);
-        return "inventoryTomorrow";
-    }
-
-/*
-    @RequestMapping(value = "/updateStateDayAfterTomorrow/{noticeId}", method = RequestMethod.GET)
-    public String updateStateDayAfterTomorrow(@PathVariable String noticeId) {
-        InventoryNoticeDTO inventoryNoticeDTO;
+        InventoryDTO inventoryDTO1;
         try {
-            inventoryNoticeDTO = inventoryBO.findInventoryNotice(noticeId);
-            if (inventoryNoticeDTO != null) {
-                if (inventoryNoticeDTO.isState()) {
-                    inventoryNoticeDTO.setState(false);
-                    inventoryBO.updateNoticeState(inventoryNoticeDTO);
-                    return "redirect:/inventory";
-                } else {
-                    inventoryNoticeDTO.setState(true);
-                    inventoryBO.updateNoticeState(inventoryNoticeDTO);
-                    return "redirect:/inventory";
-                }
-            } else {
-                return "redirect:/inventory";
-            }
-        } catch (NullPointerException e) {
-            System.out.println("Order Is Deleted");
+            inventoryDTO1 = inventoryBO.findInventory(inventoryDTO.getInventoryId());
+            inventoryDTO1.setOrderQty(inventoryDTO.getOrderQty() + inventoryDTO1.getOrderQty());
+            inventoryBO.updateInventory(inventoryDTO1);
+            return "redirect:/inventoryTomorrow";
+        } catch (Exception w) {
+            System.out.println("Error");
         }
-
-        return "redirect:/inventory";
-    }
-
-    @RequestMapping(value = "/updateStateToday/{noticeId}", method = RequestMethod.GET)
-    public String updateStateToday(@PathVariable String noticeId) {
-        InventoryNoticeDTO inventoryNoticeDTO;
-        try {
-            inventoryNoticeDTO = inventoryBO.findInventoryNotice(noticeId);
-            if (inventoryNoticeDTO != null) {
-                if (inventoryNoticeDTO.isState()) {
-                    inventoryNoticeDTO.setState(false);
-                    inventoryBO.updateNoticeState(inventoryNoticeDTO);
-                    return "redirect:/inventoryToday";
-                } else {
-                    inventoryNoticeDTO.setState(true);
-                    inventoryBO.updateNoticeState(inventoryNoticeDTO);
-                    return "redirect:/inventoryToday";
-                }
-            } else {
-                return "redirect:/inventoryToday";
-            }
-        } catch (NullPointerException e) {
-            System.out.println("Order Is Deleted");
-        }
-
-        return "redirect:/inventoryToday";
-    }
-    @RequestMapping(value = "/updateStateTomorrow/{noticeId}", method = RequestMethod.GET)
-    public String updateStateTomorrow(@PathVariable String noticeId) {
-        InventoryNoticeDTO inventoryNoticeDTO;
-        try {
-            inventoryNoticeDTO = inventoryBO.findInventoryNotice(noticeId);
-            if (inventoryNoticeDTO != null) {
-                if (inventoryNoticeDTO.isState()) {
-                    inventoryNoticeDTO.setState(false);
-                    inventoryBO.updateNoticeState(inventoryNoticeDTO);
-                    return "redirect:/inventoryTomorrow";
-                } else {
-                    inventoryNoticeDTO.setState(true);
-                    inventoryBO.updateNoticeState(inventoryNoticeDTO);
-                    return "redirect:/inventoryTomorrow";
-                }
-            } else {
-                return "redirect:/inventoryTomorrow";
-            }
-        } catch (NullPointerException e) {
-            System.out.println("Order Is Deleted");
-        }
-
         return "redirect:/inventoryTomorrow";
     }
 
-*/
+    @RequestMapping(value = "/updateQtyToday")
+    public String updateQtyToday(@ModelAttribute InventoryDTO inventoryDTO) {
 
-
+        InventoryDTO inventoryDTO1;
+        try {
+            inventoryDTO1 = inventoryBO.findInventory(inventoryDTO.getInventoryId());
+            inventoryDTO1.setOrderQty(inventoryDTO.getOrderQty() + inventoryDTO1.getOrderQty());
+            inventoryBO.updateInventory(inventoryDTO1);
+            return "redirect:/inventoryToday";
+        } catch (Exception w) {
+            System.out.println("Error");
+        }
+        return "redirect:/inventoryToday";
+    }
 
     @RequestMapping(value = "/updateQty")
     public String updateQty(@ModelAttribute InventoryDTO inventoryDTO) {
@@ -145,13 +69,163 @@ public class InventoryController {
         InventoryDTO inventoryDTO1;
         try {
             inventoryDTO1 = inventoryBO.findInventory(inventoryDTO.getInventoryId());
-                    inventoryDTO1.setOrderQty(inventoryDTO.getOrderQty()+inventoryDTO1.getOrderQty());
-                    inventoryBO.updateInventory(inventoryDTO1);
-                    return "redirect:/inventory";
-        }catch (Exception w){
-            System.out.println("Errorrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr");
-
+            inventoryDTO1.setOrderQty(inventoryDTO.getOrderQty() + inventoryDTO1.getOrderQty());
+            inventoryBO.updateInventory(inventoryDTO1);
+            return "redirect:/inventory";
+        } catch (Exception w) {
+            System.out.println("Error");
         }
-           return "redirect:/inventory";
+        return "redirect:/inventory";
+    }
+
+    int dayTwo(List<InventoryNoticeDTO> today, List<InventoryNoticeDTO> tomorrow) {
+        int i = 0;
+        for (InventoryNoticeDTO tomorrowInventoryNoticeDTO : tomorrow) {
+            for (InventoryNoticeDTO todayInventoryNoticeDTO : today) {
+                if (tomorrowInventoryNoticeDTO.getInventoryId().equals(todayInventoryNoticeDTO.getInventory())) {
+                    return ++i;
+                }
+            }
+        }
+        return i;
+    }//End day Two Method
+
+    @GetMapping("/inventoryTomorrow")
+    public String inventoryTomorrow(Model model) {
+        double requiredQty = 0.0;
+        double requiredQty2 = 0.0;
+        model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
+
+        //Find Today Notice Data
+        List<InventoryNoticeDTO> today = inventoryBO.findTodayInventoryNotice();
+        //Find Tomorrow Notice Data
+        List<InventoryNoticeDTO> tomorrow = inventoryBO.findTomorrowInventoryNotice();
+
+        int i = dayTwo(today, tomorrow), x = 0;
+        System.out.println("Printtttttttttttttttttttttttttttttttttttttttttttttttttt " + i);
+        if (i > 0) {
+            for (InventoryNoticeDTO tomorrowInventoryNoticeDTO : tomorrow) {
+                for (InventoryNoticeDTO todayInventoryNoticeDTO : today) {
+                    x = 0;
+                    if ((tomorrowInventoryNoticeDTO.getInventoryId()).equals(todayInventoryNoticeDTO.getInventory()) ) {
+
+                        if (requiredQty > tomorrowInventoryNoticeDTO.getQtyOnHand()) {  x = 0;
+                            requiredQty = requiredQty - tomorrowInventoryNoticeDTO.getQtyOnHand();
+                            tomorrowInventoryNoticeDTO.setRequiredQty(requiredQty);
+                            System.out.println(requiredQty + "ooooooooooooooooooooooooooooooooooooooooooooooooooooooooo");
+
+                        } else {
+                            requiredQty = (tomorrowInventoryNoticeDTO.getOrderQty() + todayInventoryNoticeDTO.getOrderQty()) - tomorrowInventoryNoticeDTO.getQtyOnHand();
+                            tomorrowInventoryNoticeDTO.setRequiredQty(requiredQty);
+                            System.out.println(tomorrowInventoryNoticeDTO.getOrderQty() + "pppppppppppppppppppppppppppppppppppppppppppppppp");
+                            System.out.println(todayInventoryNoticeDTO.getOrderQty() + "pppppppppppppppppppppppppppppppppppppppppppppppp");
+                            System.out.println(requiredQty + "pppppppppppppppppppppppppppppppppppppppppppppppp");
+
+                        }
+                    }
+
+
+                }
+            }
+        } else {
+            for (InventoryNoticeDTO tomorrowInventoryNoticeDTO : tomorrow) {
+                System.out.println("3333333333333333333333333333333333333333333333333333333");
+                requiredQty = tomorrowInventoryNoticeDTO.getOrderQty() - tomorrowInventoryNoticeDTO.getQtyOnHand();
+                tomorrowInventoryNoticeDTO.setRequiredQty(requiredQty);
+            }
+        }
+        model.addAttribute("findTodayNotice", tomorrow);
+        return "inventoryTomorrow";
+    }
+
+
+    @GetMapping("/inventory")
+    public String inventoryDayAfterTomorrow(Model model) {
+        double requiredQty = 0.0;
+        model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
+        List<InventoryNoticeDTO> today = inventoryBO.findTodayInventoryNotice();
+        List<InventoryNoticeDTO> tomorrow = inventoryBO.findTomorrowInventoryNotice();
+        List<InventoryNoticeDTO> dayAfter = inventoryBO.findDayAfterTomorrowNotice();
+
+        int i = dayDTwo(today, tomorrow, dayAfter), x = 0;
+        System.out.println(i + "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaddddddddddddddddddddddd");
+        if (i > 0) {
+            for (InventoryNoticeDTO dayAfterInventoryNoticeDTO : dayAfter) {
+                for (InventoryNoticeDTO tomorrowInventoryNoticeDTO : tomorrow) {
+                    for (InventoryNoticeDTO todayInventoryNoticeDTO : today) {
+                        if (dayAfterInventoryNoticeDTO.getInventoryId().equals(todayInventoryNoticeDTO.getInventory()) && x == 0) {
+                            requiredQty = 0.0;
+                            if (requiredQty > dayAfterInventoryNoticeDTO.getQtyOnHand()) {
+                                requiredQty = requiredQty - dayAfterInventoryNoticeDTO.getQtyOnHand();
+                                dayAfterInventoryNoticeDTO.setRequiredQty(requiredQty);
+                                System.out.println("ooooooooooooooooooooooooooooooooooooooooooooooooooooooooo");
+
+                            } else {
+                                requiredQty = (dayAfterInventoryNoticeDTO.getOrderQty() + todayInventoryNoticeDTO.getOrderQty()) - dayAfterInventoryNoticeDTO.getQtyOnHand();
+                                dayAfterInventoryNoticeDTO.setRequiredQty(requiredQty);
+                                System.out.println(requiredQty + "pppppppppppppppppppppppppppppppppppppppppppppppp");
+
+                            }
+                        }
+                        if (dayAfterInventoryNoticeDTO.getInventoryId().equals(tomorrowInventoryNoticeDTO.getInventory()) && x == 0) {
+                            requiredQty = 0.0;
+                            if (requiredQty > dayAfterInventoryNoticeDTO.getQtyOnHand()) {
+                                requiredQty = requiredQty - dayAfterInventoryNoticeDTO.getQtyOnHand();
+                                dayAfterInventoryNoticeDTO.setRequiredQty(requiredQty);
+                                System.out.println("qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq");
+                            } else {
+                                requiredQty = (dayAfterInventoryNoticeDTO.getOrderQty() + tomorrowInventoryNoticeDTO.getOrderQty()) - dayAfterInventoryNoticeDTO.getQtyOnHand();
+                                dayAfterInventoryNoticeDTO.setRequiredQty(requiredQty);
+                                System.out.println(requiredQty + "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeee");
+                            }
+                        }
+                        if (dayAfterInventoryNoticeDTO.getInventoryId().equals(tomorrowInventoryNoticeDTO.getInventory()) &&
+                                dayAfterInventoryNoticeDTO.getInventoryId().equals(todayInventoryNoticeDTO.getInventory())) {
+                            x = 0;
+                            requiredQty = 0.0;
+                            if (requiredQty > dayAfterInventoryNoticeDTO.getQtyOnHand()) {
+                                requiredQty = requiredQty - dayAfterInventoryNoticeDTO.getQtyOnHand();
+                                dayAfterInventoryNoticeDTO.setRequiredQty(requiredQty);
+                                x = 1;
+                                System.out.println("ttttttttttttttttttttttttttttttttttttttttttt");
+                            } else {
+                                requiredQty = (dayAfterInventoryNoticeDTO.getOrderQty() + todayInventoryNoticeDTO.getOrderQty() +
+                                        tomorrowInventoryNoticeDTO.getOrderQty()) - dayAfterInventoryNoticeDTO.getQtyOnHand();
+                                dayAfterInventoryNoticeDTO.setRequiredQty(requiredQty);
+                                System.out.println(requiredQty + "yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy");
+                                x = 1;
+                            }
+                        }
+                    }
+                }
+            }
+        } else {
+            for (InventoryNoticeDTO dayAfterInventoryNoticeDTO : dayAfter) {
+                System.out.println("3333333333333333333333333333333333333333333333333333333");
+                requiredQty = dayAfterInventoryNoticeDTO.getOrderQty() - dayAfterInventoryNoticeDTO.getQtyOnHand();
+                dayAfterInventoryNoticeDTO.setRequiredQty(requiredQty);
+            }
+        }
+
+        model.addAttribute("findDayAfterTomorrowNotice", dayAfter);
+        return "inventory";
+    }
+
+    private int dayDTwo(List<InventoryNoticeDTO> today, List<InventoryNoticeDTO> tomorrow, List<InventoryNoticeDTO> dayAfter) {
+        int i = 0;
+        for (InventoryNoticeDTO dayAfterInventoryNoticeDTO : dayAfter) {
+            for (InventoryNoticeDTO tomorrowInventoryNoticeDTO : tomorrow) {
+                for (InventoryNoticeDTO todayInventoryNoticeDTO : today) {
+
+                    if (dayAfterInventoryNoticeDTO.getInventoryId().equals(todayInventoryNoticeDTO.getInventory())) {
+                        ++i;
+                    }
+                    if (dayAfterInventoryNoticeDTO.getInventoryId().equals(tomorrowInventoryNoticeDTO.getInventory())) {
+                        ++i;
+                    }
+                }
+            }
+        }
+        return i;
     }
 }
