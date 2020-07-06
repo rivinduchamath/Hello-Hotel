@@ -21,15 +21,14 @@ public interface InventoryBO extends SuperBO {
 
     List<InventoryNoticeDTO> findTomorrowInventoryNotice();
 
-    InventoryNoticeDTO findInventoryNotice(String noticeId);
-
-    void updateNoticeState(InventoryNoticeDTO noticeId);
 
     void deleteInventoryNotice(String noticeId);
 
-    void saveInventory(InventoryNoticeDTO inventoryNoticeDTO);
+
 
     InventoryDTO findInventory(String inventoryId);
 
     void updateInventory(InventoryDTO inventoryDTO1);
+
+    List<InventoryNoticeDTO> findAllInventoryNotice();
 }

@@ -89,9 +89,6 @@
 
 
                                         <!-- Smart Wizard -->
-                                        <p>This is a basic form wizard example that inherits the colors from the
-                                            selected
-                                            scheme.</p>
                                         <div id="" class="form_wizard wizard_horizontal">
 
                                             <div id="step-1">
@@ -361,6 +358,107 @@
 
                 </div>
             </c:when>
+
+<%--%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%--%>
+            <c:when test="${mode=='MODE_WATCH' }">
+        <div class="right_col" role="main">
+
+
+                <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+
+                    <div class="x_panel">
+                        <div class="x_title">
+                            <h2>All Notice
+                                <small>Notice</small>
+                            </h2>
+                            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                                <div class="col-6 col-sm-6 col-md-6 col-lg-6 col-xl-3">
+                                    <a href="inventory">
+                                        <button type="button" class="btn btn-dark"><i class="fa fa-mail-reply"> Back</i>
+                                        </button>
+                                    </a>
+
+                                </div>
+                            </div>
+                            <ul class="nav navbar-right panel_toolbox">
+
+                            </ul>
+                            <div class="clearfix"></div>
+                        </div>
+                        <div class="x_content">
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <div class="card-box table-responsive">
+
+                                        <table style="text-align: center" id="datatable-buttons"
+                                               class="table table-striped table-bordered">
+                                            <thead class="thead-light">
+                                            <tr>
+
+                                                <th>Item Id</th>
+                                                <th>Item Name</th>
+                                                <th>Department</th>
+                                                <th>Order Qty</th>
+                                                <th>Qty On Hand</th>
+                                                <th>Required Qty</th>
+                                                <th>Date</th>
+                                                <th>Expected Date</th>
+                                                <th>Order Holder</th>
+                                                <th>Add Item</th>
+                                                <th>State</th>
+                                            </tr>
+
+
+                                            </thead>
+                                            <tbody>
+                                            <c:forEach items="${loadInventoryNoticeItemTable}" var="e">
+                                                <tr>
+
+                                                    <td>${e.inventoryId}</td>
+                                                    <td>${e.text}</td>
+                                                    <td>${e.department}</td>
+                                                    <td>${e.orderQty}</td>
+                                                    <td>${e.qtyOnHand}</td>
+                                                    <td>
+                                                            ${e.qtyOnHand > e.orderQty ? 0.0 : e.orderQty-e.qtyOnHand}
+                                                    </td>
+                                                    <td>${e.date}</td>
+                                                    <td>${e.expDate}</td>
+                                                    <td>${e.orderHolder}</td>
+                                                    <td style="width: 20%" >
+                                                        <form action="updateQtyToday1" method="post">
+                                                            <div class="input-group" >
+                                                                <input style="display: none" value="${e.inventoryId}" type="text" class="form-control" name="inventoryId">
+                                                                <input required type="number" class="form-control" name="orderQty">
+                                                                <span class="input-group-btn">
+                                                                     <button type="submit" style="font-weight: bolder;
+                                                                      background-color: white; color: #b3adad;
+                                                                      border: #0f0f0f solid 1px"
+                                                                             class="btn">+</button>
+                                                                    </span>
+                                                            </div>
+                                                        </form>
+                                                    </td>
+                                                    <td>
+                                                                     ${e.qtyOnHand < e.orderQty ? "Incomplete" : "Complete"}
+
+                                                    </td>
+                                                </tr>
+
+
+                                            </c:forEach>
+
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </div>
+<%--                ///////////////////////////////////////////////////////////////////--%>
+                  </c:when>
         </c:choose>
         <!-- footer content -->
         <jsp:include page="footer.jsp"/>
@@ -402,5 +500,18 @@
         });
     }
 </script>
+
+
+<!-- Datatables -->
+<script src="../../vendors/datatables.net/js/jquery.dataTables.min.js"></script>
+<script src="../../vendors/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+<script src="../../vendors/datatables.net-buttons/js/dataTables.buttons.min.js"></script>
+
+
+<script src="../../vendors/datatables.net-buttons/js/buttons.html5.min.js"></script>
+<script src="../../vendors/datatables.net-buttons/js/buttons.print.min.js"></script>
+<script src="../../vendors/datatables.net-fixedheader/js/dataTables.fixedHeader.min.js"></script>
+<script src="../../vendors/datatables.net-keytable/js/dataTables.keyTable.min.js"></script>
+
 </body>
 </html>

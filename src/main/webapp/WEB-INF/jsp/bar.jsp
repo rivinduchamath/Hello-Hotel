@@ -98,9 +98,7 @@
         <!-- /Top header -->
 
         <!-- page content -->
-        <video autoplay muted loop id="myVideo">
-            <source src="../../images/video/y2mate.com%20-%20Whisky%20Bar%2088%20%20%20promo%20video_JxZ9iqWVlSE_1080p.mp4" type="video/mp4">
-        </video>
+
         <%--/////////aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa--%>
         <div id="" class="right_col " role="main">
 
@@ -111,9 +109,13 @@
                             <small>Welcome To Hotel Hareesha</small>
                         </h3>
                         <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
-                            <div class="col-6 col-sm-6 col-md-6 col-lg-4 col-xl-4">
+                            <div class="col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
                                 <a href="/foodAndBeverage">
                                     <button type="button" class=" btn btn-dark"><i class="fa fa-mail-reply"> Back to Dashboard</i>
+                                    </button>
+                                </a>
+                                <a href="/barSettings">
+                                    <button type="button" class=" btn"><i class="fa fa-gear"></i>
                                     </button>
                                 </a>
 

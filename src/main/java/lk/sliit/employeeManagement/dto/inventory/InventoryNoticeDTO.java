@@ -53,6 +53,7 @@ public class InventoryNoticeDTO {
         this.qtyOnHand = qtyOnHand;
     }
 
+
     public String getInventoryId() {
         return inventoryId;
     }

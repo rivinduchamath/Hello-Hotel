@@ -96,9 +96,7 @@
         <!-- /Top header -->
 
         <!-- page content -->
-        <video autoplay muted loop id="myVideo">
-            <source src="../../images/video/Restaurant%20-%201190.mp4" type="video/mp4">
-        </video>
+
         <%--/////////aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa--%>
         <div id="" class="right_col " role="main">
 

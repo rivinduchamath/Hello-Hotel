@@ -1,9 +1,14 @@
 package lk.sliit.employeeManagement.entity.inventory;
 
 import lk.sliit.employeeManagement.entity.SuperEntity;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import java.sql.Date;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class Inventory implements SuperEntity {
@@ -17,6 +22,8 @@ public class Inventory implements SuperEntity {
     private double getPrice;
     private double sellingPrice;
     private Date date;
+    @OneToMany(mappedBy = "inventory",cascade = {CascadeType.REMOVE,CascadeType.PERSIST, CascadeType.REFRESH, CascadeType.DETACH, CascadeType.MERGE})
+    private List<InventoryNotice> attendance = new ArrayList<>( );
 
     public Inventory() {}
 
@@ -35,6 +42,10 @@ public class Inventory implements SuperEntity {
 
     }
 
+
+    public List<InventoryNotice> getAttendance() {
+        return attendance;
+    }
 
     public String getInventoryId() {
         return inventoryId;

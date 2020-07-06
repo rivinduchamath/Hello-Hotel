@@ -1,10 +1,8 @@
 package lk.sliit.employeeManagement.entity.inventory;
 
 import lk.sliit.employeeManagement.entity.SuperEntity;
-
 import javax.persistence.*;
 import java.sql.Date;
-
 
 @Entity
 public class InventoryNotice implements SuperEntity {
@@ -16,7 +14,7 @@ public class InventoryNotice implements SuperEntity {
     private Date expDate;
     private String orderHolder;
     private boolean state;
-    @OneToOne(cascade = {CascadeType.PERSIST, CascadeType.REFRESH, CascadeType.DETACH, CascadeType.MERGE})
+    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.REFRESH, CascadeType.DETACH, CascadeType.MERGE})
     @JoinColumn(name = "inventory", referencedColumnName = "inventoryId", nullable = true)
     private Inventory inventory;
 
@@ -36,6 +34,8 @@ public class InventoryNotice implements SuperEntity {
         this.state = state;
         this.inventory = inventory;
     }
+
+
 
     public String getNoticeId() {
         return noticeId;

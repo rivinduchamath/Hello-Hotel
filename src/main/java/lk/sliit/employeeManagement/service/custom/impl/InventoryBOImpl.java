@@ -6,7 +6,6 @@ import lk.sliit.employeeManagement.dao.inventoryDAO.ItemTypeDAO;
 import lk.sliit.employeeManagement.dto.inventory.InventoryDTO;
 import lk.sliit.employeeManagement.dto.inventory.InventoryNoticeDTO;
 import lk.sliit.employeeManagement.dto.inventory.ItemTypeDTO;
-import lk.sliit.employeeManagement.entity.Notice;
 import lk.sliit.employeeManagement.entity.inventory.Inventory;
 import lk.sliit.employeeManagement.entity.inventory.InventoryNotice;
 import lk.sliit.employeeManagement.entity.inventory.ItemType;
@@ -14,11 +13,8 @@ import lk.sliit.employeeManagement.service.custom.InventoryBO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.sql.Date;
-
 import java.util.List;
 
 @Service
@@ -154,7 +150,7 @@ public class InventoryBOImpl implements InventoryBO {
         return dtos;
     }
 
-    @Override
+    /*@Override
     public InventoryNoticeDTO findInventoryNotice(String noticeId) {
         InventoryNotice notice = inventoryNoticeDAO.findOne (noticeId);
         return new InventoryNoticeDTO (
@@ -167,9 +163,9 @@ public class InventoryBOImpl implements InventoryBO {
                 notice.isState(),
                 notice.getInventory().getInventoryId()
         );
-    }
+    }*/
 
-    @Override
+   /* @Override
     public void updateNoticeState(InventoryNoticeDTO notice) {
         inventoryNoticeDAO.save(new InventoryNotice(
                 notice.getNoticeId(),
@@ -181,17 +177,14 @@ public class InventoryBOImpl implements InventoryBO {
                 notice.isState(),
                 inventoryDAO.findOne ( notice.getInventory() )
         ));
-    }
+    }*/
 
     @Override
     public void deleteInventoryNotice(String noticeId) {
         inventoryDAO.delete(noticeId);
     }
 
-    @Override
-    public void saveInventory(InventoryNoticeDTO inventoryNoticeDTO) {
 
-    }
 
     @Override
     public InventoryDTO findInventory(String inventoryId) {
@@ -224,16 +217,26 @@ public class InventoryBOImpl implements InventoryBO {
         ));
     }
 
-    //    @Override
-    public void saveInventory(Inventory notice) {
-        inventoryDAO.save(new Inventory(
-//                notice.getInventoryId(),
-//                notice.getText(),
-//                notice.getDepartment(),
-//                notice.getOrderQty(),
-//                notice.g
-
-        ));
+    @Override
+    public List<InventoryNoticeDTO> findAllInventoryNotice() {
+        Iterable<InventoryNotice> all = inventoryNoticeDAO.findAll();
+        List<InventoryNoticeDTO> dtos = new ArrayList<>();
+        for (InventoryNotice a : all) {
+            dtos.add(new InventoryNoticeDTO(
+                    a.getNoticeId(),
+                    a.getDepartment(),
+                    a.getOrderQty(),
+                    a.getDate(),
+                    a.getExpDate(),
+                    a.getOrderHolder(),
+                    a.isState(),
+                    a.getInventory().getInventoryId(),
+                    a.getInventory().getText(),
+                    a.getInventory().getOrderQty()
+            ));
+        }
+        return dtos;
     }
+
 
 }

@@ -34,6 +34,41 @@
         .large-btn:hover {
             color: #0f0f0f;
         }
+
+        .img__wrap {
+            position: relative;
+        }
+
+        .img__description {
+            position: absolute;
+            visibility: hidden;
+            opacity: 0;
+
+            /* transition effect. not necessary */
+            transition: opacity .2s, visibility .2s;
+        }
+
+        .img__wrap:hover .img__description {
+            visibility: visible;
+            opacity: 1;
+        }
+        .large-btn {
+            height: 90px;
+            width: 100%;
+            font-family: "Playfair Display", Georgia, "Times New Roman", serif;
+            font-weight: bolder;
+            font-size: 27px;
+        }
+
+        .large-btn:hover {
+            color: #0f0f0f;
+            transform: scale(1.05, 1.1);
+            border-color: #0f0f0f !important;
+            border-width: 2px !important;
+            transition: 0.8s ease;
+            -webkit-transition: 0.8s ease;
+            -moz-transition: 0.8s ease;
+        }
     </style>
 </head>
 <body class="nav-md" style="cursor: pointer">
@@ -180,18 +215,16 @@
 
                     <div class="x_panel">
                         <div class="x_title">
-                            <h2>Notice Dashboard
-                                <small>Notice</small>
+                            <h2>Inventory Notice
+                                <small>Tomorrow</small>
                             </h2>
-                            <ul class="nav navbar-right">
-                                <li class="dropdown">
-                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
-                                       aria-expanded="false"><i class="fa fa-wrench"></i></a>
-                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                        <a    type='submit' href="/addInventoryType" value="Register">
-                                            <i  class="fa fa-gear"> </i>
-                                        </a>
-                                    </div>
+                            <ul class="nav navbar-right panel_toolbox">
+
+                                <li>
+                                    <a type='submit' class="img__wrap" href="/addInventoryType" value="Register">
+                                        <i  style="font-size: 18px" class="fa fa-gear img__img"><label class="img__description" style=" font-size: 15px"> &nbsp;&nbsp;Settings</label> </i>
+                                    </a>
+
                                 </li>
                             </ul>
                             <div class="clearfix"></div>
@@ -214,6 +247,13 @@
                                             <button style="float: left;font-weight: bolder" class=" btn btn-primary">Day
                                                 After Tomorrow
                                             </button>
+                                        </a>
+                                        <a style="right: 60px; position:absolute !important;" href="allInventoryNotice" class="img__wrap">
+                                            <i style="  font-weight: bolder"
+                                               class="active fa fa-list img__img">
+
+                                                <label style=" font-size: 15px" class="img__description">&nbsp;All&nbsp;Notice </label>
+                                            </i>
                                         </a>
 
                                         <table style="text-align: center" id="datatable-buttons"
@@ -239,13 +279,13 @@
                                             <tbody>
                                             <c:forEach items="${findTodayNotice}" var="e">
                                                 <tr>
-
                                                     <td>${e.inventoryId}</td>
                                                     <td>${e.text}</td>
                                                     <td>${e.department}</td>
                                                     <td>${e.orderQty}</td>
                                                     <td>${e.qtyOnHand}</td>
-                                                    <td>${e.requiredQty < 1 ? 0.0 : e.requiredQty}</td>
+                                                    <td>${ Double.parseDouble(e.requiredQty > 0.0 ? e.requiredQty : 0.0) }
+                                                    </td>
                                                     <td>${e.date}</td>
                                                     <td>${e.expDate}</td>
                                                     <td>${e.orderHolder}</td>
@@ -253,7 +293,7 @@
                                                         <form action="updateQtyTom" method="post">
                                                             <div class="input-group" >
                                                                 <input style="display: none" value="${e.inventoryId}" type="text" class="form-control" name="inventoryId">
-                                                                <input type="number" class="form-control" name="orderQty">
+                                                                <input required type="number" class="form-control" name="orderQty">
                                                                 <span class="input-group-btn">
                                                                      <button type="submit" style="font-weight: bolder;
                                                                       background-color: white; color: #b3adad;
@@ -268,7 +308,7 @@
                                                             <c:param name="state" value="${e.state}"/>
                                                         </c:url> <a href="updateStateTomorrow/${e.noticeId }"
                                                                     class="checkbox">--%>
-                                                             ${1 > e.requiredQty ? "Complete" : "InComplete"}
+                                                             ${1.0 > e.requiredQty ? "Complete" : "InComplete"}
 
                                                     </td>
                                                 </tr>
