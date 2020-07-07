@@ -1,6 +1,7 @@
 package lk.sliit.employeeManagement.entity.inventory;
 
 import lk.sliit.employeeManagement.entity.SuperEntity;
+import lk.sliit.employeeManagement.entity.barManage.BarOrderDetails;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -24,6 +25,8 @@ public class Inventory implements SuperEntity {
     private Date date;
     @OneToMany(mappedBy = "inventory",cascade = {CascadeType.REMOVE,CascadeType.PERSIST, CascadeType.REFRESH, CascadeType.DETACH, CascadeType.MERGE})
     private List<InventoryNotice> attendance = new ArrayList<>( );
+    @OneToMany(mappedBy = "inventory",cascade ={ CascadeType.PERSIST ,CascadeType.REFRESH, CascadeType.DETACH,CascadeType.MERGE})
+    private List<BarOrderDetails> orderDetails =new ArrayList<>();
 
     public Inventory() {}
 

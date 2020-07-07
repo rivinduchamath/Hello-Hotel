@@ -7,6 +7,9 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ page import="java.util.Date" %>
 <%@ page import="java.text.SimpleDateFormat" %>
+<%@ page import="java.util.ArrayList" %>
+<%@ page import="lk.sliit.employeeManagement.dto.BarOrderDTO" %>
+<%@ page import="java.awt.*" %>
 
 <html lang="en">
 <head>
@@ -58,10 +61,13 @@
     <link href="../../css/common.css" rel="stylesheet">
     <!-- Custom Theme Style -->
     <link href="../../build/css/custom.min.css" rel="stylesheet">
-
+    <%
+        SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
+        String date = sdf.format(new Date());
+    %>
     <c:if test="${not empty loginError}">
         <script>
-            window.addEventListener("load",function(){
+            window.addEventListener("load", function () {
                 alert("${loginError}");
             })
         </script>
@@ -88,6 +94,7 @@
             }
         }
     </script>
+
 
 </head>
 
@@ -138,7 +145,7 @@
                 <div class="clearfix"></div>
                 <div class=" ">
                     <div class="col-sm-12 col-md-12 col-lg-3 col-xl-3" style="float: left">
-                        <form method="POST" action="salarySave" name="salary">
+                        <form>
 
                             <div class="form-group">
                                 <input type="text" class="form-control"
@@ -147,47 +154,44 @@
                             </div>
 
                             <div class="form-group">
-                                <label for="itemCode">Payment Id</label>
+                                <label for="itemCode">Item Id</label>
                                 <input type="text" class="form-control"
-                                       required="required" name="employeeID"
-                                       id="itemCode" placeholder="Payment Id"/>
+                                       required="required" name="itemId"
+                                       id="itemCode" disabled placeholder="Item Id"/>
                             </div>
 
                             <div class="form-group">
                                 <label for="itemCode">Item Name</label>
                                 <input type="text" class="form-control"
                                        required name="itemName"
-                                       id="itemName" placeholder="Item Name"/>
+                                       id="itemName" disabled placeholder="Item Name"/>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="itemCode">Price</label>
+                                <input type="number" class="form-control"
+                                       required="required" name="itemPrice"
+                                       id="price" placeholder="Price"/>
                             </div>
 
                             <div class="form-group">
                                 <label for="itemCode">Qty</label>
-                                <input type="text" class="form-control"
-                                       required name="Qty"
-                                       id="OTRate" placeholder="Qty"/>
-                            </div>
-                            <div class="form-group">
-                                <label for="itemCode">Price</label>
-                                <input type="text" class="form-control"
-                                       required="required" name="otHours"
-                                       id="OTHrs" placeholder="Price"/>
+                                <input type="number" class="form-control"
+                                       required name="qty"
+                                       id="qty" placeholder="Qty"/>
                             </div>
 
                             <div class="form-group">
                                 <label for="itemCode">Customer ID</label>
                                 <input type="text" class="form-control"
-                                       required="required" name="bonus"
-                                       id="MonthlyBonus" placeholder="Customer ID"/>
+                                       name="customerId"
+                                       id="customerId" placeholder="Customer ID"/>
                             </div>
-                            <div class="form-group">
-                                <label for="itemCode">Date</label>
-                                <input type="date" class="form-control"
-                                       required="required" name="incomeTax"
-                                       id="IncomeTax" placeholder="Date"/>
-                            </div>
-                            <input style="display: none" type="text" id="itemPay1" name="SalaryId">
-                            <button type='submit' class="btn btn-primary" style="width: 50%" value="Register">
-                                Submit
+
+
+                            <button type='button' class="btn btn-primary" style="width: 50%" id="btnAdd"
+                                    value="Register">
+                                Add
                             </button>
                             <button onclick="document.getElementsByClassName('form-control').value = ''" type='reset'
                                     class="btn btn-outline-success" value="">Reset
@@ -224,17 +228,19 @@
                                                 <tr>
                                                     <th scope="col">Name</th>
                                                     <th scope="col">Id</th>
+                                                    <th scope="col">Price</th>
                                                 </tr>
                                                 </thead>
                                                 <tbody>
-                                           <c:forEach items="${loadInventoryBarTable}" var="e">
+                                                <c:forEach items="${loadInventoryBarTable}" var="e">
 
-                                               <tr>
-                                                    <td scope="row">${e.text}</td>
-                                                    <td>${e.inventoryId}</td>
+                                                    <tr>
+                                                        <td scope="row">${e.text}</td>
+                                                        <td>${e.inventoryId}</td>
+                                                        <td>${e.sellingPrice}</td>
 
-                                                </tr>
-                                           </c:forEach>
+                                                    </tr>
+                                                </c:forEach>
                                                 </tbody>
                                             </table>
 
@@ -252,65 +258,51 @@
                         <div class="x_panel">
                             <div class="x_title">
                                 <h2>Bar Orders
-                                    <small>Click CheckBox And Submit
+                                    <small>Check And Submit
                                     </small>
+
                                 </h2>
-                                <form method="POST" action="/barBill" name="barBill">
-                                    <input style="display: none" type="text" id="itemPay" name="SalaryId">
+                                <form method="POST" action="invoiceBar" name="invoiceBar">
+                                    <input id="barIdNo" value="O001" style="border: none">
+                                    <input style="display: none" type="" id="itemPay" name="orderDetails">
+                                    <input style="display: none" type="text" id="odId" value="4444" name="id">
+                                    <input style="display: none" type="text" id="cId" value="322" name="customerId">
+                                    <input style="display: none" type="text" id="user" value="232" name="user">
                                     <ul class="nav navbar-right panel_toolbox">
                                         <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                                         </li>
-                                        <button type="submit" value="Register" disabled="true"
-                                                style="font-weight: bold;color: white" ; id="name"
+                                        <button type="submit" value="Register"
+                                                style="font-weight: bold;color: white" ;
                                                 class="btn btn-success "> Pay <i class="fa fa-file-image-o"></i>
                                         </button>
                                     </ul>
-
                                 </form>
-
-                                <button onclick="getValue();return false" ;
-                                        style="float: right; font-weight: bold;color: white" ;
-                                        id="btn_enable" class="btn btn-success ">Submit <i
+                                <button style="float: right; font-weight: bold;color: white"
+                                        onclick="getValue();return false" ; id="btn_enable" class="btn btn-success ">
+                                    Submit <i
                                         class="fa fa-plus-circle"></i></button>
-
-                                <!--href="/invoice"-->
                                 <div class="clearfix"></div>
                             </div>
-
                             <div class="x_content">
-
                                 <div class="row">
-
                                     <div class="col-sm-12">
-
                                         <div class="card-box table-responsive">
-
-                                            <table id="datatable-buttons"
+                                            <table style="text-align: center"
                                                    class="table table-striped jambo_table bulk_action table-bordered">
                                                 <thead class="thead-dark">
-
                                                 <tr>
                                                     <th>ItemId</th>
                                                     <th>Name</th>
-                                                    <th>Total Price</th>
+                                                    <th>Price</th>
+                                                    <th>Qty</th>
+                                                    <th>Total</th>
                                                     <th>Delete</th>
-                                                    <th><input type="checkbox" id="check-all" class="flat"></th>
                                                 </tr>
                                                 </thead>
 
-                                                <tbody>
+                                                <tbody id="tblOrder">
                                                 <%--                                                <c:forEach items="${listEmployeesTableSalary}" var="e">--%>
-                                                <tr>
-                                                    <td>${e.employeeID.idNo}</td>
-                                                    <td>${e.employeeID.name}</td>
-                                                    <td>${((e.basicSalary+e.bonus)+(e.otRate*e.otHours))-e.incomeTax}</td>
-                                                    <td><a href="/deleteSalary?idNo=${e.salaryId}"><span
-                                                            class="glyphicon glyphicon-trash"></span></a></td>
-                                                    <td class="a-center ">
-                                                        <input type="checkbox" class="flat checks"
-                                                               value="${e.salaryId}" name="table_records">
-                                                    </td>
-                                                </tr>
+
                                                 <%--                                                </c:forEach>--%>
                                                 </tbody>
                                             </table>
@@ -328,21 +320,6 @@
         </div>
     </div>
     <!-- /page content -->
-
-
-    <script>
-        function getValue() {
-            var checks = document.getElementsByClassName('checks');
-            var str = '';
-
-            for (i = 0; i < ${countEmployee2}; i++) {
-                if (checks[i].checked === true) {
-                    str += checks[i].value + " ";
-                }
-            }
-            $("#itemPay").val(str);
-        }
-    </script>
 
 
     <!-- footer content -->
@@ -379,11 +356,13 @@
     $("#dataTablesButton1 tbody").on('click', 'tr', function () {
         var date = new Date();
         var date2 = new Date();
-        var today = date.getHours() + ":" + (date.getMinutes()) + ":" + date.getSeconds();
+        var today = date.getDate() + ":" + (date.getMonth()) + ":" + date.getFullYear();
 
         selectedRow = $(this);
         $("#itemName").val($(this).find("td:nth-child(1)").text());
         $("#itemCode").val($(this).find("td:nth-child(2)").text());
+        $("#price").val($(this).find("td:nth-child(3)").text());
+        $("#date").val(today);
         $("#dataTablesButton1 tbody tr").removeClass('row-selected');
         selectedRow.addClass('row-selected');
     });
@@ -395,6 +374,23 @@
     });
 });
 </script>
+
+
+<%--<script>
+    function getValue() {
+        var checks = document.getElementsByClassName('tblOrder');
+
+        var str = '';
+        var numberofRows = $("#tblOrder tr").length;
+        console.log(numberofRows+"fffffffffffffffffffffffffffffffffffffffffffff");
+        for (i = 0; i < numberofRows; i++) {
+                str += checks[i] + " ";
+        }
+        console.log(str+"tttttttttttttttttttttttttttttttttttttttttttttttttt");
+        $("#itemPay").val(str);
+    }
+</script>--%>
+
 <!-- Datatables -->
 <script src="../../vendors/datatables.net/js/jquery.dataTables.min.js"></script>
 <script src="../../vendors/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
@@ -410,6 +406,8 @@
 <script src="../../vendors/datatables.net-scroller/js/dataTables.scroller.min.js"></script>
 <script src="../../vendors/jszip/dist/jszip.min.js"></script>
 <script src="../../vendors/iCheck/icheck.min.js"></script>
+
+<script src="../../js/addTable.js"></script>
 <!-- Custom Theme Scripts -->
 <script src="../../build/js/custom.min.js"></script>
 </body>

@@ -23,6 +23,7 @@ public class AttendanceBOImpl implements AttendanceBO {
     //Automate Object Creation
     @Autowired
     AttendanceDAO attendanceDAO;
+
     @Autowired
     EmployeeDAO employeeDAO;
 

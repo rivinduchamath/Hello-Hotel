@@ -27,10 +27,44 @@
     <link href="../../build/css/custom.min.css" rel="stylesheet">
 
     <%
-        SimpleDateFormat sdf = new SimpleDateFormat ( "dd-MM-yyyy" );
-        String date = sdf.format ( new Date ( ) );
+        SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
+        String date = sdf.format(new Date());
     %>
+    <style>
+        .large-btn {
+            height: 90px;
+            width: 100%;
+            font-family: "Playfair Display", Georgia, "Times New Roman", serif;
+            font-weight: bolder;
+            font-size: 27px;
+        }
 
+
+        .large-btn:hover {
+            color: #0f0f0f;
+            transform: scale(1.05, 1.1);
+            border-color: #0f0f0f !important;
+            border-width: 2px !important;
+            transition: 0.8s ease;
+            -webkit-transition: 0.8s ease;
+            -moz-transition: 0.8s ease;
+        }
+
+
+        #chartdiv {
+            position: relative;
+            top: 40px;
+            width: 100%;
+            height: 400px;
+        }
+
+        #chartdiv1 {
+            position: relative;
+            top: 40px;
+            width: 100%;
+            height: 400px;
+        }
+    </style>
 </head>
 
 <body class="nav-md" style="cursor: pointer">
@@ -39,13 +73,12 @@
     <div class="main_container">
 
         <!-- Side header -->
-        <jsp:include page="sideHeader.jsp" />
+        <jsp:include page="sideHeader.jsp"/>
         <!-- /Side header -->
 
         <!-- Top header -->
-        <jsp:include page="topHeader.jsp" />
+        <jsp:include page="topHeader.jsp"/>
         <!-- /Top header -->
-
 
 
         <!-- page content -->
@@ -53,7 +86,7 @@
             <div class="">
                 <div class="page-title">
                     <div class="title_left">
-                        <h3>HR Manage
+                        <h3>HR Department
                             <small>Welcome To Hotel Hareesha</small>
                         </h3>
                     </div>
@@ -138,22 +171,81 @@
                         </form>
                     </div>
                 </div>
+                <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+
+
+                    <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6">
+                        <br>
+                        <a href="#">
+                            <button type="button" class="large-btn btn btn-dark">Current Billt</button>
+                        </a>
+                    </div>
+
+                    <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6">
+                        <br>
+                        <a href="#">
+                            <button type="button" class="large-btn btn btn-dark">Accounts</button>
+                        </a>
+                    </div>
+
+
+                    <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6">
+                        <br>
+                        <a href="#">
+                            <button type="button" class="large-btn btn btn-dark">Employee Management</button>
+                        </a>
+                    </div>
+                    <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6">
+                        <br>
+                        <a href="#">
+                            <button type="button" class="large-btn btn btn-dark">Employee Salary</button>
+                        </a>
+                    </div>
+
+
+                    <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6">
+                        <br>
+                        <a href="#">
+                            <button type="button" class="large-btn btn btn-dark">Hotel Room Price</button>
+                        </a>
+                    </div>
+                    <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6">
+                        <br>
+                        <a href="#">
+                            <button type="button" class="large-btn btn btn-dark">Inventory Bills</button>
+                        </a>
+                    </div>
+
+
+                </div>
 
 
 
+                <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                    <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6">
+                        <div id="chartdiv"></div>
+                        <br>
+                        <P><h6>Today Top 5 Selling In Restaurant</h6></P>
+                    </div>
+                    <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6">
+                        <div id="chartdiv1"></div>
+                        <br>
+                        <P><h6>Today Top 5 Selling in Bar</h6></P>
+                    </div>
+                </div>
 
+<%--/////////////////////////////////////////////////--%>
             </div>
         </div>
         <!-- /page content -->
 
 
         <!-- footer content -->
-        <jsp:include page="footer.jsp" />
+        <jsp:include page="footer.jsp"/>
         <!-- /footer content -->
 
     </div>
 </div>
-
 
 
 <!-- jQuery -->
@@ -162,6 +254,108 @@
 <script src="../../vendors/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 <!-- Custom Theme Scripts -->
 <script src="../../build/js/custom.min.js"></script>
+<%--Pie Chart 1--%>
+<script src="https://www.amcharts.com/lib/4/core.js"></script>
+<script src="https://www.amcharts.com/lib/4/charts.js"></script>
+<script src="https://www.amcharts.com/lib/4/themes/moonrisekingdom.js"></script>
+<script src="https://www.amcharts.com/lib/4/themes/animated.js"></script>
+
+<!-- Chart code -->
+<script>
+    am4core.ready(function () {
+
+// Themes begin
+        am4core.useTheme(am4themes_moonrisekingdom);
+        am4core.useTheme(am4themes_animated);
+// Themes end
+
+        var chart = am4core.create("chartdiv1", am4charts.PieChart3D);
+        chart.hiddenState.properties.opacity = 0; // this creates initial fade-in
+
+        chart.legend = new am4charts.Legend();
+
+        chart.data = [
+            {
+                name: "dsd",
+                litres: 433.9
+            },
+            {
+                name: "dsdsd",
+                litres: 341.9
+            },
+            {
+                name: "dsdsd",
+                litres: 34.1
+            },
+            {
+                name: "ds",
+                litres: 465.8
+            },
+            {
+                name: "s",
+                litres: 159.9
+            },
+            {
+                name: "s",
+                litres: 238.3
+            }
+        ];
+
+        chart.innerRadius = 100;
+
+        var series = chart.series.push(new am4charts.PieSeries3D());
+        series.dataFields.value = "litres";
+        series.dataFields.category = "name";
+
+    }); // end am4core.ready()
+</script>
+<script>
+    am4core.ready(function () {
+
+// Themes begin
+        am4core.useTheme(am4themes_animated);
+// Themes end
+
+        var chart = am4core.create("chartdiv", am4charts.PieChart3D);
+        chart.hiddenState.properties.opacity = 0; // this creates initial fade-in
+
+        chart.legend = new am4charts.Legend();
+
+        chart.data = [
+            {
+                name: "fd",
+                litres: 501.9
+            },
+            {
+                name: "fdsf fsdfs",
+                litres: 301.9
+            },
+            {
+                name: "dsf",
+                litres: 201.1
+            },
+            {
+                name: "fdfdsf",
+                litres: 165.8
+            },
+            {
+                name: "fdfdf",
+                litres: 139.9
+            },
+            {
+                name: "xcgfdg",
+                litres: 434.3
+            }
+        ];
+
+        chart.innerRadius = 100;
+
+        var series = chart.series.push(new am4charts.PieSeries3D());
+        series.dataFields.value = "litres";
+        series.dataFields.category = "name";
+
+    }); // end am4core.ready()
+</script>
 
 </body>
 </html>

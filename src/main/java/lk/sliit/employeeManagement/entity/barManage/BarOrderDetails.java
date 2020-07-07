@@ -1,6 +1,7 @@
 package lk.sliit.employeeManagement.entity.barManage;
 
 import lk.sliit.employeeManagement.entity.SuperEntity;
+import lk.sliit.employeeManagement.entity.inventory.Inventory;
 
 import javax.persistence.*;
 
@@ -15,36 +16,36 @@ public class BarOrderDetails implements SuperEntity {
     @JoinColumn(name="orderId",referencedColumnName = "orderId", insertable = false, updatable = false)
     private BarOrders order;
     @ManyToOne(cascade = {CascadeType.PERSIST,CascadeType.REFRESH, CascadeType.DETACH, CascadeType.MERGE})
-    @JoinColumn(name="stockId",referencedColumnName = "productId", insertable = false, updatable = false)
-    private BarStock barStock;
+    @JoinColumn(name="inventory",referencedColumnName = "inventoryId", insertable = false, updatable = false)
+    private Inventory inventory;
 
     public BarOrderDetails() {
     }
 
-    public BarOrderDetails(BarOrderDetailsPK orderDetailPK, int quantity, double unitePrice, BarOrders order,BarStock barStock) {
+    public BarOrderDetails(BarOrderDetailsPK orderDetailPK, int quantity, double unitePrice, BarOrders order,Inventory inventory) {
         this.orderDetailPK = orderDetailPK;
         this.quantity = quantity;
         this.unitePrice = unitePrice;
         this.order = order;
-        this.barStock = barStock;
+        this.inventory = inventory;
     }
 
 
-    public BarOrderDetails(String orderId, String productId, int quantity, double unitePrice, BarOrders order,BarStock barStock) {
+    public BarOrderDetails(String orderId, String productId, int quantity, double unitePrice, BarOrders order,Inventory inventory) {
         this.orderDetailPK = new BarOrderDetailsPK(orderId,productId);
         this.quantity = quantity;
         this.unitePrice = unitePrice;
         this.order = order;
-        this.barStock = barStock;
+        this.inventory = inventory;
     }
 
 
-    public BarStock getBarStock() {
-        return barStock;
+    public Inventory getInventory() {
+        return inventory;
     }
 
-    public void setBarStock(BarStock barStock) {
-        this.barStock = barStock;
+    public void setInventory(Inventory inventory) {
+        this.inventory = inventory;
     }
 
     public BarOrderDetailsPK getOrderDetailPK() {
@@ -79,13 +80,5 @@ public class BarOrderDetails implements SuperEntity {
         this.order = order;
     }
 
-    @Override
-    public String toString() {
-        return "BarOrderDetails{" +
-                "orderDetailPK=" + orderDetailPK +
-                ", quantity=" + quantity +
-                ", unitePrice=" + unitePrice +
-                ", order=" + order +
-                '}';
-    }
+
 }
