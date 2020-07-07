@@ -10,34 +10,36 @@ public class BarOrderDetails implements SuperEntity {
 
     @EmbeddedId
     private BarOrderDetailsPK orderDetailPK;
-    private int quantity;
+    private double quantity;
     private double unitePrice;
     @ManyToOne(cascade = {CascadeType.PERSIST,CascadeType.REFRESH, CascadeType.DETACH, CascadeType.MERGE})
     @JoinColumn(name="orderId",referencedColumnName = "orderId", insertable = false, updatable = false)
     private BarOrders order;
     @ManyToOne(cascade = {CascadeType.PERSIST,CascadeType.REFRESH, CascadeType.DETACH, CascadeType.MERGE})
-    @JoinColumn(name="inventory",referencedColumnName = "inventoryId", insertable = false, updatable = false)
+    @JoinColumn(name="productId",referencedColumnName = "inventoryId", insertable = false, updatable = false)
     private Inventory inventory;
 
     public BarOrderDetails() {
     }
 
-    public BarOrderDetails(BarOrderDetailsPK orderDetailPK, int quantity, double unitePrice, BarOrders order,Inventory inventory) {
+    public BarOrderDetails(BarOrderDetailsPK orderDetailPK, double quantity, double unitePrice) {
         this.orderDetailPK = orderDetailPK;
         this.quantity = quantity;
         this.unitePrice = unitePrice;
-        this.order = order;
-        this.inventory = inventory;
+
     }
 
 
-    public BarOrderDetails(String orderId, String productId, int quantity, double unitePrice, BarOrders order,Inventory inventory) {
+    public BarOrderDetails(String orderId, String productId, double quantity, double unitePrice) {
         this.orderDetailPK = new BarOrderDetailsPK(orderId,productId);
         this.quantity = quantity;
         this.unitePrice = unitePrice;
-        this.order = order;
-        this.inventory = inventory;
+
     }
+
+
+
+
 
 
     public Inventory getInventory() {
@@ -56,11 +58,11 @@ public class BarOrderDetails implements SuperEntity {
         this.orderDetailPK = orderDetailPK;
     }
 
-    public int getQuantity() {
+    public double getQuantity() {
         return quantity;
     }
 
-    public void setQuantity(int quantity) {
+    public void setQuantity(double quantity) {
         this.quantity = quantity;
     }
 

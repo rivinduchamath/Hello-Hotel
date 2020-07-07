@@ -1,31 +1,69 @@
 package lk.sliit.employeeManagement.dto;
 
-import java.sql.Date;
+import java.util.Date;
 import java.util.List;
 
 
 public class BarOrderDTO {
 
-    private int id;
+    private String id;
     private String customerId;
     private String user;
-    private Object[] orderDetails;
+    private List<BarOrderDetailDTO> orderDetails;
+    private  String orderData;
+private Date date;
 
-    public BarOrderDTO(int id, String customerId, String user, Object[] orderDetails) {
+    public BarOrderDTO(String id, String customerId, String user, List<BarOrderDetailDTO> orderDetails) {
         this.id = id;
         this.customerId = customerId;
         this.user = user;
         this.orderDetails = orderDetails;
     }
 
+    public BarOrderDTO(String id, String customerId, String user, List<BarOrderDetailDTO> orderDetails, String orderData) {
+        this.id = id;
+        this.customerId = customerId;
+        this.user = user;
+        this.orderDetails = orderDetails;
+        this.orderData = orderData;
+    }
+
+    public BarOrderDTO(String id, String customerId, String user, List<BarOrderDetailDTO> orderDetails, String orderData, Date date) {
+        this.id = id;
+        this.customerId = customerId;
+        this.user = user;
+        this.orderDetails = orderDetails;
+        this.orderData = orderData;
+        this.date = date;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
+    }
+
     public BarOrderDTO() {
     }
 
-    public int getId() {
+    public String getOrderData() {
+        return orderData;
+    }
+
+    public void setOrderData(String orderData) {
+        this.orderData = orderData;
+    }
+
+    public BarOrderDTO(String orderId, String customerId, String user) {
+    }
+
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -46,11 +84,11 @@ public class BarOrderDTO {
         this.user = user;
     }
 
-    public Object[] getOrderDetails() {
+    public List<BarOrderDetailDTO> getOrderDetails() {
         return orderDetails;
     }
 
-    public void setOrderDetails(Object[] orderDetails) {
+    public void setOrderDetails(List<BarOrderDetailDTO> orderDetails) {
         this.orderDetails = orderDetails;
     }
 

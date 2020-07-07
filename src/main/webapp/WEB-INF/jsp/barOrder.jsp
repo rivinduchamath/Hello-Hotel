@@ -238,7 +238,6 @@
                                                         <td scope="row">${e.text}</td>
                                                         <td>${e.inventoryId}</td>
                                                         <td>${e.sellingPrice}</td>
-
                                                     </tr>
                                                 </c:forEach>
                                                 </tbody>
@@ -263,24 +262,18 @@
 
                                 </h2>
                                 <form method="POST" action="invoiceBar" name="invoiceBar">
-                                    <input id="barIdNo" value="O001" style="border: none">
-                                    <input style="display: none" type="" id="itemPay" name="orderDetails">
-                                    <input style="display: none" type="text" id="odId" value="4444" name="id">
+                                    <input style="display: none" type="text" id="itemPay" name="orderData">
                                     <input style="display: none" type="text" id="cId" value="322" name="customerId">
-                                    <input style="display: none" type="text" id="user" value="232" name="user">
                                     <ul class="nav navbar-right panel_toolbox">
                                         <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                                         </li>
                                         <button type="submit" value="Register"
-                                                style="font-weight: bold;color: white" ;
+                                                style="font-weight: bold;color: white" ; onclick="getValue()"
                                                 class="btn btn-success "> Pay <i class="fa fa-file-image-o"></i>
                                         </button>
                                     </ul>
                                 </form>
-                                <button style="float: right; font-weight: bold;color: white"
-                                        onclick="getValue();return false" ; id="btn_enable" class="btn btn-success ">
-                                    Submit <i
-                                        class="fa fa-plus-circle"></i></button>
+
                                 <div class="clearfix"></div>
                             </div>
                             <div class="x_content">

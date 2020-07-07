@@ -123,12 +123,12 @@ function getValue() {
                 totalPrice: total
 
             });
-            // str =  itemId+" "+ name +" "+price+" "+qty+" "+total+" $*$ ";
-            // stre += str;
+             // str =  itemId+" "+ name +" "+price+" "+qty+" "+total+"  ";
+             // stre += str;
         }
     }
-    console.log(list1);
-    $("#itemPay").val(list1);
+    console.log(stre);
+    $("#itemPay").val(stre);
 
 
 

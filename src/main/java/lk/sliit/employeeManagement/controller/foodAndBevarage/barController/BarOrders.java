@@ -43,11 +43,23 @@ public class BarOrders {
 
     @PostMapping("invoiceBar")
     public String loadInvoicePage(@ModelAttribute BarOrderDTO barOrderDTO, Model model, HttpServletRequest request) {
-        List<BarOrderDetailDTO> categoryList = null;
-        System.out.println(barOrderDTO.getOrderDetails()+"55555555555555555555555555555555555555555");
-        request.setAttribute("servletName", categoryList);
-             //Get Logged Customer Data
         model.addAttribute ( "loggerName", indexLoginBO.getEmployeeByIdNo ( SuperController.idNo ) );
+        try {
+            barOrderDTO.setUser(SuperController.idNo);
+            List<BarOrderDTO> totalCount = barBO.findAllBarOrders ( );
+            int  i= 0;
+            for (BarOrderDTO dto: totalCount) {
+                i++;
+            }
+              barOrderDTO.setId ( String.valueOf ( i ) );
+        } catch (NullPointerException e) {
+            barOrderDTO.setId ( String.valueOf ( 1 ) );
+        }
+
+         barBO.saveBarOrder(barOrderDTO);
+
+
+
           return "invoice";
     }
 }

@@ -2,11 +2,8 @@ package lk.sliit.employeeManagement.entity.barManage;
 
 import lk.sliit.employeeManagement.entity.SuperEntity;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import java.sql.Date;
+import javax.persistence.*;
+import java.util.Date;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,8 +12,8 @@ import java.util.List;
 public class BarOrders implements SuperEntity {
     @Id
     private String orderId;
+    @Temporal(TemporalType.DATE)
     private Date date;
-    private double price;
     private String customerId;
     private String user;
     @OneToMany(mappedBy = "order", cascade = {CascadeType.PERSIST, CascadeType.REFRESH, CascadeType.DETACH, CascadeType.MERGE})
@@ -25,14 +22,21 @@ public class BarOrders implements SuperEntity {
     public BarOrders() {
     }
 
-    public BarOrders(String orderId, Date date, double price, String customerId, String user, List<BarOrderDetails> orderDetails) {
+    public BarOrders(String orderId, Date date,  String customerId, String user, List<BarOrderDetails> orderDetails) {
         this.orderId = orderId;
         this.date = date;
-        this.price = price;
         this.customerId = customerId;
         this.user = user;
         this.orderDetails = orderDetails;
     }
+
+    public BarOrders(String id, Date date, String customerId, String user) {
+        this.orderId = id;
+        this.date = date;
+        this.customerId = customerId;
+        this.user = user;
+    }
+
 
     public Date getDate() {
         return date;
@@ -42,13 +46,6 @@ public class BarOrders implements SuperEntity {
         this.date = date;
     }
 
-    public double getPrice() {
-        return price;
-    }
-
-    public void setPrice(double price) {
-        this.price = price;
-    }
 
     public String getCustomerId() {
         return customerId;
