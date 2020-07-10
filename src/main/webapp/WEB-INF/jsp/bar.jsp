@@ -9,6 +9,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page import="java.util.Date" %>
 <%@ page import="java.text.SimpleDateFormat" %>
+
 <html lang="en">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -39,6 +40,19 @@
             font-size: 27px;
         }
 
+        .btnq2:hover {
+            transform: scale(1.05, 1.1);
+            transition: 0.8s ease;
+            -webkit-transition: 0.8s ease;
+            -moz-transition: 0.8s ease;
+        }
+
+        .btnq3:hover {
+            transform: scale(1.3, 1.3);
+            transition: 0.8s ease;
+            -webkit-transition: 0.8s ease;
+            -moz-transition: 0.8s ease;
+        }
         #chartdiv {
             width: 100%;
             height: 500px;
@@ -50,39 +64,48 @@
         }
 
         .large-btn:hover {
-            color: #0f0f0f;
+            color: #cebbbb;
+        }
+        /*//////////////////////////////////////////////////////////////*/
+
+        .containerx {
+            display: flex;
+
         }
 
-        #backImg {
-            background-image: url("../../images/picture.jpg");
-        }
-
-        #myVideo {
-            position: fixed;
-            right: 0;
-            bottom: 0;
+        .btnq {
+            text-decoration: none;
+            border: 5px solid rgb(174, 182, 203);
+            position: relative;
+            overflow: hidden;
+            height: 90px;
             width: 100%;
-            height: 170%;
-            top: -100px;
-            min-width: 100%;
-            min-height: 100%;
+            font-size: 1.5rem;
+            text-align: center;
+            border-radius: 5px 5px;
         }
 
-
-        #myBtn {
-            width: 200px;
-            font-size: 18px;
-            padding: 10px;
-            border: none;
-            background: #000;
-            color: #fff;
-            cursor: pointer;
+        .btnq:before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -00%;
+            text-align: center;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                    120deg,
+                    transparent,
+                    rgba(135, 141, 156, 0.4),
+                    transparent
+            );
+            transition: all .8s;
         }
 
-        #myBtn:hover {
-            background: #ddd;
-            color: black;
+        .btnq:hover:before {
+            left: 100%;
         }
+
     </style>
 </head>
 
@@ -105,17 +128,20 @@
             <div class="">
                 <div class="page-title">
                     <div class="title_left">
-                        <h3>Bar Manage
+                        <h3>Baverage
                             <small>Welcome To Hotel Hareesha</small>
                         </h3>
                         <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
                             <div class="col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
-                                <a href="/foodAndBeverage">
-                                    <button type="button" class=" btn btn-dark"><i class="fa fa-mail-reply"> Back to Dashboard</i>
+                                <a href="foodAndBeverage">
+                                    <button type="button" style=" border: 5px solid rgb(174, 182, 203);background-color: #45526e;
+                                    color: #c6d4d3;font-weight: bolder" class="btnq2 btn">
+                                        <i class="fa fa-mail-reply"> Back to Dashboard</i>
                                     </button>
                                 </a>
-                                <a href="/barSettings">
-                                    <button type="button" class=" btn"><i class="fa fa-gear"></i>
+                                <a href="barSettings">
+                                    <button style="color: #3b465e !important;" type="button"
+                                            class="btnq3 btn"><i style="font-size: 185%;" class="fa fa-gear"></i>
                                     </button>
                                 </a>
 
@@ -211,27 +237,50 @@
 
 
                     <div class="col-sm-12 col-md-3 col-lg-3 col-xl-3">
-                        <a href="barOrder">
-                            <button type="button" class="large-btn btn btn-dark">Order</button>
-                        </a>
+                        <div class="containerx">
+                            <a style=" font-family: Playfair Display, Georgia, Times New Roman, serif;
+                             background-color: #3d495f; color: #ffffff;font-weight: bolder"
+                               href="barOrder" class="btnq"><h2
+                                    style="position: relative; letter-spacing: 1px;
+                                     margin-top: 30px">Order</h2></a>
+                        </div>
+                      <br>
                     </div>
 
                     <div class="col-sm-12 col-md-3 col-lg-3 col-xl-3">
-                        <a href="barStock">
-                            <button type="button" class="large-btn btn btn-dark">Stock</button>
-                        </a>
+
+                        <div class="containerx">
+                            <a style=" font-family: Playfair Display, Georgia, Times New Roman, serif;
+                             background-color:#3d495f; color: #ffffff;font-weight: bolder"
+                               href="barStock" class="btnq"><h2
+                                    style="position: relative; letter-spacing: 1px;
+                                     margin-top: 30px">Stock</h2></a>
+                        </div>
+                        <br>
                     </div>
 
                     <div class="col-sm-12 col-md-3 col-lg-3 col-xl-3">
-                        <a href="barBill">
-                            <button type="button" class="large-btn btn btn-dark">Bills</button>
-                        </a>
+                        <div class="containerx">
+                            <a style=" font-family: Playfair Display, Georgia, Times New Roman, serif;
+                             background-color:#3d495f; color: #ffffff;font-weight: bolder"
+                               href="/barBill" class="btnq"><h2
+                                    style="position: relative; letter-spacing: 1px;
+                                     margin-top: 30px">Bills</h2></a>
+                        </div>
+                        <br>
                     </div>
 
                     <div class="col-sm-12 col-md-3 col-lg-3 col-xl-3">
-                        <button type="button" class="large-btn btn btn-dark">Income</button>
-                    </div>
 
+
+                    <div class="containerx">
+                        <a style=" font-family: Playfair Display, Georgia, Times New Roman, serif;
+                             background-color:#3d495f; color: #ffffff;font-weight: bolder"
+                           href="barStock" class="btnq"><h2
+                                style="position: relative; letter-spacing: 1px;
+                                     margin-top: 30px">Income</h2></a>
+                    </div>
+                    <br> </div>
                 </div>
                 <%--%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Chart Income %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%--%>
                 <%--Chart Income--%>

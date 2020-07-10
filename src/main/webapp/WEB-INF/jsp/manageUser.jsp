@@ -196,7 +196,7 @@
             <%--Input Feilds--%>
             <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
             <div class="col-12 col-sm-12 col-md-12 col-lg-5 col-xl-5">
-                <form method="POST"  action="/salarySave" name="salary">
+                <form method="POST"  action="/saveUser" name="saveUser">
 
                     <div class="form-group">
 
@@ -209,7 +209,7 @@
                             <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
                                 <label for="userId">User Name</label>
                         <input type="text" class="form-control"
-                               required="required" name="userName"
+                               required="required" name="name"
                                id="userName" placeholder="User Name"/></div>
                     </div>
 
@@ -267,27 +267,26 @@
 
                         <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6"> <br>
                             <label for="userId">Date</label>
-                            <input type="text" class="form-control"
+                            <input type="date" class="form-control"
                                    required="required" name="date"
                                    id="date" placeholder="Date"/></div>
-
+                        <br>
                     </div>
 
-                    <div class="form-group">
+               <%--     <div class="form-group">
                         <label  class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6"> <br>
                             <a class="" title="Insert picture (or just drag & drop)" id=""><i
                                     class="fa fa-picture-o"></i></a><span
                                 class="required"></span></label>
-                                <input type="file" value="${employee.pic }" name="pic" data-role="magic-overlay"
-                                       data-target="#pictureBtn"
-                                       data-edit="insertImage"/>
-                        </div>
+                        <input type="file" id="image" alt="Login"
+                               src="../../images/favicon.ico">
+                        </div>--%>
 
 
-                    <button type='submit' class="btn btn-primary" style="width: 50%" value="Register">
+                    <button type='submit' class="btn btn-primary" style="width: 50%; top: 20px; position: relative" value="Register">
                         Submit
                     </button>
-                    <button type='reset' class="btn btn-outline-success" value="">Reset</button>
+                    <button type='reset' class="btn btn-outline-success" style="top: 20px; position: relative" value="">Reset</button>
 
                 </form>
             </div>
@@ -338,47 +337,21 @@
 
                                             </thead>
                                             <tbody>
+                                            <c:forEach items="${loadAllUserTable}" var="e">
                                             <tr>
-                                                <th scope="row">1</th>
-                                                <td>Mark</td>
-                                                <td>Otto</td>
-                                                <td>@mdo</td>
-                                                <th scope="row">1</th>
-                                                <td>Mark</td>
-                                                <td>Otto</td>
-                                                <td>@mdo</td>
-                                                <th scope="row">1</th>
-                                                <td>Mark</td>
-                                                <td>Otto</td>
-
+                                                <th scope="row">${e.userId}</th>
+                                                <td>${e.name}</td>
+                                                <td>${e.position}</td>
+                                                <td>${e.mobileNo}</td>
+                                                <td>${e.image}</td>
+                                                <td>${e.salary}</td>
+                                                <td>${e.address}</td>
+                                                <td>${e.email}</td>
+                                                <th>${e.password}="row">1</th>
+                                                <td>${e.gender}</td>
+                                                <td>${e.date}</td>
                                             </tr>
-                                            <tr>
-                                                <th scope="row">2</th>
-                                                <td>Jacob</td>
-                                                <td>Thornton</td>
-                                                <td>@fat</td>
-                                                <th scope="row">2</th>
-                                                <td>Jacob</td>
-                                                <td>Thornton</td>
-                                                <td>@fat</td>
-                                                <th scope="row">2</th>
-                                                <td>Jacob</td>
-                                                <td>Thornton</td>
-                                            </tr>
-                                            <tr>
-                                                <th scope="row">3</th>
-                                                <td>Larry</td>
-                                                <td>the Bird</td>
-                                                <td>@twitter</td>
-                                                <th scope="row">2</th>
-                                                <td>Jacob</td>
-                                                <td>Thornton</td>
-                                                <td>@fat</td>
-                                                <th scope="row">2</th>
-                                                <td>Jacob</td>
-                                                <td>Thornton</td>
-
-                                            </tr>
+                                            </c:forEach>
                                             </tbody>
                                         </table>
                                     </div>

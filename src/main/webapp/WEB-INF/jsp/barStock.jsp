@@ -180,7 +180,7 @@
 
 
                     <div class="col-sm-12 col-md-3 col-lg-3 col-xl-3">
-                        <a href="/inventory">
+                        <a href="/bar">
                             <button type="button" class="large-btn btn btn-dark">Back</button></a>
                     </div>
 

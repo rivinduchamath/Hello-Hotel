@@ -51,13 +51,14 @@ public class BarOrders {
             for (BarOrderDTO dto: totalCount) {
                 i++;
             }
-              barOrderDTO.setId ( String.valueOf ( i ) );
+            barOrderDTO.setId ( String.valueOf ( i ) );
         } catch (NullPointerException e) {
             barOrderDTO.setId ( String.valueOf ( 1 ) );
         }
 
-         barBO.saveBarOrder(barOrderDTO);
+        System.out.println("/////////////////////////////////////////////////////////////////////////////");
 
+         barBO.saveBarOrder(barOrderDTO);
 
 
           return "invoice";

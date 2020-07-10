@@ -17,10 +17,18 @@
     <link href="../../vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
     <!-- NProgress -->
     <link href="../../vendors/nprogress/nprogress.css" rel="stylesheet">
-
     <!-- Custom Theme Style -->
     <link href="../../build/css/custom.min.css" rel="stylesheet">
 
+    <c:if test="${not empty loginError}">
+        <script>
+            window.addEventListener("load", function () {
+                alert("${loginError}");
+            })
+        </script>
+    </c:if>
+
+    <script></script>
 </head>
 
 <body class="nav-md" style="cursor: pointer">
@@ -234,10 +242,10 @@
 
                             <div class="x_content">
 
-                                <table id="datatable-buttons" class="table table-striped table-bordered">
+                                <table style="text-align: center" id="datatable-buttons" class="table table-striped table-bordered">
                                     <thead>
-                                    <tr style="text-align: center">
-                                        <th>#</th>
+                                    <tr>
+                                        <th>ItemId</th>
                                         <th>Title</th>
                                         <th>Description</th>
                                         <th>Qty</th>
@@ -251,7 +259,7 @@
                                     </thead>
                                     <tbody>
                                     <c:forEach items="${loadInventoryItemTable}" var="a">
-                                        <tr style="text-align: center">
+                                        <tr >
                                             <td>${a.inventoryId}</td>
                                             <td style="font-weight: bold">${a.text}</td>
                                             <td>${a.description}</td>
@@ -265,7 +273,7 @@
                                                 <a style="color: white;font-weight: bold" onclick="getValue();"
                                                    class="btn  btn-xs">
                                                     <i style="color: #0b2e13" class="fa fa-pencil"></i> </a>
-                                                <a href="/delete?noticeId=${a.inventoryId}" class="btn btn-xs">
+                                                <a href="deleteInventory/${a.inventoryId }" class="btn btn-xs">
                                                     <i class="fa fa-trash-o"></i></a>
                                             </td>
                                         </tr>
@@ -441,7 +449,9 @@
                                                     </td>
                                                     <td>
                                                                      ${e.qtyOnHand < e.orderQty ? "Incomplete" : "Complete"}
-
+                                                   <%-- <td><c:url value="" var="url">
+                                                        <c:param name="StudentID" value="${students.studentID}" />
+                                                    </c:url> <a href="${url}">Edit</a></td>--%>
                                                     </td>
                                                 </tr>
 

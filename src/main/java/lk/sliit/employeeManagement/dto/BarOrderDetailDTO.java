@@ -61,4 +61,13 @@ public class BarOrderDetailDTO {
     public void setTotalPrice(double totalPrice) {
         this.totalPrice = totalPrice;
     }
+
+    @Override
+    public String toString() {
+        return "BarOrderDetailDTO{" +
+                "itemCode='" + itemCode + '\'' +
+                ", itemPrice=" + itemPrice +
+                ", qty=" + qty +
+                '}';
+    }
 }//End Class

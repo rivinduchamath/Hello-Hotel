@@ -22,6 +22,7 @@
     <link href="../../vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
     <!-- Custom Theme Style -->
     <link href="../../build/css/custom.min.css" rel="stylesheet">
+
 </head>
 <body>
 <div class="col-md-3 left_col">

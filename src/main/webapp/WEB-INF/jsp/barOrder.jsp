@@ -1,7 +1,3 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: Chanuka
-  --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
@@ -263,7 +259,7 @@
                                 </h2>
                                 <form method="POST" action="invoiceBar" name="invoiceBar">
                                     <input style="display: none" type="text" id="itemPay" name="orderData">
-                                    <input style="display: none" type="text" id="cId" value="322" name="customerId">
+                                    <input style="display: none" type="text" id="cId"  name="customerId">
                                     <ul class="nav navbar-right panel_toolbox">
                                         <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                                         </li>
@@ -350,7 +346,6 @@
         var date = new Date();
         var date2 = new Date();
         var today = date.getDate() + ":" + (date.getMonth()) + ":" + date.getFullYear();
-
         selectedRow = $(this);
         $("#itemName").val($(this).find("td:nth-child(1)").text());
         $("#itemCode").val($(this).find("td:nth-child(2)").text());
@@ -372,7 +367,6 @@
 <%--<script>
     function getValue() {
         var checks = document.getElementsByClassName('tblOrder');
-
         var str = '';
         var numberofRows = $("#tblOrder tr").length;
         console.log(numberofRows+"fffffffffffffffffffffffffffffffffffffffffffff");

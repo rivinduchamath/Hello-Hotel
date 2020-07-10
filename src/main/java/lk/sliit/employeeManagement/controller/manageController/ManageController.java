@@ -16,4 +16,7 @@ public class ManageController {
         model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
         return "manage";
     }
+
+
+
 }

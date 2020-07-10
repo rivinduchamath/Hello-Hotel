@@ -16,7 +16,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
 
 @Service
@@ -67,31 +66,28 @@ public class BarBOImpl implements BarBO {
     @Override
     public void saveBarOrder(BarOrderDTO barOrderDTO) {
 
-        List<BarOrderDetailDTO> s = new ArrayList<>();
-        BarOrderDetailDTO sa = new BarOrderDetailDTO();
-        sa.setItemCode("I001");
-        sa.setTotalPrice(21);
-        sa.setItemName("ddddddddddd");
-        sa.setQty(221);
-        sa.setItemPrice(22333);
-        s.add(0,sa);
-        System.out.println(barOrderDTO.getCustomerId());
-        System.out.println(barOrderDTO.getId());
-        System.out.println(barOrderDTO.getUser());
-        System.out.println(barOrderDTO.getOrderData());
-        System.out.println(barOrderDTO.getDate());
+                java.util.List<BarOrderDetailDTO> list = new ArrayList<BarOrderDetailDTO>();
+                String arr = barOrderDTO.getOrderData();
+                String yo[] = arr.split(" ");
+                int count = 0;
+                BarOrderDetailDTO itm = new BarOrderDetailDTO();
+                for(String str:yo) {
+                    if(count == 0 ) {
+                        itm = new BarOrderDetailDTO();
+                        itm.setItemCode(str);
+                        count ++;
 
+                    }else if(count == 1) {
+                        itm.setItemPrice(Double.parseDouble(str));
+                        count ++;
 
+                    }else if(count == 2) {
+                        itm.setQty(Double.parseDouble(str));
+                        list.add(itm);
+                        count = 0;
+                    }
+                }
 
-      /*  for (String s: list) {
-            String[] sourceAry1 =  s.split("  ");
-            for(String value : sourceAry1) {
-                list2.add (value );
-            }
-        }*/
-      /*  for (String s: list2) {
-            System.out.println(s);
-        }*/
         Calendar cal = Calendar.getInstance();
         cal.add(Calendar.DATE, 0);
         java.util.Date today =  cal.getTime();
@@ -102,18 +98,15 @@ public class BarBOImpl implements BarBO {
                 barOrderDTO.getCustomerId (),
                 barOrderDTO.getUser () ));
 
-        for (BarOrderDetailDTO orderDetail :s ) {
+        for (BarOrderDetailDTO orderDetail :list ) {
             barOrdersDetailsDAO.save(new BarOrderDetails( barOrderDTO.getId (), orderDetail.getItemCode(),
                     orderDetail.getItemPrice(), orderDetail.getQty()));
             Inventory inventory = inventoryDAO.findOne(orderDetail.getItemCode());
             inventory.setOrderQty(inventory.getOrderQty() - orderDetail.getQty());
             inventoryDAO.save(inventory);
         }
-
-
-
-
     }
+
 
 
 }
