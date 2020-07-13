@@ -38,7 +38,7 @@
 					</span>
 
 					<div class="wrap-input100 validate-input" data-validate = "Valid Id is required">
-						<input class="input100" type="text" name="idNo"/>
+						<input class="input100" type="text" name="userId"/>
 						<span class="focus-input100"></span>
 						<span class="label-input100">User Id</span>
 					</div>

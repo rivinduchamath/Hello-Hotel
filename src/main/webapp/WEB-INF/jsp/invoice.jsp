@@ -46,7 +46,7 @@
                 <!-- menu profile quick info -->
                 <div class="profile clearfix">
                     <div class="profile_pic" style=" width: 80px;height: 80px">
-                        <img src="../../images/icons/${loggerName.pic}" alt="..." class="img-circle profile_img">
+                        <img src="../../images/icons/${loggerName.image}" alt="..." class="img-circle profile_img">
                     </div>
                     <div class="profile_info">
                         <span>Welcome,</span>
@@ -138,7 +138,7 @@
                         <li class="nav-item dropdown open" style="padding-left: 15px;">
                             <a href="javascript:;" class="user-profile dropdown-toggle" aria-haspopup="true"
                                id="navbarDropdown" data-toggle="dropdown" aria-expanded="false">
-                                <img src="../../images/icons/${loggerName.pic}" alt="">${loggerName.name}
+                                <img src="../../images/icons/${loggerName.image}" alt="">${loggerName.name}
                             </a>
                             <div class="dropdown-menu dropdown-usermenu pull-right" aria-labelledby="navbarDropdown">
                                 <a class="dropdown-item" href="javascript:;"> Profile</a>

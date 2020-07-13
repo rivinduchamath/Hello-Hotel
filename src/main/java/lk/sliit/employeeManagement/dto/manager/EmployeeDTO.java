@@ -1,59 +1,61 @@
-package lk.sliit.employeeManagement.dto;
+package lk.sliit.employeeManagement.dto.manager;
+
+import lk.sliit.employeeManagement.entity.hr.Attendance;
+import lk.sliit.employeeManagement.entity.hr.Salary;
 
 import java.sql.Date;
+import java.util.List;
 
 public class EmployeeDTO {
-
-    private String idNo;
+    private String userId;
     private String name;
-    private int mobileNumber;
+    private String mobileNo;
     private String email;
     private String address;
-    private String occupation;
+    private String position;
     private String password;
     private Date dateOfBirth;
     private String gender;
+    private double salary;
     private Date date;
-    private String Pic;
-    private boolean admin;
+    private String image;
+    private List<Attendance> attendance;
+    private List<Salary> salaries;
 
 
+    public EmployeeDTO(String userId, String name, String mobileNo,
+                       String email, String address, String position,
+                       String password, Date dateOfBirth, String gender,
+                       double salary, Date date, String image) {
+        this.userId = userId;
+        this.name = name;
+        this.mobileNo = mobileNo;
+        this.email = email;
+        this.address = address;
+        this.position = position;
+        this.password = password;
+        this.dateOfBirth = dateOfBirth;
+        this.gender = gender;
+        this.salary = salary;
+        this.date = date;
+        this.image = image;
+
+    }
 
     public EmployeeDTO() {
     }
 
-    public EmployeeDTO(String idNo, String name, int mobileNumber, String email,
-                    String address, String occupation, String password,
-                    Date dateOfBirth, String gender, Date date, String pic,
-                    boolean admin) {
-        this.idNo = idNo;
-        this.name = name;
-        this.mobileNumber = mobileNumber;
-        this.email = email;
-        this.address = address;
-        this.occupation = occupation;
-        this.password = password;
-        this.dateOfBirth = dateOfBirth;
-        this.gender = gender;
-        this.date = date;
-        Pic = pic;
-        this.admin = admin;
-
-
-    }
-
-    public EmployeeDTO(String idNo, String password) {
-        this.idNo = idNo;
+    public EmployeeDTO(String userId, String password) {
+        this.userId = userId;
         this.password = password;
     }
 
-
-    public String getIdNo() {
-        return idNo;
+    public String getUserId() {
+        return userId;
     }
 
-    public void setIdNo(String idNo) {
-        this.idNo = idNo;
+    public void setUserId(String userId) {
+        this.userId = userId;
     }
 
     public String getName() {
@@ -64,12 +66,12 @@ public class EmployeeDTO {
         this.name = name;
     }
 
-    public int getMobileNumber() {
-        return mobileNumber;
+    public String getMobileNo() {
+        return mobileNo;
     }
 
-    public void setMobileNumber(int mobileNumber) {
-        this.mobileNumber = mobileNumber;
+    public void setMobileNo(String mobileNo) {
+        this.mobileNo = mobileNo;
     }
 
     public String getEmail() {
@@ -88,14 +90,12 @@ public class EmployeeDTO {
         this.address = address;
     }
 
-
-
-    public String getOccupation() {
-        return occupation;
+    public String getPosition() {
+        return position;
     }
 
-    public void setOccupation(String occupation) {
-        this.occupation = occupation;
+    public void setPosition(String position) {
+        this.position = position;
     }
 
     public String getPassword() {
@@ -122,6 +122,14 @@ public class EmployeeDTO {
         this.gender = gender;
     }
 
+    public double getSalary() {
+        return salary;
+    }
+
+    public void setSalary(double salary) {
+        this.salary = salary;
+    }
+
     public Date getDate() {
         return date;
     }
@@ -130,37 +138,33 @@ public class EmployeeDTO {
         this.date = date;
     }
 
-    public String getPic() {
-        return Pic;
+    public String getImage() {
+        return image;
     }
 
-    public void setPic(String Pic) {
-        this.Pic = Pic;
+    public void setImage(String image) {
+        this.image = image;
     }
 
-    public boolean isAdmin() {
-        return admin;
-    }
 
-    public void setAdmin(boolean admin) {
-        this.admin = admin;
-    }
 
     @Override
     public String toString() {
         return "EmployeeDTO{" +
-                "idNo='" + idNo + '\'' +
+                "userId='" + userId + '\'' +
                 ", name='" + name + '\'' +
-                ", mobileNumber=" + mobileNumber +
+                ", mobileNo='" + mobileNo + '\'' +
                 ", email='" + email + '\'' +
                 ", address='" + address + '\'' +
-                ", occupation='" + occupation + '\'' +
+                ", position='" + position + '\'' +
                 ", password='" + password + '\'' +
                 ", dateOfBirth=" + dateOfBirth +
                 ", gender='" + gender + '\'' +
+                ", salary=" + salary +
                 ", date=" + date +
-                ", Pic='" + Pic + '\'' +
-                ", admin=" + admin +
+                ", image='" + image + '\'' +
+                ", attendance=" + attendance +
+                ", salaries=" + salaries +
                 '}';
     }
 }

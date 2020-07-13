@@ -1,4 +1,7 @@
-package lk.sliit.employeeManagement.entity;
+package lk.sliit.employeeManagement.entity.hr;
+
+import lk.sliit.employeeManagement.entity.SuperEntity;
+import lk.sliit.employeeManagement.entity.manager.Employee;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -18,7 +21,7 @@ public class Attendance implements SuperEntity {
     @Column(columnDefinition = "double default 0")
     private double overtimeHours;
     @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.REFRESH, CascadeType.DETACH, CascadeType.MERGE})
-    @JoinColumn(name = "employeeId", referencedColumnName = "idNo", nullable = true)
+    @JoinColumn(name = "userId", referencedColumnName = "userId", nullable = true)
     private Employee employeeID;
 
 

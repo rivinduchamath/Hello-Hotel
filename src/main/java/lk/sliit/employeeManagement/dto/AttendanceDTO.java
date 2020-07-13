@@ -1,6 +1,6 @@
 package lk.sliit.employeeManagement.dto;
 
-import lk.sliit.employeeManagement.entity.Employee;
+import lk.sliit.employeeManagement.entity.manager.Employee;
 
 import java.util.Date;
 

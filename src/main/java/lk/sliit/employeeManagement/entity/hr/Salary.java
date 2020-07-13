@@ -1,4 +1,7 @@
-package lk.sliit.employeeManagement.entity;
+package lk.sliit.employeeManagement.entity.hr;
+
+import lk.sliit.employeeManagement.entity.SuperEntity;
+import lk.sliit.employeeManagement.entity.manager.Employee;
 
 import javax.persistence.*;
 
@@ -19,7 +22,7 @@ public class Salary implements SuperEntity {
     @Column(nullable = true)
     private double incomeTax;
     @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.REFRESH, CascadeType.DETACH, CascadeType.MERGE})
-    @JoinColumn(name = "employeeID", referencedColumnName = "idNo", nullable = true)
+    @JoinColumn(name = "userId", referencedColumnName = "userId", nullable = true)
     private Employee employeeID;
 
     public Salary() {}

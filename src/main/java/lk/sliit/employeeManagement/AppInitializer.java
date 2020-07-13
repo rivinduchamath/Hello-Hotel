@@ -9,7 +9,7 @@ package lk.sliit.employeeManagement;
 */
 
 import lk.sliit.employeeManagement.dao.EmployeeDAO;
-import lk.sliit.employeeManagement.entity.Employee;
+import lk.sliit.employeeManagement.entity.manager.Employee;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -32,23 +32,24 @@ public class AppInitializer {
     Date date= Date.valueOf(str);
 
     @Bean //Add Demo System User To the System
-    CommandLineRunner init2(EmployeeDAO employeeDAO) {
+    CommandLineRunner init2(EmployeeDAO manageDAO) {
         return args -> {
             List<String> names = Arrays.asList ( "1");
-            names.forEach ( name -> employeeDAO.save ( new Employee(
+            names.forEach ( name -> manageDAO.save ( new Employee(
 
                             "1",
                             "Rivindu Wijayarathna",
-                            0223123456,
+                            "0223123456",
                             "someOne@gmail.com",
                             "Galle",
                             "Admin",
                             "1",
                             date,
                             "Male",
+                            2112122,
                             date,
-                            "img.jpg",
-                            false)
+                            "img.jpg"
+                           )
                     )
             );
         };

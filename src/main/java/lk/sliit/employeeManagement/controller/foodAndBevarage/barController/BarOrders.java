@@ -2,7 +2,6 @@ package lk.sliit.employeeManagement.controller.foodAndBevarage.barController;
 
 import lk.sliit.employeeManagement.controller.SuperController;
 import lk.sliit.employeeManagement.dto.BarOrderDTO;
-import lk.sliit.employeeManagement.dto.BarOrderDetailDTO;
 import lk.sliit.employeeManagement.dto.inventory.InventoryDTO;
 import lk.sliit.employeeManagement.service.custom.BarBO;
 import lk.sliit.employeeManagement.service.custom.IndexLoginBO;
@@ -10,8 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.ModelAndView;
-
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 

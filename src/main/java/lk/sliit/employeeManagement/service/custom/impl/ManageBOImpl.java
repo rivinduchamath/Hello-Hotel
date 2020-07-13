@@ -1,11 +1,8 @@
 package lk.sliit.employeeManagement.service.custom.impl;
 
-import lk.sliit.employeeManagement.dao.ManageDAO;
-import lk.sliit.employeeManagement.dto.ManageUserDTO;
-import lk.sliit.employeeManagement.dto.NoticeDTO;
-import lk.sliit.employeeManagement.entity.Notice;
-import lk.sliit.employeeManagement.entity.inventory.Inventory;
-import lk.sliit.employeeManagement.entity.manager.ManageUser;
+import lk.sliit.employeeManagement.dao.EmployeeDAO;
+import lk.sliit.employeeManagement.dto.manager.EmployeeDTO;
+import lk.sliit.employeeManagement.entity.manager.Employee;
 import lk.sliit.employeeManagement.service.custom.ManageBO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,44 +15,51 @@ import java.util.List;
 @Service
 public class ManageBOImpl implements ManageBO {
     @Autowired
-    ManageDAO manageDAO;
+    EmployeeDAO manageDAO;
 
     @Override
-    public void save(ManageUserDTO manageUserDTO) {
-        manageDAO.save(new ManageUser(
-                manageUserDTO.getUserId(),
-                manageUserDTO.getName(),
-                manageUserDTO.getPosition(),
-                manageUserDTO.getAddress(),
-                manageUserDTO.getPassword(),
-                manageUserDTO.getSalary(),
-                manageUserDTO.getEmail(),
-                manageUserDTO.getMobileNo(),
-                manageUserDTO.getGender(),
-                manageUserDTO.getImage(),
-                manageUserDTO.getDate()
+    public void save(EmployeeDTO employeeDTO) {
+        manageDAO.save(new Employee(
+                employeeDTO.getUserId(),
+                employeeDTO.getName(),
+                employeeDTO.getMobileNo(),
+                employeeDTO.getEmail(),
+                employeeDTO.getAddress(),
+                employeeDTO.getPosition(),
+                employeeDTO.getPassword(),
+                employeeDTO.getDateOfBirth(),
+                employeeDTO.getGender(),
+                employeeDTO.getSalary(),
+                employeeDTO.getDate(),
+                employeeDTO.getImage()
         ));
     }
 
     @Override
-    public List<ManageUserDTO> findAllUser() {
-        Iterable<ManageUser> all = manageDAO.findAll();
-        List<ManageUserDTO> dtos = new ArrayList<>();
-        for (ManageUser manageUser: all) {
-            dtos.add(new ManageUserDTO(
-                    manageUser.getUserId(),
-                    manageUser.getName(),
-                    manageUser.getPosition(),
-                    manageUser.getAddress(),
-                    manageUser.getPassword(),
-                    manageUser.getSalary(),
-                    manageUser.getEmail(),
-                    manageUser.getMobileNo(),
-                    manageUser.getGender(),
-                    manageUser.getImage(),
-                    manageUser.getDate()
+    public List<EmployeeDTO> findAllUser() {
+        Iterable<Employee> all = manageDAO.findAll();
+        List<EmployeeDTO> dtos = new ArrayList<>();
+        for (Employee employee: all) {
+            dtos.add(new EmployeeDTO(
+                    employee.getUserId(),
+                    employee.getName(),
+                    employee.getMobileNo(),
+                    employee.getEmail(),
+                    employee.getAddress(),
+                    employee.getPosition(),
+                    employee.getPassword(),
+                    employee.getDateOfBirth(),
+                    employee.getGender(),
+                    employee.getSalary(),
+                    employee.getDate(),
+                    employee.getImage()
             ));
         }
         return dtos;
+    }
+
+    @Override
+    public void deleteEmployee(String userId) {
+        manageDAO.delete(userId);
     }
 }

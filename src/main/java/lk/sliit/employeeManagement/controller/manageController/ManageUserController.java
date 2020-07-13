@@ -1,30 +1,17 @@
 package lk.sliit.employeeManagement.controller.manageController;
 
 import lk.sliit.employeeManagement.controller.SuperController;
-import lk.sliit.employeeManagement.dto.ManageUserDTO;
+import lk.sliit.employeeManagement.dto.manager.EmployeeDTO;
 import lk.sliit.employeeManagement.service.custom.IndexLoginBO;
 import lk.sliit.employeeManagement.service.custom.ManageBO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
-import java.io.File;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.sql.Blob;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.sql.SQLException;
+import java.io.PrintWriter;
 import java.util.List;
-
-import org.hibernate.engine.jdbc.BlobProxy;
-import org.springframework.web.util.NestedServletException;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -37,24 +24,40 @@ public class ManageUserController {
 
 
     @GetMapping("/manageUser")
-    public String loginPage(HttpServletResponse response, Model model, HttpServletRequest request)  {
+    public String loginPage(HttpServletResponse response, Model model, HttpServletRequest request) {
         model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
 
-        List<ManageUserDTO> p = manageBO.findAllUser();
+        List<EmployeeDTO> p = manageBO.findAllUser();
         model.addAttribute("loadAllUserTable", p);
         return "manageUser";
     }
 
 
-
     @PostMapping("/saveUser")
-    public String saveUser(@ModelAttribute ManageUserDTO manageUserDTO, Model model){
+    public String saveUser(@ModelAttribute EmployeeDTO employeeDTO, Model model) {
         model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
 
-        manageBO.save(manageUserDTO);
+        manageBO.save(employeeDTO);
         return "redirect:/manageUser";
     }
 
+    @RequestMapping(value = "deleteEmployee/{userId}")
+    public void deleteEmployee(@PathVariable("userId") String userId, HttpServletRequest request, HttpServletResponse response) throws IOException {
+        response.setContentType("text/html;charset=UTF-8");
+        PrintWriter out = response.getWriter();
+        if (SuperController.idNo.equals(userId)) {
+            out.println("<script type=\"text/javascript\">");
+            out.println("alert('You Cant Delete this Employee. This" +
+                    " Employee Already Saved in Another Table');");
+            out.println("location='/manageUser';");
+            out.println("</script>");
+
+        } else {
+            manageBO.deleteEmployee(userId);
+            response.sendRedirect("/manageUser");
+        }
+
+    }
 
 
 }

@@ -28,6 +28,14 @@
         SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
         String date = sdf.format(new Date());
     %>
+
+    <c:if test="${not empty loginError}">
+        <script>
+            window.addEventListener("load",function(){
+                alert("${loginError}");
+            });
+        </script>
+    </c:if>
     <%--Chrat--%>
 
     <script src="https://www.amcharts.com/lib/4/core.js"></script>
@@ -69,6 +77,7 @@
             height: 500px;
         }
     </style>
+
 </head>
 
 <body class="nav-md" style="cursor: pointer">
@@ -201,7 +210,7 @@
                     <div class="form-group">
 
                         <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
-                            <label for="userId">User Id</label>
+                            <label >User Id</label>
                             <input type="text" class="form-control"
                                required="required" name="userId"
                                id="userId" placeholder="User Id"/></div>
@@ -237,7 +246,7 @@
 
                         <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6"> <br>
                             <label for="userId">Salary</label>
-                            <input type="text" class="form-control"
+                            <input type="number" class="form-control"
                                    required="required" name="salary"
                                    id="salary" placeholder="Salary"/></div>
 
@@ -307,7 +316,6 @@
                                        aria-expanded="false"><i class="fa fa-wrench"></i></a>
                                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                                         <a class="dropdown-item" href="#">Settings 1</a>
-                                        <a class="dropdown-item" href="#">Settings 2</a>
                                     </div>
                                 </li>
                                 <li><a class="close-link"><i class="fa fa-close"></i></a>
@@ -322,34 +330,37 @@
                                         <table id="datatable-buttons" class="table table-striped table-bordered">
                                             <thead class="thead-light">
                                             <tr>
-                                                <th scope="col">Id</th>
-                                                <th scope="col">Name</th>
-                                                <th scope="col">Position</th>
-                                                <th scope="col">MobileNo</th>
-                                                <th scope="col">Pic</th>
-                                                <th scope="col">Salary</th>
-                                                <th scope="col">Address</th>
-                                                <th scope="col">Email</th>
-                                                <th scope="col">Password</th>
-                                                <th scope="col">Gender</th>
-                                                <th scope="col">Date</th>
+                                                <th>Id</th>
+                                                <th>Name</th>
+                                                <th>Position</th>
+                                                <th>MobileNo</th>
+                                                <th>Pic</th>
+                                                <th>Salary</th>
+                                                <th>Address</th>
+                                                <th>Email</th>
+                                                <th>Password</th>
+                                                <th>Gender</th>
+                                                <th>Date</th>
+                                                <th>Delete</th>
                                             </tr>
 
                                             </thead>
                                             <tbody>
                                             <c:forEach items="${loadAllUserTable}" var="e">
                                             <tr>
-                                                <th scope="row">${e.userId}</th>
+                                                <td>${e.userId}</td>
                                                 <td>${e.name}</td>
                                                 <td>${e.position}</td>
                                                 <td>${e.mobileNo}</td>
-                                                <td>${e.image}</td>
+                                                <td></td>
                                                 <td>${e.salary}</td>
                                                 <td>${e.address}</td>
                                                 <td>${e.email}</td>
-                                                <th>${e.password}="row">1</th>
+                                                <td>${e.password}</td>
                                                 <td>${e.gender}</td>
                                                 <td>${e.date}</td>
+                                                <td>  <a href="deleteEmployee/${e.userId}"<%--onclick="return confirm('Are you sure you want to delete?')"--%>  class="btn btn-xs">
+                                                    <i class="fa fa-trash-o"></i></a></td>
                                             </tr>
                                             </c:forEach>
                                             </tbody>
@@ -616,6 +627,26 @@
         })
 
     }); // end am4core.ready()
+</script>
+
+<script>
+
+        var selectedRow = null;
+        $("#datatable-buttons tbody").on('click', 'tr', function () {
+            selectedRow = $(this);
+            $("#userId").val($(this).find("td:nth-child(1)").text());
+            $("#userName").val($(this).find("td:nth-child(2)").text());
+            $("#position").val($(this).find("td:nth-child(3)").text());
+            $("#mobileNo").val($(this).find("td:nth-child(4)").text());
+            $("#pic").val($(this).find("td:nth-child(5)").text());
+            $("#salary").val($(this).find("td:nth-child(6)").text());
+            $("#address").val($(this).find("td:nth-child(7)").text());
+            $("#email").val($(this).find("td:nth-child(8)").text());
+            $("#password").val($(this).find("td:nth-child(9)").text());
+            $("#gender").val($(this).find("td:nth-child(10)").text());
+            $("#date").val($(this).find("td:nth-child(11)").text());
+            selectedRow.addClass('row-selected');
+        });
 </script>
 
 <%--/Pie Chart 2--%>

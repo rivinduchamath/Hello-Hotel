@@ -1,6 +1,6 @@
 package lk.sliit.employeeManagement.dao;
 
-import lk.sliit.employeeManagement.entity.Attendance;
+import lk.sliit.employeeManagement.entity.hr.Attendance;
 import org.springframework.data.repository.CrudRepository;
 
 import java.util.Date;

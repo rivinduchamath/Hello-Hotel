@@ -2,10 +2,10 @@ package lk.sliit.employeeManagement.service.custom.impl;
 
 import lk.sliit.employeeManagement.dao.EmployeeDAO;
 import lk.sliit.employeeManagement.dao.NoticeDAO;
-import lk.sliit.employeeManagement.dto.EmployeeDTO;
+import lk.sliit.employeeManagement.dto.manager.EmployeeDTO;
 import lk.sliit.employeeManagement.dto.NoticeDTO;
-import lk.sliit.employeeManagement.entity.Employee;
 import lk.sliit.employeeManagement.entity.Notice;
+import lk.sliit.employeeManagement.entity.manager.Employee;
 import lk.sliit.employeeManagement.service.custom.IndexLoginBO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -27,27 +27,28 @@ public class IndexLoginBOImpl implements IndexLoginBO {
 
     @Override
     public EmployeeDTO findByIdNoAndPassword(String idNo, String password) {
-        Employee employee = employeeDAO.findByIdNoAndPassword(idNo, password);
+        Employee employee = employeeDAO.findByUserIdAndPassword(idNo, password);
         return new EmployeeDTO (
-                employee.getIdNo (),
+                employee.getUserId (),
                 employee.getPassword ());
     }
 
     @Override
     public EmployeeDTO getEmployeeByIdNo(String idNo) {
         Employee employee = employeeDAO.findOne (idNo);
-        return new EmployeeDTO (employee.getIdNo (),
-                employee.getName (),
-                employee.getMobileNumber (),
-                employee.getEmail (),
-                employee.getAddress (),
-                employee.getOccupation (),
-                employee.getPassword (),
-                employee.getDateOfBirth (),
-                employee.getGender (),
-                employee.getDate (),
-                employee.getPic (),
-                employee.isAdmin ()
+        return new EmployeeDTO (
+                employee.getUserId(),
+                employee.getName(),
+                employee.getMobileNo(),
+                employee.getEmail(),
+                employee.getAddress(),
+                employee.getPosition(),
+                employee.getPassword(),
+                employee.getDateOfBirth(),
+                employee.getGender(),
+                employee.getSalary(),
+                employee.getDate(),
+                employee.getImage()
         );
 
     }
