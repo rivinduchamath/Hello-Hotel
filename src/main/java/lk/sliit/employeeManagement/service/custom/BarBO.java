@@ -12,4 +12,6 @@ public interface BarBO extends SuperBO {
     List<BarOrderDTO> findAllBarOrders();
 
     void saveBarOrder(BarOrderDTO barOrderDTO);
+
+    BarOrderDTO findTopByOrderByBarIdDesc();
 }

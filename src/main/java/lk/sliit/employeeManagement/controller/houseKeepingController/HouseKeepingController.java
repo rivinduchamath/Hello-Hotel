@@ -13,7 +13,7 @@ public class HouseKeepingController {
     @Autowired
     IndexLoginBO indexLoginBO;
 
-    @GetMapping("/rooms")
+    @GetMapping("/housekeeping")
     public String loginPage(Model model) {
         model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
         return "housekeeping";

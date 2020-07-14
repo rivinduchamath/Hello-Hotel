@@ -1,5 +1,7 @@
 package lk.sliit.employeeManagement.entity;
 
+import com.sun.istack.internal.Nullable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -9,36 +11,58 @@ import java.sql.Date;
 @Entity
 public class HouseKeeping implements SuperEntity {
     @Id
-    private String houseID ;
-    private String text;
+    private String roomId ;
+    private String name;
     @Column(length = 1000)
     private String description;
+    @Column(nullable = true)
+    private double price;
+    private String category;
+    @Column(nullable = true)
+    private double totalIncome;
+    private String submittedBy;
+    private String hrManagerId;
     private Date date;
 
-    public HouseKeeping(String houseID, String text, String description, Date date) {
-        this.houseID = houseID;
-        this.text = text;
+    public HouseKeeping(String roomId, String name, String description,
+                        double price, String category, double totalIncome,
+                        String submittedBy, String hrManagerId, Date date) {
+        this.roomId = roomId;
+        this.name = name;
         this.description = description;
+        this.price = price;
+        this.category = category;
+        this.totalIncome = totalIncome;
+        this.submittedBy = submittedBy;
+        this.hrManagerId = hrManagerId;
         this.date = date;
     }
 
     public HouseKeeping() {
     }
 
-    public String getBanquetId() {
-        return houseID;
+    public String getHrManagerId() {
+        return hrManagerId;
     }
 
-    public void setBanquetId(String houseID) {
-        this.houseID = houseID;
+    public void setHrManagerId(String hrManagerId) {
+        this.hrManagerId = hrManagerId;
     }
 
-    public String getText() {
-        return text;
+    public String getRoomId() {
+        return roomId;
     }
 
-    public void setText(String text) {
-        this.text = text;
+    public void setRoomId(String roomId) {
+        this.roomId = roomId;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getDescription() {
@@ -47,6 +71,38 @@ public class HouseKeeping implements SuperEntity {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public double getPrice() {
+        return price;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
+    }
+
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
+    }
+
+    public double getTotalIncome() {
+        return totalIncome;
+    }
+
+    public void setTotalIncome(double totalIncome) {
+        this.totalIncome = totalIncome;
+    }
+
+    public String getSubmittedBy() {
+        return submittedBy;
+    }
+
+    public void setSubmittedBy(String submittedBy) {
+        this.submittedBy = submittedBy;
     }
 
     public Date getDate() {

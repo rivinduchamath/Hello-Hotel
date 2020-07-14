@@ -16,4 +16,6 @@ public interface NoticeBO extends SuperBO {
     NoticeDTO findId();
 
     NoticeDTO findNoticeById(String noticeId);
+
+
 }

@@ -1,7 +1,9 @@
 package lk.sliit.employeeManagement.controller.noticeController;
 
 import lk.sliit.employeeManagement.controller.SuperController;
+import lk.sliit.employeeManagement.dto.BarOrderDTO;
 import lk.sliit.employeeManagement.dto.NoticeDTO;
+import lk.sliit.employeeManagement.dto.inventory.ItemTypeDTO;
 import lk.sliit.employeeManagement.service.custom.IndexLoginBO;
 import lk.sliit.employeeManagement.service.custom.NoticeBO;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,12 +27,12 @@ public class NoticeController { //notice.jsp For All Notice
         model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
 
         ModelAndView mav = new ModelAndView("notice");
-        NoticeDTO dd = noticeBO.findId();
         try {
-            int x = Integer.parseInt(dd.getNoticeId()) + 1;
-            model.addAttribute("noticeID", x);
+            NoticeDTO totalCount = noticeBO.findId ( );
+            int x = Integer.parseInt ( totalCount.getNoticeId ( ) )+ 1;
+            model.addAttribute ( "genId", x);
         } catch (NullPointerException e) {
-            model.addAttribute("noticeID", 1);
+            model.addAttribute ( "genId", 1 );
         }
         List<NoticeDTO> p = noticeBO.findAll();
         model.addAttribute("loadNoticeTable", p);

@@ -29,7 +29,82 @@
         SimpleDateFormat sdf = new SimpleDateFormat ( "dd-MM-yyyy" );
         String date = sdf.format ( new Date ( ) );
     %>
+    <style>
+        .large-btn {
+            height: 90px;
+            width: 100%;
+            font-family: "Playfair Display", Georgia, "Times New Roman", serif;
+            font-weight: bolder;
+            font-size: 27px;
+        }
 
+        .btnq2:hover {
+            transform: scale(1.05, 1.1);
+            transition: 0.8s ease;
+            -webkit-transition: 0.8s ease;
+            -moz-transition: 0.8s ease;
+        }
+
+        .btnq3:hover {
+            transform: scale(1.3, 1.3);
+            transition: 0.8s ease;
+            -webkit-transition: 0.8s ease;
+            -moz-transition: 0.8s ease;
+        }
+        #chartdiv {
+            width: 100%;
+            height: 500px;
+        }
+
+        #chartdiv1 {
+            width: 100%;
+            height: 500px;
+        }
+
+        .large-btn:hover {
+            color: #cebbbb;
+        }
+        /*//////////////////////////////////////////////////////////////*/
+
+        .containerx {
+            display: flex;
+
+        }
+
+        .btnq {
+            text-decoration: none;
+            border: 5px solid rgb(174, 182, 203);
+            position: relative;
+            overflow: hidden;
+            height: 90px;
+            width: 100%;
+            font-size: 1.5rem;
+            text-align: center;
+            border-radius: 5px 5px;
+        }
+
+        .btnq:before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -00%;
+            text-align: center;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                    120deg,
+                    transparent,
+                    rgba(135, 141, 156, 0.4),
+                    transparent
+            );
+            transition: all .8s;
+        }
+
+        .btnq:hover:before {
+            left: 100%;
+        }
+
+    </style>
 </head>
 <body class="nav-md" style="cursor: pointer">
 <div class="container body">
@@ -136,9 +211,64 @@
                         </form>
                     </div>
                 </div>
+<%--////////////////////////////////////////////////////////////////////////////////////////--%>
+
+
+                <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+
+
+                    <div class="col-sm-12 col-md-3 col-lg-3 col-xl-3">
+                        <div class="containerx">
+                            <a style=" font-family: Playfair Display, Georgia, Times New Roman, serif;
+                             background-color: #3d495f; color: #ffffff;font-weight: bolder"
+                               href="barOrder" class="btnq"><h2
+                                    style="position: relative; letter-spacing: 1px;
+                                     margin-top: 30px">Order</h2></a>
+                        </div>
+                        <br>
+                    </div>
+
+                    <div class="col-sm-12 col-md-3 col-lg-3 col-xl-3">
+
+                        <div class="containerx">
+                            <a style=" font-family: Playfair Display, Georgia, Times New Roman, serif;
+                             background-color:#3d495f; color: #ffffff;font-weight: bolder"
+                               href="barStock" class="btnq"><h2
+                                    style="position: relative; letter-spacing: 1px;
+                                     margin-top: 30px">Stock</h2></a>
+                        </div>
+                        <br>
+                    </div>
+
+                    <div class="col-sm-12 col-md-3 col-lg-3 col-xl-3">
+                        <div class="containerx">
+                            <a style=" font-family: Playfair Display, Georgia, Times New Roman, serif;
+                             background-color:#3d495f; color: #ffffff;font-weight: bolder"
+                               href="/barBill" class="btnq"><h2
+                                    style="position: relative; letter-spacing: 1px;
+                                     margin-top: 30px">Bills</h2></a>
+                        </div>
+                        <br>
+                    </div>
+
+                    <div class="col-sm-12 col-md-3 col-lg-3 col-xl-3">
+
+
+                        <div class="containerx">
+                            <a style=" font-family: Playfair Display, Georgia, Times New Roman, serif;
+                             background-color:#3d495f; color: #ffffff;font-weight: bolder"
+                               href="barStock" class="btnq"><h2
+                                    style="position: relative; letter-spacing: 1px;
+                                     margin-top: 30px">Income</h2></a>
+                        </div>
+                        <br> </div>
+                </div>
 
 
 
+
+
+<%--                ///////////////////////////////////////////////////////////////////////////////////////               --%>
 
             </div>
         </div>

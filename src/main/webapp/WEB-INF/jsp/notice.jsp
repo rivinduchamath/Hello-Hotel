@@ -91,50 +91,10 @@
                                 <div class="clearfix"></div>
                             </div>
                             <div class="x_content">
-
-
                                 <!-- Smart Wizard -->
-                                <p>This is a basic form wizard example that inherits the colors from the selected
-                                    scheme.</p>
+
                                 <div id="wizard" class="form_wizard wizard_horizontal">
-                                    <ul class="wizard_steps">
-                                        <li>
-                                            <a href="#step-1">
-                                                <span class="step_no">1</span>
-                                                <span class="step_descr">
-                                              Step 1<br/>
-                                              <small>Step 1 description</small>
-                                          </span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#step-2">
-                                                <span class="step_no">2</span>
-                                                <span class="step_descr">
-                                              Step 2<br/>
-                                              <small>Step 2 description</small>
-                                          </span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#step-3">
-                                                <span class="step_no">3</span>
-                                                <span class="step_descr">
-                                              Step 3<br/>
-                                              <small>Step 3 description</small>
-                                          </span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#step-4">
-                                                <span class="step_no">4</span>
-                                                <span class="step_descr">
-                                              Step 4<br/>
-                                              <small>Step 4 description</small>
-                                          </span>
-                                            </a>
-                                        </li>
-                                    </ul>
+
                                     <div id="step-1">
                                         <form class="form-horizontal form-label-left" method="post" action="noticSave"
                                               name="noticSave">
@@ -144,7 +104,7 @@
                                                        for="noticeId">Notice Id<span class="required">*</span>
                                                 </label>
                                                 <div class="col-md-6 col-sm-6 ">
-                                                    <input type="text" value="${noticeID}" readonly id="noticeId"
+                                                    <input type="text" value="${genId}" readonly id="noticeId"
                                                            name="noticeId" required="required" class="form-control  ">
                                                 </div>
                                             </div>
@@ -190,8 +150,6 @@
 
                                 </div>
                                 <!-- End SmartWizard Content -->
-
-
                             </div>
                             <div class="x_content">
 

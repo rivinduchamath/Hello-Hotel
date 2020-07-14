@@ -14,7 +14,6 @@ public class BarBill {
     IndexLoginBO indexLoginBO;
     @GetMapping("/barBill")
     public String loginPage(Model model){
-
         model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
         return "barBill";
     }

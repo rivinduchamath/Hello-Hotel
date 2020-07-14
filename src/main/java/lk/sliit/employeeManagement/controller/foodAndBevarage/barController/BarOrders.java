@@ -3,6 +3,7 @@ package lk.sliit.employeeManagement.controller.foodAndBevarage.barController;
 import lk.sliit.employeeManagement.controller.SuperController;
 import lk.sliit.employeeManagement.dto.BarOrderDTO;
 import lk.sliit.employeeManagement.dto.inventory.InventoryDTO;
+import lk.sliit.employeeManagement.dto.inventory.SupplierDTO;
 import lk.sliit.employeeManagement.service.custom.BarBO;
 import lk.sliit.employeeManagement.service.custom.IndexLoginBO;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,19 +42,14 @@ public class BarOrders {
     @PostMapping("invoiceBar")
     public String loadInvoicePage(@ModelAttribute BarOrderDTO barOrderDTO, Model model, HttpServletRequest request) {
         model.addAttribute ( "loggerName", indexLoginBO.getEmployeeByIdNo ( SuperController.idNo ) );
-        try {
-            barOrderDTO.setUser(SuperController.idNo);
-            List<BarOrderDTO> totalCount = barBO.findAllBarOrders ( );
-            int  i= 0;
-            for (BarOrderDTO dto: totalCount) {
-                i++;
-            }
-            barOrderDTO.setId ( String.valueOf ( i ) );
+
+        try {barOrderDTO.setUser(SuperController.idNo);
+            BarOrderDTO top = barBO.findTopByOrderByBarIdDesc ( );
+            int x = Integer.parseInt ( top.getId ( ) )+ 1;
+            barOrderDTO.setId ( String.valueOf ( x ) );
         } catch (NullPointerException e) {
             barOrderDTO.setId ( String.valueOf ( 1 ) );
         }
-
-        System.out.println("/////////////////////////////////////////////////////////////////////////////");
 
          barBO.saveBarOrder(barOrderDTO);
 

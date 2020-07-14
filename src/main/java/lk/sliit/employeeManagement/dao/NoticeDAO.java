@@ -11,4 +11,6 @@ public interface NoticeDAO extends CrudRepository<Notice,String> {
     Notice findTopByOrderByNoticeIdDesc();
 
     Iterable<Notice> findAllByDateBetweenOrderByDateDesc(Date dt, Date todaydate);
+
+
 }

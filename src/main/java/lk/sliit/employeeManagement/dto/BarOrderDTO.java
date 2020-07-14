@@ -37,6 +37,10 @@ private Date date;
         this.date = date;
     }
 
+    public BarOrderDTO(String orderId) {
+        this.id = orderId;
+    }
+
     public Date getDate() {
         return date;
     }

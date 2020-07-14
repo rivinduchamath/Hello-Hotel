@@ -6,9 +6,11 @@ import lk.sliit.employeeManagement.dao.inventoryDAO.InventoryDAO;
 import lk.sliit.employeeManagement.dto.BarOrderDTO;
 import lk.sliit.employeeManagement.dto.BarOrderDetailDTO;
 import lk.sliit.employeeManagement.dto.inventory.InventoryDTO;
+import lk.sliit.employeeManagement.dto.inventory.SupplierDTO;
 import lk.sliit.employeeManagement.entity.barManage.BarOrderDetails;
 import lk.sliit.employeeManagement.entity.barManage.BarOrders;
 import lk.sliit.employeeManagement.entity.inventory.Inventory;
+import lk.sliit.employeeManagement.entity.inventory.Supplier;
 import lk.sliit.employeeManagement.service.custom.BarBO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -107,6 +109,18 @@ public class BarBOImpl implements BarBO {
         }
     }
 
+    @Override
+    public BarOrderDTO findTopByOrderByBarIdDesc() {
+        BarOrders orders = null;
+        try {
+            orders = barOrdersDAO.findTopByOrderByOrderIdDesc ();
+        }catch (Exception e){
+
+        }
+        return new BarOrderDTO(
+                orders.getOrderId ()
+        );
+    }//End
 
 
 }

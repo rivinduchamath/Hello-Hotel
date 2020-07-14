@@ -74,7 +74,7 @@
                     <li><a><i class="fa fa-life-buoy"></i> House Keeping <span
                             class="fa fa-chevron-down"></span></a>
                         <ul class="nav child_menu">
-                            <li><a href="rooms">Room Manage</a></li>
+                            <li><a href="housekeeping">Room Manage</a></li>
                         </ul>
                     </li>
                     <li><a><i class="fa fa-paw"></i> Kitchen<span
