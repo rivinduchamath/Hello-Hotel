@@ -3,12 +3,15 @@ package lk.sliit.employeeManagement.service.custom.impl;
 import lk.sliit.employeeManagement.dao.inventoryDAO.InventoryDAO;
 import lk.sliit.employeeManagement.dao.inventoryDAO.InventoryNoticeDAO;
 import lk.sliit.employeeManagement.dao.inventoryDAO.ItemTypeDAO;
+import lk.sliit.employeeManagement.dao.inventoryDAO.SupplierDAO;
 import lk.sliit.employeeManagement.dto.inventory.InventoryDTO;
 import lk.sliit.employeeManagement.dto.inventory.InventoryNoticeDTO;
 import lk.sliit.employeeManagement.dto.inventory.ItemTypeDTO;
+import lk.sliit.employeeManagement.dto.inventory.SupplierDTO;
 import lk.sliit.employeeManagement.entity.inventory.Inventory;
 import lk.sliit.employeeManagement.entity.inventory.InventoryNotice;
 import lk.sliit.employeeManagement.entity.inventory.ItemType;
+import lk.sliit.employeeManagement.entity.inventory.Supplier;
 import lk.sliit.employeeManagement.service.custom.InventoryBO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,6 +19,8 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 @Service
 @Transactional
@@ -27,6 +32,8 @@ public class InventoryBOImpl implements InventoryBO {
     InventoryDAO inventoryDAO;
     @Autowired
     InventoryNoticeDAO inventoryNoticeDAO;
+    @Autowired
+    SupplierDAO supplierDAO;
 
     @Override
     public List<ItemTypeDTO> findAll() {
@@ -35,7 +42,8 @@ public class InventoryBOImpl implements InventoryBO {
         for (ItemType a : all) {
             dtos.add(new ItemTypeDTO(
                     a.getId(),
-                    a.getUserType()
+                    a.getUserType(),
+                    a.getSubmittedBy()
             ));
         }
         return dtos;
@@ -238,5 +246,84 @@ public class InventoryBOImpl implements InventoryBO {
         return dtos;
     }
 
+    @Override
+    public void deleteInventoryType(String id) {
+        itemTypeDAO.delete(id);
+    }
 
+    @Override
+    public ItemTypeDTO findTopByOrderByIdDesc() {
+        ItemType itemType = null;
+        try {
+            itemType = itemTypeDAO.findTopByOrderByIdDesc ();
+        }catch (Exception e){
+           // Logger.getLogger("lk.sliit.project.employeeManagement.service.custom.impl").log(Level.SEVERE, null,e); //Add Logger To Catch Exception
+        }
+        return new ItemTypeDTO (
+                itemType.getId ()
+        );
+    }//End Get Total Emp
+
+    @Override
+    public void saveInventoryType(ItemTypeDTO inventoryDTO) {
+        itemTypeDAO.save(new ItemType(
+                inventoryDTO.getId(),
+                inventoryDTO.getUserType(),
+                inventoryDTO.getSubmittedBy()
+        ));
+    }
+
+    @Override
+    public void saveSupplier(SupplierDTO supplierDTO) {
+     supplierDAO.save(new Supplier(
+             supplierDTO.getId(),
+             supplierDTO.getName(),
+             supplierDTO.getAddress(),
+             supplierDTO.getMobile(),
+             supplierDTO.getEmail(),
+             supplierDTO.getGender(),
+             supplierDTO.getDate(),
+             supplierDTO.getBirthday(),
+             supplierDTO.getSubmittedBy()
+     ));
+    }
+
+    @Override
+    public List<SupplierDTO> findAllSuppliers() {
+        Iterable<Supplier> all = supplierDAO.findAll();
+        List<SupplierDTO> dtos = new ArrayList<>();
+        for (Supplier a : all) {
+            dtos.add(new SupplierDTO(
+                    a.getId(),
+                    a.getName(),
+                    a.getAddress(),
+                    a.getMobile(),
+                    a.getEmail(),
+                    a.getGender(),
+                    a.getDate(),
+                    a.getBirthday(),
+                    a.getSubmittedBy()
+            ));
+        }
+        return dtos;
+
+    }
+
+    @Override
+    public SupplierDTO findTopByOrderBySupplierIdDesc() {
+        Supplier supplier = null;
+        try {
+            supplier = supplierDAO.findTopByOrderByIdDesc ();
+        }catch (Exception e){
+            // Logger.getLogger("lk.sliit.project.employeeManagement.service.custom.impl").log(Level.SEVERE, null,e); //Add Logger To Catch Exception
+        }
+        return new SupplierDTO (
+                supplier.getId ()
+        );
+    }//End Get Total
+
+    @Override
+    public void deleteSupplier(String userId) {
+        supplierDAO.delete(userId);
+    }
 }

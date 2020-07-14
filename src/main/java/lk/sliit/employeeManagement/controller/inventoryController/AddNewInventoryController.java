@@ -28,14 +28,40 @@ public class AddNewInventoryController {
     InventoryBO inventoryBO;
 
 
-    @RequestMapping("/addInventoryType")
+    @GetMapping("/addInventoryType")
     public String loadForm_validationSaveMode(Model model, HttpServletRequest request) {
         model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
         request.setAttribute("mode", "MODE_UPDATE");
-
+        List<ItemTypeDTO> p = inventoryBO.findAll();
+        model.addAttribute("loadItemType", p);
+      //Top Id
+        try {
+            ItemTypeDTO totalCount = inventoryBO.findTopByOrderByIdDesc ( );
+            int x = Integer.parseInt ( totalCount.getId ( ) )+ 1;
+            model.addAttribute ( "genId", x);
+        } catch (NullPointerException e) {
+            model.addAttribute ( "genId", 1 );
+        }
         return "addInventory";
     }
 
+    @PostMapping("itemTypeSave")
+    public String itemTypeSave(@ModelAttribute ItemTypeDTO inventoryDTO, HttpServletRequest request) {
+        request.setAttribute("mode", "MODE_UPDATE");
+         inventoryDTO.setSubmittedBy(SuperController.idNo);
+        inventoryBO.saveInventoryType(inventoryDTO);
+        return "redirect:/addInventoryType";
+    }
+
+    @RequestMapping(value = "deleteInventoryItem/{id}")
+    public String deleteInventoryItem(@PathVariable("id") String id) {
+
+        try {
+            inventoryBO.deleteInventoryType(id);
+        } catch (Exception e) {
+        }
+        return "redirect:/addInventoryType";
+    }
     @RequestMapping("/allInventoryNotice")
     public String allInventoryNotice(Model model, HttpServletRequest request) {
         model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));

@@ -3,6 +3,7 @@ package lk.sliit.employeeManagement.controller.manageController;
 import lk.sliit.employeeManagement.controller.SuperController;
 import lk.sliit.employeeManagement.dto.manager.EmployeeDTO;
 import lk.sliit.employeeManagement.service.custom.IndexLoginBO;
+import lk.sliit.employeeManagement.service.custom.MailSend;
 import lk.sliit.employeeManagement.service.custom.ManageBO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -21,7 +22,8 @@ public class ManageUserController {
     IndexLoginBO indexLoginBO;
     @Autowired
     ManageBO manageBO;
-
+@Autowired
+    MailSend mailSend;
 
     @GetMapping("/manageUser")
     public String loginPage(HttpServletResponse response, Model model, HttpServletRequest request) {
@@ -38,6 +40,12 @@ public class ManageUserController {
         model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
 
         manageBO.save(employeeDTO);
+       try {
+           mailSend.sendMailToNewEmployee(employeeDTO);
+       }catch (Exception e){
+
+       }
+
         return "redirect:/manageUser";
     }
 
@@ -58,6 +66,12 @@ public class ManageUserController {
         }
 
     }
+
+
+        @RequestMapping(value = "/sendemail")
+        public String sendEmail() {
+            return "Email sent successfully";
+        }
 
 
 }

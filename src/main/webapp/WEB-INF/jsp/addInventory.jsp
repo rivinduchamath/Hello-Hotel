@@ -242,7 +242,8 @@
 
                             <div class="x_content">
 
-                                <table style="text-align: center" id="datatable-buttons" class="table table-striped table-bordered">
+                                <table style="text-align: center" id="datatable-buttons"
+                                       class="table table-striped table-bordered">
                                     <thead>
                                     <tr>
                                         <th>ItemId</th>
@@ -259,7 +260,7 @@
                                     </thead>
                                     <tbody>
                                     <c:forEach items="${loadInventoryItemTable}" var="a">
-                                        <tr >
+                                        <tr>
                                             <td>${a.inventoryId}</td>
                                             <td style="font-weight: bold">${a.text}</td>
                                             <td>${a.description}</td>
@@ -290,185 +291,285 @@
 
             </c:when>
             <c:when test="${mode=='MODE_UPDATE' }">
-                <link rel="stylesheet"
-                      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
                 <style>
-
-
-                    .topnav a {
-                        float: left;
+                    .large-btn {
+                        height: 90px;
+                        width: 100%;
+                        font-family: "Playfair Display", Georgia, "Times New Roman", serif;
+                        font-weight: bolder;
+                        font-size: 27px;
                     }
 
-                    .topnav a:hover {
-                        background-color: #ddd;
-                        color: black;
+                    .btnq2:hover {
+                        transform: scale(1.05, 1.1);
+                        transition: 0.8s ease;
+                        -webkit-transition: 0.8s ease;
+                        -moz-transition: 0.8s ease;
                     }
 
-                    .topnav a.active {
-                        background-color: #2196F3;
-                        color: white;
+                    .btnq3:hover {
+                        transform: scale(1.3, 1.3);
+                        transition: 0.8s ease;
+                        -webkit-transition: 0.8s ease;
+                        -moz-transition: 0.8s ease;
                     }
 
-                    .topnav .search-container {
-                        float: right;
+                    #chartdiv {
+                        width: 100%;
+                        height: 500px;
                     }
 
-                    .topnav input[type=text] {
-                        padding: 6px;
-                        margin-top: 8px;
-                        font-size: 17px;
-                        border: none;
+                    #chartdiv1 {
+                        width: 100%;
+                        height: 500px;
                     }
 
-                    .topnav .search-container button {
-                        float: right;
-                        padding: 6px 10px;
-                        margin-top: 8px;
-                        margin-right: 16px;
-                        background: #ddd;
-                        font-size: 17px;
-                        border: none;
-                        cursor: pointer;
+                    .large-btn:hover {
+                        color: #cebbbb;
                     }
 
-                    .topnav .search-container button:hover {
-                        background: #ccc;
+                    /*//////////////////////////////////////////////////////////////*/
+
+                    .containerx {
+                        display: flex;
+
                     }
 
-                    @media screen and (max-width: 600px) {
-                        .topnav .search-container {
-                            float: none;
-                        }
-
-                        .topnav a, .topnav input[type=text], .topnav .search-container button {
-                            float: none;
-                            display: block;
-                            text-align: left;
-                            width: 100%;
-                            margin: 0;
-                            padding: 14px;
-                        }
-
-                        .topnav input[type=text] {
-                            border: 1px solid #ccc;
-                        }
+                    .btnq {
+                        text-decoration: none;
+                        border: 5px solid rgb(174, 182, 203);
+                        position: relative;
+                        overflow: hidden;
+                        height: 90px;
+                        width: 100%;
+                        font-size: 1.5rem;
+                        text-align: center;
+                        border-radius: 5px 5px;
                     }
+
+                    .btnq:before {
+                        content: "";
+                        position: absolute;
+                        top: 0;
+                        left: -00%;
+                        text-align: center;
+                        width: 100%;
+                        height: 100%;
+                        background: linear-gradient(
+                                120deg,
+                                transparent,
+                                rgba(135, 141, 156, 0.4),
+                                transparent
+                        );
+                        transition: all .8s;
+                    }
+
+                    .btnq:hover:before {
+                        left: 100%;
+                    }
+
                 </style>
+
                 <div class="right_col" role="main">
-                    <div class="topnav">
-                        <div class="search-container">
-                            <form action="/action_page.php">
-                                <input type="text" placeholder="Search.." name="search">
-                                <button type="submit"><i class="fa fa-search"></i></button>
-                            </form>
+                    <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                        <div class="col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+                            <a href="/inventory">
+                                <button type="button" style=" border: 5px solid rgb(174, 182, 203);background-color: #45526e;
+                                    color: #c6d4d3;font-weight: bolder" class="btnq2 btn">
+                                    <i class="fa fa-mail-reply"> Back</i>
+                                </button>
+                            </a>
                         </div>
                     </div>
+                    <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                        <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6">
+                            <div class="form_wizard wizard_horizontal">
 
+                                <div id="step-2">
+                                    <form class="form-horizontal form-label-left" method="post"
+                                          action="itemTypeSave"
+                                          name="itemTypeSave">
+                                            <%--Form Divide to 2 parts Size 6 LEFT SIDE--%>
+
+                                            <%--Item Id Auto Fill--%>
+                                        <div class="form-group row">
+                                            <label class="col-form-label col-md-11 col-sm-11"
+                                                   for="itemId">Type Id<span class="required">*</span>
+                                            </label>
+                                            <div class="col-md-11 col-sm-11 ">
+                                                <input type="text" value="${genId}" id="id"
+                                                       name="id" readonly required="required"
+                                                       class="form-control  ">
+                                            </div>
+                                        </div>
+                                            <%--Item Name--%>
+                                        <div class="form-group row">
+                                            <label class="col-form-label col-md-11 col-sm-11 "
+                                                   for="title">Department<span
+                                                    class="required">*</span>
+                                            </label>
+                                            <div class="col-md-11 col-sm-11 ">
+                                                <input type="text" id="userType" name="userType"
+                                                       required="required"
+                                                       class="form-control ">
+                                            </div>
+
+                                        </div>
+
+
+                                            <%--Item Description--%>
+
+                                        <button type='submit' class="btn btn-primary"
+                                                style="margin-left: 1.5%; width: 12%" value="Register">
+                                            Save
+                                        </button>
+
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6">
+                            <div class="x_content" style="margin-top: 30px">
+
+                                <table style="text-align: center" class="table table-striped table-bordered">
+                                    <thead>
+                                    <tr>
+                                        <th>TypeId</th>
+                                        <th>Department</th>
+                                        <th>Submitted By</th>
+                                        <th>#Edit</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <c:forEach items="${loadItemType}" var="a">
+                                        <tr>
+                                            <td>${a.id}</td>
+                                            <td style="font-weight: bold">${a.userType}</td>
+                                            <td>${a.submittedBy}</td>
+
+                                            <td>
+                                                <a style="color: white;font-weight: bold" onclick="getValue();"
+                                                   class="btn  btn-xs">
+                                                    <i style="color: #0b2e13" class="fa fa-pencil"></i> </a>
+                                                <a href="deleteInventoryItem/${a.id }" class="btn btn-xs">
+                                                    <i class="fa fa-trash-o"></i></a>
+                                            </td>
+                                        </tr>
+                                    </c:forEach>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </c:when>
 
-<%--%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%--%>
+            <%--%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%--%>
             <c:when test="${mode=='MODE_WATCH' }">
-        <div class="right_col" role="main">
+                <div class="right_col" role="main">
 
 
-                <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                    <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
 
-                    <div class="x_panel">
-                        <div class="x_title">
-                            <h2>All Notice
-                                <small>Notice</small>
-                            </h2>
-                            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
-                                <div class="col-6 col-sm-6 col-md-6 col-lg-6 col-xl-3">
-                                    <a href="inventory">
-                                        <button type="button" class="btn btn-dark"><i class="fa fa-mail-reply"> Back</i>
-                                        </button>
-                                    </a>
+                        <div class="x_panel">
+                            <div class="x_title">
+                                <h2>All Notice
+                                    <small>Notice</small>
+                                </h2>
+                                <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                                    <div class="col-6 col-sm-6 col-md-6 col-lg-6 col-xl-3">
+                                        <a href="inventory">
+                                            <button type="button" class="btn btn-dark"><i class="fa fa-mail-reply">
+                                                Back</i>
+                                            </button>
+                                        </a>
 
+                                    </div>
                                 </div>
+                                <ul class="nav navbar-right panel_toolbox">
+
+                                </ul>
+                                <div class="clearfix"></div>
                             </div>
-                            <ul class="nav navbar-right panel_toolbox">
+                            <div class="x_content">
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <div class="card-box table-responsive">
 
-                            </ul>
-                            <div class="clearfix"></div>
-                        </div>
-                        <div class="x_content">
-                            <div class="row">
-                                <div class="col-sm-12">
-                                    <div class="card-box table-responsive">
-
-                                        <table style="text-align: center" id="datatable-buttons"
-                                               class="table table-striped table-bordered">
-                                            <thead class="thead-light">
-                                            <tr>
-
-                                                <th>Item Id</th>
-                                                <th>Item Name</th>
-                                                <th>Department</th>
-                                                <th>Order Qty</th>
-                                                <th>Qty On Hand</th>
-                                                <th>Required Qty</th>
-                                                <th>Date</th>
-                                                <th>Expected Date</th>
-                                                <th>Order Holder</th>
-                                                <th>Add Item</th>
-                                                <th>State</th>
-                                            </tr>
-
-
-                                            </thead>
-                                            <tbody>
-                                            <c:forEach items="${loadInventoryNoticeItemTable}" var="e">
+                                            <table style="text-align: center" id="datatable-buttons"
+                                                   class="table table-striped table-bordered">
+                                                <thead class="thead-light">
                                                 <tr>
 
-                                                    <td>${e.inventoryId}</td>
-                                                    <td>${e.text}</td>
-                                                    <td>${e.department}</td>
-                                                    <td>${e.orderQty}</td>
-                                                    <td>${e.qtyOnHand}</td>
-                                                    <td>
-                                                            ${e.qtyOnHand > e.orderQty ? 0.0 : e.orderQty-e.qtyOnHand}
-                                                    </td>
-                                                    <td>${e.date}</td>
-                                                    <td>${e.expDate}</td>
-                                                    <td>${e.orderHolder}</td>
-                                                    <td style="width: 20%" >
-                                                        <form action="updateQtyToday1" method="post">
-                                                            <div class="input-group" >
-                                                                <input style="display: none" value="${e.inventoryId}" type="text" class="form-control" name="inventoryId">
-                                                                <input required type="number" class="form-control" name="orderQty">
-                                                                <span class="input-group-btn">
+                                                    <th>Item Id</th>
+                                                    <th>Item Name</th>
+                                                    <th>Department</th>
+                                                    <th>Order Qty</th>
+                                                    <th>Qty On Hand</th>
+                                                    <th>Required Qty</th>
+                                                    <th>Date</th>
+                                                    <th>Expected Date</th>
+                                                    <th>Order Holder</th>
+                                                    <th>Add Item</th>
+                                                    <th>State</th>
+                                                </tr>
+
+
+                                                </thead>
+                                                <tbody>
+                                                <c:forEach items="${loadInventoryNoticeItemTable}" var="e">
+                                                    <tr>
+
+                                                        <td>${e.inventoryId}</td>
+                                                        <td>${e.text}</td>
+                                                        <td>${e.department}</td>
+                                                        <td>${e.orderQty}</td>
+                                                        <td>${e.qtyOnHand}</td>
+                                                        <td>
+                                                                ${e.qtyOnHand > e.orderQty ? 0.0 : e.orderQty-e.qtyOnHand}
+                                                        </td>
+                                                        <td>${e.date}</td>
+                                                        <td>${e.expDate}</td>
+                                                        <td>${e.orderHolder}</td>
+                                                        <td style="width: 20%">
+                                                            <form action="updateQtyToday1" method="post">
+                                                                <div class="input-group">
+                                                                    <input style="display: none"
+                                                                           value="${e.inventoryId}" type="text"
+                                                                           class="form-control" name="inventoryId">
+                                                                    <input required type="number" class="form-control"
+                                                                           name="orderQty">
+                                                                    <span class="input-group-btn">
                                                                      <button type="submit" style="font-weight: bolder;
                                                                       background-color: white; color: #b3adad;
                                                                       border: #0f0f0f solid 1px"
                                                                              class="btn">+</button>
                                                                     </span>
-                                                            </div>
-                                                        </form>
-                                                    </td>
-                                                    <td>
-                                                                     ${e.qtyOnHand < e.orderQty ? "Incomplete" : "Complete"}
-                                                   <%-- <td><c:url value="" var="url">
-                                                        <c:param name="StudentID" value="${students.studentID}" />
-                                                    </c:url> <a href="${url}">Edit</a></td>--%>
-                                                    </td>
-                                                </tr>
+                                                                </div>
+                                                            </form>
+                                                        </td>
+                                                        <td>
+                                                                ${e.qtyOnHand < e.orderQty ? "Incomplete" : "Complete"}
+                                                                <%-- <td><c:url value="" var="url">
+                                                                     <c:param name="StudentID" value="${students.studentID}" />
+                                                                 </c:url> <a href="${url}">Edit</a></td>--%>
+                                                        </td>
+                                                    </tr>
 
 
-                                            </c:forEach>
+                                                </c:forEach>
 
-                                            </tbody>
-                                        </table>
+                                                </tbody>
+                                            </table>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                </div>
-<%--                ///////////////////////////////////////////////////////////////////--%>
-                  </c:when>
+                <%--                ///////////////////////////////////////////////////////////////////--%>
+            </c:when>
         </c:choose>
         <!-- footer content -->
         <jsp:include page="footer.jsp"/>

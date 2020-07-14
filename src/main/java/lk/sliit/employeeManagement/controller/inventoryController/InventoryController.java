@@ -113,7 +113,8 @@ public class InventoryController {
                 for (InventoryNoticeDTO todayInventoryNoticeDTO : today) {
                     x = 0;
                     //if NO1
-                    if ((tomorrowInventoryNoticeDTO.getInventoryId()).equals(todayInventoryNoticeDTO.getInventory())) {
+                    if ((tomorrowInventoryNoticeDTO.getInventoryId())
+                            .equals(todayInventoryNoticeDTO.getInventory())) {
 
                         if (requiredQty > tomorrowInventoryNoticeDTO.getQtyOnHand()) {
                             x = 0;
@@ -146,7 +147,8 @@ public class InventoryController {
         int i = 0;
         for (InventoryNoticeDTO tomorrowInventoryNoticeDTO : tomorrow) {
             for (InventoryNoticeDTO todayInventoryNoticeDTO : today) {
-                if (tomorrowInventoryNoticeDTO.getInventoryId().equals(todayInventoryNoticeDTO.getInventory())) {
+                if (tomorrowInventoryNoticeDTO.getInventoryId().
+                        equals(todayInventoryNoticeDTO.getInventory())) {
                     return ++i;//If Already in return i > 0 else Return 0
                 }
             }
@@ -176,7 +178,8 @@ public class InventoryController {
                 for (InventoryNoticeDTO tomorrowInventoryNoticeDTO : tomorrow) {
                     for (InventoryNoticeDTO todayInventoryNoticeDTO : today) {
                         //if NO1
-                        if (dayAfterInventoryNoticeDTO.getInventoryId().equals(todayInventoryNoticeDTO.getInventory()) && x == 0) {
+                        if (dayAfterInventoryNoticeDTO.getInventoryId().
+                                equals(todayInventoryNoticeDTO.getInventory()) && x == 0) {
                             requiredQty = 0.0;
                             if (requiredQty > dayAfterInventoryNoticeDTO.getQtyOnHand()) {
                                 requiredQty = requiredQty - dayAfterInventoryNoticeDTO.getQtyOnHand();
@@ -184,14 +187,17 @@ public class InventoryController {
 
 
                             } else {
-                                requiredQty = (dayAfterInventoryNoticeDTO.getOrderQty() + todayInventoryNoticeDTO.getOrderQty()) - dayAfterInventoryNoticeDTO.getQtyOnHand();
+                                requiredQty = (dayAfterInventoryNoticeDTO.getOrderQty() +
+                                        todayInventoryNoticeDTO.getOrderQty()) -
+                                        dayAfterInventoryNoticeDTO.getQtyOnHand();
                                 dayAfterInventoryNoticeDTO.setRequiredQty(requiredQty);
 
                             }
                         }  //End if NO1
 
                         //if NO2
-                        if (dayAfterInventoryNoticeDTO.getInventoryId().equals(tomorrowInventoryNoticeDTO.getInventory()) && x == 0) {
+                        if (dayAfterInventoryNoticeDTO.getInventoryId().
+                                equals(tomorrowInventoryNoticeDTO.getInventory()) && x == 0) {
                             requiredQty = 0.0;
 
                             if (requiredQty > dayAfterInventoryNoticeDTO.getQtyOnHand()) {
@@ -199,15 +205,19 @@ public class InventoryController {
                                 dayAfterInventoryNoticeDTO.setRequiredQty(requiredQty);
 
                             } else {
-                                requiredQty = (dayAfterInventoryNoticeDTO.getOrderQty() + tomorrowInventoryNoticeDTO.getOrderQty()) - dayAfterInventoryNoticeDTO.getQtyOnHand();
+                                requiredQty = (dayAfterInventoryNoticeDTO.getOrderQty() +
+                                        tomorrowInventoryNoticeDTO.getOrderQty()) -
+                                        dayAfterInventoryNoticeDTO.getQtyOnHand();
                                 dayAfterInventoryNoticeDTO.setRequiredQty(requiredQty);
 
                             }
                         }  //End if NO2
 
                         //if NO3
-                        if (dayAfterInventoryNoticeDTO.getInventoryId().equals(tomorrowInventoryNoticeDTO.getInventory()) &&
-                                dayAfterInventoryNoticeDTO.getInventoryId().equals(todayInventoryNoticeDTO.getInventory())) {
+                        if (dayAfterInventoryNoticeDTO.getInventoryId()
+                                .equals(tomorrowInventoryNoticeDTO.getInventory()) &&
+                                dayAfterInventoryNoticeDTO.getInventoryId().
+                                        equals(todayInventoryNoticeDTO.getInventory())) {
                             x = 0;
                             requiredQty = 0.0;
                             if (requiredQty > dayAfterInventoryNoticeDTO.getQtyOnHand()) {
@@ -240,16 +250,19 @@ public class InventoryController {
     }//End Calculate inventory DayAfterTomorrow required quantity for each Item
 
     //dayDTwo Method Call From inventoryTomorrow Method to Find weather Inventory Id Already In previous Days'
-    private int dayDTwo(List<InventoryNoticeDTO> today, List<InventoryNoticeDTO> tomorrow, List<InventoryNoticeDTO> dayAfter) {
+    private int dayDTwo(List<InventoryNoticeDTO> today, List<InventoryNoticeDTO> tomorrow,
+                        List<InventoryNoticeDTO> dayAfter) {
         int i = 0;
         for (InventoryNoticeDTO dayAfterInventoryNoticeDTO : dayAfter) {
             for (InventoryNoticeDTO tomorrowInventoryNoticeDTO : tomorrow) {
                 for (InventoryNoticeDTO todayInventoryNoticeDTO : today) {
 
-                    if (dayAfterInventoryNoticeDTO.getInventoryId().equals(todayInventoryNoticeDTO.getInventory())) {
+                    if (dayAfterInventoryNoticeDTO.getInventoryId().
+                            equals(todayInventoryNoticeDTO.getInventory())) {
                         ++i;
                     }
-                    if (dayAfterInventoryNoticeDTO.getInventoryId().equals(tomorrowInventoryNoticeDTO.getInventory())) {
+                    if (dayAfterInventoryNoticeDTO.getInventoryId().
+                            equals(tomorrowInventoryNoticeDTO.getInventory())) {
                         ++i;
                     }
                 }//end for 3

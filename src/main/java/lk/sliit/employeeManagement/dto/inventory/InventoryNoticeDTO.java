@@ -1,8 +1,6 @@
 package lk.sliit.employeeManagement.dto.inventory;
 
 
-import lk.sliit.employeeManagement.entity.inventory.Inventory;
-
 import java.sql.Date;
 
 public class InventoryNoticeDTO {

@@ -77,6 +77,82 @@
             height: 500px;
         }
     </style>
+    <style>
+        .large-btn {
+            height: 90px;
+            width: 100%;
+            font-family: "Playfair Display", Georgia, "Times New Roman", serif;
+            font-weight: bolder;
+            font-size: 27px;
+        }
+
+        .btnq2:hover {
+            transform: scale(1.05, 1.1);
+            transition: 0.8s ease;
+            -webkit-transition: 0.8s ease;
+            -moz-transition: 0.8s ease;
+        }
+
+        .btnq3:hover {
+            transform: scale(1.3, 1.3);
+            transition: 0.8s ease;
+            -webkit-transition: 0.8s ease;
+            -moz-transition: 0.8s ease;
+        }
+        #chartdiv {
+            width: 100%;
+            height: 500px;
+        }
+
+        #chartdiv1 {
+            width: 100%;
+            height: 500px;
+        }
+
+        .large-btn:hover {
+            color: #cebbbb;
+        }
+        /*//////////////////////////////////////////////////////////////*/
+
+        .containerx {
+            display: flex;
+
+        }
+
+        .btnq {
+            text-decoration: none;
+            border: 5px solid rgb(174, 182, 203);
+            position: relative;
+            overflow: hidden;
+            height: 90px;
+            width: 100%;
+            font-size: 1.5rem;
+            text-align: center;
+            border-radius: 5px 5px;
+        }
+
+        .btnq:before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -00%;
+            text-align: center;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                    120deg,
+                    transparent,
+                    rgba(135, 141, 156, 0.4),
+                    transparent
+            );
+            transition: all .8s;
+        }
+
+        .btnq:hover:before {
+            left: 100%;
+        }
+
+    </style>
 
 </head>
 
@@ -97,24 +173,20 @@
         <div class="right_col" role="main">
             <div class="page-title">
                 <div class="title_left">
-                    <h3>User Manage
+                    <h3>Supplier Manage
                         <small>Welcome To Hotel Hareesha</small>
                     </h3>
                     <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
                     <div class="col-6 col-sm-6 col-md-6 col-lg-4 col-xl-4">
-                        <a  href="/manage">
-                            <button type="button" class="large-btn btn btn-dark"><i class="fa fa-mail-reply"> Back</i>
+                        <a href="inventory">
+                            <button style=" border: 5px solid rgb(174, 182, 203);background-color: #45526e;
+                                    color: #c6d4d3;font-weight: bolder" type="button"  class="btnq2 btn"><i class="fa fa-reply">
+                                Back</i>
                             </button>
                         </a>
 
                     </div>
-                    <div class="col-6 col-sm-6 col-md-6 col-lg-4 col-xl-4">
-                        <a  href="/notice">
-                            <button   type="button" class="large-btn btn btn-dark"><i class="fa fa-bookmark"> +Notice</i>
-                            </button>
-                        </a>
 
-                    </div>
                     </div>
                 </div>
 
@@ -205,77 +277,58 @@
             <%--Input Feilds--%>
             <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
             <div class="col-12 col-sm-12 col-md-12 col-lg-5 col-xl-5">
-                <form method="POST"  action="/saveUser" name="saveUser">
+                <form method="POST"  action="/saveSupplier" name="saveSupplier">
 
                     <div class="form-group">
 
                         <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
                             <label >User Id</label>
                             <input type="text" class="form-control"
-                               required="required" name="userId"
-                               id="userId" placeholder="User Id"/></div>
+                               required="required" name="id" value="${genId}"
+                               id="id" placeholder="User Id"/></div>
 
                             <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
-                                <label for="userId">User Name</label>
+                                <label for="id">User Name</label>
                         <input type="text" class="form-control"
                                required="required" name="name"
-                               id="userName" placeholder="User Name"/></div>
+                               id="name" placeholder="User Name"/></div>
                     </div>
 
                     <div class="form-group">
-                        <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6"><br>
-                        <label for="userId">Position</label>
-                        <input type="text" class="form-control"
-                               required="required" name="position"
-                               id="position" placeholder="Position"/></div>
+
 
                         <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6"> <br>
-                            <label for="userId">Address</label>
+                            <label for="id">Address</label>
                             <input type="text" class="form-control"
                                    required="required" name="address"
                                    id="address" placeholder="Address"/></div>
                     </div>
 
+
                     <div class="form-group">
                         <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6"> <br>
-                        <label for="userId">Password</label>
-                        <input type="text" class="form-control"
-                               required="required" name="password"
-                               id="password" placeholder="Password"/></div>
-
-
-                        <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6"> <br>
-                            <label for="userId">Salary</label>
-                            <input type="number" class="form-control"
-                                   required="required" name="salary"
-                                   id="salary" placeholder="Salary"/></div>
-
-
-                    </div>
-                    <div class="form-group">
-                        <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6"> <br>
-                            <label for="userId">Email</label>
+                            <label for="id">Email</label>
                             <input type="text" class="form-control"
                                    required="required" name="email"
                                    id="email" placeholder="Email"/></div>
 
                         <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6"> <br>
-                            <label for="userId">Mobile No</label>
+                            <label for="id">Mobile No</label>
                             <input type="text" class="form-control"
-                                   required="required" name="mobileNo"
+                                   required="required" name="mobile"
                                    id="mobileNo" placeholder="Mobile No"/></div>
                     </div>
 
                     <div class="form-group">
 
                         <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6"> <br>
-                            <label for="userId">Gender</label>
+                            <label for="id">Gender</label>
                             <input type="text" class="form-control"
                                    required="required" name="gender"
                                    id="gender" placeholder="Gender"/></div>
 
                         <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6"> <br>
-                            <label for="userId">Date</label>
+                            <label for="id">Date</label>
                             <input type="date" class="form-control"
                                    required="required" name="date"
                                    id="date" placeholder="Date"/></div>
@@ -286,22 +339,12 @@
 
 
                         <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6"> <br>
-                            <label for="userId">DateOfBirth</label>
+                            <label for="id">DateOfBirth</label>
                             <input type="date" class="form-control"
-                                   required="required" name="date"
+                                   required="required" name="birthday"
                                    id="dateOfBirth" placeholder="DateOfBirth"/></div>
                         <br>
                     </div>
-
-               <%--     <div class="form-group">
-                        <label  class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6"> <br>
-                            <a class="" title="Insert picture (or just drag & drop)" id=""><i
-                                    class="fa fa-picture-o"></i></a><span
-                                class="required"></span></label>
-                        <input type="file" id="image" alt="Login"
-                               src="../../images/favicon.ico">
-                        </div>--%>
-
 
                     <button type='submit' class="btn btn-primary" style="width: 50%; top: 20px; position: relative" value="Register">
                         Submit
@@ -343,36 +386,31 @@
                                             <tr>
                                                 <th>Id</th>
                                                 <th>Name</th>
-                                                <th>Position</th>
-                                                <th>MobileNo</th>
-                                                <th>Pic</th>
-                                                <th>Salary</th>
                                                 <th>Address</th>
+                                                <th>MobileNo</th>
                                                 <th>Email</th>
-                                                <th>Password</th>
                                                 <th>Gender</th>
                                                 <th>Date</th>
                                                 <th>Birthday</th>
+                                                <th>SubmittedBy</th>
                                                 <th>Delete</th>
+
                                             </tr>
 
                                             </thead>
                                             <tbody>
-                                            <c:forEach items="${loadAllUserTable}" var="e">
+                                            <c:forEach items="${loadSupplier}" var="e">
                                             <tr>
-                                                <td>${e.userId}</td>
+                                                <td>${e.id}</td>
                                                 <td>${e.name}</td>
-                                                <td>${e.position}</td>
-                                                <td>${e.mobileNo}</td>
-                                                <td></td>
-                                                <td>${e.salary}</td>
                                                 <td>${e.address}</td>
+                                                <td>${e.mobile}</td>
                                                 <td>${e.email}</td>
-                                                <td>${e.password}</td>
                                                 <td>${e.gender}</td>
                                                 <td>${e.date}</td>
-                                                <td>${e.dateOfBirth}</td>
-                                                <td>  <a href="deleteEmployee/${e.userId}"<%--onclick="return confirm('Are you sure you want to delete?')"--%>  class="btn btn-xs">
+                                                <td>${e.birthday}</td>
+                                                <td>${e.submittedBy}</td>
+                                                <td>  <a href="deleteSupplier/${e.id}"onclick="return confirm('Are you sure you want to delete?')"  class="btn btn-xs">
                                                     <i class="fa fa-trash-o"></i></a></td>
                                             </tr>
                                             </c:forEach>

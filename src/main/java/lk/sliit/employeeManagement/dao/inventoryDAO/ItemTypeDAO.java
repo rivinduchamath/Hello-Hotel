@@ -4,4 +4,5 @@ import lk.sliit.employeeManagement.entity.inventory.ItemType;
 import org.springframework.data.repository.CrudRepository;
 
 public interface ItemTypeDAO extends CrudRepository<ItemType,String> {
+    ItemType findTopByOrderByIdDesc();
 }

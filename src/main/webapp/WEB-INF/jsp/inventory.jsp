@@ -30,24 +30,6 @@
         String date = sdf.format(new Date());
     %>
     <style>
-
-        .img__wrap {
-            position: relative;
-        }
-
-        .img__description {
-            position: absolute;
-            visibility: hidden;
-            opacity: 0;
-
-            /* transition effect. not necessary */
-            transition: opacity .2s, visibility .2s;
-        }
-
-        .img__wrap:hover .img__description {
-            visibility: visible;
-            opacity: 1;
-        }
         .large-btn {
             height: 90px;
             width: 100%;
@@ -56,15 +38,72 @@
             font-size: 27px;
         }
 
-        .large-btn:hover {
-            color: #0f0f0f;
+        .btnq2:hover {
             transform: scale(1.05, 1.1);
-            border-color: #0f0f0f !important;
-            border-width: 2px !important;
             transition: 0.8s ease;
             -webkit-transition: 0.8s ease;
             -moz-transition: 0.8s ease;
         }
+
+        .btnq3:hover {
+            transform: scale(1.3, 1.3);
+            transition: 0.8s ease;
+            -webkit-transition: 0.8s ease;
+            -moz-transition: 0.8s ease;
+        }
+        #chartdiv {
+            width: 100%;
+            height: 500px;
+        }
+
+        #chartdiv1 {
+            width: 100%;
+            height: 500px;
+        }
+
+        .large-btn:hover {
+            color: #cebbbb;
+        }
+        /*//////////////////////////////////////////////////////////////*/
+
+        .containerx {
+            display: flex;
+
+        }
+
+        .btnq {
+            text-decoration: none;
+            border: 5px solid rgb(174, 182, 203);
+            position: relative;
+            overflow: hidden;
+            height: 90px;
+            width: 100%;
+            font-size: 1.5rem;
+            text-align: center;
+            border-radius: 5px 5px;
+        }
+
+        .btnq:before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -00%;
+            text-align: center;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                    120deg,
+                    transparent,
+                    rgba(135, 141, 156, 0.4),
+                    transparent
+            );
+            transition: all .8s;
+        }
+
+        .btnq:hover:before {
+            left: 100%;
+        }
+
     </style>
 </head>
 <body class="nav-md" style="cursor: pointer">
@@ -92,7 +131,8 @@
                         <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
                             <div class="col-6 col-sm-6 col-md-6 col-lg-6 col-xl-3">
                                 <a href="/addInventory">
-                                    <button type="button" class="btn btn-dark"><i class="fa fa-bookmark">
+                                    <button style=" border: 5px solid rgb(174, 182, 203);background-color: #45526e;
+                                    color: #c6d4d3;font-weight: bolder" type="button"  class="btnq2 btn"><i class="fa fa-bookmark">
                                         +New</i>
                                     </button>
                                 </a>
@@ -186,23 +226,47 @@
 
 
                     <div class="col-sm-12 col-md-3 col-lg-3 col-xl-3">
-                        <a href="barStock">
-                            <button type="button" class="large-btn btn btn-dark">Beverage Stock</button>
-                        </a>
+                        <div class="containerx">
+                            <a style=" font-family: Playfair Display, Georgia, Times New Roman, serif;
+                             background-color:#3d495f; color: #ffffff;font-weight: bolder"
+                               href="manageSupplier" class="btnq"><h2
+                                    style="position: relative; letter-spacing: 1px;
+                                     margin-top: 30px">Supplier Manage</h2></a>
+                        </div>
+                        <br>
                     </div>
 
                     <div class="col-sm-12 col-md-3 col-lg-3 col-xl-3">
-                        <button type="button" class="large-btn btn btn-dark">Kitchen Stock</button>
+                        <div class="containerx">
+                            <a style=" font-family: Playfair Display, Georgia, Times New Roman, serif;
+                             background-color:#3d495f; color: #ffffff;font-weight: bolder"
+                               href="barStock" class="btnq"><h2
+                                    style="position: relative; letter-spacing: 1px;
+                                     margin-top: 30px">Kitchen Stock</h2></a>
+                        </div>
+                        <br>
                     </div>
 
                     <div class="col-sm-12 col-md-3 col-lg-3 col-xl-3">
-                        <button type="button" class="large-btn btn btn-dark">Items Stock</button>
+                        <div class="containerx">
+                            <a style=" font-family: Playfair Display, Georgia, Times New Roman, serif;
+                             background-color:#3d495f; color: #ffffff;font-weight: bolder"
+                               href="barStock" class="btnq"><h2
+                                    style="position: relative; letter-spacing: 1px;
+                                     margin-top: 30px">F&B Stock</h2></a>
+                        </div>
+                        <br>
                     </div>
 
                     <div class="col-sm-12 col-md-3 col-lg-3 col-xl-3">
-                        <a href="restaurantStock">
-                            <button type="button" class="large-btn btn btn-dark">Restaurant Stock</button>
-                        </a>
+                        <div class="containerx">
+                            <a style=" font-family: Playfair Display, Georgia, Times New Roman, serif;
+                             background-color:#3d495f; color: #ffffff;font-weight: bolder"
+                               href="restaurantStock" class="btnq"><h2
+                                    style="position: relative; letter-spacing: 1px;
+                                     margin-top: 30px">All Inventory</h2></a>
+                        </div>
+                        <br>
                     </div>
 
                 </div>
@@ -231,18 +295,18 @@
                             <div class="row">
 
                                         <a href="inventoryToday">
-                                            <button style="float: left;font-weight: bolder" class="btn btn-primary">
+                                            <button style="float: left;font-weight: bolder" class="btn btn-dark">
                                                 Today
                                             </button>
                                         </a>
                                         <a href="inventoryTomorrow">
-                                            <button style="float: left;font-weight: bolder" class="btn btn-primary">
+                                            <button style="float: left;font-weight: bolder" class="btn btn-dark">
                                                 Tomorrow
                                             </button>
                                         </a>
                                         <a href="inventory">
                                             <button style="float: left;font-weight: bolder"
-                                                    class=" active btn btn-primary">Day After Tomorrow
+                                                    class=" active btn btn-dark">Day After Tomorrow
                                             </button>
                                         </a>
                                 <a style="right: 55px; position:absolute !important;" href="allInventoryNotice" class="img__wrap">
