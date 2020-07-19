@@ -5,7 +5,7 @@
 ![count](https://img.shields.io/github/forks/rivinduchamath/Hello-Hotel?style=social) 
 ![count](https://img.shields.io/github/watchers/rivinduchamath/Hello-Hotel?style=social) 
 
-### Technology stack
+### Technology stack 💎💎
 
 #### Languages 
 ![Java](https://img.shields.io/badge/Language-Java-yellowgreen) 
