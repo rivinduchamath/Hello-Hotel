@@ -54,7 +54,7 @@ public class NoticeController { //notice.jsp For All Notice
             return "redirect:/notice";
         }
         else{
-            return  "Notice is not available ";
+            return  "Notice is not available";
         }
     }
 

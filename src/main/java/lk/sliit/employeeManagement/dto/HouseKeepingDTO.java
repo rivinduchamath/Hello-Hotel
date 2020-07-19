@@ -32,6 +32,10 @@ public class HouseKeepingDTO  {
     public HouseKeepingDTO() {
     }
 
+    public HouseKeepingDTO(String roomId) {
+        this.roomId = roomId;
+    }
+
     public String getRoomId() {
         return roomId;
     }

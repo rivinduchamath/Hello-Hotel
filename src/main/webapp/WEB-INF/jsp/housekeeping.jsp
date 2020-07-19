@@ -221,9 +221,9 @@
                         <div class="containerx">
                             <a style=" font-family: Playfair Display, Georgia, Times New Roman, serif;
                              background-color: #3d495f; color: #ffffff;font-weight: bolder"
-                               href="barOrder" class="btnq"><h2
+                               href="manageRooms" class="btnq"><h2
                                     style="position: relative; letter-spacing: 1px;
-                                     margin-top: 30px">Order</h2></a>
+                                     margin-top: 30px">Rooms</h2></a>
                         </div>
                         <br>
                     </div>
@@ -235,7 +235,7 @@
                              background-color:#3d495f; color: #ffffff;font-weight: bolder"
                                href="barStock" class="btnq"><h2
                                     style="position: relative; letter-spacing: 1px;
-                                     margin-top: 30px">Stock</h2></a>
+                                     margin-top: 30px">Laundry</h2></a>
                         </div>
                         <br>
                     </div>
@@ -246,7 +246,7 @@
                              background-color:#3d495f; color: #ffffff;font-weight: bolder"
                                href="/barBill" class="btnq"><h2
                                     style="position: relative; letter-spacing: 1px;
-                                     margin-top: 30px">Bills</h2></a>
+                                     margin-top: 30px">Rooms Income</h2></a>
                         </div>
                         <br>
                     </div>
@@ -259,14 +259,10 @@
                              background-color:#3d495f; color: #ffffff;font-weight: bolder"
                                href="barStock" class="btnq"><h2
                                     style="position: relative; letter-spacing: 1px;
-                                     margin-top: 30px">Income</h2></a>
+                                     margin-top: 30px">Laundry</h2></a>
                         </div>
                         <br> </div>
                 </div>
-
-
-
-
 
 <%--                ///////////////////////////////////////////////////////////////////////////////////////               --%>
 
