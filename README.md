@@ -7,28 +7,29 @@
 
 ### Technology stack
 
-### Languages 
+#### Languages 
 ![Java](https://img.shields.io/badge/Language-Java-yellowgreen) 
 ![SQL](https://img.shields.io/badge/Language-SQL-yellowgreen) 
 ![Java Script](https://img.shields.io/badge/Language-JavaScript-yellowgreen) 
 ![CSS](https://img.shields.io/badge/Language-CSS-yellowgreen) 
 
-### Frameworks and Libs
+#### Frameworks and Libs
 ![Spring](https://img.shields.io/badge/Framework-Spring-darkgreen) 
 ![JPAHibernate](https://img.shields.io/badge/Framework-JPAHibernate-darkgreen) 
 ![Bootstrap](https://img.shields.io/badge/Framework-Bootstrap-darkgreen) 
 ![SymanticUI](https://img.shields.io/badge/Framework-SymanticUI-darkgreen) 
 ![JavaMailAPI](https://img.shields.io/badge/Library-JavaMailAPI-darkgreen) 
 
-###  Databases and servers
+####  Databases and servers
 ![Mysql](https://img.shields.io/badge/Database-MySQL-green) 
 ![Jetty](https://img.shields.io/badge/Server-Jetty-green) 
 
-### Tools and Technologies Databases and servers
+#### Tools and Technologies Databases and servers
 
 ![Spring Boot](https://img.shields.io/badge/Technology-SpringBoot-blue) 
 ![maven](https://img.shields.io/badge/Tool-maven-blue) 
 ![intelij](https://img.shields.io/badge/Tool-intelij-blue) 
 ![postman](https://img.shields.io/badge/Tool-Postman-blue) 
 
+#### License
 [![License](https://img.shields.io/badge/License-Apache%202.0-red.svg)](https://opensource.org/licenses/Apache)
