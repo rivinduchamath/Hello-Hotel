@@ -8,10 +8,10 @@
 ### Technology stack
 
 ### Languages 
-![Java](https://img.shields.io/badge/Language-Java-red) 
-![SQL](https://img.shields.io/badge/Language-SQL-blue) 
-![Java Script](https://img.shields.io/badge/Language-JavaScript-yellow) 
-![CSS](https://img.shields.io/badge/Language-CSS-purple) 
+![Java](https://img.shields.io/badge/Language-Java-yellowgreen) 
+![SQL](https://img.shields.io/badge/Language-SQL-yellowgreen) 
+![Java Script](https://img.shields.io/badge/Language-JavaScript-yellowgreen) 
+![CSS](https://img.shields.io/badge/Language-CSS-yellowgreen) 
 
 ### Frameworks and Libs
 ![Spring](https://img.shields.io/badge/Framework-Spring-darkgreen) 
@@ -31,4 +31,4 @@
 ![intelij](https://img.shields.io/badge/Tool-intelij-blue) 
 ![postman](https://img.shields.io/badge/Tool-Postman-blue) 
 
-[![License](https://img.shields.io/badge/License-Apache%202.0-yellowgreen.svg)](https://opensource.org/licenses/Apache)
+[![License](https://img.shields.io/badge/License-Apache%202.0-red.svg)](https://opensource.org/licenses/Apache)
