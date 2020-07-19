@@ -31,6 +31,4 @@
 ![intelij](https://img.shields.io/badge/Tool-intelij-blue) 
 ![postman](https://img.shields.io/badge/Tool-Postman-blue) 
 
-
-
-
+[![License](https://img.shields.io/badge/License-Apache%202.0-yellowgreen.svg)](https://opensource.org/licenses/Apache)
