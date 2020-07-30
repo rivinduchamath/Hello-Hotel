@@ -18,15 +18,12 @@ public class RestaurantCounterOrderDetail {
     private FoodItem foodItem;
 
 
-    public RestaurantCounterOrderDetail(RestaurantCounterOrderDetailPK restaurantCounterOrderDetailPK, RestaurantCounterOrder restaurantCounterOrder, FoodItem foodItem) {
+    public RestaurantCounterOrderDetail(RestaurantCounterOrderDetailPK restaurantCounterOrderDetailPK) {
         this.restaurantCounterOrderDetailPK = restaurantCounterOrderDetailPK;
-        this.restaurantCounterOrder = restaurantCounterOrder;
-        this.foodItem = foodItem;
     }
+
     public RestaurantCounterOrderDetail( String restaurantCounterOrderId,String foodItemId ) {
-        this.restaurantCounterOrderDetailPK = restaurantCounterOrderDetailPK;
-        this.restaurantCounterOrder = restaurantCounterOrder;
-        this.foodItem = foodItem;
+        this.restaurantCounterOrderDetailPK = new RestaurantCounterOrderDetailPK(restaurantCounterOrderId,foodItemId);
     }
 
     public RestaurantCounterOrderDetail() {

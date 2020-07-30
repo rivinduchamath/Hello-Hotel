@@ -27,9 +27,8 @@ public class RestaurantOnlineOrderDetails {
         this.foodItem = foodItem;
     }
     public RestaurantOnlineOrderDetails( String restaurantOnlineOrderId,String foodItemId ) {
-        this.restaurantOnlineOrderDetailsPK = restaurantOnlineOrderDetailsPK;
-        this.restaurantOnlineOrder = restaurantOnlineOrder;
-        this.foodItem = foodItem;
+        this.restaurantOnlineOrderDetailsPK = new RestaurantOnlineOrderDetailsPK(restaurantOnlineOrderId,foodItemId);
+
     }
 
     public RestaurantOnlineOrderDetails() {

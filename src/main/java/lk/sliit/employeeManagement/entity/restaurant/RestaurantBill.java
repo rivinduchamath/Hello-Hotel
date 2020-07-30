@@ -1,6 +1,7 @@
 package lk.sliit.employeeManagement.entity.restaurant;
 
 import lk.sliit.employeeManagement.entity.restaurant.counterOrder.RestaurantCounterOrder;
+import lk.sliit.employeeManagement.entity.restaurant.counterTableReservation.CounterTableReservation;
 import lk.sliit.employeeManagement.entity.restaurant.onlineCounterOrder.RestaurantOnlineOrder;
 
 import javax.persistence.*;
@@ -18,6 +19,9 @@ public class RestaurantBill {
     @OneToOne(cascade = {CascadeType.PERSIST,CascadeType.REFRESH, CascadeType.DETACH, CascadeType.MERGE})
     @JoinColumn(name="onlineOrder",referencedColumnName = "orderId", insertable = false, updatable = false)
     private RestaurantOnlineOrder onlineOrder;
+    @OneToOne(cascade = {CascadeType.PERSIST,CascadeType.REFRESH, CascadeType.DETACH, CascadeType.MERGE})
+    @JoinColumn(name="counterTableReservation",referencedColumnName = "counterTableReserveId", insertable = false, updatable = false)
+    private CounterTableReservation counterTableReserveId;
 
     public RestaurantBill() {
     }
