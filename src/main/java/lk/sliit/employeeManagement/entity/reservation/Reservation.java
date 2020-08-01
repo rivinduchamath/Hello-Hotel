@@ -11,7 +11,7 @@ public class Reservation {
     private String type;
     private Date date;
     private int noOfRooms;
-    @OneToOne(cascade = {CascadeType.PERSIST,CascadeType.REFRESH, CascadeType.DETACH, CascadeType.MERGE})
+    @ManyToOne(cascade = {CascadeType.PERSIST,CascadeType.REFRESH, CascadeType.DETACH, CascadeType.MERGE})
     @JoinColumn(name="customerId",referencedColumnName = "customerId", insertable = false, updatable = false)
     private Customer customer;
     @OneToMany(mappedBy = "reservationId")

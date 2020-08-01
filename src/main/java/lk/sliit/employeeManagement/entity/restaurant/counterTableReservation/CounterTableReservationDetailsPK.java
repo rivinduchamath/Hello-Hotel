@@ -8,23 +8,23 @@ import java.io.Serializable;
 
 @Embeddable
 public class CounterTableReservationDetailsPK implements Serializable {
-    private String foodItemId;
+    private String tableId;
     private  String counterTableReserveId;
 
-    public CounterTableReservationDetailsPK(String foodItemId, String counterTableReserveId) {
-        this.foodItemId = foodItemId;
+    public CounterTableReservationDetailsPK(String tableId, String counterTableReserveId) {
+        this.tableId = tableId;
         this.counterTableReserveId = counterTableReserveId;
     }
 
     public CounterTableReservationDetailsPK() {
     }
 
-    public String getFoodItemId() {
-        return foodItemId;
+    public String getTableId() {
+        return tableId;
     }
 
-    public void setFoodItemId(String foodItemId) {
-        this.foodItemId = foodItemId;
+    public void setTableId(String tableId) {
+        this.tableId = tableId;
     }
 
     public String getCounterTableReserveId() {

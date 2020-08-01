@@ -48,7 +48,8 @@ public class IndexLoginBOImpl implements IndexLoginBO {
                 employee.getGender(),
                 employee.getSalary(),
                 employee.getDate(),
-                employee.getImage()
+                employee.getImage(),
+                employee.getDepartment().getDepartmentId()
         );
 
     }

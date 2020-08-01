@@ -19,14 +19,16 @@ public class EmployeeDTO {
     private double salary;
     private Date date;
     private String image;
+    private String department ;
+
     private List<Attendance> attendance;
     private List<Salary> salaries;
 
 
-    public EmployeeDTO(String userId, String name, String mobileNo,
-                       String email, String address, String position,
-                       String password, Date dateOfBirth, String gender,
-                       double salary, Date date, String image) {
+    public EmployeeDTO(String userId, String name, String mobileNo, String email
+            , String address, String position, String password,
+                       Date dateOfBirth, String gender, double salary, Date date,
+                       String image, String department) {
         this.userId = userId;
         this.name = name;
         this.mobileNo = mobileNo;
@@ -39,7 +41,7 @@ public class EmployeeDTO {
         this.salary = salary;
         this.date = date;
         this.image = image;
-
+        this.department = department;
     }
 
     public EmployeeDTO() {
@@ -48,6 +50,14 @@ public class EmployeeDTO {
     public EmployeeDTO(String userId, String password) {
         this.userId = userId;
         this.password = password;
+    }
+
+    public String getDepartment() {
+        return department;
+    }
+
+    public void setDepartment(String department) {
+        this.department = department;
     }
 
     public String getUserId() {

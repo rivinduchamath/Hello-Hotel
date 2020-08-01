@@ -10,7 +10,6 @@ public class RestaurantOnlineOrderDetails {
     private RestaurantOnlineOrderDetailsPK restaurantOnlineOrderDetailsPK;
    private double quantity;
    private double unitePrice;
-
     @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.REFRESH, CascadeType.DETACH, CascadeType.MERGE})
     @JoinColumn(name = "restaurantOnlineOrderId", referencedColumnName = "orderId", insertable = false, updatable = false)
     private RestaurantOnlineOrder restaurantOnlineOrder;
@@ -19,23 +18,40 @@ public class RestaurantOnlineOrderDetails {
     private FoodItem foodItem;
 
 
-    public RestaurantOnlineOrderDetails(RestaurantOnlineOrderDetailsPK restaurantOnlineOrderDetailsPK, double quantity, double unitePrice) {
+    public RestaurantOnlineOrderDetails(RestaurantOnlineOrderDetailsPK restaurantOnlineOrderDetailsPK, double quantity, double unitePrice, RestaurantOnlineOrder restaurantOnlineOrder, FoodItem foodItem) {
         this.restaurantOnlineOrderDetailsPK = restaurantOnlineOrderDetailsPK;
         this.quantity = quantity;
         this.unitePrice = unitePrice;
-
+        this.restaurantOnlineOrder = restaurantOnlineOrder;
+        this.foodItem = foodItem;
     }
 
-    public RestaurantOnlineOrderDetails(String restaurantOnlineOrderId, String foodItemId ,double quantity, double unitePrice) {
+    public RestaurantOnlineOrderDetails(String restaurantOnlineOrderId, String foodItemId , double quantity, double unitePrice, RestaurantOnlineOrder restaurantOnlineOrder, FoodItem foodItem) {
         this.restaurantOnlineOrderDetailsPK = new RestaurantOnlineOrderDetailsPK(restaurantOnlineOrderId,foodItemId);
         this.quantity = quantity;
         this.unitePrice = unitePrice;
-
+        this.restaurantOnlineOrder = restaurantOnlineOrder;
+        this.foodItem = foodItem;
     }
 
     public RestaurantOnlineOrderDetails() {
     }
 
+    public double getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(double quantity) {
+        this.quantity = quantity;
+    }
+
+    public double getUnitePrice() {
+        return unitePrice;
+    }
+
+    public void setUnitePrice(double unitePrice) {
+        this.unitePrice = unitePrice;
+    }
 
     public RestaurantOnlineOrderDetailsPK getRestaurantOnlineOrderDetailsPK() {
         return restaurantOnlineOrderDetailsPK;

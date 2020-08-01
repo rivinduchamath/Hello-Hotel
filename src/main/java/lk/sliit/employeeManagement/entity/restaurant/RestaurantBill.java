@@ -24,19 +24,25 @@ public class RestaurantBill {
     @JoinColumn(name="counterTableReservation",referencedColumnName = "counterTableReserveId",nullable = true, insertable = false, updatable = false)
     private CounterTableReservation counterTableReserveId;
     @OneToOne(cascade = {CascadeType.PERSIST,CascadeType.REFRESH, CascadeType.DETACH, CascadeType.MERGE})
-    @JoinColumn(name="onlineTableId",referencedColumnName = "onlineTableId", insertable = false, updatable = false,nullable = true)
+    @JoinColumn(name="onlineTableReservationId",referencedColumnName = "onlineTableReservationId", insertable = false, updatable = false,nullable = true)
     private OnlineTableReservation onlineTableReservation;
 
     public RestaurantBill() {
     }
 
     public RestaurantBill(String billId, String type, double total,
-                          double discount) {
+                          double discount, RestaurantCounterOrder restaurantOrder,
+                          RestaurantOnlineOrder onlineOrder,
+                          CounterTableReservation counterTableReserveId,
+                          OnlineTableReservation onlineTableReservation) {
         this.billId = billId;
         this.type = type;
         this.total = total;
         this.discount = discount;
-
+        this.restaurantOrder = restaurantOrder;
+        this.onlineOrder = onlineOrder;
+        this.counterTableReserveId = counterTableReserveId;
+        this.onlineTableReservation = onlineTableReservation;
     }
 
     public String getBillId() {

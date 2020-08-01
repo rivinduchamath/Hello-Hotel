@@ -9,6 +9,7 @@ package lk.sliit.employeeManagement;
 */
 
 import lk.sliit.employeeManagement.dao.EmployeeDAO;
+import lk.sliit.employeeManagement.entity.hr.Department;
 import lk.sliit.employeeManagement.entity.manager.Employee;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -48,7 +49,8 @@ public class AppInitializer {
                             "Male",
                             2112122,
                             date,
-                            "img.jpg"
+                            "img.jpg",
+                            new Department("D001","Manage")
                            )
                     )
             );

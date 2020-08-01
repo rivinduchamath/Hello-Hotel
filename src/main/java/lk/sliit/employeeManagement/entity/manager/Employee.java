@@ -1,7 +1,9 @@
 package lk.sliit.employeeManagement.entity.manager;
 
 
+import lk.sliit.employeeManagement.entity.barManage.BarOrders;
 import lk.sliit.employeeManagement.entity.hr.Attendance;
+import lk.sliit.employeeManagement.entity.hr.Department;
 import lk.sliit.employeeManagement.entity.hr.Salary;
 import lk.sliit.employeeManagement.entity.SuperEntity;
 
@@ -28,7 +30,9 @@ public class Employee implements SuperEntity {
     private double salary;
     private Date date;
     private String image;
-
+    @OneToOne(cascade = {CascadeType.PERSIST,CascadeType.REFRESH, CascadeType.DETACH, CascadeType.MERGE})
+    @JoinColumn(name="departmentId",referencedColumnName = "departmentId")
+    private Department department;
     @OneToMany(mappedBy = "employeeID", cascade = {CascadeType.REMOVE, CascadeType.PERSIST, CascadeType.REFRESH, CascadeType.DETACH, CascadeType.MERGE})
     private List<Attendance> attendance = new ArrayList<>();
     @OneToMany(mappedBy = "employeeID", cascade = {CascadeType.REMOVE, CascadeType.PERSIST, CascadeType.REFRESH, CascadeType.DETACH, CascadeType.MERGE})
@@ -39,9 +43,9 @@ public class Employee implements SuperEntity {
     }
 
     public Employee(String userId, String name, String mobileNo,
-                    String email, String address, String position,
-                    String password, Date dateOfBirth, String gender,
-                    double salary, Date date, String image) {
+                    String email, String address, String position, String password, Date dateOfBirth, String gender,
+                    double salary, Date date,
+                    String image, Department department) {
         this.userId = userId;
         this.name = name;
         this.mobileNo = mobileNo;
@@ -54,12 +58,20 @@ public class Employee implements SuperEntity {
         this.salary = salary;
         this.date = date;
         this.image = image;
+        this.department = department;
     }
 
     public List<Attendance> getOrders() {
         return attendance;
     }
 
+    public Department getDepartment() {
+        return department;
+    }
+
+    public void setDepartment(Department department) {
+        this.department = department;
+    }
 
     public String getUserId() {
         return userId;

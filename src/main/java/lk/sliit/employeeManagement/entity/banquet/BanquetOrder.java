@@ -16,7 +16,7 @@ public class BanquetOrder {
     private double noOfPlates;
     private Date date;
     private String submittedBy;
-    @OneToOne(cascade = {CascadeType.PERSIST, CascadeType.REFRESH, CascadeType.DETACH, CascadeType.MERGE})
+    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.REFRESH, CascadeType.DETACH, CascadeType.MERGE})
     @JoinColumn(name = "customer", referencedColumnName = "customerId", insertable = false, updatable = false)
     private Customer customer;
     @ManyToOne(cascade = {CascadeType.PERSIST,CascadeType.REFRESH, CascadeType.DETACH, CascadeType.MERGE})
@@ -26,14 +26,16 @@ public class BanquetOrder {
     @JoinColumn(name = "banquetBill", referencedColumnName = "billId", insertable = false, updatable = false)
     private BanquetBill banquetBill;
 
-    public BanquetOrder(String orderId, String hallId,
-                        String orderState, double noOfPlates, Date date, String submittedBy) {
+    public BanquetOrder(String orderId, String hallId, String orderState, double noOfPlates, Date date, String submittedBy, Customer customer, Menu menu, BanquetBill banquetBill) {
         this.orderId = orderId;
         this.hallId = hallId;
         this.orderState = orderState;
         this.noOfPlates = noOfPlates;
         this.date = date;
         this.submittedBy = submittedBy;
+        this.customer = customer;
+        this.menu = menu;
+        this.banquetBill = banquetBill;
     }
 
     public BanquetOrder() {

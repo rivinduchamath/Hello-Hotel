@@ -20,17 +20,20 @@ public class RestaurantCounterOrderDetail {
     private FoodItem foodItem;
 
 
-    public RestaurantCounterOrderDetail(RestaurantCounterOrderDetailPK restaurantCounterOrderDetailPK,double quantity, double unitePrice) {
+    public RestaurantCounterOrderDetail(RestaurantCounterOrderDetailPK restaurantCounterOrderDetailPK, double quantity, double unitePrice, RestaurantCounterOrder restaurantCounterOrder, FoodItem foodItem) {
         this.restaurantCounterOrderDetailPK = restaurantCounterOrderDetailPK;
         this.quantity = quantity;
         this.unitePrice = unitePrice;
+        this.restaurantCounterOrder = restaurantCounterOrder;
+        this.foodItem = foodItem;
     }
 
-
-    public RestaurantCounterOrderDetail(String restaurantCounterOrderId, String foodItemId ,double quantity, double unitePrice) {
+    public RestaurantCounterOrderDetail(String restaurantCounterOrderId, String foodItemId , double quantity, double unitePrice, RestaurantCounterOrder restaurantCounterOrder, FoodItem foodItem) {
         this.restaurantCounterOrderDetailPK = new RestaurantCounterOrderDetailPK(restaurantCounterOrderId,foodItemId);
         this.quantity = quantity;
         this.unitePrice = unitePrice;
+        this.restaurantCounterOrder = restaurantCounterOrder;
+        this.foodItem = foodItem;
     }
 
     public RestaurantCounterOrderDetail() {
@@ -39,6 +42,7 @@ public class RestaurantCounterOrderDetail {
     public double getQuantity() {
         return quantity;
     }
+
 
     public void setQuantity(double quantity) {
         this.quantity = quantity;

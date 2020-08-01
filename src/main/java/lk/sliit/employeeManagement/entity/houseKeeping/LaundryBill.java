@@ -10,7 +10,7 @@ public class LaundryBill {
     @Id
     private String laundryBillId;
     private double pieces;
-    @OneToOne(cascade = {CascadeType.PERSIST,CascadeType.REFRESH, CascadeType.DETACH, CascadeType.MERGE})
+    @ManyToOne(cascade = {CascadeType.PERSIST,CascadeType.REFRESH, CascadeType.DETACH, CascadeType.MERGE})
     @JoinColumn(name="customerId",referencedColumnName = "customerId", insertable = false, updatable = false)
     private Customer customer;
 

@@ -1,7 +1,11 @@
 package lk.sliit.employeeManagement.entity.reservation;
 
 import lk.sliit.employeeManagement.entity.banquet.BanquetOrder;
+import lk.sliit.employeeManagement.entity.houseKeeping.LaundryBill;
+
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class Customer {
@@ -11,6 +15,16 @@ public class Customer {
     private String name;
     private String address;
     private int contactNumber;
+    @OneToMany(mappedBy = "customer", cascade = {CascadeType.PERSIST,CascadeType.REFRESH, CascadeType.DETACH, CascadeType.MERGE})
+    private List<Reservation> reservations = new ArrayList<>();
+    @OneToMany(mappedBy = "customer", cascade = {CascadeType.PERSIST,CascadeType.REFRESH, CascadeType.DETACH, CascadeType.MERGE})
+    private List<GeneralBill> generalBills = new ArrayList<>();
+    @OneToMany(mappedBy = "customer", cascade = {CascadeType.PERSIST,CascadeType.REFRESH, CascadeType.DETACH, CascadeType.MERGE})
+    private List<LaundryBill> laundryBills = new ArrayList<>();
+    @OneToMany(mappedBy = "customer", cascade = {CascadeType.PERSIST,CascadeType.REFRESH, CascadeType.DETACH, CascadeType.MERGE})
+    private List<BanquetOrder> banquetOrders = new ArrayList<>();
+
+
 
 
     public Customer(String customerId, String email, String name, String address, int contactNumber) {

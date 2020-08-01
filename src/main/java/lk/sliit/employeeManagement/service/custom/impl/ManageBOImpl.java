@@ -1,7 +1,9 @@
 package lk.sliit.employeeManagement.service.custom.impl;
 
 import lk.sliit.employeeManagement.dao.EmployeeDAO;
+import lk.sliit.employeeManagement.dao.HumanResourceDAO;
 import lk.sliit.employeeManagement.dto.manager.EmployeeDTO;
+import lk.sliit.employeeManagement.entity.hr.Department;
 import lk.sliit.employeeManagement.entity.manager.Employee;
 import lk.sliit.employeeManagement.service.custom.ManageBO;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,9 +18,12 @@ import java.util.List;
 public class ManageBOImpl implements ManageBO {
     @Autowired
     EmployeeDAO manageDAO;
+    @Autowired
+    HumanResourceDAO humanResourceDAO;
 
     @Override
     public void save(EmployeeDTO employeeDTO) {
+        employeeDTO.setDepartment("D001");
         manageDAO.save(new Employee(
                 employeeDTO.getUserId(),
                 employeeDTO.getName(),
@@ -31,7 +36,8 @@ public class ManageBOImpl implements ManageBO {
                 employeeDTO.getGender(),
                 employeeDTO.getSalary(),
                 employeeDTO.getDate(),
-                employeeDTO.getImage()
+                employeeDTO.getImage(),
+                humanResourceDAO.findOne(employeeDTO.getDepartment())
         ));
     }
 
@@ -52,7 +58,8 @@ public class ManageBOImpl implements ManageBO {
                     employee.getGender(),
                     employee.getSalary(),
                     employee.getDate(),
-                    employee.getImage()
+                    employee.getImage(),
+                    employee.getDepartment().getDepartmentId()
             ));
         }
         return dtos;

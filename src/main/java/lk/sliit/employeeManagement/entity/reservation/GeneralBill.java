@@ -15,11 +15,12 @@ public class GeneralBill {
     private String lastName;
     private Date date;
     private String status;
-    @OneToOne(cascade = {CascadeType.PERSIST,CascadeType.REFRESH, CascadeType.DETACH, CascadeType.MERGE})
+    private String reservationId;
+    @ManyToOne(cascade = {CascadeType.PERSIST,CascadeType.REFRESH, CascadeType.DETACH, CascadeType.MERGE})
     @JoinColumn(name="customerId",referencedColumnName = "customerId", insertable = false, updatable = false)
     private Customer customer;
 
-    public GeneralBill(String billId, double amount, String type, String firstName, String lastName, Date date, String status) {
+    public GeneralBill(String billId, double amount, String type, String firstName, String lastName, Date date, String status, String reservationId, Customer customer) {
         this.billId = billId;
         this.amount = amount;
         this.type = type;
@@ -27,9 +28,19 @@ public class GeneralBill {
         this.lastName = lastName;
         this.date = date;
         this.status = status;
+        this.reservationId = reservationId;
+        this.customer = customer;
     }
 
     public GeneralBill() {
+    }
+
+    public String getReservationId() {
+        return reservationId;
+    }
+
+    public void setReservationId(String reservationId) {
+        this.reservationId = reservationId;
     }
 
     public String getBillId() {

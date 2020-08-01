@@ -1,6 +1,8 @@
 package lk.sliit.employeeManagement.entity.restaurant.onlineTableReservation;
 
-import lk.sliit.employeeManagement.entity.kitchen.FoodItem;
+
+
+import lk.sliit.employeeManagement.entity.restaurant.RestaurantTable;
 
 import javax.persistence.*;
 
@@ -8,20 +10,26 @@ import javax.persistence.*;
 public class OnlineTableReservationDetails {
     @EmbeddedId
     private OnlineTableReservationDetailsPK onlineTableReservationDetailsPK;
+    private double quantity;
+    private double unitePrice;
     @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.REFRESH, CascadeType.DETACH, CascadeType.MERGE})
-    @JoinColumn(name = "onlineTableId", referencedColumnName = "onlineTableId", insertable = false, updatable = false)
+    @JoinColumn(name = "reservationId", referencedColumnName = "onlineTableReservationId", insertable = false, updatable = false)
     private OnlineTableReservation onlineTableReservation;
     @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.REFRESH, CascadeType.DETACH, CascadeType.MERGE})
-    @JoinColumn(name = "foodItemId", referencedColumnName = "itemId", insertable = false, updatable = false)
-    private FoodItem foodItem;
+    @JoinColumn(name = "tableId", referencedColumnName = "tableId", insertable = false, updatable = false)
+    private RestaurantTable tableId;
 
-    public OnlineTableReservationDetails(OnlineTableReservationDetailsPK onlineTableReservationDetailsPK, OnlineTableReservation onlineTableReservation, FoodItem foodItem) {
+
+    public OnlineTableReservationDetails(OnlineTableReservationDetailsPK onlineTableReservationDetailsPK, double quantity, double unitePrice) {
         this.onlineTableReservationDetailsPK = onlineTableReservationDetailsPK;
-        this.onlineTableReservation = onlineTableReservation;
-        this.foodItem = foodItem;
+        this.quantity = quantity;
+        this.unitePrice = unitePrice;
     }
-    public OnlineTableReservationDetails(String foodItemId, String onlineTableId, FoodItem foodItem) {
-        this.onlineTableReservationDetailsPK = new OnlineTableReservationDetailsPK(foodItemId,onlineTableId);
+
+    public OnlineTableReservationDetails(String tableId, String onlineTableId, double quantity, double unitePrice) {
+        this.onlineTableReservationDetailsPK = new OnlineTableReservationDetailsPK(onlineTableId,tableId);
+        this.quantity = quantity;
+        this.unitePrice = unitePrice;
     }
 
     public OnlineTableReservationDetails() {
@@ -29,6 +37,22 @@ public class OnlineTableReservationDetails {
 
     public OnlineTableReservationDetailsPK getOnlineTableReservationDetailsPK() {
         return onlineTableReservationDetailsPK;
+    }
+
+    public double getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(double quantity) {
+        this.quantity = quantity;
+    }
+
+    public double getUnitePrice() {
+        return unitePrice;
+    }
+
+    public void setUnitePrice(double unitePrice) {
+        this.unitePrice = unitePrice;
     }
 
     public void setOnlineTableReservationDetailsPK(OnlineTableReservationDetailsPK onlineTableReservationDetailsPK) {
@@ -43,12 +67,12 @@ public class OnlineTableReservationDetails {
         this.onlineTableReservation = onlineTableReservation;
     }
 
-    public FoodItem getFoodItem() {
-        return foodItem;
+    public RestaurantTable getTableId() {
+        return tableId;
     }
 
-    public void setFoodItem(FoodItem foodItem) {
-        this.foodItem = foodItem;
+    public void setTableId(RestaurantTable tableId) {
+        this.tableId = tableId;
     }
 }
 

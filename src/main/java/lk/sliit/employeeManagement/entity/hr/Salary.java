@@ -10,39 +10,50 @@ import javax.persistence.*;
 public class Salary implements SuperEntity {
 
     @Id
-    private String SalaryId;
+    private String salaryId;
     @Column(nullable = true)
     private double basicSalary;
     @Column(nullable = true)
+    private double etf;
+    @Column(nullable = true)
+    private double epf;
+    @Column(nullable = true)
+    private double serviceCharge;
+    @Column(nullable = true)
     private double otHours;
     @Column(nullable = true)
-    private double otRate;
+    private double hours;
     @Column(nullable = true)
-    private double bonus;
-    @Column(nullable = true)
-    private double incomeTax;
+    private double salary;
+    private String departmentId;
     @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.REFRESH, CascadeType.DETACH, CascadeType.MERGE})
-    @JoinColumn(name = "userId", referencedColumnName = "userId", nullable = true)
+    @JoinColumn(name = "employeeID", referencedColumnName = "userId", nullable = true)
     private Employee employeeID;
 
     public Salary() {}
 
-    public Salary(String salaryId, double basicSalary, double otHours, double otRate, double bonus, double incomeTax,Employee employeeID) {
-        SalaryId = salaryId;
+    public Salary(String salaryId, double basicSalary, double etf, double epf,
+                  double serviceCharge, double otHours, double hours, double salary,
+                  String departmentId, Employee employeeID) {
+        this.salaryId = salaryId;
         this.basicSalary = basicSalary;
+        this.etf = etf;
+        this.epf = epf;
+        this.serviceCharge = serviceCharge;
         this.otHours = otHours;
-        this.otRate = otRate;
-        this.bonus = bonus;
-        this.incomeTax = incomeTax;
+        this.hours = hours;
+        this.salary = salary;
+        this.departmentId = departmentId;
         this.employeeID = employeeID;
     }
 
+
     public String getSalaryId() {
-        return SalaryId;
+        return salaryId;
     }
 
     public void setSalaryId(String salaryId) {
-        SalaryId = salaryId;
+        this.salaryId = salaryId;
     }
 
     public double getBasicSalary() {
@@ -53,6 +64,30 @@ public class Salary implements SuperEntity {
         this.basicSalary = basicSalary;
     }
 
+    public double getEtf() {
+        return etf;
+    }
+
+    public void setEtf(double etf) {
+        this.etf = etf;
+    }
+
+    public double getEpf() {
+        return epf;
+    }
+
+    public void setEpf(double epf) {
+        this.epf = epf;
+    }
+
+    public double getServiceCharge() {
+        return serviceCharge;
+    }
+
+    public void setServiceCharge(double serviceCharge) {
+        this.serviceCharge = serviceCharge;
+    }
+
     public double getOtHours() {
         return otHours;
     }
@@ -61,30 +96,29 @@ public class Salary implements SuperEntity {
         this.otHours = otHours;
     }
 
-    public double getOtRate() {
-        return otRate;
+    public double getHours() {
+        return hours;
     }
 
-    public void setOtRate(double otRate) {
-        this.otRate = otRate;
+    public void setHours(double hours) {
+        this.hours = hours;
     }
 
-    public double getBonus() {
-        return bonus;
+    public double getSalary() {
+        return salary;
     }
 
-    public void setBonus(double bonus) {
-        this.bonus = bonus;
+    public void setSalary(double salary) {
+        this.salary = salary;
     }
 
-    public double getIncomeTax() {
-        return incomeTax;
+    public String getDepartmentId() {
+        return departmentId;
     }
 
-    public void setIncomeTax(double incomeTax) {
-        this.incomeTax = incomeTax;
+    public void setDepartmentId(String departmentId) {
+        this.departmentId = departmentId;
     }
-
 
     public Employee getEmployeeID() {
         return employeeID;
@@ -93,5 +127,4 @@ public class Salary implements SuperEntity {
     public void setEmployeeID(Employee employeeID) {
         this.employeeID = employeeID;
     }
-
 }

@@ -1,35 +1,38 @@
 package lk.sliit.employeeManagement.entity.restaurant.onlineTableReservation;
 
+
 import javax.persistence.Embeddable;
 import java.io.Serializable;
 
 @Embeddable
 public class OnlineTableReservationDetailsPK implements Serializable {
 
-    private String foodItemId;
-    private  String onlineTableId;
+    private String reservationId;
+    private  String tableId;
 
-    public OnlineTableReservationDetailsPK(String foodItemId, String onlineTableId) {
-        this.foodItemId = foodItemId;
-        this.onlineTableId = onlineTableId;
+    public OnlineTableReservationDetailsPK(String reservationId, String tableId) {
+        this.reservationId = reservationId;
+        this.tableId = tableId;
     }
 
     public OnlineTableReservationDetailsPK() {
     }
 
-    public String getOnlineTableId() {
-        return onlineTableId;
+
+
+    public String getReservationId() {
+        return reservationId;
     }
 
-    public void setOnlineTableId(String onlineTableId) {
-        this.onlineTableId = onlineTableId;
+    public void setReservationId(String reservationId) {
+        this.reservationId = reservationId;
     }
 
-    public String getFoodItemId() {
-        return foodItemId;
+    public String getTableId() {
+        return tableId;
     }
 
-    public void setFoodItemId(String foodItemId) {
-        this.foodItemId = foodItemId;
+    public void setTableId(String tableId) {
+        this.tableId = tableId;
     }
 }
