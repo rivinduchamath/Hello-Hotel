@@ -20,6 +20,8 @@ public class HotelRoom {
     private double price;
     @OneToMany(mappedBy = "roomId")
     private Collection<ReservationDetails> reservationRoom;
+    @OneToMany(mappedBy = "roomId")
+    private Collection<RoomService> roomServices;
 
 
     public HotelRoom(String roomId, String roomType, String description, double price) {

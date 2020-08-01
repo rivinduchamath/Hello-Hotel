@@ -1,7 +1,9 @@
 package lk.sliit.employeeManagement.entity.manager;
 
 
+import lk.sliit.employeeManagement.entity.barManage.BarOrderDetails;
 import lk.sliit.employeeManagement.entity.barManage.BarOrders;
+import lk.sliit.employeeManagement.entity.houseKeeping.RoomService;
 import lk.sliit.employeeManagement.entity.hr.Attendance;
 import lk.sliit.employeeManagement.entity.hr.Department;
 import lk.sliit.employeeManagement.entity.hr.Salary;
@@ -37,6 +39,8 @@ public class Employee implements SuperEntity {
     private List<Attendance> attendance = new ArrayList<>();
     @OneToMany(mappedBy = "employeeID", cascade = {CascadeType.REMOVE, CascadeType.PERSIST, CascadeType.REFRESH, CascadeType.DETACH, CascadeType.MERGE})
     private List<Salary> salaries = new ArrayList<>();
+    @OneToMany(mappedBy = "empId", cascade = {CascadeType.PERSIST, CascadeType.REFRESH, CascadeType.DETACH, CascadeType.MERGE})
+    private List<RoomService> orderDetails = new ArrayList<>();
 
 
     public Employee() {

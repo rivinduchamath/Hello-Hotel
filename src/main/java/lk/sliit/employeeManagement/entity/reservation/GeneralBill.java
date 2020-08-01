@@ -17,7 +17,7 @@ public class GeneralBill {
     private String status;
     private String reservationId;
     @ManyToOne(cascade = {CascadeType.PERSIST,CascadeType.REFRESH, CascadeType.DETACH, CascadeType.MERGE})
-    @JoinColumn(name="customerId",referencedColumnName = "customerId", insertable = false, updatable = false)
+    @JoinColumn(name="customerId",referencedColumnName = "customerId")
     private Customer customer;
 
     public GeneralBill(String billId, double amount, String type, String firstName, String lastName, Date date, String status, String reservationId, Customer customer) {

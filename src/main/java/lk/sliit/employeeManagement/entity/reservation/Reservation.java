@@ -12,7 +12,7 @@ public class Reservation {
     private Date date;
     private int noOfRooms;
     @ManyToOne(cascade = {CascadeType.PERSIST,CascadeType.REFRESH, CascadeType.DETACH, CascadeType.MERGE})
-    @JoinColumn(name="customerId",referencedColumnName = "customerId", insertable = false, updatable = false)
+    @JoinColumn(name="customerId",referencedColumnName = "customerId")
     private Customer customer;
     @OneToMany(mappedBy = "reservationId")
     private Collection<ReservationDetails> reservationDetails;

@@ -4,15 +4,18 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import java.sql.Date;
+import java.util.Date;
+
 
 @Entity
 public class ActivityList {
 
     @Id
     private String activityId;
-    private String inTime;
-    private String outTime;
+    @Temporal(TemporalType.TIME)
+    private Date inTime;
+    @Temporal(TemporalType.TIME)
+    private Date outTime;
     private Date date;
     private String employeeId;
     private String departmentId;
@@ -20,7 +23,7 @@ public class ActivityList {
     public ActivityList() {
     }
 
-    public ActivityList(String activityId, String inTime, String outTime, Date date, String employeeId, String departmentId) {
+    public ActivityList(String activityId, Date inTime, Date outTime, Date date, String employeeId, String departmentId) {
         this.activityId = activityId;
         this.inTime = inTime;
         this.outTime = outTime;
@@ -37,19 +40,19 @@ public class ActivityList {
         this.activityId = activityId;
     }
 
-    public String getInTime() {
+    public Date getInTime() {
         return inTime;
     }
 
-    public void setInTime(String inTime) {
+    public void setInTime(Date inTime) {
         this.inTime = inTime;
     }
 
-    public String getOutTime() {
+    public Date getOutTime() {
         return outTime;
     }
 
-    public void setOutTime(String outTime) {
+    public void setOutTime(Date outTime) {
         this.outTime = outTime;
     }
 

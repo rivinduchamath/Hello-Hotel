@@ -1,10 +1,6 @@
 package lk.sliit.employeeManagement.entity.reservation;
 
-import lk.sliit.employeeManagement.entity.barManage.BarOrderDetailsPK;
-import lk.sliit.employeeManagement.entity.barManage.BarOrders;
 import lk.sliit.employeeManagement.entity.houseKeeping.HotelRoom;
-import lk.sliit.employeeManagement.entity.inventory.InventoryOrder;
-
 import javax.persistence.*;
 import java.sql.Date;
 
@@ -17,10 +13,10 @@ public class ReservationDetails {
     private Date arrivalDate;
     private Date departureDate;
     @ManyToOne(cascade = {CascadeType.PERSIST,CascadeType.REFRESH, CascadeType.DETACH, CascadeType.MERGE})
-    @JoinColumn(name="reservationId",referencedColumnName = "reservationId", insertable = false, updatable = false)
+    @JoinColumn(name="reservationId",referencedColumnName = "reservationId")
     private Reservation reservationId;
     @ManyToOne(cascade = {CascadeType.PERSIST,CascadeType.REFRESH, CascadeType.DETACH, CascadeType.MERGE})
-    @JoinColumn(name="roomId",referencedColumnName = "roomId", insertable = false, updatable = false)
+    @JoinColumn(name="roomId",referencedColumnName = "roomId")
     private HotelRoom roomId;
 
     public ReservationDetails() {

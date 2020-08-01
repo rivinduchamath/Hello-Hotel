@@ -11,7 +11,7 @@ public class Report {
     private double quantity;
     private Date date;
     @ManyToOne(cascade = {CascadeType.PERSIST,CascadeType.REFRESH, CascadeType.DETACH, CascadeType.MERGE})
-    @JoinColumn(name="foodItem",referencedColumnName = "itemId", insertable = false, updatable = false)
+    @JoinColumn(name="foodItem",referencedColumnName = "itemId")
     private FoodItem foodItem;
 
 

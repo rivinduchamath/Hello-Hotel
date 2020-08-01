@@ -2,8 +2,6 @@ package lk.sliit.employeeManagement.controller.houseKeepingController;
 
 import lk.sliit.employeeManagement.controller.SuperController;
 import lk.sliit.employeeManagement.dto.HouseKeepingDTO;
-import lk.sliit.employeeManagement.dto.inventory.SupplierDTO;
-import lk.sliit.employeeManagement.entity.HouseKeeping;
 import lk.sliit.employeeManagement.service.custom.HouseKeepingBO;
 import lk.sliit.employeeManagement.service.custom.IndexLoginBO;
 import org.springframework.beans.factory.annotation.Autowired;

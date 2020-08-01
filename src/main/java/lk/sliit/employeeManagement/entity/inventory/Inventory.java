@@ -20,7 +20,7 @@ public class Inventory implements SuperEntity {
     private double orderQty;
     private String type;
     private String orderLimit;
-    private double getPrice;
+    private double price;
     private double sellingPrice;
     private Date date;
     @OneToMany(mappedBy = "inventory",cascade = {CascadeType.REMOVE,CascadeType.PERSIST, CascadeType.REFRESH, CascadeType.DETACH, CascadeType.MERGE})
@@ -41,7 +41,7 @@ public class Inventory implements SuperEntity {
         this.orderQty = orderQty;
         this.type = type;
         this.orderLimit = orderLimit;
-        this.getPrice = getPrice;
+        this.price = getPrice;
         this.sellingPrice = sellingPrice;
         this.date = date;
 
@@ -93,11 +93,11 @@ public class Inventory implements SuperEntity {
     }
 
     public double getGetPrice() {
-        return getPrice;
+        return price;
     }
 
     public void setGetPrice(double getPrice) {
-        this.getPrice = getPrice;
+        this.price = getPrice;
     }
 
     public double getSellingPrice() {
@@ -125,19 +125,6 @@ public class Inventory implements SuperEntity {
         this.type = type;
     }
 
-    @Override
-    public String toString() {
-        return "Inventory{" +
-                "inventoryId='" + inventoryId + '\'' +
-                ", text='" + text + '\'' +
-                ", description='" + description + '\'' +
-                ", orderQty='" + orderQty + '\'' +
-                ", type='" + type + '\'' +
-                ", orderLimit='" + orderLimit + '\'' +
-                ", getPrice=" + getPrice +
-                ", sellingPrice=" + sellingPrice +
-                ", date=" + date +
-                '}';
-    }
+
 }//End Class
 

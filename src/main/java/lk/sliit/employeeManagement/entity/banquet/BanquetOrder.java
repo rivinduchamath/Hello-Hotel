@@ -17,13 +17,13 @@ public class BanquetOrder {
     private Date date;
     private String submittedBy;
     @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.REFRESH, CascadeType.DETACH, CascadeType.MERGE})
-    @JoinColumn(name = "customer", referencedColumnName = "customerId", insertable = false, updatable = false)
+    @JoinColumn(name = "customer", referencedColumnName = "customerId")
     private Customer customer;
     @ManyToOne(cascade = {CascadeType.PERSIST,CascadeType.REFRESH, CascadeType.DETACH, CascadeType.MERGE})
-    @JoinColumn(name="menu",referencedColumnName = "menuId", insertable = false, updatable = false)
+    @JoinColumn(name="menu",referencedColumnName = "menuId")
     private Menu menu;
     @OneToOne(cascade = {CascadeType.PERSIST, CascadeType.REFRESH, CascadeType.DETACH, CascadeType.MERGE})
-    @JoinColumn(name = "banquetBill", referencedColumnName = "billId", insertable = false, updatable = false)
+    @JoinColumn(name = "banquetBill", referencedColumnName = "billId")
     private BanquetBill banquetBill;
 
     public BanquetOrder(String orderId, String hallId, String orderState, double noOfPlates, Date date, String submittedBy, Customer customer, Menu menu, BanquetBill banquetBill) {
