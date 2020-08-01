@@ -1,6 +1,5 @@
 package lk.sliit.employeeManagement.entity.kitchen;
 
-import lk.sliit.employeeManagement.entity.restaurant.Report;
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;

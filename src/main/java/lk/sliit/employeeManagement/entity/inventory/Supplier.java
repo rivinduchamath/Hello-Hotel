@@ -1,10 +1,9 @@
 package lk.sliit.employeeManagement.entity.inventory;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
+import javax.persistence.*;
 import java.sql.Date;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class Supplier {
@@ -18,6 +17,9 @@ public class Supplier {
     private Date date;
     private Date birthday;
     private String submittedBy;
+    @OneToMany(mappedBy = "supplier", cascade = {CascadeType.PERSIST,CascadeType.REFRESH, CascadeType.DETACH, CascadeType.MERGE})
+    private List<InventoryOrder> orders = new ArrayList<>();
+
 
     public Supplier(String id, String name, String address, String mobile, String email, String gender, Date date, Date birthday, String submittedBy) {
         this.id = id;

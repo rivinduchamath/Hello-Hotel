@@ -1,4 +1,4 @@
-package lk.sliit.employeeManagement.entity.restaurant.onlineCounterOrder;
+package lk.sliit.employeeManagement.entity.restaurant.onlineOrder;
 
 import javax.persistence.Embeddable;
 import java.io.Serializable;

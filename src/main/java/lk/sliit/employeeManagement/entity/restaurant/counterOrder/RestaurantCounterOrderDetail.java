@@ -10,6 +10,8 @@ public class RestaurantCounterOrderDetail {
 
     @EmbeddedId
     private RestaurantCounterOrderDetailPK restaurantCounterOrderDetailPK;
+   private double quantity;
+   private double unitePrice;
     @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.REFRESH, CascadeType.DETACH, CascadeType.MERGE})
     @JoinColumn(name = "restaurantCounterOrderId", referencedColumnName = "orderId", insertable = false, updatable = false)
     private RestaurantCounterOrder restaurantCounterOrder;
@@ -18,15 +20,36 @@ public class RestaurantCounterOrderDetail {
     private FoodItem foodItem;
 
 
-    public RestaurantCounterOrderDetail(RestaurantCounterOrderDetailPK restaurantCounterOrderDetailPK) {
+    public RestaurantCounterOrderDetail(RestaurantCounterOrderDetailPK restaurantCounterOrderDetailPK,double quantity, double unitePrice) {
         this.restaurantCounterOrderDetailPK = restaurantCounterOrderDetailPK;
+        this.quantity = quantity;
+        this.unitePrice = unitePrice;
     }
 
-    public RestaurantCounterOrderDetail( String restaurantCounterOrderId,String foodItemId ) {
+
+    public RestaurantCounterOrderDetail(String restaurantCounterOrderId, String foodItemId ,double quantity, double unitePrice) {
         this.restaurantCounterOrderDetailPK = new RestaurantCounterOrderDetailPK(restaurantCounterOrderId,foodItemId);
+        this.quantity = quantity;
+        this.unitePrice = unitePrice;
     }
 
     public RestaurantCounterOrderDetail() {
+    }
+
+    public double getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(double quantity) {
+        this.quantity = quantity;
+    }
+
+    public double getUnitePrice() {
+        return unitePrice;
+    }
+
+    public void setUnitePrice(double unitePrice) {
+        this.unitePrice = unitePrice;
     }
 
     public RestaurantCounterOrderDetailPK getRestaurantCounterOrderDetailPK() {

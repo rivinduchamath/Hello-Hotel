@@ -1,4 +1,4 @@
-package lk.sliit.employeeManagement.entity.restaurant;
+package lk.sliit.employeeManagement.entity.kitchen;
 
 import lk.sliit.employeeManagement.entity.kitchen.FoodItem;
 import javax.persistence.*;

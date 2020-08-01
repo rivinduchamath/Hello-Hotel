@@ -1,18 +1,16 @@
-package lk.sliit.employeeManagement.entity.restaurant.onlineCounterOrder;
+package lk.sliit.employeeManagement.entity.restaurant.onlineOrder;
 
 import lk.sliit.employeeManagement.entity.kitchen.FoodItem;
-import lk.sliit.employeeManagement.entity.restaurant.counterOrder.RestaurantCounterOrder;
-import lk.sliit.employeeManagement.entity.restaurant.counterOrder.RestaurantCounterOrderDetail;
-import lk.sliit.employeeManagement.entity.restaurant.counterOrder.RestaurantCounterOrderDetailPK;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
 
 @Entity
 public class RestaurantOnlineOrderDetails {
     @EmbeddedId
     private RestaurantOnlineOrderDetailsPK restaurantOnlineOrderDetailsPK;
+   private double quantity;
+   private double unitePrice;
+
     @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.REFRESH, CascadeType.DETACH, CascadeType.MERGE})
     @JoinColumn(name = "restaurantOnlineOrderId", referencedColumnName = "orderId", insertable = false, updatable = false)
     private RestaurantOnlineOrder restaurantOnlineOrder;
@@ -21,13 +19,17 @@ public class RestaurantOnlineOrderDetails {
     private FoodItem foodItem;
 
 
-    public RestaurantOnlineOrderDetails(RestaurantOnlineOrderDetailsPK restaurantOnlineOrderDetailsPK, RestaurantOnlineOrder restaurantOnlineOrder, FoodItem foodItem) {
+    public RestaurantOnlineOrderDetails(RestaurantOnlineOrderDetailsPK restaurantOnlineOrderDetailsPK, double quantity, double unitePrice) {
         this.restaurantOnlineOrderDetailsPK = restaurantOnlineOrderDetailsPK;
-        this.restaurantOnlineOrder = restaurantOnlineOrder;
-        this.foodItem = foodItem;
+        this.quantity = quantity;
+        this.unitePrice = unitePrice;
+
     }
-    public RestaurantOnlineOrderDetails( String restaurantOnlineOrderId,String foodItemId ) {
+
+    public RestaurantOnlineOrderDetails(String restaurantOnlineOrderId, String foodItemId ,double quantity, double unitePrice) {
         this.restaurantOnlineOrderDetailsPK = new RestaurantOnlineOrderDetailsPK(restaurantOnlineOrderId,foodItemId);
+        this.quantity = quantity;
+        this.unitePrice = unitePrice;
 
     }
 

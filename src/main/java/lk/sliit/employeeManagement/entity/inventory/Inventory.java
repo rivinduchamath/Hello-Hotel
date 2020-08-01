@@ -27,6 +27,8 @@ public class Inventory implements SuperEntity {
     private List<InventoryNotice> attendance = new ArrayList<>( );
     @OneToMany(mappedBy = "inventory",cascade ={ CascadeType.PERSIST ,CascadeType.REFRESH, CascadeType.DETACH,CascadeType.MERGE})
     private List<BarOrderDetails> orderDetails =new ArrayList<>();
+    @OneToMany(mappedBy = "item",cascade ={ CascadeType.PERSIST ,CascadeType.REFRESH, CascadeType.DETACH,CascadeType.MERGE})
+    private List<InventoryOrderDetails> inventoryOrderDetails =new ArrayList<>();
 
     public Inventory() {}
 

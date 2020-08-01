@@ -2,7 +2,8 @@ package lk.sliit.employeeManagement.entity.restaurant;
 
 import lk.sliit.employeeManagement.entity.restaurant.counterOrder.RestaurantCounterOrder;
 import lk.sliit.employeeManagement.entity.restaurant.counterTableReservation.CounterTableReservation;
-import lk.sliit.employeeManagement.entity.restaurant.onlineCounterOrder.RestaurantOnlineOrder;
+import lk.sliit.employeeManagement.entity.restaurant.onlineOrder.RestaurantOnlineOrder;
+import lk.sliit.employeeManagement.entity.restaurant.onlineTableReservation.OnlineTableReservation;
 
 import javax.persistence.*;
 
@@ -14,14 +15,17 @@ public class RestaurantBill {
     private double total;
     private double discount;
     @OneToOne(cascade = {CascadeType.PERSIST,CascadeType.REFRESH, CascadeType.DETACH, CascadeType.MERGE})
-    @JoinColumn(name="restaurantOrder",referencedColumnName = "orderId", insertable = false, updatable = false)
+    @JoinColumn(name="restaurantOrder",referencedColumnName = "orderId", insertable = false, updatable = false,nullable = true)
     private RestaurantCounterOrder restaurantOrder;
     @OneToOne(cascade = {CascadeType.PERSIST,CascadeType.REFRESH, CascadeType.DETACH, CascadeType.MERGE})
-    @JoinColumn(name="onlineOrder",referencedColumnName = "orderId", insertable = false, updatable = false)
+    @JoinColumn(name="onlineOrder",referencedColumnName = "orderId", insertable = false, updatable = false,nullable = true)
     private RestaurantOnlineOrder onlineOrder;
     @OneToOne(cascade = {CascadeType.PERSIST,CascadeType.REFRESH, CascadeType.DETACH, CascadeType.MERGE})
-    @JoinColumn(name="counterTableReservation",referencedColumnName = "counterTableReserveId", insertable = false, updatable = false)
+    @JoinColumn(name="counterTableReservation",referencedColumnName = "counterTableReserveId",nullable = true, insertable = false, updatable = false)
     private CounterTableReservation counterTableReserveId;
+    @OneToOne(cascade = {CascadeType.PERSIST,CascadeType.REFRESH, CascadeType.DETACH, CascadeType.MERGE})
+    @JoinColumn(name="onlineTableId",referencedColumnName = "onlineTableId", insertable = false, updatable = false,nullable = true)
+    private OnlineTableReservation onlineTableReservation;
 
     public RestaurantBill() {
     }
@@ -81,5 +85,21 @@ public class RestaurantBill {
 
     public void setOnlineOrder(RestaurantOnlineOrder onlineOrder) {
         this.onlineOrder = onlineOrder;
+    }
+
+    public CounterTableReservation getCounterTableReserveId() {
+        return counterTableReserveId;
+    }
+
+    public void setCounterTableReserveId(CounterTableReservation counterTableReserveId) {
+        this.counterTableReserveId = counterTableReserveId;
+    }
+
+    public OnlineTableReservation getOnlineTableReservation() {
+        return onlineTableReservation;
+    }
+
+    public void setOnlineTableReservation(OnlineTableReservation onlineTableReservation) {
+        this.onlineTableReservation = onlineTableReservation;
     }
 }

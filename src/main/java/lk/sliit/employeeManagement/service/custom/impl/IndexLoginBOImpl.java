@@ -4,7 +4,7 @@ import lk.sliit.employeeManagement.dao.EmployeeDAO;
 import lk.sliit.employeeManagement.dao.NoticeDAO;
 import lk.sliit.employeeManagement.dto.manager.EmployeeDTO;
 import lk.sliit.employeeManagement.dto.NoticeDTO;
-import lk.sliit.employeeManagement.entity.Notice;
+import lk.sliit.employeeManagement.entity.manager.Notice;
 import lk.sliit.employeeManagement.entity.manager.Employee;
 import lk.sliit.employeeManagement.service.custom.IndexLoginBO;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,7 +1,7 @@
 package lk.sliit.employeeManagement.dao;
 
 
-import lk.sliit.employeeManagement.entity.Notice;
+import lk.sliit.employeeManagement.entity.manager.Notice;
 import org.springframework.data.repository.CrudRepository;
 
 import java.util.Date;

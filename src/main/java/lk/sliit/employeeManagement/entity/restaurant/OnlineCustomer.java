@@ -1,8 +1,11 @@
 package lk.sliit.employeeManagement.entity.restaurant;
 
-import lk.sliit.employeeManagement.entity.restaurant.onlineCounterOrder.RestaurantOnlineOrder;
+import lk.sliit.employeeManagement.entity.restaurant.onlineOrder.RestaurantOnlineOrder;
+import lk.sliit.employeeManagement.entity.restaurant.onlineTableReservation.OnlineTableReservation;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class OnlineCustomer {
@@ -12,9 +15,11 @@ public class OnlineCustomer {
     private  String address;
     private String email;
     private String password;
-    @OneToOne(cascade = {CascadeType.PERSIST,CascadeType.REFRESH, CascadeType.DETACH, CascadeType.MERGE})
-    @JoinColumn(name="onlineOrder",referencedColumnName = "orderId", insertable = false, updatable = false)
-    private RestaurantOnlineOrder onlineOrder;
+    @OneToMany(mappedBy = "customer", cascade = {CascadeType.PERSIST,CascadeType.REFRESH, CascadeType.DETACH, CascadeType.MERGE})
+    private List<RestaurantOnlineOrder> restaurantOnlineOrders = new ArrayList<>();
+    @OneToMany(mappedBy = "customer", cascade = {CascadeType.PERSIST,CascadeType.REFRESH, CascadeType.DETACH, CascadeType.MERGE})
+    private List<OnlineTableReservation> onlineTableReservations = new ArrayList<>();
+
 
     public OnlineCustomer(String onlineCustomerId, String name, String address, String email, String password) {
         this.onlineCustomerId = onlineCustomerId;
@@ -67,11 +72,5 @@ public class OnlineCustomer {
         this.password = password;
     }
 
-    public RestaurantOnlineOrder getOnlineOrder() {
-        return onlineOrder;
-    }
 
-    public void setOnlineOrder(RestaurantOnlineOrder onlineOrder) {
-        this.onlineOrder = onlineOrder;
-    }
 }
