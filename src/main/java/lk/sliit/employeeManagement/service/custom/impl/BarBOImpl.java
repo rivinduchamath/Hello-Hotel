@@ -1,7 +1,7 @@
 package lk.sliit.employeeManagement.service.custom.impl;
 
-import lk.sliit.employeeManagement.dao.BarOrdersDAO;
-import lk.sliit.employeeManagement.dao.BarOrdersDetailsDAO;
+import lk.sliit.employeeManagement.dao.beverageDAO.BarOrdersDAO;
+import lk.sliit.employeeManagement.dao.beverageDAO.BarOrdersDetailsDAO;
 import lk.sliit.employeeManagement.dao.inventoryDAO.InventoryDAO;
 import lk.sliit.employeeManagement.dto.beverage.BarOrderDTO;
 import lk.sliit.employeeManagement.dto.beverage.BarOrderDetailDTO;

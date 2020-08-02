@@ -1,10 +1,9 @@
-package lk.sliit.employeeManagement.dao;
+package lk.sliit.employeeManagement.dao.hrDAO;
 
 import lk.sliit.employeeManagement.entity.hr.Attendance;
 import org.springframework.data.repository.CrudRepository;
 
-import java.util.Date;
 
 public interface AttendanceDAO extends CrudRepository<Attendance,String> {
-    Iterable<Attendance> findAttendanceByDateEquals(Date date);
+
 }

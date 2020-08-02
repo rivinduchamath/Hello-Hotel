@@ -1,9 +1,8 @@
 package lk.sliit.employeeManagement.service.custom.impl;
 
-import lk.sliit.employeeManagement.dao.EmployeeDAO;
-import lk.sliit.employeeManagement.dao.HumanResourceDAO;
+import lk.sliit.employeeManagement.dao.manageSystem.EmployeeDAO;
+import lk.sliit.employeeManagement.dao.hrDAO.DepartmentDAO;
 import lk.sliit.employeeManagement.dto.manager.EmployeeDTO;
-import lk.sliit.employeeManagement.entity.hr.Department;
 import lk.sliit.employeeManagement.entity.manager.Employee;
 import lk.sliit.employeeManagement.service.custom.ManageBO;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +18,7 @@ public class ManageBOImpl implements ManageBO {
     @Autowired
     EmployeeDAO manageDAO;
     @Autowired
-    HumanResourceDAO humanResourceDAO;
+    DepartmentDAO humanResourceDAO;
 
     @Override
     public void save(EmployeeDTO employeeDTO) {

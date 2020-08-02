@@ -8,7 +8,7 @@ package lk.sliit.employeeManagement;
   To change this template use File | Settings | File Templates.
 */
 
-import lk.sliit.employeeManagement.dao.EmployeeDAO;
+import lk.sliit.employeeManagement.dao.manageSystem.EmployeeDAO;
 import lk.sliit.employeeManagement.entity.hr.Department;
 import lk.sliit.employeeManagement.entity.manager.Employee;
 import org.springframework.boot.CommandLineRunner;

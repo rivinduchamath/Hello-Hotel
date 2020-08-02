@@ -1,7 +1,6 @@
 package lk.sliit.employeeManagement.entity.kitchen;
 
-import lk.sliit.employeeManagement.entity.barManage.BarOrderDetails;
-import lk.sliit.employeeManagement.entity.restaurant.counterOrder.RestaurantCounterOrder;
+import lk.sliit.employeeManagement.entity.restaurant.Report;
 import lk.sliit.employeeManagement.entity.restaurant.counterOrder.RestaurantCounterOrderDetail;
 import lk.sliit.employeeManagement.entity.restaurant.onlineOrder.RestaurantOnlineOrderDetails;
 

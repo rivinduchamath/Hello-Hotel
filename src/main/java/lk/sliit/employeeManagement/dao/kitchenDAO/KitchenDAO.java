@@ -1,4 +1,4 @@
-package lk.sliit.employeeManagement.dao;
+package lk.sliit.employeeManagement.dao.kitchenDAO;
 
 
 import lk.sliit.employeeManagement.entity.kitchen.FoodItem;

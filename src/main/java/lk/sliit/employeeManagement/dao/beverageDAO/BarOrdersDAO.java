@@ -1,4 +1,4 @@
-package lk.sliit.employeeManagement.dao;
+package lk.sliit.employeeManagement.dao.beverageDAO;
 
 import lk.sliit.employeeManagement.entity.barManage.BarOrders;
 import org.springframework.data.repository.CrudRepository;

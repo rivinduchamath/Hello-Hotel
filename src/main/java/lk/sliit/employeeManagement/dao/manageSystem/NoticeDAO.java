@@ -1,4 +1,4 @@
-package lk.sliit.employeeManagement.dao;
+package lk.sliit.employeeManagement.dao.manageSystem;
 
 
 import lk.sliit.employeeManagement.entity.manager.Notice;

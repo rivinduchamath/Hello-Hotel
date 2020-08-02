@@ -1,7 +1,7 @@
 package lk.sliit.employeeManagement.service.custom.impl;
 
-import lk.sliit.employeeManagement.dao.EmployeeDAO;
-import lk.sliit.employeeManagement.dao.NoticeDAO;
+import lk.sliit.employeeManagement.dao.manageSystem.EmployeeDAO;
+import lk.sliit.employeeManagement.dao.manageSystem.NoticeDAO;
 import lk.sliit.employeeManagement.dto.manager.EmployeeDTO;
 import lk.sliit.employeeManagement.dto.manager.NoticeDTO;
 import lk.sliit.employeeManagement.entity.manager.Notice;

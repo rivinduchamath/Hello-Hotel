@@ -1,4 +1,4 @@
-package lk.sliit.employeeManagement.dao.impl;
+package lk.sliit.employeeManagement.dao;
 
 
 import lk.sliit.employeeManagement.dao.QueryDAO;

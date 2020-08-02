@@ -1,4 +1,4 @@
-package lk.sliit.employeeManagement.dao;
+package lk.sliit.employeeManagement.dao.reservationDAO;
 
 import lk.sliit.employeeManagement.entity.reservation.Reservation;
 import org.springframework.data.repository.CrudRepository;

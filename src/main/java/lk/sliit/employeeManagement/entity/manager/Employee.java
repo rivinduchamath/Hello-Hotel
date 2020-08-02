@@ -65,6 +65,7 @@ public class Employee implements SuperEntity {
         this.department = department;
     }
 
+
     public List<Attendance> getOrders() {
         return attendance;
     }

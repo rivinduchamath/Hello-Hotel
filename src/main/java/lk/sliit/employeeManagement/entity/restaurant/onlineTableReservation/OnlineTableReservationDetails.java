@@ -1,9 +1,7 @@
 package lk.sliit.employeeManagement.entity.restaurant.onlineTableReservation;
 
 
-
 import lk.sliit.employeeManagement.entity.restaurant.RestaurantTable;
-
 import javax.persistence.*;
 
 @Entity
