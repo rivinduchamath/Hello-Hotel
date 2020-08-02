@@ -1,9 +1,8 @@
 package lk.sliit.employeeManagement.controller.indexController;
 
 import lk.sliit.employeeManagement.controller.SuperController;
-import lk.sliit.employeeManagement.dto.AttendanceDTO;
 import lk.sliit.employeeManagement.dto.manager.EmployeeDTO;
-import lk.sliit.employeeManagement.dto.NoticeDTO;
+import lk.sliit.employeeManagement.dto.manager.NoticeDTO;
 import lk.sliit.employeeManagement.service.custom.AttendanceBO;
 import lk.sliit.employeeManagement.service.custom.IndexLoginBO;
 import lk.sliit.employeeManagement.service.custom.NoticeBO;
@@ -14,8 +13,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import javax.servlet.http.HttpServletRequest;
-import java.io.IOException;
 import java.util.List;
 
 @Controller
@@ -45,12 +42,8 @@ public class IndexController { //index.jsp Page Controller
         if (indexLoginBO.findByIdNoAndPassword(employee.getUserId(), employee.getPassword()) != null) {
 
             //Get Today Attendance
-            List<AttendanceDTO> attendanceDTOS =attendanceBO.findTodayAttendance ( );
-            int count =0;
-            for (AttendanceDTO attendanceDTO: attendanceDTOS) {
-                count++;
-            }
-            model.addAttribute ( "todayAttendance",attendanceDTOS );
+
+            model.addAttribute ( "todayAttendance",null );
 
             //Add Logger Id To the static variable idNo
             SuperController.idNo = employee.getUserId();

@@ -8,8 +8,8 @@ import javax.persistence.*;
 public class RestaurantOnlineOrderDetails {
     @EmbeddedId
     private RestaurantOnlineOrderDetailsPK restaurantOnlineOrderDetailsPK;
-   private double quantity;
-   private double unitePrice;
+    private double quantity;
+    private double unitePrice;
     @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.REFRESH, CascadeType.DETACH, CascadeType.MERGE})
     @JoinColumn(name = "restaurantOnlineOrderId", referencedColumnName = "orderId", insertable = false, updatable = false)
     private RestaurantOnlineOrder restaurantOnlineOrder;
@@ -26,8 +26,8 @@ public class RestaurantOnlineOrderDetails {
         this.foodItem = foodItem;
     }
 
-    public RestaurantOnlineOrderDetails(String restaurantOnlineOrderId, String foodItemId , double quantity, double unitePrice, RestaurantOnlineOrder restaurantOnlineOrder, FoodItem foodItem) {
-        this.restaurantOnlineOrderDetailsPK = new RestaurantOnlineOrderDetailsPK(restaurantOnlineOrderId,foodItemId);
+    public RestaurantOnlineOrderDetails(String restaurantOnlineOrderId, String foodItemId, double quantity, double unitePrice, RestaurantOnlineOrder restaurantOnlineOrder, FoodItem foodItem) {
+        this.restaurantOnlineOrderDetailsPK = new RestaurantOnlineOrderDetailsPK(restaurantOnlineOrderId, foodItemId);
         this.quantity = quantity;
         this.unitePrice = unitePrice;
         this.restaurantOnlineOrder = restaurantOnlineOrder;

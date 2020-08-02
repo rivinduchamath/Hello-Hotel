@@ -1,7 +1,5 @@
 package lk.sliit.employeeManagement.dto.beverage;
 
-import lk.sliit.employeeManagement.dto.BarOrderDetailDTO;
-
 import java.util.Date;
 import java.util.List;
 

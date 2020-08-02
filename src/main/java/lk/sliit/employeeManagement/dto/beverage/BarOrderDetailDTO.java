@@ -1,4 +1,4 @@
-package lk.sliit.employeeManagement.dto;
+package lk.sliit.employeeManagement.dto.beverage;
 
 import java.sql.Date;
 

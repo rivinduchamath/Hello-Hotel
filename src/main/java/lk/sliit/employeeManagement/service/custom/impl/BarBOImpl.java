@@ -4,7 +4,7 @@ import lk.sliit.employeeManagement.dao.BarOrdersDAO;
 import lk.sliit.employeeManagement.dao.BarOrdersDetailsDAO;
 import lk.sliit.employeeManagement.dao.inventoryDAO.InventoryDAO;
 import lk.sliit.employeeManagement.dto.beverage.BarOrderDTO;
-import lk.sliit.employeeManagement.dto.BarOrderDetailDTO;
+import lk.sliit.employeeManagement.dto.beverage.BarOrderDetailDTO;
 import lk.sliit.employeeManagement.dto.inventory.InventoryDTO;
 import lk.sliit.employeeManagement.entity.barManage.BarOrderDetails;
 import lk.sliit.employeeManagement.entity.barManage.BarOrders;

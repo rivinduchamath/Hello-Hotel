@@ -29,6 +29,14 @@ public class Menu {
         this.unitPrice = unitPrice;
     }
 
+    public String getPicture() {
+        return picture;
+    }
+
+    public void setPicture(String picture) {
+        this.picture = picture;
+    }
+
     public String getMenuId() {
         return menuId;
     }

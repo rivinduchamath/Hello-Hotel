@@ -1,8 +1,7 @@
 package lk.sliit.employeeManagement.controller.dashboardController;
 
 import lk.sliit.employeeManagement.controller.SuperController;
-import lk.sliit.employeeManagement.dto.AttendanceDTO;
-import lk.sliit.employeeManagement.dto.NoticeDTO;
+import lk.sliit.employeeManagement.dto.manager.NoticeDTO;
 import lk.sliit.employeeManagement.service.custom.AttendanceBO;
 import lk.sliit.employeeManagement.service.custom.IndexLoginBO;
 import lk.sliit.employeeManagement.service.custom.NoticeBO;
@@ -25,12 +24,8 @@ public class DashboardController {
     public String loginPage(Model model)
     {
         //Get Today Attendance
-        List<AttendanceDTO> attendanceDTOS =attendanceBO.findTodayAttendance ( );
-        int count =0;
-        for (AttendanceDTO attendanceDTO: attendanceDTOS) {
-            count++;
-        }
-        model.addAttribute ( "todayAttendance",attendanceDTOS );
+
+
 
         List<NoticeDTO> p = noticeBO.findAll();
         model.addAttribute("loadNoticeTable", p);

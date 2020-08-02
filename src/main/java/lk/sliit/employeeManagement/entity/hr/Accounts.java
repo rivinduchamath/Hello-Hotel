@@ -1,7 +1,5 @@
 package lk.sliit.employeeManagement.entity.hr;
 
-import lk.sliit.employeeManagement.entity.barManage.BarOrders;
-
 import javax.persistence.*;
 import java.sql.Date;
 

@@ -10,8 +10,8 @@ public class RestaurantCounterOrderDetail {
 
     @EmbeddedId
     private RestaurantCounterOrderDetailPK restaurantCounterOrderDetailPK;
-   private double quantity;
-   private double unitePrice;
+    private double quantity;
+    private double unitePrice;
     @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.REFRESH, CascadeType.DETACH, CascadeType.MERGE})
     @JoinColumn(name = "restaurantCounterOrderId", referencedColumnName = "orderId", insertable = false, updatable = false)
     private RestaurantCounterOrder restaurantCounterOrder;
@@ -28,8 +28,8 @@ public class RestaurantCounterOrderDetail {
         this.foodItem = foodItem;
     }
 
-    public RestaurantCounterOrderDetail(String restaurantCounterOrderId, String foodItemId , double quantity, double unitePrice, RestaurantCounterOrder restaurantCounterOrder, FoodItem foodItem) {
-        this.restaurantCounterOrderDetailPK = new RestaurantCounterOrderDetailPK(restaurantCounterOrderId,foodItemId);
+    public RestaurantCounterOrderDetail(String restaurantCounterOrderId, String foodItemId, double quantity, double unitePrice, RestaurantCounterOrder restaurantCounterOrder, FoodItem foodItem) {
+        this.restaurantCounterOrderDetailPK = new RestaurantCounterOrderDetailPK(restaurantCounterOrderId, foodItemId);
         this.quantity = quantity;
         this.unitePrice = unitePrice;
         this.restaurantCounterOrder = restaurantCounterOrder;

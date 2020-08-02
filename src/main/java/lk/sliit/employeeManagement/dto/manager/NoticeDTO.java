@@ -1,15 +1,16 @@
-package lk.sliit.employeeManagement.dto;
+package lk.sliit.employeeManagement.dto.manager;
 
 
+import lk.sliit.employeeManagement.entity.hr.Department;
 import java.sql.Date;
 
 //Class NoticeDTO
 public class NoticeDTO {
-
     private String noticeId ;
     private String title;
     private String description;
     private Date date;
+    private Department department;
 
     public NoticeDTO(String noticeId, String title, String description, Date date) {
         this.noticeId = noticeId;
@@ -19,6 +20,14 @@ public class NoticeDTO {
     }
 
     public NoticeDTO() {
+    }
+
+    public NoticeDTO(String noticeId, String title, String description, Date date, Department department) {
+        this.noticeId = noticeId;
+        this.title = title;
+        this.description = description;
+        this.date = date;
+        this.department = department;
     }
 
     public NoticeDTO(String noticeId) {
@@ -57,6 +66,14 @@ public class NoticeDTO {
         this.date = date;
     }
 
+    public Department getDepartment() {
+        return department;
+    }
+
+    public void setDepartment(Department department) {
+        this.department = department;
+    }
+
     @Override
     public String toString() {
         return "NoticeDTO{" +
@@ -64,6 +81,7 @@ public class NoticeDTO {
                 ", title='" + title + '\'' +
                 ", description='" + description + '\'' +
                 ", date=" + date +
+                ", department=" + department +
                 '}';
     }
 }//End DTO

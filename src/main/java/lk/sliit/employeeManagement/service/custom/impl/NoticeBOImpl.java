@@ -1,7 +1,7 @@
 package lk.sliit.employeeManagement.service.custom.impl;
 
 import lk.sliit.employeeManagement.dao.NoticeDAO;
-import lk.sliit.employeeManagement.dto.NoticeDTO;
+import lk.sliit.employeeManagement.dto.manager.NoticeDTO;
 import lk.sliit.employeeManagement.entity.manager.Notice;
 import lk.sliit.employeeManagement.service.custom.NoticeBO;
 import org.springframework.beans.factory.annotation.Autowired;
