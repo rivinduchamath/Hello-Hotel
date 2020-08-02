@@ -2,24 +2,29 @@ package lk.sliit.employeeManagement.entity.inventory;
 
 import javax.persistence.*;
 import java.sql.Date;
-import java.util.ArrayList;
-import java.util.List;
+
 
 @Entity
 public class InventoryOrder {
     @Id
     private String orderId;
     private Date date;
+    private double price;
+    private double quantity;
     @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.REFRESH, CascadeType.DETACH, CascadeType.MERGE})
     @JoinColumn(name = "supplier", referencedColumnName = "id", nullable = false)
     private Supplier supplier;
-    @OneToMany(mappedBy = "order", cascade = {CascadeType.PERSIST, CascadeType.REFRESH, CascadeType.DETACH, CascadeType.MERGE})
-    private List<InventoryOrderDetails> orderDetails = new ArrayList<>();
+    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.REFRESH, CascadeType.DETACH, CascadeType.MERGE})
+    @JoinColumn(name = "inventory", referencedColumnName = "inventoryId", nullable = false)
+    private Inventory inventory;
 
-    public InventoryOrder(String orderId, Date date, Supplier supplier) {
+    public InventoryOrder(String orderId, Date date, double price, double quantity, Supplier supplier, Inventory inventory) {
         this.orderId = orderId;
         this.date = date;
+        this.price = price;
+        this.quantity = quantity;
         this.supplier = supplier;
+        this.inventory = inventory;
     }
 
     public InventoryOrder() {
@@ -49,8 +54,6 @@ public class InventoryOrder {
         this.supplier = supplier;
     }
 
-    public List<InventoryOrderDetails> getOrderDetails() {
-        return orderDetails;
-    }
+
 
 }

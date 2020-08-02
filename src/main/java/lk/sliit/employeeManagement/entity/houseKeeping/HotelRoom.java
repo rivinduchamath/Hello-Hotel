@@ -1,6 +1,6 @@
 package lk.sliit.employeeManagement.entity.houseKeeping;
 
-import lk.sliit.employeeManagement.entity.inventory.InventoryOrderDetails;
+
 import lk.sliit.employeeManagement.entity.reservation.ReservationDetails;
 
 import javax.persistence.CascadeType;
