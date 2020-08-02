@@ -1,4 +1,6 @@
-package lk.sliit.employeeManagement.dto;
+package lk.sliit.employeeManagement.dto.beverage;
+
+import lk.sliit.employeeManagement.dto.BarOrderDetailDTO;
 
 import java.util.Date;
 import java.util.List;
@@ -11,7 +13,7 @@ public class BarOrderDTO {
     private String user;
     private List<BarOrderDetailDTO> orderDetails;
     private  String orderData;
-private Date date;
+    private Date date;
 
     public BarOrderDTO(String id, String customerId, String user, List<BarOrderDetailDTO> orderDetails) {
         this.id = id;

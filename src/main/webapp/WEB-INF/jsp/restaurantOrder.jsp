@@ -4,7 +4,7 @@
 <%@ page import="java.util.Date" %>
 <%@ page import="java.text.SimpleDateFormat" %>
 <%@ page import="java.util.ArrayList" %>
-<%@ page import="lk.sliit.employeeManagement.dto.BarOrderDTO" %>
+<%@ page import="lk.sliit.employeeManagement.dto.beverage.BarOrderDTO" %>
 <%@ page import="java.awt.*" %>
 
 <html lang="en">

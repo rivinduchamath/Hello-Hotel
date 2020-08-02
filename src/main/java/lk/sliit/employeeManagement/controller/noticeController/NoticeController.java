@@ -1,9 +1,7 @@
 package lk.sliit.employeeManagement.controller.noticeController;
 
 import lk.sliit.employeeManagement.controller.SuperController;
-import lk.sliit.employeeManagement.dto.BarOrderDTO;
 import lk.sliit.employeeManagement.dto.NoticeDTO;
-import lk.sliit.employeeManagement.dto.inventory.ItemTypeDTO;
 import lk.sliit.employeeManagement.service.custom.IndexLoginBO;
 import lk.sliit.employeeManagement.service.custom.NoticeBO;
 import org.springframework.beans.factory.annotation.Autowired;

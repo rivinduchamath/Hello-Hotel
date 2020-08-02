@@ -1,9 +1,8 @@
 package lk.sliit.employeeManagement.controller.foodAndBevarage.barController;
 
 import lk.sliit.employeeManagement.controller.SuperController;
-import lk.sliit.employeeManagement.dto.BarOrderDTO;
+import lk.sliit.employeeManagement.dto.beverage.BarOrderDTO;
 import lk.sliit.employeeManagement.dto.inventory.InventoryDTO;
-import lk.sliit.employeeManagement.dto.inventory.SupplierDTO;
 import lk.sliit.employeeManagement.service.custom.BarBO;
 import lk.sliit.employeeManagement.service.custom.IndexLoginBO;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,6 +1,6 @@
 package lk.sliit.employeeManagement.service.custom;
 
-import lk.sliit.employeeManagement.dto.BarOrderDTO;
+import lk.sliit.employeeManagement.dto.beverage.BarOrderDTO;
 import lk.sliit.employeeManagement.dto.inventory.InventoryDTO;
 import lk.sliit.employeeManagement.service.SuperBO;
 
