@@ -25,7 +25,7 @@ public class Salary implements SuperEntity {
     private double hours;
     @Column(nullable = true)
     private double salary;
-    private String departmentId;
+
     @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.REFRESH, CascadeType.DETACH, CascadeType.MERGE})
     @JoinColumn(name = "employeeID", referencedColumnName = "userId", nullable = true)
     private Employee employeeID;
@@ -34,7 +34,7 @@ public class Salary implements SuperEntity {
 
     public Salary(String salaryId, double basicSalary, double etf, double epf,
                   double serviceCharge, double otHours, double hours, double salary,
-                  String departmentId, Employee employeeID) {
+                   Employee employeeID) {
         this.salaryId = salaryId;
         this.basicSalary = basicSalary;
         this.etf = etf;
@@ -43,7 +43,6 @@ public class Salary implements SuperEntity {
         this.otHours = otHours;
         this.hours = hours;
         this.salary = salary;
-        this.departmentId = departmentId;
         this.employeeID = employeeID;
     }
 
@@ -110,14 +109,6 @@ public class Salary implements SuperEntity {
 
     public void setSalary(double salary) {
         this.salary = salary;
-    }
-
-    public String getDepartmentId() {
-        return departmentId;
-    }
-
-    public void setDepartmentId(String departmentId) {
-        this.departmentId = departmentId;
     }
 
     public Employee getEmployeeID() {

@@ -13,7 +13,7 @@ public class Accounts {
     private double income;
     private Date date;
     @OneToOne(cascade = {CascadeType.PERSIST, CascadeType.REFRESH, CascadeType.DETACH, CascadeType.MERGE})
-    @JoinColumn(name = "departmentId", referencedColumnName = "departmentId", insertable = false, updatable = false)
+    @JoinColumn(name = "departmentId", referencedColumnName = "departmentId")
     private Department department;
 
     public Accounts(String accountId, double expenses, double income, Date date, Department department) {

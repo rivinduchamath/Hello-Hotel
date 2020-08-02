@@ -12,6 +12,7 @@ public class OnlineCustomer {
 @Id
     private String onlineCustomerId;
     private  String name;
+    private  String userName;
     private  String address;
     private String email;
     private String password;
@@ -21,9 +22,10 @@ public class OnlineCustomer {
     private List<OnlineTableReservation> onlineTableReservations = new ArrayList<>();
 
 
-    public OnlineCustomer(String onlineCustomerId, String name, String address, String email, String password) {
+    public OnlineCustomer(String onlineCustomerId, String name, String userName, String address, String email, String password) {
         this.onlineCustomerId = onlineCustomerId;
         this.name = name;
+        this.userName = userName;
         this.address = address;
         this.email = email;
         this.password = password;
@@ -72,5 +74,11 @@ public class OnlineCustomer {
         this.password = password;
     }
 
+    public String getUserName() {
+        return userName;
+    }
 
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
 }

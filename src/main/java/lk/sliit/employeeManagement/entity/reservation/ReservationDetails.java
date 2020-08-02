@@ -7,16 +7,15 @@ import java.sql.Date;
 @Entity
 public class ReservationDetails {
 
-
     @EmbeddedId
     private ReservationDetailsPK reservationDetailsPK;
     private Date arrivalDate;
     private Date departureDate;
     @ManyToOne(cascade = {CascadeType.PERSIST,CascadeType.REFRESH, CascadeType.DETACH, CascadeType.MERGE})
-    @JoinColumn(name="reservationId",referencedColumnName = "reservationId")
+    @JoinColumn(name="reservationId",referencedColumnName = "reservationId", insertable = false, updatable = false)
     private Reservation reservationId;
     @ManyToOne(cascade = {CascadeType.PERSIST,CascadeType.REFRESH, CascadeType.DETACH, CascadeType.MERGE})
-    @JoinColumn(name="roomId",referencedColumnName = "roomId")
+    @JoinColumn(name="roomId",referencedColumnName = "roomId", insertable = false, updatable = false)
     private HotelRoom roomId;
 
     public ReservationDetails() {

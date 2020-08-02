@@ -24,11 +24,10 @@ public class AttendanceDTO {
     public AttendanceDTO() {
     }
 
-    public AttendanceDTO(String attendanceId, double salary, Date date,
+    public AttendanceDTO(String attendanceId,  Date date,
                          String inTime, String outTime, double overtimeHours,
                          Employee one) {
         this.attendanceId = attendanceId;
-        this.salary = salary;
         this.date = date;
         this.inTime = inTime;
         this.outTime = outTime;

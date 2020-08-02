@@ -38,7 +38,6 @@ public class AttendanceBOImpl implements AttendanceBO {
         for (Attendance attendance : attendances) {
             dtos.add ( new AttendanceDTO (
                     attendance.getAttendanceId (),
-                    attendance.getSalary (),
                     attendance.getDate (),
                     attendance.getInTime (),
                     attendance.getOutTime (),

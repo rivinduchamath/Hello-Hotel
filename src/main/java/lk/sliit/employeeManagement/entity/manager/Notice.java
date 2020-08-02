@@ -2,9 +2,7 @@ package lk.sliit.employeeManagement.entity.manager;
 
 
 import lk.sliit.employeeManagement.entity.SuperEntity;
-import lk.sliit.employeeManagement.entity.barManage.BarOrders;
 import lk.sliit.employeeManagement.entity.hr.Department;
-
 import javax.persistence.*;
 import java.sql.Date;
 
@@ -18,7 +16,7 @@ public class Notice implements SuperEntity {
     private String description;
     private Date date;
     @ManyToOne(cascade = {CascadeType.PERSIST,CascadeType.REFRESH, CascadeType.DETACH, CascadeType.MERGE})
-    @JoinColumn(name="departmentId",referencedColumnName = "departmentId", insertable = false, updatable = false)
+    @JoinColumn(name="departmentId",referencedColumnName = "departmentId")
     private Department department;
 
     public Notice(String noticeId, String title, String description, Date date) {

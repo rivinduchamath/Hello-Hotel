@@ -5,7 +5,7 @@ import lk.sliit.employeeManagement.entity.kitchen.Menu;
 import lk.sliit.employeeManagement.entity.reservation.Customer;
 
 import javax.persistence.*;
-import java.sql.Date;
+import java.util.Date;
 
 @Entity
 public class BanquetOrder {
@@ -13,7 +13,8 @@ public class BanquetOrder {
     private String orderId;
     private String hallId;
     private String orderState;
-    private double noOfPlates;
+    private int noOfPlates;
+    @Temporal(TemporalType.DATE)
     private Date date;
     private String submittedBy;
     @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.REFRESH, CascadeType.DETACH, CascadeType.MERGE})
@@ -26,7 +27,7 @@ public class BanquetOrder {
     @JoinColumn(name = "banquetBill", referencedColumnName = "billId")
     private BanquetBill banquetBill;
 
-    public BanquetOrder(String orderId, String hallId, String orderState, double noOfPlates, Date date, String submittedBy, Customer customer, Menu menu, BanquetBill banquetBill) {
+    public BanquetOrder(String orderId, String hallId, String orderState, int noOfPlates, Date date, String submittedBy, Customer customer, Menu menu, BanquetBill banquetBill) {
         this.orderId = orderId;
         this.hallId = hallId;
         this.orderState = orderState;
@@ -65,11 +66,11 @@ public class BanquetOrder {
         this.orderState = orderState;
     }
 
-    public double getNoOfPlates() {
+    public int getNoOfPlates() {
         return noOfPlates;
     }
 
-    public void setNoOfPlates(double noOfPlates) {
+    public void setNoOfPlates(int noOfPlates) {
         this.noOfPlates = noOfPlates;
     }
 

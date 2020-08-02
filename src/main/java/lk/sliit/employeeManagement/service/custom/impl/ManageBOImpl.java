@@ -23,7 +23,7 @@ public class ManageBOImpl implements ManageBO {
 
     @Override
     public void save(EmployeeDTO employeeDTO) {
-        employeeDTO.setDepartment("D001");
+
         manageDAO.save(new Employee(
                 employeeDTO.getUserId(),
                 employeeDTO.getName(),

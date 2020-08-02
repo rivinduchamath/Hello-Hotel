@@ -17,19 +17,16 @@ public class CounterTableReservation {
    private Time endTime;
    private int noOfTables;
    private Date date;
-   private String orderId;
+
     @OneToMany(mappedBy = "counterTableReservation", cascade = {CascadeType.PERSIST, CascadeType.REFRESH, CascadeType.DETACH, CascadeType.MERGE})
     private List<CounterTableReservationDetails> orderDetails = new ArrayList<>();
 
-
-    public CounterTableReservation(String counterTableReserveId, Time startTime, Time endTime, int noOfTables, Date date, String orderId) {
+    public CounterTableReservation(String counterTableReserveId, Time startTime, Time endTime, int noOfTables, Date date) {
         this.counterTableReserveId = counterTableReserveId;
         this.startTime = startTime;
         this.endTime = endTime;
         this.noOfTables = noOfTables;
         this.date = date;
-        this.orderId = orderId;
-        this.orderDetails = orderDetails;
     }
 
     public CounterTableReservation() {
@@ -67,13 +64,6 @@ public class CounterTableReservation {
         this.date = date;
     }
 
-    public String getOrderId() {
-        return orderId;
-    }
-
-    public void setOrderId(String orderId) {
-        this.orderId = orderId;
-    }
 
     public String getCounterTableReserveId() {
         return counterTableReserveId;

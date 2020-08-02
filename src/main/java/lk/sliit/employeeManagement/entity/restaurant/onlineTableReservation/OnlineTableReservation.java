@@ -15,7 +15,6 @@ public class OnlineTableReservation {
     private String onlineTableReservationId;
     private Date reservedDate;
     private Date date;
-    private String orderId;
     private Time startTime;
     private Time endTime;
     private int noOfTables;
@@ -25,11 +24,11 @@ public class OnlineTableReservation {
     @OneToMany(mappedBy = "onlineTableReservation", cascade = {CascadeType.PERSIST, CascadeType.REFRESH, CascadeType.DETACH, CascadeType.MERGE})
     private List<OnlineTableReservationDetails> orderDetails = new ArrayList<>();
 
-    public OnlineTableReservation(String onlineTableId, Date reservedDate, Date date, String orderId, Time startTime, Time endTime, int noOfTables, OnlineCustomer customer) {
+    public OnlineTableReservation(String onlineTableId, Date reservedDate, Date date,  Time startTime, Time endTime, int noOfTables, OnlineCustomer customer) {
         this.onlineTableReservationId = onlineTableId;
         this.reservedDate = reservedDate;
         this.date = date;
-        this.orderId = orderId;
+
         this.startTime = startTime;
         this.endTime = endTime;
         this.noOfTables = noOfTables;
@@ -64,13 +63,7 @@ public class OnlineTableReservation {
         this.date = date;
     }
 
-    public String getOrderId() {
-        return orderId;
-    }
 
-    public void setOrderId(String orderId) {
-        this.orderId = orderId;
-    }
 
     public Time getStartTime() {
         return startTime;

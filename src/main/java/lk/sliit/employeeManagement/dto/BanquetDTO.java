@@ -1,6 +1,6 @@
 package lk.sliit.employeeManagement.dto;
 
-import java.sql.Date;
+import java.util.Date;
 
 
 

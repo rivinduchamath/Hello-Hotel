@@ -13,7 +13,6 @@ public class Attendance implements SuperEntity {
     @Id
     private String attendanceId;
     @Column(nullable = true)
-    private double salary;
     @Temporal(TemporalType.DATE)
     private Date date;
     private String inTime;
@@ -27,11 +26,11 @@ public class Attendance implements SuperEntity {
 
     public Attendance() {}
 
-    public Attendance(String attendanceId, double salary, Date date,
+    public Attendance(String attendanceId,  Date date,
                        String inTime, String outTime, double overtimeHours,
                        Employee employeeID) {
         this.attendanceId = attendanceId;
-        this.salary = salary;
+
         this.date = date;
         this.inTime = inTime;
         this.outTime = outTime;
@@ -48,13 +47,6 @@ public class Attendance implements SuperEntity {
         this.attendanceId = attendanceId;
     }
 
-    public double getSalary() {
-        return salary;
-    }
-
-    public void setSalary(double salary) {
-        this.salary = salary;
-    }
 
     public Date getDate() {
         return date;
