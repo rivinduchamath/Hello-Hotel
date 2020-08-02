@@ -302,15 +302,12 @@
                         </div>
                     </div>
                     <!--///////////////////////////////////////////////////////-->
-
                 </div>
             </div>
 
         </div>
     </div>
     <!-- /page content -->
-
-
     <!-- footer content -->
     <jsp:include page="footer.jsp"/>
     <!-- /footer content -->
@@ -329,7 +326,6 @@
 <script src="../../vendors/nprogress/nprogress.js"></script>
 <!-- iCheck -->
 <script src="../../vendors/iCheck/icheck.min.js"></script>
-
 <!-- jQuery -->
 <script src="../../vendors/jquery/dist/jquery.min.js"></script>
 <!-- Bootstrap -->
@@ -340,6 +336,7 @@
 <script src="../../vendors/nprogress/nprogress.js"></script>
 <!-- iCheck -->
 <script src="../../vendors/iCheck/icheck.min.js"></script>
+
 <script>
     var selectedRow = null;
     $("#dataTablesButton1 tbody").on('click', 'tr', function () {
