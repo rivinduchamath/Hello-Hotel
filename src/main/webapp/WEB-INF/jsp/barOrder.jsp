@@ -157,7 +157,7 @@
                             </div>
 
                             <div class="form-group">
-                                <label for="itemCode">Item Name</label>
+                                <label for="itemName">Item Name</label>
                                 <input type="text" class="form-control"
                                        required name="itemName"
                                        id="itemName" disabled placeholder="Item Name"/>

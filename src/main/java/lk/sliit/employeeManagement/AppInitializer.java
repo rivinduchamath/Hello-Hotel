@@ -37,7 +37,6 @@ public class AppInitializer {
         return args -> {
             List<String> names = Arrays.asList ( "1");
             names.forEach ( name -> manageDAO.save ( new Employee(
-
                             "1",
                             "Rivindu Wijayarathna",
                             "0223123456",
@@ -45,14 +44,15 @@ public class AppInitializer {
                             "Galle",
                             "Admin",
                             "1",
-                            date,
+                             date,
                             "Male",
                             2112122,
-                            date,
+                             date,
                             "img.jpg",
                             new Department("D001","Manage")
                            )
                     )
             );
         };
-    }}//End Class
+    }
+}//End Class
