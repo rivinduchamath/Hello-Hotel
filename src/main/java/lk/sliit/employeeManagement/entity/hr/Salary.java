@@ -2,7 +2,6 @@ package lk.sliit.employeeManagement.entity.hr;
 
 import lk.sliit.employeeManagement.entity.SuperEntity;
 import lk.sliit.employeeManagement.entity.manager.Employee;
-
 import javax.persistence.*;
 
 

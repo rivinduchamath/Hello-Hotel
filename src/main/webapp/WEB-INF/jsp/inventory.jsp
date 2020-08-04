@@ -240,7 +240,7 @@
                         <div class="containerx">
                             <a style=" font-family: Playfair Display, Georgia, Times New Roman, serif;
                              background-color:#3d495f; color: #ffffff;font-weight: bolder"
-                               href="barStock" class="btnq"><h2
+                               href="kitchenStock" class="btnq"><h2
                                     style="position: relative; letter-spacing: 1px;
                                      margin-top: 30px">Kitchen Stock</h2></a>
                         </div>
@@ -251,9 +251,9 @@
                         <div class="containerx">
                             <a style=" font-family: Playfair Display, Georgia, Times New Roman, serif;
                              background-color:#3d495f; color: #ffffff;font-weight: bolder"
-                               href="barStock" class="btnq"><h2
+                               href="beverageStock" class="btnq"><h2
                                     style="position: relative; letter-spacing: 1px;
-                                     margin-top: 30px">F&B Stock</h2></a>
+                                     margin-top: 30px">Beverage Stock</h2></a>
                         </div>
                         <br>
                     </div>
@@ -264,7 +264,7 @@
                              background-color:#3d495f; color: #ffffff;font-weight: bolder"
                                href="restaurantStock" class="btnq"><h2
                                     style="position: relative; letter-spacing: 1px;
-                                     margin-top: 30px">All Inventory</h2></a>
+                                     margin-top: 30px">Reports</h2></a>
                         </div>
                         <br>
                     </div>
