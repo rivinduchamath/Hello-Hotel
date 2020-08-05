@@ -33,9 +33,9 @@ public class Employee implements SuperEntity {
     @OneToOne(cascade = {CascadeType.PERSIST,CascadeType.REFRESH, CascadeType.DETACH, CascadeType.MERGE})
     @JoinColumn(name="departmentId",referencedColumnName = "departmentId")
     private Department department;
-    @OneToMany(mappedBy = "employeeID", cascade = {CascadeType.REMOVE, CascadeType.PERSIST, CascadeType.REFRESH, CascadeType.DETACH, CascadeType.MERGE})
+    @OneToMany(mappedBy = "employeeID", cascade = { CascadeType.PERSIST, CascadeType.REFRESH, CascadeType.DETACH, CascadeType.MERGE})
     private List<Attendance> attendance = new ArrayList<>();
-    @OneToMany(mappedBy = "employeeID", cascade = {CascadeType.REMOVE, CascadeType.PERSIST, CascadeType.REFRESH, CascadeType.DETACH, CascadeType.MERGE})
+    @OneToMany(mappedBy = "employeeID", cascade = { CascadeType.PERSIST, CascadeType.REFRESH, CascadeType.DETACH, CascadeType.MERGE})
     private List<Salary> salaries = new ArrayList<>();
     @OneToMany(mappedBy = "empId", cascade = {CascadeType.PERSIST, CascadeType.REFRESH, CascadeType.DETACH, CascadeType.MERGE})
     private List<RoomService> orderDetails = new ArrayList<>();
@@ -63,10 +63,6 @@ public class Employee implements SuperEntity {
         this.department = department;
     }
 
-
-    public List<Attendance> getOrders() {
-        return attendance;
-    }
 
     public Department getDepartment() {
         return department;

@@ -2,21 +2,22 @@ package lk.sliit.hotelManagement.entity.banquet;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
-public class Limit {
-@Id
+public class OrderLimit {
+    @Id
     private String limitId;
-private String limitName;
-private double limit;
+    private String limitName;
+    private double orderLimit;
 
-    public Limit(String limitId, String limitName, double limit) {
+    public OrderLimit(String limitId, String limitName, double orderLimit) {
         this.limitId = limitId;
         this.limitName = limitName;
-        this.limit = limit;
+        this.orderLimit = orderLimit;
     }
 
-    public Limit() {
+    public OrderLimit() {
     }
 
     public String getLimitId() {
@@ -35,11 +36,11 @@ private double limit;
         this.limitName = limitName;
     }
 
-    public double getLimit() {
-        return limit;
+    public double getOrderLimit() {
+        return orderLimit;
     }
 
-    public void setLimit(double limit) {
-        this.limit = limit;
+    public void setOrderLimit(double orderLimit) {
+        this.orderLimit = orderLimit;
     }
 }

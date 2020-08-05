@@ -8,7 +8,7 @@ import java.util.Date;
 
 
 @Entity
-public class Attendance implements SuperEntity {
+public class Attendance  {
 
     @Id
     private String attendanceId;
