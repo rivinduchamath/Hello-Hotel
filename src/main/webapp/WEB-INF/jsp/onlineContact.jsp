@@ -128,11 +128,12 @@
 
     <div class="main zerogrid">
         <!-- footer -->
+        <!-- footer -->
         <footer>
             <div class="wrapper">
                 <section class="col-2-3"><div class="wrap-col">
-                    <h3>Toll Free: <span>1-800 123 45 67</span></h3>
-                    Designed by <a rel="nofollow" href="http://www.TemplateMonster.com/" target="_blank">TemplateMonster</a> | <a href="https://www.zerotheme.com" title="free website templates">ZEROTHEME</a>
+                    <h3>Hot-line: <span>+94 778 7999 40</span></h3>
+                    Designed by <a rel="nofollow" href="" target="_blank">Team Reliance</a> | <a href="https://github.com/rivinduchamath/Hello-Hotel" title="free website templates">Project ITP</a>
                 </div></section>
                 <section class="col-1-3"><div class="wrap-col">
                     <h3>Follow Us </h3>
