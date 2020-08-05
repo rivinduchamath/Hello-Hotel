@@ -102,11 +102,11 @@
     </div>
 </div>
 <div class="body2">
-body content
+body conten
 </div>
 <div class="body3">
     <div class="main zerogrid">
-        <!-- footer -->
+        <!-- footerr -->
         <footer>
             <div class="wrapper">
                 <section class="col-2-3"><div class="wrap-col">
