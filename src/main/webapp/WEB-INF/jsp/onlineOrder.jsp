@@ -14,32 +14,14 @@
     <link rel="stylesheet" href="../../onlineRestaurant/restaurant/css/style.css" type="text/css" media="all">
     <link rel="stylesheet" href="../../onlineRestaurant/restaurant/css/zerogrid.css" type="text/css" media="all">
     <link rel="stylesheet" href="../../onlineRestaurant/restaurant/css/responsive.css" type="text/css" media="all">
-    <link rel="stylesheet" href="../../onlineRestaurant/restaurant/css/responsiveslides.css" />
     <script type="text/javascript" src="../../onlineRestaurant/restaurant/js/jquery-1.6.js" ></script>
     <script type="text/javascript" src="../../onlineRestaurant/restaurant/js/cufon-yui.js"></script>
     <script type="text/javascript" src="../../onlineRestaurant/restaurant/js/cufon-replace.js"></script>
     <script type="text/javascript" src="../../onlineRestaurant/restaurant/js/Forum_400.font.js"></script>
-    <script type="text/javascript" src="../../onlineRestaurant/restaurant/js/jquery.easing.1.3.js"></script>
-    <script type="text/javascript" src="../../onlineRestaurant/restaurant/js/tms-0.3.js"></script>
-    <script type="text/javascript" src="../../onlineRestaurant/restaurant/js/tms_presets.js"></script>
-    <script type="text/javascript" src="../../onlineRestaurant/restaurant/js/script.js"></script>
     <script type="text/javascript" src="../../onlineRestaurant/restaurant/js/atooltip.jquery.js"></script>
     <script type="text/javascript" src="../../onlineRestaurant/restaurant/js/css3-mediaqueries.js"></script>
-    <script src="js/responsiveslides.js"></script>
-    <script>
-        $(function () {
-            $("#slidez").responsiveSlides({
-                auto: true,
-                pager: false,
-                nav: true,
-                speed: 500,
-                maxwidth: 960,
-                namespace: "centered-btns"
-            });
-        });
-    </script>
-    <!--[if lt IE 9]>
-    <script type="text/javascript" src="../../onlineRestaurant/restaurant/js/html5.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script type="text/javascript" src="js/html5.js"></script>
     <style type="text/css">
         .slider_bg {behavior:url(../../onlineRestaurant/restaurant/js/PIE.htc)}
     </style>
@@ -50,192 +32,119 @@
     </div>
     <![endif]-->
 </head>
-<body id="page1">
+<body id="page4">
 <div class="body6">
     <div class="body1">
-        <div class="body5">
-            <div class="main zerogrid">
-                <!-- header -->
-                <header>
-                    <h1><a href="index.html" id="logo"><img src="../../onlineRestaurant/restaurant/images/logo.png"/></a></h1>
-                    <nav>
-                        <ul id="top_nav">
-                            <li><a href="index.html"><img src="images/icon_1.gif" alt=""></a></li>
-                            <li><a href="#"><img src="../../onlineRestaurant/restaurant/images/icon_2.gif" alt=""></a></li>
-                            <li class="end"><a href="Contacts.html"><img src="../../onlineRestaurant/restaurant/images/icon_3.gif" alt=""></a></li>
-                        </ul>
-                    </nav>
-                    <nav>
-                        <ul id="menu">
-                            <li class="active"><a href="index.html">Restaurant</a></li>
-                            <li><a href="Cuisine.html">Cuisine</a></li>
-                            <li><a href="Wine.html">Wine List</a></li>
-                            <li><a href="CookBook.html">CookBook</a></li>
-                            <li><a href="Contacts.html">Contacts</a></li>
-                        </ul>
-                    </nav>
-                </header>
-                <!-- / header -->
-                <!-- content -->
-                <article id="content">
-                    <div class="slider_bg">
-                        <div class="slider">
-                            <ul class="items">
-                                <li>
-                                    <img src="../../onlineRestaurant/restaurant/images/img1.jpg" alt="">
-                                    <div class="banner">
-                                        <strong>Italian<span>Fettuccine</span></strong>
-                                        <b>Dish of the Day</b>
-                                        <p>
-											<span>Lorem ipsum dolamet consectetur<br>
-											adipisicing elit, sed do eiusmod tempor aliqua enim ad minim veniam, quis nosinci- didunt ut labore et dolore.</span>
-                                        </p>
-                                    </div>
-                                </li>
-                                <li>
-                                    <img src="../../onlineRestaurant/restaurant/images/img2.jpg" alt="">
-                                    <div class="banner">
-                                        <strong>succulent<span>meat</span></strong>
-                                        <b>Dish of the Day</b>
-                                        <p>
-											<span>Lorem ipsum dolamet consectetur <br>
-											adipisicing elit, sed do eiusmod tempor aliqua enim ad minim veniam, quis nosinci- didunt ut labore et dolore.</span>
-                                        </p>
-                                    </div>
-                                </li>
-                                <li>
-                                    <img src="../../onlineRestaurant/restaurant/images/img3.jpg" alt="">
-                                    <div class="banner">
-                                        <strong>French-Style<span>Tartlet</span></strong>
-                                        <b>Dish of the Day</b>
-                                        <p>
-											<span>Lorem ipsum dolamet consectetur <br>
-											adipisicing elit, sed do eiusmod tempor aliqua enim ad minim veniam, quis nosinci- didunt ut labore et dolore.</span>
-                                        </p>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="slider-response">
-                            <div class="rslides_container">
-                                <ul class="rslides" id="slidez">
-                                    <li><img src="../../onlineRestaurant/restaurant/images/img1.jpg" alt=""></li>
-                                    <li><img src="../../onlineRestaurant/restaurant/images/img2.jpg" alt=""></li>
-                                    <li><img src="../../onlineRestaurant/restaurant/images/img3.jpg" alt=""></li>
+        <div class="main zerogrid">
+            <!-- header -->
+            <header>
+                <h1><a href="index.html"  style="position: relative;left: -50px;top: -30px" id="logo"><img src="../../onlineRestaurant/restaurant/images/logo.png"/></a></h1>
+                <nav>
+                    <ul id="top_nav">
+                        <li><a href="index.html"><img src="../../onlineRestaurant/restaurant/images/icon_1.gif" alt=""></a></li>
+                        <li><a href="#"><img src="../../onlineRestaurant/restaurant/images/icon_2.gif" alt=""></a></li>
+                        <li class="end"><a href="onlineCustomer"><i class="fa fa-user" style="color: rgba(255,255,255,0.91); font-size:20px;"> LogIn</i></a></li>
+                    </ul>
+                </nav>
+                <nav>
+                    <ul id="menu">
+                        <li><a href="onlineDashboard">Dashboard</a></li>
+                        <li class="active"><a href="onlineOrder">Order</a></li>
+                        <li><a href="onlineTable">Table</a></li>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="onlineContact">Contacts</a></li>
+                    </ul>
+                </nav>
+            </header>
+            <!-- / header -->
+            <!-- content -->
+            <article id="content">
+                <div class="wrap">
+                    <section class="col-1-3"><div class="wrap-col">
+                        <div class="box">
+                            <div>
+                                <h2>Recent <span>Recipes</span></h2>
+                                <ul class="list1 pad_bot1">
+                                    <li><a href="#">Lorem ipsum dolor sit amet</a></li>
+                                    <li><a href="#">Consectetur adipisicing elit sed</a></li>
+                                    <li><a href="#">Eiusmod tempor incididunt labore</a></li>
+                                    <li><a href="#">Ut enim ad minim veniam</a></li>
+                                    <li><a href="#">Quis nostrud exercation ullamco </a></li>
+                                    <li><a href="#">Laboris nisi ut aliquip</a></li>
+                                    <li><a href="#">Commodo consequat aute </a></li>
+                                    <li><a href="#">Irure dolor in reprehenderit</a></li>
+                                    <li><a href="#">Voluptate velit esse cillum dolore</a></li>
                                 </ul>
+                                <a href="#" class="button1">Read More</a>
                             </div>
                         </div>
-                    </div>
-                    <div class="wrap">
-                        <section class="col-1-3"><div class="wrap-col">
-                            <div class="box">
-                                <div>
-                                    <h2>Welcome <span>to Us!</span></h2>
-                                    <figure><img src="../../onlineRestaurant/restaurant/images/page1_img1.jpg" alt="" ></figure>
-                                    <p class="pad_bot1">This <a href="http://blog.templatemonster.com/2011/08/01/free-website-template-jquery-slider-typography-restaurant/" class="list_1">Deliccio Template</a> goes with two packages – with PSD source files and without them. PSD source is available for free for the registered members.</p>
-                                    <a href="#" class="button1">Read More</a>
-                                </div>
+                    </div></section>
+                    <section class="col-1-3"><div class="wrap-col">
+                        <div class="box">
+                            <div>
+                                <h2>Your <span>Benefit</span></h2>
+                                <figure><img src="../../onlineRestaurant/restaurant/images/page4_img1.jpg" alt="" ></figure>
+                                <p class="pad_bot1">Ut enim ad minima veniam, quis nos- trum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur.</p>
+                                <a href="#" class="button1">Read More</a>
                             </div>
-                        </div></section>
-                        <section class="col-1-3"><div class="wrap-col">
-                            <div class="box">
-                                <div>
-                                    <h2>About <span>Us</span></h2>
-                                    <figure><img src="../../onlineRestaurant/restaurant/images/page1_img2.jpg" alt="" ></figure>
-                                    <p class="pad_bot1">This is one of <a href="http://blog.templatemonster.com/free-website-templates/" target="_blank">free website templates</a> created by TemplateMonster.com team. This website template is optimized for 1024x768 screen res.</p>
-                                    <a href="#" class="button1">Read More</a>
-                                </div>
+                        </div>
+                    </div></section>
+                    <section class="col-1-3"><div class="wrap-col">
+                        <div class="box">
+                            <div>
+                                <h2 class="pad_bot1">Our <span>Standards</span></h2>
+                                <p class="pad_bot1">
+                                    <strong>1. At vero eos et accusamus</strong><br>
+                                    Iusto odio dignissimos ducimus qui blanditiis praesentium.<br>
+                                    <strong>2. Voluptatum deleniti atque</strong><br>
+                                    Corrupti quos dolores et quas molestias excepturi sint occaecati.<br>
+                                    <strong>3. Cupiditate non provident</strong><br>
+                                    Similique suculpa qui officia deserunt mollitia animi, id est.
+                                </p>
+                                <a href="#" class="button1">Read More</a>
                             </div>
-                        </div></section>
-                        <section class="col-1-3"><div class="wrap-col">
-                            <div class="box">
-                                <div>
-                                    <h2>Our <span>Services</span></h2>
-                                    <figure><img src="../../onlineRestaurant/restaurant/images/page1_img3.jpg" alt="" ></figure>
-                                    <ul class="list1 pad_bot1">
-                                        <li><a href="#">Lorem ipsum dolor sit amet</a></li>
-                                        <li><a href="#">Consectetur adipisicing elit sed</a></li>
-                                        <li><a href="#">Eiusmod tempor incididunt labore</a></li>
-                                        <li><a href="#">Ut enim ad minim veniam</a></li>
-                                    </ul>
-                                    <a href="#" class="button1">Read More</a>
-                                </div>
-                            </div>
-                        </div></section>
-                    </div>
-                </article>
-            </div>
+                        </div>
+                    </div></section>
+                </div>
+            </article>
         </div>
     </div>
 </div>
 <div class="body2">
     <div class="main zerogrid">
         <article id="content2">
-            <div class="wrapper">
-                <section class="col-2-3">
-                    <h2>Upcoming Events</h2>
-                    <div class="wrapper">
-                        <div class="col-1-2"><div class="wrap-col">
-                            <div class="wrapper pad_bot2">
-                                <figure class="left marg_right1"><img src="../../onlineRestaurant/restaurant/images/page1_img4.jpg" alt=""></figure>
-                                <p>
-                                    <a href="#">20.07. Sed perspiciatis</a><br>
-                                    Unde omnis iste natus error volu accusantium doloremque.
-                                </p>
-                            </div>
-                            <div class="wrapper">
-                                <figure class="left marg_right1"><img src="../../onlineRestaurant/restaurant/images/page1_img5.jpg" alt=""></figure>
-                                <p>
-                                    <a href="#">18.07. Quasi architecto</a><br>
-                                    Beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem.
-                                </p>
-                            </div>
-                        </div></div>
-                        <div class="col-1-2"><div class="wrap-col">
-                            <div class="wrapper pad_bot2">
-                                <figure class="left marg_right1"><img src="../../onlineRestaurant/restaurant/images/page1_img6.jpg" alt=""></figure>
-                                <p>
-                                    <a href="#">11.07. Laudaum totam</a><br>
-                                    Rem aperiam, eaque ipsa quae ab illo inventore veritatis.
-                                </p>
-                            </div>
-                            <div class="wrapper">
-                                <figure class="left marg_right1"><img src="../../onlineRestaurant/restaurant/images/page1_img7.jpg" alt=""></figure>
-                                <p>
-                                    <a href="#">09.07. Volups asrnatur</a> <br>
-                                    Aut odit aut fugit, sed quia consequuntur magni dolores eos qui.
-                                </p>
-                            </div>
-                        </div></div>
-                    </div>
-                </section>
-                <section class="col-1-3"><div class="wrap-col">
-                    <h2>Testimonials</h2>
-                    <ul class="testimonials">
-                        <li class="row">
-                            <span>1</span>
+            <section>
+                <div class="wrapper">
+                    <div class="col-2-3"><div class="wrap-col">
+                        <h2>CookBook</h2>
+                        <div class="wrapper">
+                            <figure class="left marg_right1"><img src="../../onlineRestaurant/restaurant/images/page4_img2.jpg" alt=""></figure>
                             <p>
-                                “Remperam eaquepsa quae abillo inventore vertatis.”
-                                <img src="../../onlineRestaurant/restaurant/images/signature1.jpg" alt="">
+                                <a href="#">Sed ut perspiciatis unde omnis iste</a><br>
+                                Natus error sit voluptatem accusantium doloremque laudantium,<br>
+                                totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et <br>
+                                quasi architecto beatae vitae dicta sunt explicabo.
                             </p>
-                        </li>
-                        <li class="row">
-                            <span>2</span>
+                        </div>
+                        <div class="wrapper">
+                            <figure class="left marg_right1"><img src="../../onlineRestaurant/restaurant/images/page4_img3.jpg" alt=""></figure>
                             <p>
-                                “Quasi arctecto beatae vitae dicta sunt explicabo.”
-                                <img src="../../onlineRestaurant/restaurant/images/signature2.jpg" alt="">
+                                <a href="#">Nemo enim ipsam voluptatem quia voluptas</a> <br>
+                                Sit aspernatur aut odit aut fugit, sed quia consequuntur magni<br>
+                                dolores eos qui ratione voluptatem sequi nesciunt. Neque porro <br>
+                                quisquam est, qui dolorem ipsum.
                             </p>
-                        </li>
-                        <li class="row">
-                            <span>3</span>
-                            <p>
-                                “Nemo enim ipsam volupta<br>
-                                tem quia voluptas.”<img src="../../onlineRestaurant/restaurant/images/signature3.jpg" alt="">
-                            </p>
-                        </li>
-                    </ul>
-                </div></section>
-            </div>
+                        </div>
+                    </div></div>
+                    <div class="col-1-3"><div class="wrap-col mag-1">
+                        <h2>Food Delivery</h2>
+                        <div class="wrapper pad_bot1">
+                            <figure class="pad_bot1"><img src="../../onlineRestaurant/restaurant/images/page4_img4.jpg" alt=""></figure>
+                            Lorem ipsum dolor sit amet, consecte- tur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                        </div>
+                    </div></div>
+                </div>
+            </section>
         </article>
         <!-- / content -->
     </div>

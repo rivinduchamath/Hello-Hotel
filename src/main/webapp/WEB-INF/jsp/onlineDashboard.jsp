@@ -26,6 +26,7 @@
     <script type="text/javascript" src="../../onlineRestaurant/restaurant/js/atooltip.jquery.js"></script>
     <script type="text/javascript" src="../../onlineRestaurant/restaurant/js/css3-mediaqueries.js"></script>
     <script src="../../onlineRestaurant/restaurant/js/responsiveslides.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script>
         $(function () {
             $("#slidez").responsiveSlides({
@@ -38,12 +39,12 @@
             });
         });
     </script>
-    <!--[if lt IE 9]>
+
     <script type="text/javascript" src="../../onlineRestaurant/restaurant/js/html5.js"></script>
     <style type="text/css">
         .slider_bg {behavior:url(../../onlineRestaurant/restaurant/js/PIE.htc)}
     </style>
-    <![endif]-->
+
     <!--[if lt IE 7]>
     <div style='clear:both;text-align:center;position:relative'>
         <a href="http://www.microsoft.com/windows/internet-explorer/default.aspx?ocid=ie6_countdown_bannercode"><img src="http://storage.ie6countdown.com/assets/100/images/banners/warning_bar_0000_us.jpg" border="0" alt="" /></a>
@@ -57,21 +58,21 @@
             <div class="main zerogrid">
                 <!-- header -->
                 <header>
-                    <h1><a href="/onlineOrder" id="logo"><img src="../../onlineRestaurant/restaurant/images/logo.png"/></a></h1>
+                    <h1><a   style="position: relative;left: -50px;top: -30px"  href="/onlineOrder" id="logo"><img src="../../onlineRestaurant/restaurant/images/logo.png"/></a></h1>
                     <nav>
                         <ul id="top_nav">
-                            <li><a href="onlineOrder"><img src="images/icon_1.gif" alt=""></a></li>
                             <li><a href="#"><img src="../../onlineRestaurant/restaurant/images/icon_2.gif" alt=""></a></li>
-                            <li class="end"><a href="Contacts.html"><img src="../../onlineRestaurant/restaurant/images/icon_3.gif" alt=""></a></li>
+                            <li class="end"><a href="onlineCustomer"><i class="fa fa-user" style="color: rgba(255,255,255,0.91); font-size:20px;"> LogIn</i></a></li>
+
                         </ul>
                     </nav>
                     <nav>
                         <ul id="menu">
-                            <li class="active"><a href="onlineOrder">Restaurant</a></li>
+                            <li class="active"><a href="onlineDashboard">Dashboard</a></li>
+                            <li><a href="onlineOrder">Order</a></li>
                             <li><a href="onlineTable">Table</a></li>
-                            <li><a href="Wine.html">Wine List</a></li>
-                            <li><a href="CookBook.html">CookBook</a></li>
-                            <li><a href="Contacts.html">Contacts</a></li>
+                            <li><a href="#">About Us</a></li>
+                            <li><a href="onlineContact">Contacts</a></li>
                         </ul>
                     </nav>
                 </header>

@@ -18,7 +18,6 @@ public class OnlineCustomer {
     @GetMapping("/onlineCustomer")
     public String loadForm_validationSaveMode(Model model, HttpServletRequest request) {
         model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
-        request.setAttribute("mode", "MODE_SIGN_UP");
         return "onlineCustomer";
     }
 }

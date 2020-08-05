@@ -10,13 +10,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 import javax.servlet.http.HttpServletRequest;
 
 @Controller
-public class OnlineOrder {
+public class OnlineDashboard {
     @Autowired
     IndexLoginBO indexLoginBO;
-    @GetMapping("/onlineOrder")
+    @GetMapping("/onlineDashboard")
     public String loadForm_validationSaveMode(Model model, HttpServletRequest request) {
         model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
-        return "onlineOrder";
+        return "onlineDashboard";
     }
 }
-onlineDashboard

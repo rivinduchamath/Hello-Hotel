@@ -12,94 +12,72 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <link rel="icon" type="image/png" href="../../images/icons/gdfgd.png"/>
-    <!-- Bootstrap -->
-    <link href="../../vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Font Awesome -->
-    <link href="../../vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
-    <!-- NProgress -->
-    <link href="../../vendors/nprogress/nprogress.css" rel="stylesheet">
 
-    <!-- Custom Theme Style -->
-    <link href="../../build/css/custom.min.css" rel="stylesheet">
-
-
-    <link rel="stylesheet" href="../../onlineReservation/fonts/material-icon/css/material-design-iconic-font.min.css">
 
     <!-- Main css -->
-    <link rel="stylesheet" href="../../onlineReservation/css/style.css">
+    <link rel="stylesheet" href="../../onlineRestaurant/css/style.css">
 </head>
 
 <body class="nav-md" style="cursor: pointer">
 
 
-<div class="main">
-    <c:choose>
-    <c:when test="${mode=='MODE_SIGN_UP' }">
+
     <!-- Sign up form -->
-    <section class="signup">
-        <div class="container">
-            <div class="signup-content">
-                <div class="signup-form">
-                    <h2 class="form-title">Sign up</h2>
-                    <form method="POST" class="register-form" id="register-form">
-                        <div class="form-group">
-                            <label for="name"><i class="zmdi zmdi-account material-icons-name"></i></label>
-                            <input type="text" name="name" id="name" placeholder="Your Name"/>
-                        </div>
-                        <div class="form-group">
-                            <label for="email"><i class="zmdi zmdi-email"></i></label>
-                            <input type="email" name="email" id="email" placeholder="Your Email"/>
-                        </div>
-                        <div class="form-group">
-                            <label for="pass"><i class="zmdi zmdi-lock"></i></label>
-                            <input type="password" name="pass" id="pass" placeholder="Password"/>
-                        </div>
-                        <div class="form-group">
-                            <label for="re-pass"><i class="zmdi zmdi-lock-outline"></i></label>
-                            <input type="password" name="re_pass" id="re_pass" placeholder="Repeat your password"/>
-                        </div>
-                        <div class="form-group">
-                            <input type="checkbox" name="agree-term" id="agree-term" class="agree-term" />
-                            <label for="agree-term" class="label-agree-term"><span><span></span></span>I agree all statements in  <a href="#" class="term-service">Terms of service</a></label>
-                        </div>
-                        <div class="form-group form-button">
-                            <input type="submit" name="signup" id="signup" class="form-submit" value="Register"/>
-                        </div>
-                    </form>
-                </div>
-                <div class="signup-image">
-                    <figure><img src="images/signup-image.jpg" alt="sing up image"></figure>
-                    <a href="#" class="signup-image-link">I am already member</a>
+    <small style="font-weight: bolder"><a href="onlineDashboard"> << Back to Home</a> </small>
+     <h2> Online Registration Form</h2>
+        <div class="container" id="container">
+            <div class="form-container sign-up-container">
+                <form action="#">
+                    <h1>Create Account</h1>
+                    <span>or use your email for registration</span>
+                    <input required type="text" placeholder="Name" />
+                    <input required type="email" placeholder="Email" />
+                    <input required type="password" placeholder="Address" />
+                    <input required type="number" placeholder="Mobile" />
+                    <input  required type="password" placeholder="Password" />
+                    <input required type="password" placeholder="Re-type Password" />
+                    <button>Sign Up</button>
+                </form>
+            </div>
+            <div class="form-container sign-in-container">
+                <form action="#">
+                    <h1>Sign in</h1>
+                    <span>or use your account</span>
+                    <input type="email" placeholder="Email" />
+                    <input type="password" placeholder="Password" />
+                    <a href="#">Forgot your password?</a>
+                    <button>Sign In</button>
+                </form>
+            </div>
+            <div class="overlay-container">
+                <div class="overlay">
+                    <div class="overlay-panel overlay-left">
+                        <h1>Welcome Back!</h1>
+                        <p>To keep connected with us please login with your personal info</p>
+                        <button class="ghost" id="signIn">Sign In</button>
+                    </div>
+                    <div class="overlay-panel overlay-right">
+                        <h1>Hello, Friend!</h1>
+                        <p>Enter your personal details and start journey with us</p>
+                        <button class="ghost" id="signUp">Sign Up</button>
+                    </div>
                 </div>
             </div>
         </div>
-    </section>
 
-    </c:when>
-        <c:when test="${mode=='MODE_SIGN_IN' }">
-            ss
-        </c:when>
-    </c:choose>
-</div>
-
-<!-- JS -->
-<script src="../../onlineReservation/vendor/jquery/jquery.min.js"></script>
-<script src="../../onlineReservation/js/main.js"></script>
-
-<!-- jQuery -->
-<script src="../../vendors/jquery/dist/jquery.min.js"></script>
+        <footer style="text-align: center">
+            <p >
+                By using our site, you acknowledge that you have read and understand our
+                Cookie Policy,<a href="#"> Privacy Policy,</a> and our <a href="#">Terms of Service.</a>
+            </p>
+        </footer>
 
 
-<!-- Bootstrap -->
-<script src="../../vendors/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-<!-- FastClick -->
-<script src="../../vendors/fastclick/lib/fastclick.js"></script>
-<!-- NProgress -->
-<script src="../../vendors/nprogress/nprogress.js"></script>
-<!-- jQuery Smart Wizard -->
-<script src="../../vendors/jQuery-Smart-Wizard/js/jquery.smartWizard.js"></script>
-<!-- Custom Theme Scripts -->
-<script src="../../build/js/custom.min.js"></script>
+
+
+
+<script src="../../onlineRestaurant/js/main.js"></script>
+
 
 
 </body>
