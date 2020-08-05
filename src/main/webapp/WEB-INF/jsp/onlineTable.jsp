@@ -102,10 +102,9 @@
     </div>
 </div>
 <div class="body2">
-
+body content
 </div>
 <div class="body3">
-
     <div class="main zerogrid">
         <!-- footer -->
         <footer>
