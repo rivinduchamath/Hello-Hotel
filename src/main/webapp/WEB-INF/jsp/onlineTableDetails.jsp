@@ -112,49 +112,49 @@
                         <div class="col-1-4"><div class="wrap-col">
                             <div class="wrapper pad_bot1">
                                 <figure style="   width: 140px;height: 140px;" class="pad_bot1"><img src="../../onlineRestaurant/restaurant/images/pngwave.png" alt=""></figure>
-                                <h5 style=""><span style="font-size: 25px">1. </span><a href="#"class="button1x">+</a></h5>
+                                <h5 style=""><span style="font-size: 20px">1. </span><a href="#"class="button1x">+</a></h5>
                             </div>
                         </div></div>
                         <div class="col-1-4"><div class="wrap-col">
                             <div class="wrapper pad_bot1">
                                 <figure style="   width: 140px;height: 140px;" class="pad_bot1"><img src="../../onlineRestaurant/restaurant/images/pngwave.png" alt=""></figure>
-                                <h5 style=""><span style="font-size: 25px">2. </span><a href="#"class="button1x">+</a></h5>
+                                <h5 style=""><span style="font-size: 20px">2. </span><a href="#"class="button1x">+</a></h5>
                             </div>
                         </div></div>
                         <div class="col-1-4"><div class="wrap-col">
                             <div class="wrapper pad_bot1">
                                 <figure style="   width: 140px;height: 140px;" class="pad_bot1"><img src="../../onlineRestaurant/restaurant/images/pngwave.png" alt=""></figure>
-                                <h5 style=""><span style="font-size: 25px">3. </span><a href="#"class="button1x">+</a></h5>
+                                <h5 style=""><span style="font-size: 20px">3. </span><a href="#"class="button1x">+</a></h5>
                             </div>
                         </div></div>
                         <div class="col-1-4"><div class="wrap-col">
                             <div class="wrapper pad_bot1">
                                 <figure style="   width: 140px;height: 140px;" class="pad_bot1"><img src="../../onlineRestaurant/restaurant/images/pngwave.png" alt=""></figure>
-                                <h5 style=""><span style="font-size: 25px">4. </span><a href="#"class="button1x">+</a></h5>
+                                <h5 style=""><span style="font-size: 20px">4. </span><a href="#"class="button1x">+</a></h5>
                             </div>
                         </div></div>
                         <div class="col-1-4"><div class="wrap-col">
                             <div class="wrapper pad_bot1">
                                 <figure style="   width: 140px;height: 140px;" class="pad_bot1"><img src="../../onlineRestaurant/restaurant/images/pngwave.png" alt=""></figure>
-                                <h5 style=""><span style="font-size: 25px">5. </span><a href="#"class="button1x">+</a></h5>
+                                <h5 style=""><span style="font-size: 20px">5. </span><a href="#"class="button1x">+</a></h5>
                             </div>
                         </div></div>
                         <div class="col-1-4"><div class="wrap-col">
                             <div class="wrapper pad_bot1">
                                 <figure style="   width: 140px;height: 140px;" class="pad_bot1"><img src="../../onlineRestaurant/restaurant/images/pngwave.png" alt=""></figure>
-                                <h5 style=""><span style="font-size: 25px">6. </span><a href="#"class="button1x">+</a></h5>
+                                <h5 style=""><span style="font-size: 20px">6. </span><a href="#"class="button1x">+</a></h5>
                             </div>
                         </div></div>
                         <div class="col-1-4"><div class="wrap-col">
                             <div class="wrapper pad_bot1">
                                 <figure style="   width: 140px;height: 140px;" class="pad_bot1"><img src="../../onlineRestaurant/restaurant/images/pngwave.png" alt=""></figure>
-                                <h5 style=""><span style="font-size: 25px">7. </span><a href="#"class="button1x">+</a></h5>
+                                <h5 style=""><span style="font-size: 20px">7. </span><a href="#"class="button1x">+</a></h5>
                             </div>
                         </div></div>
                         <div class="col-1-4"><div class="wrap-col">
                             <div class="wrapper pad_bot1">
                                 <figure style="   width: 140px;height: 140px;" class="pad_bot1"><img src="../../onlineRestaurant/restaurant/images/pngwave.png" alt=""></figure>
-                                <h5 style=""><span style="font-size: 25px">8. </span><a href="#"class="button1x">+</a></h5>
+                                <h5 style=""><span style="font-size: 20px">8. </span><a href="#"class="button1x">+</a></h5>
                             </div>
                         </div></div>
                     </div>
