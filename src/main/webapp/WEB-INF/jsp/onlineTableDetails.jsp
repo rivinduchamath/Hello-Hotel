@@ -157,6 +157,12 @@
                                 <h5 style=""><span style="font-size: 20px">8. </span><a href="#"class="button1x">+</a></h5>
                             </div>
                         </div></div>
+                        <div class="col-1-4"><div class="wrap-col">
+                            <div class="wrapper pad_bot1">
+                                <figure style="   width: 140px;height: 140px;" class="pad_bot1"><img src="../../onlineRestaurant/restaurant/images/pngwave.png" alt=""></figure>
+                                <h5 style=""><span style="font-size: 20px">8. </span><a href="#"class="button1x">+</a></h5>
+                            </div>
+                        </div></div>
                     </div>
                 </section>
             </div>
