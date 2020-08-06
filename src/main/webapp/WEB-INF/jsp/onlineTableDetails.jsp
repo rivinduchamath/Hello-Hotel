@@ -35,10 +35,10 @@
         <div class="main zerogrid">
             <!-- header -->
             <header>
-                <h1><a href="/onlineOrder"  style="position: relative;left: -50px;top: -30px" id="logo"><img src="../../onlineRestaurant/restaurant/images/logo.png"/></a></h1>
+                <h1><a href="onlineDashboard"  style="position: relative;left: -50px;top: -30px" id="logo"><img src="../../onlineRestaurant/restaurant/images/logo.png"/></a></h1>
                 <nav>
                     <ul id="top_nav">
-                        <li><a href="/onlineOrder"><img src="../../onlineRestaurant/restaurant/images/icon_1.gif" alt=""></a></li>
+                        <li><a href="onlineDashboard"><img src="../../onlineRestaurant/restaurant/images/icon_1.gif" alt=""></a></li>
                         <li><a href="#"><img src="../../onlineRestaurant/restaurant/images/icon_2.gif" alt=""></a></li>
                         <li class="end"><a href="onlineCustomer"><i class="fa fa-user" style="color: rgba(255,255,255,0.91); font-size:20px;"> LogIn</i></a></li>
                     </ul>
@@ -106,28 +106,58 @@
         <article id="content2">
             <div class="wrapper">
                 <section>
-                <h2>Banquet’s Specials</h2>
-                <div class="wrapper">
-                    <div class="col-1-3"><div class="wrap-col">
-                        <div class="wrapper pad_bot1">
-                            <figure class="pad_bot1"><img src="../../onlineRestaurant/restaurant/images/page2_img3.jpg" alt=""></figure>
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt.
-                        </div>
-                    </div></div>
-                    <div class="col-1-3"><div class="wrap-col mag-1">
-                        <div class="wrapper pad_bot1">
-                            <figure class="pad_bot1"><img src="../../onlineRestaurant/restaurant/images/page2_img4.jpg" alt=""></figure>
-                            Labore et dolore magna aliqua. Ut <br>
-                            enim minim veniam quis nostrud exer-<br>citation ullamco.
-                        </div>
-                    </div></div>
-                    <div class="col-1-3"><div class="wrap-col mag-1">
-                        <div class="wrapper pad_bot1">
-                            <figure class="pad_bot1"><img src="../../onlineRestaurant/restaurant/images/page2_img5.jpg" alt=""></figure>
-                            Labore et dolore magna aliqua. Ut enim minim veniam quis nostrud exer- citation ullamco.
-                        </div>
-                    </div></div>
-                </div>
+                    <h2>Available Tables</h2>
+                    <h5>Please Select</h5>
+                    <div class="wrapper">
+                        <div class="col-1-4"><div class="wrap-col">
+                            <div class="wrapper pad_bot1">
+                                <figure style="   width: 140px;height: 140px;" class="pad_bot1"><img src="../../onlineRestaurant/restaurant/images/pngwave.png" alt=""></figure>
+                                <h5 style=""><span style="font-size: 25px">1. </span><a href="#"class="button1x">+</a></h5>
+                            </div>
+                        </div></div>
+                        <div class="col-1-4"><div class="wrap-col">
+                            <div class="wrapper pad_bot1">
+                                <figure style="   width: 140px;height: 140px;" class="pad_bot1"><img src="../../onlineRestaurant/restaurant/images/pngwave.png" alt=""></figure>
+                                <h5 style=""><span style="font-size: 25px">2. </span><a href="#"class="button1x">+</a></h5>
+                            </div>
+                        </div></div>
+                        <div class="col-1-4"><div class="wrap-col">
+                            <div class="wrapper pad_bot1">
+                                <figure style="   width: 140px;height: 140px;" class="pad_bot1"><img src="../../onlineRestaurant/restaurant/images/pngwave.png" alt=""></figure>
+                                <h5 style=""><span style="font-size: 25px">3. </span><a href="#"class="button1x">+</a></h5>
+                            </div>
+                        </div></div>
+                        <div class="col-1-4"><div class="wrap-col">
+                            <div class="wrapper pad_bot1">
+                                <figure style="   width: 140px;height: 140px;" class="pad_bot1"><img src="../../onlineRestaurant/restaurant/images/pngwave.png" alt=""></figure>
+                                <h5 style=""><span style="font-size: 25px">4. </span><a href="#"class="button1x">+</a></h5>
+                            </div>
+                        </div></div>
+                        <div class="col-1-4"><div class="wrap-col">
+                            <div class="wrapper pad_bot1">
+                                <figure style="   width: 140px;height: 140px;" class="pad_bot1"><img src="../../onlineRestaurant/restaurant/images/pngwave.png" alt=""></figure>
+                                <h5 style=""><span style="font-size: 25px">5. </span><a href="#"class="button1x">+</a></h5>
+                            </div>
+                        </div></div>
+                        <div class="col-1-4"><div class="wrap-col">
+                            <div class="wrapper pad_bot1">
+                                <figure style="   width: 140px;height: 140px;" class="pad_bot1"><img src="../../onlineRestaurant/restaurant/images/pngwave.png" alt=""></figure>
+                                <h5 style=""><span style="font-size: 25px">6. </span><a href="#"class="button1x">+</a></h5>
+                            </div>
+                        </div></div>
+                        <div class="col-1-4"><div class="wrap-col">
+                            <div class="wrapper pad_bot1">
+                                <figure style="   width: 140px;height: 140px;" class="pad_bot1"><img src="../../onlineRestaurant/restaurant/images/pngwave.png" alt=""></figure>
+                                <h5 style=""><span style="font-size: 25px">7. </span><a href="#"class="button1x">+</a></h5>
+                            </div>
+                        </div></div>
+                        <div class="col-1-4"><div class="wrap-col">
+                            <div class="wrapper pad_bot1">
+                                <figure style="   width: 140px;height: 140px;" class="pad_bot1"><img src="../../onlineRestaurant/restaurant/images/pngwave.png" alt=""></figure>
+                                <h5 style=""><span style="font-size: 25px">8. </span><a href="#"class="button1x">+</a></h5>
+                            </div>
+                        </div></div>
+                    </div>
                 </section>
             </div>
         </article>

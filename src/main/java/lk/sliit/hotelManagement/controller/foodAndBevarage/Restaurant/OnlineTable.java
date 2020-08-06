@@ -18,4 +18,8 @@ public class OnlineTable {
         model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
         return "onlineTable";
     }
+    @GetMapping("/onlineTableDetails")
+    public String onlineTableDetails(Model model, HttpServletRequest request) {
+        return "onlineTableDetails";
+    }
 }

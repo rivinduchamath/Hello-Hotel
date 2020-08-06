@@ -6,11 +6,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <title>Restaurant</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <link rel="stylesheet" href="../../onlineRestaurant/restaurant/css/reset.css" type="text/css" media="all">
     <link rel="stylesheet" href="../../onlineRestaurant/restaurant/css/layout.css" type="text/css" media="all">
     <link rel="stylesheet" href="../../onlineRestaurant/restaurant/css/style.css" type="text/css" media="all">
     <link rel="stylesheet" href="../../onlineRestaurant/restaurant/css/zerogrid.css" type="text/css" media="all">
     <link rel="stylesheet" href="../../onlineRestaurant/restaurant/css/responsive.css" type="text/css" media="all">
+    <link rel="stylesheet" href="../../onlineRestaurant/restaurant/css/contactform.css" type="text/css" media="all">
     <script type="text/javascript" src="../../onlineRestaurant/restaurant/js/jquery-1.6.js" ></script>
     <script type="text/javascript" src="../../onlineRestaurant/restaurant/js/cufon-yui.js"></script>
     <script type="text/javascript" src="../../onlineRestaurant/restaurant/js/cufon-replace.js"></script>
@@ -22,34 +26,34 @@
     <style type="text/css">
         .slider_bg {behavior:url(../../onlineRestaurant/restaurant/js/PIE.htc)}
     </style>
-
+    <![endif]-->
     <!--[if lt IE 7]>
     <div style='clear:both;text-align:center;position:relative'>
         <a href="http://www.microsoft.com/windows/internet-explorer/default.aspx?ocid=ie6_countdown_bannercode"><img src="http://storage.ie6countdown.com/assets/100/images/banners/warning_bar_0000_us.jpg" border="0" alt="" /></a>
     </div>
     <![endif]-->
 </head>
-<body id="page2">
+<body id="page5">
 <div class="body6">
     <div class="body1">
         <div class="main zerogrid">
             <!-- header -->
             <header>
-                <h1><a href="/onlineOrder"  style="position: relative;left: -50px;top: -30px" id="logo"><img src="../../onlineRestaurant/restaurant/images/logo.png"/></a></h1>
+                <h1><a href="/onlineDashboard" style="position: relative;left: -50px;top: -30px"id="logo"><img src="../../onlineRestaurant/restaurant/images/logo.png"/></a></h1>
                 <nav>
                     <ul id="top_nav">
-                        <li><a href="/onlineOrder"><img src="../../onlineRestaurant/restaurant/images/icon_1.gif" alt=""></a></li>
+                        <li><a href="onlineDashboard"><img src="../../onlineRestaurant/restaurant/images/icon_1.gif" alt=""></a></li>
                         <li><a href="#"><img src="../../onlineRestaurant/restaurant/images/icon_2.gif" alt=""></a></li>
                         <li class="end"><a href="onlineCustomer"><i class="fa fa-user" style="color: rgba(255,255,255,0.91); font-size:20px;"> LogIn</i></a></li>
                     </ul>
                 </nav>
                 <nav>
                     <ul id="menu">
-                        <li><a href="onlineDashboard">Dashboard</a></li>
-                        <li ><a href="onlineOrder">Order</a></li>
+                        <li class=""><a href="onlineDashboard">Dashboard</a></li>
+                        <li><a href="onlineOrder">Order</a></li>
                         <li class="active"><a href="onlineTable">Table</a></li>
                         <li><a href="#">About Us</a></li>
-                        <li><a href="onlineContact">Contacts</a></li>
+                        <li ><a href="onlineContact">Contacts</a></li>
                     </ul>
                 </nav>
             </header>
@@ -57,56 +61,73 @@
             <!-- content -->
             <article id="content">
                 <div class="wrap">
-                    <section class="col-1-3"><div class="wrap-col">
-                        <div class="box">
-                            <div>
-                                <h2>Did You <span>Know</span></h2>
-                                <figure><img src="../../onlineRestaurant/restaurant/images/page2_img1.jpg" alt="" ></figure>
-                                <p class="pad_bot1">Neque porro quisquam est, qui dolor- em ipsum qudolor sitamet consectetur adipisci velit, sed quia non numquam eius modi tempora incidunt.</p>
-                                <a href="#" class="button1">Read More</a>
+                    <div class="box">
+                        <div>
+                            <h2 class="letter_spacing">Table <span> Reservation</span></h2>
+
+                            <div id="contact_form">
+                                <strong>Hello !! You can Check Available Tables.</strong>
+                                <form name="form1" id="ff" method="post" action="">
+                                    <label>
+                                        Date:
+                                        <input type="date" placeholder="Booking Date" name="date" id="name" required>
+                                    </label>
+
+                                    <label>
+                                        Time In:
+                                        <input type="time" placeholder="In Time" name="inTime" id="email" required>
+                                    </label>
+
+                                    <label>
+                                        Time Out:
+                                        <input type="time" placeholder="Out Time" name="outTime" id="message">                                    </label>
+
+                                    <input class="sendButton" type="submit" name="Submit" value="Check">
+
+                                </form>
                             </div>
                         </div>
-                    </div></section>
-                    <section class="col-1-3"><div class="wrap-col">
-                        <div class="box">
-                            <div>
-                                <h2 class="letter_spacing">Types<span> of Cuisine</span></h2>
-                                <ul class="list1 pad_bot1">
-                                    <li><a href="#">Lorem ipsum dolor sit amet</a></li>
-                                    <li><a href="#">Consectetur adipisicing elit sed</a></li>
-                                    <li><a href="#">Eiusmod tempor incididunt labore</a></li>
-                                    <li><a href="#">Ut enim ad minim veniam</a></li>
-                                    <li><a href="#">Quis nostrud exercation ullamco </a></li>
-                                    <li><a href="#">Laboris nisi ut aliquip</a></li>
-                                    <li><a href="#">Commodo consequat aute </a></li>
-                                    <li><a href="#">Irure dolor in reprehenderit</a></li>
-                                    <li><a href="#">Voluptate velit esse cillum dolore</a></li>
-                                </ul>
-                                <a href="#" class="button1">Proposal for You</a>
-                            </div>
-                        </div>
-                    </div></section>
-                    <section class="col-1-3"><div class="wrap-col">
-                        <div class="box">
-                            <div>
-                                <h2>Dish <span>of the Day</span></h2>
-                                <figure><img src="../../onlineRestaurant/restaurant/images/page2_img2.jpg" alt="" ></figure>
-                                <p class="pad_bot1">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos.</p>
-                                <a href="#" class="button1">Read More</a>
-                            </div>
-                        </div>
-                    </div></section>
+                    </div>
                 </div>
             </article>
         </div>
     </div>
 </div>
 <div class="body2">
-body conten
+    <div class="main zerogrid">
+        <article id="content2">
+            <section>
+                <div class="wrapper">
+                    <div class="col-1-3"><div class="wrap-col">
+                        <h2>Our Contacts</h2>
+                        <div class="wrapper pad_bot1">
+                            <p>Sed ut perspiciatis unde omnis iunatus doloremque laudantium.</p>
+                            <p class="address">
+                                Marmora Road, Glasgow, D04 89GR.<br>
+                                <span>Freephone:</span>   +94 778 7999 40<br>
+                                <span>Telephone:</span>    +94 778 7999 405<br>
+                                <span>E-mail:</span>             <a href="">npminside@gmail.com</a>
+                            </p>
+                        </div>
+                    </div></div>
+                    <div class="col-2-3"><div class="wrap-col mag-1">
+                        <h2>Miscellaneous Info</h2>
+                        <p>
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                        </p>
+                        Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error.
+                    </div></div>
+                </div>
+            </section>
+        </article>
+        <!-- / content -->
+    </div>
 </div>
 <div class="body3">
+
     <div class="main zerogrid">
-        <!-- footerr -->
+        <!-- footer -->
+        <!-- footer -->
         <footer>
             <div class="wrapper">
                 <section class="col-2-3"><div class="wrap-col">

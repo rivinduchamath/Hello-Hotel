@@ -49,7 +49,7 @@
                 </nav>
                 <nav>
                     <ul id="menu">
-                        <li class="active"><a href="onlineDashboard">Dashboard</a></li>
+                        <li class=""><a href="onlineDashboard">Dashboard</a></li>
                         <li><a href="onlineOrder">Order</a></li>
                         <li><a href="onlineTable">Table</a></li>
                         <li><a href="#">About Us</a></li>
