@@ -30,7 +30,7 @@
     <![endif]-->
 </head>
 <body id="page2">
-<div class="body6">
+<div  class="body6">
     <div class="body1">
         <div class="main zerogrid">
             <!-- header -->
@@ -107,8 +107,10 @@
             <div class="wrapper">
                 <section>
                     <h2>Available Tables</h2>
-                    <h5>Please Select</h5>
+                    <h5>Please Select </h5>
                     <div class="wrapper">
+
+                        <button href="#"class="col-1-1 button1x1" id="submitButton"> Submit </button><br>
                         <div class="col-1-4"><div class="wrap-col">
                             <div class="wrapper pad_bot1">
                                 <figure style="   width: 140px;height: 140px;" class="pad_bot1"><img src="../../onlineRestaurant/restaurant/images/pngwave.png" alt=""></figure>
@@ -199,5 +201,16 @@
 
 </div>
 <script type="text/javascript"> Cufon.now(); </script>
+
+<script>
+    $(window).scroll(function() {
+        if($(document).scrollTop() > 224){
+            $(".button1x1").show();
+        }
+        else {
+            $(".button1x1").hide();
+        }
+    });
+</script>
 </body>
 </html>

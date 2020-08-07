@@ -394,6 +394,25 @@ header {
     letter-spacing: 1px
 }
 
+#submitButton {
+
+    position: fixed;
+    font-size: 1.5em;
+    color: #faf3ed;
+    display: none;
+    bottom: 20px;
+    width: 150px;
+    height: 5%;
+    right: 10%;
+    text-align: center;
+    line-height: 34px;
+    padding: 0 15px;
+    background: #8b0000;transition: top 0.3s;
+
+
+}
+
+
 .button1:hover {
     text-decoration: none;
     color: #1e0000;
