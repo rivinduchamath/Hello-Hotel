@@ -42,7 +42,6 @@ public class ManageUserController {
     @PostMapping("/saveUser")
     public String saveUser(@ModelAttribute EmployeeDTO employeeDTO, Model model) {
 
-        System.out.println("ppppppppppppppppppppppppppppppppppppppppppppppp"+employeeDTO.getDepartment());
         model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
 
         manageBO.save(employeeDTO);

@@ -10,19 +10,14 @@ public class NoticeDTO {
     private String title;
     private String description;
     private Date date;
-    private Department department;
+    private String department;
 
-    public NoticeDTO(String noticeId, String title, String description, Date date) {
-        this.noticeId = noticeId;
-        this.title = title;
-        this.description = description;
-        this.date = date;
-    }
+
 
     public NoticeDTO() {
     }
 
-    public NoticeDTO(String noticeId, String title, String description, Date date, Department department) {
+    public NoticeDTO(String noticeId, String title, String description, Date date, String department) {
         this.noticeId = noticeId;
         this.title = title;
         this.description = description;
@@ -66,11 +61,11 @@ public class NoticeDTO {
         this.date = date;
     }
 
-    public Department getDepartment() {
+    public String getDepartment() {
         return department;
     }
 
-    public void setDepartment(Department department) {
+    public void setDepartment(String department) {
         this.department = department;
     }
 

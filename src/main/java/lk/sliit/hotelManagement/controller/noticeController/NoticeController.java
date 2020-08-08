@@ -1,8 +1,10 @@
 package lk.sliit.hotelManagement.controller.noticeController;
 
 import lk.sliit.hotelManagement.controller.SuperController;
+import lk.sliit.hotelManagement.dto.hr.DepartmentDTO;
 import lk.sliit.hotelManagement.dto.manager.NoticeDTO;
 import lk.sliit.hotelManagement.service.custom.IndexLoginBO;
+import lk.sliit.hotelManagement.service.custom.ManageBO;
 import lk.sliit.hotelManagement.service.custom.NoticeBO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -19,6 +21,8 @@ public class NoticeController { //notice.jsp For All Notice
 
     @Autowired
     IndexLoginBO indexLoginBO;
+    @Autowired
+    ManageBO manageBO;
 
     @GetMapping("notice")
     public ModelAndView load(Model model) {
@@ -34,6 +38,8 @@ public class NoticeController { //notice.jsp For All Notice
         }
         List<NoticeDTO> p = noticeBO.findAll();
         model.addAttribute("loadNoticeTable", p);
+        List<DepartmentDTO> p2 = manageBO.findAllDepartment();
+        model.addAttribute("loadDepartment", p2);
 
         return mav;
     }

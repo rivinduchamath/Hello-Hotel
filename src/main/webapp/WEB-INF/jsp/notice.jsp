@@ -118,6 +118,26 @@
                                                            class="form-control ">
                                                 </div>
                                             </div>
+                                            <div class="form-group row">
+
+                                                    <label class="col-form-label col-md-3 col-sm-3 label-align"
+                                                           for="title">Department Type<span
+                                                            class="required">*</span>
+                                                    </label>
+                                                <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6 ">
+                                                        <select id="setType" class="form-control"
+                                                                style="width: 100%; border-color: lightgray"
+                                                                name="department">
+                                                            <c:forEach items="${loadDepartment}" var="category">
+                                                                <option value="${category.departmentId}"
+                                                                        <c:if test="${category.departmentId eq p2}">
+                                                                            selected="selected"</c:if> >
+                                                                        ${category.departmentName}
+                                                                </option>
+                                                            </c:forEach>
+                                                        </select>
+                                                    </div>
+                                            </div>
 
 
                                             <div class="form-group row">
@@ -125,10 +145,10 @@
                                                         class="required">*</span>
                                                 </label>
                                                 <div class="col-md-6 col-sm-6 ">
-                                                    <input type="text" class="form-control"
+                                                    <textarea type="text" class="form-control"
                                                            style="height: 70px !important;"
                                                            required="required" name="description"
-                                                           id="description"/>
+                                                              id="description"> </textarea>
                                                 </div>
                                             </div>
                                             <div class="form-group row">
@@ -138,10 +158,14 @@
                                                            name="date">
                                                 </div>
                                             </div>
-                                            <button type='submit' class="btn btn-primary"
-                                                    style=";margin-left: 60%; width: 15%" value="Register">
-                                                Save
-                                            </button>
+                                            <div class="form-group row">
+                                                <label class="col-form-label col-md-3 col-sm-3 label-align" for="date"></label>
+                                                <div class="col-md-6 col-sm-6 ">
+                                                    <button type='submit' class="btn btn-dark"
+                                                            style="; width: 15%" value="Register"> Save</button>
+                                                    <button type='reset' class="btn btn-outline-success" style=" position: relative" value="">Reset</button>
+                                                </div>
+                                            </div>
 
                                         </form>
 
@@ -172,12 +196,12 @@
                                             <td>${a.date}</td>
 
                                             <td>
-                                                <a style="color: white;font-weight: bold" onclick="getValue();"
-                                                   class="btn btn-info btn-xs">
-                                                    Update </a>
-                                                <a href="delete/${a.noticeId }" class="btn btn-danger btn-xs"><i
-                                                        class="fa fa-trash-o"></i>
-                                                    Delete </a>
+                                                <a style="font-weight: bold" onclick="getValue();"
+                                                   class=""><i class="fa fa-pencil"></i>&nbsp;&nbsp;&nbsp;
+                                                     </a>
+                                                <a style="font-weight: bold"  href="delete/${a.noticeId }" class=" btn-xs"><i
+                                                        class="fa fa-trash"></i>
+                                                     </a>
 
                                             </td>
                                         </tr>

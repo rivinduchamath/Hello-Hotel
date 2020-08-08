@@ -27,7 +27,6 @@ public class ManageBOImpl implements ManageBO {
     @Override
     public void save(EmployeeDTO employeeDTO) {
 
-        System.out.println("Sssssssssssssssssssssssssssssssssssssssssssssssssss"+employeeDTO.getDepartment());
         manageDAO.save(new Employee(
                 employeeDTO.getUserId(),
                 employeeDTO.getName(),

@@ -321,7 +321,7 @@
                         </div>--%>
 
 
-                    <button type='submit' class="btn btn-primary" style="width: 50%; top: 20px; position: relative" value="Register">
+                    <button type='submit' class="btn btn-dark" style="width: 50%; top: 20px; position: relative" value="Register">
                         Submit
                     </button>
                     <button type='reset' class="btn btn-outline-success" style="top: 20px; position: relative" value="">Reset</button>

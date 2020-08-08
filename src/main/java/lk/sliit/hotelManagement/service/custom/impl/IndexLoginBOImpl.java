@@ -67,7 +67,8 @@ public class IndexLoginBOImpl implements IndexLoginBO {
                     notice.getNoticeId (),
                     notice.getTitle (),
                     notice.getDescription (),
-                    notice.getDate ()
+                    notice.getDate (),
+                    notice.getDepartment().getDepartmentId()
             ));
         }
         return dtos;

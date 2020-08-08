@@ -19,11 +19,12 @@ public class Notice implements SuperEntity {
     @JoinColumn(name="departmentId",referencedColumnName = "departmentId")
     private Department department;
 
-    public Notice(String noticeId, String title, String description, Date date) {
+    public Notice(String noticeId, String title, String description, Date date, Department department) {
         this.noticeId = noticeId;
         this.title = title;
         this.description = description;
         this.date = date;
+        this.department = department;
     }
 
     public Notice() {
