@@ -2,7 +2,10 @@ package lk.sliit.hotelManagement.service.custom.impl;
 
 import lk.sliit.hotelManagement.dao.manageSystem.EmployeeDAO;
 import lk.sliit.hotelManagement.dao.hrDAO.DepartmentDAO;
+import lk.sliit.hotelManagement.dto.hr.DepartmentDTO;
+import lk.sliit.hotelManagement.dto.inventory.ItemTypeDTO;
 import lk.sliit.hotelManagement.dto.manager.EmployeeDTO;
+import lk.sliit.hotelManagement.entity.hr.Department;
 import lk.sliit.hotelManagement.entity.manager.Employee;
 import lk.sliit.hotelManagement.service.custom.ManageBO;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,12 +20,14 @@ import java.util.List;
 public class ManageBOImpl implements ManageBO {
     @Autowired
     EmployeeDAO manageDAO;
+
     @Autowired
     DepartmentDAO humanResourceDAO;
 
     @Override
     public void save(EmployeeDTO employeeDTO) {
 
+        System.out.println("Sssssssssssssssssssssssssssssssssssssssssssssssssss"+employeeDTO.getDepartment());
         manageDAO.save(new Employee(
                 employeeDTO.getUserId(),
                 employeeDTO.getName(),
@@ -67,5 +72,18 @@ public class ManageBOImpl implements ManageBO {
     @Override
     public void deleteEmployee(String userId) {
         manageDAO.delete(userId);
+    }
+
+    @Override
+    public List<DepartmentDTO> findAllDepartment() {
+        Iterable<Department> all = humanResourceDAO.findAll();
+        List<DepartmentDTO> dtos = new ArrayList<>();
+        for (Department department: all) {
+            dtos.add(new DepartmentDTO(
+                   department.getDepartmentId(),
+                    department.getDepartmentName()
+            ));
+        }
+        return dtos;
     }
 }

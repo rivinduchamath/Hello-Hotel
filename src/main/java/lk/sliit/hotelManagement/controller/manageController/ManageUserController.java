@@ -1,6 +1,8 @@
 package lk.sliit.hotelManagement.controller.manageController;
 
 import lk.sliit.hotelManagement.controller.SuperController;
+import lk.sliit.hotelManagement.dto.hr.DepartmentDTO;
+import lk.sliit.hotelManagement.dto.inventory.ItemTypeDTO;
 import lk.sliit.hotelManagement.dto.manager.EmployeeDTO;
 import lk.sliit.hotelManagement.service.custom.IndexLoginBO;
 import lk.sliit.hotelManagement.service.custom.MailSend;
@@ -31,12 +33,16 @@ public class ManageUserController {
 
         List<EmployeeDTO> p = manageBO.findAllUser();
         model.addAttribute("loadAllUserTable", p);
+        List<DepartmentDTO> p2 = manageBO.findAllDepartment();
+        model.addAttribute("loadDepartment", p2);
         return "manageUser";
     }
 
 
     @PostMapping("/saveUser")
     public String saveUser(@ModelAttribute EmployeeDTO employeeDTO, Model model) {
+
+        System.out.println("ppppppppppppppppppppppppppppppppppppppppppppppp"+employeeDTO.getDepartment());
         model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
 
         manageBO.save(employeeDTO);

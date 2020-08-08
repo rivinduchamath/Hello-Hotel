@@ -12,6 +12,7 @@ public class Menu {
     private String name;
     private String type;
     private String picture;
+    private String src;
     private double unitPrice;
     @OneToMany(mappedBy = "menu", cascade = {CascadeType.PERSIST, CascadeType.REFRESH, CascadeType.DETACH, CascadeType.MERGE})
     private List<BanquetOrder> banquetOrders = new ArrayList<>();
@@ -21,12 +22,21 @@ public class Menu {
     public Menu() {
     }
 
-    public Menu(String menuId, String name, String type, String picture, double unitPrice) {
+    public Menu(String menuId, String name, String type, String picture, String src, double unitPrice) {
         this.menuId = menuId;
         this.name = name;
         this.type = type;
         this.picture = picture;
+        this.src = src;
         this.unitPrice = unitPrice;
+    }
+
+    public String getSrc() {
+        return src;
+    }
+
+    public void setSrc(String src) {
+        this.src = src;
     }
 
     public String getPicture() {

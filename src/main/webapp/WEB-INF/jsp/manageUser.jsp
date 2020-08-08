@@ -274,22 +274,40 @@
                                    required="required" name="gender"
                                    id="gender" placeholder="Gender"/></div>
 
+
                         <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6"> <br>
-                            <label for="userId">Date</label>
-                            <input type="date" class="form-control"
-                                   required="required" name="date"
-                                   id="date" placeholder="Date"/></div>
+                        <label for="setType">Item Type<span
+                                class="required">*</span>
+                        </label>
+                        <div >
+                            <select id="setType" class="form-control"
+                                    style="width: 100%; border-color: lightgray"
+                                    name="department">
+                                <c:forEach items="${loadDepartment}" var="category">
+                                    <option value="${category.departmentId}"
+                                            <c:if test="${category.departmentId eq p2}">selected="selected"</c:if> >
+                                            ${category.departmentName}
+                                    </option>
+                                </c:forEach>
+                            </select>
+                        </div>
+                        </div>
+
                         <br>
                     </div>
                     <div class="form-group">
-
-
 
                         <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6"> <br>
                             <label for="userId">DateOfBirth</label>
                             <input type="date" class="form-control"
                                    required="required" name="dateOfBirth"
                                    id="dateOfBirth" placeholder="DateOfBirth"/></div>
+
+                        <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6"> <br>
+                            <label for="userId">Date</label>
+                            <input type="date" class="form-control"
+                                   required="required" name="date"
+                                   id="date" placeholder="Date"/></div>
                         <br>
                     </div>
 
@@ -340,7 +358,7 @@
                                     <div class="card-box table-responsive">
                                         <table id="datatable-buttons" class="table table-striped table-bordered">
                                             <thead class="thead-light">
-                                            <tr>
+                                             <tr>
                                                 <th>Id</th>
                                                 <th>Name</th>
                                                 <th>Position</th>

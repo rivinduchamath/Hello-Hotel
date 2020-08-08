@@ -1,5 +1,7 @@
 package lk.sliit.hotelManagement.service.custom;
 
+import lk.sliit.hotelManagement.dto.hr.DepartmentDTO;
+import lk.sliit.hotelManagement.dto.inventory.ItemTypeDTO;
 import lk.sliit.hotelManagement.dto.manager.EmployeeDTO;
 import lk.sliit.hotelManagement.service.SuperBO;
 
@@ -11,4 +13,6 @@ public interface ManageBO extends SuperBO {
     List<EmployeeDTO> findAllUser();
 
     void deleteEmployee(String userId);
+
+    List<DepartmentDTO> findAllDepartment();
 }

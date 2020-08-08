@@ -14,6 +14,8 @@ public class FoodItem {
     private String itemId;
     private String name;
     private double unitePrice;
+    private String src;
+    private String category;
     @ManyToMany(cascade = {CascadeType.PERSIST,CascadeType.REFRESH, CascadeType.DETACH, CascadeType.MERGE})
     @JoinTable(name = "MenuItems", joinColumns = { @JoinColumn(name = "itemId") },inverseJoinColumns = { @JoinColumn(name = "menuId") })
     private List<Menu> menus = new ArrayList<>();
@@ -25,15 +27,33 @@ public class FoodItem {
     private List<RestaurantOnlineOrderDetails> restaurantOnlineOrderDetails = new ArrayList<>();
 
 
-    public FoodItem(String itemId, String name, double unitePrice, List<Menu> menus) {
+    public FoodItem(String itemId, String name, double unitePrice, String src, String category, List<Menu> menus) {
         this.itemId = itemId;
         this.name = name;
         this.unitePrice = unitePrice;
+        this.src = src;
+        this.category = category;
         this.menus = menus;
+
     }
 
-
     public FoodItem() {
+    }
+
+    public String getSrc() {
+        return src;
+    }
+
+    public void setSrc(String src) {
+        this.src = src;
+    }
+
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
     }
 
     public List<Report> getReports() {
