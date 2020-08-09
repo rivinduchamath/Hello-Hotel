@@ -10,9 +10,9 @@ public class RoomService {
     @Id
     private String serviceId;
     private Date date;
-    private String status;
     @Column(length = 1000)
     private String description;
+    private String roomCondition;
     @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.REFRESH, CascadeType.DETACH, CascadeType.MERGE})
     @JoinColumn(name = "roomId", referencedColumnName = "roomId", insertable = false, updatable = false)
     private HotelRoom roomId;
@@ -20,11 +20,11 @@ public class RoomService {
     @JoinColumn(name = "userId", referencedColumnName = "userId", insertable = false, updatable = false)
     private Employee empId;
 
-    public RoomService(String serviceId, Date date, String status, String description, HotelRoom roomId, Employee empId) {
+    public RoomService(String serviceId, Date date, String description, String roomCondition, HotelRoom roomId, Employee empId) {
         this.serviceId = serviceId;
         this.date = date;
-        this.status = status;
         this.description = description;
+        this.roomCondition = roomCondition;
         this.roomId = roomId;
         this.empId = empId;
     }
@@ -48,12 +48,12 @@ public class RoomService {
         this.date = date;
     }
 
-    public String getStatus() {
-        return status;
+    public String getRoomCondition() {
+        return roomCondition;
     }
 
-    public void setStatus(String status) {
-        this.status = status;
+    public void setRoomCondition(String roomCondition) {
+        this.roomCondition = roomCondition;
     }
 
     public String getDescription() {
