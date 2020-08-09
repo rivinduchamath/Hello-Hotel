@@ -14,17 +14,20 @@ public class HotelRoom {
     private String roomId;
     private String roomType;
     private String description;
+    private String status;
+    private String holder;
     private double price;
     @OneToMany(mappedBy = "roomId")
     private Collection<ReservationDetails> reservationRoom;
     @OneToMany(mappedBy = "roomId")
     private Collection<RoomService> roomServices;
 
-
-    public HotelRoom(String roomId, String roomType, String description, double price) {
+    public HotelRoom(String roomId, String roomType, String description, String status, String holder, double price) {
         this.roomId = roomId;
         this.roomType = roomType;
         this.description = description;
+        this.status = status;
+        this.holder = holder;
         this.price = price;
     }
 
@@ -37,6 +40,22 @@ public class HotelRoom {
 
     public void setReservationRoom(Collection<ReservationDetails> reservationRoom) {
         this.reservationRoom = reservationRoom;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public String getHolder() {
+        return holder;
+    }
+
+    public void setHolder(String holder) {
+        this.holder = holder;
     }
 
     public String getRoomId() {

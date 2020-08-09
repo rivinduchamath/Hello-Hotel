@@ -31,4 +31,11 @@ public class HouseKeepingController {
 
         return "manageRooms";
     }
+    //Load Room Crud Page
+    @GetMapping("/roomService")
+    public String roomService(Model model){
+        model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
+
+        return "roomService";
+    }
 }

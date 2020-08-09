@@ -276,77 +276,10 @@
 
             <%--Input Feilds--%>
             <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
-            <div class="col-12 col-sm-12 col-md-12 col-lg-5 col-xl-5">
-                <form method="POST"  action="/saveSupplier" name="saveSupplier">
 
-                    <div class="form-group">
-
-                        <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
-                            <label >Room Id</label>
-                            <input type="text" class="form-control"
-                               required="required" name="id" value="${genId}"
-                               id="id" placeholder="Room Id"/></div>
-
-                            <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
-                                <label for="id">Room Name</label>
-                        <input type="text" class="form-control"
-                               required="required" name="name"
-                               id="name" placeholder="Room Name"/></div>
-                    </div>
-
-                    <div class="form-group">
-
-
-                        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12"> <br>
-                            <label for="id">Description</label>
-                            <textarea type="text" class="form-control"
-                                   required="required" name="address"
-                                      id="address" placeholder="Description"></textarea></div>
-                    </div>
-
-
-                    <div class="form-group">
-                        <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6"> <br>
-                            <label for="id">Date</label>
-                            <input type="date" class="form-control"
-                                   required="required" name="date"
-                                   id="date" placeholder="Date"/></div>
-                        <br>
-                    </div>
-
-
-                    <div class="form-group">
-                        <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6"> <br>
-                            <label for="id">State</label>
-                            <select id="setType2" class="form-control"
-                                    style="width: 100%; border-color: lightgray"
-                                    name="type">
-                                <option value="Cleaned">Cleaned</option>
-                                <option value="NotCleaned">NotCleaned</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6"> <br>
-                            <label for="id">Condition</label>
-                            <select id="setType" class="form-control"
-                                    style="width: 100%; border-color: lightgray"
-                                    name="type">
-                                <option value="AC">A/C</option>
-                                <option value="AC">Non.A/C</option>
-                            </select>
-                        </div>
-                    </div>
-                    <button type='submit' class="btn btn-dark" style="width: 50%; top: 20px; position: relative" value="Register">
-                        Submit
-                    </button>
-                    <button type='reset' class="btn btn-outline-success" style="top: 20px; position: relative" value="">Reset</button>
-
-                </form>
-            </div>
             <%--/Input Feilds--%>
             <%--Table--%>
-            <div class="col-12 col-sm-12 col-md-12 col-lg-7 col-xl-7">
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
                     <div class="row">
                     <div class="x_panel">
                         <div class="x_title">

@@ -12,8 +12,7 @@
 <body>
 <footer>
     <div class="pull-right">
-        Copyright © Hotel Management 2020.<a href="https://rivinduchamath.github.io/pro/">Created by Rivindu
-        Wijayarathna</a>
+        Copyright © Hotel Management 2020.<a href="https://github.com/rivinduchamath/Hello-Hotel">Created by ITP SLIIT</a>
     </div>
     <div class="clearfix"></div>
 </footer>
