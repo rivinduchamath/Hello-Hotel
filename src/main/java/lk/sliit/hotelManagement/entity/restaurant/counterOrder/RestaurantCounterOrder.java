@@ -25,7 +25,6 @@ public class RestaurantCounterOrder {
         this.quantity = quantity;
         this.date = date;
         this.customerId = customerId;
-
     }
 
     public RestaurantCounterOrder() {
