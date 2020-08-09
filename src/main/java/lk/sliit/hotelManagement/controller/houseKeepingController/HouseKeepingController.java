@@ -37,5 +37,10 @@ public class HouseKeepingController {
         model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
 
         return "roomService";
+    }    @GetMapping("/houseKeepingReport")
+    public String houseKeepingReport(Model model){
+        model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
+
+        return "houseKeepingReport";
     }
 }
