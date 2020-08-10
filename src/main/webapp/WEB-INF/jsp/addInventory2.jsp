@@ -277,17 +277,17 @@
 
                                 <div class="form-group">
                                     <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12"> <br>
-                                        <label for="departmentId">Income</label>
+                                        <label for="departmentId">Date From</label>
                                         <input type="number" class="form-control"
                                                required="required" name="password"
-                                               id="password" placeholder="Income"/></div>
+                                               id="password" placeholder="Date from"/></div>
 
 
                                     <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12"> <br>
-                                        <label for="departmentId">Expenses</label>
+                                        <label for="departmentId">Date To </label>
                                         <input type="number" class="form-control"
                                                required="required" name="expenses"
-                                               id="expenses" placeholder="Expenses"/></div>
+                                               id="expenses" placeholder="Date to"/></div>
 
 
                                 </div>
