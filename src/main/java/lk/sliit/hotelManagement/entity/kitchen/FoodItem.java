@@ -37,6 +37,14 @@ public class FoodItem {
 
     }
 
+    public FoodItem(String itemId, String name, double unitePrice, String src, String category) {
+        this.itemId = itemId;
+        this.name = name;
+        this.unitePrice = unitePrice;
+        this.src = src;
+        this.category = category;
+    }
+
     public FoodItem() {
     }
 

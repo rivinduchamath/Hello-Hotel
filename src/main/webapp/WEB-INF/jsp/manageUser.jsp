@@ -306,7 +306,7 @@
                         <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6"> <br>
                             <label for="userId">Date</label>
                             <input type="date" class="form-control"
-                                   required="required" name="date"
+                                   required="required" name="date"barorderdetails
                                    id="date" placeholder="Date"/></div>
                         <br>
                     </div>
@@ -677,7 +677,6 @@
             $("#gender").val($(this).find("td:nth-child(10)").text());
             $("#date").val($(this).find("td:nth-child(11)").text());
             $("#dateOfBirth").val($(this).find("td:nth-child(12)").text());
-            selectedRow.addClass('row-selected');
         });
 </script>
 
