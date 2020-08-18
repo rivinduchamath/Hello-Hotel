@@ -15,11 +15,8 @@ public class Menu {
     private double unitPrice;
     @OneToMany(mappedBy = "menu", cascade = {CascadeType.PERSIST, CascadeType.REFRESH, CascadeType.DETACH, CascadeType.MERGE})
     private List<BanquetOrder> banquetOrders = new ArrayList<>();
-    @ManyToMany(mappedBy = "menus")
-    private List<FoodItem> foodItems = new ArrayList<>();
-
-    public Menu() {
-    }
+    @OneToMany(mappedBy = "menu", cascade = {CascadeType.PERSIST, CascadeType.REFRESH, CascadeType.DETACH, CascadeType.MERGE})
+    private List<MenuDetails> orderDetails = new ArrayList<>();
 
     public Menu(String menuId, String name, String type, String picture, double unitPrice) {
         this.menuId = menuId;
@@ -27,14 +24,10 @@ public class Menu {
         this.type = type;
         this.picture = picture;
         this.unitPrice = unitPrice;
+
     }
 
-    public String getPicture() {
-        return picture;
-    }
-
-    public void setPicture(String picture) {
-        this.picture = picture;
+    public Menu() {
     }
 
     public String getMenuId() {
@@ -61,27 +54,19 @@ public class Menu {
         this.type = type;
     }
 
+    public String getPicture() {
+        return picture;
+    }
+
+    public void setPicture(String picture) {
+        this.picture = picture;
+    }
+
     public double getUnitPrice() {
         return unitPrice;
     }
 
     public void setUnitPrice(double unitPrice) {
         this.unitPrice = unitPrice;
-    }
-
-    public List<BanquetOrder> getBanquetOrders() {
-        return banquetOrders;
-    }
-
-    public void setBanquetOrders(List<BanquetOrder> banquetOrders) {
-        this.banquetOrders = banquetOrders;
-    }
-
-    public List<FoodItem> getFoodItems() {
-        return foodItems;
-    }
-
-    public void setFoodItems(List<FoodItem> foodItems) {
-        this.foodItems = foodItems;
     }
 }
