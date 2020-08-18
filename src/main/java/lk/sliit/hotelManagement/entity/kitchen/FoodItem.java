@@ -11,6 +11,7 @@ import java.util.List;
 @Entity
 public class FoodItem {
     @Id
+
     private String itemId;
     private String name;
     private double unitePrice;
