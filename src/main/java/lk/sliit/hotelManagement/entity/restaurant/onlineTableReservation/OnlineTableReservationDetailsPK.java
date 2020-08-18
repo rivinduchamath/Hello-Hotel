@@ -18,8 +18,6 @@ public class OnlineTableReservationDetailsPK implements Serializable {
     public OnlineTableReservationDetailsPK() {
     }
 
-
-
     public String getReservationId() {
         return reservationId;
     }
