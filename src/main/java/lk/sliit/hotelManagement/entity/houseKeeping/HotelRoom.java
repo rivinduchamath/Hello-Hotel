@@ -20,7 +20,6 @@ public class HotelRoom {
     private String description;
     private String status;//cleaned Or Not
     private String holder;
-    private String lastCleanedBy;
     private double price;
     private Date date;
     @OneToMany(mappedBy = "roomId")
@@ -40,14 +39,13 @@ public class HotelRoom {
     }
 
     public HotelRoom(String roomId, String roomName, String roomType, String description, String status, String holder,
-                     String lastCleanedBy, double price, Date date) {
+                     double price, Date date) {
         this.roomId = roomId;
         this.roomName = roomName;
         this.roomType = roomType;
         this.description = description;
         this.status = status;
         this.holder = holder;
-        this.lastCleanedBy = lastCleanedBy;
         this.price = price;
         this.date = date;
     }
@@ -61,14 +59,6 @@ public class HotelRoom {
 
     public void setRoomName(String roomName) {
         this.roomName = roomName;
-    }
-
-    public String getLastCleanedBy() {
-        return lastCleanedBy;
-    }
-
-    public void setLastCleanedBy(String lastCleanedBy) {
-        this.lastCleanedBy = lastCleanedBy;
     }
 
     public Date getDate() {

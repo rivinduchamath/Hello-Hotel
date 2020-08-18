@@ -17,6 +17,7 @@ public class FoodItem {
     private double unitePrice;
     private String src;
     private String category;
+
     @OneToMany(mappedBy = "foodItem",cascade ={ CascadeType.PERSIST ,CascadeType.REFRESH, CascadeType.DETACH,CascadeType.MERGE})
     private List<MenuDetails> menuDetails =new ArrayList<>();
     @OneToMany(mappedBy = "foodItem", cascade = {CascadeType.PERSIST, CascadeType.REFRESH, CascadeType.DETACH, CascadeType.MERGE})
