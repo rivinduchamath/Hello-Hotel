@@ -11,14 +11,13 @@ import java.util.List;
 @Entity
 public class FoodItem {
     @Id
-
     private String itemId;
     private String name;
     private double unitePrice;
     private String src;
     private String category;
-    @ManyToMany(cascade = {CascadeType.PERSIST,CascadeType.REFRESH, CascadeType.DETACH, CascadeType.MERGE})
-    @JoinTable(name = "MenuItems", joinColumns = { @JoinColumn(name = "itemId") },inverseJoinColumns = { @JoinColumn(name = "menuId") })
+    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.REFRESH, CascadeType.DETACH, CascadeType.MERGE})
+    @JoinTable(name = "MenuItems", joinColumns = {@JoinColumn(name = "itemId")}, inverseJoinColumns = {@JoinColumn(name = "menuId")})
     private List<Menu> menus = new ArrayList<>();
     @OneToMany(mappedBy = "foodItem", cascade = {CascadeType.PERSIST, CascadeType.REFRESH, CascadeType.DETACH, CascadeType.MERGE})
     private List<Report> reports = new ArrayList<>();
