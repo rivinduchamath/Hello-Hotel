@@ -15,6 +15,10 @@ public class MenuDTO {
         this.unitPrice = unitPrice;
     }
 
+    public MenuDTO(String menuId) {
+        this.menuId = menuId;
+    }
+
     public MenuDTO() {
     }
 
