@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
@@ -46,26 +47,17 @@ public class ManageMenuController {
     public String foodPackPage(Model model){
         model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
         List<MenuDTO> menuItemList = kitchenBO.findMenuItems();
+        List<FoodItemDTO> foodItemDTOList = kitchenBO.findFoodItems();
+        model.addAttribute("loadFoodItemTable", foodItemDTOList);
         model.addAttribute("loadMenuItemTable", menuItemList);
         return "manageFoodPacks";
     }
 
-    @PostMapping("/foodPack")
-    public String manageFoodPack(Model model){
-        model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
-        List<FoodItemDTO> foodItemDTOList = kitchenBO.findFoodItems();
-        model.addAttribute("loadFoodItemTable", foodItemDTOList);
-        return "foodPackManagement";
-    }
 
-    @PostMapping("/addToMenu")
-    public String addFoodToMenu(Model model){
-
-        return "foodPackManagement";
-    }
 
     @GetMapping(value = "/deleteFoodPackage/{menuId}")
-    public void deleteMenuItem(@PathVariable("menuId") String menuItemId, HttpServletResponse response){
+    public void deleteMenuItem(Model model, @PathVariable("menuId") String menuItemId, HttpServletResponse response){
+        model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
         kitchenBO.deleteMenuItem(menuItemId);
         try {
             response.sendRedirect("/manageFoodPacks");
@@ -74,12 +66,13 @@ public class ManageMenuController {
         }
     }
 
-    @GetMapping(value = "/foodPackage/{menuId}")
-    public String addItemToMenu(Model model, @PathVariable("menuId") String menuItemId){
-        MenuDTO menuDTO = kitchenBO.findMenuItemById(menuItemId);
+    @GetMapping("/foodPackManagement")
+    public String addItemToMenu(Model model, @RequestParam(value="menuId",required = true) String menuId, HttpServletRequest httpServletRequest){
+       // httpServletRequest.setAttribute("item" , kitchenBO.findMenuItemById(menuId));
+        MenuDTO menuDTO = kitchenBO.findMenuItemById(menuId);
         model.addAttribute("menuItem", menuDTO);
         List<FoodItemDTO> foodItemDTOList = kitchenBO.findFoodItems();
         model.addAttribute("loadFoodItemTable",foodItemDTOList);
-        return "foodPackManagement";
+        return "redirect:/foodPackManagement";
     }
 }

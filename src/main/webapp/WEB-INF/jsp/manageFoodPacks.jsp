@@ -70,9 +70,9 @@
             </div>
             <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
                 <!--Add food pack form and food pack table---------------------------------------->
-                    <div class="col-sm-12 col-md-12 col-lg-5 col-xl-5">
+                <div class="col-sm-12 col-md-12 col-lg-8 col-xl-8">
+                    <div class="col-sm-12 col-md-6 col-lg-5 col-xl-5">
                         <!--Add food items form-------------------------------------------------------------------->
-
                         <div class="row">
                             <div class="col-md-12 col-sm-12 ">
                                 <div class="x_panel">
@@ -92,7 +92,8 @@
                                     </div>
                                     <div class="x_content">
                                         <br/>
-                                        <form action="FoodPacks" method="post" class="form-horizontal form-label-left" data-parsley-validate
+                                        <form action="FoodPacks" method="post" class="form-horizontal form-label-left"
+                                              data-parsley-validate
                                               id="demo-form3">
 
                                             <input type="hidden" id="packId" name="menuId" value="">
@@ -101,7 +102,8 @@
                                                         class="required">*  &nbsp;</span>
                                                 </label>
                                                 <div class=" ">
-                                                    <input class="form-control " name="name" id="packName" required="required"
+                                                    <input class="form-control " name="name" id="packName"
+                                                           required="required"
                                                            type="text">
                                                 </div>
                                             </div>
@@ -145,11 +147,105 @@
                                 </div>
                             </div>
                         </div>
-
                         <!--/Order items form------------------------------------------------------------------->
-
                     </div>
-                    <div class="col-12 col-sm-12 col-md-12 col-lg-7 col-xl-7">
+                    <!--Selected food items table----------------------------------------------------->
+                    <div class="col-sm-12 col-md-6 col-lg-7 col-xl-7">
+                        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                            <div class="row">
+                                <div class="x_panel">
+                                    <div class="x_title">
+                                        <h2>Selected Food Items...<br>Pack: ${menuItem.name}</h2>
+                                        <ul class="nav navbar-right panel_toolbox">
+                                            <li><a class="collapse-link"></a>
+                                            </li>
+                                            <li class="dropdown">
+                                                <a aria-expanded="false" class="dropdown-toggle" data-toggle="dropdown"
+                                                   href="#"
+                                                   role="button"><i class="fa fa-wrench"></i></a>
+                                            </li>
+                                        </ul>
+                                        <div class="clearfix"></div>
+                                    </div>
+                                    <div class="x_content">
+                                        <div class="row">
+                                            <div class="col-sm-12">
+                                                <div class="card-box table-responsive">
+                                                    <table class="table table-striped table-bordered"
+                                                           id="datatable-buttons1"
+                                                           style="text-align: center">
+                                                        <thead class="thead-light">
+                                                        <tr>
+                                                            <th>Id</th>
+                                                            <th>Item Name</th>
+                                                            <th></th>
+
+                                                        </tr>
+
+                                                        </thead>
+                                                        <tbody>
+                                                        <tr>
+                                                            <td>001</td>
+                                                            <td>Potato</td>
+                                                            <td>
+
+                                                                <i class="fa fa-minus-square"
+                                                                   style="font-size: 20px"></i>
+
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>002</td>
+                                                            <td>Potato2</td>
+                                                            <td>
+
+                                                                <i class="fa fa-minus-square"
+                                                                   style="font-size: 20px"></i>
+
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>003</td>
+                                                            <td>Potato3</td>
+                                                            <td>
+
+                                                                <i class="fa fa-minus-square"
+                                                                   style="font-size: 20px"></i>
+
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>004</td>
+                                                            <td>Potato4</td>
+                                                            <td>
+
+                                                                <i class="fa fa-minus-square"
+                                                                   style="font-size: 20px"></i>
+
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>005</td>
+                                                            <td>Potato5</td>
+                                                            <td>
+
+                                                                <i class="fa fa-minus-square"
+                                                                   style="font-size: 20px"></i>
+
+                                                            </td>
+                                                        </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-------------------------------------------------------------------------------->
+                    <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
                         <div class="row">
                             <div class="x_panel">
                                 <div class="x_title">
@@ -186,24 +282,24 @@
                                                     </thead>
                                                     <tbody>
                                                     <c:forEach items="${loadMenuItemTable}" var="item">
-                                                    <tr>
-                                                        <td>${item.menuId}</td>
-                                                        <td>${item.name}</td>
-                                                        <td>${item.type}</td>
-                                                        <td>${item.unitPrice}</td>
-                                                        <td>${item.picture}</td>
-                                                        <td>
-                                                            <a href="foodPackage/${item.menuId}">
-                                                                <input type="button" value="Manage">
-                                                            </a>
-                                                        </td>
+                                                        <tr>
+                                                            <td>${item.menuId}</td>
+                                                            <td>${item.name}</td>
+                                                            <td>${item.type}</td>
+                                                            <td>${item.unitPrice}</td>
+                                                            <td>${item.picture}</td>
+                                                            <td>
+                                                                <a href="/foodPackManagement?menuId=${item.menuId}">
+                                                                    <input type="submit" value="Manage">
+                                                                </a>
+                                                            </td>
 
-                                                        <td>
-                                                            <a href="deleteFoodPackage/${item.menuId}">
-                                                                <i class="fa fa-trash" style="font-size: 20px"></i>
-                                                            </a>
-                                                        </td>
-                                                    </tr>
+                                                            <td>
+                                                                <a href="deleteFoodPackage/${item.menuId}">
+                                                                    <i class="fa fa-trash" style="font-size: 20px"></i>
+                                                                </a>
+                                                            </td>
+                                                        </tr>
                                                     </c:forEach>
 
                                                     </tbody>
@@ -215,6 +311,68 @@
                             </div>
                         </div>
                     </div>
+                </div>
+                <!--Food item table--------------------------------------------------------------->
+                <div class="col-sm-12 col-md-6 col-lg-6 col-xl-4">
+                    <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                        <div class="row">
+                            <div class="x_panel">
+                                <div class="x_title">
+                                    <h2>Find Food Items
+                                        <small>list</small>
+                                    </h2>
+                                    <ul class="nav navbar-right panel_toolbox">
+                                        <li><a class="collapse-link"></a>
+                                        </li>
+                                        <li class="dropdown">
+                                            <a aria-expanded="false" class="dropdown-toggle" data-toggle="dropdown"
+                                               href="#"
+                                               role="button"><i class="fa fa-wrench"></i></a>
+                                        </li>
+                                    </ul>
+                                    <div class="clearfix"></div>
+                                </div>
+                                <div class="x_content">
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <div class="card-box table-responsive">
+                                                <table class="table table-striped table-bordered"
+                                                       id="datatable-buttons"
+                                                       style="text-align: center">
+                                                    <thead class="thead-light">
+                                                    <tr>
+                                                        <th>Id</th>
+                                                        <th>Item Name</th>
+                                                        <th>Category</th>
+                                                        <th>Unit Price</th>
+                                                        <th></th>
+
+                                                    </tr>
+
+                                                    </thead>
+                                                    <tbody>
+                                                    <c:forEach items="${loadFoodItemTable}" var="item">
+                                                        <tr>
+                                                            <td>${item.itemId}</td>
+                                                            <td>${item.itemName}</td>
+                                                            <td>${item.itemCategory}</td>
+                                                            <td>${item.unitePrice}</td>
+                                                            <td>
+                                                                <form action="" method="post">
+                                                                    <i class="fa fa-plus-square"></i>
+                                                            </td>
+                                                        </tr>
+                                                    </c:forEach>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 <!-------------------------------------------------------------------------------->
 
             </div>

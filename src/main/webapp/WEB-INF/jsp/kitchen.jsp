@@ -101,6 +101,126 @@
                 </div>
             </div>
             <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+                    <div class="row">
+                        <div class="x_panel">
+                            <div class="x_title">
+                                <h2>Select Menu</h2>
+                                <ul class="nav navbar-right panel_toolbox">
+                                    <li><a class="collapse-link"></a>
+                                    </li>
+                                    <li class="dropdown">
+                                        <a aria-expanded="false" class="dropdown-toggle" data-toggle="dropdown"
+                                           href="#"
+                                           role="button"><i class="fa fa-wrench"></i></a>
+                                    </li>
+                                </ul>
+                                <div class="clearfix"></div>
+                            </div>
+                            <div class="x_content">
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <div class="card-box table-responsive">
+                                            <table class="table table-striped table-bordered"
+                                                   id="datatable-buttons2"
+                                                   style="text-align: center">
+                                                <thead class="thead-light">
+                                                <tr>
+                                                    <th>Id</th>
+                                                    <th>Name</th>
+                                                    <th>Type</th>
+                                                </tr>
+
+                                                </thead>
+                                                <tbody>
+                                                <c:forEach items="${loadMenuItemTable}" var="item">
+                                                    <tr>
+                                                        <td>${item.menuId}</td>
+                                                        <td>${item.name}</td>
+                                                        <td>${item.type}</td>
+                                                        <td>
+                                                            <a href="foodPackage/${item.menuId}">
+                                                                <input type="button" value="Manage">
+                                                            </a>
+                                                        </td>
+
+                                                        <td>
+                                                            <a href="deleteFoodPackage/${item.menuId}">
+                                                                <i class="fa fa-trash" style="font-size: 20px"></i>
+                                                            </a>
+                                                        </td>
+                                                    </tr>
+                                                </c:forEach>
+
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+                    <div class="row">
+                        <div class="x_panel">
+                            <div class="x_title">
+                                <h2>Food Items on Menu</h2>
+                                <ul class="nav navbar-right panel_toolbox">
+                                    <li><a class="collapse-link"></a>
+                                    </li>
+                                    <li class="dropdown">
+                                        <a aria-expanded="false" class="dropdown-toggle" data-toggle="dropdown"
+                                           href="#"
+                                           role="button"><i class="fa fa-wrench"></i></a>
+                                    </li>
+                                </ul>
+                                <div class="clearfix"></div>
+                            </div>
+                            <div class="x_content">
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <div class="card-box table-responsive">
+                                            <table class="table table-striped table-bordered"
+                                                   id="datatable-buttons3"
+                                                   style="text-align: center">
+                                                <thead class="thead-light">
+                                                <tr>
+                                                    <th>Id</th>
+                                                    <th>Name</th>
+                                                    <th>Type</th>
+                                                </tr>
+
+                                                </thead>
+                                                <tbody>
+                                                <c:forEach items="${loadMenuItemTable}" var="item">
+                                                    <tr>
+                                                        <td>${item.menuId}</td>
+                                                        <td>${item.name}</td>
+                                                        <td>${item.type}</td>
+                                                        <td>
+                                                            <a href="foodPackage/${item.menuId}">
+                                                                <input type="button" value="Manage">
+                                                            </a>
+                                                        </td>
+
+                                                        <td>
+                                                            <a href="deleteFoodPackage/${item.menuId}">
+                                                                <i class="fa fa-trash" style="font-size: 20px"></i>
+                                                            </a>
+                                                        </td>
+                                                    </tr>
+                                                </c:forEach>
+
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 <div class="col-sm-12 col-md-12 col-lg-4 col-xl-4">
                     <!--Order items form-------------------------------------------------------------------->
 
@@ -252,6 +372,7 @@
                                                     <th>Id</th>
                                                     <th>Item Name</th>
                                                     <th>Quantity</th>
+                                                    <th>State</th>
                                                     <th></th>
 
                                                 </tr>
