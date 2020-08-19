@@ -297,28 +297,24 @@
 
         chart.data = [
             {
-                country: "Lithuania",
-                litres: 501.9
+                country: "Seafood Rice",
+                litres: 301
             },
             {
-                country: "Czech Republic",
-                litres: 301.9
+                country: "Chicken Dewal",
+                litres: 501
             },
             {
-                country: "Ireland",
-                litres: 201.1
+                country: "Biryani",
+                litres: 101
             },
             {
-                country: "Germany",
-                litres: 165.8
+                country: "Mixed Rice",
+                litres: 65
             },
             {
-                country: "Australia",
-                litres: 139.9
-            },
-            {
-                country: "Austria",
-                litres: 128.3
+                country: "Chicken Soup",
+                litres: 739
             }
         ];
 
@@ -350,28 +346,24 @@
 
         chart.data = [
             {
-                country: "Lithuania",
-                litres: 501.9
+                country: "Seafood Rice",
+                litres: 501
             },
             {
-                country: "Czech Republic",
-                litres: 301.9
+                country: "Chicken Dewal",
+                litres: 301
             },
             {
-                country: "Ireland",
-                litres: 201.1
+                country: "Biryani",
+                litres: 201
             },
             {
-                country: "Germany",
-                litres: 165.8
+                country: "Mixed Rice",
+                litres: 165
             },
             {
-                country: "Australia",
-                litres: 139.9
-            },
-            {
-                country: "Austria",
-                litres: 128.3
+                country: "Chicken Soup",
+                litres: 139
             }
         ];
 

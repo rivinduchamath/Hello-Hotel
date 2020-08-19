@@ -1,0 +1,11 @@
+
+#contact_form {padding:5;}
+
+#ff label {cursor:pointer;margin:4px 0;display:block;}
+
+input {	display:block;width:90%;border-radius:4px;-webkit-border-radius:4px;-moz-border-radius:4px;background-color:#f4f4f4; color:#000;	border:1px solid #9E9E9E;padding:10px;	margin-bottom:25px;}
+
+textarea {display:block;width:90%;height:200px; border-radius:4px;-webkit-border-radius:4px;-moz-border-radius:4px;background-color:#f4f4f4; border:1px solid #9E9E9E;padding:10px;	margin-bottom:25px;}
+
+.sendButton {cursor:pointer;background-color:#A80002;-webkit-border-radius:16px;-moz-border-radius:16px;border-radius:16px;	color:#ffffff;width:25%;	font-weight:bold;}
+.sendButton:hover {	opacity: 0.8;}

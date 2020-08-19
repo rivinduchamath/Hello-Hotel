@@ -209,7 +209,7 @@
 
                     <div class="form-group">
 
-                        <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
+                       <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
                             <label >User Id</label>
                             <input type="text" class="form-control"
                                required="required" name="userId"
@@ -274,22 +274,40 @@
                                    required="required" name="gender"
                                    id="gender" placeholder="Gender"/></div>
 
+
                         <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6"> <br>
-                            <label for="userId">Date</label>
-                            <input type="date" class="form-control"
-                                   required="required" name="date"
-                                   id="date" placeholder="Date"/></div>
+                        <label for="setType">Item Type<span
+                                class="required">*</span>
+                        </label>
+                        <div >
+                            <select id="setType" class="form-control"
+                                    style="width: 100%; border-color: lightgray"
+                                    name="department">
+                                <c:forEach items="${loadDepartment}" var="category">
+                                    <option value="${category.departmentId}"
+                                            <c:if test="${category.departmentId eq p2}">selected="selected"</c:if> >
+                                            ${category.departmentName}
+                                    </option>
+                                </c:forEach>
+                            </select>
+                        </div>
+                        </div>
+
                         <br>
                     </div>
                     <div class="form-group">
-
-
 
                         <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6"> <br>
                             <label for="userId">DateOfBirth</label>
                             <input type="date" class="form-control"
                                    required="required" name="dateOfBirth"
                                    id="dateOfBirth" placeholder="DateOfBirth"/></div>
+
+                        <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6"> <br>
+                            <label for="userId">Date</label>
+                            <input type="date" class="form-control"
+                                   required="required" name="date"barorderdetails
+                                   id="date" placeholder="Date"/></div>
                         <br>
                     </div>
 
@@ -303,7 +321,7 @@
                         </div>--%>
 
 
-                    <button type='submit' class="btn btn-primary" style="width: 50%; top: 20px; position: relative" value="Register">
+                    <button type='submit' class="btn btn-dark" style="width: 50%; top: 20px; position: relative" value="Register">
                         Submit
                     </button>
                     <button type='reset' class="btn btn-outline-success" style="top: 20px; position: relative" value="">Reset</button>
@@ -340,7 +358,7 @@
                                     <div class="card-box table-responsive">
                                         <table id="datatable-buttons" class="table table-striped table-bordered">
                                             <thead class="thead-light">
-                                            <tr>
+                                             <tr>
                                                 <th>Id</th>
                                                 <th>Name</th>
                                                 <th>Position</th>
@@ -659,7 +677,6 @@
             $("#gender").val($(this).find("td:nth-child(10)").text());
             $("#date").val($(this).find("td:nth-child(11)").text());
             $("#dateOfBirth").val($(this).find("td:nth-child(12)").text());
-            selectedRow.addClass('row-selected');
         });
 </script>
 

@@ -13,6 +13,8 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <!-- Meta, title, CSS, favicons, etc. -->
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Meta, title, CSS, favicons, etc. -->
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -24,11 +26,15 @@
     <link href="../../vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
     <!-- Custom Theme Style -->
     <link href="../../build/css/custom.min.css" rel="stylesheet">
-
     <%
         SimpleDateFormat sdf = new SimpleDateFormat ( "dd-MM-yyyy" );
         String date = sdf.format ( new Date ( ) );
     %>
+    <!-- Datatables -->
+    <link href="../../vendors/datatables.net-bs/css/dataTables.bootstrap.min.css" rel="stylesheet">
+    <link href="../../vendors/datatables.net-buttons-bs/css/buttons.bootstrap.min.css" rel="stylesheet">
+    <link href="../../vendors/datatables.net-fixedheader-bs/css/fixedHeader.bootstrap.min.css" rel="stylesheet">
+    <link href="../../vendors/datatables.net-responsive-bs/css/responsive.bootstrap.min.css" rel="stylesheet">
     <style>
         .large-btn {
             height: 90px;
@@ -244,9 +250,9 @@
                         <div class="containerx">
                             <a style=" font-family: Playfair Display, Georgia, Times New Roman, serif;
                              background-color:#3d495f; color: #ffffff;font-weight: bolder"
-                               href="/barBill" class="btnq"><h2
+                               href="/houseKeepingReport" class="btnq"><h2
                                     style="position: relative; letter-spacing: 1px;
-                                     margin-top: 30px">Rooms Income</h2></a>
+                                     margin-top: 30px">Income</h2></a>
                         </div>
                         <br>
                     </div>
@@ -257,18 +263,158 @@
                         <div class="containerx">
                             <a style=" font-family: Playfair Display, Georgia, Times New Roman, serif;
                              background-color:#3d495f; color: #ffffff;font-weight: bolder"
-                               href="barStock" class="btnq"><h2
+                               href="/roomService" class="btnq"><h2
                                     style="position: relative; letter-spacing: 1px;
-                                     margin-top: 30px">Laundry</h2></a>
+                                     margin-top: 30px">Room Service</h2></a>
                         </div>
                         <br> </div>
                 </div>
 
 <%--                ///////////////////////////////////////////////////////////////////////////////////////               --%>
 
+<%--                Page Body                        --%>
+
+                <div class="col-12 col-sm-12 col-md-12 col-lg-7 col-xl-7">
+                    <div class="row">
+                        <div class="x_panel">
+                            <div class="x_title">
+                                <h2>Dirty Rooms
+                                    <small>Rooms Not Cleaned</small>
+                                </h2>
+                                <ul class="nav navbar-right panel_toolbox">
+                                    <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                                    </li>
+                                    <li class="dropdown">
+                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                                           aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                            <a class="dropdown-item" href="#">Settings 1</a>
+                                        </div>
+                                    </li>
+                                    <li><a class="close-link"><i class="fa fa-close"></i></a>
+                                    </li>
+                                </ul>
+                                <div class="clearfix"></div>
+                            </div>
+                            <div class="x_content">
+                                <div class="row">
+
+                                        <div class="card-box table-responsive">
+                                            <table id="datatable-buttons" class="table table-striped table-bordered">
+                                                <thead class="thead-light">
+                                                <tr>
+                                                    <th>Id</th>
+                                                    <th>RoomId</th>
+                                                    <th>RoomName</th>
+                                                    <th>Condition</th>
+                                                    <th>Description</th>
+                                                    <th>L.Cleaned</th>
+                                                    <th>Date</th>
+                                                </tr>
+
+                                                </thead>
+                                                <tbody>
+
+                                                    <tr>
+                                                        <td>RS001</td>
+                                                        <td>R001</td>
+                                                        <td>Delux</td>
+                                                        <td>A/C</td>
+                                                        <td>Lorem</td>
+                                                        <td>Cherif</td>
+                                                        <td>2020/09/09</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>RS002</td>
+                                                        <td>R001</td>
+                                                        <td>Delux</td>
+                                                        <td>A/C</td>
+                                                        <td>Lorem</td>
+                                                        <td>Samuwel</td>
+                                                        <td>2020/09/11</td>
+                                                    </tr>
+
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+<%--Active users--%>
+
+                <div class="col-12 col-sm-12 col-md-12 col-lg-5 col-xl-5">
+                    <div class="row">
+                        <div class="x_panel">
+                            <div class="x_title">
+                                <h2>Today Active Users
+                                    <small>User Page</small>
+                                </h2>
+                                <ul class="nav navbar-right panel_toolbox">
+                                    <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                                    </li>
+                                    <li class="dropdown">
+                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                                           aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                            <a class="dropdown-item" href="#">Settings 1</a>
+                                        </div>
+                                    </li>
+                                    <li><a class="close-link"><i class="fa fa-close"></i></a>
+                                    </li>
+                                </ul>
+                                <div class="clearfix"></div>
+                            </div>
+                            <div class="x_content">
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <div class="card-box table-responsive">
+                                            <table id="datatable-buttons2" class="table table-striped table-bordered">
+                                                <thead class="thead-light">
+                                                <tr>
+                                                    <th>UserId</th>
+                                                    <th>Name</th>
+                                                    <th>InTime</th>
+                                                    <th>OutTime</th>
+                                                </tr>
+
+                                                </thead>
+                                                <tbody>
+
+                                                <tr>
+                                                    <td>C005</td>
+                                                    <td>Cherif</td>
+                                                    <td>8.33 p.m.</td>
+                                                    <td>4.33 p.m.</td>
+
+                                                </tr>
+                                                <tr>
+                                                    <td>C003</td>
+                                                    <td>Samuwel</td>
+                                                    <td>8.43 p.m.</td>
+                                                    <td>4.43 p.m.</td>
+
+                                                </tr>
+
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+            <%--                /Page Body                        --%>
             </div>
         </div>
         <!-- /page content -->
+
+
 
 
 
@@ -279,14 +425,31 @@
     </div>
 </div>
 
-
-
 <!-- jQuery -->
 <script src="../../vendors/jquery/dist/jquery.min.js"></script>
 <!-- Bootstrap -->
 <script src="../../vendors/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- Datatables -->
+<script src="../../vendors/datatables.net/js/jquery.dataTables.min.js"></script>
+<script src="../../vendors/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+<%--Show Print Buttons--%>
+<script src="../../vendors/datatables.net-buttons/js/dataTables.buttons.min.js"></script>
+<script src="../../vendors/datatables.net-buttons-bs/js/buttons.bootstrap.min.js"></script>
+<script src="../../vendors/datatables.net-buttons/js/buttons.flash.min.js"></script>
+<script src="../../vendors/datatables.net-buttons/js/buttons.html5.min.js"></script>
+<script src="../../vendors/datatables.net-buttons/js/buttons.print.min.js"></script>
+<script src="../../vendors/datatables.net-fixedheader/js/dataTables.fixedHeader.min.js"></script>
+<script src="../../vendors/datatables.net-keytable/js/dataTables.keyTable.min.js"></script>
+<%--Responsive Table--%>
+<script src="../../vendors/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
+<script src="../../vendors/datatables.net-responsive-bs/js/responsive.bootstrap.js"></script>
+<%--<script src="../../vendors/datatables.net-scroller/js/dataTables.scroller.min.js"></script>--%>
+<%--Print--%>
+<script src="../../vendors/jszip/dist/jszip.min.js"></script>
 <!-- Custom Theme Scripts -->
 <script src="../../build/js/custom.min.js"></script>
+<!-- jQuery -->
 
 </body>
 </html>

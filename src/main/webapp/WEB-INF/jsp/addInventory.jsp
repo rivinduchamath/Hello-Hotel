@@ -242,7 +242,7 @@
 
                             <div class="x_content">
 
-                                <table style="text-align: center" id="datatable-buttons"
+                                <table style="text-align: center" id="datatable-buttons2"
                                        class="table table-striped table-bordered">
                                     <thead>
                                     <tr>
