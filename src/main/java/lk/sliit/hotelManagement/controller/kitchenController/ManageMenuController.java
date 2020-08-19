@@ -10,7 +10,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
@@ -66,13 +65,17 @@ public class ManageMenuController {
         }
     }
 
-    @GetMapping("/foodPackManagement")
-    public String addItemToMenu(Model model, @RequestParam(value="menuId",required = true) String menuId, HttpServletRequest httpServletRequest){
-       // httpServletRequest.setAttribute("item" , kitchenBO.findMenuItemById(menuId));
-        MenuDTO menuDTO = kitchenBO.findMenuItemById(menuId);
+    @RequestMapping(value = "/foodPackage")
+    public void addItemToMenu(Model model, @RequestParam("menuId") String menuItemId, HttpServletResponse httpServletResponse){
+        MenuDTO menuDTO = kitchenBO.findMenuItemById(menuItemId);
         model.addAttribute("menuItem", menuDTO);
         List<FoodItemDTO> foodItemDTOList = kitchenBO.findFoodItems();
         model.addAttribute("loadFoodItemTable",foodItemDTOList);
-        return "redirect:/foodPackManagement";
+        //return "foodPackManagement";
+        try {
+            httpServletResponse.sendRedirect("manageFoodPacks");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

@@ -289,8 +289,8 @@
                                                             <td>${item.unitPrice}</td>
                                                             <td>${item.picture}</td>
                                                             <td>
-                                                                <a href="/foodPackManagement?menuId=${item.menuId}">
-                                                                    <input type="submit" value="Manage">
+                                                                <a href="/foodPackage?menuId=${item.menuId}">
+                                                                    <input type="button" value="Manage">
                                                                 </a>
                                                             </td>
 
