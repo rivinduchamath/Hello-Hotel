@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
@@ -65,9 +66,10 @@ public class ManageMenuController {
         }
     }
 
-    @GetMapping(value = "/foodPackage/{menuId}")
-    public String addItemToMenu(Model model, @PathVariable("menuId") String menuItemId){
-        MenuDTO menuDTO = kitchenBO.findMenuItemById(menuItemId);
+    @GetMapping("/foodPackManagement")
+    public String addItemToMenu(Model model, @RequestParam String menuId, HttpServletRequest httpServletRequest){
+       // httpServletRequest.setAttribute("item" , kitchenBO.findMenuItemById(menuId));
+        MenuDTO menuDTO = kitchenBO.findMenuItemById(menuId);
         model.addAttribute("menuItem", menuDTO);
         List<FoodItemDTO> foodItemDTOList = kitchenBO.findFoodItems();
         model.addAttribute("loadFoodItemTable",foodItemDTOList);
