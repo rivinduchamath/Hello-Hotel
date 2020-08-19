@@ -66,13 +66,11 @@ public class ManageMenuController {
         }
     }
 
-    @GetMapping("/foodPackManagement")
-    public String addItemToMenu(Model model, @RequestParam(value="menuId",required = true) String menuId, HttpServletRequest httpServletRequest){
-       // httpServletRequest.setAttribute("item" , kitchenBO.findMenuItemById(menuId));
-        MenuDTO menuDTO = kitchenBO.findMenuItemById(menuId);
-        model.addAttribute("menuItem", menuDTO);
-        List<FoodItemDTO> foodItemDTOList = kitchenBO.findFoodItems();
-        model.addAttribute("loadFoodItemTable",foodItemDTOList);
-        return "redirect:/foodPackManagement";
+    @RequestMapping("/foodPackManagement")
+    public String addItemToMenu(Model model, @RequestParam String menuId,HttpServletRequest httpServletRequest){
+        model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
+        model.addAttribute("menuItem", kitchenBO.findMenuItemById(menuId));
+        model.addAttribute("loadFoodItemTable",kitchenBO.findFoodItems());
+        return "foodPackManagement";
     }
 }
