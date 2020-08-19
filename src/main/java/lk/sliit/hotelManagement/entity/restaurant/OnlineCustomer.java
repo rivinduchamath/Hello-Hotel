@@ -16,19 +16,21 @@ public class OnlineCustomer {
     private  String address;
     private String email;
     private String password;
+    private int number;
     @OneToMany(mappedBy = "customer", cascade = {CascadeType.PERSIST,CascadeType.REFRESH, CascadeType.DETACH, CascadeType.MERGE})
     private List<RestaurantOnlineOrder> restaurantOnlineOrders = new ArrayList<>();
     @OneToMany(mappedBy = "customer", cascade = {CascadeType.PERSIST,CascadeType.REFRESH, CascadeType.DETACH, CascadeType.MERGE})
     private List<OnlineTableReservation> onlineTableReservations = new ArrayList<>();
 
+    public OnlineCustomer(String onlineCustomerId, String name, String userName, String address, String email, String password, int number) {
 
-    public OnlineCustomer(String onlineCustomerId, String name, String userName, String address, String email, String password) {
         this.onlineCustomerId = onlineCustomerId;
         this.name = name;
         this.userName = userName;
         this.address = address;
         this.email = email;
         this.password = password;
+        this.number = number;
     }
 
     public OnlineCustomer() {
@@ -80,5 +82,13 @@ public class OnlineCustomer {
 
     public void setUserName(String userName) {
         this.userName = userName;
+    }
+
+    public int getNumber() {
+        return number;
+    }
+
+    public void setNumber(int number) {
+        this.number = number;
     }
 }

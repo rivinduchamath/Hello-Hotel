@@ -28,7 +28,6 @@ public class OnlineTableReservation {
         this.onlineTableReservationId = onlineTableId;
         this.reservedDate = reservedDate;
         this.date = date;
-
         this.startTime = startTime;
         this.endTime = endTime;
         this.noOfTables = noOfTables;
