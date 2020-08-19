@@ -70,96 +70,186 @@
             </div>
             <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
                 <!--Add food pack form and food pack table---------------------------------------->
-                <div class="col-sm-12 col-md-12 col-lg-4 col-xl-4">
-                    <!--Add food items form-------------------------------------------------------------------->
+                <div class="col-sm-12 col-md-12 col-lg-8 col-xl-8">
+                    <div class="col-sm-12 col-md-6 col-lg-5 col-xl-5">
+                        <!--Add food items form-------------------------------------------------------------------->
+                        <div class="row">
+                            <div class="col-md-12 col-sm-12 ">
+                                <div class="x_panel">
+                                    <div class="x_title">
+                                        <h2>Add/Update Food Package...</h2>
+                                        <ul class="nav navbar-right panel_toolbox">
+                                            <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                                            </li>
+                                            <li class="dropdown">
+                                                <a aria-expanded="false" aria-haspopup="true" class="dropdown-toggle"
+                                                   data-toggle="dropdown"
+                                                   href="#" role="button"><i
+                                                        class="fa fa-wrench"></i></a>
+                                            </li>
+                                        </ul>
+                                        <div class="clearfix"></div>
+                                    </div>
+                                    <div class="x_content">
+                                        <br/>
+                                        <form action="FoodPacks" method="post" class="form-horizontal form-label-left"
+                                              data-parsley-validate
+                                              id="demo-form3">
 
-                    <div class="row">
-                        <div class="col-md-12 col-sm-12 ">
-                            <div class="x_panel">
-                                <div class="x_title">
-                                    <h2>Add/Update Food Package...</h2>
-                                    <ul class="nav navbar-right panel_toolbox">
-                                        <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
-                                        </li>
-                                        <li class="dropdown">
-                                            <a aria-expanded="false" aria-haspopup="true" class="dropdown-toggle"
-                                               data-toggle="dropdown"
-                                               href="#" role="button"><i
-                                                    class="fa fa-wrench"></i></a>
-                                        </li>
-                                    </ul>
-                                    <div class="clearfix"></div>
+                                            <input type="hidden" id="packId" name="menuId" value="">
+                                            <div class=" form-group">
+                                                <label class=" label-align">Package Name: <span
+                                                        class="required">*  &nbsp;</span>
+                                                </label>
+                                                <div class=" ">
+                                                    <input class="form-control " name="name" id="packName"
+                                                           required="required"
+                                                           type="text">
+                                                </div>
+                                            </div>
+                                            <div class=" form-group">
+                                                <label class="label-align">Category: <span class="required">* &nbsp; &nbsp; &nbsp;</span>
+                                                </label>
+                                                <select class="form-control" required="required" name="type"
+                                                        id="packCat">
+                                                    <option>Wedding</option>
+                                                    <option>Birthday</option>
+                                                </select>
+                                            </div>
+                                            <div class=" form-group">
+                                                <label class="label-align">Unit Price: <span class="required">* &nbsp; &nbsp; &nbsp;</span>
+                                                </label>
+                                                <div class="">
+                                                    <input class="form-control" id="unitPrice" name="unitPrice"
+                                                           required="required"
+                                                           type="number">
+                                                </div>
+                                            </div>
+                                            <div class=" form-group">
+                                                <label class="label-align">Image: <span
+                                                        class="required">* &nbsp; &nbsp; &nbsp;</span>
+                                                </label>
+                                                <br>
+                                                <input type="file" name="picture" id="src" style="margin: 5px">
+                                                <br><br>
+                                            </div>
+
+                                            <div class=" form-group">
+                                                <div class=" ">
+                                                    <button class="btn btn-dark" type="submit">+ Add / Update</button>
+                                                    <button class="btn btn-outline-dark" type="reset">Reset</button>
+
+                                                </div>
+                                            </div>
+
+                                        </form>
+                                    </div>
                                 </div>
-                                <div class="x_content">
-                                    <br/>
-                                    <form action="FoodPacks" method="post" class="form-horizontal form-label-left"
-                                          data-parsley-validate
-                                          id="demo-form3">
+                            </div>
+                        </div>
+                        <!--/Order items form------------------------------------------------------------------->
+                    </div>
+                    <!--Selected food items table----------------------------------------------------->
+                    <div class="col-sm-12 col-md-6 col-lg-7 col-xl-7">
+                        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                            <div class="row">
+                                <div class="x_panel">
+                                    <div class="x_title">
+                                        <h2>Selected Food Items...<br>Pack: ${menuItem.name}</h2>
+                                        <ul class="nav navbar-right panel_toolbox">
+                                            <li><a class="collapse-link"></a>
+                                            </li>
+                                            <li class="dropdown">
+                                                <a aria-expanded="false" class="dropdown-toggle" data-toggle="dropdown"
+                                                   href="#"
+                                                   role="button"><i class="fa fa-wrench"></i></a>
+                                            </li>
+                                        </ul>
+                                        <div class="clearfix"></div>
+                                    </div>
+                                    <div class="x_content">
+                                        <div class="row">
+                                            <div class="col-sm-12">
+                                                <div class="card-box table-responsive">
+                                                    <table class="table table-striped table-bordered"
+                                                           id="datatable-buttons1"
+                                                           style="text-align: center">
+                                                        <thead class="thead-light">
+                                                        <tr>
+                                                            <th>Id</th>
+                                                            <th>Item Name</th>
+                                                            <th></th>
 
-                                        <input type="hidden" id="packId" name="menuId" value="">
-                                        <div class=" form-group">
-                                            <label class=" label-align">Package Name: <span
-                                                    class="required">*  &nbsp;</span>
-                                            </label>
-                                            <div class=" ">
-                                                <input class="form-control " name="name" id="packName"
-                                                       required="required"
-                                                       type="text">
+                                                        </tr>
+
+                                                        </thead>
+                                                        <tbody>
+                                                        <tr>
+                                                            <td>001</td>
+                                                            <td>Potato</td>
+                                                            <td>
+
+                                                                <i class="fa fa-minus-square"
+                                                                   style="font-size: 20px"></i>
+
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>002</td>
+                                                            <td>Potato2</td>
+                                                            <td>
+
+                                                                <i class="fa fa-minus-square"
+                                                                   style="font-size: 20px"></i>
+
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>003</td>
+                                                            <td>Potato3</td>
+                                                            <td>
+
+                                                                <i class="fa fa-minus-square"
+                                                                   style="font-size: 20px"></i>
+
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>004</td>
+                                                            <td>Potato4</td>
+                                                            <td>
+
+                                                                <i class="fa fa-minus-square"
+                                                                   style="font-size: 20px"></i>
+
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>005</td>
+                                                            <td>Potato5</td>
+                                                            <td>
+
+                                                                <i class="fa fa-minus-square"
+                                                                   style="font-size: 20px"></i>
+
+                                                            </td>
+                                                        </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
                                             </div>
                                         </div>
-                                        <div class=" form-group">
-                                            <label class="label-align">Category: <span class="required">* &nbsp; &nbsp; &nbsp;</span>
-                                            </label>
-                                            <select class="form-control" required="required" name="type"
-                                                    id="packCat">
-                                                <option>Wedding</option>
-                                                <option>Birthday</option>
-                                            </select>
-                                        </div>
-                                        <div class=" form-group">
-                                            <label class="label-align">Unit Price: <span class="required">* &nbsp; &nbsp; &nbsp;</span>
-                                            </label>
-                                            <div class="">
-                                                <input class="form-control" id="unitPrice" name="unitPrice"
-                                                       required="required"
-                                                       type="number">
-                                            </div>
-                                        </div>
-                                        <div class=" form-group">
-                                            <label class="label-align">Image: <span
-                                                    class="required">* &nbsp; &nbsp; &nbsp;</span>
-                                            </label>
-                                            <br>
-                                            <input type="file" name="picture" id="src" style="margin: 5px">
-                                            <br><br>
-                                        </div>
-
-                                        <div class=" form-group">
-                                            <div class=" ">
-                                                <button class="btn btn-dark" type="submit">+ Add / Update</button>
-                                                <button class="btn btn-outline-dark" type="reset">Reset</button>
-
-                                            </div>
-                                        </div>
-
-                                    </form>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-
-                    <!--/Order items form------------------------------------------------------------------->
-
-                </div>
-
-
-                <!--Selected food items table----------------------------------------------------->
-                <div class="col-sm-12 col-md-6 col-lg-6 col-xl-4">
+                    <!-------------------------------------------------------------------------------->
                     <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
                         <div class="row">
                             <div class="x_panel">
                                 <div class="x_title">
-                                    <h2>Selected Food Items...<br>Pack: ${menuItem.name}</h2>
+                                    <h2>Select Food Package</h2>
                                     <ul class="nav navbar-right panel_toolbox">
                                         <li><a class="collapse-link"></a>
                                         </li>
@@ -176,68 +266,42 @@
                                         <div class="col-sm-12">
                                             <div class="card-box table-responsive">
                                                 <table class="table table-striped table-bordered"
-                                                       id="datatable-buttons1"
+                                                       id="datatable-buttons2"
                                                        style="text-align: center">
                                                     <thead class="thead-light">
                                                     <tr>
                                                         <th>Id</th>
-                                                        <th>Item Name</th>
+                                                        <th>Name</th>
+                                                        <th>Type</th>
+                                                        <th>Unit Price</th>
+                                                        <th>Image</th>
                                                         <th></th>
 
                                                     </tr>
 
                                                     </thead>
                                                     <tbody>
-                                                    <tr>
-                                                        <td>001</td>
-                                                        <td>Potato</td>
-                                                        <td>
+                                                    <c:forEach items="${loadMenuItemTable}" var="item">
+                                                        <tr>
+                                                            <td>${item.menuId}</td>
+                                                            <td>${item.name}</td>
+                                                            <td>${item.type}</td>
+                                                            <td>${item.unitPrice}</td>
+                                                            <td>${item.picture}</td>
+                                                            <td>
+                                                                <a href="foodPackage/${item.menuId}">
+                                                                    <input type="button" value="Manage">
+                                                                </a>
+                                                            </td>
 
-                                                            <i class="fa fa-minus-square"
-                                                               style="font-size: 20px"></i>
+                                                            <td>
+                                                                <a href="deleteFoodPackage/${item.menuId}">
+                                                                    <i class="fa fa-trash" style="font-size: 20px"></i>
+                                                                </a>
+                                                            </td>
+                                                        </tr>
+                                                    </c:forEach>
 
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>002</td>
-                                                        <td>Potato2</td>
-                                                        <td>
-
-                                                            <i class="fa fa-minus-square"
-                                                               style="font-size: 20px"></i>
-
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>003</td>
-                                                        <td>Potato3</td>
-                                                        <td>
-
-                                                            <i class="fa fa-minus-square"
-                                                               style="font-size: 20px"></i>
-
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>004</td>
-                                                        <td>Potato4</td>
-                                                        <td>
-
-                                                            <i class="fa fa-minus-square"
-                                                               style="font-size: 20px"></i>
-
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>005</td>
-                                                        <td>Potato5</td>
-                                                        <td>
-
-                                                            <i class="fa fa-minus-square"
-                                                               style="font-size: 20px"></i>
-
-                                                        </td>
-                                                    </tr>
                                                     </tbody>
                                                 </table>
                                             </div>
@@ -248,8 +312,6 @@
                         </div>
                     </div>
                 </div>
-                <!-------------------------------------------------------------------------------->
-
                 <!--Food item table--------------------------------------------------------------->
                 <div class="col-sm-12 col-md-6 col-lg-6 col-xl-4">
                     <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
@@ -313,79 +375,7 @@
                 </div>
                 <!-------------------------------------------------------------------------------->
 
-
-                <!-------------------------------------------------------------------------------->
-
             </div>
-            <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
-                <div class="col-12 col-sm-12 col-md-12 col-lg-7 col-xl-7">
-                    <div class="row">
-                        <div class="x_panel">
-                            <div class="x_title">
-                                <h2>Select Food Package</h2>
-                                <ul class="nav navbar-right panel_toolbox">
-                                    <li><a class="collapse-link"></a>
-                                    </li>
-                                    <li class="dropdown">
-                                        <a aria-expanded="false" class="dropdown-toggle" data-toggle="dropdown"
-                                           href="#"
-                                           role="button"><i class="fa fa-wrench"></i></a>
-                                    </li>
-                                </ul>
-                                <div class="clearfix"></div>
-                            </div>
-                            <div class="x_content">
-                                <div class="row">
-                                    <div class="col-sm-12">
-                                        <div class="card-box table-responsive">
-                                            <table class="table table-striped table-bordered"
-                                                   id="datatable-buttons2"
-                                                   style="text-align: center">
-                                                <thead class="thead-light">
-                                                <tr>
-                                                    <th>Id</th>
-                                                    <th>Name</th>
-                                                    <th>Type</th>
-                                                    <th>Unit Price</th>
-                                                    <th>Image</th>
-                                                    <th></th>
-
-                                                </tr>
-
-                                                </thead>
-                                                <tbody>
-                                                <c:forEach items="${loadMenuItemTable}" var="item">
-                                                    <tr>
-                                                        <td>${item.menuId}</td>
-                                                        <td>${item.name}</td>
-                                                        <td>${item.type}</td>
-                                                        <td>${item.unitPrice}</td>
-                                                        <td>${item.picture}</td>
-                                                        <td>
-                                                            <a href="foodPackage/${item.menuId}">
-                                                                <input type="button" value="Manage">
-                                                            </a>
-                                                        </td>
-
-                                                        <td>
-                                                            <a href="deleteFoodPackage/${item.menuId}">
-                                                                <i class="fa fa-trash" style="font-size: 20px"></i>
-                                                            </a>
-                                                        </td>
-                                                    </tr>
-                                                </c:forEach>
-
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
         </div>
         <!--/Ordered Food Item list table--------------------------------------------------------------->
 
