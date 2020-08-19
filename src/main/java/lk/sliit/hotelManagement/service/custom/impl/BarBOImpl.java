@@ -63,6 +63,7 @@ public class BarBOImpl implements BarBO {
         return dtos;
     }
 
+    @Transactional
     @Override
     public void saveBarOrder(BarOrderDTO barOrderDTO) {
 
