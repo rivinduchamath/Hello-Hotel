@@ -67,7 +67,7 @@ public class ManageMenuController {
     }
 
     @GetMapping("/foodPackManagement")
-    public String addItemToMenu(Model model, @RequestParam String menuId, HttpServletRequest httpServletRequest){
+    public String addItemToMenu(Model model, @RequestParam(value="menuId",required = true) String menuId, HttpServletRequest httpServletRequest){
        // httpServletRequest.setAttribute("item" , kitchenBO.findMenuItemById(menuId));
         MenuDTO menuDTO = kitchenBO.findMenuItemById(menuId);
         model.addAttribute("menuItem", menuDTO);
