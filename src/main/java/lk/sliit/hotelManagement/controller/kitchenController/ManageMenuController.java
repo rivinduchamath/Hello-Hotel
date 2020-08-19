@@ -10,7 +10,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
@@ -66,11 +65,13 @@ public class ManageMenuController {
         }
     }
 
+
     @RequestMapping("/foodPackManagement")
-    public String addItemToMenu(Model model, @RequestParam String menuId,HttpServletRequest httpServletRequest){
+    public String addItemToMenu(Model model, @RequestParam String menuId){
         model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
         model.addAttribute("menuItem", kitchenBO.findMenuItemById(menuId));
         model.addAttribute("loadFoodItemTable",kitchenBO.findFoodItems());
         return "foodPackManagement";
+
     }
 }

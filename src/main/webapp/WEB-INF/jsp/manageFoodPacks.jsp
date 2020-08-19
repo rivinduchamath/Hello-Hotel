@@ -290,7 +290,7 @@
                                                             <td>${item.picture}</td>
                                                             <td>
                                                                 <a href="/foodPackManagement?menuId=${item.menuId}">
-                                                                    <input type="submit" value="Manage">
+                                                                    <input type="button" value="Manage">
                                                                 </a>
                                                             </td>
 
