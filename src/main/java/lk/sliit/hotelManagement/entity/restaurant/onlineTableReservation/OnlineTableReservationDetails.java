@@ -2,6 +2,7 @@ package lk.sliit.hotelManagement.entity.restaurant.onlineTableReservation;
 
 
 import lk.sliit.hotelManagement.entity.restaurant.RestaurantTable;
+
 import javax.persistence.*;
 
 @Entity
@@ -25,7 +26,7 @@ public class OnlineTableReservationDetails {
     }
 
     public OnlineTableReservationDetails(String tableId, String onlineTableId, double quantity, double unitePrice) {
-        this.onlineTableReservationDetailsPK = new OnlineTableReservationDetailsPK(onlineTableId,tableId);
+        this.onlineTableReservationDetailsPK = new OnlineTableReservationDetailsPK(onlineTableId, tableId);
         this.quantity = quantity;
         this.unitePrice = unitePrice;
     }
