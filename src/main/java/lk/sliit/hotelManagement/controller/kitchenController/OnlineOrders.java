@@ -13,8 +13,7 @@ public class OnlineOrders {
     IndexLoginBO indexLoginBO;
 
     @GetMapping("/onlineOrders")
-    public String loginPage(Model model)
-    {
+    public String loginPage(Model model) {
         model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
         return "onlineOrders";
     }

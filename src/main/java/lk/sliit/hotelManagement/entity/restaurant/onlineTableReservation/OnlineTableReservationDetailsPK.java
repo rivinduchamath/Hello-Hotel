@@ -8,7 +8,7 @@ import java.io.Serializable;
 public class OnlineTableReservationDetailsPK implements Serializable {
 
     private String reservationId;
-    private  String tableId;
+    private String tableId;
 
     public OnlineTableReservationDetailsPK(String reservationId, String tableId) {
         this.reservationId = reservationId;
