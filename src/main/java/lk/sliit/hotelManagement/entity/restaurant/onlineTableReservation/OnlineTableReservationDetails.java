@@ -1,6 +1,8 @@
 package lk.sliit.hotelManagement.entity.restaurant.onlineTableReservation;
 
 
+
+import com.sun.istack.internal.Nullable;
 import lk.sliit.hotelManagement.entity.restaurant.RestaurantTable;
 
 import javax.persistence.*;

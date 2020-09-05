@@ -278,13 +278,13 @@
                                 <label >Banquet Id</label>
                                 <input type="number" value="${topBanquetId}" class="form-control"
                                        required="required" name="orderId"
-                                       id="orderId" placeholder="Banquet Id" disabled/></div>
+                                       id="orderId" placeholder="Banquet Id" readonly/></div>
 
                             <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
                                 <label for="orderId">Customer Id</label>
                                 <input type="text" value="${topCustomerId}" class="form-control"
                                        required="required" name="customerId"
-                                       id="customerId" placeholder="Customer Id" disabled/></div>
+                                       id="customerId" placeholder="Customer Id" readonly/></div>
                         </div>
 
                         <div class="form-group">
@@ -358,11 +358,11 @@
                             </div>
 
                             <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6"> <br>
-                                <input type="hidden" required="required" name="billId"
+                                <input type="hidden" required="required" name="banquetBillId"
                                        id="billId" value="${topBanquetBillId}">
                                 <label for="orderId">Advance Payment</label>
                                 <input type="text" class="form-control"
-                                       required="required" name="advancePayment"
+                                       required="required" name="advanceFee"
                                        id="advancePayment" placeholder="Advance Payment"/></div>
 
                         </div>

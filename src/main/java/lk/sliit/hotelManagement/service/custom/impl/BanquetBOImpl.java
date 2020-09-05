@@ -35,7 +35,7 @@ public class BanquetBOImpl implements BanquetBO {
 
     @Override
     public void saveBanquet(BanquetAddDTO banquetAddDTO) {
-        banquetAddDTO.setCustomerId("3");
+
         customerDAO.save(new Customer(
                 banquetAddDTO.getCustomerId(),
                 banquetAddDTO.getEmail(),
@@ -43,7 +43,7 @@ public class BanquetBOImpl implements BanquetBO {
                 banquetAddDTO.getAddress(),
                 banquetAddDTO.getContactNumber()
         ));
-        banquetAddDTO.setBanquetBillId("5");
+
         double zero=0.0;
         banquetAddDTO.setTotal(zero);
         banquetAddDTO.setFoodPrice(zero);
@@ -56,6 +56,7 @@ public class BanquetBOImpl implements BanquetBO {
                 banquetAddDTO.getAdvanceFee()
         ));
         String status ="processing";
+
         banquetAddDTO.setOrderState(status);
         banquetOrderDAO.save(new BanquetOrder(
                 banquetAddDTO.getOrderId(),
