@@ -18,6 +18,10 @@ public class BanquetBillDTO {
         this.advancePayment = advancePayment;
     }
 
+    public BanquetBillDTO(String billId) {
+        this.billId = billId;
+    }
+
     public String getBillId() {
         return billId;
     }

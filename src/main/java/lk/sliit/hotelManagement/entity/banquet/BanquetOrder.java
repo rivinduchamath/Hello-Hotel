@@ -39,7 +39,9 @@ public class BanquetOrder {
     }
 
     public BanquetOrder() {
+
     }
+
 
     public String getOrderId() {
         return orderId;
