@@ -278,14 +278,14 @@
                             <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
                                 <label >Banquet Id</label>
                                 <input type="text" class="form-control"
-                                       required="required" name="id" value="${genId}"
-                                       id="id" placeholder="Banquet Id" disabled/></div>
+                                       required="required" name="id"
+                                       id="id" placeholder="Banquet Id" readonly/></div>
 
                             <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
                                 <label for="id">Customer Name</label>
                                 <input type="text" class="form-control"
-                                       required="required" name="address"
-                                       id="customer_name" placeholder="Customer Name" disabled/></div>
+                                       required="required" name="customer_name"
+                                       id="customer_name" placeholder="Customer Name" readonly/></div>
 
                         </div>
 
@@ -297,7 +297,7 @@
                                 <label for="id">Address</label>
                                 <input type="text" class="form-control"
                                        required="required" name="address"
-                                       id="address" placeholder="Address" disabled/></div>
+                                       id="address" placeholder="Address" readonly/></div>
                         </div>
 
 
@@ -332,10 +332,10 @@
                                 <select class="form-control"required="required" name="package"
                                         id="package">
                                     <option>Choose Package</option>
-                                    <option value="Platinum">Platinum</option>
-                                    <option value="Gold">Gold</option>
-                                    <option value="Silver">Silver</option>
-                                    <option value="Bronze">Bronze</option>
+                                    <option value="1">Platinum</option>
+                                    <option value="2">Gold</option>
+                                    <option value="3">Silver</option>
+                                    <option value="4">Bronze</option>
                                 </select>
 
                             </div>
@@ -345,6 +345,9 @@
                                 <input type="text" class="form-control"
                                        required="required" name="advance_fee"
                                        id="advance_fee" placeholder="Advance Payment"/></div>
+
+                            <input type="hidden" required="required" name="banquetBillId"
+                                   id="banquetBillId" >
                         </div>
 
 
@@ -397,25 +400,24 @@
                                                     <th>Plates</th>
                                                     <th>Package</th>
                                                     <th>Advance Payment</th>
+                                                    <th>Bill Id</th>
 
 
                                                 </tr>
 
                                                 </thead>
                                                 <tbody>
-                                                <c:forEach items="${loadSupplier}" var="e">
+                                                <c:forEach items="${loadTable}" var="e">
                                                     <tr>
-                                                        <td>${e.id}</td>
+                                                        <td>${e.orderId}</td>
                                                         <td>${e.name}</td>
                                                         <td>${e.address}</td>
-                                                        <td>${e.mobile}</td>
-                                                        <td>${e.email}</td>
-                                                        <td>${e.gender}</td>
                                                         <td>${e.date}</td>
-                                                        <td>${e.birthday}</td>
-                                                        <td>${e.submittedBy}</td>
-                                                        <td>  <a href="deleteSupplier/${e.id}"onclick="return confirm('Are you sure you want to delete?')"  class="btn btn-xs">
-                                                            <i class="fa fa-trash-o"></i></a></td>
+                                                        <td>${e.hallId}</td>
+                                                        <td>${e.noOfPlates}</td>
+                                                        <td>${e.menuId}</td>
+                                                        <td>${e.advanceFee}</td>
+                                                        <td>${e.banquetBillId}</td>
                                                     </tr>
                                                 </c:forEach>
                                                 </tbody>
@@ -475,18 +477,15 @@
     var selectedRow = null;
     $("#datatable-buttons tbody").on('click', 'tr', function () {
         selectedRow = $(this);
-        $("#userId").val($(this).find("td:nth-child(1)").text());
-        $("#userName").val($(this).find("td:nth-child(2)").text());
-        $("#position").val($(this).find("td:nth-child(3)").text());
-        $("#mobileNo").val($(this).find("td:nth-child(4)").text());
-        $("#pic").val($(this).find("td:nth-child(5)").text());
-        $("#salary").val($(this).find("td:nth-child(6)").text());
-        $("#address").val($(this).find("td:nth-child(7)").text());
-        $("#email").val($(this).find("td:nth-child(8)").text());
-        $("#password").val($(this).find("td:nth-child(9)").text());
-        $("#gender").val($(this).find("td:nth-child(10)").text());
-        $("#date").val($(this).find("td:nth-child(11)").text());
-        $("#dateOfBirth").val($(this).find("td:nth-child(12)").text());
+        $("#id").val($(this).find("td:nth-child(1)").text());
+        $("#customer_name").val($(this).find("td:nth-child(2)").text());
+        $("#address").val($(this).find("td:nth-child(3)").text());
+        $("#date").val($(this).find("td:nth-child(4)").text());
+        $("#hall_id").val($(this).find("td:nth-child(5)").text());
+        $("#num_of_plates").val($(this).find("td:nth-child(6)").text());
+        $("#package").val($(this).find("td:nth-child(7)").text());
+        $("#advance_fee").val($(this).find("td:nth-child(8)").text());
+        $("#banquetBillId").val($(this).find("td:nth-child(9)").text());
         selectedRow.addClass('row-selected');
     });
 </script>

@@ -342,26 +342,19 @@
                                         </tr>
                                         </thead>
                                         <tbody>
-                                        <tr>
-                                            <th scope="row">1</th>
-                                            <td>1</td>
-                                            <td>Chanuka</td>
-                                            <td>0767188591</td>
-                                            <td>No 1</td>
-                                            <td>Gold</td>
-                                            <td>200</td>
-                                            <td>20000</td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row">2</th>
-                                            <td>2</td>
-                                            <td>Wushitha</td>
-                                            <td>0763433209</td>
-                                            <td>No 2</td>
-                                            <td>Silver</td>
-                                            <td>500</td>
-                                            <td>15000</td>
-                                        </tr>
+                                        <c:forEach items="${loadTable}" var="e">
+                                            <tr>
+                                                <td>${e.orderId}</td>
+                                                <td>${e.name}</td>
+                                                <td>${e.address}</td>
+                                                <td>${e.date}</td>
+                                                <td>${e.hallId}</td>
+                                                <td>${e.noOfPlates}</td>
+                                                <td>${e.menuId}</td>
+                                                <td>${e.advanceFee}</td>
+                                                <td>${e.banquetBillId}</td>
+                                            </tr>
+                                        </c:forEach>
 
                                         </tbody>
                                     </table>

@@ -16,6 +16,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Date;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
@@ -44,10 +45,10 @@ public class BanquetBOImpl implements BanquetBO {
                 banquetAddDTO.getContactNumber()
         ));
 
-        double zero=0.0;
-        banquetAddDTO.setTotal(zero);
-        banquetAddDTO.setFoodPrice(zero);
-        banquetAddDTO.setOtherPrice(zero);
+        //double zero=0.0;
+        //banquetAddDTO.setTotal(zero);
+        //banquetAddDTO.setFoodPrice(zero);
+        //banquetAddDTO.setOtherPrice(zero);
         banquetBillDAO.save(new BanquetBill(
                 banquetAddDTO.getBanquetBillId(),
                 banquetAddDTO.getTotal(),
@@ -56,7 +57,6 @@ public class BanquetBOImpl implements BanquetBO {
                 banquetAddDTO.getAdvanceFee()
         ));
         String status ="processing";
-
         banquetAddDTO.setOrderState(status);
         banquetOrderDAO.save(new BanquetOrder(
                 banquetAddDTO.getOrderId(),
@@ -115,23 +115,48 @@ public class BanquetBOImpl implements BanquetBO {
         return dtos;
     }
 
-    /*
+
     @Override
-    public List<BanquetOrderDTO> findAllBanquet() {
+    public List<BanquetAddDTO> findAllBanquet() {
         Iterable<BanquetOrder> all = banquetOrderDAO.findAll();
-        List<BanquetOrderDTO> dtos = new ArrayList<>();
+        List<BanquetAddDTO> dtos = new ArrayList<>();
         for ( BanquetOrder a: all){
-            dtos.add(new BanquetOrderDTO(
+            dtos.add(new BanquetAddDTO(
                     a.getOrderId(),
-                    a.getCustomer(),
-                    a.getCustomer(),
+                    a.getCustomer().getName(),
+                    a.getCustomer().getAddress(),
                     a.getDate(),
                     a.getHallId(),
                     a.getNoOfPlates(),
-                    a.getMenu(),
-                    a.getBanquetBill()
+                    a.getMenu().getMenuId(),
+                    a.getBanquetBill().getAdvancePayment(),
+                    a.getBanquetBill().getBillId()
             ));
         }
         return dtos;
-    }*/
+    }
+
+    @Override
+    public List<BanquetAddDTO> findNextBanquets() {
+        Date todaydate = new Date();
+        Calendar cal = Calendar.getInstance();
+        cal.add(Calendar.DATE, 3);
+        java.util.Date afterOneMonth = cal.getTime();
+        Iterable <BanquetOrder> banquetOrders = banquetOrderDAO.findBanquetOrdersByDateBetween (todaydate ,afterOneMonth);
+        List <BanquetAddDTO> dtos = new ArrayList<>();
+        for ( BanquetOrder a: banquetOrders){
+            dtos.add(new BanquetAddDTO(
+                    a.getOrderId(),
+                    a.getCustomer().getName(),
+                    a.getCustomer().getAddress(),
+                    a.getDate(),
+                    a.getHallId(),
+                    a.getNoOfPlates(),
+                    a.getMenu().getMenuId(),
+                    a.getBanquetBill().getAdvancePayment(),
+                    a.getBanquetBill().getBillId()
+            ));
+        }
+        return dtos;
+    }
 }
