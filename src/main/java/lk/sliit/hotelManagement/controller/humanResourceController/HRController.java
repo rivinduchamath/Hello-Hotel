@@ -18,4 +18,9 @@ public class HRController {
         model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
         return "hr";
     }
+    @GetMapping("/attendance")
+    public String attendance(Model model) {
+        model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
+        return "attendance";
+    }
 }
