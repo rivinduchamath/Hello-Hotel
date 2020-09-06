@@ -13,7 +13,6 @@ public class BanquetOrder {
     private String hallId;
     private String orderState;
     private int noOfPlates;
-    @Temporal(TemporalType.DATE)
     private Date date;
     private String submittedBy;
     @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.REFRESH, CascadeType.DETACH, CascadeType.MERGE})

@@ -33,5 +33,5 @@ src/test/java/com/
 
 src/main/resources/application.properties
 src/main/java/lk/sliit/hotelManagement/Test.java
-.properties
+src/main/resources/
 
