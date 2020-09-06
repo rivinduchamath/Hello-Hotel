@@ -21,5 +21,7 @@ public interface BanquetBO extends SuperBO {
 
     List<CustomerDTO> findAllCustomers();
 
-    //List<BanquetOrderDTO> findAllBanquet();
+    List<BanquetAddDTO> findAllBanquet();
+
+    List<BanquetAddDTO> findNextBanquets();
 }
