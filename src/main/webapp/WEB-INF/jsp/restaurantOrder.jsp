@@ -228,7 +228,7 @@
                                                 </tr>
                                                 </thead>
                                                 <tbody>
-                                                <c:forEach items="${loadInventoryBarTable}" var="e">
+                                                <c:forEach items="${loadInventoryRestaurantTable}" var="e">
 
                                                     <tr>
                                                         <td scope="row">${e.text}</td>
@@ -394,7 +394,7 @@
 <script src="../../vendors/jszip/dist/jszip.min.js"></script>
 <script src="../../vendors/iCheck/icheck.min.js"></script>
 
-<script src="../../js/addTable.js"></script>
+<script src="../../js/addCounterRestOrderTable.js"></script>
 <!-- Custom Theme Scripts -->
 <script src="../../build/js/custom.min.js"></script>
 </body>

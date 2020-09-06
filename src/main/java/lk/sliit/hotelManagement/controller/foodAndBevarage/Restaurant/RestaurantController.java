@@ -26,12 +26,16 @@ public class RestaurantController {
     }
     @GetMapping("/restaurantOrder")
     public String restaurantOrders(Model model, HttpServletRequest request) {
+        model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
         List<InventoryDTO> p1 = barBO.findAllBeverageItems("Restaurant");
         if(p1.isEmpty()){
             request.setAttribute("loginError","Not Any Item Fond Under Restaurant " +
                     "Type Please Add Data Under Restaurant Type" );
         }
-        model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
+        for (InventoryDTO d: p1) {
+            System.out.println(d);
+        }
+        model.addAttribute("loadInventoryRestaurantTable", p1);
         return "restaurantOrder";
     }
     @GetMapping("/restaurantBill")

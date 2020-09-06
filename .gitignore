@@ -30,8 +30,8 @@ target/
 ### VS Code ###
 .vscode/
 src/test/java/com/
-
+.properties
 src/main/resources/application.properties
 src/main/java/lk/sliit/hotelManagement/Test.java
-src/main/resources/
+
 
