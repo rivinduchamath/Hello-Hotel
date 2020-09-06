@@ -18,20 +18,18 @@ public class RestaurantOnlineOrderDetails {
     private FoodItem foodItem;
 
 
-    public RestaurantOnlineOrderDetails(RestaurantOnlineOrderDetailsPK restaurantOnlineOrderDetailsPK, double quantity, double unitePrice, RestaurantOnlineOrder restaurantOnlineOrder, FoodItem foodItem) {
+    public RestaurantOnlineOrderDetails(RestaurantOnlineOrderDetailsPK restaurantOnlineOrderDetailsPK, double quantity, double unitePrice) {
         this.restaurantOnlineOrderDetailsPK = restaurantOnlineOrderDetailsPK;
         this.quantity = quantity;
         this.unitePrice = unitePrice;
-        this.restaurantOnlineOrder = restaurantOnlineOrder;
-        this.foodItem = foodItem;
+
     }
 
-    public RestaurantOnlineOrderDetails(String restaurantOnlineOrderId, String foodItemId, double quantity, double unitePrice, RestaurantOnlineOrder restaurantOnlineOrder, FoodItem foodItem) {
+    public RestaurantOnlineOrderDetails(String restaurantOnlineOrderId, String foodItemId, double quantity, double unitePrice) {
         this.restaurantOnlineOrderDetailsPK = new RestaurantOnlineOrderDetailsPK(restaurantOnlineOrderId, foodItemId);
         this.quantity = quantity;
         this.unitePrice = unitePrice;
-        this.restaurantOnlineOrder = restaurantOnlineOrder;
-        this.foodItem = foodItem;
+
     }
 
     public RestaurantOnlineOrderDetails() {
