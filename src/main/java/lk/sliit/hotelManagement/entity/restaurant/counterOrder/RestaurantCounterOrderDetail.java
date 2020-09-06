@@ -16,24 +16,22 @@ public class RestaurantCounterOrderDetail {
     @JoinColumn(name = "restaurantCounterOrderId", referencedColumnName = "orderId", insertable = false, updatable = false)
     private RestaurantCounterOrder restaurantCounterOrder;
     @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.REFRESH, CascadeType.DETACH, CascadeType.MERGE})
-    @JoinColumn(name = "foodItemId", referencedColumnName = "itemId", insertable = false, updatable = false)
+    @JoinColumn(name = "foodItemId", referencedColumnName = "itemId",nullable = true,insertable = false, updatable = false)
     private FoodItem foodItem;
 
 
-    public RestaurantCounterOrderDetail(RestaurantCounterOrderDetailPK restaurantCounterOrderDetailPK, double quantity, double unitePrice, RestaurantCounterOrder restaurantCounterOrder, FoodItem foodItem) {
+    public RestaurantCounterOrderDetail(RestaurantCounterOrderDetailPK restaurantCounterOrderDetailPK, double quantity, double unitePrice) {
         this.restaurantCounterOrderDetailPK = restaurantCounterOrderDetailPK;
         this.quantity = quantity;
         this.unitePrice = unitePrice;
-        this.restaurantCounterOrder = restaurantCounterOrder;
-        this.foodItem = foodItem;
+
     }
 
-    public RestaurantCounterOrderDetail(String restaurantCounterOrderId, String foodItemId, double quantity, double unitePrice, RestaurantCounterOrder restaurantCounterOrder, FoodItem foodItem) {
+    public RestaurantCounterOrderDetail(String restaurantCounterOrderId, String foodItemId, double quantity, double unitePrice) {
         this.restaurantCounterOrderDetailPK = new RestaurantCounterOrderDetailPK(restaurantCounterOrderId, foodItemId);
         this.quantity = quantity;
         this.unitePrice = unitePrice;
-        this.restaurantCounterOrder = restaurantCounterOrder;
-        this.foodItem = foodItem;
+
     }
 
     public RestaurantCounterOrderDetail() {

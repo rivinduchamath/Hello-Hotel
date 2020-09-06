@@ -231,9 +231,9 @@
                                                 <c:forEach items="${loadInventoryRestaurantTable}" var="e">
 
                                                     <tr>
-                                                        <td scope="row">${e.text}</td>
-                                                        <td>${e.inventoryId}</td>
-                                                        <td>${e.sellingPrice}</td>
+                                                        <td scope="row">${e.itemName}</td>
+                                                        <td>${e.itemId}</td>
+                                                        <td>${e.unitePrice}</td>
                                                     </tr>
                                                 </c:forEach>
                                                 </tbody>
@@ -257,8 +257,8 @@
                                     </small>
 
                                 </h2>
-                                <form method="POST" action="invoiceBar" name="invoiceBar">
-                                    <input style="display: none" type="text" id="itemPay" name="orderData">
+                                <form method="POST" action="invoiceRestaurantOrder" name="invoiceRestaurantOrder">
+                                    <input style="display: none" type="text" id="itemPay" name="dataValue">
                                     <input style="display: none" type="text" id="cId"  name="customerId">
                                     <ul class="nav navbar-right panel_toolbox">
                                         <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
