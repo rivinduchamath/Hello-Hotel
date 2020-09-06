@@ -1,15 +1,21 @@
 package lk.sliit.hotelManagement.controller.foodAndBevarage.Restaurant;
 
 import lk.sliit.hotelManagement.controller.SuperController;
+import lk.sliit.hotelManagement.dto.inventory.InventoryDTO;
+import lk.sliit.hotelManagement.service.custom.BarBO;
 import lk.sliit.hotelManagement.service.custom.IndexLoginBO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
+import javax.servlet.http.HttpServletRequest;
+import java.util.List;
+
 @Controller
 public class RestaurantController {
-
+    @Autowired
+    BarBO barBO;
     @Autowired
     IndexLoginBO indexLoginBO;
 
@@ -19,7 +25,12 @@ public class RestaurantController {
         return "restaurant";
     }
     @GetMapping("/restaurantOrder")
-    public String restaurantOrders(Model model) {
+    public String restaurantOrders(Model model, HttpServletRequest request) {
+        List<InventoryDTO> p1 = barBO.findAllBeverageItems("Restaurant");
+        if(p1.isEmpty()){
+            request.setAttribute("loginError","Not Any Item Fond Under Restaurant " +
+                    "Type Please Add Data Under Restaurant Type" );
+        }
         model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
         return "restaurantOrder";
     }
