@@ -191,13 +191,13 @@
 
                     <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6">
                         <br>
-                        <a href="#">
+                        <a href="attendance">
                             <button type="button" class="large-btn btn btn-dark">Employee Management</button>
                         </a>
                     </div>
                     <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6">
                         <br>
-                        <a href="#">
+                        <a href="salary">
                             <button type="button" class="large-btn btn btn-dark">Employee Salary</button>
                         </a>
                     </div>
