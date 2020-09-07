@@ -27,12 +27,18 @@ public class ManageMenuController {
         model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
         try {
             MenuDTO menuItem = kitchenBO.findHighestFoodPackId();
-            int maxId = Integer.parseInt(menuItem.getMenuId());
-            if (menuDTO.getMenuId().equals(String.valueOf(maxId))){
-                menuDTO.setMenuId(String.valueOf(maxId));
-            } else {
-                maxId++;
-                menuDTO.setMenuId(String.valueOf(maxId));
+            MenuDTO menuDTO1 = null;
+            try {
+                 menuDTO1 = kitchenBO.findMenuItemById(menuDTO.getMenuId());
+                System.out.println("ssssssssssssssssssssssssssssssssssssssssssssssss"+menuDTO1.getMenuId());
+            }catch (NullPointerException d){
+                int maxId = Integer.parseInt(menuItem.getMenuId());
+                if (menuDTO.getMenuId().equals(String.valueOf(maxId))) {
+                    menuDTO.setMenuId(String.valueOf(maxId));
+                } else {
+                    maxId++;
+                    menuDTO.setMenuId(String.valueOf(maxId));
+                }
             }
 
         } catch (NullPointerException e){
