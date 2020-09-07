@@ -27,6 +27,11 @@ public class OnlineCustomerDTO {
         this.onlineCustomerId = onlineCustomerId;
     }
 
+    public OnlineCustomerDTO(String userName, String password) {
+        this.userName = userName;
+        this.password = password;
+    }
+
     public String getContact() {
         return contact;
     }
