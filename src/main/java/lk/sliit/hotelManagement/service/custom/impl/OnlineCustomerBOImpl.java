@@ -24,8 +24,10 @@ public class OnlineCustomerBOImpl implements OnlineCustomerBO {
         } catch (Exception e){
 
         }
-
-        return new OnlineCustomerDTO(lastCustomer.getOnlineCustomerId());
+        assert lastCustomer != null;
+        return new OnlineCustomerDTO(
+                lastCustomer.getOnlineCustomerId()
+        );
     }
 
     @Override

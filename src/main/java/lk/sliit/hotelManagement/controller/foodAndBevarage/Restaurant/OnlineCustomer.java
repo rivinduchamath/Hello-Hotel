@@ -1,6 +1,7 @@
 package lk.sliit.hotelManagement.controller.foodAndBevarage.Restaurant;
 
 import lk.sliit.hotelManagement.controller.SuperController;
+import lk.sliit.hotelManagement.dto.beverage.BarOrderDTO;
 import lk.sliit.hotelManagement.dto.restaurant.OnlineCustomerDTO;
 import lk.sliit.hotelManagement.service.custom.IndexLoginBO;
 import lk.sliit.hotelManagement.service.custom.OnlineCustomerBO;
@@ -33,22 +34,15 @@ public class OnlineCustomer {
 
     @PostMapping("/onlineCustomerSave")
     public String saveForm(@ModelAttribute OnlineCustomerDTO onlineCustomerDTO){
+
         try {
-
-            System.out.println("wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww");
-            OnlineCustomerDTO onlineCustomer = onlineCustomerBO.findHighestOnlineCustomerId();
-            System.out.println(onlineCustomer.getOnlineCustomerId()+"sssssssssssssssssssssssssssssssssssssssssssssssssssssss");
-            int maxId = Integer.parseInt(onlineCustomer.getOnlineCustomerId());
-            if (onlineCustomerDTO.getOnlineCustomerId().equals(String.valueOf(maxId))){
-                onlineCustomerDTO.setOnlineCustomerId(String.valueOf(maxId));
-            } else {
-                maxId++;
-                onlineCustomerDTO.setOnlineCustomerId(String.valueOf(maxId));
-            }
-
-        } catch (NullPointerException e){
-            onlineCustomerDTO.setOnlineCustomerId("1");
+            OnlineCustomerDTO top = onlineCustomerBO.findHighestOnlineCustomerId ( );
+            int x = Integer.parseInt ( top.getOnlineCustomerId ( ) )+ 1;
+            onlineCustomerDTO.setOnlineCustomerId ( String.valueOf ( x ) );
+        } catch (NullPointerException e) {
+            onlineCustomerDTO.setOnlineCustomerId ( String.valueOf ( 1 ) );
         }
+
         onlineCustomerBO.saveOnlineCustomer(onlineCustomerDTO);
         return "redirect:/onlineCustomer";
     }

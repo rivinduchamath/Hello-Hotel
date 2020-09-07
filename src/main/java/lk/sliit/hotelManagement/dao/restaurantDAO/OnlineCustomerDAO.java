@@ -7,5 +7,5 @@ public interface OnlineCustomerDAO extends CrudRepository<OnlineCustomer,String>
     OnlineCustomer findByUserNameAndPassword(String userName, String password);
 
     OnlineCustomer findTopByOrderByOnlineCustomerIdDesc();
-    //OnlineCustomer findTopByOnlineCustomerIdDesc();
+
 }

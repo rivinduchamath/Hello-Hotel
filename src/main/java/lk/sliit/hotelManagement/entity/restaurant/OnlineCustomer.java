@@ -9,17 +9,17 @@ import java.util.List;
 
 @Entity
 public class OnlineCustomer {
-@Id
+    @Id
     private String onlineCustomerId;
-    private  String name;
-    private  String userName;
-    private  String address;
+    private String name;
+    private String userName;
+    private String address;
     private String email;
     private String password;
     private String number;
-    @OneToMany(mappedBy = "customer", cascade = {CascadeType.PERSIST,CascadeType.REFRESH, CascadeType.DETACH, CascadeType.MERGE})
+    @OneToMany(mappedBy = "customer", cascade = {CascadeType.PERSIST, CascadeType.REFRESH, CascadeType.DETACH, CascadeType.MERGE})
     private List<RestaurantOnlineOrder> restaurantOnlineOrders = new ArrayList<>();
-    @OneToMany(mappedBy = "customer", cascade = {CascadeType.PERSIST,CascadeType.REFRESH, CascadeType.DETACH, CascadeType.MERGE})
+    @OneToMany(mappedBy = "customer", cascade = {CascadeType.PERSIST, CascadeType.REFRESH, CascadeType.DETACH, CascadeType.MERGE})
     private List<OnlineTableReservation> onlineTableReservations = new ArrayList<>();
 
     public OnlineCustomer(String onlineCustomerId, String name, String userName, String address, String email, String password, String number) {
