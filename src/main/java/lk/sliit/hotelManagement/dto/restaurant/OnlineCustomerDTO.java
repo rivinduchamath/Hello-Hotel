@@ -7,17 +7,32 @@ public class OnlineCustomerDTO {
     private  String address;
     private String email;
     private String password;
+    private  String contact;
 
     public OnlineCustomerDTO() {
     }
 
-    public OnlineCustomerDTO(String onlineCustomerId, String name, String userName, String address, String email, String password) {
+    public OnlineCustomerDTO(String onlineCustomerId, String name, String userName,
+                             String address, String email, String password, String contact) {
         this.onlineCustomerId = onlineCustomerId;
         this.name = name;
         this.userName = userName;
         this.address = address;
         this.email = email;
         this.password = password;
+        this.contact = contact;
+    }
+
+    public OnlineCustomerDTO(String onlineCustomerId) {
+        this.onlineCustomerId = onlineCustomerId;
+    }
+
+    public String getContact() {
+        return contact;
+    }
+
+    public void setContact(String contact) {
+        this.contact = contact;
     }
 
     public String getOnlineCustomerId() {

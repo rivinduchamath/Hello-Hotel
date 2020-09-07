@@ -27,23 +27,24 @@
      <h2> Online Registration Form</h2>
         <div class="container" id="container">
             <div class="form-container sign-up-container">
-                <form action="#">
+                <form method="post" action="onlineCustomerSave" name="onlineCustomerSave">
                     <h1>Create Account</h1>
                     <span>or use your email for registration</span>
-                    <input required type="text" placeholder="Name" />
-                    <input required type="email" placeholder="Email" />
-                    <input required type="password" placeholder="Address" />
-                    <input required type="number" placeholder="Mobile" />
-                    <input  required type="password" placeholder="Password" />
-                    <input required type="password" placeholder="Re-type Password" />
-                    <button>Sign Up</button>
+                    <input required type="text" placeholder="Name" name="name" />
+                    <input required type="email" placeholder="Email" name="email" />
+                    <input required type="text" placeholder="Address" name="address" />
+                    <input required type="number" placeholder="Mobile" name="contact"/>
+                    <input required type="text" placeholder="User Name" name="userName" />
+                    <input  required type="password" placeholder="Password"  />
+                    <input required type="password" placeholder="Re-type Password" name="password"/>
+                    <button type="submit">Sign Up</button>
                 </form>
             </div>
             <div class="form-container sign-in-container">
-                <form action="#">
+                <form action="onlineDashboard">
                     <h1>Sign in</h1>
                     <span>or use your account</span>
-                    <input type="email" placeholder="Email" />
+                    <input type="username" placeholder="User Name" />
                     <input type="password" placeholder="Password" />
                     <a href="#">Forgot your password?</a>
                     <button>Sign In</button>
@@ -57,7 +58,7 @@
                         <button class="ghost" id="signIn">Sign In</button>
                     </div>
                     <div class="overlay-panel overlay-right">
-                        <h1>Hello, Friend!</h1>
+                        <h1>Hello, Customer!</h1>
                         <p>Enter your personal details and start journey with us</p>
                         <button class="ghost" id="signUp">Sign Up</button>
                     </div>
