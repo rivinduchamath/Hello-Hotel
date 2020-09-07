@@ -2,17 +2,15 @@ package lk.sliit.hotelManagement.service.custom.impl;
 
 import lk.sliit.hotelManagement.dao.inventoryDAO.InventoryDAO;
 import lk.sliit.hotelManagement.dao.kitchenDAO.KitchenDAO;
+import lk.sliit.hotelManagement.dao.restaurantDAO.RestaurantTableDAO;
 import lk.sliit.hotelManagement.dao.restaurantDAO.counterOrderDAO.RestaurantCounterOrderDAO;
 import lk.sliit.hotelManagement.dao.restaurantDAO.counterOrderDAO.RestaurantCounterOrderDetailDAO;
-import lk.sliit.hotelManagement.dto.beverage.BarOrderDetailDTO;
-import lk.sliit.hotelManagement.dto.inventory.InventoryDTO;
 import lk.sliit.hotelManagement.dto.kitchen.FoodItemDTO;
+import lk.sliit.hotelManagement.dto.restaurant.RestaurantTableDTO;
 import lk.sliit.hotelManagement.dto.restaurant.restaurantCounterOrder.RestaurantCounterOrderDTO;
 import lk.sliit.hotelManagement.dto.restaurant.restaurantCounterOrder.RestaurantCounterOrderDetailDTO;
-import lk.sliit.hotelManagement.entity.barManage.BarOrderDetails;
-import lk.sliit.hotelManagement.entity.barManage.BarOrders;
-import lk.sliit.hotelManagement.entity.inventory.Inventory;
 import lk.sliit.hotelManagement.entity.kitchen.FoodItem;
+import lk.sliit.hotelManagement.entity.restaurant.RestaurantTable;
 import lk.sliit.hotelManagement.entity.restaurant.counterOrder.RestaurantCounterOrder;
 import lk.sliit.hotelManagement.entity.restaurant.counterOrder.RestaurantCounterOrderDetail;
 import lk.sliit.hotelManagement.service.custom.RestaurantBO;
@@ -31,6 +29,8 @@ public class RestaurantBOImpl implements RestaurantBO {
     InventoryDAO inventoryDAO;
     @Autowired
     KitchenDAO foodItem;
+    @Autowired
+    RestaurantTableDAO restaurantTableDAO;
     @Autowired
     RestaurantCounterOrderDAO restaurantCounterOrderDAO;
     @Autowired
@@ -101,6 +101,20 @@ public class RestaurantBOImpl implements RestaurantBO {
                     a.getUnitePrice(),
                     a.getCategory(),
                     a.getSrc()
+            ));
+        }
+        return dtos;
+    }
+
+    @Override
+    public List<RestaurantTableDTO> findAllTable() {
+        Iterable<RestaurantTable> all = restaurantTableDAO.findAll();
+        List<RestaurantTableDTO> dtos = new ArrayList<>();
+        for (RestaurantTable a : all) {
+            dtos.add(new RestaurantTableDTO(
+                    a.getTableId(),
+                    a.getType(),
+                    a.getUnitPrice()
             ));
         }
         return dtos;

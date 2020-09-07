@@ -15,8 +15,8 @@ public class OnlineDashboard {
     @Autowired
     IndexLoginBO indexLoginBO;
     @RequestMapping("/onlineDashboard")
-    public String loadForm_validationSaveMode(Model model, HttpServletRequest request) {
-        model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
-        return "onlineDashboard";
+    public String registerUser( Model model) {
+        //True If Id and password is match
+            return "redirect:/onlineCustomer";
     }
 }

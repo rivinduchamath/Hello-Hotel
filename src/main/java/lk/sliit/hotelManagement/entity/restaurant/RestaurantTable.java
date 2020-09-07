@@ -15,17 +15,41 @@ import java.util.List;
 public class RestaurantTable {
     @Id
     private String tableId;
+    private String type;
+    private double unitPrice;
     @OneToMany(mappedBy = "tableId", cascade = {CascadeType.PERSIST, CascadeType.REFRESH, CascadeType.DETACH, CascadeType.MERGE})
     private List<OnlineTableReservationDetails> orderDetails = new ArrayList<>();
     @OneToMany(mappedBy = "tableId", cascade = {CascadeType.PERSIST, CascadeType.REFRESH, CascadeType.DETACH, CascadeType.MERGE})
     private List<CounterTableReservationDetails> counterTableReservationDetails = new ArrayList<>();
 
 
+    public RestaurantTable(String tableId, String type, double unitPrice) {
+        this.tableId = tableId;
+        this.type = type;
+        this.unitPrice = unitPrice;
+    }
+
     public RestaurantTable(String tableId) {
         this.tableId = tableId;
     }
 
     public RestaurantTable() {
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public double getUnitPrice() {
+        return unitPrice;
+    }
+
+    public void setUnitPrice(double unitPrice) {
+        this.unitPrice = unitPrice;
     }
 
     public String getTableId() {
