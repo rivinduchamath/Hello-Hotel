@@ -14,4 +14,6 @@ public interface IndexLoginBO  extends SuperBO {
     EmployeeDTO getEmployeeByIdNo(String idNo);
 
     List<NoticeDTO> findResentNoticeDesc();
+
+    OnlineCustomerDTO findByUserNameAndPassword(String userName, String password);
 }
