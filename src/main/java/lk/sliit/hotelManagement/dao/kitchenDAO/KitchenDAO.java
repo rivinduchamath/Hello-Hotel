@@ -6,4 +6,6 @@ import org.springframework.data.repository.CrudRepository;
 
 public interface KitchenDAO extends CrudRepository<FoodItem,String> {
     FoodItem findTopByOrderByItemIdDesc();
+
+    Iterable<FoodItem> findAllByCategoryEquals(String restaurant);
 }

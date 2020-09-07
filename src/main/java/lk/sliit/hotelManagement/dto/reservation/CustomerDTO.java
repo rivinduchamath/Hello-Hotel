@@ -18,6 +18,10 @@ public class CustomerDTO {
     public CustomerDTO() {
     }
 
+    public CustomerDTO(String customerId) {
+        this.customerId=customerId;
+    }
+
     public String getCustomerId() {
         return customerId;
     }

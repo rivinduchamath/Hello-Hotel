@@ -2,7 +2,7 @@ package lk.sliit.hotelManagement.entity.restaurant.counterOrder;
 
 
 import javax.persistence.*;
-import java.sql.Date;
+import java.util.Date;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,19 +15,29 @@ public class RestaurantCounterOrder {
     private double quantity;
     private Date date;
     private String customerId;
+    private String orderHolder;
     @OneToMany(mappedBy = "restaurantCounterOrder", cascade = {CascadeType.PERSIST, CascadeType.REFRESH, CascadeType.DETACH, CascadeType.MERGE})
     private List<RestaurantCounterOrderDetail> orderDetails = new ArrayList<>();
 
 
-    public RestaurantCounterOrder(String orderId, String orderState, double quantity, Date date, String customerId) {
+    public RestaurantCounterOrder(String orderId, String orderState, double quantity, Date date, String customerId, String orderHolder) {
         this.orderId = orderId;
         this.orderState = orderState;
         this.quantity = quantity;
         this.date = date;
         this.customerId = customerId;
+        this.orderHolder = orderHolder;
     }
 
     public RestaurantCounterOrder() {
+    }
+
+    public String getOrderHolder() {
+        return orderHolder;
+    }
+
+    public void setOrderHolder(String orderHolder) {
+        this.orderHolder = orderHolder;
     }
 
     public String getOrderState() {

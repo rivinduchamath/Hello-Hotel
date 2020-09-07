@@ -228,48 +228,30 @@
                                                         <th>Cus Name</th>
                                                         <th>Mobile</th>
                                                         <th>Hall No</th>
-                                                        <th>Package</th>
                                                         <th>plates</th>
-                                                        <th>Advance Fee</th>
                                                         <th>Status</th>
                                                         <th>Delete</th>
+                                                        <th>Cancel</th>
 
                                                     </tr>
                                                     </thead>
 
                                                     <tbody>
-                                                    <%--                                            <c:forEach items="${listEmployeesTableSalary}" var="e">--%>
-                                                    <tr>
-                                                        <td>1</td>
-                                                        <td>1</td>
-                                                        <td>2020.08.10</td>
-                                                        <td>chanuka</td>
-                                                        <td>0767188591</td>
-                                                        <td>No 2</td>
-                                                        <td>Gold</td>
-                                                        <td>200</td>
-                                                        <td>20000</td>
-                                                        <td>confirmed</td>
-                                                        <td><a href=""><span
-                                                                class="glyphicon glyphicon-trash"></span></a></td>
-
-                                                    </tr>
-                                                    <tr>
-                                                        <td>2</td>
-                                                        <td>2</td>
-                                                        <td>2020.08.20</td>
-                                                        <td>Kaveesha</td>
-                                                        <td>0767188591</td>
-                                                        <td>No 1</td>
-                                                        <td>Gold</td>
-                                                        <td>250</td>
-                                                        <td>15000</td>
-                                                        <td>processing</td>
-                                                        <td><a href=""><span
-                                                                class="glyphicon glyphicon-trash"></span></a></td>
-
-                                                    </tr>
-                                                    <%--                                            </c:forEach>--%>
+                                                    <c:forEach items="${loadTable}" var="e">
+                                                        <tr>
+                                                            <td>${e.orderId}</td>
+                                                            <td>${e.name}</td>
+                                                            <td>${e.address}</td>
+                                                            <td>${e.date}</td>
+                                                            <td>${e.hallId}</td>
+                                                            <td>${e.noOfPlates}</td>
+                                                            <td>${e.menuId}</td>
+                                                            <td>${e.advanceFee}</td>
+                                                            <td>${e.banquetBillId}</td>
+                                                            <td><a href=""><span
+                                                                    class="glyphicon glyphicon-trash"></span></a></td>
+                                                        </tr>
+                                                    </c:forEach>
                                                     </tbody>
                                                 </table>
                                             </div>

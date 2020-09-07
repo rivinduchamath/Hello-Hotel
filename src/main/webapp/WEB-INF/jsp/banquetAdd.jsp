@@ -270,34 +270,34 @@
             <%--Input Feilds--%>
             <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
                 <div class="col-12 col-sm-12 col-md-12 col-lg-5 col-xl-5">
-                    <form method="POST"  action="/saveBanquet" name="saveBanquet">
+                    <form method="POST"  action="saveBanquet" name="saveBanquet">
 
                         <div class="form-group">
 
                             <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
                                 <label >Banquet Id</label>
-                                <input type="text" class="form-control"
-                                       required="required" name="id" value="${genId}"
-                                       id="id" placeholder="Banquet Id" disabled/></div>
+                                <input type="number" value="${topBanquetId}" class="form-control"
+                                       required="required" name="orderId"
+                                       id="orderId" placeholder="Banquet Id" readonly/></div>
 
                             <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
-                                <label for="id">Customer Id</label>
-                                <input type="text" class="form-control"
-                                       required="required" name="name"
-                                       id="customer_id" placeholder="Customer Id" disabled/></div>
+                                <label for="orderId">Customer Id</label>
+                                <input type="text" value="${topCustomerId}" class="form-control"
+                                       required="required" name="customerId"
+                                       id="customerId" placeholder="Customer Id" readonly/></div>
                         </div>
 
                         <div class="form-group">
 
 
                             <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6"> <br>
-                                <label for="id">Customer Name</label>
+                                <label for="orderId">Customer Name</label>
                                 <input type="text" class="form-control"
-                                       required="required" name="address"
-                                       id="customer_name" placeholder="Customer Name"/></div>
+                                       required="required" name="name"
+                                       id="name" placeholder="Customer Name"/></div>
 
                             <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6"> <br>
-                                <label for="id">Address</label>
+                                <label for="orderId">Address</label>
                                 <input type="text" class="form-control"
                                        required="required" name="address"
                                        id="address" placeholder="Address"/></div>
@@ -306,29 +306,29 @@
 
                         <div class="form-group">
                             <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6"> <br>
-                                <label for="id">Email</label>
+                                <label for="orderId">Email</label>
                                 <input type="text" class="form-control"
                                        required="required" name="email"
                                        id="email" placeholder="Email"/></div>
 
                             <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6"> <br>
-                                <label for="id">Mobile No</label>
+                                <label for="orderId">Mobile No</label>
                                 <input type="text" class="form-control"
-                                       required="required" name="mobile"
-                                       id="mobile" placeholder="Mobile No"/></div>
+                                       required="required" name="contactNumber"
+                                       id="contactNumber" placeholder="Mobile No"/></div>
                         </div>
 
                         <div class="form-group">
 
                             <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6"> <br>
-                                <label for="id">Date</label>
+                                <label for="orderId">Date</label>
                                 <input type="date" class="form-control"
                                        required="required" name="date"
                                        id="date" placeholder="Date"/></div>
                             <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6"> <br>
-                                <label for="id">Hall No</label>
-                                <select class="form-control"required="required" name="hall_id"
-                                        id="hall_id">
+                                <label for="orderId">Hall No</label>
+                                <select class="form-control"required="required" name="hallId"
+                                        id="hallId">
                                     <option>Choose Hall No</option>
                                     <option value="No 1">No 1</option>
                                     <option value="No 2">No 2</option>
@@ -339,29 +339,32 @@
                         </div>
                         <div class="form-group">
                             <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6"> <br>
-                                <label for="id">Num Of Plates</label>
+                                <label for="orderId">Num Of Plates</label>
                                 <input type="text" class="form-control"
-                                       required="required" name="num_of_plates"
-                                       id="num_of_plates" placeholder="Num Of Plates"/></div>
+                                       required="required" name="noOfPlates"
+                                       id="noOfPlates" placeholder="Num Of Plates"/></div>
 
                             <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6"> <br>
-                                <label for="id">Package</label>
-                                <select class="form-control"required="required" name="package"
-                                        id="package">
+                                <label for="orderId">Package</label>
+                                <select class="form-control"required="required" name="menuId"
+                                        id="menuId">
                                     <option>Choose Package</option>
-                                    <option value="Platinum">Platinum</option>
-                                    <option value="Gold">Gold</option>
-                                    <option value="Silver">Silver</option>
-                                    <option value="Bronze">Bronze</option>
+                                    <option value="1">Platinum</option>
+                                    <option value="2">Gold</option>
+                                    <option value="3">Silver</option>
+                                    <option value="4">Bronze</option>
                                 </select>
 
                             </div>
 
                             <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6"> <br>
-                                <label for="id">Advance Payment</label>
+                                <input type="hidden" required="required" name="banquetBillId"
+                                       id="billId" value="${topBanquetBillId}">
+                                <label for="orderId">Advance Payment</label>
                                 <input type="text" class="form-control"
-                                       required="required" name="advance_fee"
-                                       id="advance_fee" placeholder="Advance Payment"/></div>
+                                       required="required" name="advanceFee"
+                                       id="advancePayment" placeholder="Advance Payment"/></div>
+
                         </div>
 
 
@@ -417,19 +420,13 @@
 
                                                 </thead>
                                                 <tbody>
-                                                <c:forEach items="${loadSupplier}" var="e">
+                                                <c:forEach items="${loadTable}" var="a">
                                                     <tr>
-                                                        <td>${e.id}</td>
-                                                        <td>${e.name}</td>
-                                                        <td>${e.address}</td>
-                                                        <td>${e.mobile}</td>
-                                                        <td>${e.email}</td>
-                                                        <td>${e.gender}</td>
-                                                        <td>${e.date}</td>
-                                                        <td>${e.birthday}</td>
-                                                        <td>${e.submittedBy}</td>
-                                                        <td>  <a href="deleteSupplier/${e.id}"onclick="return confirm('Are you sure you want to delete?')"  class="btn btn-xs">
-                                                            <i class="fa fa-trash-o"></i></a></td>
+                                                        <td>${a.customerId}</td>
+                                                        <td>${a.name}</td>
+                                                        <td>${a.address}</td>
+                                                        <td>${a.contactNumber}</td>
+                                                        <td>${a.email}</td>
                                                     </tr>
                                                 </c:forEach>
                                                 </tbody>
@@ -488,22 +485,15 @@
     var selectedRow = null;
     $("#datatable-buttons tbody").on('click', 'tr', function () {
         selectedRow = $(this);
-        $("#userId").val($(this).find("td:nth-child(1)").text());
-        $("#userName").val($(this).find("td:nth-child(2)").text());
-        $("#position").val($(this).find("td:nth-child(3)").text());
-        $("#mobileNo").val($(this).find("td:nth-child(4)").text());
-        $("#pic").val($(this).find("td:nth-child(5)").text());
-        $("#salary").val($(this).find("td:nth-child(6)").text());
-        $("#address").val($(this).find("td:nth-child(7)").text());
-        $("#email").val($(this).find("td:nth-child(8)").text());
-        $("#password").val($(this).find("td:nth-child(9)").text());
-        $("#gender").val($(this).find("td:nth-child(10)").text());
-        $("#date").val($(this).find("td:nth-child(11)").text());
-        $("#dateOfBirth").val($(this).find("td:nth-child(12)").text());
+        $("#customerId").val($(this).find("td:nth-child(1)").text());
+        $("#name").val($(this).find("td:nth-child(2)").text());
+        $("#address").val($(this).find("td:nth-child(3)").text());
+        $("#contactNumber").val($(this).find("td:nth-child(4)").text());
+        $("#email").val($(this).find("td:nth-child(5)").text());
         selectedRow.addClass('row-selected');
     });
 </script>
 
-<%--/Pie Chart 2--%>
+
 </body>
 </html>

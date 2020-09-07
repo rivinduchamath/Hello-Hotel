@@ -1,11 +1,12 @@
+<%--
+  Created by IntelliJ IDEA.
+  User: Chanuka
+  --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ page import="java.util.Date" %>
 <%@ page import="java.text.SimpleDateFormat" %>
-<%@ page import="java.util.ArrayList" %>
-<%@ page import="lk.sliit.hotelManagement.dto.beverage.BarOrderDTO" %>
-<%@ page import="java.awt.*" %>
 
 <html lang="en">
 <head>
@@ -15,6 +16,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
+    <title>Employee Management </title>
     <link href="../../vendors/iCheck/skins/flat/green.css" rel="stylesheet">
     <!-- Bootstrap -->
     <link href="../../vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -57,24 +59,14 @@
     <link href="../../css/common.css" rel="stylesheet">
     <!-- Custom Theme Style -->
     <link href="../../build/css/custom.min.css" rel="stylesheet">
-    <%
-        SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
-        String date = sdf.format(new Date());
-    %>
-    <c:if test="${not empty loginError}">
-        <script>
-            window.addEventListener("load", function () {
-                alert("${loginError}");
-            })
-        </script>
-    </c:if>
+
     <script>
         function myFunction() {
             // Declare variables
             var input, filter, table, tr, td, i, txtValue;
-            input = document.getElementById("search");
+            input = document.getElementById("myInput");
             filter = input.value.toUpperCase();
-            table = document.getElementById("dataTablesButton1");
+            table = document.getElementById("datatable-buttons");
             tr = table.getElementsByTagName("tr");
             // Loop through all table rows, and hide those who don't match the search query
             for (i = 0; i < tr.length; i++) {
@@ -91,12 +83,12 @@
         }
     </script>
 
-
 </head>
 
 <body class="nav-md" style="cursor: pointer">
 <div class="container body">
     <div class="main_container">
+
         <!-- Side header -->
         <jsp:include page="sideHeader.jsp"/>
         <!-- /Side header -->
@@ -111,101 +103,98 @@
             <div class="">
                 <div class="page-title">
                     <div class="title_left">
-                        <h3>Restaurant Orders
-                            <small> +New Order</small>
+                        <h3>Employee Salary >
+                            <small>Monthly Salary Manage</small>
                         </h3>
-                        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
-                            <div class="col-6 col-sm-6 col-md-6 col-lg-6 col-xl-3">
-                                <a href="restaurant">
-                                    <button type="button" class="large-btn btn btn-dark"><i class="fa fa-mail-reply">
-                                        Back</i>
-                                    </button>
-                                </a>
-
-                            </div>
-                        </div>
                     </div>
 
                     <div class="title_right">
                         <div class="col-md-5 col-sm-5   form-group pull-right top_search">
-                            <a href="allSalary">
-                                <button type='submit' class="btn btn-secondary" style="width: 50%;float: right"
-                                        value="Register">
-                                    List All Payment
-                                </button>
+                            <a href="/allSalary">
+                            <button  type='submit' class="btn btn-secondary" style="width: 50%;float: right" value="Register" >
+                                List All salary
+                            </button>
                             </a>
                         </div>
                     </div>
                 </div>
 
                 <div class="clearfix"></div>
-                <div class=" ">
-                    <div class="col-sm-12 col-md-12 col-lg-3 col-xl-3" style="float: left">
-                        <form>
+                 <div class=" ">
+                     <div class="col-md-4 col-sm-4 " style="float: left">
+                    <form method="POST" action="/salarySave" name="salary">
+
+
 
                             <div class="form-group">
+                                <label for="itemCode">Employee Id</label>
                                 <input type="text" class="form-control"
-                                       id="search" onkeyup="myFunction()"
-                                       placeholder="Search By Name..">
+                                       required="required" name="employeeID"
+                                       id="itemCode" placeholder="Employee Id" />
                             </div>
 
                             <div class="form-group">
-                                <label for="itemCode">Item Id</label>
+                                <label for="itemCode">Basic Salary</label>
                                 <input type="text" class="form-control"
-                                       required="required" name="itemId"
-                                       id="itemCode" disabled placeholder="Item Id"/>
+                                       required="required" name="basicSalary"
+                                       id="BasicSalary" placeholder="Basic Salary" />
                             </div>
 
                             <div class="form-group">
-                                <label for="itemCode">Item Name</label>
+                                <label for="itemCode">OT Rate</label>
                                 <input type="text" class="form-control"
-                                       required name="itemName"
-                                       id="itemName" disabled placeholder="Item Name"/>
+                                       required="required" name="otRate"
+                                       id="OTRate" placeholder="OT Rate" />
                             </div>
-
                             <div class="form-group">
-                                <label for="itemCode">Price</label>
-                                <input type="number" class="form-control"
-                                       required="required" name="itemPrice"
-                                       id="price" placeholder="Price"/>
-                            </div>
-
-                            <div class="form-group">
-                                <label for="itemCode">Qty</label>
-                                <input type="number" class="form-control"
-                                       required name="qty"
-                                       id="qty" placeholder="Qty"/>
-                            </div>
-
-                            <div class="form-group">
-                                <label for="itemCode">Customer ID</label>
+                                <label for="itemCode">OT Hrs</label>
                                 <input type="text" class="form-control"
-                                       name="customerId"
-                                       id="customerId" placeholder="Customer ID"/>
+                                       required="required" name="otHours"
+                                       id="OTHrs" placeholder="OT Hrs" />
                             </div>
 
-
-                            <button type='button' class="btn btn-primary" style="width: 50%" id="btnAdd"
-                                    value="Register">
-                                Add
+                            <div class="form-group">
+                                <label for="itemCode">Monthly Bonus</label>
+                                <input type="text" class="form-control"
+                                       required="required" name="bonus"
+                                       id="MonthlyBonus"  placeholder="Monthly Bonus" />
+                            </div>
+                            <div class="form-group">
+                                <label for="itemCode">Income Tax</label>
+                                <input type="text" class="form-control"
+                                       required="required" name="incomeTax"
+                                       id="IncomeTax" placeholder="Income Tax" />
+                            </div>
+                           <input style="display: none" type="text" id="itemPay1" name="SalaryId">
+                            <button type='submit' class="btn btn-primary" style="width: 50%" value="Register" >
+                                Submit
                             </button>
-                            <button onclick="document.getElementsByClassName('form-control').value = ''" type='reset'
-                                    class="btn btn-outline-success" value="">Reset
-                            </button>
+                            <button onclick="document.getElementsByClassName('form-control').value = ''" type='reset' class="btn btn-outline-success" value="">Reset</button>
 
-                        </form>
+                    </form>
 
-                    </div>
+                         <a href="/updateSalary"> <button  class="btn btn-info" style="width: 50%" >
+                             Update
+                         </button></a> </div>
                     <!--////////////////////////////////////////////-->
-                    <div class="col-sm-12 col-md-12 col-lg-3 col-xl-3" style="position: relative;display: inline-block">
+                    <div class="col-md-8 col-sm-8" style="position: relative;display: inline-block">
                         <div class="x_panel">
                             <div class="x_title">
-                                <h2>Items
-                                    <small>Click row</small>
+                                <h2>Employees
+                                    <small>Users</small>
                                 </h2>
                                 <ul class="nav navbar-right panel_toolbox">
-                                    <li>
-                                        <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                                    <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                                    </li>
+                                    <li class="dropdown">
+                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                                           aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                            <a class="dropdown-item" href="#">Settings 1</a>
+                                            <a class="dropdown-item" href="#">Settings 2</a>
+                                        </div>
+                                    </li>
+                                    <li><a class="close-link"><i class="fa fa-close"></i></a>
                                     </li>
                                 </ul>
                                 <div class="clearfix"></div>
@@ -218,26 +207,27 @@
 
                                             </p>
 
-                                            <table style="text-align: center" id="dataTablesButton1"
-                                                   class="table table-hover table-striped">
+                                            <table id="datatable-responsive"
+                                                   class="table table-striped table-bordered dt-responsive nowrap"
+                                                   cellspacing="0" width="100%">
                                                 <thead class="thead-dark">
                                                 <tr>
-                                                    <th scope="col">Name</th>
-                                                    <th scope="col">Id</th>
-                                                    <th scope="col">Price</th>
+                                                    <th>Employee Name</th>
+                                                    <th>Employee ID</th>
+
                                                 </tr>
                                                 </thead>
                                                 <tbody>
-                                                <c:forEach items="${loadInventoryRestaurantTable}" var="e">
-
+                                                <c:forEach items="${listEmployeesTable}" var="e">
                                                     <tr>
-                                                        <td scope="row">${e.itemName}</td>
-                                                        <td>${e.itemId}</td>
-                                                        <td>${e.unitePrice}</td>
+                                                        <td>${e.name}</td>
+                                                        <td>${e.idNo}</td>
                                                     </tr>
                                                 </c:forEach>
                                                 </tbody>
+
                                             </table>
+
 
                                         </div>
                                     </div>
@@ -246,53 +236,70 @@
                         </div>
                     </div>
 
-                    <!--/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////-->
+<!--/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////-->
 
-                    <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6"
-                         style="float: right; position: relative;display: inline-block">
+                     <div class="col-md-8 col-sm-8" style="float: right; position: relative;display: inline-block">
                         <div class="x_panel">
                             <div class="x_title">
-                                <h2>Restaurant Orders
-                                    <small>Check And Submit
+                                <h2>Employee Monthly Salary
+                                    <small>Click CheckBox And Pay Salary
                                     </small>
-
                                 </h2>
-                                <form method="POST" action="invoiceRestaurantOrder" name="invoiceRestaurantOrder">
-                                    <input style="display: none" type="text" id="itemPay" name="dataValue">
-                                    <input style="display: none" type="text" id="cId"  name="customerId">
+                                <form method="POST" action="/invoice" name="invoice">
+                                    <input style="display: none" type="text" id="itemPay" name="SalaryId">
                                     <ul class="nav navbar-right panel_toolbox">
                                         <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                                         </li>
-                                        <button type="submit" value="Register"
-                                                style="font-weight: bold;color: white" ; onclick="getValue()"
+                                        <button type="submit" value="Register" disabled="true"
+                                                style="font-weight: bold;color: white" ; id="name"
                                                 class="btn btn-success "> Pay <i class="fa fa-file-image-o"></i>
                                         </button>
                                     </ul>
                                 </form>
 
+                                <button onclick="getValue();return false" ; style="float: right; font-weight: bold;color: white" ;
+                                id="btn_enable" class="btn btn-success ">Add Payment
+                                    <i class="fa fa-plus-circle"></i></button>
+
+                                <!--href="/invoice"-->
                                 <div class="clearfix"></div>
                             </div>
+
                             <div class="x_content">
+
                                 <div class="row">
+
                                     <div class="col-sm-12">
+
                                         <div class="card-box table-responsive">
-                                            <table style="text-align: center"
+
+                                            <table id="datatable-buttons"
                                                    class="table table-striped jambo_table bulk_action table-bordered">
                                                 <thead class="thead-dark">
+
                                                 <tr>
-                                                    <th>ItemId</th>
+                                                    <th>EmpId</th>
                                                     <th>Name</th>
-                                                    <th>Price</th>
-                                                    <th>Qty</th>
-                                                    <th>Total</th>
+                                                    <th>Total Salary</th>
                                                     <th>Delete</th>
+                                                    <th><input type="checkbox" id="check-all" class="flat"></th>
                                                 </tr>
                                                 </thead>
 
-                                                <tbody id="tblOrder">
-                                                <%--                                                <c:forEach items="${listEmployeesTableSalary}" var="e">--%>
-
-                                                <%--                                                </c:forEach>--%>
+                                                <tbody>
+                                                <c:forEach items="${listEmployeesTableSalary}" var="e">
+                                                    <tr>
+                                                        <td>${e.employeeID.idNo}</td>
+                                                        <td>${e.employeeID.name}</td>
+                                                        <td>${((e.basicSalary+e.bonus)+(e.otRate*e.otHours))-e.incomeTax}</td>
+                                                        <td><a href="/deleteSalary?idNo=${e.salaryId}"><span
+                                                                class="glyphicon glyphicon-trash"></span></a></td>
+                                                        <td class="a-center ">
+                                                            <input type="checkbox" class="flat checks"
+                                                                   value="${e.salaryId}" name="table_records">
+                                                        </td>
+                                                    </tr>
+                                                </c:forEach>
                                                 </tbody>
                                             </table>
                                         </div>
@@ -304,18 +311,39 @@
                     <!--///////////////////////////////////////////////////////-->
 
                 </div>
+                </div>
+
             </div>
-
         </div>
-    </div>
-    <!-- /page content -->
+        <!-- /page content -->
 
 
-    <!-- footer content -->
-    <jsp:include page="footer.jsp"/>
+        <script>
+            function getValue() {
+                var checks = document.getElementsByClassName('checks');
+                var str = '';
+
+                for (i = 0; i < ${countEmployee2}; i++) {
+                    if (checks[i].checked === true) {
+                        str += checks[i].value + " ";
+                    }
+                }
+                $("#itemPay").val(str);
+            }
+        </script>
+        <!-- footer content -->
+    <footer>
+        <div class="pull-right">
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            Copyright © Employee Management 2020.<a href="https://github.com/rivinduchamath/Hello-Hote/l">
+            Created by ITP SLIIT &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  </a>
+<%--            Copyright © Employee Management 2020.<a href="https://rivinduchamath.github.io/pro/">Created by Chanuka Mullevidana</a>--%>
+        </div>
+        <div class="clearfix"></div>
+    </footer>
     <!-- /footer content -->
-
-</div>
+        <!-- /footer content -->
+    </div>
 </div>
 
 
@@ -342,16 +370,15 @@
 <script src="../../vendors/iCheck/icheck.min.js"></script>
 <script>
     var selectedRow = null;
-    $("#dataTablesButton1 tbody").on('click', 'tr', function () {
+    $("#datatable-responsive tbody").on('click', 'tr', function () {
         var date = new Date();
         var date2 = new Date();
-        var today = date.getDate() + ":" + (date.getMonth()) + ":" + date.getFullYear();
+        var today = date.getHours() + ":" + (date.getMinutes()) + ":" + date.getSeconds();
+        date2.setHours(date.getHours() + 8);
+        var today2 = date2.getHours() + ":" + (date.getMinutes()) + ":" + date.getSeconds();
         selectedRow = $(this);
-        $("#itemName").val($(this).find("td:nth-child(1)").text());
         $("#itemCode").val($(this).find("td:nth-child(2)").text());
-        $("#price").val($(this).find("td:nth-child(3)").text());
-        $("#date").val(today);
-        $("#dataTablesButton1 tbody tr").removeClass('row-selected');
+        $("#datatable-responsive tbody tr").removeClass('row-selected');
         selectedRow.addClass('row-selected');
     });
 </script>
@@ -362,22 +389,6 @@
     });
 });
 </script>
-
-
-<%--<script>
-    function getValue() {
-        var checks = document.getElementsByClassName('tblOrder');
-        var str = '';
-        var numberofRows = $("#tblOrder tr").length;
-        console.log(numberofRows+"fffffffffffffffffffffffffffffffffffffffffffff");
-        for (i = 0; i < numberofRows; i++) {
-                str += checks[i] + " ";
-        }
-        console.log(str+"tttttttttttttttttttttttttttttttttttttttttttttttttt");
-        $("#itemPay").val(str);
-    }
-</script>--%>
-
 <!-- Datatables -->
 <script src="../../vendors/datatables.net/js/jquery.dataTables.min.js"></script>
 <script src="../../vendors/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
@@ -393,8 +404,6 @@
 <script src="../../vendors/datatables.net-scroller/js/dataTables.scroller.min.js"></script>
 <script src="../../vendors/jszip/dist/jszip.min.js"></script>
 <script src="../../vendors/iCheck/icheck.min.js"></script>
-
-<script src="../../js/addCounterRestOrderTable.js"></script>
 <!-- Custom Theme Scripts -->
 <script src="../../build/js/custom.min.js"></script>
 </body>

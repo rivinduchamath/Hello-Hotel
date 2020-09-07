@@ -4,7 +4,7 @@ import lk.sliit.hotelManagement.entity.kitchen.Menu;
 import lk.sliit.hotelManagement.entity.reservation.Customer;
 
 import javax.persistence.*;
-import java.util.Date;
+import java.sql.Date;
 
 @Entity
 public class BanquetOrder {
@@ -13,7 +13,6 @@ public class BanquetOrder {
     private String hallId;
     private String orderState;
     private int noOfPlates;
-    @Temporal(TemporalType.DATE)
     private Date date;
     private String submittedBy;
     @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.REFRESH, CascadeType.DETACH, CascadeType.MERGE})
@@ -39,7 +38,9 @@ public class BanquetOrder {
     }
 
     public BanquetOrder() {
+
     }
+
 
     public String getOrderId() {
         return orderId;

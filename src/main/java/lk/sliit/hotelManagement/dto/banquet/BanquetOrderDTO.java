@@ -28,6 +28,10 @@ public class BanquetOrderDTO {
     public BanquetOrderDTO() {
     }
 
+    public BanquetOrderDTO(String orderId) {
+        this.orderId = orderId;
+    }
+
     public String getOrderId() {
         return orderId;
     }

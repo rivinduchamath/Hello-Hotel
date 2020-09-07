@@ -31,4 +31,12 @@ target/
 .vscode/
 src/test/java/com/
 
+
 src/main/resources/application.properties
+
+.properties
+
+src/main/java/lk/sliit/hotelManagement/Test.java
+
+
+
