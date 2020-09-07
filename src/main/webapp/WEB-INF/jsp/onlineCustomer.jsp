@@ -41,11 +41,11 @@
                 </form>
             </div>
             <div class="form-container sign-in-container">
-                <form action="onlineDashboard">
+                <form action="onlineSignIn">
                     <h1>Sign in</h1>
                     <span>or use your account</span>
-                    <input type="username" placeholder="User Name" />
-                    <input type="password" placeholder="Password" />
+                    <input type="username" placeholder="User Name" name="userName" />
+                    <input type="password" placeholder="Password" name="password"/>
                     <a href="#">Forgot your password?</a>
                     <button>Sign In</button>
                 </form>

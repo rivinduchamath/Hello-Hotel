@@ -43,4 +43,14 @@ public class OnlineCustomerBOImpl implements OnlineCustomerBO {
         ));
 
     }
+
+    @Override
+    public OnlineCustomerDTO findByUserNameAndPassword(String userName, String password) {
+        OnlineCustomer onlineCustomer = onlineCustomerDAO.findByUserNameAndPassword(userName,password);
+        return new OnlineCustomerDTO (
+                onlineCustomer.getUserName(),
+                onlineCustomer.getPassword()
+        );
+
+    }
 }

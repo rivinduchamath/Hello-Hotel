@@ -25,7 +25,6 @@ public class OnlineCustomer {
     OnlineCustomerBO onlineCustomerBO;
 
 
-
     @GetMapping("/onlineCustomer")
     public String loadForm_validationSaveMode(Model model, HttpServletRequest request) {
         model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
@@ -33,18 +32,32 @@ public class OnlineCustomer {
     }
 
     @PostMapping("/onlineCustomerSave")
-    public String saveForm(@ModelAttribute OnlineCustomerDTO onlineCustomerDTO){
+    public String saveForm(@ModelAttribute OnlineCustomerDTO onlineCustomerDTO) {
 
         try {
-            OnlineCustomerDTO top = onlineCustomerBO.findHighestOnlineCustomerId ( );
-            int x = Integer.parseInt ( top.getOnlineCustomerId ( ) )+ 1;
-            onlineCustomerDTO.setOnlineCustomerId ( String.valueOf ( x ) );
+            OnlineCustomerDTO top = onlineCustomerBO.findHighestOnlineCustomerId();
+            int x = Integer.parseInt(top.getOnlineCustomerId()) + 1;
+            onlineCustomerDTO.setOnlineCustomerId(String.valueOf(x));
         } catch (NullPointerException e) {
-            onlineCustomerDTO.setOnlineCustomerId ( String.valueOf ( 1 ) );
+            onlineCustomerDTO.setOnlineCustomerId(String.valueOf(1));
         }
 
         onlineCustomerBO.saveOnlineCustomer(onlineCustomerDTO);
         return "redirect:/onlineCustomer";
+    }
+
+    @GetMapping("/onlineSignIn")
+    public String onlineTableDetails(@ModelAttribute OnlineCustomerDTO onlineCustomer, Model model, HttpServletRequest request) {
+        try {
+            if (onlineCustomerBO.findByUserNameAndPassword(onlineCustomer.getUserName(), onlineCustomer.getPassword()) != null) {
+                return "/onlineDashboard";
+            } else {//If User name And Password is not match
+                return "redirect:/onlineCustomer";
+            }
+        } catch (NullPointerException e) {
+            return "redirect:/onlineCustomer";
+        }
+
     }
 
 

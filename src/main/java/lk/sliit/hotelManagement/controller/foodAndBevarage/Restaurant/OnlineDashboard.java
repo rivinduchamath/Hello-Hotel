@@ -20,12 +20,9 @@ public class OnlineDashboard {
     @Autowired
     IndexLoginBO indexLoginBO;
     @RequestMapping("/onlineDashboard")
-    public String registerUser(@ModelAttribute OnlineCustomerDTO onlineCustomer, Model model) {
+    public String registerUser( Model model) {
         //True If Id and password is match
-        if (indexLoginBO.findByUserNameAndPassword(onlineCustomer.getUserName(), onlineCustomer.getPassword()) != null) {
-            return "/onlineDashboard";
-        } else {//If User name And Password is not match
             return "redirect:/onlineCustomer";
-        }
+
     }
 }

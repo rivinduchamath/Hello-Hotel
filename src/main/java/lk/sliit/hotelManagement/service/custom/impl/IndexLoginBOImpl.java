@@ -81,13 +81,5 @@ public class IndexLoginBOImpl implements IndexLoginBO {
         return dtos;
     }
 
-    @Override
-    public OnlineCustomerDTO findByUserNameAndPassword(String userName, String password) {
-        OnlineCustomer onlineCustomer = onlineCustomerDAO.findByUserNameAndPassword(userName,password);
-        return new OnlineCustomerDTO (
-                onlineCustomer.getUserName(),
-                onlineCustomer.getPassword()
-        );
 
-    }
 }
