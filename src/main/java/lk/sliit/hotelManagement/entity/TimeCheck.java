@@ -1,14 +1,19 @@
 package lk.sliit.hotelManagement.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import org.springframework.format.annotation.DateTimeFormat;
+
+import javax.persistence.*;
+import java.sql.Time;
 import java.util.Date;
 
 @Entity
 public class TimeCheck {
-@Id
+    @Id
     String id;
-Date timeSett;
+    @DateTimeFormat(pattern="hh:mm:ss" )
+    @Temporal(TemporalType.TIME)
+    Date timeSett;
 
     public TimeCheck(String id, Date timeSett) {
         this.id = id;
@@ -17,6 +22,7 @@ Date timeSett;
 
     public TimeCheck() {
     }
+
 
     public String getId() {
         return id;

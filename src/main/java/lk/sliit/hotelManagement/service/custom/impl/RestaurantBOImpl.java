@@ -72,22 +72,18 @@ public class RestaurantBOImpl implements RestaurantBO {
             if (count == 0) {
                 itm = new RestaurantCounterOrderDetailDTO();
                 itm.setFoodItem(str);
-                System.out.println(str + "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
                 count++;
 
             } else if (count == 1) {
                 itm.setUnitePrice(Double.parseDouble(str));
-                System.out.println(str + "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb");
                 count++;
 
             } else if (count == 2) {
                 itm.setQuantity(Double.parseDouble(str));
-                System.out.println(itm + "cccceeeeeeeeeeeeeeeeeeeeccc");
                 list.add(itm);
                 count = 0;
             }
         }
-        System.out.println("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" + restaurantCounterOrderDTO.getOrderId());
         Calendar cal = Calendar.getInstance();
         cal.add(Calendar.DATE, 0);
         java.util.Date today = cal.getTime();
@@ -99,12 +95,9 @@ public class RestaurantBOImpl implements RestaurantBO {
                 restaurantCounterOrderDTO.getDate(),
                 restaurantCounterOrderDTO.getCustomerId(),
                 restaurantCounterOrderDTO.getOrderHolder()));
-        System.out.println("BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB");
-
 
         for (RestaurantCounterOrderDetailDTO orderDetail : list) {
-            System.out.println(restaurantCounterOrderDTO.getOrderId() + "CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC" + orderDetail.getFoodItem());
-            restaurantCounterOrderDetail.save(new RestaurantCounterOrderDetail(
+             restaurantCounterOrderDetail.save(new RestaurantCounterOrderDetail(
                     restaurantCounterOrderDTO.getOrderId(),
                     orderDetail.getFoodItem(),
                     orderDetail.getQuantity(),
@@ -149,8 +142,7 @@ public class RestaurantBOImpl implements RestaurantBO {
 
 
 //        Iterable<OnlineTableReservation> all = onlineTableReservationDAO.findOnlineTableReservationsByDateEquals(date);
-        System.out.println("22222222222222222222222222222222222222222222222222222" + date + "" + startTime + "" + endTime);
-        Date s = Date.valueOf(startTime);
+       Date s = Date.valueOf(startTime);
         Date s1 = Date.valueOf(endTime);
         Iterable<OnlineTableReservation> all1 = onlineTableReservationDAO.findOnlineTableReservationsByStartTimeBeforeAndEndTimeAfterAndDateEquals(s, s1, date);
         List<OnlineTableReservationDTO> dtos = new ArrayList<>();
@@ -160,9 +152,6 @@ public class RestaurantBOImpl implements RestaurantBO {
                     a.getType(),
                     a.getUnitPrice()
             ));*/
-
-
-            System.out.println("22222222222222222222222222222222222222222222222222222" + a.getOnlineTableReservationId());
         }
 
 
