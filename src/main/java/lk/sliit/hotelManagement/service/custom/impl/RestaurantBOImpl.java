@@ -44,20 +44,20 @@ public class RestaurantBOImpl implements RestaurantBO {
     RestaurantCounterOrderDAO restaurantCounterOrderDAO;
     @Autowired
     RestaurantCounterOrderDetailDAO restaurantCounterOrderDetail;
+
     @Override
     public RestaurantCounterOrderDTO findTopByOrderByRestIdDesc() {
 
         RestaurantCounterOrder orders = null;
         try {
-            orders = restaurantCounterOrderDAO.findTopByOrderByOrderIdDesc ();
-        }catch (Exception e){
+            orders = restaurantCounterOrderDAO.findTopByOrderByOrderIdDesc();
+        } catch (Exception e) {
 
         }
         return new RestaurantCounterOrderDTO(
-                orders.getOrderId ()
+                orders.getOrderId()
         );
     }//End
-
 
 
     @Transactional
@@ -68,44 +68,44 @@ public class RestaurantBOImpl implements RestaurantBO {
         String yo[] = arr.split(" ");
         int count = 0;
         RestaurantCounterOrderDetailDTO itm = new RestaurantCounterOrderDetailDTO();
-        for(String str:yo) {
-            if(count == 0 ) {
+        for (String str : yo) {
+            if (count == 0) {
                 itm = new RestaurantCounterOrderDetailDTO();
                 itm.setFoodItem(str);
-                System.out.println(str+"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
-                count ++;
+                System.out.println(str + "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+                count++;
 
-            }else if(count == 1) {
+            } else if (count == 1) {
                 itm.setUnitePrice(Double.parseDouble(str));
-                System.out.println(str+"bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb");
-                count ++;
+                System.out.println(str + "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb");
+                count++;
 
-            }else if(count == 2) {
+            } else if (count == 2) {
                 itm.setQuantity(Double.parseDouble(str));
-                System.out.println(itm+"cccceeeeeeeeeeeeeeeeeeeeccc");
+                System.out.println(itm + "cccceeeeeeeeeeeeeeeeeeeeccc");
                 list.add(itm);
                 count = 0;
             }
         }
-        System.out.println("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"+restaurantCounterOrderDTO.getOrderId ());
+        System.out.println("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" + restaurantCounterOrderDTO.getOrderId());
         Calendar cal = Calendar.getInstance();
         cal.add(Calendar.DATE, 0);
-        java.util.Date today =  cal.getTime();
+        java.util.Date today = cal.getTime();
         restaurantCounterOrderDTO.setDate(today);
         restaurantCounterOrderDAO.save(new RestaurantCounterOrder(
-                restaurantCounterOrderDTO.getOrderId (),
+                restaurantCounterOrderDTO.getOrderId(),
                 restaurantCounterOrderDTO.getOrderState(),
                 restaurantCounterOrderDTO.getQuantity(),
                 restaurantCounterOrderDTO.getDate(),
-                restaurantCounterOrderDTO.getCustomerId (),
-                restaurantCounterOrderDTO.getOrderHolder () ));
+                restaurantCounterOrderDTO.getCustomerId(),
+                restaurantCounterOrderDTO.getOrderHolder()));
         System.out.println("BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB");
 
 
-        for (RestaurantCounterOrderDetailDTO orderDetail :list ) {
-            System.out.println(restaurantCounterOrderDTO.getOrderId()+"CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC"+orderDetail.getFoodItem());
+        for (RestaurantCounterOrderDetailDTO orderDetail : list) {
+            System.out.println(restaurantCounterOrderDTO.getOrderId() + "CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC" + orderDetail.getFoodItem());
             restaurantCounterOrderDetail.save(new RestaurantCounterOrderDetail(
-                    restaurantCounterOrderDTO.getOrderId (),
+                    restaurantCounterOrderDTO.getOrderId(),
                     orderDetail.getFoodItem(),
                     orderDetail.getQuantity(),
                     orderDetail.getUnitePrice()));
@@ -149,10 +149,10 @@ public class RestaurantBOImpl implements RestaurantBO {
 
 
 //        Iterable<OnlineTableReservation> all = onlineTableReservationDAO.findOnlineTableReservationsByDateEquals(date);
-        System.out.println("22222222222222222222222222222222222222222222222222222" +date +""+ startTime+""+endTime);
+        System.out.println("22222222222222222222222222222222222222222222222222222" + date + "" + startTime + "" + endTime);
         Date s = Date.valueOf(startTime);
         Date s1 = Date.valueOf(endTime);
-        Iterable<OnlineTableReservation> all1 = onlineTableReservationDAO.findOnlineTableReservationsByStartTimeBeforeAndEndTimeAfterAndDateEquals(s,s1,date);
+        Iterable<OnlineTableReservation> all1 = onlineTableReservationDAO.findOnlineTableReservationsByStartTimeBeforeAndEndTimeAfterAndDateEquals(s, s1, date);
         List<OnlineTableReservationDTO> dtos = new ArrayList<>();
         for (OnlineTableReservation a : all1) {
       /*      dtos.add(new OnlineTableReservationDTO(
@@ -162,8 +162,7 @@ public class RestaurantBOImpl implements RestaurantBO {
             ));*/
 
 
-
-            System.out.println("22222222222222222222222222222222222222222222222222222"+a.getOnlineTableReservationId());
+            System.out.println("22222222222222222222222222222222222222222222222222222" + a.getOnlineTableReservationId());
         }
 
 
