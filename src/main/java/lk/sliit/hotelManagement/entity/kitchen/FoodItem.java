@@ -6,11 +6,12 @@ import lk.sliit.hotelManagement.entity.restaurant.counterOrder.RestaurantCounter
 import lk.sliit.hotelManagement.entity.restaurant.onlineOrder.RestaurantOnlineOrderDetails;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-public class FoodItem {
+public class FoodItem implements Serializable {
     @Id
     private String itemId;
     private String name;

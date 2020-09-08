@@ -2,12 +2,14 @@ package lk.sliit.hotelManagement.controller.foodAndBevarage.Restaurant;
 
 import lk.sliit.hotelManagement.controller.SuperController;
 import lk.sliit.hotelManagement.dto.restaurant.RestaurantTableDTO;
+import lk.sliit.hotelManagement.dto.restaurant.restaurantOnlineTable.OnlineTableReservationDTO;
 import lk.sliit.hotelManagement.service.custom.IndexLoginBO;
 import lk.sliit.hotelManagement.service.custom.RestaurantBO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
@@ -23,16 +25,24 @@ public class OnlineTable {
         model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
         return "onlineTable";
     }
-    @GetMapping("/onlineTableDetails")
+ /*   @GetMapping("/onlineTableDetails")
     public String onlineTableDetails(Model model, HttpServletRequest request) {
 
         List<RestaurantTableDTO> p1 = restaurantBO.findAllTable();
         model.addAttribute("loadAllTables", p1);
 
         return "onlineTableDetails";
+    }*/
+
+    @GetMapping("/checkTimeForTable")
+    public String checkTimeForTable(@ModelAttribute OnlineTableReservationDTO onlineTable, Model model, HttpServletRequest request) {
+
+        List<RestaurantTableDTO> p1 = restaurantBO.findAllTableDateEqual(onlineTable.getDate()
+                ,onlineTable.getStartTime(),onlineTable.getEndTime());
+        model.addAttribute("loadAllTables", p1);
+
+        return "onlineTableDetails";
     }
-
-
 
 
 

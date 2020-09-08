@@ -4,7 +4,7 @@ import lk.sliit.hotelManagement.entity.restaurant.OnlineCustomer;
 
 import javax.persistence.*;
 import java.sql.Date;
-import java.sql.Time;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,8 +15,8 @@ public class OnlineTableReservation {
     private String onlineTableReservationId;
     private Date reservedDate;
     private Date date;
-    private Time startTime;
-    private Time endTime;
+    private Date startTime;
+    private Date endTime;
     private int noOfTables;
     @ManyToOne(cascade = {CascadeType.PERSIST,CascadeType.REFRESH, CascadeType.DETACH, CascadeType.MERGE})
     @JoinColumn(name = "onlineCustomerId", referencedColumnName = "onlineCustomerId", nullable = false)
@@ -24,7 +24,7 @@ public class OnlineTableReservation {
     @OneToMany(mappedBy = "onlineTableReservation", cascade = {CascadeType.PERSIST, CascadeType.REFRESH, CascadeType.DETACH, CascadeType.MERGE})
     private List<OnlineTableReservationDetails> orderDetails = new ArrayList<>();
 
-    public OnlineTableReservation(String onlineTableId, Date reservedDate, Date date,  Time startTime, Time endTime, int noOfTables, OnlineCustomer customer) {
+    public OnlineTableReservation(String onlineTableId, Date reservedDate, Date date,  Date startTime, Date endTime, int noOfTables, OnlineCustomer customer) {
         this.onlineTableReservationId = onlineTableId;
         this.reservedDate = reservedDate;
         this.date = date;
@@ -63,20 +63,19 @@ public class OnlineTableReservation {
     }
 
 
-
-    public Time getStartTime() {
+    public Date getStartTime() {
         return startTime;
     }
 
-    public void setStartTime(Time startTime) {
+    public void setStartTime(Date startTime) {
         this.startTime = startTime;
     }
 
-    public Time getEndTime() {
+    public Date getEndTime() {
         return endTime;
     }
 
-    public void setEndTime(Time endTime) {
+    public void setEndTime(Date endTime) {
         this.endTime = endTime;
     }
 
