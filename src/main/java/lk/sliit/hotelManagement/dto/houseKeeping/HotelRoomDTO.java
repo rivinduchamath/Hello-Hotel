@@ -1,16 +1,26 @@
 package lk.sliit.hotelManagement.dto.houseKeeping;
 
+import java.sql.Date;
+
 public class HotelRoomDTO {
     private String roomId;
     private String roomType;
     private String description;
     private double price;
+    private String roomName;
+    private Date date;
+    private String status;
 
-    public HotelRoomDTO(String roomId, String roomType, String description, double price) {
+
+    public HotelRoomDTO(String roomId, String roomType, String description, double price, String roomName, Date date, String status) {
         this.roomId = roomId;
         this.roomType = roomType;
         this.description = description;
         this.price = price;
+        this.roomName = roomName;
+        this.date = date;
+        this.status = status;
+
     }
 
     public HotelRoomDTO() {
@@ -48,6 +58,20 @@ public class HotelRoomDTO {
         this.price = price;
     }
 
+    public String getRoomName() { return roomName; }
+
+    public void setRoomName(String roomName) { this.roomName = roomName; }
+
+    public Date getDate() { return date; }
+
+    public void setDate(Date date) { this.date = date; }
+
+    public String getStatus() { return status; }
+
+    public void setStatus(String status) { this.status = status; }
+
+
+
     @Override
     public String toString() {
         return "HotelRoomDTO{" +
@@ -57,4 +81,6 @@ public class HotelRoomDTO {
                 ", price=" + price +
                 '}';
     }
+
+
 }
