@@ -1,7 +1,12 @@
 package lk.sliit.hotelManagement.dto.kitchen;
 
+import lk.sliit.hotelManagement.entity.kitchen.FoodItem;
+import lk.sliit.hotelManagement.entity.kitchen.Menu;
+import lk.sliit.hotelManagement.entity.kitchen.MenuDetailsPK;
+
 public class MenuDTO {
     private String menuId;
+    private String itemId;
     private String name;
     private String type;
     private String picture;
@@ -20,6 +25,20 @@ public class MenuDTO {
     }
 
     public MenuDTO() {
+    }
+
+    public MenuDTO(String foodItem, String itemId) {
+        this.menuId = foodItem;
+        this.itemId = itemId;
+    }
+
+
+    public String getItemId() {
+        return itemId;
+    }
+
+    public void setItemId(String itemId) {
+        this.itemId = itemId;
     }
 
     public String getMenuId() {

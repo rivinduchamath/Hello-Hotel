@@ -26,4 +26,8 @@ public interface KitchenBO extends SuperBO {
     void deleteMenuItem(String menuItemId);
 
     MenuDTO findMenuItemById(String menuItemId);
+
+    void saveFoodDetail(MenuDTO menuDTO);
+
+    List<MenuDTO> findFoodItemsDetails(String menuId);
 }

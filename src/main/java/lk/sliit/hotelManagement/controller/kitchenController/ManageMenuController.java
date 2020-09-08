@@ -71,7 +71,7 @@ public class ManageMenuController {
         }
     }
 
-
+/*
     @RequestMapping("/foodPackManagement")
     public String addItemToMenu(Model model, @RequestParam String menuId){
         model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
@@ -79,5 +79,32 @@ public class ManageMenuController {
         model.addAttribute("loadFoodItemTable",kitchenBO.findFoodItems());
         return "foodPackManagement";
 
+    }*/
+
+
+  /*  @GetMapping("/editFoodPack")
+    public String editFoodPacks(Model model){
+        model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
+
+        return "editFoodPack";
+    }*/
+
+    @GetMapping("/editFoodPack")
+    public String editFoodPack(Model model, @ModelAttribute MenuDTO menuDTO) {
+        model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
+        model.addAttribute("menuItem", kitchenBO.findMenuItemById(menuDTO.getMenuId()));
+        model.addAttribute("loadFoodItemTable",kitchenBO.findFoodItems());
+        return "/editFoodPack";
     }
+    @GetMapping("/addItemToPack")
+    public String addItemToPack(Model model, @ModelAttribute MenuDTO menuDTO) {
+        model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
+        model.addAttribute("menuItem", kitchenBO.findMenuItemById(menuDTO.getMenuId()));
+        model.addAttribute("loadFoodItemTable",kitchenBO.findFoodItems());
+        kitchenBO.saveFoodDetail(menuDTO);
+
+        model.addAttribute("loadSelectedFood",kitchenBO.findFoodItemsDetails(menuDTO.getMenuId()));
+        return "/editFoodPack";
+    }
+
 }
