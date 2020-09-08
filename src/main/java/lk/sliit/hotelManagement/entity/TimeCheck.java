@@ -1,10 +1,7 @@
 package lk.sliit.hotelManagement.entity;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
 import org.springframework.format.annotation.DateTimeFormat;
-
 import javax.persistence.*;
-import java.sql.Time;
 import java.util.Date;
 
 @Entity
