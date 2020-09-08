@@ -72,11 +72,6 @@ public class RestaurantCounterOrder {
         this.customerId = customerId;
     }
 
-    public List<RestaurantCounterOrderDetail> getOrderDetails() {
-        return orderDetails;
-    }
-
-
     public String getOrderId() {
         return orderId;
     }

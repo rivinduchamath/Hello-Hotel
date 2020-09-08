@@ -33,6 +33,9 @@ public class RestaurantCounterOrderDTO {
     public RestaurantCounterOrderDTO() {
     }
 
+    public RestaurantCounterOrderDTO(String orderId) {      this.orderId = orderId;
+    }
+
     public String getDataValue() {
         return dataValue;
     }

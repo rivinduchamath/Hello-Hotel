@@ -1,19 +1,19 @@
 package lk.sliit.hotelManagement.dto.restaurant.restaurantOnlineTable;
 
 import java.sql.Date;
-import java.sql.Time;
+
 
 public class OnlineTableReservationDTO {
 
     private String onlineTableReservationId;
     private Date reservedDate;
     private Date date;
-    private Time startTime;
-    private Time endTime;
+    private String startTime;
+    private String endTime;
     private int noOfTables;
     private String customer;
 
-    public OnlineTableReservationDTO(String onlineTableReservationId, Date reservedDate, Date date, Time startTime, Time endTime, int noOfTables, String customer) {
+    public OnlineTableReservationDTO(String onlineTableReservationId, Date reservedDate, Date date, String startTime, String endTime, int noOfTables, String customer) {
         this.onlineTableReservationId = onlineTableReservationId;
         this.reservedDate = reservedDate;
         this.date = date;
@@ -50,19 +50,19 @@ public class OnlineTableReservationDTO {
         this.date = date;
     }
 
-    public Time getStartTime() {
+    public String getStartTime() {
         return startTime;
     }
 
-    public void setStartTime(Time startTime) {
+    public void setStartTime(String startTime) {
         this.startTime = startTime;
     }
 
-    public Time getEndTime() {
+    public String getEndTime() {
         return endTime;
     }
 
-    public void setEndTime(Time endTime) {
+    public void setEndTime(String endTime) {
         this.endTime = endTime;
     }
 

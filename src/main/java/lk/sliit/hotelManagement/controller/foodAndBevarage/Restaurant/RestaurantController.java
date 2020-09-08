@@ -54,7 +54,8 @@ public class RestaurantController {
     public String loadInvoicePage(@ModelAttribute RestaurantCounterOrderDTO restaurantCounterOrderDTO, Model model, HttpServletRequest request) {
         model.addAttribute ( "loggerName", indexLoginBO.getEmployeeByIdNo ( SuperController.idNo ) );
 
-        try {/*restaurantCounterOrderDTO.s(SuperController.idNo);*/
+
+        try {restaurantCounterOrderDTO.setCustomerId(SuperController.idNo);
             RestaurantCounterOrderDTO top = restaurantBO.findTopByOrderByRestIdDesc ( );
             int x = Integer.parseInt ( top.getOrderId ( ) )+ 1;
             restaurantCounterOrderDTO.setOrderId ( String.valueOf ( x ) );

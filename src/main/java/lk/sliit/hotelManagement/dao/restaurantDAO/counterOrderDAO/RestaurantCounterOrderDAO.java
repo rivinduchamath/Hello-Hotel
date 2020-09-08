@@ -7,4 +7,5 @@ import org.springframework.data.repository.CrudRepository;
 public interface RestaurantCounterOrderDAO extends CrudRepository<RestaurantCounterOrder,String> {
 
 
+    RestaurantCounterOrder findTopByOrderByOrderIdDesc();
 }
