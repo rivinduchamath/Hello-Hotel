@@ -52,6 +52,10 @@ public class HotelRoom {
 
     public HotelRoom() {
     }
+    
+
+    public HotelRoom(String roomId, String roomName, String roomType, String description, String status, Date date) {
+    }
 
     public String getRoomName() {
         return roomName;
