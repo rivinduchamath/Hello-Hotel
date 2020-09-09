@@ -14,9 +14,5 @@ import javax.servlet.http.HttpServletRequest;
 public class OnlineDashboard {
     @Autowired
     IndexLoginBO indexLoginBO;
-    @RequestMapping("/onlineDashboard")
-    public String registerUser( Model model) {
-        //True If Id and password is match
-            return "redirect:/onlineCustomer";
-    }
+
 }

@@ -13,7 +13,9 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import javax.inject.Scope;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 @Controller
 public class OnlineCustomer {
@@ -27,7 +29,6 @@ public class OnlineCustomer {
 
     @GetMapping("/onlineCustomer")
     public String loadForm_validationSaveMode(Model model, HttpServletRequest request) {
-        model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
         return "onlineCustomer";
     }
 
@@ -46,11 +47,14 @@ public class OnlineCustomer {
         return "redirect:/onlineCustomer";
     }
 
-    @GetMapping("/onlineSignIn")
+
+    @PostMapping("/onlineSignIn")
     public String onlineTableDetails(@ModelAttribute OnlineCustomerDTO onlineCustomer, Model model, HttpServletRequest request) {
         try {
-            if (onlineCustomerBO.findByUserNameAndPassword(onlineCustomer.getUserName(), onlineCustomer.getPassword()) != null) {
-                return "/onlineDashboard";
+            OnlineCustomerDTO onlineCustomerDTO = onlineCustomerBO.findByUserNameAndPassword(onlineCustomer.getUserName(), onlineCustomer.getPassword());
+            if (onlineCustomerDTO != null) {
+                request.getSession().setAttribute("userId", onlineCustomerDTO.getOnlineCustomerId());
+                return "redirect:/onlineDashboard";
             } else {//If User name And Password is not match
                 return "redirect:/onlineCustomer";
             }
@@ -58,6 +62,17 @@ public class OnlineCustomer {
             return "redirect:/onlineCustomer";
         }
 
+    }
+
+    @RequestMapping("/onlineDashboard")
+    public String registerUser(Model model, HttpSession session) {
+        try {
+            String onlineCustomerId = session.getAttribute("userId").toString();
+            model.addAttribute("loggerId", onlineCustomerBO.findOne(onlineCustomerId));
+        } catch (NullPointerException d) {
+            return "onlineDashboard";
+        }
+        return "onlineDashboard";
     }
 
 
