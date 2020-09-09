@@ -23,4 +23,6 @@ public interface RestaurantBO {
     RestaurantOnlineOrderDTO findHighestOnlineOrderId();
 
     void saveOnlineOrder(RestaurantOnlineOrderDTO onlineOrderDTO);
+
+
 }

@@ -233,7 +233,7 @@
             <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
             </li>
             <button type="submit" value="Register"
-                    style="font-weight: bold;color: black" ; onclick="getValue()"
+                    style="font-weight: bold;color: #41a8a5;" ; onclick="getValue()"
                     class="btn btn-success "> Pay <i class="fa fa-file-image-o"></i>
             </button>
         </ul>

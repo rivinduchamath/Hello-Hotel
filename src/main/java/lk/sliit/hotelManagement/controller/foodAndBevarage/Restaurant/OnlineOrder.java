@@ -5,6 +5,7 @@ import lk.sliit.hotelManagement.dto.kitchen.FoodItemDTO;
 import lk.sliit.hotelManagement.dto.restaurant.OnlineCustomerDTO;
 import lk.sliit.hotelManagement.dto.restaurant.restaurantOnlineOrder.RestaurantOnlineOrderDTO;
 import lk.sliit.hotelManagement.service.custom.IndexLoginBO;
+import lk.sliit.hotelManagement.service.custom.KitchenBO;
 import lk.sliit.hotelManagement.service.custom.OnlineCustomerBO;
 import lk.sliit.hotelManagement.service.custom.RestaurantBO;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,6 +26,8 @@ public class OnlineOrder {
     @Autowired
     OnlineCustomerBO onlineCustomerBO;
     @Autowired
+    KitchenBO kitchenBO;
+    @Autowired
     RestaurantBO restaurantBO;
 
     @GetMapping("/onlineOrder")
@@ -34,7 +37,7 @@ public class OnlineOrder {
             String onlineCustomerId = session.getAttribute("userId").toString();
             model.addAttribute("loggerId", onlineCustomerBO.findOne(onlineCustomerId));
 //            Load All Food
-            List<FoodItemDTO> p1 = restaurantBO.findAllFoodItems("Restaurant");
+            List<FoodItemDTO> p1 = kitchenBO.findFoodItems();
             if(p1.isEmpty()){
                 request.setAttribute("loginError","Not Any Item Fond Under Restaurant " +
                         "Type Please Add Data Under Restaurant Type" );
