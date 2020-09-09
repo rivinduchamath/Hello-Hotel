@@ -136,32 +136,22 @@
                             <h2>CookBook</h2>
                             <table>
                                 <td>
-                                    <tr>
-                                        <div class="wrapper">
-                                            <figure class="left marg_right1"><img
-                                                    src="../../onlineRestaurant/restaurant/images/page4_img2.jpg"
-                                                    alt=""></figure>
-                                            <p>
-                                                <a href="#">Sed ut perspiciatis unde omnis iste</a><br>
-                                                Natus error sit voluptatem accusantium doloremque laudantium,<br>
-                                                totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et <br>
-                                                quasi architecto beatae vitae dicta sunt explicabo.
-                                            </p>
-                                        </div>
-                                    </tr>
-                                    <tr>
-                                        <div class="wrapper">
-                                            <figure class="left marg_right1"><img
-                                                    src="../../onlineRestaurant/restaurant/images/page4_img2.jpg"
-                                                    alt=""></figure>
-                                            <p>
-                                                <a href="#">Sed ut perspiciatis unde omnis iste</a><br>
-                                                Natus error sit voluptatem accusantium doloremque laudantium,<br>
-                                                totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et <br>
-                                                quasi architecto beatae vitae dicta sunt explicabo.
-                                            </p>
-                                        </div>
-                                    </tr>
+                                    <c:forEach items="${loadAllTables}" var="e">
+                                        <tr>
+                                            <div class="wrapper">
+                                                <figure class="left marg_right1"><img
+                                                        src="../../onlineRestaurant/restaurant/images/page4_img2.jpg"
+                                                        alt=""></figure>
+                                                <p>
+                                                    <a href="#">Sed ut perspiciatis unde omnis iste</a><br>
+                                                    Natus error sit voluptatem accusantium doloremque laudantium,<br>
+                                                    totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et
+                                                    <br>
+                                                    quasi architecto beatae vitae dicta sunt explicabo.
+                                                </p>
+                                            </div>
+                                        </tr>
+                                    </c:forEach>
                                 </td>
                             </table>
                         </div>
@@ -169,13 +159,9 @@
 
                     <div class="col-1-3">
                         <div class="wrap-col mag-1">
-                            <h2>Food Delivery</h2>
-                            <div class="wrapper pad_bot1">
-                                <figure class="pad_bot1"><img
-                                        src="../../onlineRestaurant/restaurant/images/page4_img4.jpg" alt=""></figure>
-                                Lorem ipsum dolor sit amet, consecte- tur adipisicing elit, sed do eiusmod tempor
-                                incididunt ut labore et dolore magna aliqua.
-                            </div>
+                            <table id="tblOrder">
+
+                            </table>
                         </div>
                     </div>
                 </div>

@@ -61,8 +61,6 @@ public class OnlineTable {
             return "onlineTableDetails";
         }
         return "onlineTableDetails";
-
-
     }
 
 
