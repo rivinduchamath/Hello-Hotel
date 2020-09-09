@@ -68,16 +68,11 @@ public class OnlineOrder {
 
         try {
             String onlineCustomerId = session.getAttribute("userId").toString();
-            System.out.println("userId Id "+ onlineCustomerId);
             onlineOrderDTO.setCustomer(onlineCustomerId);
+            restaurantBO.saveOnlineOrder(onlineOrderDTO);
         } catch (NullPointerException d) {
             return "onlineOrder";
         }
-        System.out.println(onlineOrderDTO.getOrderId()+onlineOrderDTO.getCustomer()+
-                onlineOrderDTO.getDate()+onlineOrderDTO.getOrderState()+
-                onlineOrderDTO.getOrderData());
-
-        restaurantBO.saveOnlineOrder(onlineOrderDTO);
         return "redirect:/onlineOrder";
     }
 

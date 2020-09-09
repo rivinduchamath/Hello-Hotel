@@ -38,6 +38,18 @@
     <link href="../../vendors/datatables.net-buttons-bs/css/buttons.bootstrap.min.css" rel="stylesheet">
     <link href="../../vendors/datatables.net-fixedheader-bs/css/fixedHeader.bootstrap.min.css" rel="stylesheet">
     <link href="../../vendors/datatables.net-responsive-bs/css/responsive.bootstrap.min.css" rel="stylesheet">
+    <script src="../../vendors/jquery/dist/jquery.min.js"></script>
+    <script>
+        document.getElementById("demo")
+        $(window).scroll(function () {
+            if ($(document).scrollTop() > 204) {
+                $(".button1x1").show();
+            } else {
+                $(".button1x1").hide();
+            }
+        });
+
+    </script>
 </head>
 <body id="page4">
 <div class="body6">
@@ -229,14 +241,13 @@
     </div>
     <form method="POST" action="saveOnlineOrder" name="saveOnlineOrder">
         <input style="display: none" type="text" id="itemPay" name="orderData">
-        <ul class="nav navbar-right panel_toolbox">
-            <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
-            </li>
-            <button type="submit" value="Register"
-                    style="font-weight: bold;color: #41a8a5;" ; onclick="getValue()"
-                    class="btn btn-success "> Pay <i class="fa fa-file-image-o"></i>
+
+            <button type="submit" value="Register" id="demo"
+                    style="background-color: #63060a;color: white;height: 40px;
+                     margin-top: -32%;margin-left: 80%; font-weight: bold;color: #ffffff; width: 10%" onclick="getValue()"
+                    class="col-1-1  btn btn-success button1x1 "> Pay <i class="fa fa-save"></i>
             </button>
-        </ul>
+
     </form>
 </div>
 <div class="body3">

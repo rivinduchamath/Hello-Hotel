@@ -36,7 +36,6 @@ public class OnlineTable {
         }
         return "onlineTable";
     }
- /*
 
     @GetMapping("/onlineTableDetails")
     public String onlineTableDetails(Model model, HttpServletRequest request) {
@@ -45,9 +44,9 @@ public class OnlineTable {
         model.addAttribute("loadAllTables", p1);
 
         return "onlineTableDetails";
-    }*/
+    }
 
-    @GetMapping("/checkTimeForTable")
+   /* @GetMapping("/checkTimeForTable")
     public String checkTimeForTable(@ModelAttribute OnlineTableReservationDTO onlineTable, Model model, HttpSession session) {
 
         List<RestaurantTableDTO> p1 = restaurantBO.findAllTableDateEqual(onlineTable.getDate()
@@ -62,7 +61,7 @@ public class OnlineTable {
         }
         return "onlineTableDetails";
     }
-
+*/
 
 
 }
