@@ -1,4 +1,18 @@
 
+
+var selectedRow = null;
+$("#dataTablesButton1 tbody").on('click', 'tr', function () {
+
+    selectedRow = $(this);
+    $("#itemName").val($(this).find("td:nth-child(2)").text());
+    $("#itemCode").val($(this).find("td:nth-child(5)").text());
+    $("#price").val($(this).find("td:nth-child(6)").text());
+
+    $("#dataTablesButton1 tbody tr").removeClass('row-selected');
+    selectedRow.addClass('row-selected');
+});
+
+
 $("#btnAdd").click(function () {
     $("#tblOrder tr").off("dblclick");
     var itemCode = $('#itemCode').val();
@@ -8,14 +22,20 @@ $("#btnAdd").click(function () {
     var total = itemPrice * buyAmount;
 
 
-
+    if (itemCode == "" || itemName == "") {
+        alert("Please Select Item In Table");
+        return;
+    }
+    if (buyAmount == "") {
+        alert("Buy Amount is Empty");
+        return;
+    }
     if (buyAmount == "" || buyAmount <= 0) {
         alert("Buy Amount is Empty");
         return;
     }
 
     var s = myCheck(itemCode)
-    $("#cId").val(customerId);
     if (!s) {
         return;
     }
@@ -92,7 +112,7 @@ function getValue() {
 
     var numberOfRows = $("#tblOrder tr").length;
     var odId = $("#barIdNo").text();
-    var cId = $("#customerId").text();
+
     var str,stre ="";
     for (var i = 0; i < numberOfRows; i++) {
         var itemId = $("#tblOrder tr:nth-child(" + (i + 1) + ") td:nth-child(1)").text();

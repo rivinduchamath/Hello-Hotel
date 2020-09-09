@@ -11,7 +11,7 @@ public class RestaurantOnlineOrderDetails {
     private double quantity;
     private double unitePrice;
     @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.REFRESH, CascadeType.DETACH, CascadeType.MERGE})
-    @JoinColumn(name = "restaurantOnlineOrderId", referencedColumnName = "orderId", insertable = false, updatable = false)
+    @JoinColumn(name = "restaurantOnlineOrder", referencedColumnName = "orderId", insertable = false, updatable = false)
     private RestaurantOnlineOrder restaurantOnlineOrder;
     @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.REFRESH, CascadeType.DETACH, CascadeType.MERGE})
     @JoinColumn(name = "foodItemId", referencedColumnName = "itemId", insertable = false, updatable = false)

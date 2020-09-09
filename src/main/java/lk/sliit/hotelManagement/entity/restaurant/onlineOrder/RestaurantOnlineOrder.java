@@ -3,7 +3,7 @@ package lk.sliit.hotelManagement.entity.restaurant.onlineOrder;
 import lk.sliit.hotelManagement.entity.restaurant.OnlineCustomer;
 
 import javax.persistence.*;
-import java.sql.Date;
+import java.util.Date;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,16 +19,16 @@ public class RestaurantOnlineOrder {
     @OneToMany(mappedBy = "restaurantOnlineOrder", cascade = {CascadeType.PERSIST, CascadeType.REFRESH, CascadeType.DETACH, CascadeType.MERGE})
     private List<RestaurantOnlineOrderDetails> orderDetails = new ArrayList<>();
 
-    public RestaurantOnlineOrder(String orderId, String orderState, Date date, OnlineCustomer customer, List<RestaurantOnlineOrderDetails> orderDetails) {
+    public RestaurantOnlineOrder(String orderId, String orderState, Date date, OnlineCustomer customer) {
         this.orderId = orderId;
         this.orderState = orderState;
         this.date = date;
         this.customer = customer;
-        this.orderDetails = orderDetails;
     }
 
     public RestaurantOnlineOrder() {
     }
+
 
     public String getOrderState() {
         return orderState;

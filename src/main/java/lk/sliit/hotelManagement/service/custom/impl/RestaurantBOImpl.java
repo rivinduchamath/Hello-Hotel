@@ -2,15 +2,21 @@ package lk.sliit.hotelManagement.service.custom.impl;
 
 import lk.sliit.hotelManagement.dao.inventoryDAO.InventoryDAO;
 import lk.sliit.hotelManagement.dao.kitchenDAO.KitchenDAO;
+import lk.sliit.hotelManagement.dao.restaurantDAO.OnlineCustomerDAO;
 import lk.sliit.hotelManagement.dao.restaurantDAO.RestaurantTableDAO;
 import lk.sliit.hotelManagement.dao.restaurantDAO.counterOrderDAO.RestaurantCounterOrderDAO;
 import lk.sliit.hotelManagement.dao.restaurantDAO.counterOrderDAO.RestaurantCounterOrderDetailDAO;
+import lk.sliit.hotelManagement.dao.restaurantDAO.onlineOrderDAO.RestaurantOnlineOrderDAO;
+import lk.sliit.hotelManagement.dao.restaurantDAO.onlineOrderDAO.RestaurantOnlineOrderDetailsDAO;
 import lk.sliit.hotelManagement.dao.restaurantDAO.onlineTableReservationDAO.OnlineTableReservationDAO;
 import lk.sliit.hotelManagement.dto.beverage.BarOrderDTO;
 import lk.sliit.hotelManagement.dto.kitchen.FoodItemDTO;
+import lk.sliit.hotelManagement.dto.restaurant.OnlineCustomerDTO;
 import lk.sliit.hotelManagement.dto.restaurant.RestaurantTableDTO;
 import lk.sliit.hotelManagement.dto.restaurant.restaurantCounterOrder.RestaurantCounterOrderDTO;
 import lk.sliit.hotelManagement.dto.restaurant.restaurantCounterOrder.RestaurantCounterOrderDetailDTO;
+import lk.sliit.hotelManagement.dto.restaurant.restaurantOnlineOrder.RestaurantOnlineOrderDTO;
+import lk.sliit.hotelManagement.dto.restaurant.restaurantOnlineOrder.RestaurantOnlineOrderDetailsDTO;
 import lk.sliit.hotelManagement.dto.restaurant.restaurantOnlineTable.OnlineTableReservationDTO;
 import lk.sliit.hotelManagement.entity.barManage.BarOrders;
 import lk.sliit.hotelManagement.entity.inventory.Inventory;
@@ -18,6 +24,8 @@ import lk.sliit.hotelManagement.entity.kitchen.FoodItem;
 import lk.sliit.hotelManagement.entity.restaurant.RestaurantTable;
 import lk.sliit.hotelManagement.entity.restaurant.counterOrder.RestaurantCounterOrder;
 import lk.sliit.hotelManagement.entity.restaurant.counterOrder.RestaurantCounterOrderDetail;
+import lk.sliit.hotelManagement.entity.restaurant.onlineOrder.RestaurantOnlineOrder;
+import lk.sliit.hotelManagement.entity.restaurant.onlineOrder.RestaurantOnlineOrderDetails;
 import lk.sliit.hotelManagement.entity.restaurant.onlineTableReservation.OnlineTableReservation;
 import lk.sliit.hotelManagement.service.custom.RestaurantBO;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,7 +52,13 @@ public class RestaurantBOImpl implements RestaurantBO {
     RestaurantCounterOrderDAO restaurantCounterOrderDAO;
     @Autowired
     RestaurantCounterOrderDetailDAO restaurantCounterOrderDetail;
+    @Autowired
+    RestaurantOnlineOrderDetailsDAO onlineOrderDetailsDAO;
+    @Autowired
+    RestaurantOnlineOrderDAO onlineOrderDAO;
 
+    @Autowired
+    OnlineCustomerDAO onlineCustomerDAO;
     @Override
     public RestaurantCounterOrderDTO findTopByOrderByRestIdDesc() {
 
@@ -98,8 +112,8 @@ public class RestaurantBOImpl implements RestaurantBO {
 
         for (RestaurantCounterOrderDetailDTO orderDetail : list) {
              restaurantCounterOrderDetail.save(new RestaurantCounterOrderDetail(
+                     orderDetail.getFoodItem(),
                     restaurantCounterOrderDTO.getOrderId(),
-                    orderDetail.getFoodItem(),
                     orderDetail.getQuantity(),
                     orderDetail.getUnitePrice()));
 
@@ -156,6 +170,64 @@ public class RestaurantBOImpl implements RestaurantBO {
 
 
         return null;
+    }
+
+    @Override
+    public RestaurantOnlineOrderDTO findHighestOnlineOrderId() {
+        RestaurantOnlineOrder orders = null;
+        try {
+            orders = onlineOrderDAO.findTopByOrderByOrderIdDesc();
+        } catch (Exception e) {
+
+        }
+        return new RestaurantOnlineOrderDTO(
+                orders.getOrderId()
+        );
+    }//End
+
+
+    @Override
+    public void saveOnlineOrder(RestaurantOnlineOrderDTO onlineOrderDTO) {
+        java.util.List<RestaurantOnlineOrderDetailsDTO> list = new ArrayList<>();
+        String arr = onlineOrderDTO.getOrderData();
+        System.out.println("arrrrrrrrrrrrrrrrrrrrrrrrrr"+arr);
+        String yo[] = arr.split(" ");
+        int count = 0;
+        RestaurantOnlineOrderDetailsDTO itm = new RestaurantOnlineOrderDetailsDTO();
+        for (String str : yo) {
+            if (count == 0) {
+                itm = new RestaurantOnlineOrderDetailsDTO();
+                itm.setFoodItem(str);
+                count++;
+
+            } else if (count == 1) {
+                itm.setUnitePrice(Double.parseDouble(str));
+                count++;
+
+            } else if (count == 2) {
+                itm.setQuantity(Double.parseDouble(str));
+                list.add(itm);
+                count = 0;
+            }
+        }
+        Calendar cal = Calendar.getInstance();
+        cal.add(Calendar.DATE, 0);
+        java.util.Date today = cal.getTime();
+        onlineOrderDTO.setDate(today);
+        onlineOrderDAO.save(new RestaurantOnlineOrder(
+                onlineOrderDTO.getOrderId(),
+                onlineOrderDTO.getOrderState(),
+                onlineOrderDTO.getDate(),
+                onlineCustomerDAO.findOne(onlineOrderDTO.getCustomer())));
+
+        for (RestaurantOnlineOrderDetailsDTO orderDetail : list) {
+            onlineOrderDetailsDAO.save(new RestaurantOnlineOrderDetails(
+                    orderDetail.getFoodItem(),
+                    onlineOrderDTO.getOrderId(),
+                    orderDetail.getQuantity(),
+                    orderDetail.getUnitePrice()));
+
+        }
     }
 
 //    Online table

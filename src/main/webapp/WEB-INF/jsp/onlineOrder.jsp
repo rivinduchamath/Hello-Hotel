@@ -34,6 +34,10 @@
                 alt=""/></a>
     </div>
     <![endif]-->
+    <link href="../../vendors/datatables.net-bs/css/dataTables.bootstrap.min.css" rel="stylesheet">
+    <link href="../../vendors/datatables.net-buttons-bs/css/buttons.bootstrap.min.css" rel="stylesheet">
+    <link href="../../vendors/datatables.net-fixedheader-bs/css/fixedHeader.bootstrap.min.css" rel="stylesheet">
+    <link href="../../vendors/datatables.net-responsive-bs/css/responsive.bootstrap.min.css" rel="stylesheet">
 </head>
 <body id="page4">
 <div class="body6">
@@ -127,14 +131,14 @@
     </div>
 </div>
 <div class="body2">
-    <div class="main ">
+    <div class="main zerogrid">
         <article id="content2">
             <section>
                 <div class="wrapper">
-                    <div class="col-2-3">
+                    <div class="col-2-5">
                         <div class="wrap-col">
-                            <h2>&nbsp;&nbsp;&nbsp;Food Items</h2>
-                            <table>
+                            <h2>Food Items</h2>
+                            <table id="dataTablesButton1">
 
                                 <c:forEach items="${loadAllFoods}" var="e">
                                     <tr>
@@ -143,27 +147,79 @@
                                                     src="../../onlineRestaurant/restaurant/images/page4_img2.jpg"
                                                     alt=""></figure>
                                         </td>
-                                        <td id="itemName" style="color: #e02b2b;position: absolute"> ${e.itemName}
-                                            &nbsp;&nbsp;&nbsp;
-                                        </td>
+                                        <td style="color: #e02b2b;position: absolute"> ${e.itemName}</td>
                                         <td><br>
-                                            &nbsp;
-                                             <button id="btnAdd"  style="width: 40px;height: 40px;background-color: #bbb7b7; border-radius: 5px"
+
+                                            <button id="btnAdd1"
+                                                    style="width: 40px;height: 40px;background-color: #bbb7b7; border-radius: 5px"
                                                     type="button"><i class="fa fa-plus"></i></button>
                                         </td>
-                                        <td id="price"><br>${e.unitePrice}</td>
-                                        <td style="display: none" id="itemCode">${e.itemId}</td>
+                                        <td><br>Unite Price : ${e.unitePrice}</td>
+                                        <td style="display: none" >${e.itemId}</td>
+                                        <td style="display: none" >${e.unitePrice}</td>
                                     </tr>
                                 </c:forEach>
                             </table>
                         </div>
                     </div>
 
-                    <div class="col-1-3">
+                    <div class="col-3-5">
                         <div class="wrap-col mag-1">
-                            <table id="tblOrder">
+                            <h2>Food Order</h2>
+                            <form>
+                                <div class="form-group">
+                                    <label >&nbsp;&nbsp;
+                                        &nbsp;&nbsp;&nbsp;&nbsp;Item Id</label>
+                                    <input style="" type="text" class="form-control"
+                                           required="required" readonly name="itemId"
+                                           id="itemCode" placeholder="Item Id"/>
+                                </div>
+                                <div class="form-group"style="top: 10px; position: relative;">
+                                    <label style="width: 10%">Item Name</label>
+                                    <input type="text" class="form-control"
+                                           required="required"readonly name="itemId"
+                                           id="itemName" placeholder="Item Name"/>
+                                </div>
+                                <div class="form-group" style="top: 20px;position: relative; ">
+                                    <label >&nbsp;&nbsp;
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                        &nbsp;&nbsp;&nbsp;&nbsp;Qty</label>
+                                    <input type="number" class="form-control"
+                                           required="required" name="itemId"
+                                           id="qty" placeholder="Item Qty"/>
+                                </div>
+                                <div class="form-group" style="display: none;">
+                                    <input type="hidden" class="form-control"
+                                           required="required"readonly name="itemId"
+                                           id="price" placeholder="Item Price"/>
+                                </div>
+                                <button type='button' class="btn btn-primary"
+                                        style="left:70px;top: 30px; position: relative;
+                                        height:25px;color:white;width: 20%;background-color: #a5113b" id="btnAdd"
+                                        value="Register">
+                                    Add
+                                </button>
+                            </form><br>
 
-                            </table>
+                            <div class="x_content">
+
+                                            <table style="position:relative;top: 20px;text-align: center">
+                                                <thead class="thead-light">
+                                                <tr>
+                                                    <th style="width: 10%">ItemId</th>
+                                                    <th style="width: 20%">Name</th>
+                                                    <th style="width: 10%">Price</th>
+                                                    <th style="width: 10%">Qty</th>
+                                                    <th style="width: 20%">Total</th>
+                                                    <th style="width: 10%">Delete</th>
+                                                </tr>
+
+                                                </thead>
+                                                <tbody id="tblOrder">
+                                                </tbody>
+                                            </table>
+
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -171,6 +227,17 @@
         </article>
         <!-- / content -->
     </div>
+    <form method="POST" action="saveOnlineOrder" name="saveOnlineOrder">
+        <input style="display: none" type="text" id="itemPay" name="orderData">
+        <ul class="nav navbar-right panel_toolbox">
+            <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+            </li>
+            <button type="submit" value="Register"
+                    style="font-weight: bold;color: black" ; onclick="getValue()"
+                    class="btn btn-success "> Pay <i class="fa fa-file-image-o"></i>
+            </button>
+        </ul>
+    </form>
 </div>
 <div class="body3">
 
@@ -210,9 +277,11 @@
     </div>
 
 </div>
+<!-- jQuery -->
 <script src="../../vendors/jquery/dist/jquery.min.js"></script>
 <script type="text/javascript"> Cufon.now(); </script>
 
 <script src="../../js/onlineOrders.js"></script>
+
 </body>
 </html>
