@@ -127,32 +127,34 @@
     </div>
 </div>
 <div class="body2">
-    <div class="main zerogrid">
+    <div class="main ">
         <article id="content2">
             <section>
                 <div class="wrapper">
                     <div class="col-2-3">
                         <div class="wrap-col">
-                            <h2>CookBook</h2>
+                            <h2>&nbsp;&nbsp;&nbsp;Food Items</h2>
                             <table>
-                                <td>
-                                    <c:forEach items="${loadAllTables}" var="e">
-                                        <tr>
-                                            <div class="wrapper">
-                                                <figure class="left marg_right1"><img
-                                                        src="../../onlineRestaurant/restaurant/images/page4_img2.jpg"
-                                                        alt=""></figure>
-                                                <p>
-                                                    <a href="#">Sed ut perspiciatis unde omnis iste</a><br>
-                                                    Natus error sit voluptatem accusantium doloremque laudantium,<br>
-                                                    totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et
-                                                    <br>
-                                                    quasi architecto beatae vitae dicta sunt explicabo.
-                                                </p>
-                                            </div>
-                                        </tr>
-                                    </c:forEach>
-                                </td>
+
+                                <c:forEach items="${loadAllFoods}" var="e">
+                                    <tr>
+                                        <td>
+                                            <figure class="pad_bot1 left marg_right1"><img
+                                                    src="../../onlineRestaurant/restaurant/images/page4_img2.jpg"
+                                                    alt=""></figure>
+                                        </td>
+                                        <td id="itemName" style="color: #e02b2b;position: absolute"> ${e.itemName}
+                                            &nbsp;&nbsp;&nbsp;
+                                        </td>
+                                        <td><br>
+                                            &nbsp;
+                                             <button id="btnAdd"  style="width: 40px;height: 40px;background-color: #bbb7b7; border-radius: 5px"
+                                                    type="button"><i class="fa fa-plus"></i></button>
+                                        </td>
+                                        <td id="price"><br>${e.unitePrice}</td>
+                                        <td style="display: none" id="itemCode">${e.itemId}</td>
+                                    </tr>
+                                </c:forEach>
                             </table>
                         </div>
                     </div>
@@ -208,6 +210,9 @@
     </div>
 
 </div>
+<script src="../../vendors/jquery/dist/jquery.min.js"></script>
 <script type="text/javascript"> Cufon.now(); </script>
+
+<script src="../../js/onlineOrders.js"></script>
 </body>
 </html>
