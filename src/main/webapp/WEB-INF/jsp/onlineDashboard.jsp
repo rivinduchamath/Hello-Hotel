@@ -73,7 +73,8 @@
                     <nav>
                         <ul id="top_nav">
                             <li><a href="#"><img src="../../onlineRestaurant/restaurant/images/icon_2.gif" alt=""></a></li>
-                            <li class="end"><a href="onlineCustomer"><i class="fa fa-user" style="color: rgba(255,255,255,0.91); font-size:20px;"> LogIn ${loggerId.name}
+                            <li class="end"><a href="onlineCustomer"><i class="fa fa-user" style="color: rgba(255,255,255,0.91); font-size:20px;">
+                                LogIn ${loggerId.name}
 
                             </i></a></li>
 
