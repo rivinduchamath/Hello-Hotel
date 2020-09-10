@@ -54,10 +54,8 @@ public class OnlineOrder {
     public String saveForm(@ModelAttribute RestaurantOnlineOrderDTO onlineOrderDTO, HttpSession session) {
 
         try {
-            System.out.println("Order Id 222222222222222222222222222222222222222222222222");
-            RestaurantOnlineOrderDTO top = restaurantBO.findHighestOnlineOrderId();
+             RestaurantOnlineOrderDTO top = restaurantBO.findHighestOnlineOrderId();
             int x = Integer.parseInt(top.getOrderId()) + 1;
-            System.out.println("Order Id 333333333333333333333333333333333"+ x);
             onlineOrderDTO.setOrderId(String.valueOf(x));
         } catch (NullPointerException e) {
 
@@ -71,7 +69,7 @@ public class OnlineOrder {
             onlineOrderDTO.setCustomer(onlineCustomerId);
             restaurantBO.saveOnlineOrder(onlineOrderDTO);
         } catch (NullPointerException d) {
-            return "onlineOrder";
+            return "redirect:/onlineOrder";
         }
         return "redirect:/onlineOrder";
     }
