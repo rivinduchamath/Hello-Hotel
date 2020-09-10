@@ -10,6 +10,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
@@ -26,11 +28,17 @@ public class BanquetUpdate {
         ModelAndView mv = new ModelAndView("banquetUpdate");
         model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
 
-        List<BanquetAddDTO> list = banquetBO.findAllBanquet();
+        List<BanquetAddDTO> list = banquetBO.findUnconfirmedBanquet();
         mv.addObject("loadTable",list);
 
         return mv;
 
+    }
+
+    @PostMapping("updateBanquet")
+    public String updateBanquet(@ModelAttribute BanquetAddDTO banquetAddDTO){
+        banquetBO.updateBanquetDetails(banquetAddDTO);
+        return "redirect:/banquetUpdate";
     }
     
 }

@@ -61,10 +61,10 @@ public class BanquetAddDTO {
         this.banquetBillId = billId;
     }
 
-    public BanquetAddDTO(String orderId, String name, String address, Date date, String hallId, int noOfPlates, double advancePayment, String orderState) {
+    public BanquetAddDTO(String orderId, String name, int contactNumber, Date date, String hallId, int noOfPlates, double advancePayment, String orderState) {
         this.orderId = orderId;
         this.name = name;
-        this.address = address;
+        this.contactNumber = contactNumber;
         this.date = date;
         this.hallId = hallId;
         this.noOfPlates = noOfPlates;

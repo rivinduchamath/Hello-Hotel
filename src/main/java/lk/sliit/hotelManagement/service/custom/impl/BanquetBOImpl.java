@@ -146,15 +146,12 @@ public class BanquetBOImpl implements BanquetBO {
         cal2.add(Calendar.DATE, 1);
         java.util.Date afterOneDays = cal2.getTime();
         Iterable <BanquetOrder> banquetOrders = banquetOrderDAO.findBanquetOrdersByDateBetween (afterOneDays ,afterThreeDays);
-        for ( BanquetOrder a: banquetOrders){
-            System.out.println(a.getDate());
-        }
         List <BanquetAddDTO> dtos = new ArrayList<>();
         for ( BanquetOrder a: banquetOrders){
             dtos.add(new BanquetAddDTO(
                     a.getOrderId(),
                     a.getCustomer().getName(),
-                    a.getCustomer().getAddress(),
+                    a.getCustomer().getContactNumber(),
                     a.getDate(),
                     a.getHallId(),
                     a.getNoOfPlates(),
@@ -168,20 +165,66 @@ public class BanquetBOImpl implements BanquetBO {
     @Override
     public void updateBanquetStatus(String orderId) {
         String status ="confirmed";
-        /*banquetOrderDTO.setOrderState(status);
-        banquetOrderDAO.save(new BanquetOrder(
-                banquetAddDTO.getOrderId(),
-                banquetAddDTO.getHallId(),
-                banquetAddDTO.getOrderState(),
-                banquetAddDTO.getNoOfPlates(),
-                banquetAddDTO.getDate(),
-                banquetAddDTO.getSubmittedBy(),
-                customerDAO.findOne(banquetAddDTO.getCustomerId()),
-                menuDAO.findOne(banquetAddDTO.getMenuId()),
-                banquetBillDAO.findOne(banquetAddDTO.getBanquetBillId())
-        ));*/
-
-        banquetOrderDAO.abc(status,orderId);
+        banquetOrderDAO.updateBanStatus(status,orderId);
 
     }
+
+    @Override
+    public List<BanquetAddDTO> findTodayBanquets() {
+        Date todayDate = new Date();
+        Iterable <BanquetOrder> banquetOrders = banquetOrderDAO.findBanquetOrdersByDate(todayDate);
+        List <BanquetAddDTO> dtos2 = new ArrayList<>();
+        for ( BanquetOrder a: banquetOrders){
+            dtos2.add(new BanquetAddDTO(
+                    a.getOrderId(),
+                    a.getCustomer().getName(),
+                    a.getCustomer().getContactNumber(),
+                    a.getDate(),
+                    a.getHallId(),
+                    a.getNoOfPlates(),
+                    a.getBanquetBill().getAdvancePayment(),
+                    a.getOrderState()
+            ));
+        }
+        return dtos2;
+    }
+
+    @Override
+    public void updateBanquetDetails(BanquetAddDTO banquetAddDTO) {
+        banquetBillDAO.updateBanquetBillTable(
+                banquetAddDTO.getAdvanceFee(),
+                banquetAddDTO.getBanquetBillId()
+        );
+        banquetOrderDAO.updateBanquetTable(
+                banquetAddDTO.getHallId(),
+                banquetAddDTO.getNoOfPlates(),
+                banquetAddDTO.getDate(),
+                menuDAO.findOne(banquetAddDTO.getMenuId()),
+                banquetAddDTO.getOrderId()
+        );
+
+    }
+
+    @Override
+    public List<BanquetAddDTO> findUnconfirmedBanquet() {
+        String status = "pending";
+        Iterable<BanquetOrder> all = banquetOrderDAO.findAllByOrderStateEquals(status);
+        List<BanquetAddDTO> dtos = new ArrayList<>();
+        for ( BanquetOrder a: all){
+            dtos.add(new BanquetAddDTO(
+                    a.getOrderId(),
+                    a.getCustomer().getName(),
+                    a.getCustomer().getAddress(),
+                    a.getDate(),
+                    a.getHallId(),
+                    a.getNoOfPlates(),
+                    a.getMenu().getMenuId(),
+                    a.getBanquetBill().getAdvancePayment(),
+                    a.getBanquetBill().getBillId()
+            ));
+        }
+        return dtos;
+    }
+
+
 }

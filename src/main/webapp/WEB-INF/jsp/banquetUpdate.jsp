@@ -271,21 +271,21 @@
             <%--Input Feilds--%>
             <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
                 <div class="col-12 col-sm-12 col-md-12 col-lg-5 col-xl-5">
-                    <form method="POST"  action="/saveBanquet" name="saveBanquet">
+                    <form method="POST"  action="updateBanquet" name="saveBanquet">
 
                         <div class="form-group">
 
                             <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
                                 <label >Banquet Id</label>
                                 <input type="text" class="form-control"
-                                       required="required" name="id"
-                                       id="id" placeholder="Banquet Id" readonly/></div>
+                                       required="required" name="orderId"
+                                       id="orderId" placeholder="Banquet Id" readonly/></div>
 
                             <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
-                                <label for="id">Customer Name</label>
+                                <label for="orderId">Customer Name</label>
                                 <input type="text" class="form-control"
-                                       required="required" name="customer_name"
-                                       id="customer_name" placeholder="Customer Name" readonly/></div>
+                                       required="required" name="name"
+                                       id="name" placeholder="Customer Name" readonly/></div>
 
                         </div>
 
@@ -294,7 +294,7 @@
 
 
                             <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6"> <br>
-                                <label for="id">Address</label>
+                                <label for="orderId">Address</label>
                                 <input type="text" class="form-control"
                                        required="required" name="address"
                                        id="address" placeholder="Address" readonly/></div>
@@ -304,14 +304,14 @@
                         <div class="form-group">
 
                             <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6"> <br>
-                                <label for="id">Date</label>
+                                <label for="orderId">Date</label>
                                 <input type="date" class="form-control"
                                        required="required" name="date"
                                        id="date" placeholder="Date"/></div>
                             <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6"> <br>
-                                <label for="id">Hall No</label>
-                                <select class="form-control"required="required" name="hall_id"
-                                        id="hall_id">
+                                <label for="orderId">Hall No</label>
+                                <select class="form-control"required="required" name="hallId"
+                                        id="hallId">
                                     <option>Choose Hall No</option>
                                     <option value="No 1">No 1</option>
                                     <option value="No 2">No 2</option>
@@ -322,15 +322,15 @@
                         </div>
                         <div class="form-group">
                             <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6"> <br>
-                                <label for="id">Num Of Plates</label>
+                                <label for="orderId">Num Of Plates</label>
                                 <input type="text" class="form-control"
-                                       required="required" name="num_of_plates"
-                                       id="num_of_plates" placeholder="Num Of Plates"/></div>
+                                       required="required" name="noOfPlates"
+                                       id="noOfPlates" placeholder="Num Of Plates"/></div>
 
                             <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6"> <br>
-                                <label for="id">Package</label>
-                                <select class="form-control"required="required" name="package"
-                                        id="package">
+                                <label for="orderId">Package</label>
+                                <select class="form-control"required="required" name="menuId"
+                                        id="menuId">
                                     <option>Choose Package</option>
                                     <option value="1">Platinum</option>
                                     <option value="2">Gold</option>
@@ -341,10 +341,10 @@
                             </div>
 
                             <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6"> <br>
-                                <label for="id">Advance Payment</label>
+                                <label for="banquetBillId">Advance Payment</label>
                                 <input type="text" class="form-control"
-                                       required="required" name="advance_fee"
-                                       id="advance_fee" placeholder="Advance Payment"/></div>
+                                       required="required" name="advanceFee"
+                                       id="advanceFee" placeholder="Advance Payment"/></div>
 
                             <input type="hidden" required="required" name="banquetBillId"
                                    id="banquetBillId" >
@@ -368,7 +368,7 @@
                         <div class="x_panel">
                             <div class="x_title">
                                 <h2>Upcoming Banquets
-                                    <small>select banquet</small>
+                                    <small>unconfirmed banquet</small>
                                 </h2>
                                 <ul class="nav navbar-right panel_toolbox">
                                     <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
@@ -477,14 +477,14 @@
     var selectedRow = null;
     $("#datatable-buttons tbody").on('click', 'tr', function () {
         selectedRow = $(this);
-        $("#id").val($(this).find("td:nth-child(1)").text());
-        $("#customer_name").val($(this).find("td:nth-child(2)").text());
+        $("#orderId").val($(this).find("td:nth-child(1)").text());
+        $("#name").val($(this).find("td:nth-child(2)").text());
         $("#address").val($(this).find("td:nth-child(3)").text());
         $("#date").val($(this).find("td:nth-child(4)").text());
-        $("#hall_id").val($(this).find("td:nth-child(5)").text());
-        $("#num_of_plates").val($(this).find("td:nth-child(6)").text());
-        $("#package").val($(this).find("td:nth-child(7)").text());
-        $("#advance_fee").val($(this).find("td:nth-child(8)").text());
+        $("#hallId").val($(this).find("td:nth-child(5)").text());
+        $("#noOfPlates").val($(this).find("td:nth-child(6)").text());
+        $("#menuId").val($(this).find("td:nth-child(7)").text());
+        $("#advanceFee").val($(this).find("td:nth-child(8)").text());
         $("#banquetBillId").val($(this).find("td:nth-child(9)").text());
         selectedRow.addClass('row-selected');
     });
