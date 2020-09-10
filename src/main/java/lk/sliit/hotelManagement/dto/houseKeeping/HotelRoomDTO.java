@@ -10,20 +10,25 @@ public class HotelRoomDTO {
     private String roomName;
     private Date date;
     private String status;
+    private String holder;
 
 
-    public HotelRoomDTO(String roomId, String roomType, String description, double price, String roomName, Date date, String status) {
-        this.roomId = roomId;
-        this.roomType = roomType;
-        this.description = description;
-        this.price = price;
-        this.roomName = roomName;
-        this.date = date;
-        this.status = status;
-
-    }
 
     public HotelRoomDTO() {
+    }
+
+    public HotelRoomDTO(String roomId) {
+    }
+
+    public HotelRoomDTO(String roomId, String roomName, String roomType, String description, String status, String holder, double price, Date date) {
+        this.roomId = roomId;
+        this.roomName = roomName;
+        this.roomType = roomType;
+        this.description = description;
+        this.status = status;
+        this.holder = holder;
+        this.price = price;
+        this.date = date;
     }
 
     public String getRoomId() {
@@ -70,6 +75,11 @@ public class HotelRoomDTO {
 
     public void setStatus(String status) { this.status = status; }
 
+    public String getHolder() { return holder;}
+
+    public String getType() { return roomType; }
+
+
 
 
     @Override
@@ -81,6 +91,7 @@ public class HotelRoomDTO {
                 ", price=" + price +
                 '}';
     }
+
 
 
 }

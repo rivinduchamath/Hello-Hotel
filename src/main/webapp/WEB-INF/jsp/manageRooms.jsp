@@ -276,29 +276,24 @@
 
             <%--Input Feilds--%>
             <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
-            <div class="col-12 col-sm-12 col-md-12 col-lg-5 col-xl-5">
+            <div class="col-12 col-sm-12 col-md-12 col-lg-4 col-xl-4">
                 <form method="POST"  action="/manageRoomSave" name="/manageRoomSave">
 
+                    <input type="hidden" id="roomId" name="roomId" value="">
                     <div class="form-group">
 
                         <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
-                            <label >Room Id</label>
-                            <input type="text" class="form-control"
-                               required="required" name="roomId"
-                               id="id" placeholder="Room Id"/></div>
-
-                            <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
-                                <label for="id">Room Name</label>
+                                <label>Room Name</label>
                         <input type="text" class="form-control"
                                required="required" name="roomName"
-                               id="name" placeholder="Room Name"/></div>
+                               id="roomName" placeholder="Room Name"/></div>
                     </div>
 
                     <div class="form-group">
 
 
                         <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12"> <br>
-                            <label for="id">Description</label>
+                            <label> Description</label>
                             <textarea type="text" class="form-control"
                                    required="required" name="description"
                                       id="address" placeholder="Description"></textarea></div>
@@ -307,7 +302,7 @@
 
                     <div class="form-group">
                         <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6"> <br>
-                            <label for="id">Date</label>
+                            <label>Date</label>
                             <input type="date" class="form-control"
                                    required="required" name="date"
                                    id="date" placeholder="Date"/></div>
@@ -317,8 +312,8 @@
 
                     <div class="form-group">
                         <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6"> <br>
-                            <label for="id">State</label>
-                            <select id="setType2" class="form-control"
+                            <label >State</label>
+                            <select id="status" class="form-control"
                                     style="width: 100%; border-color: lightgray"
                                     name="status">
                                 <option value="Cleaned">Cleaned</option>
@@ -328,17 +323,17 @@
                     </div>
                     <div class="form-group">
                         <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6"> <br>
-                            <label for="id">Condition</label>
-                            <select id="setType" class="form-control"
+                            <label >Condition</label>
+                            <select id="roomType" class="form-control"
                                     style="width: 100%; border-color: lightgray"
-                                    name="type">
+                                    name="roomType">
                                 <option value="AC">A/C</option>
-                                <option value="AC">Non.A/C</option>
+                                <option value="NonA/C">Non.A/C</option>
                             </select>
                         </div>
                     </div>
                     <button type='submit' class="btn btn-dark" style="width: 50%; top: 20px; position: relative" value="Register">
-                        Submit
+                        +Add/Update
                     </button>
                     <button type='reset' class="btn btn-outline-success" style="top: 20px; position: relative" value="">Reset</button>
 
@@ -346,7 +341,7 @@
             </div>
             <%--/Input Feilds--%>
             <%--Table--%>
-            <div class="col-12 col-sm-12 col-md-12 col-lg-7 col-xl-7">
+            <div class="col-12 col-sm-12 col-md-12 col-lg-8 col-xl-8">
                     <div class="row">
                     <div class="x_panel">
                         <div class="x_title">
@@ -384,22 +379,27 @@
                                                 <th>Date</th>
                                                 <th>Delete</th>
 
+
                                             </tr>
 
                                             </thead>
                                             <tbody>
+                                            <c:forEach items="${loadHotelRoomTable}" var="room">
+                                                <tr>
+                                                    <td>${room.roomId}</td>
+                                                    <td>${room.roomName}</td>
+                                                    <td>${room.description}</td>
+                                                    <td>${room.holder}</td>
+                                                    <td>${room.status}</td>
+                                                    <td>${room.type}</td>
+                                                    <td>${room.date}</td>
+                                                    <td>  <a href="roomDelete/${room.roomId}" onclick="return confirm('Are you sure you want to delete?')"  class="btn btn-xs">
 
-                                            <tr>
-                                                <td>R001</td>
-                                                <td>Delux</td>
-                                                <td>Lorem</td>
-                                                <td>Cherif</td>
-                                                <td>Cleaned</td>
-                                                <td>A/C</td>
-                                                <td>2020/09/09</td>
-                                                <td>  <a href="deleteSupplier/${e.roomId}"onclick="return confirm('Are you sure you want to delete?')"  class="btn btn-xs">
                                                     <i class="fa fa-trash-o"></i></a></td>
-                                            </tr>
+
+
+                                                </tr>
+                                            </c:forEach>
                                             </tbody>
                                         </table>
                                     </div>
@@ -459,27 +459,23 @@
 
 <%--Pie Chart 2--%>
 
-
 <script>
 
-        var selectedRow = null;
-        $("#datatable-buttons tbody").on('click', 'tr', function () {
-            selectedRow = $(this);
-            $("#userId").val($(this).find("td:nth-child(1)").text());
-            $("#userName").val($(this).find("td:nth-child(2)").text());
-            $("#position").val($(this).find("td:nth-child(3)").text());
-            $("#mobileNo").val($(this).find("td:nth-child(4)").text());
-            $("#pic").val($(this).find("td:nth-child(5)").text());
-            $("#salary").val($(this).find("td:nth-child(6)").text());
-            $("#address").val($(this).find("td:nth-child(7)").text());
-            $("#email").val($(this).find("td:nth-child(8)").text());
-            $("#password").val($(this).find("td:nth-child(9)").text());
-            $("#gender").val($(this).find("td:nth-child(10)").text());
-            $("#date").val($(this).find("td:nth-child(11)").text());
-            $("#dateOfBirth").val($(this).find("td:nth-child(12)").text());
-            selectedRow.addClass('row-selected');
-        });
+    var selectedRow = null;
+    $("#datatable-buttons tbody").on('click', 'tr', function () {
+        selectedRow = $(this);
+        $("#roomId").val($(this).find("td:first-child").text());
+        $("#roomName").val($(this).find("td:nth-child(2)").text());
+        $("#address").val($(this).find("td:nth-child(3)").text());
+        $("#status").val($(this).find("td:nth-child(5)").text());
+        $("#roomType").val($(this).find("td:nth-child(6)").text());
+        $("#date").val($(this).find("td:nth-child(7)").text());
+        selectedRow.addClass('row-selected');
+    });
 </script>
+
+
+
 
 <%--/Pie Chart 2--%>
 </body>
