@@ -41,5 +41,10 @@ public class BanquetCancel {
         return "redirect:/banquets";
     }
 
+    @RequestMapping("deleteBanquet")
+    public String deleteBanquet(@RequestParam String idNo) {
+        banquetBO.deleteBanquet(idNo);
+        return "redirect:/banquetDelete";
+    }
 
 }
