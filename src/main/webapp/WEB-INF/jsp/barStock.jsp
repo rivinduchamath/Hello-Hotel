@@ -201,28 +201,29 @@
 
                             <label>Item Id</label>
                             <input type="text" class="form-control"
-                                   required="required" name="userId"
-                                   id="userId" placeholder="Item Id"/>
+                                   required="required" name="inventoryId" readonly
+                                   id="itemId" placeholder="Item Id"/>
 
 
-                            <label for="userId">Item Name</label>
+                            <label>Item Name</label>
                             <input type="text" class="form-control"
-                                   required="required" name="name"
-                                   id="userName" placeholder="Item Name"/>
+                                   required="required" name="text"readonly
+                                   id="itemName" placeholder="Item Name"/>
                         </div>
 
                         <div class="form-group">
 
-                            <label for="userId">Order Qty</label>
-                            <input type="text" class="form-control"
-                                   required="required" name="position"
-                                   id="position" placeholder="Qty"/>
+                            <label >Order Qty</label>
+                            <input type="number" class="form-control"
+                                   required="required" name="orderQty"
+                                   id="qty" placeholder="Qty"/>
 
 
-                            <label for="userId">Expected Date</label>
+                            <label >Expected Date</label>
                             <input type="date" class="form-control"
-                                   required="required" name="address"
-                                   id="address" placeholder="mm/dd/yy"/></div>
+                                   required="required" name="expDate"
+                                   id="date" placeholder="mm/dd/yy"/></div>
+
                         <button type='submit' class="btn btn-dark" style="width: 50%; top: 20px; position: relative"
                                 value="Register">
                             Submit
@@ -337,6 +338,17 @@
 <script src="../../vendors/jszip/dist/jszip.min.js"></script>
 <script src="../../vendors/iCheck/icheck.min.js"></script>
 <!-- Custom Theme Scripts -->
+
+<script>
+    var selectedRow = null;
+    $("#datatable-buttons tbody").on('click', 'tr', function () {
+        selectedRow = $(this);
+        $("#itemId").val($(this).find("td:nth-child(1)").text());
+        $("#itemName").val($(this).find("td:nth-child(2)").text());
+        $("#datatable-buttons tbody tr").removeClass('row-selected');
+        selectedRow.addClass('row-selected');
+    });
+</script>
 <script src="../../build/js/custom.min.js"></script>
 
 
