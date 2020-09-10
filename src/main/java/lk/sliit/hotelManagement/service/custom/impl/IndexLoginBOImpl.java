@@ -2,10 +2,14 @@ package lk.sliit.hotelManagement.service.custom.impl;
 
 import lk.sliit.hotelManagement.dao.manageSystem.EmployeeDAO;
 import lk.sliit.hotelManagement.dao.manageSystem.NoticeDAO;
+
+import lk.sliit.hotelManagement.dao.restaurantDAO.OnlineCustomerDAO;
 import lk.sliit.hotelManagement.dto.manager.EmployeeDTO;
 import lk.sliit.hotelManagement.dto.manager.NoticeDTO;
+import lk.sliit.hotelManagement.dto.restaurant.OnlineCustomerDTO;
 import lk.sliit.hotelManagement.entity.manager.Notice;
 import lk.sliit.hotelManagement.entity.manager.Employee;
+import lk.sliit.hotelManagement.entity.restaurant.OnlineCustomer;
 import lk.sliit.hotelManagement.service.custom.IndexLoginBO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -24,6 +28,9 @@ public class IndexLoginBOImpl implements IndexLoginBO {
 
     @Autowired
     NoticeDAO noticeDAO;
+
+    @Autowired
+    OnlineCustomerDAO onlineCustomerDAO;
 
     @Override
     public EmployeeDTO findByIdNoAndPassword(String idNo, String password) {
@@ -73,4 +80,6 @@ public class IndexLoginBOImpl implements IndexLoginBO {
         }
         return dtos;
     }
+
+
 }

@@ -69,4 +69,20 @@ public class Menu {
     public void setUnitPrice(double unitPrice) {
         this.unitPrice = unitPrice;
     }
+
+    public List<BanquetOrder> getBanquetOrders() {
+        return banquetOrders;
+    }
+
+    public void setBanquetOrders(List<BanquetOrder> banquetOrders) {
+        this.banquetOrders = banquetOrders;
+    }
+
+    public List<MenuDetails> getOrderDetails() {
+        return orderDetails;
+    }
+
+    public void setOrderDetails(List<MenuDetails> orderDetails) {
+        this.orderDetails = orderDetails;
+    }
 }

@@ -4,13 +4,13 @@ package lk.sliit.hotelManagement.dto.restaurant.restaurantCounterOrder;
 
 public class RestaurantCounterOrderDetailDTO {
 
-    private String restaurantCounterOrder;
+
     private String foodItem;
     private double quantity;
     private double unitePrice;
 
-    public RestaurantCounterOrderDetailDTO(String restaurantCounterOrder, String foodItem, double quantity, double unitePrice) {
-        this.restaurantCounterOrder = restaurantCounterOrder;
+    public RestaurantCounterOrderDetailDTO( String foodItem, double quantity, double unitePrice) {
+
         this.foodItem = foodItem;
         this.quantity = quantity;
         this.unitePrice = unitePrice;
@@ -19,13 +19,6 @@ public class RestaurantCounterOrderDetailDTO {
     public RestaurantCounterOrderDetailDTO() {
     }
 
-    public String getRestaurantCounterOrder() {
-        return restaurantCounterOrder;
-    }
-
-    public void setRestaurantCounterOrder(String restaurantCounterOrder) {
-        this.restaurantCounterOrder = restaurantCounterOrder;
-    }
 
     public String getFoodItem() {
         return foodItem;
@@ -54,8 +47,7 @@ public class RestaurantCounterOrderDetailDTO {
     @Override
     public String toString() {
         return "RestaurantCounterOrderDetailDTO{" +
-                "restaurantCounterOrder='" + restaurantCounterOrder + '\'' +
-                ", foodItem='" + foodItem + '\'' +
+                "foodItem='" + foodItem + '\'' +
                 ", quantity=" + quantity +
                 ", unitePrice=" + unitePrice +
                 '}';

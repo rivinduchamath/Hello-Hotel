@@ -1,23 +1,55 @@
 package lk.sliit.hotelManagement.dto.restaurant.restaurantCounterOrder;
 
-import java.sql.Date;
+import java.util.Date;
 
 public class RestaurantCounterOrderDTO {
     private String orderId;
     private String orderState;
     private double quantity;
     private Date date;
+    private String dataValue;
     private String customerId;
+    private String orderHolder;
 
-    public RestaurantCounterOrderDTO(String orderId, String orderState, double quantity, Date date, String customerId) {
+    public RestaurantCounterOrderDTO(String orderId, String orderState, double quantity, Date date, String dataValue, String customerId, String orderHolder) {
         this.orderId = orderId;
         this.orderState = orderState;
         this.quantity = quantity;
         this.date = date;
+        this.dataValue = dataValue;
+        this.customerId = customerId;
+        this.orderHolder = orderHolder;
+    }
+
+    public RestaurantCounterOrderDTO(String orderId, String orderState, double quantity, Date date, String dataValue, String customerId) {
+        this.orderId = orderId;
+        this.orderState = orderState;
+        this.quantity = quantity;
+        this.date = date;
+        this.dataValue = dataValue;
         this.customerId = customerId;
     }
 
     public RestaurantCounterOrderDTO() {
+    }
+
+    public RestaurantCounterOrderDTO(String orderId) {      this.orderId = orderId;
+    }
+
+    public String getDataValue() {
+        return dataValue;
+    }
+
+    public void setDataValue(String dataValue) {
+        this.dataValue = dataValue;
+    }
+
+    public String getOrderHolder() {
+        return orderHolder;
+    }
+
+    public void setOrderHolder(String orderHolder) {
+        this.orderHolder = orderHolder;
     }
 
     public String getOrderId() {
@@ -67,6 +99,7 @@ public class RestaurantCounterOrderDTO {
                 ", orderState='" + orderState + '\'' +
                 ", quantity=" + quantity +
                 ", date=" + date +
+                ", dataValue='" + dataValue + '\'' +
                 ", customerId='" + customerId + '\'' +
                 '}';
     }

@@ -332,8 +332,15 @@
             }
         </script>
         <!-- footer content -->
-    <!-- footer content -->
-    <jsp:include page="footer.jsp"/>
+    <footer>
+        <div class="pull-right">
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            Copyright © Employee Management 2020.<a href="https://github.com/rivinduchamath/Hello-Hote/l">
+            Created by ITP SLIIT &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  </a>
+<%--            Copyright © Employee Management 2020.<a href="https://rivinduchamath.github.io/pro/">Created by Chanuka Mullevidana</a>--%>
+        </div>
+        <div class="clearfix"></div>
+    </footer>
     <!-- /footer content -->
         <!-- /footer content -->
     </div>

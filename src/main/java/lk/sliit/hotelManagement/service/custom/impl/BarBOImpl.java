@@ -76,14 +76,17 @@ public class BarBOImpl implements BarBO {
                     if(count == 0 ) {
                         itm = new BarOrderDetailDTO();
                         itm.setItemCode(str);
+                        System.out.println(str+"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
                         count ++;
 
                     }else if(count == 1) {
                         itm.setItemPrice(Double.parseDouble(str));
+                        System.out.println(str+"bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb");
                         count ++;
 
                     }else if(count == 2) {
                         itm.setQty(Double.parseDouble(str));
+                        System.out.println(itm+"ccccccccccccccccccccccccccccccccccccc");
                         list.add(itm);
                         count = 0;
                     }
@@ -100,7 +103,8 @@ public class BarBOImpl implements BarBO {
                 barOrderDTO.getUser () ));
 
         for (BarOrderDetailDTO orderDetail :list ) {
-            barOrdersDetailsDAO.save(new BarOrderDetails( barOrderDTO.getId (), orderDetail.getItemCode(),
+            barOrdersDetailsDAO.save(new BarOrderDetails(
+                    barOrderDTO.getId (), orderDetail.getItemCode(),
                     orderDetail.getItemPrice(), orderDetail.getQty()));
             Inventory inventory = inventoryDAO.findOne(orderDetail.getItemCode());
             inventory.setOrderQty(inventory.getOrderQty() - orderDetail.getQty());

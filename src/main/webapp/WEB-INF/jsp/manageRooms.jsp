@@ -277,20 +277,20 @@
             <%--Input Feilds--%>
             <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
             <div class="col-12 col-sm-12 col-md-12 col-lg-5 col-xl-5">
-                <form method="POST"  action="/saveSupplier" name="saveSupplier">
+                <form method="POST"  action="/manageRoomSave" name="/manageRoomSave">
 
                     <div class="form-group">
 
                         <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
                             <label >Room Id</label>
                             <input type="text" class="form-control"
-                               required="required" name="id" value="${genId}"
+                               required="required" name="roomId"
                                id="id" placeholder="Room Id"/></div>
 
                             <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
                                 <label for="id">Room Name</label>
                         <input type="text" class="form-control"
-                               required="required" name="name"
+                               required="required" name="roomName"
                                id="name" placeholder="Room Name"/></div>
                     </div>
 
@@ -300,7 +300,7 @@
                         <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12"> <br>
                             <label for="id">Description</label>
                             <textarea type="text" class="form-control"
-                                   required="required" name="address"
+                                   required="required" name="description"
                                       id="address" placeholder="Description"></textarea></div>
                     </div>
 
@@ -320,7 +320,7 @@
                             <label for="id">State</label>
                             <select id="setType2" class="form-control"
                                     style="width: 100%; border-color: lightgray"
-                                    name="type">
+                                    name="status">
                                 <option value="Cleaned">Cleaned</option>
                                 <option value="NotCleaned">NotCleaned</option>
                             </select>

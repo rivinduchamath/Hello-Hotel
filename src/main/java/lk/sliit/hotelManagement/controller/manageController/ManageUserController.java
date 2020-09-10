@@ -24,7 +24,7 @@ public class ManageUserController {
     IndexLoginBO indexLoginBO;
     @Autowired
     ManageBO manageBO;
-@Autowired
+    @Autowired
     MailSend mailSend;
 
     @GetMapping("/manageUser")
