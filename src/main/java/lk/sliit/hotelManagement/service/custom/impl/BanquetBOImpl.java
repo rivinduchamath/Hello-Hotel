@@ -170,6 +170,12 @@ public class BanquetBOImpl implements BanquetBO {
     }
 
     @Override
+    public void updateBanquetStatusToCancel(String orderId) {
+        String status ="canceled";
+        banquetOrderDAO.updateBanStatus(status,orderId);
+    }
+
+    @Override
     public List<BanquetAddDTO> findTodayBanquets() {
         Date todayDate = new Date();
         Iterable <BanquetOrder> banquetOrders = banquetOrderDAO.findBanquetOrdersByDate(todayDate);
@@ -226,5 +232,25 @@ public class BanquetBOImpl implements BanquetBO {
         return dtos;
     }
 
+    @Override
+    public List<BanquetAddDTO> findConfirmedBanquet() {
+        String statusConfirmed = "Confirmed";
+        Iterable<BanquetOrder> all = banquetOrderDAO.findAllByOrderStateEquals(statusConfirmed);
+        List<BanquetAddDTO> dtos = new ArrayList<>();
+        for ( BanquetOrder a: all){
+            dtos.add(new BanquetAddDTO(
+                    a.getOrderId(),
+                    a.getCustomer().getName(),
+                    a.getCustomer().getAddress(),
+                    a.getDate(),
+                    a.getHallId(),
+                    a.getNoOfPlates(),
+                    a.getMenu().getMenuId(),
+                    a.getBanquetBill().getAdvancePayment(),
+                    a.getBanquetBill().getBillId()
+            ));
+        }
+        return dtos;
+    }
 
 }
