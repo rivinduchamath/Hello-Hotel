@@ -11,35 +11,32 @@ public class TimeCheck {
     String id;
     @DateTimeFormat(pattern="hh:mm:ss" )
     @Temporal(TemporalType.TIME)
-    Date timeSett;
+    Date timeOne;
     @DateTimeFormat(pattern="hh:mm:ss" )
     @Temporal(TemporalType.TIME)
-    Date timeSett2;
+    Date timeTwo;
     @Temporal(TemporalType.DATE)
     Date date;
 
 
-    public TimeCheck(String id, Date timeSett) {
-        this.id = id;
-        this.timeSett = timeSett;
-    }
+
 
     public TimeCheck() {
     }
 
-    public TimeCheck(String id, Time valueOf, Time valueOf1,Date valueOf2) {
+    public TimeCheck(String id, Time timeOne, Time timeTwo,Date valueOf2) {
         this.id = id;
-        this.timeSett = valueOf;
-        timeSett2 = valueOf1;
+        this.timeOne = timeOne;
+        this.timeTwo = timeTwo;
         date = valueOf2;
     }
 
     public Date getTimeSett2() {
-        return timeSett2;
+        return timeTwo;
     }
 
     public void setTimeSett2(Date timeSett2) {
-        this.timeSett2 = timeSett2;
+        this.timeTwo = timeSett2;
     }
 
     public Date getDate() {
@@ -59,10 +56,10 @@ public class TimeCheck {
     }
 
     public Date getTimeSett() {
-        return timeSett;
+        return timeOne;
     }
 
     public void setTimeSett(Date timeSett) {
-        this.timeSett = timeSett;
+        this.timeOne = timeSett;
     }
 }
