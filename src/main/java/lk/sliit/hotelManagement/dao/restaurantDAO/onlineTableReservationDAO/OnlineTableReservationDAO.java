@@ -11,5 +11,7 @@ import java.sql.Time;
 public interface OnlineTableReservationDAO extends CrudRepository<OnlineTableReservation,String> {
 //    Iterable<OnlineTableReservation> findOnlineTableReservationsByDateEquals(Date date);
 
-    Iterable<OnlineTableReservation> findOnlineTableReservationsByStartTimeBeforeAndEndTimeAfterAndDateEquals(Date startTime, Date endTime,Date date);
+    Iterable<OnlineTableReservation> findOnlineTableReservationsByStartTimeBeforeAndEndTimeAfterAndDateEquals(Time startTime, Time endTime,Date date);
+
+    Iterable<OnlineTableReservation> findOnlineTableReservationsByDateEquals(Date date);
 }

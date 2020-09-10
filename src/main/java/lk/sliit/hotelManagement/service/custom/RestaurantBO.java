@@ -5,8 +5,9 @@ import lk.sliit.hotelManagement.dto.restaurant.OnlineCustomerDTO;
 import lk.sliit.hotelManagement.dto.restaurant.RestaurantTableDTO;
 import lk.sliit.hotelManagement.dto.restaurant.restaurantCounterOrder.RestaurantCounterOrderDTO;
 import lk.sliit.hotelManagement.dto.restaurant.restaurantOnlineOrder.RestaurantOnlineOrderDTO;
+import lk.sliit.hotelManagement.dto.restaurant.restaurantOnlineTable.OnlineTableReservationDTO;
 
-import java.sql.Date;
+import java.util.Date;
 import java.util.List;
 
 public interface RestaurantBO {
@@ -18,11 +19,12 @@ public interface RestaurantBO {
 
     List<RestaurantTableDTO> findAllTable();
 
-    List<RestaurantTableDTO> findAllTableDateEqual(Date date, String startTime, String endTime);
+    //List<RestaurantTableDTO> findAllTableDateEqual(Date date, Date startTime, Date endTime);
 
     RestaurantOnlineOrderDTO findHighestOnlineOrderId();
 
     void saveOnlineOrder(RestaurantOnlineOrderDTO onlineOrderDTO);
 
 
+    List<RestaurantTableDTO> findAllTableDateEqual(Date reservedDate);
 }

@@ -70,17 +70,17 @@
                                 <form name="form1" id="ff" action="checkTimeForTable">
                                     <label>
                                         Date:
-                                        <input type="date" placeholder="Booking Date" name="date" id="name" required>
+                                        <input type="date" placeholder="Booking Date" name="reservedDate" id="name" required>
                                     </label>
 
                                     <label>
                                         Time In:
-                                        <input type="time" placeholder="In Time" name="startTime" id="email" required>
+                                        <input type="time" placeholder="In Time" name="stat" id="email" required>
                                     </label>
 
                                     <label>
                                         Time Out:
-                                        <input type="time" placeholder="Out Time" name="endTime" id="message">                                    </label>
+                                        <input type="time" placeholder="Out Time" name="end" id="message">                                    </label>
 
                                     <input class="sendButton" type="submit" name="Submit" value="Check">
 

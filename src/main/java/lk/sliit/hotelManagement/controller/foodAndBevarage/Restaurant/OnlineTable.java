@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+
 import java.util.List;
 
 @Controller
@@ -31,6 +32,7 @@ public class OnlineTable {
         try {
             String onlineCustomerId = session.getAttribute("userId").toString();
             model.addAttribute("loggerId", onlineCustomerBO.findOne(onlineCustomerId));
+            System.out.println("Sttttttttttttttttttttttttt444444444444444444444ttttart");
         } catch (NullPointerException d) {
             return "onlineTable";
         }
@@ -42,17 +44,26 @@ public class OnlineTable {
 
         List<RestaurantTableDTO> p1 = restaurantBO.findAllTable();
         model.addAttribute("loadAllTables", p1);
-
+        System.out.println("Sttttttttttttttttttttttttt444444444444444444444ttttart");
         return "onlineTableDetails";
     }
 
-   /* @GetMapping("/checkTimeForTable")
+    @GetMapping("/checkTimeForTable")
     public String checkTimeForTable(@ModelAttribute OnlineTableReservationDTO onlineTable, Model model, HttpSession session) {
+/*        Time a = Time.valueOf(onlineTable.getStartTime()+":00");
+        Time a2 = Time.valueOf(onlineTable.getEndTime()+":00");
+        onlineTable.setStartTime(a);
+        onlineTable.setEndTime(a2);*/
 
-        List<RestaurantTableDTO> p1 = restaurantBO.findAllTableDateEqual(onlineTable.getDate()
-                ,onlineTable.getStartTime(),onlineTable.getEndTime());
+        System.out.println("Sttttttttttttttttttttttttt444444444444444444444ttttart"+onlineTable.getReservedDate());
+
+        List<RestaurantTableDTO> p1 = restaurantBO.findAllTableDateEqual(onlineTable.getReservedDate());
+        for (RestaurantTableDTO r: p1){
+            System.out.println(r+"rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr");
+        }
         model.addAttribute("loadAllTables", p1);
 
+        System.out.println("Ennnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnd");
         try {
             String onlineCustomerId = session.getAttribute("userId").toString();
             model.addAttribute("loggerId", onlineCustomerBO.findOne(onlineCustomerId));
@@ -61,7 +72,6 @@ public class OnlineTable {
         }
         return "onlineTableDetails";
     }
-*/
 
 
 }

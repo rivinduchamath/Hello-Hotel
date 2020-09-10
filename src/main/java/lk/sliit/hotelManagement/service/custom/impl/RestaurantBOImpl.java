@@ -33,6 +33,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.sql.Date;
+import java.sql.Time;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
@@ -150,27 +151,6 @@ public class RestaurantBOImpl implements RestaurantBO {
         return dtos;
     }
 
-    @Override
-    public List<RestaurantTableDTO> findAllTableDateEqual(Date date, String startTime,
-                                                          String endTime) {
-
-
-//        Iterable<OnlineTableReservation> all = onlineTableReservationDAO.findOnlineTableReservationsByDateEquals(date);
-       Date s = Date.valueOf(startTime);
-        Date s1 = Date.valueOf(endTime);
-        Iterable<OnlineTableReservation> all1 = onlineTableReservationDAO.findOnlineTableReservationsByStartTimeBeforeAndEndTimeAfterAndDateEquals(s, s1, date);
-        List<OnlineTableReservationDTO> dtos = new ArrayList<>();
-        for (OnlineTableReservation a : all1) {
-      /*      dtos.add(new OnlineTableReservationDTO(
-                    a.getOnlineTableReservationId(),
-                    a.getType(),
-                    a.getUnitPrice()
-            ));*/
-        }
-
-
-        return null;
-    }
 
     @Override
     public RestaurantOnlineOrderDTO findHighestOnlineOrderId() {
@@ -228,6 +208,47 @@ public class RestaurantBOImpl implements RestaurantBO {
                     orderDetail.getUnitePrice()));
 
         }
+    }
+
+    @Override
+    public List<RestaurantTableDTO> findAllTableDateEqual(java.util.Date reservedDate) {
+        return null;
+    }
+
+    public List<RestaurantTableDTO> findAllTableDateEqual(Date date, String startTime,
+                                                          String endTime) {
+
+/////////////////////////////////////////////////////////////////////////////
+//        Iterable<OnlineTableReservation> all = onlineTableReservationDAO.findOnlineTableReservationsByDateEquals(date);
+        Date s = Date.valueOf(startTime);
+        Date s1 = Date.valueOf(endTime);
+      //  Iterable<OnlineTableReservation> all1 = onlineTableReservationDAO.findOnlineTableReservationsByStartTimeBeforeAndEndTimeAfterAndDateEquals(s, s1, date);
+        List<OnlineTableReservationDTO> dtos = new ArrayList<>();
+       // for (OnlineTableReservation a : all1) {
+      /*      dtos.add(new OnlineTableReservationDTO(
+                    a.getOnlineTableReservationId(),
+                    a.getType(),
+                    a.getUnitPrice()
+            ));*/
+       // }
+
+
+        return null;
+    }
+///////////////////////////////////////////////////////////////////////////////////////////
+   // @Override
+    public List<RestaurantTableDTO> findAllTableDateEqual(OnlineTableReservationDTO onlineTable) {
+
+        Time s = (Time.valueOf(onlineTable.getStartTime()+":00"));
+        Time s1 = (Time.valueOf(onlineTable.getEndTime()+":00"));
+       // Iterable<OnlineTableReservation> all1 = onlineTableReservationDAO.findOnlineTableReservationsByStartTimeBeforeAndEndTimeAfterAndDateEquals(onlineTable.getDate());
+       // for (OnlineTableReservation d : all1) {
+       //     System.out.println("ssssssssssssssssssssssssssssssssssssssss"+d);
+       // }
+
+        List<OnlineTableReservationDTO> dtos = new ArrayList<>();
+
+        return null;
     }
 
 //    Online table
