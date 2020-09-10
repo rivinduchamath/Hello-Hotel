@@ -28,7 +28,10 @@ public class BanquetController {
         model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
 
         List<BanquetAddDTO> list = banquetBO.findNextBanquets();
-        mv.addObject("loadTable",list);
+        mv.addObject("loadTable2",list);
+
+        List<BanquetAddDTO> list2 = banquetBO.findTodayBanquets();
+        mv.addObject("loadTable1",list2);
 
         return mv;
     }
