@@ -277,9 +277,9 @@
             <%--Input Feilds--%>
             <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
             <div class="col-12 col-sm-12 col-md-12 col-lg-4 col-xl-4">
-                <form method="POST"  action="/manageRoomSave" name="/manageRoomSave">
-
-                    <input type="hidden" id="roomId" name="roomId" value="">
+                    <form action="manageRoomSave" method="post" class="form-horizontal form-label-left"
+                          data-parsley-validate
+                          id="demo-form3">
                     <div class="form-group">
 
                         <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
@@ -331,6 +331,13 @@
                                 <option value="NonA/C">Non.A/C</option>
                             </select>
                         </div>
+                    </div>
+                    <div style="display: none" class="form-group">
+
+                        <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
+                            <input type="text" class="form-control"
+                                   name="roomId2" value=""
+                                   id="itemId" placeholder="Room ID"/></div>
                     </div>
                     <button type='submit' class="btn btn-dark" style="width: 50%; top: 20px; position: relative" value="Register">
                         +Add/Update
@@ -386,14 +393,14 @@
                                             <tbody>
                                             <c:forEach items="${loadHotelRoomTable}" var="room">
                                                 <tr>
-                                                    <td>${room.roomId}</td>
+                                                    <td>${room.roomId2}</td>
                                                     <td>${room.roomName}</td>
                                                     <td>${room.description}</td>
                                                     <td>${room.holder}</td>
                                                     <td>${room.status}</td>
                                                     <td>${room.type}</td>
                                                     <td>${room.date}</td>
-                                                    <td>  <a href="roomDelete/${room.roomId}" onclick="return confirm('Are you sure you want to delete?')"  class="btn btn-xs">
+                                                    <td>  <a href="roomDelete/${room.roomId2}" onclick="return confirm('Are you sure you want to delete?')"  class="btn btn-xs">
 
                                                     <i class="fa fa-trash-o"></i></a></td>
 
@@ -464,7 +471,7 @@
     var selectedRow = null;
     $("#datatable-buttons tbody").on('click', 'tr', function () {
         selectedRow = $(this);
-        $("#roomId").val($(this).find("td:first-child").text());
+        $("#itemId").val($(this).find("td:first-child").text());
         $("#roomName").val($(this).find("td:nth-child(2)").text());
         $("#address").val($(this).find("td:nth-child(3)").text());
         $("#status").val($(this).find("td:nth-child(5)").text());

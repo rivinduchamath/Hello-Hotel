@@ -42,27 +42,25 @@ public class HouseKeepingController {
 
     //add rooms
     @PostMapping("/manageRoomSave")
-    public String saveformRooms(Model model, @ModelAttribute HotelRoomDTO hotelRoomDTO ){
-        model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
+    public String saveFormRooms( @ModelAttribute HotelRoomDTO hotelRoomDTO,Model model ){
+         model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
         try {
             HotelRoomDTO hotelRoom = houseKeepingBO.findHighestRoomId();
-            System.out.println("gfdgfyguhbjnkjn2"+hotelRoom);
             HotelRoomDTO hotelRoomDTO1 = null;
             try {
-                hotelRoomDTO1 = houseKeepingBO.findHighestRoomId();
-                System.out.println("gfdgfyguhbjnkjn"+hotelRoomDTO1);
+                hotelRoomDTO1 = houseKeepingBO.findRoomIdByID(hotelRoomDTO.getRoomId2());
             }catch (NullPointerException d){
-                int maxId = Integer.parseInt(hotelRoom.getRoomId());
-                if (hotelRoomDTO.getRoomId().equals(String.valueOf(maxId))) {
-                    hotelRoomDTO.setRoomId(String.valueOf(maxId));
+                int maxId = Integer.parseInt(hotelRoom.getRoomId2());
+                if (hotelRoomDTO.getRoomId2().equals(String.valueOf(maxId))) {
+                    hotelRoomDTO.setRoomId2(String.valueOf(maxId));
                 } else {
                     maxId++;
-                    hotelRoomDTO.setRoomId(String.valueOf(maxId));
+                    hotelRoomDTO.setRoomId2(String.valueOf(maxId));
                 }
             }
 
         } catch (NullPointerException e){
-            hotelRoomDTO.setRoomId("1");
+               hotelRoomDTO.setRoomId2("1");
         }
         houseKeepingBO.saveRoomDetails(hotelRoomDTO);
         return "redirect:/manageRooms";
