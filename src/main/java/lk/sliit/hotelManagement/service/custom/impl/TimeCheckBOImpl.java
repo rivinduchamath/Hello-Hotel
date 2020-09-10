@@ -37,7 +37,7 @@ public class TimeCheckBOImpl implements TimeCheckBO {
 
     @Override
     public List<timeCheckDTO> getReqTime(java.util.Date date, java.util.Date tdate, java.util.Date tdate2) {
-        Iterable<TimeCheck> all = timeDAO.findAlla();
+      /*  Iterable<TimeCheck> all = timeDAO.findAlla();
         System.out.println(date);
         System.out.println(tdate);
         System.out.println(tdate2);
@@ -55,7 +55,7 @@ public class TimeCheckBOImpl implements TimeCheckBO {
                     a.getTimeSett2(),
                     a.getDate()
             ));
-        }
-        return dtos;
+        }*/
+        return null;
     }
 }

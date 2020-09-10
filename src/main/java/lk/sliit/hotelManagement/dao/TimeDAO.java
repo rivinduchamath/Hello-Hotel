@@ -8,11 +8,12 @@ import java.sql.Date;
 import java.sql.Time;
 
 public interface TimeDAO extends CrudRepository<TimeCheck, String> {
-    Iterable<OnlineTableReservation> findOnlineTableReservationsByStartTimeBeforeAndEndTimeAfterAndDateEquals(Time startTime, Time endTime, Date date);
+    //Iterable<OnlineTableReservation> findOnlineTableReservationsByStartTimeBeforeAndEndTimeAfterAndDateEquals(Time startTime, Time endTime, Date date);
 
-    Iterable<OnlineTableReservation> findOnlineTableReservationsByDateEquals(Date date);
+   // Iterable<OnlineTableReservation> findOnlineTableReservationsByDateEquals(Date date);
 
 
-    Iterable<TimeCheck> findTimeChecksByTimeSettANBetweenAndDateEquals();
+    //Iterable<TimeCheck> findTimeChecksByTimeSettANBetweenAndDateEquals();
 
+  //  Iterable<TimeCheck> findAlla();
 }
