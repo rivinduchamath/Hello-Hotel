@@ -29,6 +29,7 @@ public class ManageMenuController {
             MenuDTO menuItem = kitchenBO.findHighestFoodPackId();
             MenuDTO menuDTO1 = null;
             try {
+                System.out.println("ssssssssssssss4444ssssssssssssssssssssssssssssssssss"+menuDTO.getMenuId());
                  menuDTO1 = kitchenBO.findMenuItemById(menuDTO.getMenuId());
                 System.out.println("ssssssssssssssssssssssssssssssssssssssssssssssss"+menuDTO1.getMenuId());
             }catch (NullPointerException d){

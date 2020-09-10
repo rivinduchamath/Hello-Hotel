@@ -3,35 +3,41 @@ package lk.sliit.hotelManagement.dto.houseKeeping;
 import java.sql.Date;
 
 public class HotelRoomDTO {
-    private String roomId;
+    private String roomId2;
     private String roomType;
     private String description;
     private double price;
     private String roomName;
     private Date date;
     private String status;
+    private String holder;
 
 
-    public HotelRoomDTO(String roomId, String roomType, String description, double price, String roomName, Date date, String status) {
-        this.roomId = roomId;
-        this.roomType = roomType;
-        this.description = description;
-        this.price = price;
-        this.roomName = roomName;
-        this.date = date;
-        this.status = status;
-
-    }
 
     public HotelRoomDTO() {
     }
 
-    public String getRoomId() {
-        return roomId;
+    public HotelRoomDTO(String roomId) {
+        this.roomId2 = roomId;
     }
 
-    public void setRoomId(String roomId) {
-        this.roomId = roomId;
+    public HotelRoomDTO(String roomId2, String roomName, String roomType, String description, String status, String holder, double price, Date date) {
+        this.roomId2 = roomId2;
+        this.roomName = roomName;
+        this.roomType = roomType;
+        this.description = description;
+        this.status = status;
+        this.holder = holder;
+        this.price = price;
+        this.date = date;
+    }
+
+    public String getRoomId2() {
+        return roomId2;
+    }
+
+    public void setRoomId2(String roomId2) {
+        this.roomId2 = roomId2;
     }
 
     public String getRoomType() {
@@ -70,17 +76,25 @@ public class HotelRoomDTO {
 
     public void setStatus(String status) { this.status = status; }
 
+    public String getHolder() { return holder;}
 
+    public String getType() { return roomType; }
+
+    public void setHolder(String holder) {
+        this.holder = holder;
+    }
 
     @Override
     public String toString() {
         return "HotelRoomDTO{" +
-                "roomId='" + roomId + '\'' +
+                "roomId2='" + roomId2 + '\'' +
                 ", roomType='" + roomType + '\'' +
                 ", description='" + description + '\'' +
                 ", price=" + price +
+                ", roomName='" + roomName + '\'' +
+                ", date=" + date +
+                ", status='" + status + '\'' +
+                ", holder='" + holder + '\'' +
                 '}';
     }
-
-
 }
