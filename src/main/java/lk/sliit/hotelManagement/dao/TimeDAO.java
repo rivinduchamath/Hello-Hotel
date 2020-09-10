@@ -1,11 +1,7 @@
 package lk.sliit.hotelManagement.dao;
 
 import lk.sliit.hotelManagement.entity.TimeCheck;
-import lk.sliit.hotelManagement.entity.restaurant.onlineTableReservation.OnlineTableReservation;
-import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
-import org.springframework.data.repository.query.Param;
-
 import java.util.Date;
 
 public interface TimeDAO extends CrudRepository<TimeCheck, String> {
@@ -28,14 +24,9 @@ public interface TimeDAO extends CrudRepository<TimeCheck, String> {
 
    // Iterable<TimeCheck> findAllByTimeOneAndTimeTwoNotContainingInTimeOneGreaterThanEqualAndTimeTwoLessThanEqualAndDateEquals(Date tdate, Date tdate2, Date date);
 
-
 //    @Query(value = "FROM TimeCheck e WHERE e.timeOne  BETWEEN e.timeOne AND e.timeTwo",nativeQuery = false)
 //    Iterable<TimeCheck> getAllBetweenDates( @Param("startDate")Date tdate, @Param("endDate")Date tdate2,@Param("date")Date date);
 }
-
-
-
-
 
   /*  @Query( value = "SELECT admin FROM emp2.Employee WHERE idNo=?1",nativeQuery = true)
     boolean isAdmin(String idNo);*/
