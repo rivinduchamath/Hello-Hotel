@@ -34,7 +34,7 @@ TimeCheckBO timeCheck1;
         meCheck.setDate(date);
         timeCheck1.setTime(meCheck);
         System.out.println(meCheck.getTimeSett());
-        return "redirect:/time";
+        return "redirect:/le";
     }
     @GetMapping("/loadTable")
     public String loadTable(Model model,@ModelAttribute timeCheckDTO meCheck){
