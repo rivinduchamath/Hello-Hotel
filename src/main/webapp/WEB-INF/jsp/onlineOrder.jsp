@@ -34,6 +34,22 @@
                 alt=""/></a>
     </div>
     <![endif]-->
+    <link href="../../vendors/datatables.net-bs/css/dataTables.bootstrap.min.css" rel="stylesheet">
+    <link href="../../vendors/datatables.net-buttons-bs/css/buttons.bootstrap.min.css" rel="stylesheet">
+    <link href="../../vendors/datatables.net-fixedheader-bs/css/fixedHeader.bootstrap.min.css" rel="stylesheet">
+    <link href="../../vendors/datatables.net-responsive-bs/css/responsive.bootstrap.min.css" rel="stylesheet">
+    <script src="../../vendors/jquery/dist/jquery.min.js"></script>
+    <script>
+        document.getElementById("demo")
+        $(window).scroll(function () {
+            if ($(document).scrollTop() > 204) {
+                $(".button1x1").show();
+            } else {
+                $(".button1x1").hide();
+            }
+        });
+
+    </script>
 </head>
 <body id="page4">
 <div class="body6">
@@ -50,7 +66,8 @@
                         <li><a href="#"><img src="../../onlineRestaurant/restaurant/images/icon_2.gif" alt=""></a></li>
                         <li class="end"><a href="onlineCustomer"><i class="fa fa-user"
                                                                     style="color: rgba(255,255,255,0.91); font-size:20px;">
-                            LogIn</i></a></li>
+                            LogIn ${loggerId.name}
+                        </i></a></li>
                     </ul>
                 </nav>
                 <nav>
@@ -130,50 +147,90 @@
         <article id="content2">
             <section>
                 <div class="wrapper">
-                    <div class="col-2-3">
+                    <div class="col-2-5">
                         <div class="wrap-col">
-                            <h2>CookBook</h2>
-                            <table>
-                                <td>
+                            <h2>Food Items</h2>
+                            <table id="dataTablesButton1">
+
+                                <c:forEach items="${loadAllFoods}" var="e">
                                     <tr>
-                                        <div class="wrapper">
-                                            <figure class="left marg_right1"><img
+                                        <td>
+                                            <figure class="pad_bot1 left marg_right1"><img
                                                     src="../../onlineRestaurant/restaurant/images/page4_img2.jpg"
                                                     alt=""></figure>
-                                            <p>
-                                                <a href="#">Sed ut perspiciatis unde omnis iste</a><br>
-                                                Natus error sit voluptatem accusantium doloremque laudantium,<br>
-                                                totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et <br>
-                                                quasi architecto beatae vitae dicta sunt explicabo.
-                                            </p>
-                                        </div>
+                                        </td>
+                                        <td style="color: #e02b2b;position: absolute"> ${e.itemName}</td>
+                                        <td><br>
+
+                                            <button id="btnAdd1"
+                                                    style="width: 40px;height: 40px;background-color: #bbb7b7; border-radius: 5px"
+                                                    type="button"><i class="fa fa-plus"></i></button>
+                                        </td>
+                                        <td><br>Unite Price : ${e.unitePrice}</td>
+                                        <td style="display: none" >${e.itemId}</td>
+                                        <td style="display: none" >${e.unitePrice}</td>
                                     </tr>
-                                    <tr>
-                                        <div class="wrapper">
-                                            <figure class="left marg_right1"><img
-                                                    src="../../onlineRestaurant/restaurant/images/page4_img2.jpg"
-                                                    alt=""></figure>
-                                            <p>
-                                                <a href="#">Sed ut perspiciatis unde omnis iste</a><br>
-                                                Natus error sit voluptatem accusantium doloremque laudantium,<br>
-                                                totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et <br>
-                                                quasi architecto beatae vitae dicta sunt explicabo.
-                                            </p>
-                                        </div>
-                                    </tr>
-                                </td>
+                                </c:forEach>
                             </table>
                         </div>
                     </div>
 
-                    <div class="col-1-3">
+                    <div class="col-3-5">
                         <div class="wrap-col mag-1">
-                            <h2>Food Delivery</h2>
-                            <div class="wrapper pad_bot1">
-                                <figure class="pad_bot1"><img
-                                        src="../../onlineRestaurant/restaurant/images/page4_img4.jpg" alt=""></figure>
-                                Lorem ipsum dolor sit amet, consecte- tur adipisicing elit, sed do eiusmod tempor
-                                incididunt ut labore et dolore magna aliqua.
+                            <h2>Food Order</h2>
+                            <form>
+                                <div class="form-group">
+                                    <label >&nbsp;&nbsp;
+                                        &nbsp;&nbsp;&nbsp;&nbsp;Item Id</label>
+                                    <input style="" type="text" class="form-control"
+                                           required="required" readonly name="itemId"
+                                           id="itemCode" placeholder="Item Id"/>
+                                </div>
+                                <div class="form-group"style="top: 10px; position: relative;">
+                                    <label style="width: 10%">Item Name</label>
+                                    <input type="text" class="form-control"
+                                           required="required"readonly name="itemId"
+                                           id="itemName" placeholder="Item Name"/>
+                                </div>
+                                <div class="form-group" style="top: 20px;position: relative; ">
+                                    <label >&nbsp;&nbsp;
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                        &nbsp;&nbsp;&nbsp;&nbsp;Qty</label>
+                                    <input type="number" class="form-control"
+                                           required="required" name="itemId"
+                                           id="qty" placeholder="Item Qty"/>
+                                </div>
+                                <div class="form-group" style="display: none;">
+                                    <input type="hidden" class="form-control"
+                                           required="required"readonly name="itemId"
+                                           id="price" placeholder="Item Price"/>
+                                </div>
+                                <button type='button' class="btn btn-primary"
+                                        style="left:70px;top: 30px; position: relative;
+                                        height:25px;color:white;width: 20%;background-color: #a5113b" id="btnAdd"
+                                        value="Register">
+                                    Add
+                                </button>
+                            </form><br>
+
+                            <div class="x_content">
+
+                                            <table style="position:relative;top: 20px;text-align: center">
+                                                <thead class="thead-light">
+                                                <tr>
+                                                    <th style="width: 10%">ItemId</th>
+                                                    <th style="width: 20%">Name</th>
+                                                    <th style="width: 10%">Price</th>
+                                                    <th style="width: 10%">Qty</th>
+                                                    <th style="width: 20%">Total</th>
+                                                    <th style="width: 10%">Delete</th>
+                                                </tr>
+
+                                                </thead>
+                                                <tbody id="tblOrder">
+                                                </tbody>
+                                            </table>
+
                             </div>
                         </div>
                     </div>
@@ -182,6 +239,16 @@
         </article>
         <!-- / content -->
     </div>
+    <form method="POST" action="saveOnlineOrder" name="saveOnlineOrder">
+        <input style="display: none" type="text" id="itemPay" name="orderData">
+
+            <button type="submit" value="Register" id="demo"
+                    style="background-color: #63060a;color: white;height: 40px;
+                     margin-top: -32%;margin-left: 80%; font-weight: bold;color: #ffffff; width: 10%" onclick="getValue()"
+                    class="col-1-1  btn btn-success button1x1 "> Pay <i class="fa fa-save"></i>
+            </button>
+
+    </form>
 </div>
 <div class="body3">
 
@@ -221,6 +288,11 @@
     </div>
 
 </div>
+<!-- jQuery -->
+<script src="../../vendors/jquery/dist/jquery.min.js"></script>
 <script type="text/javascript"> Cufon.now(); </script>
+
+<script src="../../js/onlineOrders.js"></script>
+
 </body>
 </html>

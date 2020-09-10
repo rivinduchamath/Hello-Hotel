@@ -1,9 +1,10 @@
 package lk.sliit.hotelManagement.entity.restaurant.onlineTableReservation;
 
 import lk.sliit.hotelManagement.entity.restaurant.OnlineCustomer;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
-import java.sql.Date;
+import java.util.Date;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,7 +16,11 @@ public class OnlineTableReservation {
     private String onlineTableReservationId;
     private Date reservedDate;
     private Date date;
+    @DateTimeFormat(pattern="hh:mm:ss" )
+    @Temporal(TemporalType.TIME)
     private Date startTime;
+    @DateTimeFormat(pattern="hh:mm:ss" )
+    @Temporal(TemporalType.TIME)
     private Date endTime;
     private int noOfTables;
     @ManyToOne(cascade = {CascadeType.PERSIST,CascadeType.REFRESH, CascadeType.DETACH, CascadeType.MERGE})

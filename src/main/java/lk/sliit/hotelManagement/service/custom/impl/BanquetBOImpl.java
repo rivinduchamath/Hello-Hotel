@@ -56,7 +56,7 @@ public class BanquetBOImpl implements BanquetBO {
                 banquetAddDTO.getOtherPrice(),
                 banquetAddDTO.getAdvanceFee()
         ));
-        String status ="processing";
+        String status ="pending";
         banquetAddDTO.setOrderState(status);
         banquetOrderDAO.save(new BanquetOrder(
                 banquetAddDTO.getOrderId(),
@@ -138,11 +138,17 @@ public class BanquetBOImpl implements BanquetBO {
 
     @Override
     public List<BanquetAddDTO> findNextBanquets() {
-        Date todaydate = new Date();
-        Calendar cal = Calendar.getInstance();
-        cal.add(Calendar.DATE, 3);
-        java.util.Date afterOneMonth = cal.getTime();
-        Iterable <BanquetOrder> banquetOrders = banquetOrderDAO.findBanquetOrdersByDateBetween (todaydate ,afterOneMonth);
+        //Date todaydate = new Date();
+        Calendar cal1 = Calendar.getInstance();
+        Calendar cal2 = Calendar.getInstance();
+        cal1.add(Calendar.DATE, 3);
+        java.util.Date afterThreeDays = cal1.getTime();
+        cal2.add(Calendar.DATE, 1);
+        java.util.Date afterOneDays = cal2.getTime();
+        Iterable <BanquetOrder> banquetOrders = banquetOrderDAO.findBanquetOrdersByDateBetween (afterOneDays ,afterThreeDays);
+        for ( BanquetOrder a: banquetOrders){
+            System.out.println(a.getDate());
+        }
         List <BanquetAddDTO> dtos = new ArrayList<>();
         for ( BanquetOrder a: banquetOrders){
             dtos.add(new BanquetAddDTO(
@@ -152,11 +158,30 @@ public class BanquetBOImpl implements BanquetBO {
                     a.getDate(),
                     a.getHallId(),
                     a.getNoOfPlates(),
-                    a.getMenu().getMenuId(),
                     a.getBanquetBill().getAdvancePayment(),
-                    a.getBanquetBill().getBillId()
+                    a.getOrderState()
             ));
         }
         return dtos;
+    }
+
+    @Override
+    public void updateBanquetStatus(String orderId) {
+        String status ="confirmed";
+        /*banquetOrderDTO.setOrderState(status);
+        banquetOrderDAO.save(new BanquetOrder(
+                banquetAddDTO.getOrderId(),
+                banquetAddDTO.getHallId(),
+                banquetAddDTO.getOrderState(),
+                banquetAddDTO.getNoOfPlates(),
+                banquetAddDTO.getDate(),
+                banquetAddDTO.getSubmittedBy(),
+                customerDAO.findOne(banquetAddDTO.getCustomerId()),
+                menuDAO.findOne(banquetAddDTO.getMenuId()),
+                banquetBillDAO.findOne(banquetAddDTO.getBanquetBillId())
+        ));*/
+
+        banquetOrderDAO.abc(status,orderId);
+
     }
 }

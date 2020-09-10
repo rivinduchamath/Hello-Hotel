@@ -153,14 +153,14 @@
                                 <label for="itemCode">Item Id</label>
                                 <input type="text" class="form-control"
                                        required="required" name="itemId"
-                                       id="itemCode" disabled placeholder="Item Id"/>
+                                       id="itemCode" readonly placeholder="Item Id"/>
                             </div>
 
                             <div class="form-group">
                                 <label for="itemName">Item Name</label>
                                 <input type="text" class="form-control"
                                        required name="itemName"
-                                       id="itemName" disabled placeholder="Item Name"/>
+                                       id="itemName" readonly placeholder="Item Name"/>
                             </div>
 
                             <div class="form-group">

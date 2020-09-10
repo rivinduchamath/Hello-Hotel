@@ -44,7 +44,7 @@
                     <ul id="top_nav">
                         <li><a href="onlineDashboard"><img src="../../onlineRestaurant/restaurant/images/icon_1.gif" alt=""></a></li>
                         <li><a href="#"><img src="../../onlineRestaurant/restaurant/images/icon_2.gif" alt=""></a></li>
-                        <li class="end"><a href="onlineCustomer"><i class="fa fa-user" style="color: rgba(255,255,255,0.91); font-size:20px;"> LogIn</i></a></li>
+                        <li class="end"><a href="onlineCustomer"><i class="fa fa-user" style="color: rgba(255,255,255,0.91); font-size:20px;"> LogIn ${loggerId.name}</i></a></li>
                     </ul>
                 </nav>
                 <nav>
@@ -70,17 +70,17 @@
                                 <form name="form1" id="ff" action="checkTimeForTable">
                                     <label>
                                         Date:
-                                        <input type="date" placeholder="Booking Date" name="date" id="name" required>
+                                        <input type="date" placeholder="Booking Date" name="reservedDate" id="name" required>
                                     </label>
 
                                     <label>
                                         Time In:
-                                        <input type="time" placeholder="In Time" name="startTime" id="email" required>
+                                        <input type="time" placeholder="In Time" name="stat" id="email" required>
                                     </label>
 
                                     <label>
                                         Time Out:
-                                        <input type="time" placeholder="Out Time" name="endTime" id="message">                                    </label>
+                                        <input type="time" placeholder="Out Time" name="end" id="message">                                    </label>
 
                                     <input class="sendButton" type="submit" name="Submit" value="Check">
 

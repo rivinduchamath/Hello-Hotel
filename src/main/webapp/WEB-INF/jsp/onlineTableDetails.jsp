@@ -134,7 +134,6 @@
                             <tbody>
                             <c:forEach items="${loadAllTables}" var="e">
                                 <tr>
-
                                     <div class="col-1-4">
                                         <div class="wrap-col">
                                             <div class="wrapper pad_bot1" id="#0001">
@@ -147,7 +146,6 @@
                                             </div>
                                         </div>
                                     </div>
-
                                 </tr>
                             </c:forEach>
                             </tbody>

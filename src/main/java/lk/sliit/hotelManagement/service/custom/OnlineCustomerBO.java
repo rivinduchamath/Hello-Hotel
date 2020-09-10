@@ -8,4 +8,6 @@ public interface OnlineCustomerBO {
     void saveOnlineCustomer(OnlineCustomerDTO onlineCustomerDTO);
 
     OnlineCustomerDTO findByUserNameAndPassword(String userName, String password);
+
+    OnlineCustomerDTO findOne(String getOnlineCustomerId);
 }
