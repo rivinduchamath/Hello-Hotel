@@ -84,11 +84,11 @@
     <div class="main_container">
 
         <!-- Side header -->
-        <jsp:include page="sideHeader.jsp" />
+        <jsp:include page="sideHeader.jsp"/>
         <!-- /Side header -->
 
         <!-- Top header -->
-        <jsp:include page="topHeader.jsp" />
+        <jsp:include page="topHeader.jsp"/>
         <!-- /Top header -->
 
 
@@ -188,44 +188,48 @@
 
                     <div class="col-sm-12 col-md-3 col-lg-3 col-xl-3">
                         <a href="bar">
-                            <button type="button" class="btn btn-dark"><i class="fa fa-reply"></i>&nbsp;Back</button></a>
+                            <button type="button" class="btn btn-dark"><i class="fa fa-reply"></i>&nbsp;Back</button>
+                        </a>
                     </div>
 
                 </div>
 
                 <div class="col-md-4 col-sm-4" style="float: left; position: relative;display: inline-block">
-                    <form method="POST"  action="/addBarNotice" name="saveUser">
+                    <form method="POST" action="/addBarNotice" name="saveUser">
 
                         <div class="form-group">
 
-                                <label>Item Id</label>
-                                <input type="text" class="form-control"
-                                       required="required" name="userId"
-                                       id="userId" placeholder="Item Id"/>
+                            <label>Item Id</label>
+                            <input type="text" class="form-control"
+                                   required="required" name="userId"
+                                   id="userId" placeholder="Item Id"/>
 
 
-                                <label for="userId">Item Name</label>
-                                <input type="text" class="form-control"
-                                       required="required" name="name"
-                                       id="userName" placeholder="Item Name"/>
+                            <label for="userId">Item Name</label>
+                            <input type="text" class="form-control"
+                                   required="required" name="name"
+                                   id="userName" placeholder="Item Name"/>
                         </div>
 
                         <div class="form-group">
 
-                                <label for="userId">Order Qty</label>
-                                <input type="text" class="form-control"
-                                       required="required" name="position"
-                                       id="position" placeholder="Qty"/>
+                            <label for="userId">Order Qty</label>
+                            <input type="text" class="form-control"
+                                   required="required" name="position"
+                                   id="position" placeholder="Qty"/>
 
 
-                                <label for="userId">Expected Date</label>
-                                <input type="date" class="form-control"
-                                       required="required" name="address"
-                                       id="address" placeholder="mm/dd/yy"/></div>
-                        <button type='submit' class="btn btn-dark" style="width: 50%; top: 20px; position: relative" value="Register">
+                            <label for="userId">Expected Date</label>
+                            <input type="date" class="form-control"
+                                   required="required" name="address"
+                                   id="address" placeholder="mm/dd/yy"/></div>
+                        <button type='submit' class="btn btn-dark" style="width: 50%; top: 20px; position: relative"
+                                value="Register">
                             Submit
                         </button>
-                        <button type='reset' class="btn btn-outline-success" style="top: 20px; position: relative" value="">Reset</button>
+                        <button type='reset' class="btn btn-outline-success" style="top: 20px; position: relative"
+                                value="">Reset
+                        </button>
 
                     </form>
                 </div>
@@ -264,15 +268,15 @@
                                             </thead>
 
                                             <tbody>
-                                     <c:forEach items="${loadInventoryBar}" var="e">
-                                            <tr>
-                                                <td>${e.inventoryId}</td>
-                                                <td>${e.text}</td>
-                                                <td>${e.getPrice}</td>
-                                                <td>${e.orderLimit}</td>
-                                                <td class="a-center "></td>
-                                            </tr>
-                                             </c:forEach>
+                                            <c:forEach items="${loadInventoryBar}" var="e">
+                                                <tr>
+                                                    <td>${e.inventoryId}</td>
+                                                    <td>${e.text}</td>
+                                                    <td>${e.getPrice}</td>
+                                                    <td>${e.orderLimit}</td>
+                                                    <td class="a-center "></td>
+                                                </tr>
+                                            </c:forEach>
                                             </tbody>
                                         </table>
                                     </div>
@@ -287,9 +291,8 @@
         <!-- /page content -->
 
 
-
         <!-- footer content -->
-        <jsp:include page="footer.jsp" />
+        <jsp:include page="footer.jsp"/>
         <!-- /footer content -->
 
     </div>
