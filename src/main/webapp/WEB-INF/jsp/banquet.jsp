@@ -350,9 +350,11 @@
                                                 <td>${e.date}</td>
                                                 <td>${e.hallId}</td>
                                                 <td>${e.noOfPlates}</td>
-                                                <td>${e.menuId}</td>
                                                 <td>${e.advanceFee}</td>
-                                                <td>${e.banquetBillId}</td>
+                                                <td>${e.orderState}</td>
+                                                <td><a href="/updateBanquetStatus?orderId=${e.orderId}">
+                                                    <button type="submit" value="confirmed" id="confirmBtn" name="confirmBtn"></button>
+                                                </a></td>
                                             </tr>
                                         </c:forEach>
 

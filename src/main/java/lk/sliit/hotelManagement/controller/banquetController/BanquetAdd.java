@@ -65,4 +65,7 @@ public class BanquetAdd {
         banquetBO.saveBanquet(banquetAddDTO);
         return "redirect:/banquetAdd";
     }
+
+
+
 }
