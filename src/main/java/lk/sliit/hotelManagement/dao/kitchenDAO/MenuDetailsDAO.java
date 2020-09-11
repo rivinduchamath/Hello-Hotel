@@ -6,5 +6,5 @@ import org.springframework.data.repository.CrudRepository;
 
 public interface MenuDetailsDAO extends CrudRepository<MenuDetails, FoodItem> {
 
-    Iterable<MenuDetails> findMenuDetailsByMenu_MenuId(String menuId);
+    Iterable<MenuDetails> findMenuDetailsByMenu_MenuId(int menuId);
 }

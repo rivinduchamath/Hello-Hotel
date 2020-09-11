@@ -32,7 +32,7 @@ public interface InventoryBO extends SuperBO {
 
     List<InventoryNoticeDTO> findAllInventoryNotice();
 
-    void deleteInventoryType(String id);
+    void deleteInventoryType(int id);
 
     ItemTypeDTO findTopByOrderByIdDesc();
 

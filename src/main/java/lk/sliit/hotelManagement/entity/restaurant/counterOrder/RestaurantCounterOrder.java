@@ -14,13 +14,14 @@ public class RestaurantCounterOrder {
     private String orderState;
     private double quantity;
     private Date date;
-    private String customerId;
-    private String orderHolder;
+    private int customerId;
+    private int orderHolder;
     @OneToMany(mappedBy = "restaurantCounterOrder", cascade = {CascadeType.PERSIST, CascadeType.REFRESH, CascadeType.DETACH, CascadeType.MERGE})
     private List<RestaurantCounterOrderDetail> orderDetails = new ArrayList<>();
 
 
-    public RestaurantCounterOrder(int orderId, String orderState, double quantity, Date date, String customerId, String orderHolder) {
+    public RestaurantCounterOrder(int orderId, String orderState,
+                                  double quantity, Date date, int customerId, int orderHolder) {
         this.orderId = orderId;
         this.orderState = orderState;
         this.quantity = quantity;
@@ -32,11 +33,11 @@ public class RestaurantCounterOrder {
     public RestaurantCounterOrder() {
     }
 
-    public String getOrderHolder() {
+    public int getOrderHolder() {
         return orderHolder;
     }
 
-    public void setOrderHolder(String orderHolder) {
+    public void setOrderHolder(int orderHolder) {
         this.orderHolder = orderHolder;
     }
 
@@ -64,11 +65,11 @@ public class RestaurantCounterOrder {
         this.date = date;
     }
 
-    public String getCustomerId() {
+    public int getCustomerId() {
         return customerId;
     }
 
-    public void setCustomerId(String customerId) {
+    public void setCustomerId(int customerId) {
         this.customerId = customerId;
     }
 

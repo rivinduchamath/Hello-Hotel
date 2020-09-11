@@ -7,7 +7,7 @@ import java.sql.Date;
 import java.util.List;
 
 public class EmployeeDTO {
-    private String userId;
+    private int userId;
     private String name;
     private String mobileNo;
     private String email;
@@ -19,16 +19,16 @@ public class EmployeeDTO {
     private double salary;
     private Date date;
     private String image;
-    private String department ;
+    private int department ;
 
     private List<Attendance> attendance;
     private List<Salary> salaries;
 
 
-    public EmployeeDTO(String userId, String name, String mobileNo, String email
+    public EmployeeDTO(int userId, String name, String mobileNo, String email
             , String address, String position, String password,
                        Date dateOfBirth, String gender, double salary, Date date,
-                       String image, String department) {
+                       String image, int department) {
         this.userId = userId;
         this.name = name;
         this.mobileNo = mobileNo;
@@ -47,24 +47,24 @@ public class EmployeeDTO {
     public EmployeeDTO() {
     }
 
-    public EmployeeDTO(String userId, String password) {
+    public EmployeeDTO(int userId, String password) {
         this.userId = userId;
         this.password = password;
     }
 
-    public String getDepartment() {
+    public int getDepartment() {
         return department;
     }
 
-    public void setDepartment(String department) {
+    public void setDepartment(int department) {
         this.department = department;
     }
 
-    public String getUserId() {
+    public int getUserId() {
         return userId;
     }
 
-    public void setUserId(String userId) {
+    public void setUserId(int userId) {
         this.userId = userId;
     }
 

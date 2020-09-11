@@ -72,13 +72,13 @@ public class HouseKeepingBOImpl implements HouseKeepingBO {
     }
 
     @Override
-    public void deleteRoomDetails(String roomId) {
+    public void deleteRoomDetails(int roomId) {
         houseKeepingDAO.delete(roomId);
 
     }
 
     @Override
-    public HotelRoomDTO findRoomIdByID(String roomId) {
+    public HotelRoomDTO findRoomIdByID(int roomId) {
         HotelRoom hotelRoom = houseKeepingDAO.findOne(roomId);
         return new HotelRoomDTO(
                 hotelRoom.getRoomId(),

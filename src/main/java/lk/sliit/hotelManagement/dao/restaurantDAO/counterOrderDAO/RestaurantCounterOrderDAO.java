@@ -4,7 +4,7 @@ import lk.sliit.hotelManagement.entity.restaurant.counterOrder.RestaurantCounter
 import lk.sliit.hotelManagement.entity.restaurant.counterOrder.RestaurantCounterOrderDetail;
 import org.springframework.data.repository.CrudRepository;
 
-public interface RestaurantCounterOrderDAO extends CrudRepository<RestaurantCounterOrder,String> {
+public interface RestaurantCounterOrderDAO extends CrudRepository<RestaurantCounterOrder,Integer> {
 
 
     RestaurantCounterOrder findTopByOrderByOrderIdDesc();

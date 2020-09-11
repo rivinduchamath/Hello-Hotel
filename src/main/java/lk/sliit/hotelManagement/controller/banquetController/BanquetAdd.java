@@ -40,7 +40,7 @@ public class BanquetAdd {
 
         try {
             CustomerDTO customerDTO = banquetBO.findTopCustomerId();
-            int topCustomer = Integer.parseInt(customerDTO.getCustomerId()) + 1;
+            int topCustomer = (customerDTO.getCustomerId()) + 1;
             model.addAttribute("topCustomerId", topCustomer);
         } catch (NullPointerException e){
             model.addAttribute("topCustomerId", 1);

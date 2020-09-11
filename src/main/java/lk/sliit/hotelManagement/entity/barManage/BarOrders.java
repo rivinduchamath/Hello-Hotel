@@ -15,7 +15,7 @@ public class BarOrders implements SuperEntity {
     @Temporal(TemporalType.DATE)
     private Date date;
     private String customerId;
-    private String user;
+    private int user;
     @OneToMany(mappedBy = "order", cascade = {CascadeType.PERSIST, CascadeType.REFRESH, CascadeType.DETACH, CascadeType.MERGE})
     private List<BarOrderDetails> orderDetails = new ArrayList<>();
 
@@ -24,7 +24,7 @@ public class BarOrders implements SuperEntity {
 
 
 
-    public BarOrders(int id, Date date, String customerId, String user) {
+    public BarOrders(int id, Date date, String customerId, int user) {
         this.orderId = id;
         this.date = date;
         this.customerId = customerId;
@@ -61,11 +61,11 @@ public class BarOrders implements SuperEntity {
         return orderDetails;
     }
 
-    public String getUser() {
+    public int getUser() {
         return user;
     }
 
-    public void setUser(String user) {
+    public void setUser(int user) {
         this.user = user;
     }
 

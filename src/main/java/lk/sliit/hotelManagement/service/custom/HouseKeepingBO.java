@@ -15,7 +15,7 @@ public interface HouseKeepingBO extends SuperBO {
     List<HotelRoomDTO> findRooms();
 
 
-    void deleteRoomDetails(String roomId);
+    void deleteRoomDetails(int roomId);
 
-    HotelRoomDTO findRoomIdByID(String roomId);
+    HotelRoomDTO findRoomIdByID(int roomId);
 }

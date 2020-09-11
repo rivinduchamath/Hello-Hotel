@@ -10,7 +10,7 @@ import java.util.List;
 @Entity
 public class Customer {
     @Id
-    private String customerId;
+    private int customerId;
     private String email;
     private String name;
     private String address;
@@ -27,7 +27,7 @@ public class Customer {
 
 
 
-    public Customer(String customerId, String email, String name, String address, int contactNumber) {
+    public Customer(int customerId, String email, String name, String address, int contactNumber) {
         this.customerId = customerId;
         this.email = email;
         this.name = name;
@@ -46,11 +46,11 @@ public class Customer {
         this.email = email;
     }
 
-    public String getCustomerId() {
+    public int getCustomerId() {
         return customerId;
     }
 
-    public void setCustomerId(String customerId) {
+    public void setCustomerId(int customerId) {
         this.customerId = customerId;
     }
 

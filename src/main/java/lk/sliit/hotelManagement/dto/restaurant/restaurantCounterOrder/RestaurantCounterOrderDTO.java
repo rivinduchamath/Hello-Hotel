@@ -8,10 +8,12 @@ public class RestaurantCounterOrderDTO {
     private double quantity;
     private Date date;
     private String dataValue;
-    private String customerId;
-    private String orderHolder;
+    private int customerId;
+    private int orderHolder;
 
-    public RestaurantCounterOrderDTO(int orderId, String orderState, double quantity, Date date, String dataValue, String customerId, String orderHolder) {
+    public RestaurantCounterOrderDTO(int orderId, String orderState, double quantity,
+                                     Date date, String dataValue, int customerId,
+                                     int orderHolder) {
         this.orderId = orderId;
         this.orderState = orderState;
         this.quantity = quantity;
@@ -21,7 +23,9 @@ public class RestaurantCounterOrderDTO {
         this.orderHolder = orderHolder;
     }
 
-    public RestaurantCounterOrderDTO(int orderId, String orderState, double quantity, Date date, String dataValue, String customerId) {
+    public RestaurantCounterOrderDTO(int orderId, String orderState,
+                                     double quantity, Date date, String dataValue,
+                                     int customerId) {
         this.orderId = orderId;
         this.orderState = orderState;
         this.quantity = quantity;
@@ -44,11 +48,11 @@ public class RestaurantCounterOrderDTO {
         this.dataValue = dataValue;
     }
 
-    public String getOrderHolder() {
+    public int getOrderHolder() {
         return orderHolder;
     }
 
-    public void setOrderHolder(String orderHolder) {
+    public void setOrderHolder(int orderHolder) {
         this.orderHolder = orderHolder;
     }
 
@@ -84,11 +88,11 @@ public class RestaurantCounterOrderDTO {
         this.date = date;
     }
 
-    public String getCustomerId() {
+    public int getCustomerId() {
         return customerId;
     }
 
-    public void setCustomerId(String customerId) {
+    public void setCustomerId(int customerId) {
         this.customerId = customerId;
     }
 

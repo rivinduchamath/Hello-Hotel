@@ -8,15 +8,15 @@ import java.sql.Date;
 @Entity
 public class RoomIncome {
     @Id
-    private String id;
+    private int id;
     private Date date;
-private double price;
+    private double price;
     @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.REFRESH, CascadeType.DETACH, CascadeType.MERGE})
     @JoinColumn(name = "roomId", referencedColumnName = "roomId", insertable = false, updatable = false)
     private HotelRoom roomId;
 
 
-    public RoomIncome(String id, Date date, double price, HotelRoom roomId) {
+    public RoomIncome(int id, Date date, double price, HotelRoom roomId) {
         this.id = id;
         this.date = date;
         this.price = price;
@@ -26,11 +26,11 @@ private double price;
     public RoomIncome() {
     }
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 

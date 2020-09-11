@@ -4,9 +4,9 @@ public class ItemTypeDTO {
 
     int id;
     String userType;
-    String submittedBy;
+    int submittedBy;
 
-    public ItemTypeDTO(int id, String userType, String submittedBy) {
+    public ItemTypeDTO(int id, String userType, int submittedBy) {
         this.id = id;
         this.userType = userType;
         this.submittedBy = submittedBy;
@@ -35,11 +35,11 @@ public class ItemTypeDTO {
         this.userType = userType;
     }
 
-    public String getSubmittedBy() {
+    public int getSubmittedBy() {
         return submittedBy;
     }
 
-    public void setSubmittedBy(String submittedBy) {
+    public void setSubmittedBy(int submittedBy) {
         this.submittedBy = submittedBy;
     }
 

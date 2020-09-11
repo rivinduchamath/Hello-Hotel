@@ -37,7 +37,7 @@ public class BanquetController {
     }
 
     @RequestMapping("/updateBanquetStatus")
-    public String updateBanquetStatus(@RequestParam String orderId) {
+    public String updateBanquetStatus(@RequestParam int orderId) {
         banquetBO.updateBanquetStatus(orderId);
         return "redirect:/banquets";
     }

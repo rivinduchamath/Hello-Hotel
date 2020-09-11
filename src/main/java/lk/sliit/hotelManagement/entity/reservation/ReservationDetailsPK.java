@@ -6,8 +6,8 @@ import java.io.Serializable;
 @Embeddable
 public class ReservationDetailsPK implements Serializable {
 
-   private int reservationId;
-        private String roomId;
+    private int reservationId;
+    private String roomId;
 
     public ReservationDetailsPK(int reservationId, String roomId) {
         this.reservationId = reservationId;

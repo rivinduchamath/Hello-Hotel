@@ -44,30 +44,36 @@ public class HouseKeepingController {
     @PostMapping("/manageRoomSave")
     public String saveFormRooms( @ModelAttribute HotelRoomDTO hotelRoomDTO,Model model ){
          model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
+
         try {
+            hotelRoomDTO.setRoomId2(Integer.parseInt(hotelRoomDTO.getGetRoomId2()));
+        }catch (NumberFormatException e){
+
+        }
+         try {
             HotelRoomDTO hotelRoom = houseKeepingBO.findHighestRoomId();
             HotelRoomDTO hotelRoomDTO1 = null;
             try {
                 hotelRoomDTO1 = houseKeepingBO.findRoomIdByID(hotelRoomDTO.getRoomId2());
             }catch (NullPointerException d){
-                int maxId = Integer.parseInt(hotelRoom.getRoomId2());
-                if (hotelRoomDTO.getRoomId2().equals(String.valueOf(maxId))) {
-                    hotelRoomDTO.setRoomId2(String.valueOf(maxId));
+                int maxId = (hotelRoom.getRoomId2());
+                if (hotelRoomDTO.getRoomId2()==((maxId))) {
+                    hotelRoomDTO.setRoomId2((maxId));
                 } else {
                     maxId++;
-                    hotelRoomDTO.setRoomId2(String.valueOf(maxId));
+                    hotelRoomDTO.setRoomId2((maxId));
                 }
             }
 
         } catch (NullPointerException e){
-               hotelRoomDTO.setRoomId2("1");
+               hotelRoomDTO.setRoomId2(1);
         }
         houseKeepingBO.saveRoomDetails(hotelRoomDTO);
         return "redirect:/manageRooms";
     }
 
     @GetMapping(value = "/roomDelete/{roomId}")
-    public void deleteRoom(Model model, @PathVariable("roomId") String roomId, HttpServletResponse response){
+    public void deleteRoom(Model model, @PathVariable("roomId") int roomId, HttpServletResponse response){
         model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
         houseKeepingBO.deleteRoomDetails(roomId);
         try {

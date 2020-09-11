@@ -258,7 +258,7 @@ public class InventoryBOImpl implements InventoryBO {
     }
 
     @Override
-    public void deleteInventoryType(String id) {
+    public void deleteInventoryType(int id) {
         itemTypeDAO.delete(id);
     }
 

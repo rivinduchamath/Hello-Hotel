@@ -6,7 +6,7 @@ import org.springframework.data.repository.CrudRepository;
 
 import java.util.Date;
 
-public interface NoticeDAO extends CrudRepository<Notice,String> {
+public interface NoticeDAO extends CrudRepository<Notice,Integer> {
 
     Notice findTopByOrderByNoticeIdDesc();
 

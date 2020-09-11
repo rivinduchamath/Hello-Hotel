@@ -48,7 +48,7 @@ public class AddNewInventoryController {
     }
 
     @RequestMapping(value = "deleteInventoryItem/{id}")
-    public String deleteInventoryItem(@PathVariable("id") String id) {
+    public String deleteInventoryItem(@PathVariable("id") int id) {
 
         try {
             inventoryBO.deleteInventoryType(id);

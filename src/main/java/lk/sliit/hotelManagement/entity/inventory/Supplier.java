@@ -16,12 +16,13 @@ public class Supplier {
     private String gender;
     private Date date;
     private Date birthday;
-    private String submittedBy;
+    private int submittedBy;
     @OneToMany(mappedBy = "supplier", cascade = {CascadeType.PERSIST,CascadeType.REFRESH, CascadeType.DETACH, CascadeType.MERGE})
     private List<InventoryOrder> orders = new ArrayList<>();
 
 
-    public Supplier(int id, String name, String address, String mobile, String email, String gender, Date date, Date birthday, String submittedBy) {
+    public Supplier(int id, String name, String address, String mobile,
+                    String email, String gender, Date date, Date birthday, int submittedBy) {
         this.id = id;
         this.name = name;
         this.address = address;
@@ -34,11 +35,11 @@ public class Supplier {
     }
 
 
-    public String getSubmittedBy() {
+    public int getSubmittedBy() {
         return submittedBy;
     }
 
-    public void setSubmittedBy(String submittedBy) {
+    public void setSubmittedBy(int submittedBy) {
         this.submittedBy = submittedBy;
     }
 

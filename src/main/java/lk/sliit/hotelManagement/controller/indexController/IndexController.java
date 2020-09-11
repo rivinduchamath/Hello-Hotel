@@ -46,9 +46,9 @@ public class IndexController { //index.jsp Page Controller
             model.addAttribute ( "todayAttendance",null );
 
             //Add Logger Id To the static variable idNo
-            SuperController.idNo = employee.getUserId();
+            SuperController.idNo = (employee.getUserId());
             //Get Logger Data
-            model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
+            model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo((SuperController.idNo)));
             List<NoticeDTO> p = noticeBO.findAll();
             model.addAttribute("loadNoticeTable", p);
             return "/dashboard";

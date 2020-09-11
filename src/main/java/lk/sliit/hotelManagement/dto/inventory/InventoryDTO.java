@@ -16,7 +16,7 @@ public class InventoryDTO {
     //    ////////////////////////////////////
     private int supplierId;
     private int orderId;
-    private String orderHolder;
+    private int orderHolder;
 
 
 
@@ -46,11 +46,11 @@ public class InventoryDTO {
         return orderId;
     }
 
-    public String getOrderHolder() {
+    public int getOrderHolder() {
         return orderHolder;
     }
 
-    public void setOrderHolder(String orderHolder) {
+    public void setOrderHolder(int orderHolder) {
         this.orderHolder = orderHolder;
     }
 

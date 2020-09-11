@@ -4,7 +4,7 @@ import java.sql.Date;
 
 public class BanquetAddDTO {
     private int orderId;
-    private String customerId;
+    private int customerId;
     private String email;
     private String name;
     private String address;
@@ -14,7 +14,7 @@ public class BanquetAddDTO {
     private String orderState;
     private int noOfPlates;
     private String submittedBy;
-    private String menuId;
+    private int menuId;
     private int banquetBillId;
     private double advanceFee;
     private double foodPrice;
@@ -27,7 +27,7 @@ public class BanquetAddDTO {
     }
 
     public BanquetAddDTO(int orderId, String name, String address, Date date,
-                         String hallId, int noOfPlates, String menuId,
+                         String hallId, int noOfPlates, int menuId,
                          double advancePayment, int billId) {
         this.orderId = orderId;
         this.name = name;
@@ -56,7 +56,7 @@ public class BanquetAddDTO {
 
     public BanquetAddDTO(int orderId, String name, String address,
                          Date date, String hallId, int noOfPlates,
-                         String menuId, double advancePayment, int billId,
+                         int menuId, double advancePayment, int billId,
                          String orderState, double total) {
         this.orderId = orderId;
         this.name = name;
@@ -80,11 +80,11 @@ public class BanquetAddDTO {
         this.orderId = orderId;
     }
 
-    public String getCustomerId() {
+    public int getCustomerId() {
         return customerId;
     }
 
-    public void setCustomerId(String customerId) {
+    public void setCustomerId(int customerId) {
         this.customerId = customerId;
     }
 
@@ -160,11 +160,11 @@ public class BanquetAddDTO {
         this.submittedBy = submittedBy;
     }
 
-    public String getMenuId() {
+    public int getMenuId() {
         return menuId;
     }
 
-    public void setMenuId(String menuId) {
+    public void setMenuId(int menuId) {
         this.menuId = menuId;
     }
 

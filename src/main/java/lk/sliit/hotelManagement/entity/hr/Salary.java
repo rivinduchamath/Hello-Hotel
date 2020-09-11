@@ -9,7 +9,7 @@ import javax.persistence.*;
 public class Salary implements SuperEntity {
 
     @Id
-    private String salaryId;
+    private int salaryId;
     @Column(nullable = true)
     private double basicSalary;
     @Column(nullable = true)
@@ -31,7 +31,7 @@ public class Salary implements SuperEntity {
 
     public Salary() {}
 
-    public Salary(String salaryId, double basicSalary, double etf, double epf,
+    public Salary(int salaryId, double basicSalary, double etf, double epf,
                   double serviceCharge, double otHours, double hours, double salary,
                    Employee employeeID) {
         this.salaryId = salaryId;
@@ -46,11 +46,11 @@ public class Salary implements SuperEntity {
     }
 
 
-    public String getSalaryId() {
+    public int getSalaryId() {
         return salaryId;
     }
 
-    public void setSalaryId(String salaryId) {
+    public void setSalaryId(int salaryId) {
         this.salaryId = salaryId;
     }
 

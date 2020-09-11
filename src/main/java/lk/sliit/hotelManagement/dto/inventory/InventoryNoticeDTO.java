@@ -12,7 +12,7 @@ public class InventoryNoticeDTO {
     private double orderQty;
     private Date date;
     private Date expDate;
-    private String orderHolder;
+    private int orderHolder;
     private boolean state;
     private int inventoryId;
     private String text;
@@ -27,7 +27,7 @@ public class InventoryNoticeDTO {
 
 
     public InventoryNoticeDTO(int noticeId, String department,
-                              double orderQty, Date date, Date expDate, String orderHolder,
+                              double orderQty, Date date, Date expDate, int orderHolder,
                               boolean state, int inventoryid) {
         this.noticeId = noticeId;
         this.department = department;
@@ -41,7 +41,7 @@ public class InventoryNoticeDTO {
 
     public InventoryNoticeDTO(int noticeId, String department,
                               double orderQty, Date date, Date expDate,
-                              String orderHolder, boolean state,
+                              int orderHolder, boolean state,
                               int inventoryId, String text, double qtyOnHand) {
         this.noticeId = noticeId;
         this.department = department;
@@ -131,11 +131,11 @@ public class InventoryNoticeDTO {
         this.expDate = expDate;
     }
 
-    public String getOrderHolder() {
+    public int getOrderHolder() {
         return orderHolder;
     }
 
-    public void setOrderHolder(String orderHolder) {
+    public void setOrderHolder(int orderHolder) {
         this.orderHolder = orderHolder;
     }
 

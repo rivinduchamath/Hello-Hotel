@@ -165,20 +165,20 @@ public class BanquetBOImpl implements BanquetBO {
     }
 
     @Override
-    public void updateBanquetStatus(String orderId) {
+    public void updateBanquetStatus(int orderId) {
         String status ="confirmed";
         banquetOrderDAO.updateBanStatus(status,orderId);
 
     }
 
     @Override
-    public void updateBanquetStatusToCancel(String orderId) {
+    public void updateBanquetStatusToCancel(int orderId) {
         String status ="canceled";
         banquetOrderDAO.updateBanStatus(status,orderId);
     }
 
     @Override
-    public void deleteBanquet(String idNo) {
+    public void deleteBanquet(int idNo) {
         banquetOrderDAO.delete(idNo);
     }
 

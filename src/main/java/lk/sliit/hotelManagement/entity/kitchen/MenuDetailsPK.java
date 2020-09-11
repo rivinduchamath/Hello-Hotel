@@ -7,30 +7,30 @@ import java.io.Serializable;
 @Embeddable
 public class MenuDetailsPK implements Serializable {
 
-    private String menu;
-    private String foodItem;
+    private int menu;
+    private int foodItem;
 
     public MenuDetailsPK() {
     }
 
-    public MenuDetailsPK(String menu, String foodItem) {
+    public MenuDetailsPK(int menu, int foodItem) {
         this.menu = menu;
         this.foodItem = foodItem;
     }
 
-    public String getMenu() {
+    public int getMenu() {
         return menu;
     }
 
-    public void setMenu(String menu) {
+    public void setMenu(int menu) {
         this.menu = menu;
     }
 
-    public String getFoodItem() {
+    public int getFoodItem() {
         return foodItem;
     }
 
-    public void setFoodItem(String foodItem) {
+    public void setFoodItem(int foodItem) {
         this.foodItem = foodItem;
     }
 }

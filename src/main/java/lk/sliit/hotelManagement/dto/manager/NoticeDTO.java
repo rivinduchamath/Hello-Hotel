@@ -6,18 +6,18 @@ import java.sql.Date;
 
 //Class NoticeDTO
 public class NoticeDTO {
-    private String noticeId ;
+    private int noticeId ;
     private String title;
     private String description;
     private Date date;
-    private String department;
+    private int department;
 
 
 
     public NoticeDTO() {
     }
 
-    public NoticeDTO(String noticeId, String title, String description, Date date, String department) {
+    public NoticeDTO(int noticeId, String title, String description, Date date, int department) {
         this.noticeId = noticeId;
         this.title = title;
         this.description = description;
@@ -25,15 +25,15 @@ public class NoticeDTO {
         this.department = department;
     }
 
-    public NoticeDTO(String noticeId) {
+    public NoticeDTO(int noticeId) {
         this.noticeId = noticeId;
     }
 
-    public String getNoticeId() {
+    public int getNoticeId() {
         return noticeId;
     }
 
-    public void setNoticeId(String noticeId) {
+    public void setNoticeId(int noticeId) {
         this.noticeId = noticeId;
     }
 
@@ -61,11 +61,11 @@ public class NoticeDTO {
         this.date = date;
     }
 
-    public String getDepartment() {
+    public int getDepartment() {
         return department;
     }
 
-    public void setDepartment(String department) {
+    public void setDepartment(int department) {
         this.department = department;
     }
 

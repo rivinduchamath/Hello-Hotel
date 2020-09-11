@@ -11,7 +11,7 @@ import java.util.Date;
 public class Attendance  {
 
     @Id
-    private String attendanceId;
+    private int attendanceId;
     @Column(nullable = true)
     @Temporal(TemporalType.DATE)
     private Date date;
@@ -26,7 +26,7 @@ public class Attendance  {
 
     public Attendance() {}
 
-    public Attendance(String attendanceId,  Date date,
+    public Attendance(int attendanceId,  Date date,
                        String inTime, String outTime, double overtimeHours,
                        Employee employeeID) {
         this.attendanceId = attendanceId;
@@ -39,11 +39,11 @@ public class Attendance  {
     }
 
 
-    public String getAttendanceId() {
+    public int getAttendanceId() {
         return attendanceId;
     }
 
-    public void setAttendanceId(String attendanceId) {
+    public void setAttendanceId(int attendanceId) {
         this.attendanceId = attendanceId;
     }
 

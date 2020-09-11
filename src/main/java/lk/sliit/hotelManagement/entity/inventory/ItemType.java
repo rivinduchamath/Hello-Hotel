@@ -8,19 +8,19 @@ public class ItemType {
     @Id
     int id;
     String userType;
-    String submittedBy;
+    int submittedBy;
 
-    public ItemType(int id, String userType, String submittedBy) {
+    public ItemType(int id, String userType, int submittedBy) {
         this.id = id;
         this.userType = userType;
         this.submittedBy = submittedBy;
     }
 
-    public String getSubmittedBy() {
+    public int getSubmittedBy() {
         return submittedBy;
     }
 
-    public void setSubmittedBy(String submittedBy) {
+    public void setSubmittedBy(int submittedBy) {
         this.submittedBy = submittedBy;
     }
 

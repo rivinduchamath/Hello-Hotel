@@ -13,7 +13,7 @@ import java.util.Collection;
 @Entity
 public class HotelRoom {
     @Id
-    private String roomId;
+    private int roomId;
     private String roomName;
     private String roomType;//A/c Or Not
     @Column(length = 1000)
@@ -29,7 +29,7 @@ public class HotelRoom {
     @OneToMany(mappedBy = "roomId")
     private Collection<RoomIncome> roomIncome;
 
-    public HotelRoom(String roomId, String roomType, String description, String status, String holder, double price) {
+    public HotelRoom(int roomId, String roomType, String description, String status, String holder, double price) {
         this.roomId = roomId;
         this.roomType = roomType;
         this.description = description;
@@ -38,7 +38,7 @@ public class HotelRoom {
         this.price = price;
     }
 
-    public HotelRoom(String roomId, String roomName, String roomType, String description, String status, String holder,
+    public HotelRoom(int roomId, String roomName, String roomType, String description, String status, String holder,
                      double price, Date date) {
         this.roomId = roomId;
         this.roomName = roomName;
@@ -97,11 +97,11 @@ public class HotelRoom {
         this.holder = holder;
     }
 
-    public String getRoomId() {
+    public int getRoomId() {
         return roomId;
     }
 
-    public void setRoomId(String roomId) {
+    public void setRoomId(int roomId) {
         this.roomId = roomId;
     }
 

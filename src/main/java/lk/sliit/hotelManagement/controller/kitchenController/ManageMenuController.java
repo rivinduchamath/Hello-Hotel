@@ -25,6 +25,8 @@ public class ManageMenuController {
     @PostMapping("/FoodPacks")
     public String addFoodPack(Model model, @ModelAttribute MenuDTO menuDTO){
         model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
+        System.out.println(menuDTO+" aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+
         try {
             MenuDTO menuItem = kitchenBO.findHighestFoodPackId();
             MenuDTO menuDTO1 = null;
@@ -33,17 +35,17 @@ public class ManageMenuController {
                  menuDTO1 = kitchenBO.findMenuItemById(menuDTO.getMenuId());
                 System.out.println("ssssssssssssssssssssssssssssssssssssssssssssssss"+menuDTO1.getMenuId());
             }catch (NullPointerException d){
-                int maxId = Integer.parseInt(menuItem.getMenuId());
-                if (menuDTO.getMenuId().equals(String.valueOf(maxId))) {
-                    menuDTO.setMenuId(String.valueOf(maxId));
+                int maxId = (menuItem.getMenuId());
+                if (menuDTO.getMenuId()==(maxId)) {
+                    menuDTO.setMenuId((maxId));
                 } else {
                     maxId++;
-                    menuDTO.setMenuId(String.valueOf(maxId));
+                    menuDTO.setMenuId((maxId));
                 }
             }
 
         } catch (NullPointerException e){
-            menuDTO.setMenuId("1");
+            menuDTO.setMenuId(1);
         }
         kitchenBO.saveMenuItem(menuDTO);
         return "redirect:/manageFoodPacks";
@@ -62,7 +64,7 @@ public class ManageMenuController {
 
 
     @GetMapping(value = "/deleteFoodPackage/{menuId}")
-    public void deleteMenuItem(Model model, @PathVariable("menuId") String menuItemId, HttpServletResponse response){
+    public void deleteMenuItem(Model model, @PathVariable("menuId") int menuItemId, HttpServletResponse response){
         model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
         kitchenBO.deleteMenuItem(menuItemId);
         try {
