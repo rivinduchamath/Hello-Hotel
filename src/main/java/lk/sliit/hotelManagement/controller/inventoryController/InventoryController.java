@@ -82,13 +82,19 @@ public class InventoryController {
     @RequestMapping(value = "/updateQty")
     public String updateQty(@ModelAttribute InventoryDTO inventoryDTO, HttpServletRequest request) {
 
-        InventoryDTO inventoryDTO1;
-
+        InventoryDTO inventoryDTO1 = null;
+        boolean s =false;
+        try {
+            s = inventoryBO.findOne(inventoryDTO.getSupplierId());
+        } catch (NullPointerException e) {
+            System.out.println("Supplier Id is Not Found");
+            return "redirect:/inventory";
+        }
 
         try {
             //Get Inventory Data From Inventory Id
             inventoryDTO1 = inventoryBO.findInventory(inventoryDTO.getInventoryId());
-
+            inventoryDTO1.setSupplierId(inventoryDTO.getSupplierId());
             inventoryDTO1.setGetPrice(inventoryDTO.getGetPrice());
             //////////////////////////////////////////////////////////////////
             //Set Order Id

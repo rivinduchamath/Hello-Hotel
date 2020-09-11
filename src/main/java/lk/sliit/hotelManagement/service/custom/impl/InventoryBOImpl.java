@@ -389,12 +389,15 @@ public class InventoryBOImpl implements InventoryBO {
     }//End
 
     @Override
-    public SupplierDTO findOne(String supplierId) {
-
+    public boolean findOne(String supplierId) {
+        System.out.println(supplierId + "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee");
         Supplier supplier = null;
-        supplier = supplierDAO.findOne(supplierId);
-        return new SupplierDTO(supplier.getId());
-
+        try {
+            supplier = supplierDAO.findOne(supplierId);
+            return true;
+        } catch (NullPointerException f) {
+            return false;
+        }
     }
 
 }

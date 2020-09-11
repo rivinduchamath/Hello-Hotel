@@ -52,5 +52,5 @@ public interface InventoryBO extends SuperBO {
 
     InventoryDTO findTopByOrderByOrderIdDesc();
 
-    SupplierDTO findOne(String supplierId);
+    boolean findOne(String supplierId);
 }
