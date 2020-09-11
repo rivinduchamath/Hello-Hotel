@@ -51,10 +51,7 @@ public class BarOrders {
         } catch (NullPointerException e) {
             barOrderDTO.setId(String.valueOf(1));
         }
-
         barBO.saveBarOrder(barOrderDTO);
-
-
         return "invoice";
     }
 }
