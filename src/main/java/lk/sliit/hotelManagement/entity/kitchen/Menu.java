@@ -8,7 +8,7 @@ import java.util.List;
 @Entity
 public class Menu {
     @Id
-    private String menuId;
+    private int menuId;
     private String name;
     private String type;
     private String picture;
@@ -18,7 +18,7 @@ public class Menu {
     @OneToMany(mappedBy = "menu", cascade = {CascadeType.PERSIST, CascadeType.REFRESH, CascadeType.DETACH, CascadeType.MERGE})
     private List<MenuDetails> orderDetails = new ArrayList<>();
 
-    public Menu(String menuId, String name, String type, String picture, double unitPrice) {
+    public Menu(int menuId, String name, String type, String picture, double unitPrice) {
         this.menuId = menuId;
         this.name = name;
         this.type = type;
@@ -30,11 +30,11 @@ public class Menu {
     public Menu() {
     }
 
-    public String getMenuId() {
+    public int getMenuId() {
         return menuId;
     }
 
-    public void setMenuId(String menuId) {
+    public void setMenuId(int menuId) {
         this.menuId = menuId;
     }
 
@@ -68,5 +68,21 @@ public class Menu {
 
     public void setUnitPrice(double unitPrice) {
         this.unitPrice = unitPrice;
+    }
+
+    public List<BanquetOrder> getBanquetOrders() {
+        return banquetOrders;
+    }
+
+    public void setBanquetOrders(List<BanquetOrder> banquetOrders) {
+        this.banquetOrders = banquetOrders;
+    }
+
+    public List<MenuDetails> getOrderDetails() {
+        return orderDetails;
+    }
+
+    public void setOrderDetails(List<MenuDetails> orderDetails) {
+        this.orderDetails = orderDetails;
     }
 }

@@ -1,10 +1,10 @@
 package lk.sliit.hotelManagement.dto.hr;
 
 public class DepartmentDTO {
-    private String departmentId;
+    private int departmentId;
     private String departmentName;
 
-    public DepartmentDTO(String departmentId, String departmentName) {
+    public DepartmentDTO(int departmentId, String departmentName) {
         this.departmentId = departmentId;
         this.departmentName = departmentName;
     }
@@ -12,11 +12,11 @@ public class DepartmentDTO {
     public DepartmentDTO() {
     }
 
-    public String getDepartmentId() {
+    public int getDepartmentId() {
         return departmentId;
     }
 
-    public void setDepartmentId(String departmentId) {
+    public void setDepartmentId(int departmentId) {
         this.departmentId = departmentId;
     }
 

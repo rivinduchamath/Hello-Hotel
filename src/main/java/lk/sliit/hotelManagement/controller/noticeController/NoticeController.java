@@ -26,12 +26,12 @@ public class NoticeController { //notice.jsp For All Notice
 
     @GetMapping("notice")
     public ModelAndView load(Model model) {
-        model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
+        model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo((SuperController.idNo)));
 
         ModelAndView mav = new ModelAndView("notice");
         try {
             NoticeDTO totalCount = noticeBO.findId ( );
-            int x = Integer.parseInt ( totalCount.getNoticeId ( ) )+ 1;
+            int x = ( totalCount.getNoticeId ( ) )+ 1;
             model.addAttribute ( "genId", x);
         } catch (NullPointerException e) {
             model.addAttribute ( "genId", 1 );
@@ -52,7 +52,7 @@ public class NoticeController { //notice.jsp For All Notice
 
     //  Value name ("noticeId") must be equal
     @RequestMapping(value = "/delete/{noticeId}",method = RequestMethod.GET)
-    public String deleteNotice(@PathVariable String noticeId) {
+    public String deleteNotice(@PathVariable int noticeId) {
         if(noticeBO.findNoticeById(noticeId) != null){
             noticeBO.deleteNotice(noticeId);
             return "redirect:/notice";

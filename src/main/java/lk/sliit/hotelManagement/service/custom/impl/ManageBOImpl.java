@@ -69,7 +69,7 @@ public class ManageBOImpl implements ManageBO {
     }
 
     @Override
-    public void deleteEmployee(String userId) {
+    public void deleteEmployee(int userId) {
         manageDAO.delete(userId);
     }
 

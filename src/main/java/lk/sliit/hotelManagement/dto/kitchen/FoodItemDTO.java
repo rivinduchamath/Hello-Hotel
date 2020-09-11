@@ -10,14 +10,15 @@ import java.util.List;
 
 
 public class FoodItemDTO {
-    private String itemId;
+    private int itemId;
     private String itemName;
     private double unitePrice;
     private String itemCategory;
     private String src;
+    private String getId;
 
 
-    public FoodItemDTO(String itemId, String itemName, double unitePrice, String itemCategory, String src) {
+    public FoodItemDTO(int itemId, String itemName, double unitePrice, String itemCategory, String src) {
         this.itemId = itemId;
         this.itemName = itemName;
         this.unitePrice = unitePrice;
@@ -28,15 +29,23 @@ public class FoodItemDTO {
     public FoodItemDTO() {
     }
 
-    public FoodItemDTO(String itemId) {
+    public String getGetId() {
+        return getId;
+    }
+
+    public void setGetId(String getId) {
+        this.getId = getId;
+    }
+
+    public FoodItemDTO(int itemId) {
         this.itemId = itemId;
     }
 
-    public String getItemId() {
+    public int getItemId() {
         return itemId;
     }
 
-    public void setItemId(String itemId) {
+    public void setItemId(int itemId) {
         this.itemId = itemId;
     }
 

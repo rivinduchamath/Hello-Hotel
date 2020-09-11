@@ -221,7 +221,7 @@
                                     <br/>
                                     <form action="saveFoodItem" method="POST" class="form-horizontal form-label-left"
                                           data-parsley-validate id="demo-form3">
-                                        <input class="form-control" name="itemId" id="itemId" type="hidden" value="">
+                                        <input class="form-control" name="getId" id="itemId" type="hidden" >
 
 
                                         <div class=" form-group">

@@ -6,7 +6,7 @@ import lk.sliit.hotelManagement.service.SuperBO;
 import java.util.List;
 
 public interface CurrentBO extends SuperBO {
-    //CurrentBillDTO findHighestCurrentBillId();
+    CurrentBillDTO findHighestCurrentBillId();
 
     void saveCurrentBill(CurrentBillDTO currentBillDTO);
 

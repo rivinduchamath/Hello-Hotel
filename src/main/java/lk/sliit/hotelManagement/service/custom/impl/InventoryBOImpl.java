@@ -1,23 +1,23 @@
 package lk.sliit.hotelManagement.service.custom.impl;
 
-import lk.sliit.hotelManagement.dao.inventoryDAO.InventoryDAO;
-import lk.sliit.hotelManagement.dao.inventoryDAO.InventoryNoticeDAO;
-import lk.sliit.hotelManagement.dao.inventoryDAO.ItemTypeDAO;
-import lk.sliit.hotelManagement.dao.inventoryDAO.SupplierDAO;
+import lk.sliit.hotelManagement.dao.inventoryDAO.*;
+import lk.sliit.hotelManagement.dto.beverage.BarOrderDTO;
 import lk.sliit.hotelManagement.dto.inventory.InventoryDTO;
 import lk.sliit.hotelManagement.dto.inventory.InventoryNoticeDTO;
 import lk.sliit.hotelManagement.dto.inventory.ItemTypeDTO;
 import lk.sliit.hotelManagement.dto.inventory.SupplierDTO;
-import lk.sliit.hotelManagement.entity.inventory.Inventory;
-import lk.sliit.hotelManagement.entity.inventory.InventoryNotice;
-import lk.sliit.hotelManagement.entity.inventory.ItemType;
-import lk.sliit.hotelManagement.entity.inventory.Supplier;
+import lk.sliit.hotelManagement.entity.TimeCheck;
+import lk.sliit.hotelManagement.entity.barManage.BarOrders;
+import lk.sliit.hotelManagement.entity.inventory.*;
 import lk.sliit.hotelManagement.service.custom.InventoryBO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.sql.Time;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -30,6 +30,8 @@ public class InventoryBOImpl implements InventoryBO {
     InventoryDAO inventoryDAO;
     @Autowired
     InventoryNoticeDAO inventoryNoticeDAO;
+    @Autowired
+    InventoryOrderDAO inventoryOrderDAO;
     @Autowired
     SupplierDAO supplierDAO;
 
@@ -46,6 +48,8 @@ public class InventoryBOImpl implements InventoryBO {
         }
         return dtos;
     }
+
+
 
     @Override
     public List<InventoryDTO> findAllInventory() {
@@ -70,7 +74,7 @@ public class InventoryBOImpl implements InventoryBO {
     @Override
     public void saveInventoryItem(InventoryDTO inventoryDTO) {
         inventoryDAO.save(new Inventory(
-              inventoryDTO.getInventoryId(),
+                inventoryDTO.getInventoryId(),
                 inventoryDTO.getText(),
                 inventoryDTO.getDescription(),
                 inventoryDTO.getOrderQty(),
@@ -186,16 +190,15 @@ public class InventoryBOImpl implements InventoryBO {
     }*/
 
     @Override
-    public void deleteInventoryNotice(String noticeId) {
+    public void deleteInventoryNotice(int noticeId) {
         inventoryDAO.delete(noticeId);
     }
 
 
-
     @Override
-    public InventoryDTO findInventory(String inventoryId) {
-        Inventory notice = inventoryDAO.findOne (inventoryId);
-        return new InventoryDTO (
+    public InventoryDTO findInventory(int inventoryId) {
+        Inventory notice = inventoryDAO.findOne(inventoryId);
+        return new InventoryDTO(
                 notice.getInventoryId(),
                 notice.getText(),
                 notice.getDescription(),
@@ -208,8 +211,18 @@ public class InventoryBOImpl implements InventoryBO {
         );
     }
 
+    @Transactional
     @Override
     public void updateInventory(InventoryDTO inventoryDTO1) {
+
+        inventoryOrderDAO.save(new InventoryOrder(
+                inventoryDTO1.getOrderId(),
+                inventoryDTO1.getDate(),
+                inventoryDTO1.getGetPrice(),
+                inventoryDTO1.getOrderQty(),
+                supplierDAO.findOne(inventoryDTO1.getSupplierId()),
+                inventoryDAO.findOne(inventoryDTO1.getInventoryId())
+        ));
         inventoryDAO.save(new Inventory(
                 inventoryDTO1.getInventoryId(),
                 inventoryDTO1.getText(),
@@ -245,7 +258,7 @@ public class InventoryBOImpl implements InventoryBO {
     }
 
     @Override
-    public void deleteInventoryType(String id) {
+    public void deleteInventoryType(int id) {
         itemTypeDAO.delete(id);
     }
 
@@ -253,12 +266,12 @@ public class InventoryBOImpl implements InventoryBO {
     public ItemTypeDTO findTopByOrderByIdDesc() {
         ItemType itemType = null;
         try {
-            itemType = itemTypeDAO.findTopByOrderByIdDesc ();
-        }catch (Exception e){
-           // Logger.getLogger("lk.sliit.project.employeeManagement.service.custom.impl").log(Level.SEVERE, null,e); //Add Logger To Catch Exception
+            itemType = itemTypeDAO.findTopByOrderByIdDesc();
+        } catch (Exception e) {
+            // Logger.getLogger("lk.sliit.project.employeeManagement.service.custom.impl").log(Level.SEVERE, null,e); //Add Logger To Catch Exception
         }
-        return new ItemTypeDTO (
-                itemType.getId ()
+        return new ItemTypeDTO(
+                itemType.getId()
         );
     }//End Get Total Emp
 
@@ -273,17 +286,17 @@ public class InventoryBOImpl implements InventoryBO {
 
     @Override
     public void saveSupplier(SupplierDTO supplierDTO) {
-     supplierDAO.save(new Supplier(
-             supplierDTO.getId(),
-             supplierDTO.getName(),
-             supplierDTO.getAddress(),
-             supplierDTO.getMobile(),
-             supplierDTO.getEmail(),
-             supplierDTO.getGender(),
-             supplierDTO.getDate(),
-             supplierDTO.getBirthday(),
-             supplierDTO.getSubmittedBy()
-     ));
+        supplierDAO.save(new Supplier(
+                supplierDTO.getId(),
+                supplierDTO.getName(),
+                supplierDTO.getAddress(),
+                supplierDTO.getMobile(),
+                supplierDTO.getEmail(),
+                supplierDTO.getGender(),
+                supplierDTO.getDate(),
+                supplierDTO.getBirthday(),
+                supplierDTO.getSubmittedBy()
+        ));
     }
 
     @Override
@@ -311,17 +324,82 @@ public class InventoryBOImpl implements InventoryBO {
     public SupplierDTO findTopByOrderBySupplierIdDesc() {
         Supplier supplier = null;
         try {
-            supplier = supplierDAO.findTopByOrderByIdDesc ();
-        }catch (Exception e){
+            supplier = supplierDAO.findTopByOrderByIdDesc();
+        } catch (Exception e) {
             // Logger.getLogger("lk.sliit.project.employeeManagement.service.custom.impl").log(Level.SEVERE, null,e); //Add Logger To Catch Exception
         }
-        return new SupplierDTO (
-                supplier.getId ()
+        return new SupplierDTO(
+                supplier.getId()
         );
     }//End Get Total
 
     @Override
-    public void deleteSupplier(String userId) {
+    public void deleteSupplier(int userId) {
         supplierDAO.delete(userId);
     }
+
+    @Override
+    public InventoryNoticeDTO findTopByBarNoticeIdDesc() {
+        InventoryNotice notice = null;
+        try {
+            notice = inventoryNoticeDAO.findTopByOrderByNoticeIdDesc();
+        } catch (Exception e) {
+        }
+        return new InventoryNoticeDTO(
+                notice.getNoticeId()
+        );
+    }//End Get Total
+
+    @Override
+    public void saveOrderNotice(InventoryNoticeDTO noticeDTO) {
+        noticeDTO.setDepartment("Beverage");
+        java.sql.Date date = new java.sql.Date(Calendar.getInstance().getTime().getTime());
+        noticeDTO.setDate(date);
+        noticeDTO.setState(false);
+        try {
+            InventoryNotice notice = inventoryNoticeDAO.findInventoryNoticeByInventoryAndExpDateEquals(
+                    inventoryDAO.findOne(noticeDTO.getInventoryId()), noticeDTO.getExpDate());
+            noticeDTO.setNoticeId(notice.getNoticeId());
+            noticeDTO.setOrderQty((noticeDTO.getOrderQty() + notice.getOrderQty()));
+        } catch (Exception e) {
+        }
+
+        inventoryNoticeDAO.save(new InventoryNotice(
+                noticeDTO.getNoticeId(),
+                noticeDTO.getDepartment(),
+                noticeDTO.getOrderQty(),
+                noticeDTO.getDate(),
+                noticeDTO.getExpDate(),
+                noticeDTO.getOrderHolder(),
+                noticeDTO.isState(),
+                inventoryDAO.findOne(noticeDTO.getInventoryId())
+
+        ));
+    }
+
+    @Override
+    public InventoryDTO findTopByOrderByOrderIdDesc() {
+        InventoryOrder orders = null;
+        try {
+            orders = inventoryOrderDAO.findTopByOrderByOrderIdDesc();
+        } catch (Exception e) {
+
+        }
+        return new InventoryDTO(
+                orders.getOrderId()
+        );
+    }//End
+
+    @Override
+    public boolean findOne(int supplierId) {
+        System.out.println(supplierId + "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee");
+        Supplier supplier = null;
+        try {
+            supplier = supplierDAO.findOne(supplierId);
+            return true;
+        } catch (NullPointerException f) {
+            return false;
+        }
+    }
+
 }

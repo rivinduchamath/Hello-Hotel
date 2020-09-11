@@ -6,7 +6,7 @@ import java.sql.Date;
 @Entity
 public class Accounts {
     @Id
-    private String accountId;
+    private int accountId;
     private double expenses;
     private double income;
     private Date date;
@@ -14,7 +14,7 @@ public class Accounts {
     @JoinColumn(name = "departmentId", referencedColumnName = "departmentId")
     private Department department;
 
-    public Accounts(String accountId, double expenses, double income, Date date, Department department) {
+    public Accounts(int accountId, double expenses, double income, Date date, Department department) {
         this.accountId = accountId;
         this.expenses = expenses;
         this.income = income;
@@ -25,11 +25,11 @@ public class Accounts {
     public Accounts() {
     }
 
-    public String getAccountId() {
+    public int getAccountId() {
         return accountId;
     }
 
-    public void setAccountId(String accountId) {
+    public void setAccountId(int accountId) {
         this.accountId = accountId;
     }
 

@@ -1,10 +1,11 @@
 package lk.sliit.hotelManagement.entity.restaurant.onlineTableReservation;
 
 import lk.sliit.hotelManagement.entity.restaurant.OnlineCustomer;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
-import java.sql.Date;
-import java.sql.Time;
+import java.util.Date;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,11 +13,15 @@ import java.util.List;
 public class OnlineTableReservation {
 
     @Id
-    private String onlineTableReservationId;
+    private int onlineTableReservationId;
     private Date reservedDate;
     private Date date;
-    private Time startTime;
-    private Time endTime;
+    @DateTimeFormat(pattern="hh:mm:ss" )
+    @Temporal(TemporalType.TIME)
+    private Date startTime;
+    @DateTimeFormat(pattern="hh:mm:ss" )
+    @Temporal(TemporalType.TIME)
+    private Date endTime;
     private int noOfTables;
     @ManyToOne(cascade = {CascadeType.PERSIST,CascadeType.REFRESH, CascadeType.DETACH, CascadeType.MERGE})
     @JoinColumn(name = "onlineCustomerId", referencedColumnName = "onlineCustomerId", nullable = false)
@@ -24,7 +29,7 @@ public class OnlineTableReservation {
     @OneToMany(mappedBy = "onlineTableReservation", cascade = {CascadeType.PERSIST, CascadeType.REFRESH, CascadeType.DETACH, CascadeType.MERGE})
     private List<OnlineTableReservationDetails> orderDetails = new ArrayList<>();
 
-    public OnlineTableReservation(String onlineTableId, Date reservedDate, Date date,  Time startTime, Time endTime, int noOfTables, OnlineCustomer customer) {
+    public OnlineTableReservation(int onlineTableId, Date reservedDate, Date date,  Date startTime, Date endTime, int noOfTables, OnlineCustomer customer) {
         this.onlineTableReservationId = onlineTableId;
         this.reservedDate = reservedDate;
         this.date = date;
@@ -38,11 +43,11 @@ public class OnlineTableReservation {
     public OnlineTableReservation() {
     }
 
-    public String getOnlineTableReservationId() {
+    public int getOnlineTableReservationId() {
         return onlineTableReservationId;
     }
 
-    public void setOnlineTableReservationId(String onlineTableReservationId) {
+    public void setOnlineTableReservationId(int onlineTableReservationId) {
         this.onlineTableReservationId = onlineTableReservationId;
     }
 
@@ -63,20 +68,19 @@ public class OnlineTableReservation {
     }
 
 
-
-    public Time getStartTime() {
+    public Date getStartTime() {
         return startTime;
     }
 
-    public void setStartTime(Time startTime) {
+    public void setStartTime(Date startTime) {
         this.startTime = startTime;
     }
 
-    public Time getEndTime() {
+    public Date getEndTime() {
         return endTime;
     }
 
-    public void setEndTime(Time endTime) {
+    public void setEndTime(Date endTime) {
         this.endTime = endTime;
     }
 
@@ -100,4 +104,4 @@ public class OnlineTableReservation {
         return orderDetails;
     }
 
- }
+}

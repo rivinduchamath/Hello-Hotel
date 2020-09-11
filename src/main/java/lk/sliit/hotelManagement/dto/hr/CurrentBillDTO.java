@@ -3,11 +3,11 @@ package lk.sliit.hotelManagement.dto.hr;
 import java.sql.Date;
 
 public class CurrentBillDTO {
-    private String billId;
+    private int billId;
     private double amount;
     private Date date;
 
-    public CurrentBillDTO(String billId, double amount, Date date) {
+    public CurrentBillDTO(int billId, double amount, Date date) {
         this.billId = billId;
         this.amount = amount;
         this.date = date;
@@ -16,14 +16,15 @@ public class CurrentBillDTO {
     public CurrentBillDTO() {
     }
 
-   /* public CurrentBillDTO(String billId) {
-    }*/
+    public CurrentBillDTO(int billId) {
 
-    public String getBillId() {
+    }
+
+    public int getBillId() {
         return billId;
     }
 
-    public void setBillId(String billId) {
+    public void setBillId(int billId) {
         this.billId = billId;
     }
 

@@ -1,13 +1,19 @@
 package lk.sliit.hotelManagement.dto.kitchen;
 
+import lk.sliit.hotelManagement.entity.kitchen.FoodItem;
+import lk.sliit.hotelManagement.entity.kitchen.Menu;
+import lk.sliit.hotelManagement.entity.kitchen.MenuDetailsPK;
+
 public class MenuDTO {
-    private String menuId;
+    private int menuId;
+    private int itemId;
     private String name;
     private String type;
     private String picture;
     private double unitPrice;
+    private String getMenuId;
 
-    public MenuDTO(String menuId, String name, String type, String picture, double unitPrice) {
+    public MenuDTO(int menuId, String name, String type, String picture, double unitPrice) {
         this.menuId = menuId;
         this.name = name;
         this.type = type;
@@ -15,18 +21,39 @@ public class MenuDTO {
         this.unitPrice = unitPrice;
     }
 
-    public MenuDTO(String menuId) {
+    public MenuDTO(int menuId) {
         this.menuId = menuId;
     }
 
     public MenuDTO() {
     }
 
-    public String getMenuId() {
+    public MenuDTO(int foodItem, int itemId) {
+        this.menuId = foodItem;
+        this.itemId = itemId;
+    }
+
+    public String getGetMenuId() {
+        return getMenuId;
+    }
+
+    public void setGetMenuId(String getMenuId) {
+        this.getMenuId = getMenuId;
+    }
+
+    public int getItemId() {
+        return itemId;
+    }
+
+    public void setItemId(int itemId) {
+        this.itemId = itemId;
+    }
+
+    public int getMenuId() {
         return menuId;
     }
 
-    public void setMenuId(String menuId) {
+    public void setMenuId(int menuId) {
         this.menuId = menuId;
     }
 

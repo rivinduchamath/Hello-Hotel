@@ -25,18 +25,27 @@ public class ManageMenuController {
     @PostMapping("/FoodPacks")
     public String addFoodPack(Model model, @ModelAttribute MenuDTO menuDTO){
         model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
+        System.out.println(menuDTO+" aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+
         try {
             MenuDTO menuItem = kitchenBO.findHighestFoodPackId();
-            int maxId = Integer.parseInt(menuItem.getMenuId());
-            if (menuDTO.getMenuId().equals(String.valueOf(maxId))){
-                menuDTO.setMenuId(String.valueOf(maxId));
-            } else {
-                maxId++;
-                menuDTO.setMenuId(String.valueOf(maxId));
+            MenuDTO menuDTO1 = null;
+            try {
+                System.out.println("ssssssssssssss4444ssssssssssssssssssssssssssssssssss"+menuDTO.getMenuId());
+                 menuDTO1 = kitchenBO.findMenuItemById(menuDTO.getMenuId());
+                System.out.println("ssssssssssssssssssssssssssssssssssssssssssssssss"+menuDTO1.getMenuId());
+            }catch (NullPointerException d){
+                int maxId = (menuItem.getMenuId());
+                if (menuDTO.getMenuId()==(maxId)) {
+                    menuDTO.setMenuId((maxId));
+                } else {
+                    maxId++;
+                    menuDTO.setMenuId((maxId));
+                }
             }
 
         } catch (NullPointerException e){
-            menuDTO.setMenuId("1");
+            menuDTO.setMenuId(1);
         }
         kitchenBO.saveMenuItem(menuDTO);
         return "redirect:/manageFoodPacks";
@@ -55,7 +64,7 @@ public class ManageMenuController {
 
 
     @GetMapping(value = "/deleteFoodPackage/{menuId}")
-    public void deleteMenuItem(Model model, @PathVariable("menuId") String menuItemId, HttpServletResponse response){
+    public void deleteMenuItem(Model model, @PathVariable("menuId") int menuItemId, HttpServletResponse response){
         model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
         kitchenBO.deleteMenuItem(menuItemId);
         try {
@@ -65,7 +74,7 @@ public class ManageMenuController {
         }
     }
 
-
+/*
     @RequestMapping("/foodPackManagement")
     public String addItemToMenu(Model model, @RequestParam String menuId){
         model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
@@ -73,5 +82,32 @@ public class ManageMenuController {
         model.addAttribute("loadFoodItemTable",kitchenBO.findFoodItems());
         return "foodPackManagement";
 
+    }*/
+
+
+  /*  @GetMapping("/editFoodPack")
+    public String editFoodPacks(Model model){
+        model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
+
+        return "editFoodPack";
+    }*/
+
+    @GetMapping("/editFoodPack")
+    public String editFoodPack(Model model, @ModelAttribute MenuDTO menuDTO) {
+        model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
+        model.addAttribute("menuItem", kitchenBO.findMenuItemById(menuDTO.getMenuId()));
+        model.addAttribute("loadFoodItemTable",kitchenBO.findFoodItems());
+        return "/editFoodPack";
     }
+    @GetMapping("/addItemToPack")
+    public String addItemToPack(Model model, @ModelAttribute MenuDTO menuDTO) {
+        model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
+        model.addAttribute("menuItem", kitchenBO.findMenuItemById(menuDTO.getMenuId()));
+        model.addAttribute("loadFoodItemTable",kitchenBO.findFoodItems());
+        kitchenBO.saveFoodDetail(menuDTO);
+
+        model.addAttribute("loadSelectedFood",kitchenBO.findFoodItemsDetails(menuDTO.getMenuId()));
+        return "/editFoodPack";
+    }
+
 }

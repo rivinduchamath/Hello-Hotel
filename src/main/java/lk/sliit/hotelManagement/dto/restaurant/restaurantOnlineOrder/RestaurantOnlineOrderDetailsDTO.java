@@ -53,8 +53,7 @@ public class RestaurantOnlineOrderDetailsDTO {
     @Override
     public String toString() {
         return "RestaurantOnlineOrderDetailsDTO{" +
-                "restaurantOnlineOrder='" + restaurantOnlineOrder + '\'' +
-                ", foodItem='" + foodItem + '\'' +
+                "foodItem='" + foodItem + '\'' +
                 ", quantity=" + quantity +
                 ", unitePrice=" + unitePrice +
                 '}';

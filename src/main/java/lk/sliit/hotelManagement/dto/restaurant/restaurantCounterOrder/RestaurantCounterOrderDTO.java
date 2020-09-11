@@ -3,15 +3,17 @@ package lk.sliit.hotelManagement.dto.restaurant.restaurantCounterOrder;
 import java.util.Date;
 
 public class RestaurantCounterOrderDTO {
-    private String orderId;
+    private int orderId;
     private String orderState;
     private double quantity;
     private Date date;
     private String dataValue;
-    private String customerId;
-    private String orderHolder;
+    private int customerId;
+    private int orderHolder;
 
-    public RestaurantCounterOrderDTO(String orderId, String orderState, double quantity, Date date, String dataValue, String customerId, String orderHolder) {
+    public RestaurantCounterOrderDTO(int orderId, String orderState, double quantity,
+                                     Date date, String dataValue, int customerId,
+                                     int orderHolder) {
         this.orderId = orderId;
         this.orderState = orderState;
         this.quantity = quantity;
@@ -21,7 +23,9 @@ public class RestaurantCounterOrderDTO {
         this.orderHolder = orderHolder;
     }
 
-    public RestaurantCounterOrderDTO(String orderId, String orderState, double quantity, Date date, String dataValue, String customerId) {
+    public RestaurantCounterOrderDTO(int orderId, String orderState,
+                                     double quantity, Date date, String dataValue,
+                                     int customerId) {
         this.orderId = orderId;
         this.orderState = orderState;
         this.quantity = quantity;
@@ -33,6 +37,9 @@ public class RestaurantCounterOrderDTO {
     public RestaurantCounterOrderDTO() {
     }
 
+    public RestaurantCounterOrderDTO(int orderId) {      this.orderId = orderId;
+    }
+
     public String getDataValue() {
         return dataValue;
     }
@@ -41,19 +48,19 @@ public class RestaurantCounterOrderDTO {
         this.dataValue = dataValue;
     }
 
-    public String getOrderHolder() {
+    public int getOrderHolder() {
         return orderHolder;
     }
 
-    public void setOrderHolder(String orderHolder) {
+    public void setOrderHolder(int orderHolder) {
         this.orderHolder = orderHolder;
     }
 
-    public String getOrderId() {
+    public int getOrderId() {
         return orderId;
     }
 
-    public void setOrderId(String orderId) {
+    public void setOrderId(int orderId) {
         this.orderId = orderId;
     }
 
@@ -81,11 +88,11 @@ public class RestaurantCounterOrderDTO {
         this.date = date;
     }
 
-    public String getCustomerId() {
+    public int getCustomerId() {
         return customerId;
     }
 
-    public void setCustomerId(String customerId) {
+    public void setCustomerId(int customerId) {
         this.customerId = customerId;
     }
 

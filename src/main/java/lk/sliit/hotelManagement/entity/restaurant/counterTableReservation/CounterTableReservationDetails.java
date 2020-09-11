@@ -24,7 +24,7 @@ public class CounterTableReservationDetails {
     }
 
 
-    public CounterTableReservationDetails(String counterTableReserveId,String tableId, double unitePrice, double quantity) {
+    public CounterTableReservationDetails(int counterTableReserveId,int tableId, double unitePrice, double quantity) {
         this.counterTableReservationDetailsPK = new CounterTableReservationDetailsPK(counterTableReserveId,tableId);
         this.unitePrice = unitePrice;
         this.quantity = quantity;

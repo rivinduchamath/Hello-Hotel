@@ -1,18 +1,20 @@
 package lk.sliit.hotelManagement.dto.inventory;
 
 
+import lk.sliit.hotelManagement.entity.inventory.Inventory;
+
 import java.sql.Date;
 
 public class InventoryNoticeDTO {
 
-    private String noticeId ;
+    private int noticeId ;
     private String department;
     private double orderQty;
     private Date date;
     private Date expDate;
-    private String orderHolder;
+    private int orderHolder;
     private boolean state;
-    private String inventoryId;
+    private int inventoryId;
     private String text;
     private double qtyOnHand;
     private double updatedQty;
@@ -22,9 +24,11 @@ public class InventoryNoticeDTO {
     public InventoryNoticeDTO() {
     }
 
-    public InventoryNoticeDTO(String noticeId, String department,
-                              double orderQty, Date date, Date expDate, String orderHolder,
-                           boolean state, String inventoryid) {
+
+
+    public InventoryNoticeDTO(int noticeId, String department,
+                              double orderQty, Date date, Date expDate, int orderHolder,
+                              boolean state, int inventoryid) {
         this.noticeId = noticeId;
         this.department = department;
         this.orderQty = orderQty;
@@ -35,10 +39,10 @@ public class InventoryNoticeDTO {
         this.inventoryId = inventoryid;
     }
 
-    public InventoryNoticeDTO(String noticeId, String department,
+    public InventoryNoticeDTO(int noticeId, String department,
                               double orderQty, Date date, Date expDate,
-                              String orderHolder, boolean state,
-                              String inventoryId, String text, double qtyOnHand) {
+                              int orderHolder, boolean state,
+                              int inventoryId, String text, double qtyOnHand) {
         this.noticeId = noticeId;
         this.department = department;
         this.orderQty = orderQty;
@@ -51,12 +55,15 @@ public class InventoryNoticeDTO {
         this.qtyOnHand = qtyOnHand;
     }
 
+    public InventoryNoticeDTO(int noticeId) { this.noticeId = noticeId;
+    }
 
-    public String getInventoryId() {
+
+    public int getInventoryId() {
         return inventoryId;
     }
 
-    public void setInventoryId(String inventoryId) {
+    public void setInventoryId(int inventoryId) {
         this.inventoryId = inventoryId;
     }
 
@@ -84,11 +91,11 @@ public class InventoryNoticeDTO {
         this.updatedQty = updatedQty;
     }
 
-    public String getNoticeId() {
+    public int getNoticeId() {
         return noticeId;
     }
 
-    public void setNoticeId(String noticeId) {
+    public void setNoticeId(int noticeId) {
         this.noticeId = noticeId;
     }
 
@@ -124,11 +131,11 @@ public class InventoryNoticeDTO {
         this.expDate = expDate;
     }
 
-    public String getOrderHolder() {
+    public int getOrderHolder() {
         return orderHolder;
     }
 
-    public void setOrderHolder(String orderHolder) {
+    public void setOrderHolder(int orderHolder) {
         this.orderHolder = orderHolder;
     }
 
@@ -140,11 +147,11 @@ public class InventoryNoticeDTO {
         this.state = state;
     }
 
-    public String getInventory() {
+    public int getInventory() {
         return inventoryId;
     }
 
-    public void setInventory(String inventoryId) {
+    public void setInventory(int inventoryId) {
         this.inventoryId = inventoryId;
     }
 

@@ -19,6 +19,7 @@ public class CurrentBOImpl implements CurrentBO {
     @Autowired
     CurrentBillDAO currentBillDAO;
 
+
     @Override
     public void saveCurrentBill(CurrentBillDTO currentBillDTO) {
         currentBillDAO.save(new CurrentBill(
@@ -43,17 +44,17 @@ public class CurrentBOImpl implements CurrentBO {
         return currentBillDTOS;
     }
 
-   /* @Override
+    @Override
     public CurrentBillDTO findHighestCurrentBillId() {
         CurrentBill lastCurrentBillId = null;
         try{
-            lastCurrentBillId = currentBillDAO.findTopByCurrentBillIdDesc();
+            lastCurrentBillId = currentBillDAO.findTopByOrderByBillIdDesc();
         }catch(Exception e){
 
         }
         assert lastCurrentBillId != null;
         return new CurrentBillDTO(
                 lastCurrentBillId.getBillId()
-        );*/
-   // }
+        );
+    }
 }

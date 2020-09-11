@@ -2,10 +2,12 @@ package lk.sliit.hotelManagement.service.custom.impl;
 
 import lk.sliit.hotelManagement.dao.kitchenDAO.KitchenDAO;
 import lk.sliit.hotelManagement.dao.kitchenDAO.MenuDAO;
+import lk.sliit.hotelManagement.dao.kitchenDAO.MenuDetailsDAO;
 import lk.sliit.hotelManagement.dto.kitchen.FoodItemDTO;
 import lk.sliit.hotelManagement.dto.kitchen.MenuDTO;
 import lk.sliit.hotelManagement.entity.kitchen.FoodItem;
 import lk.sliit.hotelManagement.entity.kitchen.Menu;
+import lk.sliit.hotelManagement.entity.kitchen.MenuDetails;
 import lk.sliit.hotelManagement.service.custom.KitchenBO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -22,6 +24,8 @@ public class KitchenBOImpl implements KitchenBO {
     KitchenDAO kitchenDAO;
     @Autowired
     MenuDAO menuDAO;
+    @Autowired
+    MenuDetailsDAO menuDetailsDAO;
     @Override
     public void saveFoodItem(FoodItemDTO foodItemDTO) {
         kitchenDAO.save(new FoodItem
@@ -60,7 +64,7 @@ public class KitchenBOImpl implements KitchenBO {
     }
 
     @Override
-    public void deleteFoodItem(String foodItemId) {
+    public void deleteFoodItem(int foodItemId) {
         kitchenDAO.delete(foodItemId);
     }
 
@@ -104,12 +108,12 @@ public class KitchenBOImpl implements KitchenBO {
     }
 
     @Override
-    public void deleteMenuItem(String menuItemId) {
+    public void deleteMenuItem(int menuItemId) {
         menuDAO.delete(menuItemId);
     }
 
     @Override
-    public MenuDTO findMenuItemById(String menuItemId) {
+    public MenuDTO findMenuItemById(int menuItemId) {
         Menu menuItem = menuDAO.findOne(menuItemId);
         MenuDTO menuDTO = new MenuDTO(menuItem.getMenuId(),
                 menuItem.getName(),
@@ -117,5 +121,27 @@ public class KitchenBOImpl implements KitchenBO {
                 menuItem.getPicture(),
                 menuItem.getUnitPrice());
         return menuDTO;
+    }
+
+    @Override
+    public void saveFoodDetail(MenuDTO menuDTO) {
+        menuDetailsDAO.save(new MenuDetails(
+                menuDTO.getMenuId(),
+                menuDTO.getItemId()));
+    }
+
+    @Override
+    public List<MenuDTO> findFoodItemsDetails(int menuId) {
+        Iterable<MenuDetails> menuItems = menuDetailsDAO.findMenuDetailsByMenu_MenuId(menuId);
+
+        List<MenuDTO> menuDTOList = new ArrayList<>();
+
+        for (MenuDetails item: menuItems){
+            menuDTOList.add(new MenuDTO(
+                    item.getMenuDetailId().getMenu(),
+                    item.getMenuDetailId().getFoodItem()
+            ));
+        }
+        return menuDTOList;
     }
 }

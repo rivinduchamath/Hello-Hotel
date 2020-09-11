@@ -6,32 +6,32 @@ import javax.persistence.Id;
 @Entity
 public class ItemType {
     @Id
-    String id;
+    int id;
     String userType;
-    String submittedBy;
+    int submittedBy;
 
-    public ItemType(String id, String userType, String submittedBy) {
+    public ItemType(int id, String userType, int submittedBy) {
         this.id = id;
         this.userType = userType;
         this.submittedBy = submittedBy;
     }
 
-    public String getSubmittedBy() {
+    public int getSubmittedBy() {
         return submittedBy;
     }
 
-    public void setSubmittedBy(String submittedBy) {
+    public void setSubmittedBy(int submittedBy) {
         this.submittedBy = submittedBy;
     }
 
     public ItemType() {
     }
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 

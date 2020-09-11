@@ -8,7 +8,7 @@ import java.sql.Date;
 @Entity
 public class RoomService {
     @Id
-    private String serviceId;
+    private int serviceId;
     private Date date;
     @Column(length = 1000)
     private String description;
@@ -20,7 +20,7 @@ public class RoomService {
     @JoinColumn(name = "userId", referencedColumnName = "userId", insertable = false, updatable = false)
     private Employee empId;
 
-    public RoomService(String serviceId, Date date, String description, String roomCondition, HotelRoom roomId, Employee empId) {
+    public RoomService(int serviceId, Date date, String description, String roomCondition, HotelRoom roomId, Employee empId) {
         this.serviceId = serviceId;
         this.date = date;
         this.description = description;
@@ -32,11 +32,11 @@ public class RoomService {
     public RoomService() {
     }
 
-    public String getServiceId() {
+    public int getServiceId() {
         return serviceId;
     }
 
-    public void setServiceId(String serviceId) {
+    public void setServiceId(int serviceId) {
         this.serviceId = serviceId;
     }
 

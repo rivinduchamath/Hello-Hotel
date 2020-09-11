@@ -10,7 +10,7 @@ import javax.persistence.*;
 @Entity
 public class RestaurantBill {
     @Id
-    private String billId;
+    private int billId;
     private String type;
     private double total;
     private double discount;
@@ -30,7 +30,7 @@ public class RestaurantBill {
     public RestaurantBill() {
     }
 
-    public RestaurantBill(String billId, String type, double total,
+    public RestaurantBill(int billId, String type, double total,
                           double discount, RestaurantCounterOrder restaurantOrder,
                           RestaurantOnlineOrder onlineOrder,
                           CounterTableReservation counterTableReserveId,
@@ -45,11 +45,11 @@ public class RestaurantBill {
         this.onlineTableReservation = onlineTableReservation;
     }
 
-    public String getBillId() {
+    public int getBillId() {
         return billId;
     }
 
-    public void setBillId(String billId) {
+    public void setBillId(int billId) {
         this.billId = billId;
     }
 

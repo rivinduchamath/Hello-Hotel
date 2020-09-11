@@ -16,7 +16,7 @@ import java.util.List;
 public class Employee implements SuperEntity {
 
     @Id
-    private String userId;
+    private int userId;
     private String name;
     private String mobileNo;
     private String email;
@@ -44,7 +44,7 @@ public class Employee implements SuperEntity {
     public Employee() {
     }
 
-    public Employee(String userId, String name, String mobileNo,
+    public Employee(int userId, String name, String mobileNo,
                     String email, String address, String position, String password, Date dateOfBirth, String gender,
                     double salary, Date date,
                     String image, Department department) {
@@ -72,11 +72,11 @@ public class Employee implements SuperEntity {
         this.department = department;
     }
 
-    public String getUserId() {
+    public int getUserId() {
         return userId;
     }
 
-    public void setUserId(String userId) {
+    public void setUserId(int userId) {
         this.userId = userId;
     }
 

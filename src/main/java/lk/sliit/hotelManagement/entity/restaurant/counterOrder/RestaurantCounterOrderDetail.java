@@ -2,7 +2,6 @@ package lk.sliit.hotelManagement.entity.restaurant.counterOrder;
 
 
 import lk.sliit.hotelManagement.entity.kitchen.FoodItem;
-
 import javax.persistence.*;
 
 @Entity
@@ -13,10 +12,10 @@ public class RestaurantCounterOrderDetail {
     private double quantity;
     private double unitePrice;
     @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.REFRESH, CascadeType.DETACH, CascadeType.MERGE})
-    @JoinColumn(name = "restaurantCounterOrderId", referencedColumnName = "orderId", insertable = false, updatable = false)
+    @JoinColumn(name = "restaurantCounterOrder", referencedColumnName = "orderId", insertable = false, updatable = false)
     private RestaurantCounterOrder restaurantCounterOrder;
     @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.REFRESH, CascadeType.DETACH, CascadeType.MERGE})
-    @JoinColumn(name = "foodItemId", referencedColumnName = "itemId",nullable = true,insertable = false, updatable = false)
+    @JoinColumn(name = "foodItemId", referencedColumnName = "itemId",insertable = false, updatable = false)
     private FoodItem foodItem;
 
 
@@ -27,8 +26,8 @@ public class RestaurantCounterOrderDetail {
 
     }
 
-    public RestaurantCounterOrderDetail(String restaurantCounterOrderId, String foodItemId, double quantity, double unitePrice) {
-        this.restaurantCounterOrderDetailPK = new RestaurantCounterOrderDetailPK(restaurantCounterOrderId, foodItemId);
+    public RestaurantCounterOrderDetail(int restaurantCounterOrder, String foodItemId, double quantity, double unitePrice) {
+        this.restaurantCounterOrderDetailPK = new RestaurantCounterOrderDetailPK(foodItemId,restaurantCounterOrder);
         this.quantity = quantity;
         this.unitePrice = unitePrice;
 

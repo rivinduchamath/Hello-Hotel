@@ -3,13 +3,13 @@ package lk.sliit.hotelManagement.dto.beverage;
 
 public class BarOrderDetailDTO {
 
-    private String itemCode;
+    private int itemCode;
     private String itemName;
     private double itemPrice;
     private double qty;
     private double totalPrice;
 
-    public BarOrderDetailDTO(String itemCode, String itemName, double itemPrice, double qty, double totalPrice) {
+    public BarOrderDetailDTO(int itemCode, String itemName, double itemPrice, double qty, double totalPrice) {
         this.itemCode = itemCode;
         this.itemName = itemName;
         this.itemPrice = itemPrice;
@@ -20,11 +20,11 @@ public class BarOrderDetailDTO {
     public BarOrderDetailDTO() {
     }
 
-    public String getItemCode() {
+    public int getItemCode() {
         return itemCode;
     }
 
-    public void setItemCode(String itemCode) {
+    public void setItemCode(int itemCode) {
         this.itemCode = itemCode;
     }
 

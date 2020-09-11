@@ -7,11 +7,11 @@ import java.io.Serializable;
 public class RestaurantCounterOrderDetailPK implements Serializable {
 
     private String foodItemId;
-    private  String restaurantCounterOrderId;
+    private  int restaurantCounterOrder;
 
-    public RestaurantCounterOrderDetailPK(String foodItemId, String restaurantCounterOrderId) {
+    public RestaurantCounterOrderDetailPK(String foodItemId, int restaurantCounterOrder) {
         this.foodItemId = foodItemId;
-        this.restaurantCounterOrderId = restaurantCounterOrderId;
+        this.restaurantCounterOrder = restaurantCounterOrder;
     }
 
     public RestaurantCounterOrderDetailPK() {
@@ -25,19 +25,19 @@ public class RestaurantCounterOrderDetailPK implements Serializable {
         this.foodItemId = foodItemId;
     }
 
-    public String getRestaurantCounterOrderId() {
-        return restaurantCounterOrderId;
+    public int getRestaurantCounterOrderId() {
+        return restaurantCounterOrder;
     }
 
-    public void setRestaurantCounterOrderId(String restaurantCounterOrderId) {
-        this.restaurantCounterOrderId = restaurantCounterOrderId;
+    public void setRestaurantCounterOrderId(int restaurantCounterOrderId) {
+        this.restaurantCounterOrder = restaurantCounterOrderId;
     }
 
     @Override
     public String toString() {
         return "RestaurantCounterOrderDetailPK{" +
                 "foodItemId='" + foodItemId + '\'' +
-                ", restaurantCounterOrderId='" + restaurantCounterOrderId + '\'' +
+                ", restaurantCounterOrder='" + restaurantCounterOrder + '\'' +
                 '}';
     }
 }

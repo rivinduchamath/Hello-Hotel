@@ -6,10 +6,10 @@ import java.io.Serializable;
 @Embeddable
 public class ReservationDetailsPK implements Serializable {
 
-   private String reservationId;
-        private String roomId;
+    private int reservationId;
+    private String roomId;
 
-    public ReservationDetailsPK(String reservationId, String roomId) {
+    public ReservationDetailsPK(int reservationId, String roomId) {
         this.reservationId = reservationId;
         this.roomId = roomId;
     }
@@ -17,11 +17,11 @@ public class ReservationDetailsPK implements Serializable {
     public ReservationDetailsPK() {
     }
 
-    public String getReservationId() {
+    public int getReservationId() {
         return reservationId;
     }
 
-    public void setReservationId(String reservationId) {
+    public void setReservationId(int reservationId) {
         this.reservationId = reservationId;
     }
 

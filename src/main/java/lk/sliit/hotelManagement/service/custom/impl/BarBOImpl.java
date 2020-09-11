@@ -67,27 +67,30 @@ public class BarBOImpl implements BarBO {
     @Override
     public void saveBarOrder(BarOrderDTO barOrderDTO) {
 
-                java.util.List<BarOrderDetailDTO> list = new ArrayList<BarOrderDetailDTO>();
-                String arr = barOrderDTO.getOrderData();
-                String yo[] = arr.split(" ");
-                int count = 0;
-                BarOrderDetailDTO itm = new BarOrderDetailDTO();
-                for(String str:yo) {
-                    if(count == 0 ) {
-                        itm = new BarOrderDetailDTO();
-                        itm.setItemCode(str);
-                        count ++;
+        java.util.List<BarOrderDetailDTO> list = new ArrayList<BarOrderDetailDTO>();
+        String arr = barOrderDTO.getOrderData();
+        String yo[] = arr.split(" ");
+        int count = 0;
+        BarOrderDetailDTO itm = new BarOrderDetailDTO();
+        for(String str:yo) {
+            if(count == 0 ) {
+                itm = new BarOrderDetailDTO();
+                itm.setItemCode(Integer.parseInt(str));
+                System.out.println(str+"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+                count ++;
 
-                    }else if(count == 1) {
-                        itm.setItemPrice(Double.parseDouble(str));
-                        count ++;
+            }else if(count == 1) {
+                itm.setItemPrice(Double.parseDouble(str));
+                System.out.println(str+"bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb");
+                count ++;
 
-                    }else if(count == 2) {
-                        itm.setQty(Double.parseDouble(str));
-                        list.add(itm);
-                        count = 0;
-                    }
-                }
+            }else if(count == 2) {
+                itm.setQty(Double.parseDouble(str));
+                System.out.println(itm+"ccccccccccccccccccccccccccccccccccccc");
+                list.add(itm);
+                count = 0;
+            }
+        }
 
         Calendar cal = Calendar.getInstance();
         cal.add(Calendar.DATE, 0);
@@ -100,7 +103,8 @@ public class BarBOImpl implements BarBO {
                 barOrderDTO.getUser () ));
 
         for (BarOrderDetailDTO orderDetail :list ) {
-            barOrdersDetailsDAO.save(new BarOrderDetails( barOrderDTO.getId (), orderDetail.getItemCode(),
+            barOrdersDetailsDAO.save(new BarOrderDetails(
+                    barOrderDTO.getId (), orderDetail.getItemCode(),
                     orderDetail.getItemPrice(), orderDetail.getQty()));
             Inventory inventory = inventoryDAO.findOne(orderDetail.getItemCode());
             inventory.setOrderQty(inventory.getOrderQty() - orderDetail.getQty());

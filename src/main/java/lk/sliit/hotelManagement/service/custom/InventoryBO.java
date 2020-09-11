@@ -1,5 +1,6 @@
 package lk.sliit.hotelManagement.service.custom;
 
+import lk.sliit.hotelManagement.dto.beverage.BarOrderDTO;
 import lk.sliit.hotelManagement.dto.inventory.InventoryDTO;
 import lk.sliit.hotelManagement.dto.inventory.InventoryNoticeDTO;
 import lk.sliit.hotelManagement.dto.inventory.ItemTypeDTO;
@@ -23,15 +24,15 @@ public interface InventoryBO extends SuperBO {
 
     List<InventoryNoticeDTO> findTomorrowInventoryNotice();
 
-    void deleteInventoryNotice(String noticeId);
+    void deleteInventoryNotice(int noticeId);
 
-    InventoryDTO findInventory(String inventoryId);
+    InventoryDTO findInventory(int inventoryId);
 
     void updateInventory(InventoryDTO inventoryDTO1);
 
     List<InventoryNoticeDTO> findAllInventoryNotice();
 
-    void deleteInventoryType(String id);
+    void deleteInventoryType(int id);
 
     ItemTypeDTO findTopByOrderByIdDesc();
 
@@ -43,5 +44,13 @@ public interface InventoryBO extends SuperBO {
 
     SupplierDTO findTopByOrderBySupplierIdDesc();
 
-    void deleteSupplier(String userId);
+    void deleteSupplier(int userId);
+
+    InventoryNoticeDTO findTopByBarNoticeIdDesc();
+
+    void saveOrderNotice(InventoryNoticeDTO noticeDTO);
+
+    InventoryDTO findTopByOrderByOrderIdDesc();
+
+    boolean findOne(int supplierId);
 }

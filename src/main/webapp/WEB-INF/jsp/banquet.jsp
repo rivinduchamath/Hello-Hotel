@@ -310,7 +310,7 @@
                         <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
                             <div class="x_panel">
                                 <div class="x_title">
-                                    <h2>Banquet Orders <small>Today</small></h2>
+                                    <h2>Today Banquets </h2>
                                     <ul class="nav navbar-right panel_toolbox">
                                         <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                                         </li>
@@ -332,27 +332,97 @@
                                         <thead>
                                         <tr>
                                             <th>Banquet Id</th>
-                                            <th>Bill Id</th>
                                             <th>Customer Name</th>
-                                            <th>Contact No</th>
+                                            <th>Mobile</th>
+                                            <th>Date</th>
                                             <th>Hall No</th>
-                                            <th>Package Name</th>
                                             <th>plates</th>
                                             <th>Advance Payment</th>
+                                            <th>Status</th>
+                                            <th>Confirm</th>
                                         </tr>
                                         </thead>
                                         <tbody>
-                                        <c:forEach items="${loadTable}" var="e">
+                                        <c:forEach items="${loadTable1}" var="e">
                                             <tr>
                                                 <td>${e.orderId}</td>
                                                 <td>${e.name}</td>
-                                                <td>${e.address}</td>
+                                                <td>${e.contactNumber}</td>
                                                 <td>${e.date}</td>
                                                 <td>${e.hallId}</td>
                                                 <td>${e.noOfPlates}</td>
-                                                <td>${e.menuId}</td>
                                                 <td>${e.advanceFee}</td>
-                                                <td>${e.banquetBillId}</td>
+                                                <td>${e.orderState}</td>
+                                                <td><a href="/updateBanquetStatus?orderId=${e.orderId}">
+                                                    <button value="" id="billBtn" name="billBtn" class="btn btn-outline-success" style="font-size: 12px;">confirmed</button>
+                                                </a></td>
+                                            </tr>
+                                        </c:forEach>
+
+                                        </tbody>
+                                    </table>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <%--/////////////////////////////////////////////    /////////////////////////////////////////////--%>
+
+
+                <%--                    /////////////////////////////////////////////////////--%>
+                <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                    <div class="row" style="display: block;">
+                        <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                            <div class="x_panel">
+                                <div class="x_title">
+                                    <h2>Upcoming Banquets <small> Next 3 days</small></h2>
+                                    <ul class="nav navbar-right panel_toolbox">
+                                        <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                                        </li>
+                                        <li class="dropdown">
+                                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                                <a class="dropdown-item" href="#">Settings 1</a>
+                                                <a class="dropdown-item" href="#">Settings 2</a>
+                                            </div>
+                                        </li>
+                                        <li><a class="close-link"><i class="fa fa-close"></i></a>
+                                        </li>
+                                    </ul>
+                                    <div class="clearfix"></div>
+                                </div>
+                                <div class="x_content">
+
+                                    <table class="table">
+                                        <thead>
+                                        <tr>
+                                            <th>Banquet Id</th>
+                                            <th>Customer Name</th>
+                                            <th>Mobile</th>
+                                            <th>Date</th>
+                                            <th>Hall No</th>
+                                            <th>plates</th>
+                                            <th>Advance Payment</th>
+                                            <th>Status</th>
+                                            <th>Confirm</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <c:forEach items="${loadTable2}" var="e">
+                                            <tr>
+                                                <td>${e.orderId}</td>
+                                                <td>${e.name}</td>
+                                                <td>${e.contactNumber}</td>
+                                                <td>${e.date}</td>
+                                                <td>${e.hallId}</td>
+                                                <td>${e.noOfPlates}</td>
+                                                <td>${e.advanceFee}</td>
+                                                <td>${e.orderState}</td>
+                                                <td><a href="/updateBanquetStatus?orderId=${e.orderId}">
+                                                    <button value="" id="confirmBtn" name="confirmBtn" class="btn btn-outline-success" style="font-size: 13px;">confirmed</button>
+                                                </a></td>
                                             </tr>
                                         </c:forEach>
 

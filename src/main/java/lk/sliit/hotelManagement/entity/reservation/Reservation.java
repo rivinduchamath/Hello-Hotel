@@ -7,7 +7,7 @@ import java.util.Collection;
 @Entity
 public class Reservation {
     @Id
-    private String reservationId;
+    private int reservationId;
     private String type;
     private Date date;
     private int noOfRooms;
@@ -21,7 +21,7 @@ public class Reservation {
     public Reservation() {
     }
 
-    public Reservation(String reservationId, String type, Date date, int noOfRooms, Customer customer) {
+    public Reservation(int reservationId, String type, Date date, int noOfRooms, Customer customer) {
         this.reservationId = reservationId;
         this.type = type;
         this.date = date;
@@ -45,11 +45,11 @@ public class Reservation {
         this.reservationDetails = reservationDetails;
     }
 
-    public String getReservationId() {
+    public int getReservationId() {
         return reservationId;
     }
 
-    public void setReservationId(String reservationId) {
+    public void setReservationId(int reservationId) {
         this.reservationId = reservationId;
     }
 

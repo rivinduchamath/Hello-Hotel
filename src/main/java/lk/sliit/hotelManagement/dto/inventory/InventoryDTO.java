@@ -4,7 +4,7 @@ import java.sql.Date;
 
 public class InventoryDTO {
 
-    private String inventoryId ;
+    private int inventoryId ;
     private String text;
     private String description;
     private double orderQty;
@@ -13,12 +13,17 @@ public class InventoryDTO {
     private double getPrice;
     private double sellingPrice;
     private Date date;
+    //    ////////////////////////////////////
+    private int supplierId;
+    private int orderId;
+    private int orderHolder;
+
 
 
     public InventoryDTO() {
     }
 
-    public InventoryDTO(String inventoryId, String text, String description,
+    public InventoryDTO(int inventoryId, String text, String description,
                         double orderQty, String type, String orderLimit,
                         double getPrice, double sellingPrice, Date date) {
         this.inventoryId = inventoryId;
@@ -33,11 +38,39 @@ public class InventoryDTO {
 
     }
 
-    public String getInventoryId() {
+    public InventoryDTO(int orderId) {
+        this.orderId =orderId;
+    }
+
+    public int getOrderId() {
+        return orderId;
+    }
+
+    public int getOrderHolder() {
+        return orderHolder;
+    }
+
+    public void setOrderHolder(int orderHolder) {
+        this.orderHolder = orderHolder;
+    }
+
+    public void setOrderId(int orderId) {
+        this.orderId = orderId;
+    }
+
+    public int getSupplierId() {
+        return supplierId;
+    }
+
+    public void setSupplierId(int supplierId) {
+        this.supplierId = supplierId;
+    }
+
+    public int getInventoryId() {
         return inventoryId;
     }
 
-    public void setInventoryId(String inventoryId) {
+    public void setInventoryId(int inventoryId) {
         this.inventoryId = inventoryId;
     }
 

@@ -11,11 +11,11 @@ public interface NoticeBO extends SuperBO {
 
     List<NoticeDTO> findAll();
 
-    void deleteNotice(String notId);
+    void deleteNotice(int notId);
 
     NoticeDTO findId();
 
-    NoticeDTO findNoticeById(String noticeId);
+    NoticeDTO findNoticeById(int noticeId);
 
 
 }

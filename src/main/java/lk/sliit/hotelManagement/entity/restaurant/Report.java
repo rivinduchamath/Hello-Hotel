@@ -7,7 +7,7 @@ import java.sql.Date;
 @Entity
 public class Report {
     @Id
-    private String reportId;
+    private int reportId;
     private double quantity;
     private Date date;
     @ManyToOne(cascade = {CascadeType.PERSIST,CascadeType.REFRESH, CascadeType.DETACH, CascadeType.MERGE})
@@ -15,7 +15,7 @@ public class Report {
     private FoodItem foodItem;
 
 
-    public Report(String reportId, double quantity, Date date, FoodItem foodItem) {
+    public Report(int reportId, double quantity, Date date, FoodItem foodItem) {
         this.reportId = reportId;
         this.quantity = quantity;
         this.date = date;
@@ -41,11 +41,11 @@ public class Report {
         this.foodItem = foodItem;
     }
 
-    public String getReportId() {
+    public int getReportId() {
         return reportId;
     }
 
-    public void setReportId(String reportId) {
+    public void setReportId(int reportId) {
         this.reportId = reportId;
     }
 

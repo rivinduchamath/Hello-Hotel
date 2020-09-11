@@ -26,7 +26,7 @@ public class ReservationDetails {
         this.arrivalDate = arrivalDate;
         this.departureDate = departureDate;
     }
-    public ReservationDetails(String reservationId, String roomId, Date arrivalDate, Date departureDate) {
+    public ReservationDetails(int reservationId, String roomId, Date arrivalDate, Date departureDate) {
         this.reservationDetailsPK = new ReservationDetailsPK(reservationId,roomId);
         this.arrivalDate = arrivalDate;
         this.departureDate = departureDate;

@@ -14,7 +14,7 @@ import java.util.List;
 @Entity
 public class Inventory implements SuperEntity {
     @Id
-    private String inventoryId ;
+    private int inventoryId ;
     private String text;
     private String description;
     private double orderQty;
@@ -32,7 +32,7 @@ public class Inventory implements SuperEntity {
 
     public Inventory() {}
 
-    public Inventory(String inventoryId, String text, String description,
+    public Inventory(int inventoryId, String text, String description,
                      double orderQty, String type, String orderLimit,
                      double getPrice, double sellingPrice, Date date) {
         this.inventoryId = inventoryId;
@@ -52,11 +52,11 @@ public class Inventory implements SuperEntity {
         return attendance;
     }
 
-    public String getInventoryId() {
+    public int getInventoryId() {
         return inventoryId;
     }
 
-    public void setInventoryId(String inventoryId) {
+    public void setInventoryId(int inventoryId) {
         this.inventoryId = inventoryId;
     }
 

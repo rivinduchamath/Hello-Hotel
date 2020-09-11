@@ -7,12 +7,12 @@ import java.sql.Date;
 @Entity
 public class InventoryNotice implements SuperEntity {
     @Id
-    private String noticeId ;
+    private int noticeId ;
     private String department;
     private double orderQty;
     private Date date;
     private Date expDate;
-    private String orderHolder;
+    private int orderHolder;
     private boolean state;
     @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.REFRESH, CascadeType.DETACH, CascadeType.MERGE})
     @JoinColumn(name = "inventory", referencedColumnName = "inventoryId", nullable = true)
@@ -22,8 +22,8 @@ public class InventoryNotice implements SuperEntity {
     public InventoryNotice() {
     }
 
-    public InventoryNotice(String noticeId, String department,
-                           double orderQty, Date date, Date expDate, String orderHolder,
+    public InventoryNotice(int noticeId, String department,
+                           double orderQty, Date date, Date expDate, int orderHolder,
                            boolean state, Inventory inventory) {
         this.noticeId = noticeId;
         this.department = department;
@@ -37,11 +37,11 @@ public class InventoryNotice implements SuperEntity {
 
 
 
-    public String getNoticeId() {
+    public int getNoticeId() {
         return noticeId;
     }
 
-    public void setNoticeId(String noticeId) {
+    public void setNoticeId(int noticeId) {
         this.noticeId = noticeId;
     }
 
@@ -77,11 +77,11 @@ public class InventoryNotice implements SuperEntity {
         this.expDate = expDate;
     }
 
-    public String getOrderHolder() {
+    public int getOrderHolder() {
         return orderHolder;
     }
 
-    public void setOrderHolder(String orderHolder) {
+    public void setOrderHolder(int orderHolder) {
         this.orderHolder = orderHolder;
     }
 
