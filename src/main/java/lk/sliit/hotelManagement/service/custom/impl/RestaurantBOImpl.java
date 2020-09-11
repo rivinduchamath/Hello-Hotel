@@ -86,7 +86,7 @@ public class RestaurantBOImpl implements RestaurantBO {
         for (String str : yo) {
             if (count == 0) {
                 itm = new RestaurantCounterOrderDetailDTO();
-                itm.setFoodItem(str);
+                itm.setFoodItem(Integer.parseInt(str));
                 count++;
 
             } else if (count == 1) {
@@ -177,7 +177,7 @@ public class RestaurantBOImpl implements RestaurantBO {
         for (String str : yo) {
             if (count == 0) {
                 itm = new RestaurantOnlineOrderDetailsDTO();
-                itm.setFoodItem(str);
+                itm.setFoodItem(Integer.parseInt(str));
                 count++;
 
             } else if (count == 1) {

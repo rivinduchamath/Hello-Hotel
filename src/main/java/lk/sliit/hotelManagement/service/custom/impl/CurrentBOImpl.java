@@ -2,7 +2,9 @@ package lk.sliit.hotelManagement.service.custom.impl;
 
 import lk.sliit.hotelManagement.dao.hrDAO.CurrentBillDAO;
 import lk.sliit.hotelManagement.dto.hr.CurrentBillDTO;
+import lk.sliit.hotelManagement.dto.manager.NoticeDTO;
 import lk.sliit.hotelManagement.entity.hr.CurrentBill;
+import lk.sliit.hotelManagement.entity.manager.Notice;
 import lk.sliit.hotelManagement.service.custom.CurrentBO;
 import lk.sliit.hotelManagement.service.custom.HumanResourceBO;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -45,10 +47,21 @@ public class CurrentBOImpl implements CurrentBO {
     }
 
     @Override
+    public CurrentBillDTO findById(int billId) {
+        CurrentBill currentBill = currentBillDAO.findOne(billId);
+        return new CurrentBillDTO(
+                currentBill.getBillId(),
+                currentBill.getAmount(),
+                currentBill.getDate()
+        );
+    }
+
+    @Override
     public CurrentBillDTO findHighestCurrentBillId() {
         CurrentBill lastCurrentBillId = null;
         try{
             lastCurrentBillId = currentBillDAO.findTopByOrderByBillIdDesc();
+            System.out.println(lastCurrentBillId);
         }catch(Exception e){
 
         }

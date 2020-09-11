@@ -25,7 +25,7 @@ public class RestaurantOnlineOrderDetails {
 
     }
 
-    public RestaurantOnlineOrderDetails(int restaurantOnlineOrderId, String foodItemId, double quantity, double unitePrice) {
+    public RestaurantOnlineOrderDetails(int restaurantOnlineOrderId, int foodItemId, double quantity, double unitePrice) {
         this.restaurantOnlineOrderDetailsPK = new RestaurantOnlineOrderDetailsPK(foodItemId,restaurantOnlineOrderId);
         this.quantity = quantity;
         this.unitePrice = unitePrice;

@@ -238,14 +238,13 @@
                         </div>
                     </div>
                     <div class="col-12 col-sm-12 col-md-12 col-lg-5 col-xl-5">
-                        <form method="POST" action="/saveCurrentBill" name="saveCurrentBill">
+                        <form method="POST" action="saveCurrentBill" name="saveCurrentBill">
 
                             <div class="form-group">
 
                                 <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
-                                    <label>Bill ID</label>
-                                    <input type="text" class="form-control"
-                                           required="required" name="billId"
+                                    <input type="hidden" class="form-control"
+                                           name="billId" value="0"
                                            id="CBtId" placeholder="Bill ID"/></div>
 
 
@@ -254,34 +253,26 @@
                             <div class="form-group">
                                 <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12"><br>
                                     <label>Amount</label>
-                                    <input type="text" class="form-control"
-                                           required="required" name="amount"
+                                    <input type="number" class="form-control"
+                                           required="required" name="amount" id="amount"
                                            placeholder="Amount"/></div>
 
                                 <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12"><br>
                                     <label>Date</label>
                                     <input type="date" class="form-control"
                                            required="required" name="date"
-                                           id="address" placeholder="Date"/></div>
+                                           id="date" placeholder="Date"/></div>
 
                             </div>
 
 
-                            <button type='submit' class="btn btn-dark" style="width: 50%; top: 20px; position: relative"
+                            <button type='submit' class="btn btn-dark" style="width: 30%; top: 20px; position: relative"
                                     value="Register">
                                 Submit
                             </button>
 
                             <button type='reset' class="btn btn-outline-success" style="top: 20px; position: relative"
                                     value="">Reset
-                            </button>
-
-                            <button type='update' class="btn btn-outline-success" style="top: 20px; position: relative"
-                                    value="">Update
-                            </button>
-
-                            <button type='delete' class="btn btn-outline-success" style="top: 20px; position: relative"
-                                    value="">Delete
                             </button>
 
                         </form>
@@ -326,6 +317,16 @@
 <script src="../../vendors/jszip/dist/jszip.min.js"></script>
 <!-- Custom Theme Scripts -->
 <script src="../../build/js/custom.min.js"></script>
+<script>
 
+    var selectedRow = null;
+    $("#datatable-buttons tbody").on('click', 'tr', function () {
+        selectedRow = $(this);
+
+        $("#CBtId").val($(this).find("td:nth-child(1)").text());
+        $("#amount").val($(this).find("td:nth-child(3)").text());
+        $("#date").val($(this).find("td:nth-child(2)").text());
+    });
+</script>
 </body>
 </html>

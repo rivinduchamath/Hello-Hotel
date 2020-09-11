@@ -25,16 +25,13 @@ public class ManageMenuController {
     @PostMapping("/FoodPacks")
     public String addFoodPack(Model model, @ModelAttribute MenuDTO menuDTO){
         model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
-        System.out.println(menuDTO+" aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
 
         try {
             MenuDTO menuItem = kitchenBO.findHighestFoodPackId();
             MenuDTO menuDTO1 = null;
             try {
-                System.out.println("ssssssssssssss4444ssssssssssssssssssssssssssssssssss"+menuDTO.getMenuId());
-                 menuDTO1 = kitchenBO.findMenuItemById(menuDTO.getMenuId());
-                System.out.println("ssssssssssssssssssssssssssssssssssssssssssssssss"+menuDTO1.getMenuId());
-            }catch (NullPointerException d){
+                  menuDTO1 = kitchenBO.findMenuItemById(menuDTO.getMenuId());
+               }catch (NullPointerException d){
                 int maxId = (menuItem.getMenuId());
                 if (menuDTO.getMenuId()==(maxId)) {
                     menuDTO.setMenuId((maxId));

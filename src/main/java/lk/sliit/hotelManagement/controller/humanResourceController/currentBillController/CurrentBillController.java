@@ -2,6 +2,7 @@ package lk.sliit.hotelManagement.controller.humanResourceController.currentBillC
 
 import lk.sliit.hotelManagement.controller.SuperController;
 import lk.sliit.hotelManagement.dto.hr.CurrentBillDTO;
+import lk.sliit.hotelManagement.dto.kitchen.MenuDTO;
 import lk.sliit.hotelManagement.service.custom.CurrentBO;
 import lk.sliit.hotelManagement.service.custom.HumanResourceBO;
 import lk.sliit.hotelManagement.service.custom.IndexLoginBO;
@@ -40,30 +41,29 @@ public class CurrentBillController {
 
     @PostMapping("saveCurrentBill")
     public String saveCurrentBillForm(@ModelAttribute CurrentBillDTO currentBillDTO){
-      /*  try{
-            CurrentBillDTO top = currentBO.findHighestCurrentBillId();
-            int newId = Integer.parseInt(top.getBillId()) + 1;
-            currentBillDTO.setBillId(String.valueOf(newId));
+        try {
+            System.out.println("ccccccccccccccccccccccccccccccccc"+currentBillDTO);
+            CurrentBillDTO current = currentBO.findHighestCurrentBillId();
+            System.out.println("sss3333333333333333"+current);
+            CurrentBillDTO currentBillDTO1 = null;
+            try {
+                currentBillDTO1 = currentBO.findById(currentBillDTO.getBillId());
+                System.out.println("ssssssssssssssssssssssssssssssssssssssssssssssss");
+            }catch (NullPointerException d){
+                int maxId = (current.getBillId());
+                if (currentBillDTO.getBillId()==(maxId)) {
+                    currentBillDTO.setBillId((maxId));
+                } else {
+                    maxId++;
+                    currentBillDTO.setBillId((maxId));
+                }
+            }
+
         } catch (NullPointerException e){
-            currentBillDTO.setBillId(String.valueOf(1));
-        }*/
+            currentBillDTO.setBillId(1);
+        }
         currentBO.saveCurrentBill(currentBillDTO);
         return "redirect:/currentBill";
     }
 
-    // other codes
-    //ctrl+shift+/
-    /*@GetMapping("/currentBill")
-    public String loginPage(Model model) {
-        model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
-        return "currentBill";
-    }*/
-
-    /*@GetMapping("/currentBill")
-    public String loadCurrentBill(Model model, HttpServletRequest request){
-        model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
-        List<CurrentBillDTO> cbDTOList = currentBO.findAllCurrentBills();
-        model.addAttribute("loadCBTable",cbDTOList);
-        return "/currentBill";
-    }*/
 }

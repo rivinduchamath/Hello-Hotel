@@ -7,9 +7,9 @@ import java.io.Serializable;
 public class ReservationDetailsPK implements Serializable {
 
     private int reservationId;
-    private String roomId;
+    private int roomId;
 
-    public ReservationDetailsPK(int reservationId, String roomId) {
+    public ReservationDetailsPK(int reservationId, int roomId) {
         this.reservationId = reservationId;
         this.roomId = roomId;
     }
@@ -25,11 +25,11 @@ public class ReservationDetailsPK implements Serializable {
         this.reservationId = reservationId;
     }
 
-    public String getRoomId() {
+    public int getRoomId() {
         return roomId;
     }
 
-    public void setRoomId(String roomId) {
+    public void setRoomId(int roomId) {
         this.roomId = roomId;
     }
 }
