@@ -11,8 +11,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class BarManageController {
     @Autowired
     IndexLoginBO indexLoginBO;
+
     @GetMapping("/bar")
-    public String loginPage( Model model){
+    public String loginPage(Model model) {
         model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
         return "bar";
     }
