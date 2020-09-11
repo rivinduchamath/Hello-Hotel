@@ -24,9 +24,9 @@ public interface InventoryBO extends SuperBO {
 
     List<InventoryNoticeDTO> findTomorrowInventoryNotice();
 
-    void deleteInventoryNotice(String noticeId);
+    void deleteInventoryNotice(int noticeId);
 
-    InventoryDTO findInventory(String inventoryId);
+    InventoryDTO findInventory(int inventoryId);
 
     void updateInventory(InventoryDTO inventoryDTO1);
 
@@ -44,7 +44,7 @@ public interface InventoryBO extends SuperBO {
 
     SupplierDTO findTopByOrderBySupplierIdDesc();
 
-    void deleteSupplier(String userId);
+    void deleteSupplier(int userId);
 
     InventoryNoticeDTO findTopByBarNoticeIdDesc();
 
@@ -52,5 +52,5 @@ public interface InventoryBO extends SuperBO {
 
     InventoryDTO findTopByOrderByOrderIdDesc();
 
-    boolean findOne(String supplierId);
+    boolean findOne(int supplierId);
 }

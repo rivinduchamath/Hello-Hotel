@@ -6,21 +6,21 @@ import java.util.List;
 
 public class BarOrderDTO {
 
-    private String id;
+    private int id;
     private String customerId;
     private String user;
     private List<BarOrderDetailDTO> orderDetails;
     private  String orderData;
     private Date date;
 
-    public BarOrderDTO(String id, String customerId, String user, List<BarOrderDetailDTO> orderDetails) {
+    public BarOrderDTO(int id, String customerId, String user, List<BarOrderDetailDTO> orderDetails) {
         this.id = id;
         this.customerId = customerId;
         this.user = user;
         this.orderDetails = orderDetails;
     }
 
-    public BarOrderDTO(String id, String customerId, String user, List<BarOrderDetailDTO> orderDetails, String orderData) {
+    public BarOrderDTO(int id, String customerId, String user, List<BarOrderDetailDTO> orderDetails, String orderData) {
         this.id = id;
         this.customerId = customerId;
         this.user = user;
@@ -28,7 +28,7 @@ public class BarOrderDTO {
         this.orderData = orderData;
     }
 
-    public BarOrderDTO(String id, String customerId, String user, List<BarOrderDetailDTO> orderDetails, String orderData, Date date) {
+    public BarOrderDTO(int id, String customerId, String user, List<BarOrderDetailDTO> orderDetails, String orderData, Date date) {
         this.id = id;
         this.customerId = customerId;
         this.user = user;
@@ -37,7 +37,7 @@ public class BarOrderDTO {
         this.date = date;
     }
 
-    public BarOrderDTO(String orderId) {
+    public BarOrderDTO(int orderId) {
         this.id = orderId;
     }
 
@@ -60,14 +60,17 @@ public class BarOrderDTO {
         this.orderData = orderData;
     }
 
-    public BarOrderDTO(String orderId, String customerId, String user) {
+    public BarOrderDTO(int orderId, String customerId, String user) {
+        this.id = orderId;
+        this.customerId = customerId;
+        this.user = user;
     }
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 

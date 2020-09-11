@@ -27,7 +27,7 @@ public class SupplierManage {
         model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
         try {
             SupplierDTO totalCount = inventoryBO.findTopByOrderBySupplierIdDesc ( );
-            int x = Integer.parseInt ( totalCount.getId ( ) )+ 1;
+            int x = ( totalCount.getId ( ) )+ 1;
             model.addAttribute ( "genId", x);
         } catch (NullPointerException e) {
             model.addAttribute ( "genId", 1 );
@@ -39,17 +39,17 @@ public class SupplierManage {
 
     @PostMapping("saveSupplier")
     public String itemTypeSave(@ModelAttribute SupplierDTO supplierDTO) {
-         supplierDTO.setSubmittedBy(SuperController.idNo);
+        supplierDTO.setSubmittedBy(SuperController.idNo);
         inventoryBO.saveSupplier(supplierDTO);
         return "redirect:/manageSupplier";
     }
     @RequestMapping(value = "deleteSupplier/{id}")
-    public String deleteSupplier(@PathVariable("id") String userId, HttpServletRequest request, HttpServletResponse response) throws IOException {
-      try {
-          inventoryBO.deleteSupplier(userId);
-      }catch (Exception e){
+    public String deleteSupplier(@PathVariable("id") int userId, HttpServletRequest request, HttpServletResponse response) throws IOException {
+        try {
+            inventoryBO.deleteSupplier(userId);
+        }catch (Exception e){
 
-      }
+        }
         return "redirect:/manageSupplier";
     }
 

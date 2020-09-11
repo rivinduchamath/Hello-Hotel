@@ -101,10 +101,10 @@ public class InventoryController {
             try {
                 inventoryDTO1.setOrderHolder(SuperController.idNo);
                 InventoryDTO top = inventoryBO.findTopByOrderByOrderIdDesc();
-                int x = Integer.parseInt(top.getOrderId()) + 1;
-                inventoryDTO1.setOrderId(String.valueOf(x));
+                int x = (top.getOrderId()) + 1;
+                inventoryDTO1.setOrderId((x));
             } catch (NullPointerException e) {
-                inventoryDTO1.setOrderId(String.valueOf(1));
+                inventoryDTO1.setOrderId((1));
             }
             //////////////////////////////////////////////////////////////////
 
@@ -142,8 +142,8 @@ public class InventoryController {
                 for (InventoryNoticeDTO todayInventoryNoticeDTO : today) {
                     x = 0;
                     //if NO1
-                    if ((tomorrowInventoryNoticeDTO.getInventoryId())
-                            .equals(todayInventoryNoticeDTO.getInventory())) {
+                    if ((tomorrowInventoryNoticeDTO.getInventoryId()) ==
+                            (todayInventoryNoticeDTO.getInventory())) {
 
                         if (requiredQty > tomorrowInventoryNoticeDTO.getQtyOnHand()) {
                             x = 0;
@@ -176,8 +176,8 @@ public class InventoryController {
         int i = 0;
         for (InventoryNoticeDTO tomorrowInventoryNoticeDTO : tomorrow) {
             for (InventoryNoticeDTO todayInventoryNoticeDTO : today) {
-                if (tomorrowInventoryNoticeDTO.getInventoryId().
-                        equals(todayInventoryNoticeDTO.getInventory())) {
+                if (tomorrowInventoryNoticeDTO.getInventoryId()==
+                        (todayInventoryNoticeDTO.getInventory())) {
                     return ++i;//If Already in return i > 0 else Return 0
                 }
             }
@@ -207,8 +207,8 @@ public class InventoryController {
                 for (InventoryNoticeDTO tomorrowInventoryNoticeDTO : tomorrow) {
                     for (InventoryNoticeDTO todayInventoryNoticeDTO : today) {
                         //if NO1
-                        if (dayAfterInventoryNoticeDTO.getInventoryId().
-                                equals(todayInventoryNoticeDTO.getInventory()) && x == 0) {
+                        if (dayAfterInventoryNoticeDTO.getInventoryId()==
+                                (todayInventoryNoticeDTO.getInventory()) && x == 0) {
                             requiredQty = 0.0;
                             if (requiredQty > dayAfterInventoryNoticeDTO.getQtyOnHand()) {
                                 requiredQty = requiredQty - dayAfterInventoryNoticeDTO.getQtyOnHand();
@@ -225,8 +225,8 @@ public class InventoryController {
                         }  //End if NO1
 
                         //if NO2
-                        if (dayAfterInventoryNoticeDTO.getInventoryId().
-                                equals(tomorrowInventoryNoticeDTO.getInventory()) && x == 0) {
+                        if (dayAfterInventoryNoticeDTO.getInventoryId()==
+                                (tomorrowInventoryNoticeDTO.getInventory()) && x == 0) {
                             requiredQty = 0.0;
 
                             if (requiredQty > dayAfterInventoryNoticeDTO.getQtyOnHand()) {
@@ -243,10 +243,10 @@ public class InventoryController {
                         }  //End if NO2
 
                         //if NO3
-                        if (dayAfterInventoryNoticeDTO.getInventoryId()
-                                .equals(tomorrowInventoryNoticeDTO.getInventory()) &&
-                                dayAfterInventoryNoticeDTO.getInventoryId().
-                                        equals(todayInventoryNoticeDTO.getInventory())) {
+                        if (dayAfterInventoryNoticeDTO.getInventoryId()==
+                                (tomorrowInventoryNoticeDTO.getInventory()) &&
+                                dayAfterInventoryNoticeDTO.getInventoryId()==
+                                        (todayInventoryNoticeDTO.getInventory())) {
                             x = 0;
                             requiredQty = 0.0;
                             if (requiredQty > dayAfterInventoryNoticeDTO.getQtyOnHand()) {
@@ -286,12 +286,12 @@ public class InventoryController {
             for (InventoryNoticeDTO tomorrowInventoryNoticeDTO : tomorrow) {
                 for (InventoryNoticeDTO todayInventoryNoticeDTO : today) {
 
-                    if (dayAfterInventoryNoticeDTO.getInventoryId().
-                            equals(todayInventoryNoticeDTO.getInventory())) {
+                    if (dayAfterInventoryNoticeDTO.getInventoryId()==
+                            (todayInventoryNoticeDTO.getInventory())) {
                         ++i;
                     }
-                    if (dayAfterInventoryNoticeDTO.getInventoryId().
-                            equals(tomorrowInventoryNoticeDTO.getInventory())) {
+                    if (dayAfterInventoryNoticeDTO.getInventoryId()==
+                            (tomorrowInventoryNoticeDTO.getInventory())) {
                         ++i;
                     }
                 }//end for 3

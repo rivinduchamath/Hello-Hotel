@@ -7,7 +7,7 @@ import java.sql.Date;
 @Entity
 public class InventoryNotice implements SuperEntity {
     @Id
-    private String noticeId ;
+    private int noticeId ;
     private String department;
     private double orderQty;
     private Date date;
@@ -22,7 +22,7 @@ public class InventoryNotice implements SuperEntity {
     public InventoryNotice() {
     }
 
-    public InventoryNotice(String noticeId, String department,
+    public InventoryNotice(int noticeId, String department,
                            double orderQty, Date date, Date expDate, String orderHolder,
                            boolean state, Inventory inventory) {
         this.noticeId = noticeId;
@@ -37,11 +37,11 @@ public class InventoryNotice implements SuperEntity {
 
 
 
-    public String getNoticeId() {
+    public int getNoticeId() {
         return noticeId;
     }
 
-    public void setNoticeId(String noticeId) {
+    public void setNoticeId(int noticeId) {
         this.noticeId = noticeId;
     }
 

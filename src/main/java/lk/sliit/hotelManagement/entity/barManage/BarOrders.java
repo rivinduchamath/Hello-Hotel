@@ -11,7 +11,7 @@ import java.util.List;
 @Entity
 public class BarOrders implements SuperEntity {
     @Id
-    private String orderId;
+    private int orderId;
     @Temporal(TemporalType.DATE)
     private Date date;
     private String customerId;
@@ -22,15 +22,9 @@ public class BarOrders implements SuperEntity {
     public BarOrders() {
     }
 
-    public BarOrders(String orderId, Date date,  String customerId, String user, List<BarOrderDetails> orderDetails) {
-        this.orderId = orderId;
-        this.date = date;
-        this.customerId = customerId;
-        this.user = user;
-        this.orderDetails = orderDetails;
-    }
 
-    public BarOrders(String id, Date date, String customerId, String user) {
+
+    public BarOrders(int id, Date date, String customerId, String user) {
         this.orderId = id;
         this.date = date;
         this.customerId = customerId;
@@ -55,11 +49,11 @@ public class BarOrders implements SuperEntity {
         this.customerId = customerId;
     }
 
-    public String getOrderId() {
+    public int getOrderId() {
         return orderId;
     }
 
-    public void setOrderId(String orderId) {
+    public void setOrderId(int orderId) {
         this.orderId = orderId;
     }
 

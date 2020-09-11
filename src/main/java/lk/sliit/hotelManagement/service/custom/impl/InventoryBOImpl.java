@@ -190,13 +190,13 @@ public class InventoryBOImpl implements InventoryBO {
     }*/
 
     @Override
-    public void deleteInventoryNotice(String noticeId) {
+    public void deleteInventoryNotice(int noticeId) {
         inventoryDAO.delete(noticeId);
     }
 
 
     @Override
-    public InventoryDTO findInventory(String inventoryId) {
+    public InventoryDTO findInventory(int inventoryId) {
         Inventory notice = inventoryDAO.findOne(inventoryId);
         return new InventoryDTO(
                 notice.getInventoryId(),
@@ -334,7 +334,7 @@ public class InventoryBOImpl implements InventoryBO {
     }//End Get Total
 
     @Override
-    public void deleteSupplier(String userId) {
+    public void deleteSupplier(int userId) {
         supplierDAO.delete(userId);
     }
 
@@ -391,7 +391,7 @@ public class InventoryBOImpl implements InventoryBO {
     }//End
 
     @Override
-    public boolean findOne(String supplierId) {
+    public boolean findOne(int supplierId) {
         System.out.println(supplierId + "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee");
         Supplier supplier = null;
         try {

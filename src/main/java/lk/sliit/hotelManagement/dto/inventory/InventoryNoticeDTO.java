@@ -7,14 +7,14 @@ import java.sql.Date;
 
 public class InventoryNoticeDTO {
 
-    private String noticeId ;
+    private int noticeId ;
     private String department;
     private double orderQty;
     private Date date;
     private Date expDate;
     private String orderHolder;
     private boolean state;
-    private String inventoryId;
+    private int inventoryId;
     private String text;
     private double qtyOnHand;
     private double updatedQty;
@@ -26,9 +26,9 @@ public class InventoryNoticeDTO {
 
 
 
-    public InventoryNoticeDTO(String noticeId, String department,
+    public InventoryNoticeDTO(int noticeId, String department,
                               double orderQty, Date date, Date expDate, String orderHolder,
-                           boolean state, String inventoryid) {
+                              boolean state, int inventoryid) {
         this.noticeId = noticeId;
         this.department = department;
         this.orderQty = orderQty;
@@ -39,10 +39,10 @@ public class InventoryNoticeDTO {
         this.inventoryId = inventoryid;
     }
 
-    public InventoryNoticeDTO(String noticeId, String department,
+    public InventoryNoticeDTO(int noticeId, String department,
                               double orderQty, Date date, Date expDate,
                               String orderHolder, boolean state,
-                              String inventoryId, String text, double qtyOnHand) {
+                              int inventoryId, String text, double qtyOnHand) {
         this.noticeId = noticeId;
         this.department = department;
         this.orderQty = orderQty;
@@ -55,15 +55,15 @@ public class InventoryNoticeDTO {
         this.qtyOnHand = qtyOnHand;
     }
 
-    public InventoryNoticeDTO(String noticeId) { this.noticeId = noticeId;
+    public InventoryNoticeDTO(int noticeId) { this.noticeId = noticeId;
     }
 
 
-    public String getInventoryId() {
+    public int getInventoryId() {
         return inventoryId;
     }
 
-    public void setInventoryId(String inventoryId) {
+    public void setInventoryId(int inventoryId) {
         this.inventoryId = inventoryId;
     }
 
@@ -91,11 +91,11 @@ public class InventoryNoticeDTO {
         this.updatedQty = updatedQty;
     }
 
-    public String getNoticeId() {
+    public int getNoticeId() {
         return noticeId;
     }
 
-    public void setNoticeId(String noticeId) {
+    public void setNoticeId(int noticeId) {
         this.noticeId = noticeId;
     }
 
@@ -147,11 +147,11 @@ public class InventoryNoticeDTO {
         this.state = state;
     }
 
-    public String getInventory() {
+    public int getInventory() {
         return inventoryId;
     }
 
-    public void setInventory(String inventoryId) {
+    public void setInventory(int inventoryId) {
         this.inventoryId = inventoryId;
     }
 

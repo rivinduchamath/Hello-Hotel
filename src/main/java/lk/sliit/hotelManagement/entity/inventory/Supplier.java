@@ -8,7 +8,7 @@ import java.util.List;
 @Entity
 public class Supplier {
     @Id
-    private String id;
+    private int id;
     private String name;
     private String address;
     private String mobile;
@@ -21,7 +21,7 @@ public class Supplier {
     private List<InventoryOrder> orders = new ArrayList<>();
 
 
-    public Supplier(String id, String name, String address, String mobile, String email, String gender, Date date, Date birthday, String submittedBy) {
+    public Supplier(int id, String name, String address, String mobile, String email, String gender, Date date, Date birthday, String submittedBy) {
         this.id = id;
         this.name = name;
         this.address = address;
@@ -45,11 +45,11 @@ public class Supplier {
     public Supplier() {
     }
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 

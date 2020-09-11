@@ -22,7 +22,7 @@ public interface BanquetOrderDAO extends CrudRepository<BanquetOrder,String> {
 
     @Modifying
     @Query(value = "Update BanquetOrder set hallId = ?1 , noOfPlates = ?2 ,date=?3 ,menu=?4 where orderId=?5")
-    void updateBanquetTable(String hallId, int noOfPlates, java.sql.Date date, Menu one, String orderId);
+    void updateBanquetTable(String hallId, int noOfPlates, java.sql.Date date, Menu one, int orderId);
 
     Iterable<BanquetOrder> findAllByOrderStateEquals(String status);
 }

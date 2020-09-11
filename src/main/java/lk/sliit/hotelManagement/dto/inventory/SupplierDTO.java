@@ -3,7 +3,7 @@ package lk.sliit.hotelManagement.dto.inventory;
 import java.sql.Date;
 
 public class SupplierDTO {
-    private String id;
+    private int id;
     private String name;
     private String address;
     private String mobile;
@@ -13,7 +13,7 @@ public class SupplierDTO {
     private Date birthday;
     private String submittedBy;
 
-    public SupplierDTO(String id, String name, String address, String mobile, String email, String gender, Date date, Date birthday, String submittedBy) {
+    public SupplierDTO(int id, String name, String address, String mobile, String email, String gender, Date date, Date birthday, String submittedBy) {
         this.id = id;
         this.name = name;
         this.address = address;
@@ -25,7 +25,7 @@ public class SupplierDTO {
         this.submittedBy = submittedBy;
     }
 
-    public SupplierDTO(String id) {
+    public SupplierDTO(int id) {
         this.id = id;
     }
 
@@ -41,11 +41,11 @@ public class SupplierDTO {
         this.submittedBy = submittedBy;
     }
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 

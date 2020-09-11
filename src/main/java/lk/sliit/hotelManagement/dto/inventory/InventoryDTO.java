@@ -4,7 +4,7 @@ import java.sql.Date;
 
 public class InventoryDTO {
 
-    private String inventoryId ;
+    private int inventoryId ;
     private String text;
     private String description;
     private double orderQty;
@@ -13,9 +13,9 @@ public class InventoryDTO {
     private double getPrice;
     private double sellingPrice;
     private Date date;
-//    ////////////////////////////////////
-    private String supplierId;
-    private String orderId;
+    //    ////////////////////////////////////
+    private int supplierId;
+    private int orderId;
     private String orderHolder;
 
 
@@ -23,7 +23,7 @@ public class InventoryDTO {
     public InventoryDTO() {
     }
 
-    public InventoryDTO(String inventoryId, String text, String description,
+    public InventoryDTO(int inventoryId, String text, String description,
                         double orderQty, String type, String orderLimit,
                         double getPrice, double sellingPrice, Date date) {
         this.inventoryId = inventoryId;
@@ -38,11 +38,11 @@ public class InventoryDTO {
 
     }
 
-    public InventoryDTO(String orderId) {
+    public InventoryDTO(int orderId) {
         this.orderId =orderId;
     }
 
-    public String getOrderId() {
+    public int getOrderId() {
         return orderId;
     }
 
@@ -54,23 +54,23 @@ public class InventoryDTO {
         this.orderHolder = orderHolder;
     }
 
-    public void setOrderId(String orderId) {
+    public void setOrderId(int orderId) {
         this.orderId = orderId;
     }
 
-    public String getSupplierId() {
+    public int getSupplierId() {
         return supplierId;
     }
 
-    public void setSupplierId(String supplierId) {
+    public void setSupplierId(int supplierId) {
         this.supplierId = supplierId;
     }
 
-    public String getInventoryId() {
+    public int getInventoryId() {
         return inventoryId;
     }
 
-    public void setInventoryId(String inventoryId) {
+    public void setInventoryId(int inventoryId) {
         this.inventoryId = inventoryId;
     }
 

@@ -32,7 +32,7 @@ public class BanquetAdd {
 
         try {
             BanquetOrderDTO banquetOrderDTO = banquetBO.findTopBanquetId();
-            int topBanquet = Integer.parseInt(banquetOrderDTO.getOrderId()) + 1;
+            int topBanquet = (banquetOrderDTO.getOrderId()) + 1;
             model.addAttribute("topBanquetId", topBanquet);
         } catch (NullPointerException e) {
             model.addAttribute("topBanquetId", 1);
@@ -43,12 +43,12 @@ public class BanquetAdd {
             int topCustomer = Integer.parseInt(customerDTO.getCustomerId()) + 1;
             model.addAttribute("topCustomerId", topCustomer);
         } catch (NullPointerException e){
-        model.addAttribute("topCustomerId", 1);
+            model.addAttribute("topCustomerId", 1);
         }
 
         try {
             BanquetBillDTO banquetBillDTO = banquetBO.findTopBanquetBillId();
-            int topBill = Integer.parseInt(banquetBillDTO.getBillId()) + 1;
+            int topBill = (banquetBillDTO.getBillId()) + 1;
             model.addAttribute("topBanquetBillId", topBill);
         } catch (NullPointerException e){
             model.addAttribute("topBanquetBillId", 1);

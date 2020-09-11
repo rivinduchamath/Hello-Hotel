@@ -2,11 +2,11 @@ package lk.sliit.hotelManagement.dto.inventory;
 
 public class ItemTypeDTO {
 
-    String id;
+    int id;
     String userType;
     String submittedBy;
 
-    public ItemTypeDTO(String id, String userType, String submittedBy) {
+    public ItemTypeDTO(int id, String userType, String submittedBy) {
         this.id = id;
         this.userType = userType;
         this.submittedBy = submittedBy;
@@ -15,15 +15,15 @@ public class ItemTypeDTO {
     public ItemTypeDTO() {
     }
 
-    public ItemTypeDTO(String id) {
+    public ItemTypeDTO(int id) {
         this.id = id;
     }
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 

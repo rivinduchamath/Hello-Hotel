@@ -58,6 +58,7 @@ public class BanquetBOImpl implements BanquetBO {
         ));
         String status ="pending";
         banquetAddDTO.setOrderState(status);
+
         banquetOrderDAO.save(new BanquetOrder(
                 banquetAddDTO.getOrderId(),
                 banquetAddDTO.getHallId(),
@@ -69,7 +70,6 @@ public class BanquetBOImpl implements BanquetBO {
                 menuDAO.findOne(banquetAddDTO.getMenuId()),
                 banquetBillDAO.findOne(banquetAddDTO.getBanquetBillId())
         ));
-
     }
 
     @Override

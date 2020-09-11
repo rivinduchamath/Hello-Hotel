@@ -28,10 +28,10 @@ public class AddNewInventoryController {
         request.setAttribute("mode", "MODE_UPDATE");
         List<ItemTypeDTO> p = inventoryBO.findAll();
         model.addAttribute("loadItemType", p);
-      //Top Id
+        //Top Id
         try {
             ItemTypeDTO totalCount = inventoryBO.findTopByOrderByIdDesc ( );
-            int x = Integer.parseInt ( totalCount.getId ( ) )+ 1;
+            int x =  totalCount.getId (  )+ 1;
             model.addAttribute ( "genId", x);
         } catch (NullPointerException e) {
             model.addAttribute ( "genId", 1 );
@@ -42,7 +42,7 @@ public class AddNewInventoryController {
     @PostMapping("itemTypeSave")
     public String itemTypeSave(@ModelAttribute ItemTypeDTO inventoryDTO, HttpServletRequest request) {
         request.setAttribute("mode", "MODE_UPDATE");
-         inventoryDTO.setSubmittedBy(SuperController.idNo);
+        inventoryDTO.setSubmittedBy(SuperController.idNo);
         inventoryBO.saveInventoryType(inventoryDTO);
         return "redirect:/addInventoryType";
     }
@@ -92,7 +92,7 @@ public class AddNewInventoryController {
 
 
     @RequestMapping(value = "deleteInventory/{inventoryId}")
-    public String deleteNotice(@PathVariable("inventoryId") String inventoryId) {
+    public String deleteNotice(@PathVariable("inventoryId") int inventoryId) {
 
         try {
             inventoryBO.deleteInventoryNotice(inventoryId);

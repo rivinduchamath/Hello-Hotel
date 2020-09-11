@@ -3,7 +3,7 @@ package lk.sliit.hotelManagement.dto.banquet;
 import java.util.Date;
 
 public class BanquetOrderDTO {
-    private String orderId;
+    private int orderId;
     private String hallId;
     private String orderState;
     private int noOfPlates;
@@ -11,9 +11,10 @@ public class BanquetOrderDTO {
     private String submittedBy;
     private String customerId;
     private String menuId;
-    private String banquetBillId;
+    private int banquetBillId;
 
-    public BanquetOrderDTO(String orderId, String hallId, String orderState, int noOfPlates, Date date, String submittedBy, String customerId, String menuId, String banquetBillId) {
+    public BanquetOrderDTO(int orderId, String hallId, String orderState, int noOfPlates, Date date,
+                           String submittedBy, String customerId, String menuId, int banquetBillId) {
         this.orderId = orderId;
         this.hallId = hallId;
         this.orderState = orderState;
@@ -28,15 +29,15 @@ public class BanquetOrderDTO {
     public BanquetOrderDTO() {
     }
 
-    public BanquetOrderDTO(String orderId) {
+    public BanquetOrderDTO(int orderId) {
         this.orderId = orderId;
     }
 
-    public String getOrderId() {
+    public int getOrderId() {
         return orderId;
     }
 
-    public void setOrderId(String orderId) {
+    public void setOrderId(int orderId) {
         this.orderId = orderId;
     }
 
@@ -96,11 +97,11 @@ public class BanquetOrderDTO {
         this.menuId = menuId;
     }
 
-    public String getBanquetBillId() {
+    public int getBanquetBillId() {
         return banquetBillId;
     }
 
-    public void setBanquetBillId(String banquetBillId) {
+    public void setBanquetBillId(int banquetBillId) {
         this.banquetBillId = banquetBillId;
     }
 
