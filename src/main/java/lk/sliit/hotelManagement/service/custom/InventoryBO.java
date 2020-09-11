@@ -49,4 +49,6 @@ public interface InventoryBO extends SuperBO {
     InventoryNoticeDTO findTopByBarNoticeIdDesc();
 
     void saveOrderNotice(InventoryNoticeDTO noticeDTO);
+
+    InventoryDTO findTopByOrderByOrderIdDesc();
 }

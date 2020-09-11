@@ -1,19 +1,14 @@
 package lk.sliit.hotelManagement.service.custom.impl;
 
-import lk.sliit.hotelManagement.dao.inventoryDAO.InventoryDAO;
-import lk.sliit.hotelManagement.dao.inventoryDAO.InventoryNoticeDAO;
-import lk.sliit.hotelManagement.dao.inventoryDAO.ItemTypeDAO;
-import lk.sliit.hotelManagement.dao.inventoryDAO.SupplierDAO;
+import lk.sliit.hotelManagement.dao.inventoryDAO.*;
 import lk.sliit.hotelManagement.dto.beverage.BarOrderDTO;
 import lk.sliit.hotelManagement.dto.inventory.InventoryDTO;
 import lk.sliit.hotelManagement.dto.inventory.InventoryNoticeDTO;
 import lk.sliit.hotelManagement.dto.inventory.ItemTypeDTO;
 import lk.sliit.hotelManagement.dto.inventory.SupplierDTO;
 import lk.sliit.hotelManagement.entity.TimeCheck;
-import lk.sliit.hotelManagement.entity.inventory.Inventory;
-import lk.sliit.hotelManagement.entity.inventory.InventoryNotice;
-import lk.sliit.hotelManagement.entity.inventory.ItemType;
-import lk.sliit.hotelManagement.entity.inventory.Supplier;
+import lk.sliit.hotelManagement.entity.barManage.BarOrders;
+import lk.sliit.hotelManagement.entity.inventory.*;
 import lk.sliit.hotelManagement.service.custom.InventoryBO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -35,6 +30,8 @@ public class InventoryBOImpl implements InventoryBO {
     InventoryDAO inventoryDAO;
     @Autowired
     InventoryNoticeDAO inventoryNoticeDAO;
+    @Autowired
+    InventoryOrderDAO inventoryOrderDAO;
     @Autowired
     SupplierDAO supplierDAO;
 
@@ -212,8 +209,18 @@ public class InventoryBOImpl implements InventoryBO {
         );
     }
 
+    @Transactional
     @Override
     public void updateInventory(InventoryDTO inventoryDTO1) {
+
+        inventoryOrderDAO.save(new InventoryOrder(
+                inventoryDTO1.getOrderId(),
+                inventoryDTO1.getDate(),
+                inventoryDTO1.getGetPrice(),
+                inventoryDTO1.getOrderQty(),
+                supplierDAO.findOne(inventoryDTO1.getSupplierId()),
+                inventoryDAO.findOne(inventoryDTO1.getInventoryId())
+        ));
         inventoryDAO.save(new Inventory(
                 inventoryDTO1.getInventoryId(),
                 inventoryDTO1.getText(),
@@ -367,4 +374,18 @@ public class InventoryBOImpl implements InventoryBO {
 
         ));
     }
+
+    @Override
+    public InventoryDTO findTopByOrderByOrderIdDesc() {
+        InventoryOrder orders = null;
+        try {
+            orders = inventoryOrderDAO.findTopByOrderByOrderIdDesc ();
+        }catch (Exception e){
+
+        }
+        return new InventoryDTO(
+                orders.getOrderId ()
+        );
+    }//End
+
 }

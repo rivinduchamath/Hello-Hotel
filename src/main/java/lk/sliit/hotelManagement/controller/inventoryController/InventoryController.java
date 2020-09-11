@@ -1,6 +1,8 @@
 package lk.sliit.hotelManagement.controller.inventoryController;
 
 import lk.sliit.hotelManagement.controller.SuperController;
+import lk.sliit.hotelManagement.dto.beverage.BarOrderDTO;
+import lk.sliit.hotelManagement.dto.houseKeeping.HotelRoomDTO;
 import lk.sliit.hotelManagement.dto.inventory.InventoryDTO;
 import lk.sliit.hotelManagement.dto.inventory.InventoryNoticeDTO;
 import lk.sliit.hotelManagement.service.custom.DashboardBO;
@@ -22,6 +24,7 @@ public class InventoryController {
     DashboardBO dashboardBO;
     @Autowired
     InventoryBO inventoryBO;
+
 
     //Load Today Inventory Page
     @GetMapping("/inventoryToday")
@@ -77,9 +80,24 @@ public class InventoryController {
     public String updateQty(@ModelAttribute InventoryDTO inventoryDTO) {
 
         InventoryDTO inventoryDTO1;
+
+
         try {
             //Get Inventory Data From Inventory Id
             inventoryDTO1 = inventoryBO.findInventory(inventoryDTO.getInventoryId());
+            inventoryDTO1.setSupplierId(inventoryDTO.getSupplierId());
+            inventoryDTO1.setGetPrice(inventoryDTO.getGetPrice());
+            //////////////////////////////////////////////////////////////////
+            //Set Order Id
+            try {inventoryDTO1.setOrderHolder(SuperController.idNo);
+                InventoryDTO top = inventoryBO.findTopByOrderByOrderIdDesc ( );
+                int x = Integer.parseInt ( top.getOrderId ( ) )+ 1;
+                inventoryDTO1.setOrderId ( String.valueOf ( x ) );
+            } catch (NullPointerException e) {
+                inventoryDTO1.setOrderId ( String.valueOf ( 1 ) );
+            }
+            //////////////////////////////////////////////////////////////////
+
             //Add New Qty To Current Qty On Hand
             inventoryDTO1.setOrderQty(inventoryDTO.getOrderQty() + inventoryDTO1.getOrderQty());
             //Update InventoryDTO1
@@ -88,6 +106,7 @@ public class InventoryController {
         } catch (Exception w) {
             System.out.println("Error");
         }
+
         return "redirect:/inventory";
     }//End Update Qty On Hand On DayAfterTomorrow
 
