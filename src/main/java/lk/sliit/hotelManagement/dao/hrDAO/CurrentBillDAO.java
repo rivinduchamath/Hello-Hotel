@@ -5,4 +5,7 @@ import lk.sliit.hotelManagement.entity.hr.CurrentBill;
 import org.springframework.data.repository.CrudRepository;
 
 public interface CurrentBillDAO extends CrudRepository<CurrentBill,String> {
+
+    CurrentBill findTopByCurrentBillIdDesc();
+
 }

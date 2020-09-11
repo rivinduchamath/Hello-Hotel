@@ -20,6 +20,10 @@ public class CurrentBill {
     public CurrentBill() {
     }
 
+    /*public CurrentBill(String billId) {
+        this.billId = billId;
+    }*/
+
     public String getBillId() {
         return billId;
     }

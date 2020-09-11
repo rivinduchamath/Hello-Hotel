@@ -16,6 +16,9 @@ public class CurrentBillDTO {
     public CurrentBillDTO() {
     }
 
+   /* public CurrentBillDTO(String billId) {
+    }*/
+
     public String getBillId() {
         return billId;
     }
