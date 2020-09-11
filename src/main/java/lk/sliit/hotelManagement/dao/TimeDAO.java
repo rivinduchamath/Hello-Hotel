@@ -17,8 +17,11 @@ public interface TimeDAO extends CrudRepository<TimeCheck, String> {
 //    @Query(value = "SELECT e FROM TimeCheck e WHERE e.timeSett BETWEEN :startDate AND :endDate order by e.joinDate")
    Iterable<TimeCheck> findAllByTimeTwoGreaterThanEqualAndTimeOneLessThanEqualAndDateEquals(Date tdate, Date tdate2, Date date);
 
+    Iterable<TimeCheck> findAllByTimeTwoLessThanEqualAndTimeOneGreaterThanEqualAndDateEquals(Date tdate2, Date tdate, Date date);
+    Iterable<TimeCheck> findAllByTimeOneLessThanEqualAndTimeTwoGreaterThanEqualAndDateEquals(Date tdate2, Date tdate, Date date);
 
-   //Iterable<TimeCheck> findTimeChecksByTimeOneIsInOrTimeTwoIsInAndDateEquals(Date tdate, Date tdate2, Date date);
+
+    //Iterable<TimeCheck> findTimeChecksByTimeOneIsInOrTimeTwoIsInAndDateEquals(Date tdate, Date tdate2, Date date);
 
    // Iterable<TimeCheck>  findTimeChecksByTimeOneSinceGreaterThanEqualAndUntilLessThanEqual(Long since, Long until);
 
