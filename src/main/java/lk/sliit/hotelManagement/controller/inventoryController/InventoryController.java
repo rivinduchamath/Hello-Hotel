@@ -1,8 +1,11 @@
 package lk.sliit.hotelManagement.controller.inventoryController;
 
 import lk.sliit.hotelManagement.controller.SuperController;
+import lk.sliit.hotelManagement.dto.beverage.BarOrderDTO;
+import lk.sliit.hotelManagement.dto.houseKeeping.HotelRoomDTO;
 import lk.sliit.hotelManagement.dto.inventory.InventoryDTO;
 import lk.sliit.hotelManagement.dto.inventory.InventoryNoticeDTO;
+import lk.sliit.hotelManagement.dto.inventory.SupplierDTO;
 import lk.sliit.hotelManagement.service.custom.DashboardBO;
 import lk.sliit.hotelManagement.service.custom.IndexLoginBO;
 import lk.sliit.hotelManagement.service.custom.InventoryBO;
@@ -10,6 +13,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 @Controller
@@ -22,6 +27,7 @@ public class InventoryController {
     DashboardBO dashboardBO;
     @Autowired
     InventoryBO inventoryBO;
+
 
     //Load Today Inventory Page
     @GetMapping("/inventoryToday")
@@ -74,12 +80,35 @@ public class InventoryController {
 
     //Update DayAfterTomorrow Quantity in Table Input Field Change Quantity On Hand
     @RequestMapping(value = "/updateQty")
-    public String updateQty(@ModelAttribute InventoryDTO inventoryDTO) {
+    public String updateQty(@ModelAttribute InventoryDTO inventoryDTO, HttpServletRequest request) {
 
-        InventoryDTO inventoryDTO1;
+        InventoryDTO inventoryDTO1 = null;
+        boolean s =false;
+        try {
+            s = inventoryBO.findOne(inventoryDTO.getSupplierId());
+        } catch (NullPointerException e) {
+            System.out.println("Supplier Id is Not Found");
+            return "redirect:/inventory";
+        }
+
         try {
             //Get Inventory Data From Inventory Id
             inventoryDTO1 = inventoryBO.findInventory(inventoryDTO.getInventoryId());
+            inventoryDTO1.setSupplierId(inventoryDTO.getSupplierId());
+            inventoryDTO1.setGetPrice(inventoryDTO.getGetPrice());
+            //////////////////////////////////////////////////////////////////
+            //Set Order Id
+            try {
+                inventoryDTO1.setOrderHolder(SuperController.idNo);
+                InventoryDTO top = inventoryBO.findTopByOrderByOrderIdDesc();
+                int x = Integer.parseInt(top.getOrderId()) + 1;
+                inventoryDTO1.setOrderId(String.valueOf(x));
+            } catch (NullPointerException e) {
+                inventoryDTO1.setOrderId(String.valueOf(1));
+            }
+            //////////////////////////////////////////////////////////////////
+
+            ////////////////////////////////////////////////////////////
             //Add New Qty To Current Qty On Hand
             inventoryDTO1.setOrderQty(inventoryDTO.getOrderQty() + inventoryDTO1.getOrderQty());
             //Update InventoryDTO1
@@ -88,9 +117,9 @@ public class InventoryController {
         } catch (Exception w) {
             System.out.println("Error");
         }
+
         return "redirect:/inventory";
     }//End Update Qty On Hand On DayAfterTomorrow
-
 
 
     //Calculate inventory tomorrow required quantity for each Item

@@ -1,6 +1,8 @@
 package lk.sliit.hotelManagement.dto.inventory;
 
 
+import lk.sliit.hotelManagement.entity.inventory.Inventory;
+
 import java.sql.Date;
 
 public class InventoryNoticeDTO {
@@ -21,6 +23,8 @@ public class InventoryNoticeDTO {
 
     public InventoryNoticeDTO() {
     }
+
+
 
     public InventoryNoticeDTO(String noticeId, String department,
                               double orderQty, Date date, Date expDate, String orderHolder,
@@ -49,6 +53,9 @@ public class InventoryNoticeDTO {
         this.inventoryId = inventoryId;
         this.text = text;
         this.qtyOnHand = qtyOnHand;
+    }
+
+    public InventoryNoticeDTO(String noticeId) { this.noticeId = noticeId;
     }
 
 

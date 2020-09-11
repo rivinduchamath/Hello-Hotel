@@ -32,4 +32,10 @@ public interface BanquetBO extends SuperBO {
     void updateBanquetDetails(BanquetAddDTO banquetAddDTO);
 
     List<BanquetAddDTO> findUnconfirmedBanquet();
+
+    List<BanquetAddDTO> findConfirmedBanquet();
+
+    void updateBanquetStatusToCancel(String orderId);
+
+    void deleteBanquet(String idNo);
 }

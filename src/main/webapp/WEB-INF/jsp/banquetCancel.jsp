@@ -198,11 +198,10 @@
                 <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12" style="float: right; position: relative;display: inline-block">
                     <div class="x_panel">
                         <div class="x_title">
-                            <h2>Upcoming Banquets
-                                <small>cancel banquet
+                            <h2>Cancel Confirmed Banquets
+                                <small> - Customer can't get an advance fee
                                 </small>
                             </h2>
-                            <form method="POST" action="/invoice" name="invoice">
 
 
                                 <!--href="/invoice"-->
@@ -223,21 +222,21 @@
 
                                                     <tr>
                                                         <th>Banquet Id</th>
-                                                        <th>Bill Id</th>
+                                                        <th>Name</th>
+                                                        <th>Address</th>
                                                         <th>Date</th>
-                                                        <th>Cus Name</th>
-                                                        <th>Mobile</th>
-                                                        <th>Hall No</th>
-                                                        <th>plates</th>
-                                                        <th>Status</th>
-                                                        <th>Delete</th>
+                                                        <th>Hall</th>
+                                                        <th>Plates</th>
+                                                        <th>Package</th>
+                                                        <th>Advance Payment</th>
+                                                        <th>Bill Id</th>
                                                         <th>Cancel</th>
 
                                                     </tr>
                                                     </thead>
 
                                                     <tbody>
-                                                    <c:forEach items="${loadTable}" var="e">
+                                                    <c:forEach items="${loadTable1}" var="e">
                                                         <tr>
                                                             <td>${e.orderId}</td>
                                                             <td>${e.name}</td>
@@ -248,9 +247,9 @@
                                                             <td>${e.menuId}</td>
                                                             <td>${e.advanceFee}</td>
                                                             <td>${e.banquetBillId}</td>
-                                                            <td><a href=""><span
-                                                                    class="glyphicon glyphicon-trash"></span></a></td>
-                                                        </tr>
+                                                            <td><a href="/updateBanquetStatusToCancel?orderId=${e.orderId}">
+                                                                <button value="" id="billBtn" name="billBtn" class="btn btn-outline-danger" style="font-size: 13px;">Cancel</button>
+                                                            </a></td>
                                                     </c:forEach>
                                                     </tbody>
                                                 </table>
@@ -258,11 +257,89 @@
                                         </div>
                                     </div>
                                 </div>
-                            </form>
                         </div>
                     </div>
                 </div>
             </div>
+
+
+
+
+
+            <div class="col-md-12 col-sm-12 ">
+                <div class="x_panel">
+                    <div class="x_title">
+                        <h2>Delete Pending Banquets
+                            <small> - Customer can get an advance fee
+                            </small>
+                        </h2>
+                        <ul class="nav navbar-right panel_toolbox">
+                            <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                    <a class="dropdown-item" href="#">Settings 1</a>
+                                    <a class="dropdown-item" href="#">Settings 2</a>
+                                </div>
+                            </li>
+                            <li><a class="close-link"><i class="fa fa-close"></i></a>
+                            </li>
+                        </ul>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="x_content">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="card-box table-responsive">
+
+                                    <table id="datatable-responsive" class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
+                                        <thead>
+                                        <tr>
+                                            <th>Banquet Id</th>
+                                            <th>Name</th>
+                                            <th>Address</th>
+                                            <th>Date</th>
+                                            <th>Hall</th>
+                                            <th>Plates</th>
+                                            <th>Package</th>
+                                            <th>Advance Payment</th>
+                                            <th>Bill Id</th>
+                                            <th>Delete</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <c:forEach items="${loadTable2}" var="e">
+                                            <tr>
+                                                <td>${e.orderId}</td>
+                                                <td>${e.name}</td>
+                                                <td>${e.address}</td>
+                                                <td>${e.date}</td>
+                                                <td>${e.hallId}</td>
+                                                <td>${e.noOfPlates}</td>
+                                                <td>${e.menuId}</td>
+                                                <td>${e.advanceFee}</td>
+                                                <td>${e.banquetBillId}</td>
+                                                <td><a href="/deleteBanquet?idNo=${e.orderId}"><span
+                                                        class="glyphicon glyphicon-trash"></span></a></td>
+                                            </tr>
+                                        </c:forEach>
+
+                                        </tbody>
+                                    </table>
+
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+
 
                                 <%--/////////////////////////////////////////////    /////////////////////////////////////////////--%>
                         </div>

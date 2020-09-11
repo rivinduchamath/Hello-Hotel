@@ -21,7 +21,7 @@ public class BanquetOrder {
     @ManyToOne(cascade = {CascadeType.PERSIST,CascadeType.REFRESH, CascadeType.DETACH, CascadeType.MERGE})
     @JoinColumn(name="menu",referencedColumnName = "menuId")
     private Menu menu;
-    @OneToOne(cascade = {CascadeType.PERSIST, CascadeType.REFRESH, CascadeType.DETACH, CascadeType.MERGE})
+    @OneToOne(cascade = {CascadeType.PERSIST,CascadeType.REMOVE, CascadeType.REFRESH, CascadeType.DETACH, CascadeType.MERGE})
     @JoinColumn(name = "banquetBill", referencedColumnName = "billId")
     private BanquetBill banquetBill;
 
@@ -37,9 +37,7 @@ public class BanquetOrder {
         this.banquetBill = banquetBill;
     }
 
-    public BanquetOrder() {
-
-    }
+    public BanquetOrder() {}
 
 
     public String getOrderId() {

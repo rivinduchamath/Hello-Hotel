@@ -13,6 +13,11 @@ public class InventoryDTO {
     private double getPrice;
     private double sellingPrice;
     private Date date;
+//    ////////////////////////////////////
+    private String supplierId;
+    private String orderId;
+    private String orderHolder;
+
 
 
     public InventoryDTO() {
@@ -31,6 +36,34 @@ public class InventoryDTO {
         this.sellingPrice = sellingPrice;
         this.date = date;
 
+    }
+
+    public InventoryDTO(String orderId) {
+        this.orderId =orderId;
+    }
+
+    public String getOrderId() {
+        return orderId;
+    }
+
+    public String getOrderHolder() {
+        return orderHolder;
+    }
+
+    public void setOrderHolder(String orderHolder) {
+        this.orderHolder = orderHolder;
+    }
+
+    public void setOrderId(String orderId) {
+        this.orderId = orderId;
+    }
+
+    public String getSupplierId() {
+        return supplierId;
+    }
+
+    public void setSupplierId(String supplierId) {
+        this.supplierId = supplierId;
     }
 
     public String getInventoryId() {

@@ -130,7 +130,9 @@ public class BanquetBOImpl implements BanquetBO {
                     a.getNoOfPlates(),
                     a.getMenu().getMenuId(),
                     a.getBanquetBill().getAdvancePayment(),
-                    a.getBanquetBill().getBillId()
+                    a.getBanquetBill().getBillId(),
+                    a.getOrderState(),
+                    a.getBanquetBill().getTotal()
             ));
         }
         return dtos;
@@ -167,6 +169,17 @@ public class BanquetBOImpl implements BanquetBO {
         String status ="confirmed";
         banquetOrderDAO.updateBanStatus(status,orderId);
 
+    }
+
+    @Override
+    public void updateBanquetStatusToCancel(String orderId) {
+        String status ="canceled";
+        banquetOrderDAO.updateBanStatus(status,orderId);
+    }
+
+    @Override
+    public void deleteBanquet(String idNo) {
+        banquetOrderDAO.delete(idNo);
     }
 
     @Override
@@ -226,5 +239,25 @@ public class BanquetBOImpl implements BanquetBO {
         return dtos;
     }
 
+    @Override
+    public List<BanquetAddDTO> findConfirmedBanquet() {
+        String statusConfirmed = "Confirmed";
+        Iterable<BanquetOrder> all = banquetOrderDAO.findAllByOrderStateEquals(statusConfirmed);
+        List<BanquetAddDTO> dtos = new ArrayList<>();
+        for ( BanquetOrder a: all){
+            dtos.add(new BanquetAddDTO(
+                    a.getOrderId(),
+                    a.getCustomer().getName(),
+                    a.getCustomer().getAddress(),
+                    a.getDate(),
+                    a.getHallId(),
+                    a.getNoOfPlates(),
+                    a.getMenu().getMenuId(),
+                    a.getBanquetBill().getAdvancePayment(),
+                    a.getBanquetBill().getBillId()
+            ));
+        }
+        return dtos;
+    }
 
 }

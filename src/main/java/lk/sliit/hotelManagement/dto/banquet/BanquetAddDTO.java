@@ -1,7 +1,5 @@
 package lk.sliit.hotelManagement.dto.banquet;
 
-import lk.sliit.hotelManagement.entity.kitchen.Menu;
-
 import java.sql.Date;
 
 public class BanquetAddDTO {
@@ -70,6 +68,21 @@ public class BanquetAddDTO {
         this.noOfPlates = noOfPlates;
         this.advanceFee = advancePayment;
         this.orderState= orderState;
+    }
+
+
+    public BanquetAddDTO(String orderId, String name, String address, Date date, String hallId, int noOfPlates, String menuId, double advancePayment, String billId, String orderState, double total) {
+        this.orderId = orderId;
+        this.name = name;
+        this.address = address;
+        this.date = date;
+        this.hallId = hallId;
+        this.noOfPlates = noOfPlates;
+        this.menuId = menuId;
+        this.advanceFee = advancePayment;
+        this.banquetBillId = billId;
+        this.orderState= orderState;
+        this.total=total;
     }
 
 
