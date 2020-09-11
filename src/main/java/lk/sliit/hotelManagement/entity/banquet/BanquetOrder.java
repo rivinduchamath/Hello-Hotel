@@ -37,9 +37,7 @@ public class BanquetOrder {
         this.banquetBill = banquetBill;
     }
 
-    public BanquetOrder() {
-
-    }
+    public BanquetOrder() {}
 
 
     public String getOrderId() {
