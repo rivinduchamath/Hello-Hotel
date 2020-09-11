@@ -13,4 +13,6 @@ public interface CurrentBO extends SuperBO {
     List<CurrentBillDTO> findAllCurrentBills();
 
     CurrentBillDTO findById(int billId);
+
+    void deleteCurrentBill(int billId);
 }

@@ -2,6 +2,7 @@ package lk.sliit.hotelManagement.service.custom.impl;
 
 import lk.sliit.hotelManagement.dao.hrDAO.CurrentBillDAO;
 import lk.sliit.hotelManagement.dto.hr.CurrentBillDTO;
+import lk.sliit.hotelManagement.dto.kitchen.FoodItemDTO;
 import lk.sliit.hotelManagement.dto.manager.NoticeDTO;
 import lk.sliit.hotelManagement.entity.hr.CurrentBill;
 import lk.sliit.hotelManagement.entity.manager.Notice;
@@ -57,17 +58,19 @@ public class CurrentBOImpl implements CurrentBO {
     }
 
     @Override
+    public void deleteCurrentBill(int billId) {
+        currentBillDAO.delete(billId);
+    }
+
+    @Override
     public CurrentBillDTO findHighestCurrentBillId() {
         CurrentBill lastCurrentBillId = null;
         try{
             lastCurrentBillId = currentBillDAO.findTopByOrderByBillIdDesc();
-            System.out.println(lastCurrentBillId);
+            System.out.println(lastCurrentBillId.getBillId());
         }catch(Exception e){
 
-        }
-        assert lastCurrentBillId != null;
-        return new CurrentBillDTO(
-                lastCurrentBillId.getBillId()
-        );
+        } return new CurrentBillDTO(lastCurrentBillId.getBillId());
+
     }
 }

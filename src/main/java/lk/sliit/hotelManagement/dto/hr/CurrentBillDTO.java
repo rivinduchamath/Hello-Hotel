@@ -14,10 +14,11 @@ public class CurrentBillDTO {
     }
 
     public CurrentBillDTO() {
+
     }
 
     public CurrentBillDTO(int billId) {
-
+        this.billId = billId;
     }
 
     public int getBillId() {

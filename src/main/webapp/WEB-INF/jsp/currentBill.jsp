@@ -210,13 +210,14 @@
                                     <div class="row">
                                         <div class="col-sm-12">
                                             <div class="card-box table-responsive">
-                                                <table id="datatable-buttons"
+                                                <table style="text-align: center" id="datatable-buttons"
                                                        class="table table-striped table-bordered">
                                                     <thead class="thead-light">
                                                     <tr>
                                                         <th>Bill Id</th>
                                                         <th>Date</th>
                                                         <th>Amount</th>
+                                                        <th></th>
                                                     </tr>
 
                                                     </thead>
@@ -226,6 +227,10 @@
                                                             <td>${e.billId}</td>
                                                             <td>${e.date}</td>
                                                             <td>${e.amount}</td>
+                                                            <td >  <a href="deleteCurrentBill/${e.billId}"
+                                                                     onclick="return confirm('Are you sure you want to delete?')"
+                                                                     class="btn btn-xs">
+                                                                <i class="fa fa-trash-o"></i></a></td>
                                                         </tr>
                                                     </c:forEach>
                                                     </tbody>
