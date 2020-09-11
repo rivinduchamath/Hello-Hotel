@@ -27,7 +27,7 @@ public class OnlineTableReservationDetails {
         this.unitePrice = unitePrice;
     }
 
-    public OnlineTableReservationDetails(String tableId, String onlineTableId, double quantity, double unitePrice) {
+    public OnlineTableReservationDetails(int tableId, int onlineTableId, double quantity, double unitePrice) {
         this.onlineTableReservationDetailsPK = new OnlineTableReservationDetailsPK(onlineTableId, tableId);
         this.quantity = quantity;
         this.unitePrice = unitePrice;

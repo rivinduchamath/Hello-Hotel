@@ -10,7 +10,7 @@ import java.util.List;
 @Entity
 public class RestaurantOnlineOrder {
     @Id
-    private String orderId;
+    private int orderId;
     private String orderState;
     private Date date;
     @ManyToOne(cascade = {CascadeType.PERSIST,CascadeType.REFRESH, CascadeType.DETACH, CascadeType.MERGE})
@@ -19,7 +19,7 @@ public class RestaurantOnlineOrder {
     @OneToMany(mappedBy = "restaurantOnlineOrder", cascade = {CascadeType.PERSIST, CascadeType.REFRESH, CascadeType.DETACH, CascadeType.MERGE})
     private List<RestaurantOnlineOrderDetails> orderDetails = new ArrayList<>();
 
-    public RestaurantOnlineOrder(String orderId, String orderState, Date date, OnlineCustomer customer) {
+    public RestaurantOnlineOrder(int orderId, String orderState, Date date, OnlineCustomer customer) {
         this.orderId = orderId;
         this.orderState = orderState;
         this.date = date;
@@ -62,11 +62,11 @@ public class RestaurantOnlineOrder {
         this.orderDetails = orderDetails;
     }
 
-    public String getOrderId() {
+    public int getOrderId() {
         return orderId;
     }
 
-    public void setOrderId(String orderId) {
+    public void setOrderId(int orderId) {
         this.orderId = orderId;
     }
 

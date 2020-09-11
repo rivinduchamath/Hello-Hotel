@@ -7,10 +7,10 @@ import java.io.Serializable;
 @Embeddable
 public class OnlineTableReservationDetailsPK implements Serializable {
 
-    private String reservationId;
-    private String tableId;
+    private int reservationId;
+    private int tableId;
 
-    public OnlineTableReservationDetailsPK(String reservationId, String tableId) {
+    public OnlineTableReservationDetailsPK(int reservationId, int tableId) {
         this.reservationId = reservationId;
         this.tableId = tableId;
     }
@@ -18,19 +18,19 @@ public class OnlineTableReservationDetailsPK implements Serializable {
     public OnlineTableReservationDetailsPK() {
     }
 
-    public String getReservationId() {
+    public int getReservationId() {
         return reservationId;
     }
 
-    public void setReservationId(String reservationId) {
+    public void setReservationId(int reservationId) {
         this.reservationId = reservationId;
     }
 
-    public String getTableId() {
+    public int getTableId() {
         return tableId;
     }
 
-    public void setTableId(String tableId) {
+    public void setTableId(int tableId) {
         this.tableId = tableId;
     }
 }

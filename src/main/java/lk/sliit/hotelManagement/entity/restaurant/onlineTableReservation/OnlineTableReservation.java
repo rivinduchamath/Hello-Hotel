@@ -13,7 +13,7 @@ import java.util.List;
 public class OnlineTableReservation {
 
     @Id
-    private String onlineTableReservationId;
+    private int onlineTableReservationId;
     private Date reservedDate;
     private Date date;
     @DateTimeFormat(pattern="hh:mm:ss" )
@@ -29,7 +29,7 @@ public class OnlineTableReservation {
     @OneToMany(mappedBy = "onlineTableReservation", cascade = {CascadeType.PERSIST, CascadeType.REFRESH, CascadeType.DETACH, CascadeType.MERGE})
     private List<OnlineTableReservationDetails> orderDetails = new ArrayList<>();
 
-    public OnlineTableReservation(String onlineTableId, Date reservedDate, Date date,  Date startTime, Date endTime, int noOfTables, OnlineCustomer customer) {
+    public OnlineTableReservation(int onlineTableId, Date reservedDate, Date date,  Date startTime, Date endTime, int noOfTables, OnlineCustomer customer) {
         this.onlineTableReservationId = onlineTableId;
         this.reservedDate = reservedDate;
         this.date = date;
@@ -43,11 +43,11 @@ public class OnlineTableReservation {
     public OnlineTableReservation() {
     }
 
-    public String getOnlineTableReservationId() {
+    public int getOnlineTableReservationId() {
         return onlineTableReservationId;
     }
 
-    public void setOnlineTableReservationId(String onlineTableReservationId) {
+    public void setOnlineTableReservationId(int onlineTableReservationId) {
         this.onlineTableReservationId = onlineTableReservationId;
     }
 
@@ -104,4 +104,4 @@ public class OnlineTableReservation {
         return orderDetails;
     }
 
- }
+}

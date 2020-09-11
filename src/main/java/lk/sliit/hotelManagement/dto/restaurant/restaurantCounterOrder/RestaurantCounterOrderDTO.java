@@ -3,7 +3,7 @@ package lk.sliit.hotelManagement.dto.restaurant.restaurantCounterOrder;
 import java.util.Date;
 
 public class RestaurantCounterOrderDTO {
-    private String orderId;
+    private int orderId;
     private String orderState;
     private double quantity;
     private Date date;
@@ -11,7 +11,7 @@ public class RestaurantCounterOrderDTO {
     private String customerId;
     private String orderHolder;
 
-    public RestaurantCounterOrderDTO(String orderId, String orderState, double quantity, Date date, String dataValue, String customerId, String orderHolder) {
+    public RestaurantCounterOrderDTO(int orderId, String orderState, double quantity, Date date, String dataValue, String customerId, String orderHolder) {
         this.orderId = orderId;
         this.orderState = orderState;
         this.quantity = quantity;
@@ -21,7 +21,7 @@ public class RestaurantCounterOrderDTO {
         this.orderHolder = orderHolder;
     }
 
-    public RestaurantCounterOrderDTO(String orderId, String orderState, double quantity, Date date, String dataValue, String customerId) {
+    public RestaurantCounterOrderDTO(int orderId, String orderState, double quantity, Date date, String dataValue, String customerId) {
         this.orderId = orderId;
         this.orderState = orderState;
         this.quantity = quantity;
@@ -33,7 +33,7 @@ public class RestaurantCounterOrderDTO {
     public RestaurantCounterOrderDTO() {
     }
 
-    public RestaurantCounterOrderDTO(String orderId) {      this.orderId = orderId;
+    public RestaurantCounterOrderDTO(int orderId) {      this.orderId = orderId;
     }
 
     public String getDataValue() {
@@ -52,11 +52,11 @@ public class RestaurantCounterOrderDTO {
         this.orderHolder = orderHolder;
     }
 
-    public String getOrderId() {
+    public int getOrderId() {
         return orderId;
     }
 
-    public void setOrderId(String orderId) {
+    public void setOrderId(int orderId) {
         this.orderId = orderId;
     }
 

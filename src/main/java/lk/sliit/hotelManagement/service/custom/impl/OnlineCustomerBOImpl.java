@@ -58,7 +58,7 @@ public class OnlineCustomerBOImpl implements OnlineCustomerBO {
     }
 
     @Override
-    public OnlineCustomerDTO findOne(String onlineCustomerId) {
+    public OnlineCustomerDTO findOne(int onlineCustomerId) {
         OnlineCustomer onlineCustomer = onlineCustomerDAO.findOne(onlineCustomerId);
         return new OnlineCustomerDTO(
                 onlineCustomer.getOnlineCustomerId(),

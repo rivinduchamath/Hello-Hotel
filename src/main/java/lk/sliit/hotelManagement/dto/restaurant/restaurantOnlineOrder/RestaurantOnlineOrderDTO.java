@@ -4,20 +4,20 @@ import java.util.Date;
 
 public class RestaurantOnlineOrderDTO {
 
-    private String orderId;
+    private int orderId;
     private String orderState;
     private Date date;
-    private String customer;
+    private int customer;
     private  String orderData;
 
-    public RestaurantOnlineOrderDTO(String orderId, String orderState, Date date, String customer) {
+    public RestaurantOnlineOrderDTO(int orderId, String orderState, Date date, int customer) {
         this.orderId = orderId;
         this.orderState = orderState;
         this.date = date;
         this.customer = customer;
     }
 
-    public RestaurantOnlineOrderDTO(String orderId, String orderState, Date date, String customer, String orderData) {
+    public RestaurantOnlineOrderDTO(int orderId, String orderState, Date date, int customer, String orderData) {
         this.orderId = orderId;
         this.orderState = orderState;
         this.date = date;
@@ -25,7 +25,7 @@ public class RestaurantOnlineOrderDTO {
         this.orderData = orderData;
     }
 
-    public RestaurantOnlineOrderDTO(String orderId) {
+    public RestaurantOnlineOrderDTO(int orderId) {
         this.orderId = orderId;
     }
 
@@ -40,11 +40,11 @@ public class RestaurantOnlineOrderDTO {
     public RestaurantOnlineOrderDTO() {
     }
 
-    public String getOrderId() {
+    public int getOrderId() {
         return orderId;
     }
 
-    public void setOrderId(String orderId) {
+    public void setOrderId(int orderId) {
         this.orderId = orderId;
     }
 
@@ -64,11 +64,11 @@ public class RestaurantOnlineOrderDTO {
         this.date = date;
     }
 
-    public String getCustomer() {
+    public int getCustomer() {
         return customer;
     }
 
-    public void setCustomer(String customer) {
+    public void setCustomer(int customer) {
         this.customer = customer;
     }
 

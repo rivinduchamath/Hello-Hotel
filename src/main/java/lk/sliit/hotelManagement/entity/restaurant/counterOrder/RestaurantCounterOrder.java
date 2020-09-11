@@ -10,7 +10,7 @@ import java.util.List;
 public class RestaurantCounterOrder {
 
     @Id
-    private String orderId;
+    private int orderId;
     private String orderState;
     private double quantity;
     private Date date;
@@ -20,7 +20,7 @@ public class RestaurantCounterOrder {
     private List<RestaurantCounterOrderDetail> orderDetails = new ArrayList<>();
 
 
-    public RestaurantCounterOrder(String orderId, String orderState, double quantity, Date date, String customerId, String orderHolder) {
+    public RestaurantCounterOrder(int orderId, String orderState, double quantity, Date date, String customerId, String orderHolder) {
         this.orderId = orderId;
         this.orderState = orderState;
         this.quantity = quantity;
@@ -72,11 +72,11 @@ public class RestaurantCounterOrder {
         this.customerId = customerId;
     }
 
-    public String getOrderId() {
+    public int getOrderId() {
         return orderId;
     }
 
-    public void setOrderId(String orderId) {
+    public void setOrderId(int orderId) {
         this.orderId = orderId;
     }
 }

@@ -57,10 +57,10 @@ public class RestaurantController {
 
         try {restaurantCounterOrderDTO.setCustomerId(SuperController.idNo);
             RestaurantCounterOrderDTO top = restaurantBO.findTopByOrderByRestIdDesc ( );
-            int x = Integer.parseInt ( top.getOrderId ( ) )+ 1;
-            restaurantCounterOrderDTO.setOrderId ( String.valueOf ( x ) );
+            int x = ( top.getOrderId ( ) )+ 1;
+            restaurantCounterOrderDTO.setOrderId (  ( x ) );
         } catch (NullPointerException e) {
-            restaurantCounterOrderDTO.setOrderId ( String.valueOf ( 1 ) );
+            restaurantCounterOrderDTO.setOrderId (  ( 1 ) );
         }
 
         restaurantBO.saveRestaurantOrder(restaurantCounterOrderDTO);

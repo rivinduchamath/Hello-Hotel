@@ -37,10 +37,10 @@ public class OnlineCustomer {
 
         try {
             OnlineCustomerDTO top = onlineCustomerBO.findHighestOnlineCustomerId();
-            int x = Integer.parseInt(top.getOnlineCustomerId()) + 1;
-            onlineCustomerDTO.setOnlineCustomerId(String.valueOf(x));
+            int x = (top.getOnlineCustomerId()) + 1;
+            onlineCustomerDTO.setOnlineCustomerId((x));
         } catch (NullPointerException e) {
-            onlineCustomerDTO.setOnlineCustomerId(String.valueOf(1));
+            onlineCustomerDTO.setOnlineCustomerId((1));
         }
 
         onlineCustomerBO.saveOnlineCustomer(onlineCustomerDTO);
@@ -67,7 +67,7 @@ public class OnlineCustomer {
     @RequestMapping("/onlineDashboard")
     public String registerUser(Model model, HttpSession session) {
         try {
-            String onlineCustomerId = session.getAttribute("userId").toString();
+            int onlineCustomerId = Integer.parseInt(session.getAttribute("userId").toString());
             model.addAttribute("loggerId", onlineCustomerBO.findOne(onlineCustomerId));
         } catch (NullPointerException d) {
             return "onlineDashboard";

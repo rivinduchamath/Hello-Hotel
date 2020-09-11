@@ -7,9 +7,9 @@ import java.io.Serializable;
 public class RestaurantOnlineOrderDetailsPK implements Serializable {
 
     private String foodItemId;
-    private  String restaurantOnlineOrder;
+    private  int restaurantOnlineOrder;
 
-    public RestaurantOnlineOrderDetailsPK(String foodItemId, String restaurantOnlineOrder) {
+    public RestaurantOnlineOrderDetailsPK(String foodItemId, int restaurantOnlineOrder) {
         this.foodItemId = foodItemId;
         this.restaurantOnlineOrder = restaurantOnlineOrder;
     }
@@ -25,11 +25,11 @@ public class RestaurantOnlineOrderDetailsPK implements Serializable {
         this.foodItemId = foodItemId;
     }
 
-    public String getRestaurantOnlineOrderId() {
+    public int getRestaurantOnlineOrderId() {
         return restaurantOnlineOrder;
     }
 
-    public void setRestaurantOnlineOrderId(String restaurantOnlineOrderId) {
+    public void setRestaurantOnlineOrderId(int restaurantOnlineOrderId) {
         this.restaurantOnlineOrder = restaurantOnlineOrderId;
     }
 
