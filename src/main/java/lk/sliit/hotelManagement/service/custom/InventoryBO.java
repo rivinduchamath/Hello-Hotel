@@ -51,4 +51,6 @@ public interface InventoryBO extends SuperBO {
     void saveOrderNotice(InventoryNoticeDTO noticeDTO);
 
     InventoryDTO findTopByOrderByOrderIdDesc();
+
+    SupplierDTO findOne(String supplierId);
 }

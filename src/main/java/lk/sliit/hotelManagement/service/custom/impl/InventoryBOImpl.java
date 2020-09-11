@@ -379,13 +379,22 @@ public class InventoryBOImpl implements InventoryBO {
     public InventoryDTO findTopByOrderByOrderIdDesc() {
         InventoryOrder orders = null;
         try {
-            orders = inventoryOrderDAO.findTopByOrderByOrderIdDesc ();
-        }catch (Exception e){
+            orders = inventoryOrderDAO.findTopByOrderByOrderIdDesc();
+        } catch (Exception e) {
 
         }
         return new InventoryDTO(
-                orders.getOrderId ()
+                orders.getOrderId()
         );
     }//End
+
+    @Override
+    public SupplierDTO findOne(String supplierId) {
+
+        Supplier supplier = null;
+        supplier = supplierDAO.findOne(supplierId);
+        return new SupplierDTO(supplier.getId());
+
+    }
 
 }

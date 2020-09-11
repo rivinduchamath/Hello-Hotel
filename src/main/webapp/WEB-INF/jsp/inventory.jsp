@@ -29,6 +29,13 @@
         SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
         String date = sdf.format(new Date());
     %>
+    <c:if test="${not empty todayInventoryLoginError}">
+        <script>
+            window.addEventListener("load", function () {
+                alert("${todayInventoryLoginError}");
+            })
+        </script>
+    </c:if>
     <style>
         .large-btn {
             height: 90px;

@@ -1,5 +1,7 @@
 package lk.sliit.hotelManagement.entity.inventory;
 
+import lk.sliit.hotelManagement.dto.inventory.SupplierDTO;
+
 import javax.persistence.*;
 import java.sql.Date;
 
@@ -29,6 +31,7 @@ public class InventoryOrder {
 
     public InventoryOrder() {
     }
+
 
     public String getOrderId() {
         return orderId;
