@@ -320,7 +320,7 @@
                                                 <td>${e.menuId}</td>
                                                 <td>${e.advanceFee}</td>
                                                 <td>${e.banquetBillId}</td>
-                                                <td><a href=""><span
+                                                <td><a href="/deleteBanquet?idNo=${e.orderId}"><span
                                                         class="glyphicon glyphicon-trash"></span></a></td>
                                             </tr>
                                         </c:forEach>

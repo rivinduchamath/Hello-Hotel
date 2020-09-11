@@ -233,7 +233,7 @@
                                                         <th>Bill Id</th>
                                                         <th>Date</th>
                                                         <th>Cus Name</th>
-                                                        <th>Mobile</th>
+                                                        <th>Address</th>
                                                         <th>Hall No</th>
                                                         <th>Package</th>
                                                         <th>plates</th>
@@ -246,38 +246,23 @@
                                                     </thead>
 
                                                     <tbody>
-                                                    <%--                                            <c:forEach items="${listEmployeesTableSalary}" var="e">--%>
-                                                    <tr>
-                                                        <td>1</td>
-                                                        <td>1</td>
-                                                        <td>2020.08.05</td>
-                                                        <td>chanuka</td>
-                                                        <td>0767188591</td>
-                                                        <td>No 2</td>
-                                                        <td>Gold</td>
-                                                        <td>200</td>
-                                                        <td>20000</td>
-                                                        <td>200000</td>
-                                                        <td>Finished</td>
+                                                    <c:forEach items="${loadTable}" var="e">
+                                                        <tr>
+                                                            <td>${e.orderId}</td>
+                                                            <td>${e.banquetBillId}</td>
+                                                            <td>${e.date}</td>
+                                                            <td>${e.name}</td>
+                                                            <td>${e.address}</td>
+                                                            <td>${e.hallId}</td>
+                                                            <td>${e.menuId}</td>
+                                                            <td>${e.noOfPlates}</td>
+                                                            <td>${e.advanceFee}</td>
+                                                            <td>${e.total}</td>
+                                                            <td>${e.orderState}</td>
 
 
-                                                    </tr>
-                                                    <tr>
-                                                        <td>2</td>
-                                                        <td>2</td>
-                                                        <td>2020.08.20</td>
-                                                        <td>Kaveesha</td>
-                                                        <td>0767188591</td>
-                                                        <td>No 1</td>
-                                                        <td>Gold</td>
-                                                        <td>250</td>
-                                                        <td>15000</td>
-                                                        <td>150000</td>
-                                                        <td>Upcoming</td>
-
-
-                                                    </tr>
-                                                    <%--                                            </c:forEach>--%>
+                                                        </tr>
+                                                    </c:forEach>
                                                     </tbody>
                                                 </table>
                                             </div>

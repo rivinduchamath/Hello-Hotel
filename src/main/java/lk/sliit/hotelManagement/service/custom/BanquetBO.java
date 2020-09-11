@@ -36,4 +36,6 @@ public interface BanquetBO extends SuperBO {
     List<BanquetAddDTO> findConfirmedBanquet();
 
     void updateBanquetStatusToCancel(String orderId);
+
+    void deleteBanquet(String idNo);
 }

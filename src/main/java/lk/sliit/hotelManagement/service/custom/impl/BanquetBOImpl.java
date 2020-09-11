@@ -130,7 +130,9 @@ public class BanquetBOImpl implements BanquetBO {
                     a.getNoOfPlates(),
                     a.getMenu().getMenuId(),
                     a.getBanquetBill().getAdvancePayment(),
-                    a.getBanquetBill().getBillId()
+                    a.getBanquetBill().getBillId(),
+                    a.getOrderState(),
+                    a.getBanquetBill().getTotal()
             ));
         }
         return dtos;
@@ -173,6 +175,11 @@ public class BanquetBOImpl implements BanquetBO {
     public void updateBanquetStatusToCancel(String orderId) {
         String status ="canceled";
         banquetOrderDAO.updateBanStatus(status,orderId);
+    }
+
+    @Override
+    public void deleteBanquet(String idNo) {
+        banquetOrderDAO.delete(idNo);
     }
 
     @Override
