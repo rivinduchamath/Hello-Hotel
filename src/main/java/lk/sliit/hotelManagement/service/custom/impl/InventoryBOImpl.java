@@ -49,6 +49,8 @@ public class InventoryBOImpl implements InventoryBO {
         return dtos;
     }
 
+
+
     @Override
     public List<InventoryDTO> findAllInventory() {
         Iterable<Inventory> all = inventoryDAO.findAll();
