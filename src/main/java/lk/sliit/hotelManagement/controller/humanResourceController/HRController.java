@@ -42,9 +42,5 @@ public class HRController {
         return "accountsReport";
     }
 
-    @GetMapping("/roomsHR")
-    public String roomsHR(Model model){
-        model.addAttribute("loggerName",indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
-        return "roomsHR";
-    }
+
 }

@@ -10,7 +10,7 @@ public class HotelRoomDTO {
     private String roomName;
     private Date date;
     private String status;
-    private String holder;
+    private int holder;
     private String getRoomId2;
 
 
@@ -22,7 +22,8 @@ public class HotelRoomDTO {
         this.roomId2 = roomId;
     }
 
-    public HotelRoomDTO(int roomId2, String roomName, String roomType, String description, String status, String holder, double price, Date date) {
+    public HotelRoomDTO(int roomId2, String roomName, String roomType, String description,
+                        String status, int holder, double price, Date date) {
         this.roomId2 = roomId2;
         this.roomName = roomName;
         this.roomType = roomType;
@@ -86,11 +87,11 @@ public class HotelRoomDTO {
 
     public void setStatus(String status) { this.status = status; }
 
-    public String getHolder() { return holder;}
+    public int getHolder() { return holder;}
 
     public String getType() { return roomType; }
 
-    public void setHolder(String holder) {
+    public void setHolder(int holder) {
         this.holder = holder;
     }
 

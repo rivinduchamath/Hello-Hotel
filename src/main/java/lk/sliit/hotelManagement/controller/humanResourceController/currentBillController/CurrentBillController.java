@@ -42,13 +42,12 @@ public class CurrentBillController {
     @PostMapping("saveCurrentBill")
     public String saveCurrentBillForm(@ModelAttribute CurrentBillDTO currentBillDTO){
         try {
-            System.out.println("ccccccccccccccccccccccccccccccccc"+currentBillDTO);
+
             CurrentBillDTO current = currentBO.findHighestCurrentBillId();
-            System.out.println("sss3333333333333333"+current);
             CurrentBillDTO currentBillDTO1 = null;
             try {
                 currentBillDTO1 = currentBO.findById(currentBillDTO.getBillId());
-                System.out.println("ssssssssssssssssssssssssssssssssssssssssssssssss");
+
             }catch (NullPointerException d){
                 int maxId = (current.getBillId());
                 if (currentBillDTO.getBillId()==(maxId)) {

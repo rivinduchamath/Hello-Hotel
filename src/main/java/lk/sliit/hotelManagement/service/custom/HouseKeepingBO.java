@@ -18,4 +18,5 @@ public interface HouseKeepingBO extends SuperBO {
     void deleteRoomDetails(int roomId);
 
     HotelRoomDTO findRoomIdByID(int roomId);
-}
+
+  }

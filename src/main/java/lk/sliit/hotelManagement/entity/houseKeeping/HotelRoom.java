@@ -17,7 +17,7 @@ public class HotelRoom {
     @Column(length = 1000)
     private String description;
     private String status;//cleaned Or Not
-    private String holder;
+    private int holder;
     private double price;
     private Date date;
     @OneToMany(mappedBy = "roomId",cascade = {CascadeType.PERSIST, CascadeType.REFRESH, CascadeType.DETACH, CascadeType.MERGE})
@@ -27,7 +27,9 @@ public class HotelRoom {
     @OneToMany(mappedBy = "roomId" ,cascade = {CascadeType.PERSIST, CascadeType.REFRESH, CascadeType.DETACH, CascadeType.MERGE})
     private Collection<RoomIncome> roomIncome  = new ArrayList<>();;
 
-    public HotelRoom(int roomId, String roomName, String roomType, String description, String status, String holder, double price, Date date, Collection<ReservationDetails> reservationRoom, Collection<RoomService> roomServices, Collection<RoomIncome> roomIncome) {
+    public HotelRoom(int roomId, String roomName, String roomType, String description,
+                     String status, int holder, double price, Date date,
+                     Collection<ReservationDetails> reservationRoom, Collection<RoomService> roomServices, Collection<RoomIncome> roomIncome) {
         this.roomId = roomId;
         this.roomName = roomName;
         this.roomType = roomType;
@@ -41,7 +43,8 @@ public class HotelRoom {
         this.roomIncome = roomIncome;
     }
 
-    public HotelRoom(int roomId, String roomName, String roomType, String description, String status, String holder,
+    public HotelRoom(int roomId, String roomName, String roomType,
+                     String description, String status, int holder,
                      double price, Date date) {
         this.roomId = roomId;
         this.roomName = roomName;
@@ -85,11 +88,11 @@ public class HotelRoom {
         this.status = status;
     }
 
-    public String getHolder() {
+    public int getHolder() {
         return holder;
     }
 
-    public void setHolder(String holder) {
+    public void setHolder(int holder) {
         this.holder = holder;
     }
 

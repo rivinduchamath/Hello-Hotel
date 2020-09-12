@@ -210,23 +210,24 @@
                                     <div class="row">
                                         <div class="col-sm-12">
                                             <div class="card-box table-responsive">
-                                                <table id="datatable-buttons"
+                                                <table style="text-align: center" id="datatable-buttons"
                                                        class="table table-striped table-bordered">
                                                     <thead class="thead-light">
                                                     <tr>
                                                         <th>Room Id</th>
-                                                        <th>Room Type</th>
+                                                        <th>Room Name</th>
                                                         <th>Price</th>
                                                         <th>Description</th>
                                                     </tr>
 
                                                     </thead>
                                                     <tbody>
-                                                    <c:forEach items="${loadCBTable}" var="e">
+                                                    <c:forEach items="${loadRoomTable}" var="e">
                                                         <tr>
-                                                            <td>${e.billId}</td>
-                                                            <td>${e.date}</td>
-                                                            <td>${e.amount}</td>
+                                                            <td>${e.roomId2}</td>
+                                                            <td>${e.roomName}</td>
+                                                            <td>${e.price}</td>
+                                                            <td>${e.description}</td>
                                                         </tr>
                                                     </c:forEach>
                                                     </tbody>
@@ -239,54 +240,46 @@
                         </div>
                     </div>
                     <div class="col-12 col-sm-12 col-md-12 col-lg-5 col-xl-5">
-                        <form method="POST" action="/saveCurrentBill" name="saveCurrentBill">
+                        <form method="POST" action="/updateRoomHR" name="saveCurrentBill">
 
                             <div class="form-group">
 
                                 <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
                                     <label>Room ID</label>
                                     <input type="text" class="form-control"
-                                           required="required" name="roomId"
+                                           required="required" name="roomId2" readonly
                                            id="hotelroomId" placeholder="Room ID"/></div>
                             </div>
 
                             <div class="form-group">
                                 <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12"><br>
-                                    <label>Room Type</label>
-                                    <input type="text" class="form-control"
-                                           required="required" name="roomType"
-                                           placeholder="Room Type"/></div>
+                                    <label>Room Name</label>
+                                    <input type="text" class="form-control" id="roomType"
+                                           required="required" name="roomName" readonly
+                                           placeholder="Room Name"/></div>
 
                                 <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12"><br>
                                     <label>Description</label>
-                                    <input type="date" class="form-control"
-                                           required="required" name="description"
-                                           id="descript" placeholder="Description"/></div>
+                                    <textarea type="text" class="form-control"
+                                           required="required" name="description" readonly
+                                              id="description" placeholder="Description"></textarea></div>
 
                                 <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12"><br>
                                     <label>Price</label>
-                                    <input type="date" class="form-control"
+                                    <input type="number" class="form-control"
                                            required="required" name="price"
                                            id="price" placeholder="Price"/></div>
 
                             </div>
 
 
-                            <button type='submit' class="btn btn-dark" style="width: 50%; top: 20px; position: relative"
+                            <button type='submit' class="btn btn-dark" style="width: 30%; top: 20px; position: relative"
                                     value="Register">
-                                Submit
+                                Update
                             </button>
 
                             <button type='reset' class="btn btn-outline-success" style="top: 20px; position: relative"
                                     value="">Reset
-                            </button>
-
-                            <button type='update' class="btn btn-outline-success" style="top: 20px; position: relative"
-                                    value="">Update
-                            </button>
-
-                            <button type='delete' class="btn btn-outline-success" style="top: 20px; position: relative"
-                                    value="">Delete
                             </button>
 
                         </form>
@@ -331,6 +324,17 @@
 <script src="../../vendors/jszip/dist/jszip.min.js"></script>
 <!-- Custom Theme Scripts -->
 <script src="../../build/js/custom.min.js"></script>
+<script>
 
+    var selectedRow = null;
+    $("#datatable-buttons tbody").on('click', 'tr', function () {
+        selectedRow = $(this);
+
+        $("#hotelroomId").val($(this).find("td:nth-child(1)").text());
+        $("#roomType").val($(this).find("td:nth-child(2)").text());
+        $("#price").val($(this).find("td:nth-child(3)").text());
+        $("#description").val($(this).find("td:nth-child(4)").text());
+    });
+</script>
 </body>
 </html>

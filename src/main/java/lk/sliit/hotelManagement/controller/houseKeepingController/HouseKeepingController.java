@@ -44,7 +44,7 @@ public class HouseKeepingController {
     @PostMapping("/manageRoomSave")
     public String saveFormRooms( @ModelAttribute HotelRoomDTO hotelRoomDTO,Model model ){
          model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
-
+       hotelRoomDTO.setHolder(SuperController.idNo);
         try {
             hotelRoomDTO.setRoomId2(Integer.parseInt(hotelRoomDTO.getGetRoomId2()));
         }catch (NumberFormatException e){
