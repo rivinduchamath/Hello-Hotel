@@ -211,7 +211,7 @@
                     </div>
                     <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6">
                         <br>
-                        <a href="/inventory">
+                        <a href="#">
                             <button type="button" class="large-btn btn btn-dark">Inventory Bills</button>
                         </a>
                     </div>
