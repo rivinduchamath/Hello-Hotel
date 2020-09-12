@@ -19,4 +19,5 @@ public interface HouseKeepingBO extends SuperBO {
 
     HotelRoomDTO findRoomIdByID(int roomId);
 
-  }
+    List<HotelRoomDTO> findDirtyRooms(String notCleaned);
+}

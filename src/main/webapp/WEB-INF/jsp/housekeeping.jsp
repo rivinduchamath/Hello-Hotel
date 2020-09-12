@@ -303,37 +303,25 @@
                                             <table id="datatable-buttons" class="table table-striped table-bordered">
                                                 <thead class="thead-light">
                                                 <tr>
-                                                    <th>Id</th>
                                                     <th>RoomId</th>
                                                     <th>RoomName</th>
                                                     <th>Condition</th>
-                                                    <th>Description</th>
                                                     <th>L.Cleaned</th>
                                                     <th>Date</th>
                                                 </tr>
 
                                                 </thead>
                                                 <tbody>
-
+                                                <c:forEach items="${loadAllDirtyRooms}" var="e">
                                                     <tr>
-                                                        <td>RS001</td>
-                                                        <td>R001</td>
-                                                        <td>Delux</td>
-                                                        <td>A/C</td>
-                                                        <td>Lorem</td>
-                                                        <td>Cherif</td>
-                                                        <td>2020/09/09</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>RS002</td>
-                                                        <td>R001</td>
-                                                        <td>Delux</td>
-                                                        <td>A/C</td>
-                                                        <td>Lorem</td>
-                                                        <td>Samuwel</td>
-                                                        <td>2020/09/11</td>
-                                                    </tr>
+                                                        <td>${e.roomId2}</td>
+                                                        <td>${e.roomName}</td>
+                                                        <td>${e.type}</td>
+                                                        <td>${e.holder}</td>
+                                                        <td>${e.date}</td>
 
+                                                    </tr>
+                                                </c:forEach>
                                                 </tbody>
                                             </table>
                                         </div>

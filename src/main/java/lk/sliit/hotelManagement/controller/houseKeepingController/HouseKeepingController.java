@@ -28,6 +28,8 @@ public class HouseKeepingController {
     @GetMapping("/housekeeping")
     public String housekeeping(Model model) {
         model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
+        List<HotelRoomDTO> hotelRoomDTOList  = houseKeepingBO.findDirtyRooms("NotCleaned");
+        model.addAttribute("loadAllDirtyRooms", hotelRoomDTOList);
         return "housekeeping";
     }
 
@@ -96,4 +98,6 @@ public class HouseKeepingController {
 
         return "houseKeepingReport";
     }
+
+
 }
