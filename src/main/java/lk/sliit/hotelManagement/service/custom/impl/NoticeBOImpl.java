@@ -52,7 +52,7 @@ public class NoticeBOImpl implements NoticeBO {
     }
 
     @Override
-    public void deleteNotice(String notId) {
+    public void deleteNotice(int notId) {
         noticeDAO.delete(notId);
     }
 
@@ -70,7 +70,7 @@ public class NoticeBOImpl implements NoticeBO {
     }
 
     @Override
-    public NoticeDTO findNoticeById(String noticeId) {
+    public NoticeDTO findNoticeById(int noticeId) {
         Notice notice = noticeDAO.findOne(noticeId);
         return new NoticeDTO(
                 notice.getNoticeId(),

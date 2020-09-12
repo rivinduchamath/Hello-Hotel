@@ -3,25 +3,27 @@ package lk.sliit.hotelManagement.dto.houseKeeping;
 import java.sql.Date;
 
 public class HotelRoomDTO {
-    private String roomId2;
+    private int roomId2;
     private String roomType;
     private String description;
     private double price;
     private String roomName;
     private Date date;
     private String status;
-    private String holder;
+    private int holder;
+    private String getRoomId2;
 
 
 
     public HotelRoomDTO() {
     }
 
-    public HotelRoomDTO(String roomId) {
+    public HotelRoomDTO(int roomId) {
         this.roomId2 = roomId;
     }
 
-    public HotelRoomDTO(String roomId2, String roomName, String roomType, String description, String status, String holder, double price, Date date) {
+    public HotelRoomDTO(int roomId2, String roomName, String roomType, String description,
+                        String status, int holder, double price, Date date) {
         this.roomId2 = roomId2;
         this.roomName = roomName;
         this.roomType = roomType;
@@ -32,11 +34,20 @@ public class HotelRoomDTO {
         this.date = date;
     }
 
-    public String getRoomId2() {
+
+    public String getGetRoomId2() {
+        return getRoomId2;
+    }
+
+    public void setGetRoomId2(String getRoomId2) {
+        this.getRoomId2 = getRoomId2;
+    }
+
+    public int getRoomId2() {
         return roomId2;
     }
 
-    public void setRoomId2(String roomId2) {
+    public void setRoomId2(int roomId2) {
         this.roomId2 = roomId2;
     }
 
@@ -76,11 +87,11 @@ public class HotelRoomDTO {
 
     public void setStatus(String status) { this.status = status; }
 
-    public String getHolder() { return holder;}
+    public int getHolder() { return holder;}
 
     public String getType() { return roomType; }
 
-    public void setHolder(String holder) {
+    public void setHolder(int holder) {
         this.holder = holder;
     }
 

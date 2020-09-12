@@ -11,7 +11,7 @@ import java.util.Date;
 public class ActivityList {
 
     @Id
-    private String activityId;
+    private int activityId;
     @Temporal(TemporalType.TIME)
     private Date inTime;
     @Temporal(TemporalType.TIME)
@@ -23,7 +23,7 @@ public class ActivityList {
     public ActivityList() {
     }
 
-    public ActivityList(String activityId, Date inTime, Date outTime, Date date, String employeeId, String departmentId) {
+    public ActivityList(int activityId, Date inTime, Date outTime, Date date, String employeeId, String departmentId) {
         this.activityId = activityId;
         this.inTime = inTime;
         this.outTime = outTime;
@@ -32,11 +32,11 @@ public class ActivityList {
         this.departmentId = departmentId;
     }
 
-    public String getActivityId() {
+    public int getActivityId() {
         return activityId;
     }
 
-    public void setActivityId(String activityId) {
+    public void setActivityId(int activityId) {
         this.activityId = activityId;
     }
 

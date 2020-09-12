@@ -46,10 +46,10 @@ public class BarOrders {
         try {
             barOrderDTO.setUser(SuperController.idNo);
             BarOrderDTO top = barBO.findTopByOrderByBarIdDesc();
-            int x = Integer.parseInt(top.getId()) + 1;
-            barOrderDTO.setId(String.valueOf(x));
+            int x = (top.getId()) + 1;
+            barOrderDTO.setId(x);
         } catch (NullPointerException e) {
-            barOrderDTO.setId(String.valueOf(1));
+            barOrderDTO.setId(1);
         }
         barBO.saveBarOrder(barOrderDTO);
         return "invoice";

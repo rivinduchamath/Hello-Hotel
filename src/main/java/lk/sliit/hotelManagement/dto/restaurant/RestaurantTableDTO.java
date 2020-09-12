@@ -1,20 +1,20 @@
 package lk.sliit.hotelManagement.dto.restaurant;
 
 public class RestaurantTableDTO {
-    private String tableId;
+    private int tableId;
     private String type;
     private double unitPrice;
 
     public RestaurantTableDTO() {
     }
 
-    public RestaurantTableDTO(String tableId, String type, double unitPrice) {
+    public RestaurantTableDTO(int tableId, String type, double unitPrice) {
         this.tableId = tableId;
         this.type = type;
         this.unitPrice = unitPrice;
     }
 
-    public String getTableId() {
+    public int getTableId() {
         return tableId;
     }
 
@@ -34,7 +34,7 @@ public class RestaurantTableDTO {
         this.unitPrice = unitPrice;
     }
 
-    public void setTableId(String tableId) {
+    public void setTableId(int tableId) {
         this.tableId = tableId;
     }
 

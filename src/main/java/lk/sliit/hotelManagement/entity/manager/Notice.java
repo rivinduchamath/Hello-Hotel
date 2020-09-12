@@ -10,7 +10,7 @@ import java.sql.Date;
 public class Notice implements SuperEntity {
 
     @Id
-    private String noticeId ;
+    private int noticeId ;
     private String title;
     @Column(length = 1000)
     private String description;
@@ -19,7 +19,7 @@ public class Notice implements SuperEntity {
     @JoinColumn(name="departmentId",referencedColumnName = "departmentId")
     private Department department;
 
-    public Notice(String noticeId, String title, String description, Date date, Department department) {
+    public Notice(int noticeId, String title, String description, Date date, Department department) {
         this.noticeId = noticeId;
         this.title = title;
         this.description = description;
@@ -30,11 +30,11 @@ public class Notice implements SuperEntity {
     public Notice() {
     }
 
-    public String getNoticeId() {
+    public int getNoticeId() {
         return noticeId;
     }
 
-    public void setNoticeId(String noticeId) {
+    public void setNoticeId(int noticeId) {
         this.noticeId = noticeId;
     }
 

@@ -335,8 +335,8 @@
                     <div style="display: none" class="form-group">
 
                         <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
-                            <input type="text" class="form-control"
-                                   name="roomId2" value=""
+                            <input type="number" class="form-control"
+                                   name="roomId2"  value="0"
                                    id="itemId" placeholder="Room ID"/></div>
                     </div>
                     <button type='submit' class="btn btn-dark" style="width: 50%; top: 20px; position: relative" value="Register">
@@ -418,12 +418,6 @@
             </div>
             <%--Table--%>
         </div>
-            <%--///////////////////////////////////////////////////////////////////////////////////////////////////////////--%>
-
-
-
-            <%--/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////--%>
-
 
         </div>
     </div>

@@ -3,24 +3,29 @@ package lk.sliit.hotelManagement.dto.hr;
 import java.sql.Date;
 
 public class CurrentBillDTO {
-    private String billId;
+    private int billId;
     private double amount;
     private Date date;
 
-    public CurrentBillDTO(String billId, double amount, Date date) {
+    public CurrentBillDTO(int billId, double amount, Date date) {
         this.billId = billId;
         this.amount = amount;
         this.date = date;
     }
 
     public CurrentBillDTO() {
+
     }
 
-    public String getBillId() {
+    public CurrentBillDTO(int billId) {
+        this.billId = billId;
+    }
+
+    public int getBillId() {
         return billId;
     }
 
-    public void setBillId(String billId) {
+    public void setBillId(int billId) {
         this.billId = billId;
     }
 

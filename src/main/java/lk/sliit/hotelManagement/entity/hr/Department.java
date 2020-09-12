@@ -7,10 +7,10 @@ import javax.persistence.Id;
 public class Department {
 
     @Id
-    private String departmentId;
+    private int departmentId;
     private String departmentName;
 
-    public Department(String departmentId, String departmentName) {
+    public Department(int departmentId, String departmentName) {
         this.departmentId = departmentId;
         this.departmentName = departmentName;
     }
@@ -18,11 +18,11 @@ public class Department {
     public Department() {
     }
 
-    public String getDepartmentId() {
+    public int getDepartmentId() {
         return departmentId;
     }
 
-    public void setDepartmentId(String departmentId) {
+    public void setDepartmentId(int departmentId) {
         this.departmentId = departmentId;
     }
 

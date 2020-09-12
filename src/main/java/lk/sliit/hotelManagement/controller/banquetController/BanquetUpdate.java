@@ -40,5 +40,5 @@ public class BanquetUpdate {
         banquetBO.updateBanquetDetails(banquetAddDTO);
         return "redirect:/banquetUpdate";
     }
-    
+
 }

@@ -39,6 +39,7 @@ public class RestaurantController {
         model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
         //List<FoodItemDTO> p1 = restaurantBO.findAllFoodItems("Restaurant");
         List<FoodItemDTO> p1 = kitchenBO.findFoodItems();
+
         if(p1.isEmpty()){
             request.setAttribute("loginError","Not Any Item Fond Under Restaurant " +
                     "Type Please Add Data Under Restaurant Type" );
@@ -61,10 +62,10 @@ public class RestaurantController {
 
         try {restaurantCounterOrderDTO.setCustomerId(SuperController.idNo);
             RestaurantCounterOrderDTO top = restaurantBO.findTopByOrderByRestIdDesc ( );
-            int x = Integer.parseInt ( top.getOrderId ( ) )+ 1;
-            restaurantCounterOrderDTO.setOrderId ( String.valueOf ( x ) );
+            int x = ( top.getOrderId ( ) )+ 1;
+            restaurantCounterOrderDTO.setOrderId (  ( x ) );
         } catch (NullPointerException e) {
-            restaurantCounterOrderDTO.setOrderId ( String.valueOf ( 1 ) );
+            restaurantCounterOrderDTO.setOrderId (  ( 1 ) );
         }
 
         restaurantBO.saveRestaurantOrder(restaurantCounterOrderDTO);

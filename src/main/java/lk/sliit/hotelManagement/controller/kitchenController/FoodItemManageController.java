@@ -35,19 +35,27 @@ public class FoodItemManageController {
 
     @PostMapping("/saveFoodItem")
     public String addNew(Model model, @ModelAttribute FoodItemDTO foodItemDTO) {
+        System.out.println(foodItemDTO+" aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
         try {
-            FoodItemDTO lastItem = kitchenBO.findHighestId();
-            int maxId = Integer.parseInt(lastItem.getItemId());
+            foodItemDTO.setItemId(Integer.parseInt(foodItemDTO.getGetId()));
+        }catch (NumberFormatException e){
 
-            if (foodItemDTO.getItemId().equals(String.valueOf(maxId))){
-                foodItemDTO.setItemId(String.valueOf(maxId));
+        }
+        try {
+
+            FoodItemDTO lastItem = kitchenBO.findHighestId();
+            System.out.println(lastItem+" sssssssssssssssssssssssssssssssssssssssssss");
+            int maxId = (lastItem.getItemId());
+
+            if (foodItemDTO.getItemId()==((maxId))){
+                foodItemDTO.setItemId((maxId));
             } else {
                 maxId++;
-                foodItemDTO.setItemId(String.valueOf(maxId));
+                foodItemDTO.setItemId((maxId));
             }
 
         } catch (NullPointerException e) {
-            foodItemDTO.setItemId("1");
+            foodItemDTO.setItemId(1);
         }
 
         model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
@@ -56,7 +64,7 @@ public class FoodItemManageController {
     }
 
     @GetMapping(value = "deleteFoodItem/{itemId}")
-    public void deleteFoodItem(@PathVariable("itemId") String foodItemId, HttpServletResponse response) {
+    public void deleteFoodItem(@PathVariable("itemId") int foodItemId, HttpServletResponse response) {
         kitchenBO.deleteFoodItem(foodItemId);
         try {
             response.sendRedirect("/manageMenu");

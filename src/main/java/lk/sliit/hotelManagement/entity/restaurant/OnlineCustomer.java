@@ -10,7 +10,7 @@ import java.util.List;
 @Entity
 public class OnlineCustomer {
     @Id
-    private String onlineCustomerId;
+    private int onlineCustomerId;
     private String name;
     private String userName;
     private String address;
@@ -22,7 +22,7 @@ public class OnlineCustomer {
     @OneToMany(mappedBy = "customer", cascade = {CascadeType.PERSIST, CascadeType.REFRESH, CascadeType.DETACH, CascadeType.MERGE})
     private List<OnlineTableReservation> onlineTableReservations = new ArrayList<>();
 
-    public OnlineCustomer(String onlineCustomerId, String name, String userName, String address, String email, String password, String number) {
+    public OnlineCustomer(int onlineCustomerId, String name, String userName, String address, String email, String password, String number) {
 
         this.onlineCustomerId = onlineCustomerId;
         this.name = name;
@@ -36,11 +36,11 @@ public class OnlineCustomer {
     public OnlineCustomer() {
     }
 
-    public String getOnlineCustomerId() {
+    public int getOnlineCustomerId() {
         return onlineCustomerId;
     }
 
-    public void setOnlineCustomerId(String onlineCustomerId) {
+    public void setOnlineCustomerId(int onlineCustomerId) {
         this.onlineCustomerId = onlineCustomerId;
     }
 

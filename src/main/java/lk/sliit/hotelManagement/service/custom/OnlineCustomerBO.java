@@ -9,5 +9,5 @@ public interface OnlineCustomerBO {
 
     OnlineCustomerDTO findByUserNameAndPassword(String userName, String password);
 
-    OnlineCustomerDTO findOne(String getOnlineCustomerId);
+    OnlineCustomerDTO findOne(int getOnlineCustomerId);
 }

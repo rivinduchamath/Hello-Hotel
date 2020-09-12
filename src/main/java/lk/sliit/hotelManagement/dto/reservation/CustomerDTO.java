@@ -1,13 +1,13 @@
 package lk.sliit.hotelManagement.dto.reservation;
 
 public class CustomerDTO {
-    private String customerId;
+    private int customerId;
     private String email;
     private String name;
     private String address;
     private int contactNumber;
 
-    public CustomerDTO(String customerId, String email, String name, String address, int contactNumber) {
+    public CustomerDTO(int customerId, String email, String name, String address, int contactNumber) {
         this.customerId = customerId;
         this.email = email;
         this.name = name;
@@ -18,15 +18,15 @@ public class CustomerDTO {
     public CustomerDTO() {
     }
 
-    public CustomerDTO(String customerId) {
+    public CustomerDTO(int customerId) {
         this.customerId=customerId;
     }
 
-    public String getCustomerId() {
+    public int getCustomerId() {
         return customerId;
     }
 
-    public void setCustomerId(String customerId) {
+    public void setCustomerId(int customerId) {
         this.customerId = customerId;
     }
 

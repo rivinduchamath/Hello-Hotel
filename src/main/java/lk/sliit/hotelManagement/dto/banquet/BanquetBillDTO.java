@@ -1,7 +1,7 @@
 package lk.sliit.hotelManagement.dto.banquet;
 
 public class BanquetBillDTO {
-    private String billId;
+    private int billId;
     private double total;
     private double foodPrice;
     private double otherPrices;
@@ -10,7 +10,7 @@ public class BanquetBillDTO {
     public BanquetBillDTO() {
     }
 
-    public BanquetBillDTO(String billId, double total, double foodPrice, double otherPrices, double advancePayment) {
+    public BanquetBillDTO(int billId, double total, double foodPrice, double otherPrices, double advancePayment) {
         this.billId = billId;
         this.total = total;
         this.foodPrice = foodPrice;
@@ -18,15 +18,15 @@ public class BanquetBillDTO {
         this.advancePayment = advancePayment;
     }
 
-    public BanquetBillDTO(String billId) {
+    public BanquetBillDTO(int billId) {
         this.billId = billId;
     }
 
-    public String getBillId() {
+    public int getBillId() {
         return billId;
     }
 
-    public void setBillId(String billId) {
+    public void setBillId(int billId) {
         this.billId = billId;
     }
 

@@ -30,7 +30,7 @@ public class OnlineTable {
         model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
 
         try {
-            String onlineCustomerId = session.getAttribute("userId").toString();
+            int onlineCustomerId = Integer.parseInt(session.getAttribute("userId").toString());
             model.addAttribute("loggerId", onlineCustomerBO.findOne(onlineCustomerId));
             System.out.println("Sttttttttttttttttttttttttt444444444444444444444ttttart");
         } catch (NullPointerException d) {
@@ -65,7 +65,7 @@ public class OnlineTable {
 
         System.out.println("Ennnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnd");
         try {
-            String onlineCustomerId = session.getAttribute("userId").toString();
+            int onlineCustomerId = Integer.parseInt(session.getAttribute("userId").toString());
             model.addAttribute("loggerId", onlineCustomerBO.findOne(onlineCustomerId));
         } catch (NullPointerException d) {
             return "onlineTableDetails";

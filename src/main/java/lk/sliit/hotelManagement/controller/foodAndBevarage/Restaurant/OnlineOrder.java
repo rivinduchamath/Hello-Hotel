@@ -34,7 +34,7 @@ public class OnlineOrder {
     public String loadForm_validationSaveMode(Model model, HttpSession session, HttpServletRequest request) {
 
         try {
-            String onlineCustomerId = session.getAttribute("userId").toString();
+            int onlineCustomerId = Integer.parseInt(session.getAttribute("userId").toString());
             model.addAttribute("loggerId", onlineCustomerBO.findOne(onlineCustomerId));
 //            Load All Food
             List<FoodItemDTO> p1 = kitchenBO.findFoodItems();
@@ -54,18 +54,18 @@ public class OnlineOrder {
     public String saveForm(@ModelAttribute RestaurantOnlineOrderDTO onlineOrderDTO, HttpSession session) {
 
         try {
-             RestaurantOnlineOrderDTO top = restaurantBO.findHighestOnlineOrderId();
-            int x = Integer.parseInt(top.getOrderId()) + 1;
-            onlineOrderDTO.setOrderId(String.valueOf(x));
+            RestaurantOnlineOrderDTO top = restaurantBO.findHighestOnlineOrderId();
+            int x = (top.getOrderId()) + 1;
+            onlineOrderDTO.setOrderId((x));
         } catch (NullPointerException e) {
 
             System.out.println("In Try Catch");
-            onlineOrderDTO.setOrderId(String.valueOf(1));
+            onlineOrderDTO.setOrderId((1));
         }
 
 
         try {
-            String onlineCustomerId = session.getAttribute("userId").toString();
+            int onlineCustomerId = Integer.parseInt(session.getAttribute("userId").toString());
             onlineOrderDTO.setCustomer(onlineCustomerId);
             restaurantBO.saveOnlineOrder(onlineOrderDTO);
         } catch (NullPointerException d) {
@@ -74,4 +74,4 @@ public class OnlineOrder {
         return "redirect:/onlineOrder";
     }
 
-    }
+}

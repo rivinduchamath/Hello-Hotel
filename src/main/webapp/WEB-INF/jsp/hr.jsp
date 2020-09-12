@@ -176,14 +176,14 @@
 
                     <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6">
                         <br>
-                        <a href="#">
-                            <button type="button" class="large-btn btn btn-dark">Current Billt</button>
+                        <a href="/currentBill">
+                            <button type="button" class="large-btn btn btn-dark">Current Bills</button>
                         </a>
                     </div>
 
                     <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6">
                         <br>
-                        <a href="#">
+                        <a href="/accounts">
                             <button type="button" class="large-btn btn btn-dark">Accounts</button>
                         </a>
                     </div>
@@ -191,13 +191,13 @@
 
                     <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6">
                         <br>
-                        <a href="attendance">
-                            <button type="button" class="large-btn btn btn-dark">Employee Management</button>
+                        <a href="/attendance">
+                            <button type="button" class="large-btn btn btn-dark">Employee Attendance</button>
                         </a>
                     </div>
                     <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6">
                         <br>
-                        <a href="salary">
+                        <a href="/salary">
                             <button type="button" class="large-btn btn btn-dark">Employee Salary</button>
                         </a>
                     </div>
@@ -205,7 +205,7 @@
 
                     <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6">
                         <br>
-                        <a href="#">
+                        <a href="/roomsHR">
                             <button type="button" class="large-btn btn btn-dark">Hotel Room Price</button>
                         </a>
                     </div>
@@ -215,26 +215,23 @@
                             <button type="button" class="large-btn btn btn-dark">Inventory Bills</button>
                         </a>
                     </div>
-
-
                 </div>
 
-
-
+                <!-- chart -->
                 <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
                     <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6">
                         <div id="chartdiv"></div>
                         <br>
-                        <P><h6>Today Top 5 Selling In Restaurant</h6></P>
+                        <P><h6><br>Today Top 5 Selling In Restaurant</h6></P>
                     </div>
                     <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6">
                         <div id="chartdiv1"></div>
                         <br>
-                        <P><h6>Today Top 5 Selling in Bar</h6></P>
+                        <P><h6><br>Today Top 5 Selling in Bar</h6></P>
                     </div>
                 </div>
 
-<%--/////////////////////////////////////////////////--%>
+                <%--/////////////////////////////////////////////////--%>
             </div>
         </div>
         <!-- /page content -->
@@ -276,27 +273,27 @@
 
         chart.data = [
             {
-                name: "dsd",
+                name: "Vodka",
                 litres: 433.9
             },
             {
-                name: "dsdsd",
+                name: "Wine",
                 litres: 341.9
             },
             {
-                name: "dsdsd",
+                name: "Beer",
                 litres: 34.1
             },
             {
-                name: "ds",
+                name: "Arrack",
                 litres: 465.8
             },
             {
-                name: "s",
+                name: "Whiskey",
                 litres: 159.9
             },
             {
-                name: "s",
+                name: "Brandi",
                 litres: 238.3
             }
         ];
@@ -323,27 +320,27 @@
 
         chart.data = [
             {
-                name: "fd",
+                name: "Rice & Curry",
                 litres: 501.9
             },
             {
-                name: "fdsf fsdfs",
+                name: "Koththu",
                 litres: 301.9
             },
             {
-                name: "dsf",
+                name: "Fried Rice",
                 litres: 201.1
             },
             {
-                name: "fdfdsf",
+                name: "Sea Food",
                 litres: 165.8
             },
             {
-                name: "fdfdf",
+                name: "Pasta",
                 litres: 139.9
             },
             {
-                name: "xcgfdg",
+                name: "Noodles",
                 litres: 434.3
             }
         ];

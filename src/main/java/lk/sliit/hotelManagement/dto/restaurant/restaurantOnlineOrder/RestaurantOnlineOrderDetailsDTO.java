@@ -4,11 +4,11 @@ package lk.sliit.hotelManagement.dto.restaurant.restaurantOnlineOrder;
 
 public class RestaurantOnlineOrderDetailsDTO {
     private String restaurantOnlineOrder;
-    private String foodItem;
+    private int foodItem;
     private double quantity;
     private double unitePrice;
 
-    public RestaurantOnlineOrderDetailsDTO(String restaurantOnlineOrder, String foodItem, double quantity, double unitePrice) {
+    public RestaurantOnlineOrderDetailsDTO(String restaurantOnlineOrder, int foodItem, double quantity, double unitePrice) {
         this.restaurantOnlineOrder = restaurantOnlineOrder;
         this.foodItem = foodItem;
         this.quantity = quantity;
@@ -26,11 +26,11 @@ public class RestaurantOnlineOrderDetailsDTO {
         this.restaurantOnlineOrder = restaurantOnlineOrder;
     }
 
-    public String getFoodItem() {
+    public int getFoodItem() {
         return foodItem;
     }
 
-    public void setFoodItem(String foodItem) {
+    public void setFoodItem(int foodItem) {
         this.foodItem = foodItem;
     }
 

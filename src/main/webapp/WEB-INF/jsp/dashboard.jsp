@@ -241,15 +241,15 @@
                                             <div class="tags">
                                                 <a href="" class="tag">
                                                     <span><img style="height: 50px;width: 50px;border-radius: 10%"
-                                                               src="../../images/icons/${e.employeeID.pic}"></span>
+                                                               src="../../images/icons/${e.pic}"></span>
                                                 </a>
                                             </div>
                                             <div class="block_content">
                                                 <h2 class="title">
-                                                    <a>${e.employeeID.name}</a>
+                                                    <a>${e.empName}</a>
                                                 </h2>
                                                 <div class="byline">
-                                                    <span>Position :-</span> <a>${e.employeeID.occupation}</a>
+                                                    <span>Position :-</span> <a>${e.position}</a>
                                                 </div>
                                                 <p class="excerpt">In Time :- ${e.inTime} <br> OutTime
                                                     :- ${e.outTime}<a></a>

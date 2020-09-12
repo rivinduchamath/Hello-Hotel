@@ -1,8 +1,6 @@
 package lk.sliit.hotelManagement.entity.hr;
 
-import lk.sliit.hotelManagement.entity.SuperEntity;
 import lk.sliit.hotelManagement.entity.manager.Employee;
-
 import javax.persistence.*;
 import java.util.Date;
 
@@ -11,10 +9,11 @@ import java.util.Date;
 public class Attendance  {
 
     @Id
-    private String attendanceId;
+    private int attendanceId;
     @Column(nullable = true)
     @Temporal(TemporalType.DATE)
     private Date date;
+    private double salary;
     private String inTime;
     private String outTime;
     @Column(columnDefinition = "double default 0")
@@ -23,27 +22,32 @@ public class Attendance  {
     @JoinColumn(name = "userId", referencedColumnName = "userId", nullable = true)
     private Employee employeeID;
 
-
-    public Attendance() {}
-
-    public Attendance(String attendanceId,  Date date,
-                       String inTime, String outTime, double overtimeHours,
-                       Employee employeeID) {
+    public Attendance(int attendanceId, Date date, double salary, String inTime,
+                      String outTime, double overtimeHours, Employee employeeID) {
         this.attendanceId = attendanceId;
-
         this.date = date;
+        this.salary = salary;
         this.inTime = inTime;
         this.outTime = outTime;
         this.overtimeHours = overtimeHours;
         this.employeeID = employeeID;
     }
 
+    public Attendance() {}
 
-    public String getAttendanceId() {
+    public double getSalary() {
+        return salary;
+    }
+
+    public void setSalary(double salary) {
+        this.salary = salary;
+    }
+
+    public int getAttendanceId() {
         return attendanceId;
     }
 
-    public void setAttendanceId(String attendanceId) {
+    public void setAttendanceId(int attendanceId) {
         this.attendanceId = attendanceId;
     }
 
