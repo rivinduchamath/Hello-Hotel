@@ -164,7 +164,7 @@
 
                                             <input style="color:#73879C; float:right;border: none;background-color: #f6f6f6"
                                                    class="clock2" type="text" name="sivam" size="12"><br>
-                                            <p><%=date%> <br>ID : ${genAttendanceId}</p>
+                                            <p><%=date%></p>
 
                                         </h6>
 
@@ -202,7 +202,7 @@
                     </form>--%>
 
                     <form  method="POST" action="tablesAdd" name="tablesAdd">
-                        <div style="display: none"><input name="attendanceId" value="${genAttendanceId}"></div>
+                        <div style="display: none"><input id="attendanceId" name="attendanceId" value="0"></div>
 
                         <div class="col-md-6 col-sm-6 " style="float: left">
                             <label>Search aID</label>
@@ -274,7 +274,7 @@
                                 <label for="itemDesc">&nbsp;</label>
                                 <div class="input-group mb-3" style="float: right">
 
-                                    <button type='submit' class="btn btn-primary" style="width: 30%" value="Register">Submit</button>
+                                    <button type='submit' class="btn btn-dark" style="width: 30%" value="Register">Submit</button>
                                     <button type='reset' class="btn btn-outline-primary" value="">Reset</button>
 
                                 </div>
@@ -323,9 +323,9 @@
                                                     </tr>
                                                     </thead>
                                                     <tbody>
-                                                    <c:forEach items="${listEmployeesTable}" var="e">
+                                                    <c:forEach items="${loadAllUsers}" var="e">
                                                         <tr>
-                                                            <td>${e.idNo}</td>
+                                                            <td>${e.userId}</td>
                                                             <td>${e.name}</td>
                                                         </tr>
                                                     </c:forEach>
@@ -372,10 +372,10 @@
                                                     The User Table Provide To Find Data Of Users.If You Want Edit OR Remove User You Can Find
                                                     User And Just Click On User Row.
                                                 </p>
-                                                <table id="datatable-buttons" class="table table-striped table-bordered">
+                                                <table style="text-align: center" id="datatable-buttons" class="table table-striped table-bordered">
                                                     <thead class="thead-light">
                                                     <tr>
-                                                        <th>Atendance ID</th>
+                                                        <th>Attendance ID</th>
                                                         <th>User ID</th>
                                                         <th>Name</th>
                                                         <th>Position</th>
@@ -414,13 +414,9 @@
 <%--                //--%>
             </div>
         </div>
-        <!-- /page content -->
 
-        <!-- footer content -->
-        <!-- footer content -->
         <jsp:include page="footer.jsp"/>
-        <!-- /footer content -->
-        <!-- /footer content -->
+
     </div>
 </div>
 
@@ -471,6 +467,7 @@
     $("#datatable-buttons tbody").on('click', 'tr', function () {
 
         selectedRow = $(this);
+        $("#attendanceId").val($(this).find("td:nth-child(1)").text());
         $("#itemCode").val($(this).find("td:nth-child(2)").text());
         $("#itemTime").val($(this).find("td:nth-child(5)").text());
         $("#itemDesc").val($(this).find("td:nth-child(3)").text());
