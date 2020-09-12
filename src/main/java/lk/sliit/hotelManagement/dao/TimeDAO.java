@@ -25,8 +25,8 @@ public interface TimeDAO extends CrudRepository<TimeCheck, String> {
     Iterable<TimeCheck> findAllByTimeOneBetweenAndDateEquals(Date tdate, Date tdate2, Date date);
 
 //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-    Iterable<TimeCheck> findAllByTimeTwoLessThanEqualAndTimeOneGreaterThanEqualAndDateEquals(Date tdate2, Date tdate, Date date);
-    Iterable<TimeCheck> findAllByTimeOneLessThanEqualAndTimeTwoGreaterThanEqualAndDateEquals(Date tdate2, Date tdate, Date date);
+//    Iterable<TimeCheck> findAllByTimeTwoLessThanEqualAndTimeOneGreaterThanEqualAndDateEquals(Date tdate2, Date tdate, Date date);
+//    Iterable<TimeCheck> findAllByTimeOneLessThanEqualAndTimeTwoGreaterThanEqualAndDateEquals(Date tdate2, Date tdate, Date date);
 
 //    @Query(value =" from TimeCheck where ((timeOne between  timeOne and timeTwo) or (timeTwo between timeOne and timeTwo))")
 //    Iterable<TimeCheck> uals(Date tdate,Date tdate2, Date date);
