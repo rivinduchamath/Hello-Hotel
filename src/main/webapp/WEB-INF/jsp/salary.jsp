@@ -170,9 +170,7 @@
 
                     </form>
 
-                         <a href="/updateSalary"> <button  class="btn btn-info" style="width: 50%" >
-                             Update
-                         </button></a> </div>
+                    </div>
                     <!--////////////////////////////////////////////-->
                     <div class="col-md-8 col-sm-8" style="position: relative;display: inline-block">
                         <div class="x_panel">
@@ -215,10 +213,10 @@
                                                 </tr>
                                                 </thead>
                                                 <tbody>
-                                                <c:forEach items="${listEmployeesTable}" var="e">
+                                                <c:forEach items="${loadAllUsers}" var="e">
                                                     <tr>
                                                         <td>${e.name}</td>
-                                                        <td>${e.idNo}</td>
+                                                        <td>${e.userId}</td>
                                                     </tr>
                                                 </c:forEach>
                                                 </tbody>
@@ -253,10 +251,6 @@
                                         </button>
                                     </ul>
                                 </form>
-
-                                <button onclick="getValue();return false" ; style="float: right; font-weight: bold;color: white" ;
-                                id="btn_enable" class="btn btn-success ">Add Payment
-                                    <i class="fa fa-plus-circle"></i></button>
 
                                 <!--href="/invoice"-->
                                 <div class="clearfix"></div>
