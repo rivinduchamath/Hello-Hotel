@@ -35,6 +35,7 @@ public class RestaurantController {
     public String restaurantOrders(Model model, HttpServletRequest request) {
         model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
         List<FoodItemDTO> p1 = restaurantBO.findAllFoodItems("Restaurant");
+       // List<FoodItemDTO> p1 = kitchenBO.findFoodItems();
         if(p1.isEmpty()){
             request.setAttribute("loginError","Not Any Item Fond Under Restaurant " +
                     "Type Please Add Data Under Restaurant Type" );

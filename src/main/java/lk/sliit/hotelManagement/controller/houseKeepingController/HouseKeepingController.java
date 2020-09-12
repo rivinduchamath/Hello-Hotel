@@ -3,8 +3,10 @@ package lk.sliit.hotelManagement.controller.houseKeepingController;
 import lk.sliit.hotelManagement.controller.SuperController;
 import lk.sliit.hotelManagement.dto.houseKeeping.HotelRoomDTO;
 import lk.sliit.hotelManagement.dto.houseKeeping.RoomServiceDTO;
+import lk.sliit.hotelManagement.dto.hr.AttendanceDTO;
 import lk.sliit.hotelManagement.dto.kitchen.MenuDTO;
 import lk.sliit.hotelManagement.service.custom.HouseKeepingBO;
+import lk.sliit.hotelManagement.service.custom.HumanResourceBO;
 import lk.sliit.hotelManagement.service.custom.IndexLoginBO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -13,6 +15,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -22,13 +25,23 @@ public class HouseKeepingController {
     IndexLoginBO indexLoginBO;
     @Autowired
     HouseKeepingBO houseKeepingBO;
-
+    @Autowired
+    HumanResourceBO humanResourceBO;
 
     //Load Dashboard Page
     @GetMapping("/housekeeping")
     public String housekeeping(Model model) {
         model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
         List<HotelRoomDTO> hotelRoomDTOList  = houseKeepingBO.findDirtyRooms("NotCleaned");
+        ArrayList<AttendanceDTO> todayCleanAttendance  = null;
+        for (AttendanceDTO v:humanResourceBO.findTodayCleanAttendance ( )) {
+            System.out.println("ssssssssssssssssssssssssssss ");
+            if(v.getEmpDepartment().equals("HouseKeeping")){
+
+                todayCleanAttendance.add(1,v);
+            }
+        }
+        model.addAttribute ( "todayCleanAttendance", todayCleanAttendance );
         model.addAttribute("loadAllDirtyRooms", hotelRoomDTOList);
         return "housekeeping";
     }

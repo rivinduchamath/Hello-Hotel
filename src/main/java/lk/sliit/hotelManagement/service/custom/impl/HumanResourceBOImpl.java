@@ -103,4 +103,30 @@ public class HumanResourceBOImpl implements HumanResourceBO {
     public void deleteAttendance(int id) {
         attendanceDAO.delete (id);
     }
+
+    @Override
+    public   List<AttendanceDTO> findTodayCleanAttendance() {
+        Date date = new Date();
+        Iterable<Attendance> attendances = null;
+        try {
+            attendances = attendanceDAO.findAttendanceByDateEquals(date);
+        } catch (Exception e) {
+        }
+        List<AttendanceDTO> dtos = new ArrayList<>();
+        for (Attendance attendance : attendances) {
+            dtos.add(new AttendanceDTO(
+                    attendance.getAttendanceId(),
+                    attendance.getDate(),
+                    attendance.getInTime(),
+                    attendance.getOutTime(),
+                    attendance.getOvertimeHours(),
+                    attendance.getEmployeeID().getUserId(),
+                    attendance.getEmployeeID().getName(),
+                    attendance.getEmployeeID().getPosition(),
+                    attendance.getEmployeeID().getImage(),
+                    attendance.getEmployeeID().getDepartment().getDepartmentName()
+            ));
+        }
+        return dtos;
+    }
 }

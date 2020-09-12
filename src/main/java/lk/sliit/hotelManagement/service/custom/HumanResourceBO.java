@@ -15,4 +15,6 @@ public interface HumanResourceBO extends SuperBO {
     AttendanceDTO findTopByOrderByAttendanceIdDesc();
 
     void deleteAttendance(int pid);
+
+    List<AttendanceDTO> findTodayCleanAttendance();
 }

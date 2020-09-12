@@ -1,6 +1,8 @@
 package lk.sliit.hotelManagement.dto.hr;
 
 
+import lk.sliit.hotelManagement.entity.hr.Department;
+
 import java.util.Date;
 
 public class AttendanceDTO {
@@ -15,34 +17,13 @@ public class AttendanceDTO {
     private String empName;
     private String position;
     private String pic;
+    private String empDepartment;
 
 
     //Default Constructor
     public AttendanceDTO() {
     }
 
-    //Full Arg Constructor
-    public AttendanceDTO(int attendanceId, double salary, Date date, String inTime, String outTime,
-                         double overtimeHours, int employeeID) {
-        this.attendanceId = attendanceId;
-        this.salary = salary;
-        this.date = date;
-        this.inTime = inTime;
-        this.outTime = outTime;
-        this.overtimeHours = overtimeHours;
-        this.employeeID = employeeID;
-
-    }//End Full arg
-
-    public AttendanceDTO(int attendanceId,  Date date, String inTime, String outTime,
-                         double overtimeHours, int employeeID) {
-        this.attendanceId = attendanceId;
-        this.date = date;
-        this.inTime = inTime;
-        this.outTime = outTime;
-        this.overtimeHours = overtimeHours;
-        this.employeeID = employeeID;
-    }
 
     //Constructor
     public AttendanceDTO(int attendanceId) {
@@ -62,6 +43,30 @@ public class AttendanceDTO {
         this.pic = pic;
     }
 
+
+    public AttendanceDTO(int attendanceId, Date date, String inTime,
+                         String outTime, double overtimeHours, int userId,
+                         String name, String position, String image, String departmentName) {
+        this.attendanceId = attendanceId;
+        this.date = date;
+        this.inTime = inTime;
+        this.outTime = outTime;
+        this.overtimeHours = overtimeHours;
+        this.employeeID = userId;
+        this.empName = name;
+        this.position = position;
+        this.pic = image;
+        this.empDepartment = departmentName;
+    }
+
+
+    public String getEmpDepartment() {
+        return empDepartment;
+    }
+
+    public void setEmpDepartment(String empDepartment) {
+        this.empDepartment = empDepartment;
+    }
 
     public int getAttendanceId() {
         return attendanceId;

@@ -11,4 +11,6 @@ public interface AttendanceDAO extends CrudRepository<Attendance,Integer> {
     Iterable<Attendance> findAttendanceByDateEquals(Date date);
 
     Attendance findTopByOrderByAttendanceIdDesc();
+
+
 }
