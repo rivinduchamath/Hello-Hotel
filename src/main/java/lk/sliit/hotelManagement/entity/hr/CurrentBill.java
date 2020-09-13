@@ -7,11 +7,11 @@ import java.sql.Date;
 @Entity
 public class CurrentBill {
     @Id
-    private String billId;
+    private int billId;
     private double amount;
     private Date date;
 
-    public CurrentBill(String billId, double amount, Date date) {
+    public CurrentBill(int billId, double amount, Date date) {
         this.billId = billId;
         this.amount = amount;
         this.date = date;
@@ -20,11 +20,16 @@ public class CurrentBill {
     public CurrentBill() {
     }
 
-    public String getBillId() {
+    public CurrentBill(int billId) {
+        this.billId = billId;
+    }
+
+    public int getBillId() {
+
         return billId;
     }
 
-    public void setBillId(String billId) {
+    public void setBillId(int billId) {
         this.billId = billId;
     }
 

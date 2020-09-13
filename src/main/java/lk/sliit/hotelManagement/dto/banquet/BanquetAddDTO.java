@@ -3,8 +3,8 @@ package lk.sliit.hotelManagement.dto.banquet;
 import java.sql.Date;
 
 public class BanquetAddDTO {
-    private String orderId;
-    private String customerId;
+    private int orderId;
+    private int customerId;
     private String email;
     private String name;
     private String address;
@@ -14,8 +14,8 @@ public class BanquetAddDTO {
     private String orderState;
     private int noOfPlates;
     private String submittedBy;
-    private String menuId;
-    private String banquetBillId;
+    private int menuId;
+    private int banquetBillId;
     private double advanceFee;
     private double foodPrice;
     private double otherPrice;
@@ -30,7 +30,7 @@ public class BanquetAddDTO {
         this.unitPrise = unitPrise;
     }
 
-    public BanquetAddDTO(String orderId, String customerId, String email, String name, String address, int contactNumber, Date date, String hallId, String orderState, int noOfPlates, String submittedBy, String menuId, String banquetBillId, double advanceFee, double foodPrice, double otherPrice, double total, double unitPrise) {
+    public BanquetAddDTO(int orderId, int customerId, String email, String name, String address, int contactNumber, Date date, String hallId, String orderState, int noOfPlates, String submittedBy, int menuId, int banquetBillId, double advanceFee, double foodPrice, double otherPrice, double total, double unitPrise) {
         this.orderId = orderId;
         this.customerId = customerId;
         this.email = email;
@@ -55,7 +55,9 @@ public class BanquetAddDTO {
 
     }
 
-    public BanquetAddDTO(String orderId, String name, String address, Date date, String hallId, int noOfPlates, String menuId, double advancePayment, String billId) {
+    public BanquetAddDTO(int orderId, String name, String address, Date date,
+                         String hallId, int noOfPlates, int menuId,
+                         double advancePayment, int billId) {
         this.orderId = orderId;
         this.name = name;
         this.address = address;
@@ -67,7 +69,9 @@ public class BanquetAddDTO {
         this.banquetBillId = billId;
     }
 
-    public BanquetAddDTO(String orderId, String name, int contactNumber, Date date, String hallId, int noOfPlates, double advancePayment, String orderState) {
+    public BanquetAddDTO(int orderId, String name, int contactNumber,
+                         Date date, String hallId, int noOfPlates,
+                         double advancePayment, String orderState) {
         this.orderId = orderId;
         this.name = name;
         this.contactNumber = contactNumber;
@@ -79,7 +83,10 @@ public class BanquetAddDTO {
     }
 
 
-    public BanquetAddDTO(String orderId, String name, String address, Date date, String hallId, int noOfPlates, String menuId, double advancePayment, String billId, String orderState, double total) {
+    public BanquetAddDTO(int orderId, String name, String address,
+                         Date date, String hallId, int noOfPlates,
+                         int menuId, double advancePayment, int billId,
+                         String orderState, double total) {
         this.orderId = orderId;
         this.name = name;
         this.address = address;
@@ -93,7 +100,7 @@ public class BanquetAddDTO {
         this.total=total;
     }
 
-    public BanquetAddDTO(String orderId, String name, Date date, String billId, double advancePayment, double foodPrice, double otherPrices, double total, double unitPrice, int noOfPlates) {
+    public BanquetAddDTO(int orderId, String name, Date date, int billId, double advancePayment, double foodPrice, double otherPrices, double total, double unitPrice, int noOfPlates) {
         this.orderId = orderId;
         this.name = name;
         this.date = date;
@@ -107,19 +114,19 @@ public class BanquetAddDTO {
     }
 
 
-    public String getOrderId() {
+    public int getOrderId() {
         return orderId;
     }
 
-    public void setOrderId(String orderId) {
+    public void setOrderId(int orderId) {
         this.orderId = orderId;
     }
 
-    public String getCustomerId() {
+    public int getCustomerId() {
         return customerId;
     }
 
-    public void setCustomerId(String customerId) {
+    public void setCustomerId(int customerId) {
         this.customerId = customerId;
     }
 
@@ -195,19 +202,19 @@ public class BanquetAddDTO {
         this.submittedBy = submittedBy;
     }
 
-    public String getMenuId() {
+    public int getMenuId() {
         return menuId;
     }
 
-    public void setMenuId(String menuId) {
+    public void setMenuId(int menuId) {
         this.menuId = menuId;
     }
 
-    public String getBanquetBillId() {
+    public int getBanquetBillId() {
         return banquetBillId;
     }
 
-    public void setBanquetBillId(String banquetBillId) {
+    public void setBanquetBillId(int banquetBillId) {
         this.banquetBillId = banquetBillId;
     }
 

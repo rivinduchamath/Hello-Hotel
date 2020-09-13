@@ -12,7 +12,7 @@ public interface ManageBO extends SuperBO {
 
     List<EmployeeDTO> findAllUser();
 
-    void deleteEmployee(String userId);
+    void deleteEmployee(int userId);
 
     List<DepartmentDTO> findAllDepartment();
 }

@@ -30,10 +30,87 @@
         SimpleDateFormat sdf = new SimpleDateFormat ( "dd-MM-yyyy" );
         String date = sdf.format ( new Date ( ) );
     %>
+    <style>
+        .large-btn {
+            height: 90px;
+            width: 100%;
+            font-family: "Playfair Display", Georgia, "Times New Roman", serif;
+            font-weight: bolder;
+            font-size: 27px;
+        }
 
+        .btnq2:hover {
+            transform: scale(1.05, 1.1);
+            transition: 0.8s ease;
+            -webkit-transition: 0.8s ease;
+            -moz-transition: 0.8s ease;
+        }
+
+        .btnq3:hover {
+            transform: scale(1.3, 1.3);
+            transition: 0.8s ease;
+            -webkit-transition: 0.8s ease;
+            -moz-transition: 0.8s ease;
+        }
+        #chartdiv {
+            width: 100%;
+            height: 500px;
+        }
+
+        #chartdiv1 {
+            width: 100%;
+            height: 500px;
+        }
+
+        .large-btn:hover {
+            color: #cebbbb;
+        }
+        /*//////////////////////////////////////////////////////////////*/
+
+        .containerx {
+            display: flex;
+
+        }
+
+        .btnq {
+            text-decoration: none;
+            border: 5px solid rgb(174, 182, 203);
+            position: relative;
+            overflow: hidden;
+            height: 90px;
+            width: 100%;
+            font-size: 1.5rem;
+            text-align: center;
+            border-radius: 5px 5px;
+        }
+
+        .btnq:before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -00%;
+            text-align: center;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                    120deg,
+                    transparent,
+                    rgba(135, 141, 156, 0.4),
+                    transparent
+            );
+            transition: all .8s;
+        }
+
+        .btnq:hover:before {
+            left: 100%;
+        }
+
+    </style>
 </head>
 <body class="nav-md" style="cursor: pointer">
 
+    <div class="form-container sign-in-container">
+///
 <div class="container body">
     <div class="main_container">
 
@@ -136,6 +213,107 @@
                         </form>
                     </div>
                 </div>
+                <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+
+
+                    <div class="col-sm-12 col-md-4 col-lg-4 col-xl-4">
+                        <div class="containerx">
+                            <a style=" font-family: Playfair Display, Georgia, Times New Roman, serif;
+                             background-color:#3d495f; color: #ffffff;font-weight: bolder"
+                               href="https://www.google.com/" class="btnq"><h2
+                                    style="position: relative; letter-spacing: 1px;
+                                     margin-top: 30px">Online Reservation</h2></a>
+                        </div>
+                        <br>
+                    </div>
+
+                    <div class="col-sm-12 col-md-4 col-lg-4 col-xl-4">
+                        <div class="containerx">
+                            <a style=" font-family: Playfair Display, Georgia, Times New Roman, serif;
+                             background-color:#3d495f; color: #ffffff;font-weight: bolder"
+                               href="/overTheCounterReservation" class="btnq"><h2
+                                    style="position: relative; letter-spacing: 1px;
+                                     margin-top: 30px">Over The Counter Reservation</h2></a>
+                        </div>
+                        <br>
+                    </div>
+
+                    <div class="col-sm-12 col-md-4 col-lg-4 col-xl-4">
+                        <div class="containerx">
+                            <a style=" font-family: Playfair Display, Georgia, Times New Roman, serif;
+                             background-color:#3d495f; color: #ffffff;font-weight: bolder"
+                               href="/banquetDelete" class="btnq"><h2
+                                    style="position: relative; letter-spacing: 1px;
+                                     margin-top: 30px">Daily Activity Report</h2></a>
+                        </div>
+                        <br>
+                    </div>
+
+                </div>
+
+                <%--                    /////////////////////////////////////////////////////--%>
+                <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                    <div class="row" style="display: block;">
+                        <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                            <div class="x_panel">
+                                <div class="x_title">
+                                    <h2>Latest Reservations</h2>
+                                    <ul class="nav navbar-right panel_toolbox">
+                                        <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                                        </li>
+                                        <li class="dropdown">
+                                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                                <a class="dropdown-item" href="#">Settings 1</a>
+                                                <a class="dropdown-item" href="#">Settings 2</a>
+                                            </div>
+                                        </li>
+                                        <li><a class="close-link"><i class="fa fa-close"></i></a>
+                                        </li>
+                                    </ul>
+                                    <div class="clearfix"></div>
+                                </div>
+                                <div class="x_content">
+
+                                    <table class="table">
+                                        <thead>
+                                        <tr>
+                                            <th>Reservation Id</th>
+                                            <th>Customer Name</th>
+                                            <th>Mobile</th>
+                                            <th>Email</th>
+                                            <th>No of Rooms</th>
+
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <c:forEach items="${loadTable1}" var="e">
+                                            <tr>
+                                                <td>${e.orderId}</td>
+                                                <td>${e.name}</td>
+                                                <td>${e.contactNumber}</td>
+                                                <td>${e.date}</td>
+                                                <td>${e.hallId}</td>
+                                                <td>${e.noOfPlates}</td>
+                                                <td>${e.advanceFee}</td>
+                                                <td>${e.orderState}</td>
+                                                <td><a href="/updateBanquetStatus?orderId=${e.orderId}">
+                                                    <button value="" id="billBtn" name="billBtn" class="btn btn-outline-success" style="font-size: 12px;">confirmed</button>
+                                                </a></td>
+                                            </tr>
+                                        </c:forEach>
+
+                                        </tbody>
+                                    </table>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <%--/////////////////////////////////////////////    /////////////////////////////////////////////--%>
+
 
 
 

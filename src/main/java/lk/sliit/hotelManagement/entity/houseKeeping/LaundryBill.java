@@ -8,13 +8,13 @@ import javax.persistence.*;
 public class LaundryBill {
 
     @Id
-    private String laundryBillId;
+    private int laundryBillId;
     private double pieces;
     @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.REFRESH, CascadeType.DETACH, CascadeType.MERGE})
     @JoinColumn(name = "customerId", referencedColumnName = "customerId")
     private Customer customer;
 
-    public LaundryBill(String laundryBillId, double pieces, Customer customer) {
+    public LaundryBill(int laundryBillId, double pieces, Customer customer) {
         this.laundryBillId = laundryBillId;
         this.pieces = pieces;
         this.customer = customer;
@@ -23,11 +23,11 @@ public class LaundryBill {
     public LaundryBill() {
     }
 
-    public String getLaundryBillId() {
+    public int getLaundryBillId() {
         return laundryBillId;
     }
 
-    public void setLaundryBillId(String laundryBillId) {
+    public void setLaundryBillId(int laundryBillId) {
         this.laundryBillId = laundryBillId;
     }
 

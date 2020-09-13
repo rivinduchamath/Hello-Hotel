@@ -4,6 +4,7 @@ import lk.sliit.hotelManagement.controller.SuperController;
 import lk.sliit.hotelManagement.dto.manager.EmployeeDTO;
 import lk.sliit.hotelManagement.dto.manager.NoticeDTO;
 import lk.sliit.hotelManagement.service.custom.AttendanceBO;
+import lk.sliit.hotelManagement.service.custom.HumanResourceBO;
 import lk.sliit.hotelManagement.service.custom.IndexLoginBO;
 import lk.sliit.hotelManagement.service.custom.NoticeBO;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,7 +26,8 @@ public class IndexController { //index.jsp Page Controller
 
     @Autowired
     AttendanceBO attendanceBO;
-
+    @Autowired
+    HumanResourceBO humanResourceBO;
     @GetMapping("/")
     public String loginPage() {
         return "index";
@@ -42,13 +44,11 @@ public class IndexController { //index.jsp Page Controller
         if (indexLoginBO.findByIdNoAndPassword(employee.getUserId(), employee.getPassword()) != null) {
 
             //Get Today Attendance
-
-            model.addAttribute ( "todayAttendance",null );
-
+            model.addAttribute ( "todayAttendance", humanResourceBO.findTodayAttendance ( ) );
             //Add Logger Id To the static variable idNo
-            SuperController.idNo = employee.getUserId();
+            SuperController.idNo = (employee.getUserId());
             //Get Logger Data
-            model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
+            model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo((SuperController.idNo)));
             List<NoticeDTO> p = noticeBO.findAll();
             model.addAttribute("loadNoticeTable", p);
             return "/dashboard";

@@ -36,13 +36,13 @@ public class BanquetCancel {
     }
 
     @RequestMapping("/updateBanquetStatusToCancel")
-    public String updateBanquetStatusToCancel(@RequestParam String orderId) {
+    public String updateBanquetStatusToCancel(@RequestParam int orderId) {
         banquetBO.updateBanquetStatusToCancel(orderId);
         return "redirect:/banquets";
     }
 
     @RequestMapping("deleteBanquet")
-    public String deleteBanquet(@RequestParam String idNo) {
+    public String deleteBanquet(@RequestParam int idNo) {
         banquetBO.deleteBanquet(idNo);
         return "redirect:/banquetDelete";
     }

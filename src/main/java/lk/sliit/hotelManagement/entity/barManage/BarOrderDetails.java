@@ -30,7 +30,7 @@ public class BarOrderDetails implements SuperEntity {
     }
 
 
-    public BarOrderDetails(String orderId, String productId, double quantity, double unitePrice) {
+    public BarOrderDetails(int orderId, int productId, double quantity, double unitePrice) {
         this.orderDetailPK = new BarOrderDetailsPK(orderId,productId);
         this.quantity = quantity;
         this.unitePrice = unitePrice;

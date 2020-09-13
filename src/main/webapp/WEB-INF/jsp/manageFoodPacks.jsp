@@ -97,7 +97,7 @@
                                               data-parsley-validate
                                               id="demo-form3">
 
-                                            <input type="hidden" id="packId" name="menuId" value="">
+                                            <input type="hidden" id="packId" name="getMenuId">
                                             <div class=" form-group">
                                                 <label class=" label-align">Package Name: <span
                                                         class="required">*  &nbsp;</span>

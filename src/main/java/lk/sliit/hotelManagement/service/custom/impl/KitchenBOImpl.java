@@ -64,7 +64,7 @@ public class KitchenBOImpl implements KitchenBO {
     }
 
     @Override
-    public void deleteFoodItem(String foodItemId) {
+    public void deleteFoodItem(int foodItemId) {
         kitchenDAO.delete(foodItemId);
     }
 
@@ -108,12 +108,12 @@ public class KitchenBOImpl implements KitchenBO {
     }
 
     @Override
-    public void deleteMenuItem(String menuItemId) {
+    public void deleteMenuItem(int menuItemId) {
         menuDAO.delete(menuItemId);
     }
 
     @Override
-    public MenuDTO findMenuItemById(String menuItemId) {
+    public MenuDTO findMenuItemById(int menuItemId) {
         Menu menuItem = menuDAO.findOne(menuItemId);
         MenuDTO menuDTO = new MenuDTO(menuItem.getMenuId(),
                 menuItem.getName(),
@@ -131,7 +131,7 @@ public class KitchenBOImpl implements KitchenBO {
     }
 
     @Override
-    public List<MenuDTO> findFoodItemsDetails(String menuId) {
+    public List<MenuDTO> findFoodItemsDetails(int menuId) {
         Iterable<MenuDetails> menuItems = menuDetailsDAO.findMenuDetailsByMenu_MenuId(menuId);
 
         List<MenuDTO> menuDTOList = new ArrayList<>();

@@ -15,7 +15,7 @@ public interface KitchenBO extends SuperBO {
 
     FoodItemDTO findHighestId();
 
-    void deleteFoodItem(String foodItemId);
+    void deleteFoodItem(int foodItemId);
 
     MenuDTO findHighestFoodPackId();
 
@@ -23,11 +23,11 @@ public interface KitchenBO extends SuperBO {
 
     List<MenuDTO> findMenuItems();
 
-    void deleteMenuItem(String menuItemId);
+    void deleteMenuItem(int menuItemId);
 
-    MenuDTO findMenuItemById(String menuItemId);
+    MenuDTO findMenuItemById(int menuItemId);
 
     void saveFoodDetail(MenuDTO menuDTO);
 
-    List<MenuDTO> findFoodItemsDetails(String menuId);
+    List<MenuDTO> findFoodItemsDetails(int menuId);
 }

@@ -13,7 +13,7 @@ import java.util.List;
 @Entity
 public class FoodItem implements Serializable {
     @Id
-    private String itemId;
+    private int itemId;
     private String name;
     private double unitePrice;
     private String src;
@@ -29,7 +29,7 @@ public class FoodItem implements Serializable {
     private List<RestaurantOnlineOrderDetails> restaurantOnlineOrderDetails = new ArrayList<>();
 
 
-    public FoodItem(String itemId, String name, double unitePrice, String src, String category) {
+    public FoodItem(int itemId, String name, double unitePrice, String src, String category) {
         this.itemId = itemId;
         this.name = name;
         this.unitePrice = unitePrice;
@@ -42,11 +42,11 @@ public class FoodItem implements Serializable {
 
 
 
-    public String getItemId() {
+    public int getItemId() {
         return itemId;
     }
 
-    public void setItemId(String itemId) {
+    public void setItemId(int itemId) {
         this.itemId = itemId;
     }
 

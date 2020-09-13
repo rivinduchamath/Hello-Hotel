@@ -6,7 +6,7 @@ import java.sql.Date;
 @Entity
 public class GeneralBill {
     @Id
-    private String billId;
+    private int billId;
     private double amount;
     private String type;
     private String firstName;
@@ -18,7 +18,7 @@ public class GeneralBill {
     @JoinColumn(name="customerId",referencedColumnName = "customerId")
     private Customer customer;
 
-    public GeneralBill(String billId, double amount, String type, String firstName, String lastName, Date date, String status, String reservationId, Customer customer) {
+    public GeneralBill(int billId, double amount, String type, String firstName, String lastName, Date date, String status, String reservationId, Customer customer) {
         this.billId = billId;
         this.amount = amount;
         this.type = type;
@@ -57,11 +57,11 @@ public class GeneralBill {
         this.reservationId = reservationId;
     }
 
-    public String getBillId() {
+    public int getBillId() {
         return billId;
     }
 
-    public void setBillId(String billId) {
+    public void setBillId(int billId) {
         this.billId = billId;
     }
 

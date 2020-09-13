@@ -1,5 +1,7 @@
 package lk.sliit.hotelManagement.entity.inventory;
 
+import lk.sliit.hotelManagement.dto.inventory.SupplierDTO;
+
 import javax.persistence.*;
 import java.sql.Date;
 
@@ -7,7 +9,7 @@ import java.sql.Date;
 @Entity
 public class InventoryOrder {
     @Id
-    private String orderId;
+    private int orderId;
     private Date date;
     private double price;
     private double quantity;
@@ -18,7 +20,7 @@ public class InventoryOrder {
     @JoinColumn(name = "inventory", referencedColumnName = "inventoryId", nullable = false)
     private Inventory inventory;
 
-    public InventoryOrder(String orderId, Date date, double price, double quantity, Supplier supplier, Inventory inventory) {
+    public InventoryOrder(int orderId, Date date, double price, double quantity, Supplier supplier, Inventory inventory) {
         this.orderId = orderId;
         this.date = date;
         this.price = price;
@@ -30,11 +32,12 @@ public class InventoryOrder {
     public InventoryOrder() {
     }
 
-    public String getOrderId() {
+
+    public int getOrderId() {
         return orderId;
     }
 
-    public void setOrderId(String orderId) {
+    public void setOrderId(int orderId) {
         this.orderId = orderId;
     }
 

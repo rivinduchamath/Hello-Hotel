@@ -54,31 +54,17 @@ public class HouseKeepingBOImpl implements HouseKeepingBO {
     @Override
     public List<HotelRoomDTO> findRooms() {
         Iterable<HotelRoom> hotelRooms = houseKeepingDAO.findAll();
-        List<HotelRoomDTO> hotelRoomDTOList = new ArrayList<>();
-
-        for (HotelRoom room : hotelRooms) {
-            hotelRoomDTOList.add(new HotelRoomDTO(
-                    room.getRoomId(),
-                    room.getRoomName(),
-                    room.getRoomType(),
-                    room.getDescription(),
-                    room.getStatus(),
-                    room.getHolder(),
-                    room.getPrice(),
-                    room.getDate()
-            ));
-        }
-        return hotelRoomDTOList;
+        return getHotelRoomDTOS(hotelRooms);
     }
 
     @Override
-    public void deleteRoomDetails(String roomId) {
+    public void deleteRoomDetails(int roomId) {
         houseKeepingDAO.delete(roomId);
 
     }
 
     @Override
-    public HotelRoomDTO findRoomIdByID(String roomId) {
+    public HotelRoomDTO findRoomIdByID(int roomId) {
         HotelRoom hotelRoom = houseKeepingDAO.findOne(roomId);
         return new HotelRoomDTO(
                 hotelRoom.getRoomId(),
@@ -90,5 +76,29 @@ public class HouseKeepingBOImpl implements HouseKeepingBO {
                 hotelRoom.getPrice(),
                 hotelRoom.getDate()
         );
+    }
+
+    @Override
+    public List<HotelRoomDTO> findDirtyRooms(String notCleaned) {
+        Iterable<HotelRoom> hotelRooms = houseKeepingDAO.findAllByStatusEquals(notCleaned);
+        return getHotelRoomDTOS(hotelRooms);
+    }
+
+    private List<HotelRoomDTO> getHotelRoomDTOS(Iterable<HotelRoom> hotelRooms) {
+        List<HotelRoomDTO> hotelDirtyRoomDTOList = new ArrayList<>();
+
+        for (HotelRoom room : hotelRooms) {
+            hotelDirtyRoomDTOList.add(new HotelRoomDTO(
+                    room.getRoomId(),
+                    room.getRoomName(),
+                    room.getRoomType(),
+                    room.getDescription(),
+                    room.getStatus(),
+                    room.getHolder(),
+                    room.getPrice(),
+                    room.getDate()
+            ));
+        }
+        return hotelDirtyRoomDTOList;
     }
 }

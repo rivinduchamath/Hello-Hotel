@@ -9,7 +9,7 @@ import java.sql.Date;
 @Entity
 public class BanquetOrder {
     @Id
-    private String orderId;
+    private int orderId;
     private String hallId;
     private String orderState;
     private int noOfPlates;
@@ -25,7 +25,7 @@ public class BanquetOrder {
     @JoinColumn(name = "banquetBill", referencedColumnName = "billId")
     private BanquetBill banquetBill;
 
-    public BanquetOrder(String orderId, String hallId, String orderState, int noOfPlates, Date date, String submittedBy, Customer customer, Menu menu, BanquetBill banquetBill) {
+    public BanquetOrder(int orderId, String hallId, String orderState, int noOfPlates, Date date, String submittedBy, Customer customer, Menu menu, BanquetBill banquetBill) {
         this.orderId = orderId;
         this.hallId = hallId;
         this.orderState = orderState;
@@ -37,16 +37,14 @@ public class BanquetOrder {
         this.banquetBill = banquetBill;
     }
 
-    public BanquetOrder() {
-
-    }
+    public BanquetOrder() {}
 
 
-    public String getOrderId() {
+    public int getOrderId() {
         return orderId;
     }
 
-    public void setOrderId(String orderId) {
+    public void setOrderId(int orderId) {
         this.orderId = orderId;
     }
 

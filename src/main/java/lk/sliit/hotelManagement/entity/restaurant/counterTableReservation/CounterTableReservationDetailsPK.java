@@ -5,10 +5,10 @@ import java.io.Serializable;
 
 @Embeddable
 public class CounterTableReservationDetailsPK implements Serializable {
-    private String tableId;
-    private  String counterTableReserveId;
+    private int tableId;
+    private  int counterTableReserveId;
 
-    public CounterTableReservationDetailsPK(String tableId, String counterTableReserveId) {
+    public CounterTableReservationDetailsPK(int tableId, int counterTableReserveId) {
         this.tableId = tableId;
         this.counterTableReserveId = counterTableReserveId;
     }
@@ -16,19 +16,19 @@ public class CounterTableReservationDetailsPK implements Serializable {
     public CounterTableReservationDetailsPK() {
     }
 
-    public String getTableId() {
+    public int getTableId() {
         return tableId;
     }
 
-    public void setTableId(String tableId) {
+    public void setTableId(int tableId) {
         this.tableId = tableId;
     }
 
-    public String getCounterTableReserveId() {
+    public int getCounterTableReserveId() {
         return counterTableReserveId;
     }
 
-    public void setCounterTableReserveId(String counterTableReserveId) {
+    public void setCounterTableReserveId(int counterTableReserveId) {
         this.counterTableReserveId = counterTableReserveId;
     }
 }

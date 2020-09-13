@@ -8,7 +8,7 @@ import org.springframework.data.repository.CrudRepository;
 
 import java.util.Date;
 
-public interface BanquetOrderDAO extends CrudRepository<BanquetOrder,String> {
+public interface BanquetOrderDAO extends CrudRepository<BanquetOrder,Integer> {
 
     BanquetOrder findTopByOrderByOrderIdDesc();
 
@@ -16,13 +16,13 @@ public interface BanquetOrderDAO extends CrudRepository<BanquetOrder,String> {
 
     @Modifying
     @Query(value = "Update BanquetOrder set orderState = ?1 where orderId=?2")
-    void updateBanStatus(String status,String orderId);
+    void updateBanStatus(String status,int orderId);
 
     Iterable<BanquetOrder> findBanquetOrdersByDate(Date todayDate);
 
     @Modifying
     @Query(value = "Update BanquetOrder set hallId = ?1 , noOfPlates = ?2 ,date=?3 ,menu=?4 where orderId=?5")
-    void updateBanquetTable(String hallId, int noOfPlates, java.sql.Date date, Menu one, String orderId);
+    void updateBanquetTable(String hallId, int noOfPlates, java.sql.Date date, Menu one, int orderId);
 
     Iterable<BanquetOrder> findAllByOrderStateEquals(String status);
 

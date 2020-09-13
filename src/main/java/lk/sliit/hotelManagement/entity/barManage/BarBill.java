@@ -6,7 +6,7 @@ import javax.persistence.*;
 public class BarBill {
 
     @Id
-    private  String billId;
+    private  int billId;
     private double discount;
     private String status;
     private double total;
@@ -14,7 +14,7 @@ public class BarBill {
     @JoinColumn(name="barOrder_Id",referencedColumnName = "orderId", insertable = false, updatable = false)
     private BarOrders order;
 
-    public BarBill(String billId, double discount, String status, double total) {
+    public BarBill(int billId, double discount, String status, double total) {
         this.billId = billId;
         this.discount = discount;
         this.status = status;
@@ -24,11 +24,11 @@ public class BarBill {
     public BarBill() {
     }
 
-    public String getBillId() {
+    public int getBillId() {
         return billId;
     }
 
-    public void setBillId(String billId) {
+    public void setBillId(int billId) {
         this.billId = billId;
     }
 

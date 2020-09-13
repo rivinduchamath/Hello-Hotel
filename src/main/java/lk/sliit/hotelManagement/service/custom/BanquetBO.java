@@ -26,7 +26,7 @@ public interface BanquetBO extends SuperBO {
 
     List<BanquetAddDTO> findNextBanquets();
 
-    void updateBanquetStatus(String orderId);
+    void updateBanquetStatus(int orderId);
 
     List<BanquetAddDTO> findTodayBanquets();
 
@@ -36,9 +36,7 @@ public interface BanquetBO extends SuperBO {
 
     List<BanquetAddDTO> findConfirmedBanquet();
 
-    void updateBanquetStatusToCancel(String orderId);
-
-    void deleteBanquet(String idNo);
+    void updateBanquetStatusToCancel(int orderId);
 
     int checkAvailability(Date date);
 
@@ -49,4 +47,7 @@ public interface BanquetBO extends SuperBO {
     List<BanquetAddDTO> findCheckDateBanquets(Date date);
 
     List<BanquetAddDTO> findBanquetBill();
+
+    void deleteBanquet(int idNo);
+
 }

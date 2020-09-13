@@ -44,10 +44,10 @@ public class BarStockController {
 
         try {noticeDTO.setOrderHolder(SuperController.idNo);
             InventoryNoticeDTO top = inventoryBO.findTopByBarNoticeIdDesc ( );
-            int x = Integer.parseInt ( top.getNoticeId ( ) )+ 1;
-            noticeDTO.setNoticeId ( String.valueOf ( x ) );
+            int x = ( top.getNoticeId ( ) )+ 1;
+            noticeDTO.setNoticeId ( ( x ) );
         } catch (NullPointerException e) {
-            noticeDTO.setNoticeId ( String.valueOf ( 1 ) );
+            noticeDTO.setNoticeId (  ( 1 ) );
         }
 
         inventoryBO.saveOrderNotice(noticeDTO);

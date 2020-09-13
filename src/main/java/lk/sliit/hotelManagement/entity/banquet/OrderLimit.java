@@ -7,11 +7,11 @@ import javax.persistence.Table;
 @Entity
 public class OrderLimit {
     @Id
-    private String limitId;
+    private int limitId;
     private String limitName;
     private double orderLimit;
 
-    public OrderLimit(String limitId, String limitName, double orderLimit) {
+    public OrderLimit(int limitId, String limitName, double orderLimit) {
         this.limitId = limitId;
         this.limitName = limitName;
         this.orderLimit = orderLimit;
@@ -21,11 +21,11 @@ public class OrderLimit {
     }
 
 
-    public String getLimitId() {
+    public int getLimitId() {
         return limitId;
     }
 
-    public void setLimitId(String limitId) {
+    public void setLimitId(int limitId) {
         this.limitId = limitId;
     }
 

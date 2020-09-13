@@ -12,16 +12,16 @@ import java.util.List;
 @Entity
 public class CounterTableReservation {
     @Id
-    private String counterTableReserveId;
-   private Time startTime;
-   private Time endTime;
-   private int noOfTables;
-   private Date date;
+    private int counterTableReserveId;
+    private Time startTime;
+    private Time endTime;
+    private int noOfTables;
+    private Date date;
 
     @OneToMany(mappedBy = "counterTableReservation", cascade = {CascadeType.PERSIST, CascadeType.REFRESH, CascadeType.DETACH, CascadeType.MERGE})
     private List<CounterTableReservationDetails> orderDetails = new ArrayList<>();
 
-    public CounterTableReservation(String counterTableReserveId, Time startTime, Time endTime, int noOfTables, Date date) {
+    public CounterTableReservation(int counterTableReserveId, Time startTime, Time endTime, int noOfTables, Date date) {
         this.counterTableReserveId = counterTableReserveId;
         this.startTime = startTime;
         this.endTime = endTime;
@@ -65,11 +65,11 @@ public class CounterTableReservation {
     }
 
 
-    public String getCounterTableReserveId() {
+    public int getCounterTableReserveId() {
         return counterTableReserveId;
     }
 
-    public void setCounterTableReserveId(String counterTableReserveId) {
+    public void setCounterTableReserveId(int counterTableReserveId) {
         this.counterTableReserveId = counterTableReserveId;
     }
 

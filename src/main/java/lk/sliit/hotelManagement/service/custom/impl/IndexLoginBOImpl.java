@@ -33,7 +33,7 @@ public class IndexLoginBOImpl implements IndexLoginBO {
     OnlineCustomerDAO onlineCustomerDAO;
 
     @Override
-    public EmployeeDTO findByIdNoAndPassword(String idNo, String password) {
+    public EmployeeDTO findByIdNoAndPassword(int idNo, String password) {
         Employee employee = employeeDAO.findByUserIdAndPassword(idNo, password);
         return new EmployeeDTO (
                 employee.getUserId (),
@@ -41,7 +41,7 @@ public class IndexLoginBOImpl implements IndexLoginBO {
     }
 
     @Override
-    public EmployeeDTO getEmployeeByIdNo(String idNo) {
+    public EmployeeDTO getEmployeeByIdNo(int idNo) {
         Employee employee = employeeDAO.findOne (idNo);
         return new EmployeeDTO (
                 employee.getUserId(),

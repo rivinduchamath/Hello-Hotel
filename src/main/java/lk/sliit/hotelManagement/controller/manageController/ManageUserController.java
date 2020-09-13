@@ -55,10 +55,10 @@ public class ManageUserController {
     }
 
     @RequestMapping(value = "deleteEmployee/{userId}")
-    public void deleteEmployee(@PathVariable("userId") String userId, HttpServletRequest request, HttpServletResponse response) throws IOException {
+    public void deleteEmployee(@PathVariable("userId") int userId, HttpServletRequest request, HttpServletResponse response) throws IOException {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
-        if (SuperController.idNo.equals(userId)) {
+        if (SuperController.idNo == (userId)) {
             out.println("<script type=\"text/javascript\">");
             out.println("alert('You Cant Delete this Employee. This" +
                     " Employee Already Saved in Another Table');");

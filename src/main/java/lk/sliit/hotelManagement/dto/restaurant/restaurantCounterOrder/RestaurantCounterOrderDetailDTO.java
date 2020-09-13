@@ -5,11 +5,11 @@ package lk.sliit.hotelManagement.dto.restaurant.restaurantCounterOrder;
 public class RestaurantCounterOrderDetailDTO {
 
 
-    private String foodItem;
+    private int foodItem;
     private double quantity;
     private double unitePrice;
 
-    public RestaurantCounterOrderDetailDTO( String foodItem, double quantity, double unitePrice) {
+    public RestaurantCounterOrderDetailDTO( int foodItem, double quantity, double unitePrice) {
 
         this.foodItem = foodItem;
         this.quantity = quantity;
@@ -20,11 +20,11 @@ public class RestaurantCounterOrderDetailDTO {
     }
 
 
-    public String getFoodItem() {
+    public int getFoodItem() {
         return foodItem;
     }
 
-    public void setFoodItem(String foodItem) {
+    public void setFoodItem(int foodItem) {
         this.foodItem = foodItem;
     }
 

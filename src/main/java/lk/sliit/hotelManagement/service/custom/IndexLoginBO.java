@@ -9,9 +9,9 @@ import java.util.List;
 
 public interface IndexLoginBO  extends SuperBO {
 
-    EmployeeDTO findByIdNoAndPassword(String idNo, String password);
+    EmployeeDTO findByIdNoAndPassword(int idNo, String password);
 
-    EmployeeDTO getEmployeeByIdNo(String idNo);
+    EmployeeDTO getEmployeeByIdNo(int idNo);
 
     List<NoticeDTO> findResentNoticeDesc();
 

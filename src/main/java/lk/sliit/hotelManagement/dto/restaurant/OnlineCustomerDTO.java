@@ -1,7 +1,7 @@
 package lk.sliit.hotelManagement.dto.restaurant;
 
 public class OnlineCustomerDTO {
-    private String onlineCustomerId;
+    private int onlineCustomerId;
     private  String name;
     private  String userName;
     private  String address;
@@ -12,7 +12,7 @@ public class OnlineCustomerDTO {
     public OnlineCustomerDTO() {
     }
 
-    public OnlineCustomerDTO(String onlineCustomerId, String name, String userName,
+    public OnlineCustomerDTO(int onlineCustomerId, String name, String userName,
                              String address, String email, String password, String contact) {
         this.onlineCustomerId = onlineCustomerId;
         this.name = name;
@@ -23,7 +23,7 @@ public class OnlineCustomerDTO {
         this.contact = contact;
     }
 
-    public OnlineCustomerDTO(String onlineCustomerId) {
+    public OnlineCustomerDTO(int onlineCustomerId) {
         this.onlineCustomerId = onlineCustomerId;
     }
 
@@ -32,7 +32,7 @@ public class OnlineCustomerDTO {
         this.password = password;
     }
 
-    public OnlineCustomerDTO(String onlineCustomerId, String userName, String name) {
+    public OnlineCustomerDTO(int onlineCustomerId, String userName, String name) {
         this.onlineCustomerId = onlineCustomerId;
         this.name = name;
         this.userName = userName;
@@ -46,11 +46,11 @@ public class OnlineCustomerDTO {
         this.contact = contact;
     }
 
-    public String getOnlineCustomerId() {
+    public int getOnlineCustomerId() {
         return onlineCustomerId;
     }
 
-    public void setOnlineCustomerId(String onlineCustomerId) {
+    public void setOnlineCustomerId(int onlineCustomerId) {
         this.onlineCustomerId = onlineCustomerId;
     }
 

@@ -5,14 +5,14 @@ import javax.persistence.*;
 @Entity
 public class BanquetBill {
     @Id
-    private String billId;
+    private int billId;
     private double total;
     private double foodPrice;
     private double otherPrices;
     private double advancePayment;
 
 
-    public BanquetBill(String billId, double total, double foodPrice, double otherPrices, double advancePayment) {
+    public BanquetBill(int billId, double total, double foodPrice, double otherPrices, double advancePayment) {
         this.billId = billId;
         this.total = total;
         this.foodPrice = foodPrice;
@@ -39,11 +39,11 @@ public class BanquetBill {
     public BanquetBill() {
     }
 
-    public String getBillId() {
+    public int getBillId() {
         return billId;
     }
 
-    public void setBillId(String billId) {
+    public void setBillId(int billId) {
         this.billId = billId;
     }
 

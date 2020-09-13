@@ -6,10 +6,10 @@ import java.io.Serializable;
 @Embeddable
 public class RestaurantOnlineOrderDetailsPK implements Serializable {
 
-    private String foodItemId;
-    private  String restaurantOnlineOrder;
+    private int foodItemId;
+    private  int restaurantOnlineOrder;
 
-    public RestaurantOnlineOrderDetailsPK(String foodItemId, String restaurantOnlineOrder) {
+    public RestaurantOnlineOrderDetailsPK(int foodItemId, int restaurantOnlineOrder) {
         this.foodItemId = foodItemId;
         this.restaurantOnlineOrder = restaurantOnlineOrder;
     }
@@ -17,19 +17,19 @@ public class RestaurantOnlineOrderDetailsPK implements Serializable {
     public RestaurantOnlineOrderDetailsPK() {
     }
 
-    public String getFoodItemId() {
+    public int getFoodItemId() {
         return foodItemId;
     }
 
-    public void setFoodItemId(String foodItemId) {
+    public void setFoodItemId(int foodItemId) {
         this.foodItemId = foodItemId;
     }
 
-    public String getRestaurantOnlineOrderId() {
+    public int getRestaurantOnlineOrderId() {
         return restaurantOnlineOrder;
     }
 
-    public void setRestaurantOnlineOrderId(String restaurantOnlineOrderId) {
+    public void setRestaurantOnlineOrderId(int restaurantOnlineOrderId) {
         this.restaurantOnlineOrder = restaurantOnlineOrderId;
     }
 

@@ -28,7 +28,7 @@ public class MenuDetails {
         this.menuDetailId = menuDetailId;
     }
 
-    public MenuDetails(String menu, String foodItem) {
+    public MenuDetails(int menu, int foodItem) {
         this.menuDetailId = new MenuDetailsPK(menu,foodItem);
 
     }

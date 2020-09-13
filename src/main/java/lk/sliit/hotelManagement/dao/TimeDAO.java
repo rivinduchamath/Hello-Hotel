@@ -1,7 +1,11 @@
 package lk.sliit.hotelManagement.dao;
 
 import lk.sliit.hotelManagement.entity.TimeCheck;
+import org.jboss.logging.Param;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
+
+
 import java.util.Date;
 
 public interface TimeDAO extends CrudRepository<TimeCheck, String> {
@@ -15,10 +19,17 @@ public interface TimeDAO extends CrudRepository<TimeCheck, String> {
 
 
 //    @Query(value = "SELECT e FROM TimeCheck e WHERE e.timeSett BETWEEN :startDate AND :endDate order by e.joinDate")
-   Iterable<TimeCheck> findAllByTimeTwoGreaterThanEqualAndTimeOneLessThanEqualAndDateEquals(Date tdate, Date tdate2, Date date);
+//   +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+    Iterable<TimeCheck> findAllByTimeTwoGreaterThanEqualAndTimeOneLessThanEqualAndDateEquals(Date tdate, Date tdate2, Date date);
+    Iterable<TimeCheck> findAllByTimeTwoBetweenAndDateEquals(Date tdate, Date tdate2, Date date);
+    Iterable<TimeCheck> findAllByTimeOneBetweenAndDateEquals(Date tdate, Date tdate2, Date date);
 
-    Iterable<TimeCheck> findAllByTimeTwoLessThanEqualAndTimeOneGreaterThanEqualAndDateEquals(Date tdate2, Date tdate, Date date);
-    Iterable<TimeCheck> findAllByTimeOneLessThanEqualAndTimeTwoGreaterThanEqualAndDateEquals(Date tdate2, Date tdate, Date date);
+//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+//    Iterable<TimeCheck> findAllByTimeTwoLessThanEqualAndTimeOneGreaterThanEqualAndDateEquals(Date tdate2, Date tdate, Date date);
+//    Iterable<TimeCheck> findAllByTimeOneLessThanEqualAndTimeTwoGreaterThanEqualAndDateEquals(Date tdate2, Date tdate, Date date);
+
+//    @Query(value =" from TimeCheck where ((timeOne between  timeOne and timeTwo) or (timeTwo between timeOne and timeTwo))")
+//    Iterable<TimeCheck> uals(Date tdate,Date tdate2, Date date);
 
 
     //Iterable<TimeCheck> findTimeChecksByTimeOneIsInOrTimeTwoIsInAndDateEquals(Date tdate, Date tdate2, Date date);

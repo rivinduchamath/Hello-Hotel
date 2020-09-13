@@ -6,7 +6,7 @@ import org.springframework.data.repository.CrudRepository;
 
 import java.util.Date;
 
-public interface InventoryNoticeDAO extends CrudRepository<InventoryNotice,String> {
+public interface InventoryNoticeDAO extends CrudRepository<InventoryNotice,Integer> {
 
     Iterable<InventoryNotice> findAllByExpDateEquals(Date dayAfterTomorrow);
 

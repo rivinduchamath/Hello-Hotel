@@ -7,30 +7,30 @@ import java.io.Serializable;
 @Embeddable
 public class BarOrderDetailsPK implements Serializable {
 
-    private String orderId;
-    private String productId;
+    private int orderId;
+    private int productId;
 
     public BarOrderDetailsPK() {
     }
 
-    public BarOrderDetailsPK(String orderId, String productId) {
+    public BarOrderDetailsPK(int orderId, int productId) {
         this.orderId = orderId;
         this.productId = productId;
     }
 
-    public String getOrderId() {
+    public int getOrderId() {
         return orderId;
     }
 
-    public void setOrderId(String orderId) {
+    public void setOrderId(int orderId) {
         this.orderId = orderId;
     }
 
-    public String getProductId() {
+    public int getProductId() {
         return productId;
     }
 
-    public void setProductId(String productId) {
+    public void setProductId(int productId) {
         this.productId = productId;
     }
 

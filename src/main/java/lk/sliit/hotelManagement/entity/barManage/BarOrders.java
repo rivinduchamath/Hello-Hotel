@@ -11,26 +11,20 @@ import java.util.List;
 @Entity
 public class BarOrders implements SuperEntity {
     @Id
-    private String orderId;
+    private int orderId;
     @Temporal(TemporalType.DATE)
     private Date date;
     private String customerId;
-    private String user;
+    private int user;
     @OneToMany(mappedBy = "order", cascade = {CascadeType.PERSIST, CascadeType.REFRESH, CascadeType.DETACH, CascadeType.MERGE})
     private List<BarOrderDetails> orderDetails = new ArrayList<>();
 
     public BarOrders() {
     }
 
-    public BarOrders(String orderId, Date date,  String customerId, String user, List<BarOrderDetails> orderDetails) {
-        this.orderId = orderId;
-        this.date = date;
-        this.customerId = customerId;
-        this.user = user;
-        this.orderDetails = orderDetails;
-    }
 
-    public BarOrders(String id, Date date, String customerId, String user) {
+
+    public BarOrders(int id, Date date, String customerId, int user) {
         this.orderId = id;
         this.date = date;
         this.customerId = customerId;
@@ -55,11 +49,11 @@ public class BarOrders implements SuperEntity {
         this.customerId = customerId;
     }
 
-    public String getOrderId() {
+    public int getOrderId() {
         return orderId;
     }
 
-    public void setOrderId(String orderId) {
+    public void setOrderId(int orderId) {
         this.orderId = orderId;
     }
 
@@ -67,11 +61,11 @@ public class BarOrders implements SuperEntity {
         return orderDetails;
     }
 
-    public String getUser() {
+    public int getUser() {
         return user;
     }
 
-    public void setUser(String user) {
+    public void setUser(int user) {
         this.user = user;
     }
 
