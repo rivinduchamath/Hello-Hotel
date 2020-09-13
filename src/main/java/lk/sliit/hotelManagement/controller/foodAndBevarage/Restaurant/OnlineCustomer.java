@@ -69,7 +69,7 @@ public class OnlineCustomer {
         try {
             int onlineCustomerId = Integer.parseInt(session.getAttribute("userId").toString());
             model.addAttribute("loggerId", onlineCustomerBO.findOne(onlineCustomerId));
-        } catch (NullPointerException d) {
+        } catch (Exception d) {
             return "onlineDashboard";
         }
         return "onlineDashboard";

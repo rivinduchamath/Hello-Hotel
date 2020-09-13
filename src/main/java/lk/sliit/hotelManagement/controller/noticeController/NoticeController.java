@@ -51,7 +51,7 @@ public class NoticeController { //notice.jsp For All Notice
     }
 
     //  Value name ("noticeId") must be equal
-    @RequestMapping(value = "/delete/{noticeId}",method = RequestMethod.GET)
+    @GetMapping(value = "/delete/{noticeId}")
     public String deleteNotice(@PathVariable int noticeId) {
         if(noticeBO.findNoticeById(noticeId) != null){
             noticeBO.deleteNotice(noticeId);

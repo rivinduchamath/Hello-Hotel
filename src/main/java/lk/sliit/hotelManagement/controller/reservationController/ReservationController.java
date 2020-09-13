@@ -16,7 +16,7 @@ public class ReservationController {
     @GetMapping("/reservations")
     public String loginPage(Model model){
         model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
-        return "reservation";
+        return "redirect:/reservation";
     }
 }
 
