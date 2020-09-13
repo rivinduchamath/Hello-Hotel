@@ -27,8 +27,8 @@
     <!-- Custom Theme Style -->
     <link href="../../build/css/custom.min.css" rel="stylesheet">
     <%
-        SimpleDateFormat sdf = new SimpleDateFormat ( "dd-MM-yyyy" );
-        String date = sdf.format ( new Date ( ) );
+        SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
+        String date = sdf.format(new Date());
     %>
     <!-- Datatables -->
     <link href="../../vendors/datatables.net-bs/css/dataTables.bootstrap.min.css" rel="stylesheet">
@@ -57,6 +57,7 @@
             -webkit-transition: 0.8s ease;
             -moz-transition: 0.8s ease;
         }
+
         #chartdiv {
             width: 100%;
             height: 500px;
@@ -70,6 +71,7 @@
         .large-btn:hover {
             color: #cebbbb;
         }
+
         /*//////////////////////////////////////////////////////////////*/
 
         .containerx {
@@ -117,14 +119,12 @@
     <div class="main_container">
 
         <!-- Side header -->
-        <jsp:include page="sideHeader.jsp" />
+        <jsp:include page="sideHeader.jsp"/>
         <!-- /Side header -->
 
         <!-- Top header -->
-        <jsp:include page="topHeader.jsp" />
+        <jsp:include page="topHeader.jsp"/>
         <!-- /Top header -->
-
-
 
 
         <!-- page content -->
@@ -217,7 +217,7 @@
                         </form>
                     </div>
                 </div>
-<%--////////////////////////////////////////////////////////////////////////////////////////--%>
+                <%--////////////////////////////////////////////////////////////////////////////////////////--%>
 
 
                 <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
@@ -267,12 +267,12 @@
                                     style="position: relative; letter-spacing: 1px;
                                      margin-top: 30px">Room Service</h2></a>
                         </div>
-                        <br> </div>
+                        <br></div>
                 </div>
 
-<%--                ///////////////////////////////////////////////////////////////////////////////////////               --%>
+                <%--                ///////////////////////////////////////////////////////////////////////////////////////               --%>
 
-<%--                Page Body                        --%>
+                <%--                Page Body                        --%>
 
                 <div class="col-12 col-sm-12 col-md-12 col-lg-7 col-xl-7">
                     <div class="row">
@@ -299,51 +299,38 @@
                             <div class="x_content">
                                 <div class="row">
 
-                                        <div class="card-box table-responsive">
-                                            <table id="datatable-buttons" class="table table-striped table-bordered">
-                                                <thead class="thead-light">
+                                    <div class="card-box table-responsive">
+                                        <table id="datatable-buttons" class="table table-striped table-bordered">
+                                            <thead class="thead-light">
+                                            <tr>
+                                                <th>RoomId</th>
+                                                <th>RoomName</th>
+                                                <th>Condition</th>
+                                                <th>L.Cleaned</th>
+                                                <th>Date</th>
+                                            </tr>
+
+                                            </thead>
+                                            <tbody>
+                                            <c:forEach items="${loadAllDirtyRooms}" var="e">
                                                 <tr>
-                                                    <th>Id</th>
-                                                    <th>RoomId</th>
-                                                    <th>RoomName</th>
-                                                    <th>Condition</th>
-                                                    <th>Description</th>
-                                                    <th>L.Cleaned</th>
-                                                    <th>Date</th>
+                                                    <td>${e.roomId2}</td>
+                                                    <td>${e.roomName}</td>
+                                                    <td>${e.type}</td>
+                                                    <td>${e.holder}</td>
+                                                    <td>${e.date}</td>
+
                                                 </tr>
-
-                                                </thead>
-                                                <tbody>
-
-                                                    <tr>
-                                                        <td>RS001</td>
-                                                        <td>R001</td>
-                                                        <td>Delux</td>
-                                                        <td>A/C</td>
-                                                        <td>Lorem</td>
-                                                        <td>Cherif</td>
-                                                        <td>2020/09/09</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>RS002</td>
-                                                        <td>R001</td>
-                                                        <td>Delux</td>
-                                                        <td>A/C</td>
-                                                        <td>Lorem</td>
-                                                        <td>Samuwel</td>
-                                                        <td>2020/09/11</td>
-                                                    </tr>
-
-                                                </tbody>
-                                            </table>
-                                        </div>
+                                            </c:forEach>
+                                            </tbody>
+                                        </table>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
 
-<%--Active users--%>
 
                 <div class="col-12 col-sm-12 col-md-12 col-lg-5 col-xl-5">
                     <div class="row">
@@ -374,8 +361,8 @@
                                             <table id="datatable-buttons2" class="table table-striped table-bordered">
                                                 <thead class="thead-light">
                                                 <tr>
-                                                    <th>UserId</th>
                                                     <th>Name</th>
+                                                    <th>Pic</th>
                                                     <th>InTime</th>
                                                     <th>OutTime</th>
                                                 </tr>
@@ -383,20 +370,14 @@
                                                 </thead>
                                                 <tbody>
 
-                                                <tr>
-                                                    <td>C005</td>
-                                                    <td>Cherif</td>
-                                                    <td>8.33 p.m.</td>
-                                                    <td>4.33 p.m.</td>
-
-                                                </tr>
-                                                <tr>
-                                                    <td>C003</td>
-                                                    <td>Samuwel</td>
-                                                    <td>8.43 p.m.</td>
-                                                    <td>4.43 p.m.</td>
-
-                                                </tr>
+                                                <c:forEach items="${todayCleanAttendance}" var="e">
+                                                    <tr>
+                                                        <td>${e.empName}</td>
+                                                        <td>${e.pic}</td>
+                                                        <td>${e.inTime}</td>
+                                                        <td>${e.outTime}</td>
+                                                    </tr>
+                                                </c:forEach>>
 
                                                 </tbody>
                                             </table>
@@ -409,17 +390,14 @@
                 </div>
 
 
-            <%--                /Page Body                        --%>
+                <%--                /Page Body                        --%>
             </div>
         </div>
         <!-- /page content -->
 
 
-
-
-
         <!-- footer content -->
-        <jsp:include page="footer.jsp" />
+        <jsp:include page="footer.jsp"/>
         <!-- /footer content -->
 
     </div>

@@ -39,17 +39,23 @@ public class TimeCheckBOImpl implements TimeCheckBO {
     public List<timeCheckDTO> getReqTime(java.util.Date date, java.util.Date tdate, java.util.Date tdate2) {
 
 
-        Iterable<TimeCheck> all = timeDAO.findAllByTimeTwoGreaterThanEqualAndTimeOneLessThanEqualAndDateEquals(tdate2,tdate,date);
-        Iterable<TimeCheck> all2 = timeDAO.findAllByTimeTwoLessThanEqualAndTimeOneGreaterThanEqualAndDateEquals(tdate2,tdate,date);
+        Iterable<TimeCheck> all = timeDAO.findAllByTimeTwoBetweenAndDateEquals(tdate,tdate2,date);
+        Iterable<TimeCheck> all2 = timeDAO.findAllByTimeOneBetweenAndDateEquals(tdate,tdate2,date);
+        Iterable<TimeCheck> all3 = timeDAO.findAllByTimeTwoGreaterThanEqualAndTimeOneLessThanEqualAndDateEquals(tdate,tdate2,date);
 
         System.out.println(date);
         System.out.println("Tset 1 "+tdate);
         System.out.println("Tset 2 "+tdate2);
 
-        for (TimeCheck a : all) {
+        for (TimeCheck a : all2) {
             System.out.println("AAAAAAAAAA "+a.getId());
             System.out.println("AAAAAAAAAA "+a.getTimeSett());
             System.out.println("AAAAAAAAAA "+a.getTimeSett2());
+        }
+        for (TimeCheck a : all3) {
+            System.out.println("CCCCCCCC "+a.getId());
+            System.out.println("CCCCCCCC "+a.getTimeSett());
+            System.out.println("CCCCCCCC "+a.getTimeSett2());
         }
 
         for (TimeCheck a : all2) {
