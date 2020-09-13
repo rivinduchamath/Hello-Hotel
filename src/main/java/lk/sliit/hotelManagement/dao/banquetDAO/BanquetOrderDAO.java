@@ -25,4 +25,8 @@ public interface BanquetOrderDAO extends CrudRepository<BanquetOrder,String> {
     void updateBanquetTable(String hallId, int noOfPlates, java.sql.Date date, Menu one, String orderId);
 
     Iterable<BanquetOrder> findAllByOrderStateEquals(String status);
+
+    int countBanquetOrderByDateEquals(Date date);
+
+    int countBanquetOrderByDateEqualsAndHallIdEquals(Date date, String hallNo);
 }

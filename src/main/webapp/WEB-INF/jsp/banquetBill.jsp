@@ -1,8 +1,9 @@
+
 <%--
   Created by IntelliJ IDEA.
   User: USER
-  Date: 8/6/2020
-  Time: 9:47 PM
+  Date: 8/7/2020
+  Time: 1:22 PM
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -17,59 +18,53 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
+    <link href="../../vendors/iCheck/skins/flat/green.css" rel="stylesheet">
+    <!-- Bootstrap -->
+    <link href="../../vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="../../vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <!-- NProgress -->
+    <link href="../../vendors/nprogress/nprogress.css" rel="stylesheet">
+    <!-- iCheck -->
+    <link href="../../vendors/iCheck/skins/flat/green.css" rel="stylesheet">
     <link rel="icon" type="image/png" href="../../images/icons/gdfgd.png"/>
     <!-- Bootstrap -->
     <link href="../../vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Font Awesome -->
     <link href="../../vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <!-- NProgress -->
+    <link href="../../vendors/nprogress/nprogress.css" rel="stylesheet">
+    <!-- iCheck -->
+    <link href="../../vendors/iCheck/skins/flat/green.css" rel="stylesheet">
+
     <!-- Custom Theme Style -->
     <link href="../../build/css/custom.min.css" rel="stylesheet">
-    <%
-        SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
-        String date = sdf.format(new Date());
-    %>
-
-    <c:if test="${not empty loginError}">
-        <script>
-            window.addEventListener("load",function(){
-                alert("${loginError}");
-            });
-        </script>
-    </c:if>
-
+    <link href="cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">
+    <link href="../../vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="../../vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <!-- NProgress -->
+    <link href="../../vendors/nprogress/nprogress.css" rel="stylesheet">
+    <!-- iCheck -->
+    <link href="../../vendors/iCheck/skins/flat/green.css" rel="stylesheet">
     <!-- Datatables -->
+
     <link href="../../vendors/datatables.net-bs/css/dataTables.bootstrap.min.css" rel="stylesheet">
     <link href="../../vendors/datatables.net-buttons-bs/css/buttons.bootstrap.min.css" rel="stylesheet">
     <link href="../../vendors/datatables.net-fixedheader-bs/css/fixedHeader.bootstrap.min.css" rel="stylesheet">
     <link href="../../vendors/datatables.net-responsive-bs/css/responsive.bootstrap.min.css" rel="stylesheet">
+    <link href="../../vendors/datatables.net-scroller-bs/css/scroller.bootstrap.min.css" rel="stylesheet">
 
-    <style>
-        .large-btn {
-            height: 40px;
-            width: 100%;
-            font-family: "Playfair Display", Georgia, "Times New Roman", serif;
-            font-weight: bolder;
+    <!-- Custom Theme Style -->
+    <link href="../../build/css/custom.min.css" rel="stylesheet">
+    <link href="../../css/common.css" rel="stylesheet">
+    <!-- Custom Theme Style -->
+    <link href="../../build/css/custom.min.css" rel="stylesheet">
 
-        }
-
-        .large-btn:hover {
-            color: #0f0f0f;
-        }
-
-        #chartdiv {
-            position: relative;
-            top: 40px;
-            width: 100%;
-            height: 500px;
-        }
-
-        #chartdiv1 {
-            position: relative;
-            top: 40px;
-            width: 100%;
-            height: 500px;
-        }
-    </style>
+    <%
+        SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
+        String date = sdf.format(new Date());
+    %>
     <style>
         .large-btn {
             height: 90px;
@@ -79,94 +74,31 @@
             font-size: 27px;
         }
 
-        .btnq2:hover {
-            transform: scale(1.05, 1.1);
-            transition: 0.8s ease;
-            -webkit-transition: 0.8s ease;
-            -moz-transition: 0.8s ease;
-        }
-
-        .btnq3:hover {
-            transform: scale(1.3, 1.3);
-            transition: 0.8s ease;
-            -webkit-transition: 0.8s ease;
-            -moz-transition: 0.8s ease;
-        }
-        #chartdiv {
-            width: 100%;
-            height: 500px;
-        }
-
-        #chartdiv1 {
-            width: 100%;
-            height: 500px;
-        }
-
         .large-btn:hover {
-            color: #cebbbb;
+            color: #0f0f0f;
         }
-        /*//////////////////////////////////////////////////////////////*/
-
-        .containerx {
-            display: flex;
-
-        }
-
-        .btnq {
-            text-decoration: none;
-            border: 5px solid rgb(174, 182, 203);
-            position: relative;
-            overflow: hidden;
-            height: 90px;
-            width: 100%;
-            font-size: 1.5rem;
-            text-align: center;
-            border-radius: 5px 5px;
-        }
-
-        .btnq:before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: -00%;
-            text-align: center;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(
-                    120deg,
-                    transparent,
-                    rgba(135, 141, 156, 0.4),
-                    transparent
-            );
-            transition: all .8s;
-        }
-
-        .btnq:hover:before {
-            left: 100%;
-        }
-
     </style>
-
 </head>
-
 <body class="nav-md" style="cursor: pointer">
+
 <div class="container body">
     <div class="main_container">
 
-
         <!-- Side header -->
-        <jsp:include page="sideHeader.jsp"/>
+        <jsp:include page="sideHeader.jsp" />
         <!-- /Side header -->
 
         <!-- Top header -->
-        <jsp:include page="topHeader.jsp"/>
+        <jsp:include page="topHeader.jsp" />
         <!-- /Top header -->
+
 
         <!-- page content -->
         <div class="right_col" role="main">
+
             <div class="page-title">
                 <div class="title_left">
-                    <h3>Add Banquet
+                    <h3>Generate Banquet Bill
                         <small>Welcome To Hotel Hareesha</small>
                     </h3>
                     <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
@@ -183,9 +115,7 @@
                     </div>
                 </div>
 
-                <%--Time--%>
                 <div class="title_right">
-
                     <script>
 
                         function formatTime() {
@@ -265,114 +195,50 @@
                     </form>
                 </div>
             </div>
-            <%--/Time--%>
+            <div class="clearfix"></div>
 
             <%--Input Feilds--%>
             <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
                 <div class="col-12 col-sm-12 col-md-12 col-lg-5 col-xl-5">
-                    <form method="POST"  action="saveBanquet" name="saveBanquet">
+                    <form method="POST"  action="updateBill" name="saveBanquet">
 
                         <div class="form-group">
 
                             <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
-                                <label >Banquet Id</label>
-                                <input type="number" value="${topBanquetId}" class="form-control"
-                                       required="required" name="orderId"
-                                       id="orderId" placeholder="Banquet Id" readonly/></div>
+                                <label >Bill Id</label>
+                                <input type="text" class="form-control"
+                                       required="required" name="billId"
+                                       id="billId" placeholder="Bill Id" readonly/></div>
 
                             <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
-                                <label for="orderId">Customer Id</label>
-                                <input type="text" value="${topCustomerId}" class="form-control"
-                                       required="required" name="customerId"
-                                       id="customerId" placeholder="Customer Id" readonly/></div>
+                                <label for="billId">Advance Fee</label>
+                                <input type="text" class="form-control"
+                                       required="required" name="advancePayment"
+                                       id="advancePayment" placeholder="Advance Fee" readonly/></div>
+
                         </div>
 
                         <div class="form-group">
-
-
                             <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6"> <br>
-                                <label for="orderId">Customer Name</label>
+                                <label for="billId">Food Prices</label>
                                 <input type="text" class="form-control"
-                                       required="required" name="name"
-                                       id="name" placeholder="Customer Name"/></div>
-
-                            <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6"> <br>
-                                <label for="orderId">Address</label>
-                                <input type="text" class="form-control"
-                                       required="required" name="address"
-                                       id="address" placeholder="Address"/></div>
+                                       required="required" name="foodPrice"
+                                       id="foodPrice" placeholder="Food Price" readonly/></div>
                         </div>
 
 
                         <div class="form-group">
+
                             <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6"> <br>
-                                <label for="orderId">Email</label>
+                                <label for="billId">Other Prices</label>
                                 <input type="text" class="form-control"
-                                       required="required" name="email"
-                                       id="email" placeholder="Email"/></div>
-
-                            <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6"> <br>
-                                <label for="orderId">Mobile No</label>
-                                <input type="text" class="form-control"
-                                       required="required" name="contactNumber"
-                                       id="contactNumber" placeholder="Mobile No"/></div>
-                        </div>
-
-                        <div class="form-group">
-
-                            <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6"> <br>
-                                <label for="orderId">Date</label>
-                                <input type="date" class="form-control"
-                                       required="required" name="date"
-                                       id="date" placeholder="Date"/></div>
-                            <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6"> <br>
-                                <label for="orderId">Hall No</label>
-                                <select class="form-control"required="required" name="hallId"
-                                        id="hallId">
-                                    <option>Choose Hall No</option>
-                                    <option value="No 1">No 1</option>
-                                    <option value="No 2">No 2</option>
-                                </select>
-
+                                       required="required" name="otherPrices"
+                                       id="otherPrices" placeholder="Other Prices"/>
                             </div>
-                            <br>
-                        </div>
-                        <div class="form-group">
-                            <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6"> <br>
-                                <label for="orderId">Num Of Plates</label>
-                                <input type="text" class="form-control"
-                                       required="required" name="noOfPlates"
-                                       id="noOfPlates" placeholder="Num Of Plates"/></div>
-
-                            <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6"> <br>
-                                <label for="orderId">Package</label>
-                                <select class="form-control"required="required" name="menuId"
-                                        id="menuId">
-                                    <option>Choose Package</option>
-                                    <option value="1">Bronze</option>
-                                    <option value="2">Silver</option>
-                                    <option value="3">Gold</option>
-                                    <option value="4">Platinum</option>
-                                </select>
-
-                            </div>
-
-                            <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6"> <br>
-                                <input type="hidden" required="required" name="banquetBillId"
-                                       id="billId" value="${topBanquetBillId}">
-                                <label for="orderId">Advance Payment</label>
-                                <input type="text" class="form-control"
-                                       required="required" name="advanceFee"
-                                       id="advancePayment" placeholder="Advance Payment"/></div>
-
                         </div>
 
-
-
-
-
-                        <button type='submit' class="btn btn-primary" style="width: 50%; top: 20px; position: relative" value="Register">
-                            Submit
+                        <button type='submit' class="btn btn-primary" style="width: 50%; top: 20px; position: relative" value="">
+                            Update Bill
                         </button>
                         <button type='reset' class="btn btn-outline-success" style="top: 20px; position: relative" value="">Reset</button>
 
@@ -384,8 +250,8 @@
                     <div class="row">
                         <div class="x_panel">
                             <div class="x_title">
-                                <h2>Registered Customers
-                                    <small>Find customers</small>
+                                <h2>Upcoming Banquets
+                                    <small>unconfirmed banquet</small>
                                 </h2>
                                 <ul class="nav navbar-right panel_toolbox">
                                     <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
@@ -409,24 +275,28 @@
                                             <table id="datatable-buttons" class="table table-striped table-bordered">
                                                 <thead class="thead-light">
                                                 <tr>
-                                                    <th>Customer Id</th>
+                                                    <th>Banquet Id</th>
                                                     <th>Name</th>
-                                                    <th>Address</th>
-                                                    <th>MobileNo</th>
-                                                    <th>Email</th>
-
-
+                                                    <th>Date</th>
+                                                    <th>Bill Id</th>
+                                                    <th>Advance Payment</th>
+                                                    <th>Food Price</th>
+                                                    <th>Other Price</th>
+                                                    <th>Total Bill</th>
                                                 </tr>
 
                                                 </thead>
                                                 <tbody>
-                                                <c:forEach items="${loadTable}" var="a">
+                                                <c:forEach items="${loadTable}" var="e">
                                                     <tr>
-                                                        <td>${a.customerId}</td>
-                                                        <td>${a.name}</td>
-                                                        <td>${a.address}</td>
-                                                        <td>${a.contactNumber}</td>
-                                                        <td>${a.email}</td>
+                                                        <td>${e.orderId}</td>
+                                                        <td>${e.name}</td>
+                                                        <td>${e.date}</td>
+                                                        <td>${e.banquetBillId}</td>
+                                                        <td>${e.advanceFee}</td>
+                                                        <td>${e.noOfPlates * e.unitPrise}</td>
+                                                        <td>${e.otherPrice}</td>
+                                                        <td>${(e.noOfPlates * e.unitPrise)+e.advanceFee+e.otherPrice}</td>
                                                     </tr>
                                                 </c:forEach>
                                                 </tbody>
@@ -439,18 +309,25 @@
                     </div>
                 </div>
                 <%--/Table--%>
+            </div>
 
-            <%--/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////--%>
-
-
+            <%--/////////////////////////////////////////////    /////////////////////////////////////////////--%>
         </div>
     </div>
     <!-- /page content -->
 
+
+
     <!-- footer content -->
-    <jsp:include page="footer.jsp"/>
+    <jsp:include page="footer.jsp" />
     <!-- /footer content -->
+
 </div>
+
+
+<%--//////////////////////////////////////////////////////////////////////////////////////////////////--%>
+
+
 </div>
 
 
@@ -458,11 +335,28 @@
 <script src="../../vendors/jquery/dist/jquery.min.js"></script>
 <!-- Bootstrap -->
 <script src="../../vendors/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+<!-- FastClick -->
+<script src="../../vendors/fastclick/lib/fastclick.js"></script>
+<!-- NProgress -->
+<script src="../../vendors/nprogress/nprogress.js"></script>
+<!-- iCheck -->
+<script src="../../vendors/iCheck/icheck.min.js"></script>
 
-<!-- Datatables -->
+<!-- jQuery -->
+<script src="../../vendors/jquery/dist/jquery.min.js"></script>
+<!-- Bootstrap -->
+<script src="../../vendors/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+<!-- FastClick -->
+<script src="../../vendors/fastclick/lib/fastclick.js"></script>
+<!-- NProgress -->
+<script src="../../vendors/nprogress/nprogress.js"></script>
+<!-- iCheck -->
+<script src="../../vendors/iCheck/icheck.min.js"></script>
+
+
+<!-- Bootstrap -->
 <script src="../../vendors/datatables.net/js/jquery.dataTables.min.js"></script>
 <script src="../../vendors/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
-<%--Show Print Buttons--%>
 <script src="../../vendors/datatables.net-buttons/js/dataTables.buttons.min.js"></script>
 <script src="../../vendors/datatables.net-buttons-bs/js/buttons.bootstrap.min.js"></script>
 <script src="../../vendors/datatables.net-buttons/js/buttons.flash.min.js"></script>
@@ -470,26 +364,23 @@
 <script src="../../vendors/datatables.net-buttons/js/buttons.print.min.js"></script>
 <script src="../../vendors/datatables.net-fixedheader/js/dataTables.fixedHeader.min.js"></script>
 <script src="../../vendors/datatables.net-keytable/js/dataTables.keyTable.min.js"></script>
-<%--Responsive Table--%>
 <script src="../../vendors/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
 <script src="../../vendors/datatables.net-responsive-bs/js/responsive.bootstrap.js"></script>
-<%--<script src="../../vendors/datatables.net-scroller/js/dataTables.scroller.min.js"></script>--%>
-<%--Print--%>
+<script src="../../vendors/datatables.net-scroller/js/dataTables.scroller.min.js"></script>
 <script src="../../vendors/jszip/dist/jszip.min.js"></script>
+<script src="../../vendors/iCheck/icheck.min.js"></script>
 <!-- Custom Theme Scripts -->
 <script src="../../build/js/custom.min.js"></script>
-<%--Pie Chart 1--%>
 
 <script>
 
     var selectedRow = null;
     $("#datatable-buttons tbody").on('click', 'tr', function () {
         selectedRow = $(this);
-        $("#customerId").val($(this).find("td:nth-child(1)").text());
-        $("#name").val($(this).find("td:nth-child(2)").text());
-        $("#address").val($(this).find("td:nth-child(3)").text());
-        $("#contactNumber").val($(this).find("td:nth-child(4)").text());
-        $("#email").val($(this).find("td:nth-child(5)").text());
+        $("#billId").val($(this).find("td:nth-child(4)").text());
+        $("#advancePayment").val($(this).find("td:nth-child(5)").text());
+        $("#foodPrice").val($(this).find("td:nth-child(6)").text());
+        $("#otherPrices").val($(this).find("td:nth-child(7)").text());
         selectedRow.addClass('row-selected');
     });
 </script>

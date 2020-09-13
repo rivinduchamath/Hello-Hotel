@@ -20,10 +20,17 @@ public class BanquetAddDTO {
     private double foodPrice;
     private double otherPrice;
     private double total;
+    private double unitPrise;
 
+    public double getUnitPrise() {
+        return unitPrise;
+    }
 
+    public void setUnitPrise(double unitPrise) {
+        this.unitPrise = unitPrise;
+    }
 
-    public BanquetAddDTO(String orderId, String customerId, String email, String name, String address, int contactNumber, Date date, String hallId, String orderState, int noOfPlates, String submittedBy, String menuId, String banquetBillId, double advanceFee, double foodPrice, double otherPrice, double total) {
+    public BanquetAddDTO(String orderId, String customerId, String email, String name, String address, int contactNumber, Date date, String hallId, String orderState, int noOfPlates, String submittedBy, String menuId, String banquetBillId, double advanceFee, double foodPrice, double otherPrice, double total, double unitPrise) {
         this.orderId = orderId;
         this.customerId = customerId;
         this.email = email;
@@ -41,6 +48,7 @@ public class BanquetAddDTO {
         this.foodPrice = foodPrice;
         this.otherPrice = otherPrice;
         this.total = total;
+        this.unitPrise = unitPrise;
     }
 
     public BanquetAddDTO() {
@@ -83,6 +91,19 @@ public class BanquetAddDTO {
         this.banquetBillId = billId;
         this.orderState= orderState;
         this.total=total;
+    }
+
+    public BanquetAddDTO(String orderId, String name, Date date, String billId, double advancePayment, double foodPrice, double otherPrices, double total, double unitPrice, int noOfPlates) {
+        this.orderId = orderId;
+        this.name = name;
+        this.date = date;
+        this.banquetBillId = billId;
+        this.advanceFee =advancePayment;
+        this.foodPrice = foodPrice;
+        this.otherPrice = otherPrices;
+        this.total=total;
+        this.unitPrise =unitPrice;
+        this.noOfPlates =noOfPlates;
     }
 
 

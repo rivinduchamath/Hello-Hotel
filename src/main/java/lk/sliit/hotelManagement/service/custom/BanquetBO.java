@@ -7,6 +7,7 @@ import lk.sliit.hotelManagement.dto.beverage.BarOrderDTO;
 import lk.sliit.hotelManagement.dto.reservation.CustomerDTO;
 import lk.sliit.hotelManagement.service.SuperBO;
 
+import java.util.Date;
 import java.util.List;
 
 public interface BanquetBO extends SuperBO {
@@ -38,4 +39,14 @@ public interface BanquetBO extends SuperBO {
     void updateBanquetStatusToCancel(String orderId);
 
     void deleteBanquet(String idNo);
+
+    int checkAvailability(Date date);
+
+    int checkHall1Availability(Date date);
+
+    int checkHall2Availability(Date date);
+
+    List<BanquetAddDTO> findCheckDateBanquets(Date date);
+
+    List<BanquetAddDTO> findBanquetBill();
 }

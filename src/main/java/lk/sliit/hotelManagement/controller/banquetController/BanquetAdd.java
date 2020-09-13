@@ -66,6 +66,5 @@ public class BanquetAdd {
         return "redirect:/banquetAdd";
     }
 
-
-
 }
+
