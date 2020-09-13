@@ -183,6 +183,18 @@ public class BanquetBOImpl implements BanquetBO {
     }
 
     @Override
+    public void updateBill(BanquetAddDTO banquetAddDTO) {
+        double total = banquetAddDTO.getFoodPrice()+banquetAddDTO.getOtherPrice();
+        banquetBillDAO.updateFullBanquetBillTable(
+                banquetAddDTO.getAdvanceFee(),
+                banquetAddDTO.getFoodPrice(),
+                banquetAddDTO.getOtherPrice(),
+                total,
+                banquetAddDTO.getBanquetBillId()
+        );
+    }
+
+    @Override
     public int checkAvailability(Date date) {
         int count = banquetOrderDAO.countBanquetOrderByDateEquals(date);
         return count;

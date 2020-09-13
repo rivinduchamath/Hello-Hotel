@@ -200,27 +200,27 @@
             <%--Input Feilds--%>
             <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
                 <div class="col-12 col-sm-12 col-md-12 col-lg-5 col-xl-5">
-                    <form method="POST"  action="updateBill" name="saveBanquet">
+                    <form method="POST"  action="updateBill" name="updateBill">
 
                         <div class="form-group">
 
                             <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
                                 <label >Bill Id</label>
                                 <input type="text" class="form-control"
-                                       required="required" name="billId"
-                                       id="billId" placeholder="Bill Id" readonly/></div>
+                                       required="required" name="banquetBillId"
+                                       id="banquetBillId" placeholder="Bill Id" readonly/></div>
 
                             <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
-                                <label for="billId">Advance Fee</label>
+                                <label for="banquetBillId">Advance Fee</label>
                                 <input type="text" class="form-control"
-                                       required="required" name="advancePayment"
-                                       id="advancePayment" placeholder="Advance Fee" readonly/></div>
+                                       required="required" name="advanceFee"
+                                       id="advanceFee" placeholder="Advance Fee" readonly/></div>
 
                         </div>
 
                         <div class="form-group">
                             <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6"> <br>
-                                <label for="billId">Food Prices</label>
+                                <label for="banquetBillId">Food Prices</label>
                                 <input type="text" class="form-control"
                                        required="required" name="foodPrice"
                                        id="foodPrice" placeholder="Food Price" readonly/></div>
@@ -230,10 +230,10 @@
                         <div class="form-group">
 
                             <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6"> <br>
-                                <label for="billId">Other Prices</label>
+                                <label for="banquetBillId">Other Prices</label>
                                 <input type="text" class="form-control"
-                                       required="required" name="otherPrices"
-                                       id="otherPrices" placeholder="Other Prices"/>
+                                       required="required" name="otherPrice"
+                                       id="otherPrice" placeholder="Other Prices"/>
                             </div>
                         </div>
 
@@ -377,10 +377,10 @@
     var selectedRow = null;
     $("#datatable-buttons tbody").on('click', 'tr', function () {
         selectedRow = $(this);
-        $("#billId").val($(this).find("td:nth-child(4)").text());
-        $("#advancePayment").val($(this).find("td:nth-child(5)").text());
+        $("#banquetBillId").val($(this).find("td:nth-child(4)").text());
+        $("#advanceFee").val($(this).find("td:nth-child(5)").text());
         $("#foodPrice").val($(this).find("td:nth-child(6)").text());
-        $("#otherPrices").val($(this).find("td:nth-child(7)").text());
+        $("#otherPrice").val($(this).find("td:nth-child(7)").text());
         selectedRow.addClass('row-selected');
     });
 </script>
