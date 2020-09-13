@@ -11,10 +11,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-
 import java.util.List;
 
 @Controller
@@ -32,8 +30,7 @@ public class OnlineTable {
         try {
             int onlineCustomerId = Integer.parseInt(session.getAttribute("userId").toString());
             model.addAttribute("loggerId", onlineCustomerBO.findOne(onlineCustomerId));
-            System.out.println("Sttttttttttttttttttttttttt444444444444444444444ttttart");
-        } catch (NullPointerException d) {
+        } catch (Exception d) {
             return "onlineTable";
         }
         return "onlineTable";
@@ -44,7 +41,6 @@ public class OnlineTable {
 
         List<RestaurantTableDTO> p1 = restaurantBO.findAllTable();
         model.addAttribute("loadAllTables", p1);
-        System.out.println("Sttttttttttttttttttttttttt444444444444444444444ttttart");
         return "onlineTableDetails";
     }
 
@@ -55,15 +51,8 @@ public class OnlineTable {
         onlineTable.setStartTime(a);
         onlineTable.setEndTime(a2);*/
 
-        System.out.println("Sttttttttttttttttttttttttt444444444444444444444ttttart"+onlineTable.getReservedDate());
-
         List<RestaurantTableDTO> p1 = restaurantBO.findAllTableDateEqual(onlineTable.getReservedDate());
-        for (RestaurantTableDTO r: p1){
-            System.out.println(r+"rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr");
-        }
         model.addAttribute("loadAllTables", p1);
-
-        System.out.println("Ennnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnd");
         try {
             int onlineCustomerId = Integer.parseInt(session.getAttribute("userId").toString());
             model.addAttribute("loggerId", onlineCustomerBO.findOne(onlineCustomerId));

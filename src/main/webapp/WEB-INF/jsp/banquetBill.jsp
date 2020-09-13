@@ -296,7 +296,7 @@
                                                         <td>${e.advanceFee}</td>
                                                         <td>${e.noOfPlates * e.unitPrise}</td>
                                                         <td>${e.otherPrice}</td>
-                                                        <td>${(e.noOfPlates * e.unitPrise)+e.advanceFee+e.otherPrice}</td>
+                                                        <td>${(e.noOfPlates * e.unitPrise)+e.otherPrice}</td>
                                                     </tr>
                                                 </c:forEach>
                                                 </tbody>
