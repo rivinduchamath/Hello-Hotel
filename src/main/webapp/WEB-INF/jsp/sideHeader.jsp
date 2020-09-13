@@ -61,7 +61,7 @@
                     </li>
                     <li><a><i class="fa fa-tasks"></i> Front Desk <span class="fa fa-chevron-down"></span></a>
                         <ul class="nav child_menu">
-                            <li><a href="reservations">Reservation</a></li>
+                            <li><a href="reservation">Reservation</a></li>
                             <li><a href="banquets">BanquetManagement</a></li>
                         </ul>
                     </li>

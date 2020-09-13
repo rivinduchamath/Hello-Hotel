@@ -11,10 +11,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-
 import java.util.List;
 
 @Controller
@@ -54,10 +52,7 @@ public class OnlineTable {
         onlineTable.setEndTime(a2);*/
 
         List<RestaurantTableDTO> p1 = restaurantBO.findAllTableDateEqual(onlineTable.getReservedDate());
-        for (RestaurantTableDTO r: p1){
-        }
         model.addAttribute("loadAllTables", p1);
-
         try {
             int onlineCustomerId = Integer.parseInt(session.getAttribute("userId").toString());
             model.addAttribute("loggerId", onlineCustomerBO.findOne(onlineCustomerId));
