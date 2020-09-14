@@ -1,9 +1,8 @@
 package lk.sliit.hotelManagement.service.custom.impl;
 
-import lk.sliit.hotelManagement.dao.manageSystem.EmployeeDAO;
+import lk.sliit.hotelManagement.dao.manageSystemDAO.EmployeeDAO;
 import lk.sliit.hotelManagement.dao.hrDAO.DepartmentDAO;
 import lk.sliit.hotelManagement.dto.hr.DepartmentDTO;
-import lk.sliit.hotelManagement.dto.inventory.ItemTypeDTO;
 import lk.sliit.hotelManagement.dto.manager.EmployeeDTO;
 import lk.sliit.hotelManagement.entity.hr.Department;
 import lk.sliit.hotelManagement.entity.manager.Employee;

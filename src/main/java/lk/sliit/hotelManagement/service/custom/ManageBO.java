@@ -15,4 +15,7 @@ public interface ManageBO extends SuperBO {
     void deleteEmployee(int userId);
 
     List<DepartmentDTO> findAllDepartment();
+
+
+
 }

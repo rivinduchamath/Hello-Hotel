@@ -1,4 +1,4 @@
-package lk.sliit.hotelManagement.dao.manageSystem;
+package lk.sliit.hotelManagement.dao.manageSystemDAO;
 
 
 import lk.sliit.hotelManagement.entity.manager.Notice;
@@ -11,6 +11,9 @@ public interface NoticeDAO extends CrudRepository<Notice,Integer> {
     Notice findTopByOrderByNoticeIdDesc();
 
     Iterable<Notice> findAllByDateBetweenOrderByDateDesc(Date dt, Date todaydate);
+
+
+    Iterable<Notice> findProjectsByDateBetween(Date todaydate, Date afterOneMonth);
 
 
 }

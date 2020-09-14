@@ -1,7 +1,7 @@
 package lk.sliit.hotelManagement.service.custom.impl;
 
 import lk.sliit.hotelManagement.dao.hrDAO.AttendanceDAO;
-import lk.sliit.hotelManagement.dao.manageSystem.EmployeeDAO;
+import lk.sliit.hotelManagement.dao.manageSystemDAO.EmployeeDAO;
 import lk.sliit.hotelManagement.service.custom.AttendanceBO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

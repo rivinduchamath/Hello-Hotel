@@ -332,10 +332,10 @@
                                 <select class="form-control"required="required" name="menuId"
                                         id="menuId">
                                     <option>Choose Package</option>
-                                    <option value="1">Platinum</option>
-                                    <option value="2">Gold</option>
-                                    <option value="3">Silver</option>
-                                    <option value="4">Bronze</option>
+                                    <option value="1">Bronze</option>
+                                    <option value="2">Silver</option>
+                                    <option value="3">Gold</option>
+                                    <option value="4">Platinum</option>
                                 </select>
 
                             </div>

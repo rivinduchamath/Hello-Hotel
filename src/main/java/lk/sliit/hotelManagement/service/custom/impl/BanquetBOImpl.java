@@ -183,6 +183,66 @@ public class BanquetBOImpl implements BanquetBO {
     }
 
     @Override
+    public int checkAvailability(Date date) {
+        int count = banquetOrderDAO.countBanquetOrderByDateEquals(date);
+        return count;
+    }
+
+    @Override
+    public int checkHall1Availability(Date date) {
+        String hallNo = "No 1";
+        int count = banquetOrderDAO.countBanquetOrderByDateEqualsAndHallIdEquals(date,hallNo);
+        return count;
+    }
+
+    @Override
+    public int checkHall2Availability(Date date) {
+        String hallNo = "No 2";
+        int count = banquetOrderDAO.countBanquetOrderByDateEqualsAndHallIdEquals(date,hallNo);
+        return count;
+    }
+
+    @Override
+    public List<BanquetAddDTO> findCheckDateBanquets(Date date) {
+        Iterable <BanquetOrder> banquetOrders = banquetOrderDAO.findBanquetOrdersByDate(date);
+        List <BanquetAddDTO> dtos2 = new ArrayList<>();
+        for ( BanquetOrder a: banquetOrders){
+            dtos2.add(new BanquetAddDTO(
+                    a.getOrderId(),
+                    a.getCustomer().getName(),
+                    a.getCustomer().getContactNumber(),
+                    a.getDate(),
+                    a.getHallId(),
+                    a.getNoOfPlates(),
+                    a.getBanquetBill().getAdvancePayment(),
+                    a.getOrderState()
+            ));
+        }
+        return dtos2;
+    }
+
+    @Override
+    public List<BanquetAddDTO> findBanquetBill() {
+        Iterable<BanquetOrder> all = banquetOrderDAO.findAll();
+        List<BanquetAddDTO> dtos = new ArrayList<>();
+        for ( BanquetOrder a: all){
+            dtos.add(new BanquetAddDTO(
+                    a.getOrderId(),
+                    a.getCustomer().getName(),
+                    a.getDate(),
+                    a.getBanquetBill().getBillId(),
+                    a.getBanquetBill().getAdvancePayment(),
+                    a.getBanquetBill().getFoodPrice(),
+                    a.getBanquetBill().getOtherPrices(),
+                    a.getBanquetBill().getTotal(),
+                    a.getMenu().getUnitPrice(),
+                    a.getNoOfPlates()
+            ));
+        }
+        return dtos;
+    }
+
+    @Override
     public List<BanquetAddDTO> findTodayBanquets() {
         Date todayDate = new Date();
         Iterable <BanquetOrder> banquetOrders = banquetOrderDAO.findBanquetOrdersByDate(todayDate);

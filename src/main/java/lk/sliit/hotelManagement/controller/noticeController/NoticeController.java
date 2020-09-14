@@ -16,6 +16,8 @@ import java.util.List;
 @Controller
 public class NoticeController { //notice.jsp For All Notice
 
+
+
     @Autowired
     NoticeBO noticeBO;
 

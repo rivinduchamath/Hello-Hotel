@@ -16,14 +16,10 @@ public class ReservationController {
     @Autowired
     IndexLoginBO indexLoginBO;
 
-
-
-
     @GetMapping("/reservation")
     public String loginPage(Model model){
         model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
-
-        return "redirect:/reservation";
+        return "reservation";
 
     }
 }

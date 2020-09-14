@@ -62,9 +62,9 @@ public class MailSendImpl implements MailSend {
             msg.setFrom(smsSender);
 
 
-            System.out.println("++Important++" + employeeDTO);
 
-            msg.setText("Sensor Name: " + employeeDTO.getName() +"\n\n"+
+
+            msg.setText("Sender Name: " + employeeDTO.getName() +"\n\n"+
                     "Floor Number: " + employeeDTO.getEmail() +"\n\n"+
                     "dsdsa" + employeeDTO.getPassword()
             );

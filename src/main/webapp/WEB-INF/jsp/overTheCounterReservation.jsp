@@ -31,7 +31,7 @@
 
     <c:if test="${not empty loginError}">
         <script>
-            window.addEventListener("load",function(){
+            window.addEventListener("load", function () {
                 alert("${loginError}");
             });
         </script>
@@ -92,6 +92,7 @@
             -webkit-transition: 0.8s ease;
             -moz-transition: 0.8s ease;
         }
+
         #chartdiv {
             width: 100%;
             height: 500px;
@@ -105,6 +106,7 @@
         .large-btn:hover {
             color: #cebbbb;
         }
+
         /*//////////////////////////////////////////////////////////////*/
 
         .containerx {
@@ -166,15 +168,26 @@
         <div class="right_col" role="main">
             <div class="page-title">
                 <div class="title_left">
+
                     <h3>New Reservation
                         <small>Welcome To Hotel Hareesha</small>
                     </h3>
+
+
                     <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
-                        <div class="col-6 col-sm-6 col-md-6 col-lg-4 col-xl-4">
+                        <div class="col-6 col-sm-6 col-md-8 col-lg-8 col-xl-8">
+                            <a href="/reservation">
+                                <button style="display: inline-block; border: 5px solid rgb(174, 182, 203);background-color: #45526e;
+                                    color: #c6d4d3;font-weight: bolder" type="button" class="btnq2 btn"><i
+                                        class="fa fa-reply">
+                                    Back</i>
+                                </button>
+                            </a>
                             <a href="/reservation">
                                 <button style=" border: 5px solid rgb(174, 182, 203);background-color: #45526e;
-                                    color: #c6d4d3;font-weight: bolder" type="button"  class="btnq2 btn"><i class="fa fa-reply">
-                                    Back</i>
+                                    color: #c6d4d3;font-weight: bolder" type="button" class="btnq2 btn"><i
+                                        class="fa fa-fast-forward">
+                                    Next</i>
                                 </button>
                             </a>
 
@@ -270,10 +283,9 @@
             <%--Input Feilds--%>
             <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
                 <div class="col-12 col-sm-12 col-md-12 col-lg-5 col-xl-5">
-                    <form method="POST"  action="saveOverTheCounterCustomer">
+                    <form method="POST" action="saveOverTheCounterCustomer">
 
                         <div class="form-group">
-
 
 
                             <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
@@ -283,54 +295,54 @@
                                        id="customerId" placeholder="Customer Id"/></div>
 
 
-                        <div class="form-group">
+                            <div class="form-group">
 
 
-                            <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6"> <br>
-                                <label>Customer Name</label>
-                                <input type="text" class="form-control"
-                                       required="required" name="name"
-                                       id="name" placeholder="Customer Name"/></div>
+                                <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6"><br>
+                                    <label>Customer Name</label>
+                                    <input type="text" class="form-control"
+                                           required="required" name="name"
+                                           id="name" placeholder="Customer Name"/></div>
 
-                            <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6"> <br>
-                                <label>Address</label>
-                                <input type="text" class="form-control"
-                                       required="required" name="address"
-                                       id="address" placeholder="Address"/></div>
-                        </div>
-
-
-                        <div class="form-group">
-                            <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6"> <br>
-                                <label>Email</label>
-                                <input type="email" class="form-control"
-                                       required="required" name="email"
-                                       id="email" placeholder="Email"/></div>
-
-                            <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6"> <br>
-                                <label>Mobile No</label>
-                                <input type="number" class="form-control"
-                                       required="required" name="contactNumber"
-                                       id="contactNumber" placeholder="Mobile No"/></div>
-                        </div>
+                                <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6"><br>
+                                    <label>Address</label>
+                                    <input type="text" class="form-control"
+                                           required="required" name="address"
+                                           id="address" placeholder="Address"/></div>
+                            </div>
 
 
-                        <div class="form-group">
-                            <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6"> <br>
-                                <label>Age</label>
-                                <input type="number" class="form-control"
-                                       required="required" name="noOfPlates"
-                                       id="noOfPlates" placeholder="Age"/></div>
-                        </div>
+                            <div class="form-group">
+                                <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6"><br>
+                                    <label>Email</label>
+                                    <input type="email" class="form-control"
+                                           required="required" name="email"
+                                           id="email" placeholder="Email"/></div>
+
+                                <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6"><br>
+                                    <label>Mobile No</label>
+                                    <input type="number" class="form-control"
+                                           required="required" name="contactNumber"
+                                           id="contactNumber" placeholder="Mobile No"/></div>
+                            </div>
 
 
+                            <div class="form-group">
+                                <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6"><br>
+                                    <label>Age</label>
+                                    <input type="number" class="form-control"
+                                           required="required" name="noOfPlates"
+                                           id="noOfPlates" placeholder="Age"/></div>
+                            </div>
 
 
-
-                        <button type='submit' class="btn btn-primary" style="width: 50%; top: 20px; position: relative" value="Register">
-                            Submit
-                        </button>
-                        <button type='reset' class="btn btn-outline-success" style="top: 20px; position: relative" value="">Reset</button>
+                            <button type='submit' class="btn btn-primary"
+                                    style="width: 50%; top: 20px; position: relative" value="Register">
+                                Submit
+                            </button>
+                            <button type='reset' class="btn btn-outline-success" style="top: 20px; position: relative"
+                                    value="">Reset
+                            </button>
                         </div>
                     </form>
                 </div>
@@ -360,37 +372,37 @@
                             </div>
                             <div class="x_content">
                                 <div class="row">
-                                       <div class="card-box table-responsive">
-                                            <table id="datatable-buttons" class="table table-striped table-bordered">
-                                                <thead class="thead-light">
+                                    <div class="card-box table-responsive">
+                                        <table id="datatable-buttons" class="table table-striped table-bordered">
+                                            <thead class="thead-light">
+                                            <tr>
+                                                <th>Customer Id</th>
+                                                <th>Name</th>
+                                                <th>Address</th>
+                                                <th>MobileNo</th>
+                                                <th>Email</th>
+                                                <th></th>
+
+
+                                            </tr>
+
+                                            </thead>
+                                            <tbody>
+                                            <c:forEach items="${loadReservationCustomer}" var="a">
                                                 <tr>
-                                                    <th>Customer Id</th>
-                                                    <th>Name</th>
-                                                    <th>Address</th>
-                                                    <th>MobileNo</th>
-                                                    <th>Email</th>
-                                                    <th></th>
-
-
+                                                    <td>${a.customerId}</td>
+                                                    <td>${a.name}</td>
+                                                    <td>${a.address}</td>
+                                                    <td>${a.contactNumber}</td>
+                                                    <td>${a.email}</td>
+                                                    <td><a href="deleteCustomer/${a.customerId}">
+                                                        <i class="fa fa-trash"></i>
+                                                    </a></td>
                                                 </tr>
-
-                                                </thead>
-                                                <tbody>
-                                                <c:forEach items="${loadReservationCustomer}" var="a">
-                                                    <tr>
-                                                        <td>${a.customerId}</td>
-                                                        <td>${a.name}</td>
-                                                        <td>${a.address}</td>
-                                                        <td>${a.contactNumber}</td>
-                                                        <td>${a.email}</td>
-                                                        <td> <a href="deleteCustomer/${a.customerId}">
-                                                            <i class="fa fa-trash"></i>
-                                                        </a></td>
-                                                    </tr>
-                                                </c:forEach>
-                                                </tbody>
-                                            </table>
-                                        </div>
+                                            </c:forEach>
+                                            </tbody>
+                                        </table>
+                                    </div>
 
                                 </div>
                             </div>

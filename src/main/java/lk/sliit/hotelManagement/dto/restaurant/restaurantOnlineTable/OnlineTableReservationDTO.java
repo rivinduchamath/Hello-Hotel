@@ -8,7 +8,8 @@ import java.util.Date;
 public class OnlineTableReservationDTO {
 
     private String onlineTableReservationId;
-    private java.sql.Date reservedDate;
+    @Temporal(TemporalType.DATE)
+    private Date reservedDate;
     private Date date;
     @Temporal(TemporalType.TIME)
     private Date startTime;
@@ -16,11 +17,12 @@ public class OnlineTableReservationDTO {
     private Date endTime;
     private int noOfTables;
     private String customer;
-    private String stat;
-    private String end;
+    private String vStatT;
+    private String vEndT;
+    private String vDate;
 
-    public OnlineTableReservationDTO(String onlineTableReservationId, java.sql.Date reservedDate,
-                                     Date date, java.util.Date startTime, java.util.Date endTime, int noOfTables, String customer) {
+    public OnlineTableReservationDTO(String onlineTableReservationId, Date reservedDate,
+                                     Date date, Date startTime, Date endTime, int noOfTables, String customer) {
         this.onlineTableReservationId = onlineTableReservationId;
         this.reservedDate = reservedDate;
         this.date = date;
@@ -33,22 +35,6 @@ public class OnlineTableReservationDTO {
     public OnlineTableReservationDTO() {
     }
 
-    public String getStat() {
-        return stat;
-    }
-
-    public void setStat(String stat) {
-        this.stat = stat;
-    }
-
-    public String getEnd() {
-        return end;
-    }
-
-    public void setEnd(String end) {
-        this.end = end;
-    }
-
     public String getOnlineTableReservationId() {
         return onlineTableReservationId;
     }
@@ -57,11 +43,11 @@ public class OnlineTableReservationDTO {
         this.onlineTableReservationId = onlineTableReservationId;
     }
 
-    public java.sql.Date getReservedDate() {
+    public Date getReservedDate() {
         return reservedDate;
     }
 
-    public void setReservedDate(java.sql.Date reservedDate) {
+    public void setReservedDate(Date reservedDate) {
         this.reservedDate = reservedDate;
     }
 
@@ -73,19 +59,19 @@ public class OnlineTableReservationDTO {
         this.date = date;
     }
 
-    public java.util.Date getStartTime() {
+    public Date getStartTime() {
         return startTime;
     }
 
-    public void setStartTime(java.util.Date startTime) {
+    public void setStartTime(Date startTime) {
         this.startTime = startTime;
     }
 
-    public java.util.Date getEndTime() {
+    public Date getEndTime() {
         return endTime;
     }
 
-    public void setEndTime(java.util.Date endTime) {
+    public void setEndTime(Date endTime) {
         this.endTime = endTime;
     }
 
@@ -105,6 +91,30 @@ public class OnlineTableReservationDTO {
         this.customer = customer;
     }
 
+    public String getvStatT() {
+        return vStatT;
+    }
+
+    public void setvStatT(String vStatT) {
+        this.vStatT = vStatT;
+    }
+
+    public String getvEndT() {
+        return vEndT;
+    }
+
+    public void setvEndT(String vEndT) {
+        this.vEndT = vEndT;
+    }
+
+    public String getvDate() {
+        return vDate;
+    }
+
+    public void setvDate(String vDate) {
+        this.vDate = vDate;
+    }
+
     @Override
     public String toString() {
         return "OnlineTableReservationDTO{" +
@@ -115,8 +125,8 @@ public class OnlineTableReservationDTO {
                 ", endTime=" + endTime +
                 ", noOfTables=" + noOfTables +
                 ", customer='" + customer + '\'' +
-                ", stat='" + stat + '\'' +
-                ", end='" + end + '\'' +
+                ", stat='" + vStatT + '\'' +
+                ", end='" + vEndT + '\'' +
                 '}';
     }
 }

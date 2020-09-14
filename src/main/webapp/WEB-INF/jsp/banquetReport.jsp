@@ -211,7 +211,6 @@
                                         <div class="  table">
                                             <table id="saq" class="table table-striped">
                                                 <thead>
-
                                                 <tr>
                                                     <th>Banquet Id</th>
                                                     <th>Bill Id</th>
@@ -225,22 +224,10 @@
                                                     <th>Total Pay</th>
                                                     <th>Status</th>
                                                 </tr>
-                                                <tr>
-                                                    <td>100</td>
-                                                    <td>150</td>
-                                                    <td>12.08.2020</td>
-                                                    <td>chanuka</td>
-                                                    <td>0717688591</td>
-                                                    <td>No 2</td>
-                                                    <td>Gold</td>
-                                                    <td>200</td>
-                                                    <td>10000</td>
-                                                    <td>30000</td>
-                                                    <td>finished</td>
-                                                </tr>
                                                 </thead>
+
                                                 <tbody>
-                                                <c:forEach items="${getSalaryData}" var="e">
+                                                <c:forEach items="${tableData}" var="e">
                                                     <tr>
                                                         <td>${e.salaryId}</td>
                                                         <td>${e.employeeID.idNo}</td>
@@ -249,10 +236,6 @@
                                                         <td>${e.otHours*e.otRate}</td>
                                                         <td>${e.bonus}</td>
                                                     </tr>
-                                                    <script>
-                                                        var aa = aa + ${e.otHours};
-                                                        document.getElementById("demo").innerHTML = 11;
-                                                    </script>
                                                 </c:forEach>
 
                                                 </tbody>
