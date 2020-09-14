@@ -2,7 +2,7 @@ package lk.sliit.hotelManagement.service.custom.impl;
 
 import lk.sliit.hotelManagement.dao.houseKeepingDAO.HouseKeepingDAO;
 import lk.sliit.hotelManagement.dao.hrDAO.AttendanceDAO;
-import lk.sliit.hotelManagement.dao.manageSystem.EmployeeDAO;
+import lk.sliit.hotelManagement.dao.manageSystemDAO.EmployeeDAO;
 import lk.sliit.hotelManagement.dto.houseKeeping.HotelRoomDTO;
 import lk.sliit.hotelManagement.dto.hr.AttendanceDTO;
 import lk.sliit.hotelManagement.entity.houseKeeping.HotelRoom;

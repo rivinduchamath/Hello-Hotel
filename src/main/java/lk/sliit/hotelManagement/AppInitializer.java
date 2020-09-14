@@ -8,7 +8,7 @@ package lk.sliit.hotelManagement;
   To change this template use File | Settings | File Templates.
 */
 
-import lk.sliit.hotelManagement.dao.manageSystem.EmployeeDAO;
+import lk.sliit.hotelManagement.dao.manageSystemDAO.EmployeeDAO;
 import lk.sliit.hotelManagement.entity.hr.Department;
 import lk.sliit.hotelManagement.entity.manager.Employee;
 import org.springframework.boot.CommandLineRunner;
@@ -38,17 +38,17 @@ public class AppInitializer {
             List<String> names = Arrays.asList ( "1");
             names.forEach ( name -> manageDAO.save ( new Employee(
                             1,
-                            "Rivindu Wijayarathna",
+                            "Sachini Perera",
                             "0223123456",
                             "someOne@gmail.com",
-                            "Galle",
+                            "Colombo",
                             "Admin",
                             "1",
                              date,
-                            "Male",
+                            "Female",
                             2112122,
                              date,
-                            "img.jpg",
+                            "dss.jpeg",
                             new Department(1,"Manage")
                            )
                     )
