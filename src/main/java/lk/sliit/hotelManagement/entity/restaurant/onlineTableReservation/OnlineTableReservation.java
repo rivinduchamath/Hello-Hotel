@@ -14,7 +14,9 @@ public class OnlineTableReservation {
 
     @Id
     private int onlineTableReservationId;
+    @Temporal(TemporalType.DATE)
     private Date reservedDate;
+    @Temporal(TemporalType.DATE)
     private Date date;
     @DateTimeFormat(pattern="hh:mm:ss" )
     @Temporal(TemporalType.TIME)
@@ -37,7 +39,6 @@ public class OnlineTableReservation {
         this.endTime = endTime;
         this.noOfTables = noOfTables;
         this.customer = customer;
-        this.orderDetails = orderDetails;
     }
 
     public OnlineTableReservation() {
@@ -104,4 +105,7 @@ public class OnlineTableReservation {
         return orderDetails;
     }
 
+    public void addOrderDetail(OnlineTableReservationDetails orderDetail){
+        this.orderDetails.add(orderDetail);
+    }
 }

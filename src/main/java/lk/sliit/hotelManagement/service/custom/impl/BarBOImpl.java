@@ -100,7 +100,7 @@ public class BarBOImpl implements BarBO {
                 barOrderDTO.getId (),
                 barOrderDTO.getDate(),
                 barOrderDTO.getCustomerId (),
-                barOrderDTO.getUser () ));
+                barOrderDTO.getUser ()));
 
         for (BarOrderDetailDTO orderDetail :list ) {
             barOrdersDetailsDAO.save(new BarOrderDetails(
