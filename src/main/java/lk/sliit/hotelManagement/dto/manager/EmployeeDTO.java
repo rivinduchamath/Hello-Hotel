@@ -52,6 +52,10 @@ public class EmployeeDTO {
         this.password = password;
     }
 
+    public EmployeeDTO(int userId) {
+        this.userId = userId;
+    }
+
     public int getDepartment() {
         return department;
     }

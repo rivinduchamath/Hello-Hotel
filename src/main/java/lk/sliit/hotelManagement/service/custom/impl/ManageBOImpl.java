@@ -3,8 +3,12 @@ package lk.sliit.hotelManagement.service.custom.impl;
 import lk.sliit.hotelManagement.dao.manageSystemDAO.EmployeeDAO;
 import lk.sliit.hotelManagement.dao.hrDAO.DepartmentDAO;
 import lk.sliit.hotelManagement.dto.hr.DepartmentDTO;
+import lk.sliit.hotelManagement.dto.kitchen.FoodItemDTO;
+import lk.sliit.hotelManagement.dto.kitchen.MenuDTO;
 import lk.sliit.hotelManagement.dto.manager.EmployeeDTO;
 import lk.sliit.hotelManagement.entity.hr.Department;
+import lk.sliit.hotelManagement.entity.kitchen.FoodItem;
+import lk.sliit.hotelManagement.entity.kitchen.Menu;
 import lk.sliit.hotelManagement.entity.manager.Employee;
 import lk.sliit.hotelManagement.service.custom.ManageBO;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -83,5 +87,38 @@ public class ManageBOImpl implements ManageBO {
             ));
         }
         return dtos;
+    }
+
+    @Override
+    public EmployeeDTO findHighestEmployeeId() {
+        Employee lastItem = null;
+        try {
+            lastItem = manageDAO.findTopByOrderByUserIdDesc();
+        } catch (Exception e){
+
+        }
+
+        return new EmployeeDTO(lastItem.getUserId());
+    }
+
+    @Override
+    public EmployeeDTO findEmployeeById(int userId) {
+        Employee employee = manageDAO.findOne(userId);
+        EmployeeDTO employeeDTO = new EmployeeDTO(
+                employee.getUserId(),
+                employee.getName(),
+                employee.getMobileNo(),
+                employee.getEmail(),
+                employee.getAddress(),
+                employee.getPosition(),
+                employee.getPassword(),
+                employee.getDateOfBirth(),
+                employee.getGender(),
+                employee.getSalary(),
+                employee.getDate(),
+                employee.getImage(),
+                employee.getDepartment().getDepartmentId()
+        );
+        return employeeDTO;
     }
 }

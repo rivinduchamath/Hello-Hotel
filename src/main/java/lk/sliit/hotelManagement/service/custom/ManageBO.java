@@ -17,5 +17,7 @@ public interface ManageBO extends SuperBO {
     List<DepartmentDTO> findAllDepartment();
 
 
+    EmployeeDTO findHighestEmployeeId();
 
+    EmployeeDTO findEmployeeById(int userId);
 }

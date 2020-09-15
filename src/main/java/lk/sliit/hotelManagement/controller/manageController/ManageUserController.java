@@ -3,6 +3,7 @@ package lk.sliit.hotelManagement.controller.manageController;
 import lk.sliit.hotelManagement.controller.SuperController;
 import lk.sliit.hotelManagement.dto.hr.DepartmentDTO;
 import lk.sliit.hotelManagement.dto.inventory.ItemTypeDTO;
+import lk.sliit.hotelManagement.dto.kitchen.MenuDTO;
 import lk.sliit.hotelManagement.dto.manager.EmployeeDTO;
 import lk.sliit.hotelManagement.service.custom.IndexLoginBO;
 import lk.sliit.hotelManagement.service.custom.MailSend;
@@ -43,7 +44,24 @@ public class ManageUserController {
     public String saveUser(@ModelAttribute EmployeeDTO employeeDTO, Model model) {
 
         model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
+        try {
+            EmployeeDTO employeeDTO1 = manageBO.findHighestEmployeeId();
+            EmployeeDTO employeeDTO2 = null;
+            try {
+                employeeDTO2 = manageBO.findEmployeeById(employeeDTO.getUserId());
+            }catch (NullPointerException d){
+                int maxId = (employeeDTO1.getUserId());
+                if (employeeDTO.getUserId()==(maxId)) {
+                    employeeDTO.setUserId((maxId));
+                } else {
+                    maxId++;
+                    employeeDTO.setUserId((maxId));
+                }
+            }
 
+        } catch (NullPointerException e){
+            employeeDTO.setUserId(1);
+        }
         manageBO.save(employeeDTO);
        try {
            mailSend.sendMailToNewEmployee(employeeDTO);
