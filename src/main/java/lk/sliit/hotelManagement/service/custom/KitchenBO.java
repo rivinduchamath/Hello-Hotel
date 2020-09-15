@@ -1,7 +1,9 @@
 package lk.sliit.hotelManagement.service.custom;
 
+import lk.sliit.hotelManagement.dto.inventory.InventoryNoticeDTO;
 import lk.sliit.hotelManagement.dto.kitchen.FoodItemDTO;
 import lk.sliit.hotelManagement.dto.kitchen.MenuDTO;
+import lk.sliit.hotelManagement.dto.manager.EmployeeDTO;
 import lk.sliit.hotelManagement.service.SuperBO;
 
 
@@ -30,4 +32,7 @@ public interface KitchenBO extends SuperBO {
     void saveFoodDetail(MenuDTO menuDTO);
 
     List<MenuDTO> findFoodItemsDetails(int menuId);
+
+
+    List<InventoryNoticeDTO> findWeekOrderNotice();
 }
