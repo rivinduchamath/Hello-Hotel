@@ -48,7 +48,7 @@ public class AppInitializer {
                             "Female",
                             2112122,
                              date,
-                            "dss.jpeg",
+                            "https://res.cloudinary.com/dwdv5hhga/image/upload/v1600203476/oyt7fspuxa2crzakssl5.jpg",
                             new Department(1,"Manage")
                            )
                     )

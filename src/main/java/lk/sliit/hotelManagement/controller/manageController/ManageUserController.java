@@ -31,7 +31,8 @@ public class ManageUserController {
     @GetMapping("/manageUser")
     public String loginPage(HttpServletResponse response, Model model, HttpServletRequest request) {
         model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
-
+        EmployeeDTO employeeDTO = new EmployeeDTO();
+        model.addAttribute("employeeDTO",employeeDTO);
         List<EmployeeDTO> p = manageBO.findAllUser();
         model.addAttribute("loadAllUserTable", p);
         List<DepartmentDTO> p2 = manageBO.findAllDepartment();

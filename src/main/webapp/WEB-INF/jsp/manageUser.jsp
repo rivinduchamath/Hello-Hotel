@@ -9,6 +9,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page import="java.util.Date" %>
 <%@ page import="java.text.SimpleDateFormat" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <html lang="en">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -76,6 +77,38 @@
             width: 100%;
             height: 500px;
         }
+
+
+        /*    /////////////////////////////////////////////////////////////*/
+
+        .img-upload-card {
+            background: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            box-shadow: rgba(0, 0, 0, 0.117647) 0px 1px 6px, rgba(0, 0, 0, 0.117647) 0px 1px 4px;
+        }
+
+        .file-upload-container {
+            width: 100%;
+            height: 50px;
+            overflow: hidden;
+            background: #3F51B5;
+            user-select: none;
+            transition: all 150ms cubic-bezier(0.23, 1, 0.32, 1) 0ms;
+            text-align: center;
+            color: white;
+            line-height: 50px;
+            font-weight: 300;
+            font-size: 20px;
+        }
+
+        .file-upload-container:hover {
+            cursor: pointer;
+            background: #3949AB;
+        }
+
     </style>
 
 </head>
@@ -207,7 +240,8 @@
             <%--Input Feilds--%>
             <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
                 <div class="col-12 col-sm-12 col-md-12 col-lg-5 col-xl-5">
-                    <form method="POST" action="/saveUser" name="saveUser">
+
+                    <form:form action="saveUser" method="post" modelAttribute="employeeDTO">
 
                         <div class="form-group">
                             <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6"><br>
@@ -217,22 +251,25 @@
                                        id="userName" placeholder="User Name"/></div>
 
                             <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6"><br>
-                                <label >Position</label>
+                                <label>Position</label>
                                 <input type="text" class="form-control"
                                        required="required" name="position"
                                        id="position" placeholder="Position"/></div>
+                            <input type="hidden" class="form-control"
+                                   required="required" name="userId" value="0"
+                                   id="userId" placeholder="User Id"/>
                         </div>
                         <%--                    ///////////////////////////////--%>
 
                         <div class="form-group">
 
                             <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6"><br>
-                                <label >Salary</label>
+                                <label>Salary</label>
                                 <input type="number" class="form-control"
                                        required="required" name="salary"
                                        id="salary" placeholder="Salary"/></div>
                             <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6"><br>
-                                <label >Address</label>
+                                <label>Address</label>
                                 <input type="text" class="form-control"
                                        required="required" name="address"
                                        id="address" placeholder="Address"/></div>
@@ -240,14 +277,14 @@
                         <%--/////////////////////////////////////////--%>
                         <div class="form-group">
                             <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6"><br>
-                                <label >Password</label>
+                                <label>Password</label>
                                 <input type="text" class="form-control"
                                        required="required" name="password"
                                        id="password" placeholder="Password"/></div>
 
 
                             <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6"><br>
-                                <label >Email</label>
+                                <label>Email</label>
                                 <input type="email" class="form-control"
                                        required="required" name="email"
                                        id="email" placeholder="Email"/></div>
@@ -258,16 +295,16 @@
                         <div class="form-group">
 
                             <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6"><br>
-                                <label >Gender</label>
+                                <label>Gender</label>
                                 <select type="c" class="form-control"
-                                       required="required" name="gender"
-                                       id="gender" placeholder="Gender">
-                                <option>Male</option>
-                                <option>Female</option>
+                                        required="required" name="gender"
+                                        id="gender" placeholder="Gender">
+                                    <option>Male</option>
+                                    <option>Female</option>
                                 </select>
                             </div>
                             <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6"><br>
-                                <label >Mobile No</label>
+                                <label>Mobile No</label>
                                 <input type="text" class="form-control"
                                        required="required" name="mobileNo"
                                        id="mobileNo" placeholder="Mobile No"/></div>
@@ -295,7 +332,7 @@
 
 
                             <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6"><br>
-                                <label >DateOfBirth</label>
+                                <label>DateOfBirth</label>
                                 <input type="date" class="form-control"
                                        required="required" name="dateOfBirth"
                                        id="dateOfBirth" placeholder="DateOfBirth"/></div>
@@ -304,25 +341,38 @@
 
 
                             <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6"><br>
-                                <label >Date</label>
+                                <label>Date</label>
                                 <input type="date" class="form-control"
                                        required="required" name="date"
                                        id="date" placeholder="Date"/></div>
-                            <input type="hidden" class="form-control"
-                                   required="required" name="userId" value="0"
-                                   id="userId" placeholder="User Id"/>
                             <br>
+                            <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6"><br>
+                                <div class="col-md-5 col-lg-5 col-xl-5">
+
+                                    <label for="img-preview">Image</label>
+                                    <div class="img-upload-card ">
+                                        <c:choose>
+                                            <c:when test="${empty employeeDTO.image}">
+                                                <img src="../../images/picture.jpg" id="img-preview"
+                                                     style="width: 100%; height: 40px"/>
+                                            </c:when>
+                                            <c:otherwise>
+                                                <img src="${employeeDTO.image}" id="img-preview"
+                                                     style="width: 100%;height: 40px"/>
+                                            </c:otherwise>
+                                        </c:choose>
+                                        <label class="file-upload-container" for="file-upload"
+                                               style="font-size: 13px; padding: -10px 5px 0px 5px; height: 30px">
+                                            <input id="file-upload" type="file" style="display:none;">
+                                            Select
+                                        </label>
+                                    </div>
+                                </div>
+
+
+                            </div>
                         </div>
-
-                        <%--     <div class="form-group">
-                                 <label  class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6"> <br>
-                                     <a class="" title="Insert picture (or just drag & drop)" id=""><i
-                                             class="fa fa-picture-o"></i></a><span
-                                         class="required"></span></label>
-                                 <input type="file" id="image" alt="Login"
-                                        src="../../images/favicon.ico">
-                                 </div>--%>
-
+                        <form:hidden id="imgUrl" path="image" value="../../images/picture.jpg"/>
 
                         <button type='submit' class="btn btn-dark" style="width: 50%; top: 20px; position: relative"
                                 value="Register">
@@ -332,7 +382,7 @@
                                 value="">Reset
                         </button>
 
-                    </form>
+                    </form:form>
                 </div>
                 <%--/Input Feilds--%>
                 <%--Table--%>
@@ -388,7 +438,8 @@
                                                         <td>${e.name}</td>
                                                         <td>${e.position}</td>
                                                         <td>${e.mobileNo}</td>
-                                                        <td></td>
+                                                        <td><img src="${e.image}"
+                                                                 class="avatar" alt="Avatar"></td>
                                                         <td>${e.salary}</td>
                                                         <td>${e.address}</td>
                                                         <td>${e.email}</td>
@@ -673,9 +724,10 @@
 
     }); // end am4core.ready()
 </script>
-
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 <script>
 
+    var imageEmployee;
     var selectedRow = null;
     $("#datatable-buttons tbody").on('click', 'tr', function () {
         selectedRow = $(this);
@@ -692,8 +744,47 @@
         $("#date").val($(this).find("td:nth-child(11)").text());
         $("#dateOfBirth").val($(this).find("td:nth-child(12)").text());
     });
-</script>
 
-<%--/Pie Chart 2--%>
+
+    let imgPreview = document.getElementById('img-preview');
+    let fileUpload = document.getElementById('file-upload');
+    let imgUrl = document.getElementById("imgUrl");
+    let CLOUDINARY_API_URL = 'https://api.cloudinary.com/v1_1/dwdv5hhga/upload';
+    let CLOUDINARY_UPLOAD_PRESET = 'sqdn7zkx';
+
+    fileUpload.addEventListener('change', function (event) {
+
+        let file = event.target.files[0];
+
+        let formData = new FormData();
+
+        formData.append('file', file);
+
+        console.log("form-data", file);
+
+        formData.append('upload_preset', CLOUDINARY_UPLOAD_PRESET);
+
+        axios({
+            url: CLOUDINARY_API_URL, method: 'POST', headers: {
+
+                'Content-Type': 'application/x-www-form-urlencoded'
+            }, data:
+
+            formData
+        }).then(function (res) {
+            imgPreview.src = res.data.secure_url;
+            imgUrl.value = res.data.secure_url;
+        }).catch(function (err) {
+
+            console.error(err);
+        });
+
+
+    });
+
+</script>
+<%--sqdn7zkx--%>
+<%--https://api.cloudinary.com/v1_1/dwdv5hhga--%>
+
 </body>
 </html>

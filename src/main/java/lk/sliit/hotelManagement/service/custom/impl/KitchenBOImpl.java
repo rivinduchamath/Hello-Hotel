@@ -158,7 +158,7 @@ public class KitchenBOImpl implements KitchenBO {
         cal.add(Calendar.DATE, -7);
         java.util.Date beforeweek = cal.getTime();
         Date todaya = new Date();
-        Iterable<InventoryNotice> allItems = inventoryNoticeDAO.findAllByDateBetween(todaya,beforeweek);
+        Iterable<InventoryNotice> allItems = inventoryNoticeDAO.findAllByDateBetween(beforeweek,todaya);
         List<InventoryNoticeDTO> dtos = new ArrayList<>();
         for (InventoryNotice notice : allItems) {
             dtos.add(new InventoryNoticeDTO(
