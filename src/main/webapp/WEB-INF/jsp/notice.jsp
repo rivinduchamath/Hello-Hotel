@@ -96,15 +96,12 @@
                                 <div id="wizard" class="form_wizard wizard_horizontal">
 
                                     <div id="step-1">
-                                        <form class="form-horizontal form-label-left" method="post" action="noticSave"
+                                        <form class="form-horizontal form-label-left" method="post" action="noticeSave"
                                               name="noticSave">
 
                                             <div class="form-group row">
-                                                <label class="col-form-label col-md-3 col-sm-3 label-align"
-                                                       for="noticeId">Notice Id<span class="required">*</span>
-                                                </label>
                                                 <div class="col-md-6 col-sm-6 ">
-                                                    <input type="text" value="${genId}" readonly id="noticeId"
+                                                    <input type="hidden" value="0" readonly id="noticeId"
                                                            name="noticeId" required="required" class="form-control  ">
                                                 </div>
                                             </div>

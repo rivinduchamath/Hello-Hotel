@@ -39,7 +39,7 @@ public class NoticeBOImpl implements NoticeBO {
     @Override
     @Transactional(readOnly = true)
     public List<NoticeDTO> findAll() {
-        Iterable<Notice> all = noticeDAO.findAll();
+        Iterable<Notice> all = noticeDAO.findAllByOrderByDateDesc();
         List<NoticeDTO> dtos = new ArrayList<>();
         for (Notice a : all) {
             dtos.add(new NoticeDTO(
@@ -92,7 +92,7 @@ public class NoticeBOImpl implements NoticeBO {
         Calendar cal = Calendar.getInstance();
         cal.add(Calendar.DATE, -7);
         java.util.Date beforeWeek = cal.getTime();
-        Iterable <Notice> all = noticeDAO.findProjectsByDateBetween (beforeWeek ,todaydate);
+        Iterable <Notice> all = noticeDAO.findProjectsByDateBetweenOrderByDateDesc (beforeWeek ,todaydate);
         List<NoticeDTO> dtos = new ArrayList<>();
         for (Notice a : all) {
             dtos.add(new NoticeDTO(

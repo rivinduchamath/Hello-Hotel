@@ -13,7 +13,8 @@ public interface NoticeDAO extends CrudRepository<Notice,Integer> {
     Iterable<Notice> findAllByDateBetweenOrderByDateDesc(Date dt, Date todaydate);
 
 
-    Iterable<Notice> findProjectsByDateBetween(Date todaydate, Date afterOneMonth);
+    Iterable<Notice> findProjectsByDateBetweenOrderByDateDesc(Date todaydate, Date afterOneMonth);
 
 
+    Iterable<Notice> findAllByOrderByDateDesc();
 }

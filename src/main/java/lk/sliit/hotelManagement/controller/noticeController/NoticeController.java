@@ -2,6 +2,7 @@ package lk.sliit.hotelManagement.controller.noticeController;
 
 import lk.sliit.hotelManagement.controller.SuperController;
 import lk.sliit.hotelManagement.dto.hr.DepartmentDTO;
+import lk.sliit.hotelManagement.dto.manager.EmployeeDTO;
 import lk.sliit.hotelManagement.dto.manager.NoticeDTO;
 import lk.sliit.hotelManagement.service.custom.IndexLoginBO;
 import lk.sliit.hotelManagement.service.custom.ManageBO;
@@ -31,13 +32,6 @@ public class NoticeController { //notice.jsp For All Notice
         model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo((SuperController.idNo)));
 
         ModelAndView mav = new ModelAndView("notice");
-        try {
-            NoticeDTO totalCount = noticeBO.findId ( );
-            int x = ( totalCount.getNoticeId ( ) )+ 1;
-            model.addAttribute ( "genId", x);
-        } catch (NullPointerException e) {
-            model.addAttribute ( "genId", 1 );
-        }
         List<NoticeDTO> p = noticeBO.findAll();
         model.addAttribute("loadNoticeTable", p);
         List<DepartmentDTO> p2 = manageBO.findAllDepartment();
@@ -46,8 +40,27 @@ public class NoticeController { //notice.jsp For All Notice
         return mav;
     }
 
-    @PostMapping("noticSave")
+    @PostMapping("noticeSave")
     public String saveForm(@ModelAttribute NoticeDTO noticeDTO) {
+        try {
+            NoticeDTO noticeDTO1 = noticeBO.findId();
+            NoticeDTO noticeDTO2 = null;
+            try {
+                noticeDTO2 = noticeBO.findNoticeById(noticeDTO.getNoticeId());
+            }catch (NullPointerException d){
+                int maxId = (noticeDTO1.getNoticeId());
+                if (noticeDTO.getNoticeId()==(maxId)) {
+                    noticeDTO.setNoticeId((maxId));
+                } else {
+                    maxId++;
+                    noticeDTO.setNoticeId((maxId));
+                }
+            }
+
+        } catch (NullPointerException e){
+            noticeDTO.setNoticeId(1);
+        }
+
         noticeBO.saveNotice(noticeDTO);
         return "redirect:/notice";
     }
