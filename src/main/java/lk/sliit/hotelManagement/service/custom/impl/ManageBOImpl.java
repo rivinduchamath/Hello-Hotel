@@ -1,5 +1,6 @@
 package lk.sliit.hotelManagement.service.custom.impl;
 
+import lk.sliit.hotelManagement.dao.hrDAO.AttendanceDAO;
 import lk.sliit.hotelManagement.dao.manageSystemDAO.EmployeeDAO;
 import lk.sliit.hotelManagement.dao.hrDAO.DepartmentDAO;
 import lk.sliit.hotelManagement.dto.hr.DepartmentDTO;
@@ -26,7 +27,8 @@ public class ManageBOImpl implements ManageBO {
 
     @Autowired
     DepartmentDAO humanResourceDAO;
-
+    @Autowired
+    AttendanceDAO attendanceDAO;
     @Override
     public void save(EmployeeDTO employeeDTO) {
 
@@ -50,6 +52,7 @@ public class ManageBOImpl implements ManageBO {
     @Override
     public List<EmployeeDTO> findAllUser() {
         Iterable<Employee> all = manageDAO.findAll();
+
         List<EmployeeDTO> dtos = new ArrayList<>();
         for (Employee employee: all) {
             dtos.add(new EmployeeDTO(
@@ -69,6 +72,7 @@ public class ManageBOImpl implements ManageBO {
             ));
         }
         return dtos;
+
     }
 
     @Override

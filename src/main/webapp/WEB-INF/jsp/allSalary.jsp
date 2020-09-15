@@ -69,129 +69,14 @@
 <div class="container body">
     <div class="container body">
         <div class="main_container">
-            <div class="col-md-3 left_col">
-                <div class="left_col scroll-view">
-                    <div class="navbar nav_title" style="border: 0;">
-                        <a href="Dashboard" class="site_title"> <img style="margin-top: -0px; width: 40px;height: 40px"
-                                                                     src="../../images/favicon.ico"><span
-                                style="margin-top: 20px;">&nbsp;Four Seasons!</span></a>
-                    </div>
+            <!-- Side header -->
+            <jsp:include page="sideHeader.jsp"/>
+            <!-- /Side header -->
 
-                    <div class="clearfix"></div>
+            <!-- Top header -->
+            <jsp:include page="topHeader.jsp"/>
+            <!-- /Top header -->
 
-                    <!-- menu profile quick info -->
-                    <div class="profile clearfix">
-                        <div class="profile_pic" style=" width: 80px;height: 80px">
-                            <img src="../../images/icons/${loggerName.pic}" alt="..." class="img-circle profile_img">
-                        </div>
-                        <div class="profile_info">
-                            <span>Welcome,</span>
-                            <h2> ${loggerName.name}</h2>
-                        </div>
-                    </div>
-                    <!-- /menu profile quick info -->
-
-                    <br/>
-
-                    <!-- sidebar menu -->
-                    <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
-                        <div class="menu_section">
-                            <h3>General</h3>
-                            <ul class="nav side-menu">
-                                <li><a><i class="fa fa-home"></i> Home <span class="fa fa-chevron-down"></span></a>
-                                    <ul class="nav child_menu">
-                                        <li><a href="Dashboard">Dashboard</a></li>
-                                    </ul>
-                                </li>
-                                <li><a><i class="fa fa-edit"></i> Employee <span class="fa fa-chevron-down"></span></a>
-                                    <ul class="nav child_menu">
-                                        <li><a href="tables_dynamic">Employee Manage</a></li>
-                                        <li><a href="attendance">Attendance</a></li>
-                                        <li><a href="salary">Salary Manage</a></li>
-                                    </ul>
-                                </li>
-                                <li><a><i class="fa fa-desktop"></i>Project<span
-                                        class="fa fa-chevron-down"></span></a>
-                                    <ul class="nav child_menu">
-                                        <li><a href="projects">Projects</a></li>
-                                    </ul>
-                                </li>
-                                <li><a><i class="fa fa-table"></i> Notice <span class="fa fa-chevron-down"></span></a>
-                                    <ul class="nav child_menu">
-                                        <li><a href="notice">View All</a></li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="menu_section">
-                            <h3>Live On</h3>
-                            <ul class="nav side-menu">
-                                <li><a><i class="fa fa-user"></i> Employee Data <span
-                                        class="fa fa-chevron-down"></span></a>
-                                    <ul class="nav child_menu">
-                                        <li><a href="contacts">Contacts</a></li>
-                                        <li><a href="profile">Profile</a></li>
-                                    </ul>
-                                </li>
-                                <li><a><i class="fa fa-windows"></i> Extras <span class="fa fa-chevron-down"></span></a>
-                                    <ul class="nav child_menu">
-                                        <li><a href="media_gallery">View Images</a></li>
-                                        <li><a href="calendar">Calendar</a></li>
-                                        <li><a href="e_commerce">E-commerce</a></li>
-                                        <li><a href="pricing_tables">Pricing Tables</a></li>
-                                        <li><a href="login">Login Page</a></li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="sidebar-footer hidden-small">
-                        <a data-toggle="tooltip" data-placement="top" title="Settings">
-                            <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
-                        </a>
-                        <a data-toggle="tooltip" data-placement="top" title="FullScreen">
-                            <span class="glyphicon glyphicon-fullscreen" aria-hidden="true"></span>
-                        </a>
-                        <a data-toggle="tooltip" data-placement="top" title="Lock">
-                            <span class="glyphicon glyphicon-eye-close" aria-hidden="true"></span>
-                        </a>
-                        <a data-toggle="tooltip" data-placement="top" title="Logout" href="login">
-                            <span class="glyphicon glyphicon-off" aria-hidden="true"></span>
-                        </a>
-                    </div>
-                    <!-- /menu footer buttons -->
-                </div>
-            </div>
-
-            <!-- top navigation -->
-            <div class="top_nav">
-                <div class="nav_menu">
-                    <div class="nav toggle">
-                        <a id="menu_toggle"><i class="fa fa-bars"></i></a>
-                    </div>
-                    <nav class="nav navbar-nav">
-                        <ul class=" navbar-right">
-                            <li class="nav-item dropdown open" style="padding-left: 15px;">
-                                <a href="javascript:;" class="user-profile dropdown-toggle" aria-haspopup="true"
-                                   id="navbarDropdown" data-toggle="dropdown" aria-expanded="false">
-                                    <img src="../../images/icons/${loggerName.pic}" alt="">${loggerName.name}
-                                </a>
-                                <div class="dropdown-menu dropdown-usermenu pull-right" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="javascript:;"> Profile</a>
-                                    <a class="dropdown-item" href="javascript:;">
-                                        <span class="badge bg-red pull-right">50%</span>
-                                        <span>Settings</span>
-                                    </a>
-                                    <a class="dropdown-item" href="javascript:;">Help</a>
-                                    <a class="dropdown-item" href="/"><i class="fa fa-sign-out pull-right"></i> Log Out</a>
-                                </div>
-                            </li>
-
-                        </ul>
-                    </nav>
-                </div>
-            </div>
-            <!-- /top navigation -->
 
         <!-- page content -->
         <div class="right_col" role="main">
@@ -203,6 +88,14 @@
                                 <h2>All Salaries List
                                     <small>Salary List Page</small>
                                 </h2>
+                                <div class="col-md-2 col-sm-2">
+                                <a href="salary">
+                                    <button type='submit' class="btn btn-secondary" style="width: 50%;float: right"
+                                            value="Register">
+                                       <i class="fa fa-reply"></i> Back
+                                    </button>
+                                </a>
+                                </div>
                                 <ul class="nav navbar-right panel_toolbox">
                                     <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                                     </li>

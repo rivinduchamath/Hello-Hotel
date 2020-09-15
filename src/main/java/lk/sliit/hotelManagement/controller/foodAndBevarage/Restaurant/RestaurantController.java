@@ -42,8 +42,8 @@ public class RestaurantController {
         List<FoodItemDTO> p1 = kitchenBO.findFoodItems();
 
         if (p1.isEmpty()) {
-            request.setAttribute("loginError", "Not Any Item Fond Under Restaurant " +
-                    " Please Add Data Under Restaurant ");
+            request.setAttribute("loginError", "Not Any Fond Items" +
+                    " Please Add Food Items ");
         }
         for (FoodItemDTO d : p1) {
             System.out.println(d);

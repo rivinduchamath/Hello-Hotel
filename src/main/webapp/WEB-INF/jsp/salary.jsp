@@ -126,7 +126,7 @@
 
                                         <input type="hidden" class="form-control"
                                                required="required" name="employeeID"
-                                               id="itemCode" placeholder="Employee Id"/>
+                                               id="itemCode"/>
 
                                         <label for="itemCode">Employee Name</label>
                                         <input type="text" class="form-control"
@@ -145,14 +145,8 @@
                             <div class="form-group">
                                 <label for="itemCode">OT Rate</label>
                                 <input type="text" class="form-control"
-                                       required="required" name="otRate"
-                                       id="OTRate" placeholder="OT Rate"/>
-                            </div>
-                            <div class="form-group">
-                                <label for="itemCode">OT Hrs</label>
-                                <input type="text" class="form-control"
                                        required="required" name="otHours"
-                                       id="OTHrs" placeholder="OT Hrs"/>
+                                       id="OTRate" placeholder="OT Rate"/>
                             </div>
 
                             <div class="form-group">
@@ -161,14 +155,9 @@
                                        required="required" name="bonus"
                                        id="MonthlyBonus" placeholder="Monthly Bonus"/>
                             </div>
-                            <div class="form-group">
-                                <label for="itemCode">Income Tax</label>
-                                <input type="text" class="form-control"
-                                       required="required" name="incomeTax"
-                                       id="IncomeTax" placeholder="Income Tax"/>
-                            </div>
-                            <input style="display: none" type="text" id="itemPay1" name="SalaryId">
-                            <button type='submit' class="btn btn-primary" style="width: 50%" value="Register">
+
+                            <input value="0" type="hidden" id="itemPay1" name="SalaryId">
+                            <button type='submit' class="btn btn-dark" style="width: 50%" value="Register">
                                 Submit
                             </button>
                             <button onclick="document.getElementsByClassName('form-control').value = ''" type='reset'
@@ -216,7 +205,7 @@
                                                 <tr>
                                                     <th>Employee Name</th>
                                                     <th>Employee ID</th>
-                                                    <th>Salary</th>
+                                                    <th>B.Salary</th>
 
                                                 </tr>
                                                 </thead>
@@ -273,13 +262,14 @@
 
                                         <div class="card-box table-responsive">
 
-                                            <table id="datatable-buttons"
+                                            <table style="text-align: center" id="datatable-buttons"
                                                    class="table table-striped jambo_table bulk_action table-bordered">
                                                 <thead class="thead-dark">
 
                                                 <tr>
                                                     <th>EmpId</th>
                                                     <th>Name</th>
+                                                    <th>img</th>
                                                     <th>Total Salary</th>
                                                     <th>Delete</th>
                                                     <th><input type="checkbox" id="check-all" class="flat"></th>
@@ -289,9 +279,10 @@
                                                 <tbody>
                                                 <c:forEach items="${listEmployeesTableSalary}" var="e">
                                                     <tr>
-                                                        <td>${e.employeeID.idNo}</td>
-                                                        <td>${e.employeeID.name}</td>
-                                                        <td>${((e.basicSalary+e.bonus)+(e.otRate*e.otHours))-e.incomeTax}</td>
+                                                        <td>${e.employeeID}</td>
+                                                        <td>${e.employeeName}</td>
+                                                        <td>${e.image}</td>
+                                                        <td>${e.salary}</td>
                                                         <td><a href="/deleteSalary?idNo=${e.salaryId}"><span
                                                                 class="glyphicon glyphicon-trash"></span></a></td>
                                                         <td class="a-center ">

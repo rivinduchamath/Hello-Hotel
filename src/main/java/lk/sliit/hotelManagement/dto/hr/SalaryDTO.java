@@ -1,7 +1,7 @@
 package lk.sliit.hotelManagement.dto.hr;
 
 public class SalaryDTO {
-    private String salaryId;
+    private int salaryId;
     private double basicSalary;
     private double etf;
     private double epf;
@@ -9,14 +9,16 @@ public class SalaryDTO {
     private double otHours;
     private double hours;
     private double salary;
-    private String employeeID;
+    private int employeeID;
+    private String  employeeName;
+    private String  image;
 
     public SalaryDTO() {
     }
 
-    public SalaryDTO(String salaryId, double basicSalary, double etf,
+    public SalaryDTO(int salaryId, double basicSalary, double etf,
                      double epf, double serviceCharge, double otHours, double hours,
-                     double salary, String employeeID) {
+                     double salary, int employeeID) {
         this.salaryId = salaryId;
         this.basicSalary = basicSalary;
         this.etf = etf;
@@ -28,11 +30,47 @@ public class SalaryDTO {
         this.employeeID = employeeID;
     }
 
-    public String getSalaryId() {
+    public SalaryDTO(int salaryId, double basicSalary, double etf, double epf, double serviceCharge, double otHours,
+                     double hours, double salary, int employeeID, String employeeName, String image) {
+        this.salaryId = salaryId;
+        this.basicSalary = basicSalary;
+        this.etf = etf;
+        this.epf = epf;
+        this.serviceCharge = serviceCharge;
+        this.otHours = otHours;
+        this.hours = hours;
+        this.salary = salary;
+        this.employeeID = employeeID;
+        this.employeeName = employeeName;
+        this.image = image;
+    }
+
+    public SalaryDTO(int salaryId) {
+        this.salaryId = salaryId;
+    }
+
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
+
+    public String getEmployeeName() {
+        return employeeName;
+    }
+
+    public void setEmployeeName(String employeeName) {
+        this.employeeName = employeeName;
+    }
+
+    public int getSalaryId() {
         return salaryId;
     }
 
-    public void setSalaryId(String salaryId) {
+    public void setSalaryId(int salaryId) {
         this.salaryId = salaryId;
     }
 
@@ -92,11 +130,11 @@ public class SalaryDTO {
         this.salary = salary;
     }
 
-    public String getEmployeeID() {
+    public int getEmployeeID() {
         return employeeID;
     }
 
-    public void setEmployeeID(String employeeID) {
+    public void setEmployeeID(int employeeID) {
         this.employeeID = employeeID;
     }
 
