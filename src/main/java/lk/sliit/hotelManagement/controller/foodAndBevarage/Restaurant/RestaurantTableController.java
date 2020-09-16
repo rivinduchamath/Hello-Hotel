@@ -1,8 +1,6 @@
-package lk.sliit.hotelManagement.controller.inventoryController;
+package lk.sliit.hotelManagement.controller.foodAndBevarage.Restaurant;
 
 import lk.sliit.hotelManagement.controller.SuperController;
-import lk.sliit.hotelManagement.dto.kitchen.FoodItemDTO;
-import lk.sliit.hotelManagement.dto.manager.EmployeeDTO;
 import lk.sliit.hotelManagement.dto.restaurant.RestaurantTableDTO;
 import lk.sliit.hotelManagement.service.custom.IndexLoginBO;
 import lk.sliit.hotelManagement.service.custom.RestaurantBO;
