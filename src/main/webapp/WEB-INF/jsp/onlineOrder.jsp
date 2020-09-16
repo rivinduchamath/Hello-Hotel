@@ -156,7 +156,7 @@
                                     <tr>
                                         <td>
                                             <figure class="pad_bot1 left marg_right1"><img
-                                                    src="../../onlineRestaurant/restaurant/images/page4_img2.jpg"
+                                                    src="${e.src}"
                                                     alt=""></figure>
                                         </td>
                                         <td style="color: #e02b2b;position: absolute"> ${e.itemName}</td>

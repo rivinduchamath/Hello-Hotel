@@ -2,6 +2,7 @@ package lk.sliit.hotelManagement.controller.inventoryController;
 
 import lk.sliit.hotelManagement.controller.SuperController;
 import lk.sliit.hotelManagement.dto.inventory.SupplierDTO;
+import lk.sliit.hotelManagement.dto.manager.EmployeeDTO;
 import lk.sliit.hotelManagement.service.custom.IndexLoginBO;
 import lk.sliit.hotelManagement.service.custom.InventoryBO;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,6 +26,8 @@ public class SupplierManage {
     @GetMapping("/manageSupplier")
     public String loginPage(Model model){
         model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
+        SupplierDTO supplierDTO = new SupplierDTO();
+        model.addAttribute("supplierDTO", supplierDTO);
         try {
             SupplierDTO totalCount = inventoryBO.findTopByOrderBySupplierIdDesc ( );
             int x = ( totalCount.getId ( ) )+ 1;
