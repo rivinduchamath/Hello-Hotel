@@ -4,6 +4,10 @@ package lk.sliit.hotelManagement.controller.kitchenController;
 import lk.sliit.hotelManagement.controller.SuperController;
 import lk.sliit.hotelManagement.dto.inventory.SupplierDTO;
 import lk.sliit.hotelManagement.dto.kitchen.FoodItemDTO;
+import lk.sliit.hotelManagement.dto.kitchen.MenuDTO;
+import lk.sliit.hotelManagement.dto.manager.EmployeeDTO;
+import lk.sliit.hotelManagement.dto.restaurant.restaurantCounterOrder.RestaurantCounterOrderDetailDTO;
+import lk.sliit.hotelManagement.entity.restaurant.counterOrder.RestaurantCounterOrderDetail;
 import lk.sliit.hotelManagement.service.custom.IndexLoginBO;
 import lk.sliit.hotelManagement.service.custom.KitchenBO;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,7 +34,8 @@ public class FoodItemManageController {
     public String loginPage(Model model) {
         model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
         List<FoodItemDTO> foodItemList = kitchenBO.findFoodItems();
-
+        FoodItemDTO foodItemDTO = new FoodItemDTO();
+        model.addAttribute("foodItemDTO", foodItemDTO);
         model.addAttribute("loadFoodItemTable", foodItemList);
         return "manageMenu";
     }
@@ -39,17 +44,21 @@ public class FoodItemManageController {
     public String addNew(Model model, @ModelAttribute FoodItemDTO foodItemDTO) {
 
         try {
-            FoodItemDTO lastItem = kitchenBO.findHighestId();
-             int maxId = (lastItem.getItemId());
-
-            if (foodItemDTO.getItemId()==((maxId))){
-                foodItemDTO.setItemId((maxId));
-            } else {
-                maxId++;
-                foodItemDTO.setItemId((maxId));
+            FoodItemDTO foodItemDTO2 = kitchenBO.findHighestId();
+            FoodItemDTO foodItemDTO1 = null;
+            try {
+                foodItemDTO1 = kitchenBO.findFoodItemById(foodItemDTO.getItemId());
+            }catch (NullPointerException d){
+                int maxId = (foodItemDTO2.getItemId());
+                if (foodItemDTO.getItemId()==(maxId)) {
+                    foodItemDTO.setItemId((maxId));
+                } else {
+                    maxId++;
+                    foodItemDTO.setItemId((maxId));
+                }
             }
 
-        } catch (NullPointerException e) {
+        } catch (NullPointerException e){
             foodItemDTO.setItemId(1);
         }
 
@@ -59,13 +68,15 @@ public class FoodItemManageController {
     }
 
     @GetMapping(value = "deleteFoodItem/{itemId}")
-    public void deleteFoodItem(@PathVariable("itemId") int foodItemId, HttpServletResponse response) {
-        kitchenBO.deleteFoodItem(foodItemId);
-        try {
-            response.sendRedirect("/manageMenu");
-        } catch (IOException e) {
-            e.printStackTrace();
+    public String deleteFoodItem(@PathVariable("itemId") int foodItemId, HttpServletResponse response) {
+        List<RestaurantCounterOrderDetailDTO> p = kitchenBO.findAllOrders();
+        for (RestaurantCounterOrderDetailDTO s : p) {
+            if (s.getFoodItem() == foodItemId) {
+                return "redirect:/manageMenu";
+            }
         }
+        kitchenBO.deleteFoodItem(foodItemId);
+        return "redirect:/manageMenu";
     }
 }
 

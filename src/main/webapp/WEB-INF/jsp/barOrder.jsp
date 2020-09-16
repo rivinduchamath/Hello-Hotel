@@ -173,7 +173,7 @@
                             <div class="form-group">
                                 <label for="itemCode">Qty</label>
                                 <input type="number" class="form-control"
-                                       required name="qty"
+                                       required name="qty" min="1"
                                        id="qty" placeholder="Qty"/>
                             </div>
 
