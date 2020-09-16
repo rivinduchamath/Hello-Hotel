@@ -178,9 +178,134 @@
                     </div>
                 </div>
                 <%--//////////////////////////////////////////////////////////////////////////////////////////////////--%>
+                <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
 
-                <%--                    /////////////////////////////////////////////////////--%>
+                    <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6">
+                        <!--Add tables form-------------------------------------------------------------------->
+
+                        <div class="row">
+                            <div class="col-md-12 col-sm-12 ">
+                                <div class="x_panel">
+                                    <div class="x_title">
+                                        <h2>Add/Update Table...</h2>
+                                        <ul class="nav navbar-right panel_toolbox">
+                                            <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                                            </li>
+                                            <li class="dropdown">
+                                                <a aria-expanded="false" aria-haspopup="true" class="dropdown-toggle"
+                                                   data-toggle="dropdown"
+                                                   href="#" role="button"><i
+                                                        class="fa fa-wrench"></i></a>
+                                            </li>
+                                        </ul>
+                                        <div class="clearfix"></div>
+                                    </div>
+                                    <div class="x_content">
+                                        <br/>
+                                        <form action="saveTable" method="POST" class="form-horizontal form-label-left"
+                                              data-parsley-validate id="demo-form3">
+                                            <input class="form-control" name="tableId" id="tableId" type="hidden" value="0" >
+
+                                            <div class=" form-group">
+                                                <label class="label-align">Type: <span class="required">* &nbsp; &nbsp; &nbsp;</span>
+                                                </label>
+                                                <select class="form-control" required="required" name="type"
+                                                        id="type" data-placeholder="Select Type">
+                                                    <option>2 person</option>
+                                                    <option>4 person</option>
+                                                    <option>8 person</option>
+                                                    <option>12 person</option>
+                                                </select>
+                                            </div>
+                                            <div class=" form-group">
+                                                <label class="label-align"
+                                                       for="unitPrice">Unit Price: <span class="required">* &nbsp; &nbsp; &nbsp;</span>
+                                                </label>
+                                                <div class="">
+                                                    <input class="form-control" id="unitPrice" name="unitPrice"
+                                                           required="required" type="number">
+                                                </div>
+                                            </div>
+
+
+                                            <div class=" form-group">
+                                                <div class=" ">
+                                                    <button class="btn btn-dark" type="submit" value="Register">+Add /
+                                                        Update
+                                                    </button>
+                                                    <button class="btn btn-outline-dark" type="reset">Reset</button>
+
+                                                </div>
+                                            </div>
+
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <%--                    /////////////////////////////////////////////////////--%>
                 <!--////////////////////////////////////////////-->
+                <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6">
+                    <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                        <div class="row">
+                            <div class="x_panel">
+                                <div class="x_title">
+                                    <h2>Find Tables
+                                        <small>list</small>
+                                    </h2>
+                                    <ul class="nav navbar-right panel_toolbox">
+                                        <li><a class="collapse-link"></a>
+                                        </li>
+                                        <li class="dropdown">
+                                            <a aria-expanded="false" class="dropdown-toggle" data-toggle="dropdown"
+                                               href="#"
+                                               role="button"><i class="fa fa-wrench"></i></a>
+                                        </li>
+                                    </ul>
+                                    <div class="clearfix"></div>
+                                </div>
+                                <div class="x_content">
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <div class="card-box table-responsive">
+                                                <table class="table table-striped table-bordered" id="datatable-buttons"
+                                                       style="text-align: center">
+                                                    <thead class="thead-light">
+                                                    <tr>
+                                                        <th>Id</th>
+                                                        <th>Type</th>
+                                                        <th>Unit Price</th>
+                                                        <th></th>
+
+                                                    </tr>
+
+                                                    </thead>
+                                                    <tbody>
+                                                    <c:forEach items="${loadAllTablesTable}" var="item">
+                                                        <tr>
+                                                            <td>${item.tableId}</td>
+                                                            <td>${item.type}</td>
+                                                            <td>${item.unitPrice}</td>
+                                                            <td><a href="deleteTable/${item.tableId}">
+                                                                <i class="fa fa-trash"></i>
+                                                            </a></td>
+                                                        </tr>
+                                                    </c:forEach>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                </div>
 
                 <%--/////////////////////////////////////////////    /////////////////////////////////////////////--%>
             </div>
@@ -230,6 +355,18 @@
 <script src="../../vendors/iCheck/icheck.min.js"></script>
 <!-- Custom Theme Scripts -->
 <script src="../../build/js/custom.min.js"></script>
+
+<script>
+
+    var selectedRow = null;
+    $("#datatable-buttons tbody").on('click', 'tr', function () {
+        selectedRow = $(this);
+        $("#tableId").val($(this).find("td:first-child").text());
+        $("#type").val($(this).find("td:nth-child(2)").text());
+        $("#unitPrice").val($(this).find("td:nth-child(3)").text());
+        selectedRow.addClass('row-selected');
+    });
+</script>
 
 
 </body>

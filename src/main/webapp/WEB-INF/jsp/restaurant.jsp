@@ -215,7 +215,7 @@
                     </div>
 
                     <div class="col-sm-12 col-md-3 col-lg-3 col-xl-3">
-                        <a href="barBill">
+                        <a href="onlineDashboard">
                             <button type="button" class="large-btn btn btn-dark">Online</button>
                         </a>
                     </div>

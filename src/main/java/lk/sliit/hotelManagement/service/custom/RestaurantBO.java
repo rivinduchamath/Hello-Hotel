@@ -27,4 +27,14 @@ public interface RestaurantBO {
 
 
     List<RestaurantTableDTO> getAviTables(Date date, Date startTime, Date endTime);
+
+    RestaurantTableDTO findHighestTableId();
+
+    void saveTable(RestaurantTableDTO restaurantTableDTO);
+
+    List<RestaurantTableDTO> findTables();
+
+    void deleteTable(int tableId);
+
+    RestaurantTableDTO findTableById(int tableId);
 }

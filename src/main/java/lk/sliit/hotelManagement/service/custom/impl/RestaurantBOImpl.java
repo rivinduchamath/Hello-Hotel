@@ -10,6 +10,7 @@ import lk.sliit.hotelManagement.dao.restaurantDAO.onlineOrderDAO.RestaurantOnlin
 import lk.sliit.hotelManagement.dao.restaurantDAO.onlineOrderDAO.RestaurantOnlineOrderDetailsDAO;
 import lk.sliit.hotelManagement.dao.restaurantDAO.onlineTableReservationDAO.OnlineTableReservationDAO;
 import lk.sliit.hotelManagement.dto.kitchen.FoodItemDTO;
+import lk.sliit.hotelManagement.dto.manager.NoticeDTO;
 import lk.sliit.hotelManagement.dto.restaurant.RestaurantTableDTO;
 import lk.sliit.hotelManagement.dto.restaurant.restaurantCounterOrder.RestaurantCounterOrderDTO;
 import lk.sliit.hotelManagement.dto.restaurant.restaurantCounterOrder.RestaurantCounterOrderDetailDTO;
@@ -17,6 +18,7 @@ import lk.sliit.hotelManagement.dto.restaurant.restaurantOnlineOrder.RestaurantO
 import lk.sliit.hotelManagement.dto.restaurant.restaurantOnlineOrder.RestaurantOnlineOrderDetailsDTO;
 import lk.sliit.hotelManagement.dto.restaurant.restaurantOnlineTable.OnlineTableReservationDTO;
 import lk.sliit.hotelManagement.entity.kitchen.FoodItem;
+import lk.sliit.hotelManagement.entity.manager.Notice;
 import lk.sliit.hotelManagement.entity.restaurant.RestaurantTable;
 import lk.sliit.hotelManagement.entity.restaurant.counterOrder.RestaurantCounterOrder;
 import lk.sliit.hotelManagement.entity.restaurant.counterOrder.RestaurantCounterOrderDetail;
@@ -269,6 +271,54 @@ public class RestaurantBOImpl implements RestaurantBO {
         }
         System.out.println(lista+" All values");
         return null;
+    }
+
+    @Override
+    public RestaurantTableDTO findHighestTableId() {
+        RestaurantTable lastItem = null;
+        try {
+            lastItem = restaurantTableDAO.findTopByOrderByTableIdDesc();
+        } catch (Exception e){
+
+        }
+
+        return new RestaurantTableDTO(lastItem.getTableId());
+    }
+
+    @Override
+    public void saveTable(RestaurantTableDTO restaurantTableDTO) {
+        restaurantTableDAO.save(new RestaurantTable
+                        (restaurantTableDTO.getTableId(),
+                        restaurantTableDTO.getType(),
+                        restaurantTableDTO.getUnitPrice()));
+    }
+
+    @Override
+    public List<RestaurantTableDTO> findTables() {
+        Iterable<RestaurantTable> tables = restaurantTableDAO.findAll();
+        List<RestaurantTableDTO> tableDTOList = new ArrayList<>();
+
+        for (RestaurantTable item: tables) {
+            tableDTOList.add(new RestaurantTableDTO(item.getTableId(),
+                    item.getType(),
+                    item.getUnitPrice()));
+        }
+        return tableDTOList;
+    }
+
+    @Override
+    public void deleteTable(int tableId) {
+        restaurantTableDAO.delete(tableId);
+    }
+
+    @Override
+    public RestaurantTableDTO findTableById(int tableId) {
+        RestaurantTable table = restaurantTableDAO.findOne(tableId);
+        return new RestaurantTableDTO(
+                table.getTableId(),
+                table.getType(),
+                table.getUnitPrice()
+        );
     }
 
     public List<RestaurantTableDTO> findAllTableDateEqual(Date date, String startTime,
