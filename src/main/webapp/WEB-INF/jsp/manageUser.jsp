@@ -150,6 +150,14 @@
                             </a>
 
                         </div>
+                        <div class="col-6 col-sm-6 col-md-6 col-lg-4 col-xl-4">
+                            <a href="/loadDepartment">
+                                <button type="button" class="large-btn btn btn-dark"><i class="fa fa-bookmark">
+                                    +Department</i>
+                                </button>
+                            </a>
+
+                        </div>
                     </div>
                 </div>
 

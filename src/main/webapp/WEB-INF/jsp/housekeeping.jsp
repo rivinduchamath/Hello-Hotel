@@ -373,7 +373,7 @@
                                                 <c:forEach items="${todayCleanAttendance}" var="e">
                                                     <tr>
                                                         <td>${e.empName}</td>
-                                                        <td>${e.pic}</td>
+                                                        <td><img src="${e.pic}" class="avatar" alt="Avatar"></td>
                                                         <td>${e.inTime}</td>
                                                         <td>${e.outTime}</td>
                                                     </tr>

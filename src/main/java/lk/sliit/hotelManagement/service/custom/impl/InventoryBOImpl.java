@@ -295,7 +295,8 @@ public class InventoryBOImpl implements InventoryBO {
                 supplierDTO.getGender(),
                 supplierDTO.getDate(),
                 supplierDTO.getBirthday(),
-                supplierDTO.getSubmittedBy()
+                supplierDTO.getSubmittedBy(),
+                supplierDTO.getImage()
         ));
     }
 
@@ -313,7 +314,8 @@ public class InventoryBOImpl implements InventoryBO {
                     a.getGender(),
                     a.getDate(),
                     a.getBirthday(),
-                    a.getSubmittedBy()
+                    a.getSubmittedBy(),
+                    a.getImage()
             ));
         }
         return dtos;

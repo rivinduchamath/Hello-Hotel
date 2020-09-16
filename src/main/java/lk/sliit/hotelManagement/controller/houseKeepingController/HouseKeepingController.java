@@ -33,12 +33,14 @@ public class HouseKeepingController {
     public String housekeeping(Model model) {
         model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
         List<HotelRoomDTO> hotelRoomDTOList  = houseKeepingBO.findDirtyRooms("NotCleaned");
-        ArrayList<AttendanceDTO> todayCleanAttendance  = null;
+        ArrayList<AttendanceDTO> todayCleanAttendance  = new ArrayList<>();
+        int i =0;
         for (AttendanceDTO v:humanResourceBO.findTodayCleanAttendance ( )) {
             System.out.println("ssssssssssssssssssssssssssss ");
             if(v.getEmpDepartment().equals("HouseKeeping")){
 
-                todayCleanAttendance.add(1,v);
+                todayCleanAttendance.add(i,v);
+              i++;
             }
         }
         model.addAttribute ( "todayCleanAttendance", todayCleanAttendance );
