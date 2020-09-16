@@ -14,6 +14,10 @@ public class RestaurantTableDTO {
         this.unitPrice = unitPrice;
     }
 
+    public RestaurantTableDTO(int tableId) {
+        this.tableId = tableId;
+    }
+
     public int getTableId() {
         return tableId;
     }
