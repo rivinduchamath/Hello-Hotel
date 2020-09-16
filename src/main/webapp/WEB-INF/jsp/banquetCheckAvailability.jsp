@@ -354,6 +354,25 @@
 <!-- Custom Theme Scripts -->
 <script src="../../build/js/custom.min.js"></script>
 
+<script>
+    var dateControler = {
+        currentDate : null
+    }
+
+    $(document).on( "change", "#date",function( event, ui ) {
+        var now = new Date();
+        var selectedDate = new Date($(this).val());
+
+        if(selectedDate <= now) {
+            $(this).val("");
+            alert("Invalid date... Please enter future date... Can't enter today and old dates");
+
+        } else {
+            dateControler.currentDate = $(this).val();
+        }
+    });
+</script>
+
 
 
 </body>

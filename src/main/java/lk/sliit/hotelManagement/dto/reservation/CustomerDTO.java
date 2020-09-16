@@ -5,9 +5,9 @@ public class CustomerDTO {
     private String email;
     private String name;
     private String address;
-    private int contactNumber;
+    private String contactNumber;
 
-    public CustomerDTO(int customerId, String email, String name, String address, int contactNumber) {
+    public CustomerDTO(int customerId, String email, String name, String address, String contactNumber) {
         this.customerId = customerId;
         this.email = email;
         this.name = name;
@@ -54,11 +54,11 @@ public class CustomerDTO {
         this.address = address;
     }
 
-    public int getContactNumber() {
+    public String getContactNumber() {
         return contactNumber;
     }
 
-    public void setContactNumber(int contactNumber) {
+    public void setContactNumber(String contactNumber) {
         this.contactNumber = contactNumber;
     }
 
