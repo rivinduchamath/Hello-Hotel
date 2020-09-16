@@ -9,24 +9,23 @@ import lk.sliit.hotelManagement.dao.restaurantDAO.counterOrderDAO.RestaurantCoun
 import lk.sliit.hotelManagement.dao.restaurantDAO.onlineOrderDAO.RestaurantOnlineOrderDAO;
 import lk.sliit.hotelManagement.dao.restaurantDAO.onlineOrderDAO.RestaurantOnlineOrderDetailsDAO;
 import lk.sliit.hotelManagement.dao.restaurantDAO.onlineTableReservationDAO.OnlineTableReservationDAO;
-import lk.sliit.hotelManagement.dto.beverage.BarOrderDTO;
 import lk.sliit.hotelManagement.dto.kitchen.FoodItemDTO;
-import lk.sliit.hotelManagement.dto.restaurant.OnlineCustomerDTO;
+import lk.sliit.hotelManagement.dto.manager.NoticeDTO;
 import lk.sliit.hotelManagement.dto.restaurant.RestaurantTableDTO;
 import lk.sliit.hotelManagement.dto.restaurant.restaurantCounterOrder.RestaurantCounterOrderDTO;
 import lk.sliit.hotelManagement.dto.restaurant.restaurantCounterOrder.RestaurantCounterOrderDetailDTO;
 import lk.sliit.hotelManagement.dto.restaurant.restaurantOnlineOrder.RestaurantOnlineOrderDTO;
 import lk.sliit.hotelManagement.dto.restaurant.restaurantOnlineOrder.RestaurantOnlineOrderDetailsDTO;
 import lk.sliit.hotelManagement.dto.restaurant.restaurantOnlineTable.OnlineTableReservationDTO;
-import lk.sliit.hotelManagement.entity.barManage.BarOrders;
-import lk.sliit.hotelManagement.entity.inventory.Inventory;
 import lk.sliit.hotelManagement.entity.kitchen.FoodItem;
+import lk.sliit.hotelManagement.entity.manager.Notice;
 import lk.sliit.hotelManagement.entity.restaurant.RestaurantTable;
 import lk.sliit.hotelManagement.entity.restaurant.counterOrder.RestaurantCounterOrder;
 import lk.sliit.hotelManagement.entity.restaurant.counterOrder.RestaurantCounterOrderDetail;
 import lk.sliit.hotelManagement.entity.restaurant.onlineOrder.RestaurantOnlineOrder;
 import lk.sliit.hotelManagement.entity.restaurant.onlineOrder.RestaurantOnlineOrderDetails;
 import lk.sliit.hotelManagement.entity.restaurant.onlineTableReservation.OnlineTableReservation;
+import lk.sliit.hotelManagement.entity.restaurant.onlineTableReservation.OnlineTableReservationDetails;
 import lk.sliit.hotelManagement.service.custom.RestaurantBO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -60,6 +59,7 @@ public class RestaurantBOImpl implements RestaurantBO {
 
     @Autowired
     OnlineCustomerDAO onlineCustomerDAO;
+
     @Override
     public RestaurantCounterOrderDTO findTopByOrderByRestIdDesc() {
 
@@ -170,7 +170,7 @@ public class RestaurantBOImpl implements RestaurantBO {
     public void saveOnlineOrder(RestaurantOnlineOrderDTO onlineOrderDTO) {
         java.util.List<RestaurantOnlineOrderDetailsDTO> list = new ArrayList<>();
         String arr = onlineOrderDTO.getOrderData();
-        System.out.println("arrrrrrrrrrrrrrrrrrrrrrrrrr"+arr);
+        System.out.println("arrrrrrrrrrrrrrrrrrrrrrrrrr" + arr);
         String yo[] = arr.split(" ");
         int count = 0;
         RestaurantOnlineOrderDetailsDTO itm = new RestaurantOnlineOrderDetailsDTO();
@@ -210,9 +210,115 @@ public class RestaurantBOImpl implements RestaurantBO {
         }
     }
 
+
     @Override
-    public List<RestaurantTableDTO> findAllTableDateEqual(java.util.Date reservedDate) {
+    public List<RestaurantTableDTO> getAviTables(java.util.Date date, java.util.Date startTime, java.util.Date endTime) {
+        Iterable<OnlineTableReservation> all = onlineTableReservationDAO.findAllByStartTimeBetweenAndDateEquals(startTime, endTime, date);
+        Iterable<OnlineTableReservation> all2 = onlineTableReservationDAO.findAllByEndTimeBetweenAndDateEquals(startTime, endTime, date);
+        Iterable<OnlineTableReservation> all3 = onlineTableReservationDAO.findAllByEndTimeGreaterThanEqualAndStartTimeLessThanEqualAndDateEquals(endTime, startTime, date);
+        Iterable<OnlineTableReservationDetails> al4;
+        ArrayList<Integer> lista = new ArrayList<>();
+
+        System.out.println(date);
+        System.out.println("Tset 1 " + startTime);
+        System.out.println("Tset 2 " + endTime);
+
+        for (OnlineTableReservation a : all) {
+            al4 = a.getOrderDetails();
+            for (OnlineTableReservationDetails s : al4) {
+                System.out.println("Table " +s.getTableId().getTableId());
+                if (lista.contains(s.getTableId().getTableId())) {
+                    System.out.println("Account found");
+                    lista.add(s.getTableId().getTableId());
+                } else {
+                    System.out.println("Account not found");
+                }
+            }
+        }
+        for (OnlineTableReservation a : all3) {
+            System.out.println("CCCCCCCC " + a.getOnlineTableReservationId());
+            System.out.println("CCCCCCCC " + a.getEndTime());
+            System.out.println("CCCCCCCC " + a.getStartTime());
+            System.out.println("CCCCCCCC " + a.getDate());
+            al4 = a.getOrderDetails();
+            for (OnlineTableReservationDetails s : al4) {
+                System.out.println("Table " +s.getTableId().getTableId());
+                if (lista.contains(s.getTableId().getTableId())) {
+                    System.out.println("Account found");
+                    lista.add(s.getTableId().getTableId());
+                } else {
+                    System.out.println("Account not found");
+                }
+            }
+        }
+
+        for (OnlineTableReservation a : all2) {
+            System.out.println("BBBBBBBBB " + a.getOnlineTableReservationId());
+            System.out.println("BBBBBBBBB " + a.getEndTime());
+            System.out.println("BBBBBBBBB " + a.getStartTime());
+            System.out.println("BBBBBBBBB " + a.getDate());
+            al4 = a.getOrderDetails();
+            for (OnlineTableReservationDetails s : al4) {
+                System.out.println("Table " +s.getTableId().getTableId());
+                if (lista.contains(s.getTableId().getTableId())) {
+                    System.out.println("Account found");
+                    lista.add(s.getTableId().getTableId());
+                } else {
+                    System.out.println("Account not found");
+                }
+            }
+
+        }
+        System.out.println(lista+" All values");
         return null;
+    }
+
+    @Override
+    public RestaurantTableDTO findHighestTableId() {
+        RestaurantTable lastItem = null;
+        try {
+            lastItem = restaurantTableDAO.findTopByOrderByTableIdDesc();
+        } catch (Exception e){
+
+        }
+
+        return new RestaurantTableDTO(lastItem.getTableId());
+    }
+
+    @Override
+    public void saveTable(RestaurantTableDTO restaurantTableDTO) {
+        restaurantTableDAO.save(new RestaurantTable
+                        (restaurantTableDTO.getTableId(),
+                        restaurantTableDTO.getType(),
+                        restaurantTableDTO.getUnitPrice()));
+    }
+
+    @Override
+    public List<RestaurantTableDTO> findTables() {
+        Iterable<RestaurantTable> tables = restaurantTableDAO.findAll();
+        List<RestaurantTableDTO> tableDTOList = new ArrayList<>();
+
+        for (RestaurantTable item: tables) {
+            tableDTOList.add(new RestaurantTableDTO(item.getTableId(),
+                    item.getType(),
+                    item.getUnitPrice()));
+        }
+        return tableDTOList;
+    }
+
+    @Override
+    public void deleteTable(int tableId) {
+        restaurantTableDAO.delete(tableId);
+    }
+
+    @Override
+    public RestaurantTableDTO findTableById(int tableId) {
+        RestaurantTable table = restaurantTableDAO.findOne(tableId);
+        return new RestaurantTableDTO(
+                table.getTableId(),
+                table.getType(),
+                table.getUnitPrice()
+        );
     }
 
     public List<RestaurantTableDTO> findAllTableDateEqual(Date date, String startTime,
@@ -235,12 +341,13 @@ public class RestaurantBOImpl implements RestaurantBO {
 
         return null;
     }
+
     ///////////////////////////////////////////////////////////////////////////////////////////
     // @Override
     public List<RestaurantTableDTO> findAllTableDateEqual(OnlineTableReservationDTO onlineTable) {
 
-        Time s = (Time.valueOf(onlineTable.getStartTime()+":00"));
-        Time s1 = (Time.valueOf(onlineTable.getEndTime()+":00"));
+        Time s = (Time.valueOf(onlineTable.getStartTime() + ":00"));
+        Time s1 = (Time.valueOf(onlineTable.getEndTime() + ":00"));
         // Iterable<OnlineTableReservation> all1 = onlineTableReservationDAO.findOnlineTableReservationsByStartTimeBeforeAndEndTimeAfterAndDateEquals(onlineTable.getDate());
         // for (OnlineTableReservation d : all1) {
         //     System.out.println("ssssssssssssssssssssssssssssssssssssssss"+d);

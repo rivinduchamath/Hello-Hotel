@@ -2,6 +2,7 @@ package lk.sliit.hotelManagement.controller.kitchenController;
 
 
 import lk.sliit.hotelManagement.controller.SuperController;
+import lk.sliit.hotelManagement.dto.inventory.SupplierDTO;
 import lk.sliit.hotelManagement.dto.kitchen.FoodItemDTO;
 import lk.sliit.hotelManagement.service.custom.IndexLoginBO;
 import lk.sliit.hotelManagement.service.custom.KitchenBO;
@@ -29,23 +30,17 @@ public class FoodItemManageController {
     public String loginPage(Model model) {
         model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
         List<FoodItemDTO> foodItemList = kitchenBO.findFoodItems();
+
         model.addAttribute("loadFoodItemTable", foodItemList);
         return "manageMenu";
     }
 
     @PostMapping("/saveFoodItem")
     public String addNew(Model model, @ModelAttribute FoodItemDTO foodItemDTO) {
-        System.out.println(foodItemDTO+" aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
-        try {
-            foodItemDTO.setItemId(Integer.parseInt(foodItemDTO.getGetId()));
-        }catch (NumberFormatException e){
 
-        }
         try {
-
             FoodItemDTO lastItem = kitchenBO.findHighestId();
-            System.out.println(lastItem+" sssssssssssssssssssssssssssssssssssssssssss");
-            int maxId = (lastItem.getItemId());
+             int maxId = (lastItem.getItemId());
 
             if (foodItemDTO.getItemId()==((maxId))){
                 foodItemDTO.setItemId((maxId));

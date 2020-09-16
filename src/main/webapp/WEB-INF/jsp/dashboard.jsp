@@ -234,7 +234,9 @@
                             <div class="clearfix"></div>
                         </div>
                         <div class="x_content">
+
                             <ul class="list-unstyled timeline">
+
                                 <c:forEach items="${todayAttendance}" var="e">
                                     <li>
                                         <div class="block">
@@ -286,7 +288,12 @@
                             </ul>
                             <div class="clearfix"></div>
                         </div>
+                        <a href="/findAllNotice">
+                            <button type="button" class="large-btn btn btn-dark"><i class=""> Find All >> </i>
+                            </button>
+                        </a>
                         <div class="x_content">
+
                             <ul class="list-unstyled msg_list">
                                 <c:forEach items="${loadNoticeTable}" var="q">
                                     <li>

@@ -9,6 +9,7 @@ import lk.sliit.hotelManagement.service.custom.NoticeBO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.List;
@@ -30,9 +31,17 @@ public class DashboardController {
 
         model.addAttribute ( "todayAttendance", humanResourceBO.findTodayAttendance ( ) );
 
-        List<NoticeDTO> p = noticeBO.findAll();
+        List<NoticeDTO> p = noticeBO.findNoticeOneWeek();
         model.addAttribute("loadNoticeTable", p);
         model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
         return "dashboard";
+    }
+    @GetMapping("/findAllNotice")
+    public String findAllNotice(Model model)
+    {
+        List<NoticeDTO> p = noticeBO.findAll();
+        model.addAttribute("loadAllNotice", p);
+        model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
+        return "allNotice";
     }
 }

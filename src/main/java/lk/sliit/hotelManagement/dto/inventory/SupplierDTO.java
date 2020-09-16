@@ -12,9 +12,11 @@ public class SupplierDTO {
     private Date date;
     private Date birthday;
     private int submittedBy;
+    private String image;
 
-    public SupplierDTO(int id, String name, String address, String mobile,
-                       String email, String gender, Date date, Date birthday, int submittedBy) {
+    public SupplierDTO(int id, String name, String address,
+                       String mobile, String email, String gender,
+                       Date date, Date birthday, int submittedBy, String image) {
         this.id = id;
         this.name = name;
         this.address = address;
@@ -24,6 +26,7 @@ public class SupplierDTO {
         this.date = date;
         this.birthday = birthday;
         this.submittedBy = submittedBy;
+        this.image = image;
     }
 
     public SupplierDTO(int id) {
@@ -33,6 +36,13 @@ public class SupplierDTO {
     public SupplierDTO() {
     }
 
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
 
     public int getSubmittedBy() {
         return submittedBy;

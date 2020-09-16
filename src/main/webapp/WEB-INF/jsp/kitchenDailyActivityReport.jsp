@@ -12,7 +12,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="icon" type="image/png" href="../../images/icons/gdfgd.png"/>
-    <title>Employee Management </title>
 
     <!-- Bootstrap -->
     <link href="../../vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -33,129 +32,13 @@
 <body class="nav-md" style="cursor: pointer">
 <div class="container body">
     <div class="main_container">
-        <div class="col-md-3 left_col">
-            <div class="left_col scroll-view">
-                <div class="navbar nav_title" style="border: 0;">
-                    <a href="Dashboard" class="site_title"> <img style="margin-top: -0px; width: 40px;height: 40px"
-                                                                 src="../../images/favicon.ico"><span
-                            style="margin-top: 20px;">&nbsp;Four Seasons!</span></a>
-                </div>
+        <!-- Side header -->
+        <jsp:include page="sideHeader.jsp" />
+        <!-- /Side header -->
 
-                <div class="clearfix"></div>
-
-                <!-- menu profile quick info -->
-                <div class="profile clearfix">
-                    <div class="profile_pic" style=" width: 80px;height: 80px">
-                        <img src="../../images/icons/${loggerName.image}" alt="..." class="img-circle profile_img">
-                    </div>
-                    <div class="profile_info">
-                        <span>Welcome,</span>
-                        <h2> ${loggerName.name}</h2>
-                    </div>
-                </div>
-                <!-- /menu profile quick info -->
-
-                <br/>
-
-                <!-- sidebar menu -->
-                <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
-                    <div class="menu_section">
-                        <h3>General</h3>
-                        <ul class="nav side-menu">
-                            <li><a><i class="fa fa-home"></i> Home <span class="fa fa-chevron-down"></span></a>
-                                <ul class="nav child_menu">
-                                    <li><a href="Dashboard">Dashboard</a></li>
-                                </ul>
-                            </li>
-                            <li><a><i class="fa fa-edit"></i> Employee <span class="fa fa-chevron-down"></span></a>
-                                <ul class="nav child_menu">
-                                    <li><a href="tables_dynamic">Employee Manage</a></li>
-                                    <li><a href="attendance">Attendance</a></li>
-                                    <li><a href="salary">Salary Manage</a></li>
-                                </ul>
-                            </li>
-                            <li><a><i class="fa fa-desktop"></i>Project<span
-                                    class="fa fa-chevron-down"></span></a>
-                                <ul class="nav child_menu">
-                                    <li><a href="projects">Projects</a></li>
-                                </ul>
-                            </li>
-                            <li><a><i class="fa fa-table"></i> Notice <span class="fa fa-chevron-down"></span></a>
-                                <ul class="nav child_menu">
-                                    <li><a href="notice">View All</a></li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="menu_section">
-                        <h3>Live On</h3>
-                        <ul class="nav side-menu">
-                            <li><a><i class="fa fa-user"></i> Employee Data <span
-                                    class="fa fa-chevron-down"></span></a>
-                                <ul class="nav child_menu">
-                                    <li><a href="contacts">Contacts</a></li>
-                                    <li><a href="profile">Profile</a></li>
-                                </ul>
-                            </li>
-                            <li><a><i class="fa fa-windows"></i> Extras <span class="fa fa-chevron-down"></span></a>
-                                <ul class="nav child_menu">
-                                    <li><a href="media_gallery">View Images</a></li>
-                                    <li><a href="calendar">Calendar</a></li>
-                                    <li><a href="e_commerce">E-commerce</a></li>
-                                    <li><a href="pricing_tables">Pricing Tables</a></li>
-                                    <li><a href="login">Login Page</a></li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="sidebar-footer hidden-small">
-                    <a data-toggle="tooltip" data-placement="top" title="Settings">
-                        <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
-                    </a>
-                    <a data-toggle="tooltip" data-placement="top" title="FullScreen">
-                        <span class="glyphicon glyphicon-fullscreen" aria-hidden="true"></span>
-                    </a>
-                    <a data-toggle="tooltip" data-placement="top" title="Lock">
-                        <span class="glyphicon glyphicon-eye-close" aria-hidden="true"></span>
-                    </a>
-                    <a data-toggle="tooltip" data-placement="top" title="Logout" href="login">
-                        <span class="glyphicon glyphicon-off" aria-hidden="true"></span>
-                    </a>
-                </div>
-                <!-- /menu footer buttons -->
-            </div>
-        </div>
-
-        <!-- top navigation -->
-        <div class="top_nav">
-            <div class="nav_menu">
-                <div class="nav toggle">
-                    <a id="menu_toggle"><i class="fa fa-bars"></i></a>
-                </div>
-                <nav class="nav navbar-nav">
-                    <ul class=" navbar-right">
-                        <li class="nav-item dropdown open" style="padding-left: 15px;">
-                            <a href="javascript:;" class="user-profile dropdown-toggle" aria-haspopup="true"
-                               id="navbarDropdown" data-toggle="dropdown" aria-expanded="false">
-                                <img src="../../images/icons/${loggerName.image}" alt="">${loggerName.name}
-                            </a>
-                            <div class="dropdown-menu dropdown-usermenu pull-right" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="javascript:;"> Profile</a>
-                                <a class="dropdown-item" href="javascript:;">
-                                    <span class="badge bg-red pull-right">50%</span>
-                                    <span>Settings</span>
-                                </a>
-                                <a class="dropdown-item" href="javascript:;">Help</a>
-                                <a class="dropdown-item" href="/"><i class="fa fa-sign-out pull-right"></i> Log Out</a>
-                            </div>
-                        </li>
-
-                    </ul>
-                </nav>
-            </div>
-        </div>
-        <!-- /top navigation -->
+        <!-- Top header -->
+        <jsp:include page="topHeader.jsp" />
+        <!-- /Top header -->
 
         <!-- page content -->
         <div class="right_col" role="main">
@@ -346,19 +229,19 @@
                                                 </tr>
                                                 </thead>
                                                 <tbody>
-                                                <c:forEach items="${getSalaryData}" var="e">
+                                                <c:forEach items="${loadFoodOrderWeek}" var="e">
                                                     <tr>
-                                                        <td>${e.salaryId}</td>
-                                                        <td>${e.employeeID.idNo}</td>
-                                                        <td>${e.employeeID.name}</td>
-                                                        <td>${e.basicSalary}</td>
-                                                        <td>${e.otHours*e.otRate}</td>
-                                                        <td>${e.bonus}</td>
-                                                        <td>${e.incomeTax}</td>
-                                                        <td>${((e.basicSalary+e.bonus)+(e.otRate*e.otHours))-e.incomeTax}</td>
+                                                        <td>${e.noticeId}</td>
+                                                        <td>${e.date}</td>
+                                                        <td>${e.orderQty}</td>
+                                                        <td>${e.inventoryId}</td>
+                                                        <td>${e.requiredQty}</td>
+                                                        <td>${e.state}</td>
+                                                        <td>${e.orderHolder}</td>
+                                                        <td>${e.expDate}</td>
                                                     </tr>
                                                     <script>
-                                                        var aa = aa + ${e.otHours};
+                                                        var aa = aa + ${e.orderHolder};
                                                         document.getElementById("demo").innerHTML = 11;
                                                     </script>
                                                 </c:forEach>
@@ -426,8 +309,8 @@
                                     <div class="row no-print">
                                         <div class=" ">
 
-                                            <form method="POST" action="" name="deleteInvoiceSalary">
-                                                <input style="display: none" type="text" id="itemPay" name="SalaryId">
+
+
                                                 <ul class="nav navbar-right panel_toolbox">
                                                     <button type="submit" value="Register"
                                                             style="font-weight: bold;color: white" ; id="name" onclick="window.print();"
@@ -435,7 +318,7 @@
                                                     </button>
                                                 </ul>
 
-                                            </form>
+
 
                                         </div>
                                     </div>
@@ -449,15 +332,12 @@
         <!-- /page content -->
 
 
+
+
         <!-- footer content -->
-        <footer>
-            <div class="pull-right">
-                Copyright © Employee Management 2020.<a href="https://rivinduchamath.github.io/pro/">Created by Chanuka
-                Mullevidana</a>
-            </div>
-            <div class="clearfix"></div>
-        </footer>
+        <jsp:include page="footer.jsp" />
         <!-- /footer content -->
+
     </div>
 </div>
 

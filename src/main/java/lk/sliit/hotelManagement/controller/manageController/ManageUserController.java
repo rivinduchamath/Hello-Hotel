@@ -3,6 +3,7 @@ package lk.sliit.hotelManagement.controller.manageController;
 import lk.sliit.hotelManagement.controller.SuperController;
 import lk.sliit.hotelManagement.dto.hr.DepartmentDTO;
 import lk.sliit.hotelManagement.dto.inventory.ItemTypeDTO;
+import lk.sliit.hotelManagement.dto.kitchen.MenuDTO;
 import lk.sliit.hotelManagement.dto.manager.EmployeeDTO;
 import lk.sliit.hotelManagement.service.custom.IndexLoginBO;
 import lk.sliit.hotelManagement.service.custom.MailSend;
@@ -30,7 +31,8 @@ public class ManageUserController {
     @GetMapping("/manageUser")
     public String loginPage(HttpServletResponse response, Model model, HttpServletRequest request) {
         model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
-
+        EmployeeDTO employeeDTO = new EmployeeDTO();
+        model.addAttribute("employeeDTO", employeeDTO);
         List<EmployeeDTO> p = manageBO.findAllUser();
         model.addAttribute("loadAllUserTable", p);
         List<DepartmentDTO> p2 = manageBO.findAllDepartment();
@@ -43,13 +45,30 @@ public class ManageUserController {
     public String saveUser(@ModelAttribute EmployeeDTO employeeDTO, Model model) {
 
         model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
+        try {
+            EmployeeDTO employeeDTO1 = manageBO.findHighestEmployeeId();
+            EmployeeDTO employeeDTO2 = null;
+            try {
+                employeeDTO2 = manageBO.findEmployeeById(employeeDTO.getUserId());
+            } catch (NullPointerException d) {
+                int maxId = (employeeDTO1.getUserId());
+                if (employeeDTO.getUserId() == (maxId)) {
+                    employeeDTO.setUserId((maxId));
+                } else {
+                    maxId++;
+                    employeeDTO.setUserId((maxId));
+                }
+            }
 
+        } catch (NullPointerException e) {
+            employeeDTO.setUserId(1);
+        }
         manageBO.save(employeeDTO);
-       try {
-           mailSend.sendMailToNewEmployee(employeeDTO);
-       }catch (Exception e){
+        try {
+            mailSend.sendMailToNewEmployee(employeeDTO);
+        } catch (Exception e) {
 
-       }
+        }
 
         return "redirect:/manageUser";
     }
@@ -73,10 +92,10 @@ public class ManageUserController {
     }
 
 
-        @RequestMapping(value = "/sendemail")
-        public String sendEmail() {
-            return "Email sent successfully";
-        }
+    @RequestMapping(value = "/sendemail")
+    public String sendEmail() {
+        return "Email sent successfully";
+    }
 
 
 }

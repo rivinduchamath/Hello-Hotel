@@ -4,6 +4,7 @@ import lk.sliit.hotelManagement.controller.SuperController;
 import lk.sliit.hotelManagement.dto.beverage.BarOrderDTO;
 import lk.sliit.hotelManagement.dto.inventory.InventoryDTO;
 import lk.sliit.hotelManagement.dto.kitchen.FoodItemDTO;
+import lk.sliit.hotelManagement.dto.restaurant.RestaurantTableDTO;
 import lk.sliit.hotelManagement.dto.restaurant.restaurantCounterOrder.RestaurantCounterOrderDTO;
 import lk.sliit.hotelManagement.service.custom.BarBO;
 import lk.sliit.hotelManagement.service.custom.IndexLoginBO;
@@ -34,43 +35,54 @@ public class RestaurantController {
         model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
         return "restaurant";
     }
+
     @GetMapping("/restaurantOrder")
     public String restaurantOrders(Model model, HttpServletRequest request) {
         model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
         //List<FoodItemDTO> p1 = restaurantBO.findAllFoodItems("Restaurant");
         List<FoodItemDTO> p1 = kitchenBO.findFoodItems();
 
-        if(p1.isEmpty()){
-            request.setAttribute("loginError","Not Any Item Fond Under Restaurant " +
-                    "Type Please Add Data Under Restaurant Type" );
+        if (p1.isEmpty()) {
+            request.setAttribute("loginError", "Not Any Fond Items" +
+                    " Please Add Food Items ");
         }
-        for (FoodItemDTO d: p1) {
+        for (FoodItemDTO d : p1) {
             System.out.println(d);
         }
         model.addAttribute("loadInventoryRestaurantTable", p1);
         return "restaurantOrder";
     }
+
     @GetMapping("/restaurantBill")
     public String restaurantBill(Model model) {
         model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
         return "restaurantBill";
     }
+
     @PostMapping("invoiceRestaurantOrder")
     public String loadInvoicePage(@ModelAttribute RestaurantCounterOrderDTO restaurantCounterOrderDTO, Model model, HttpServletRequest request) {
-        model.addAttribute ( "loggerName", indexLoginBO.getEmployeeByIdNo ( SuperController.idNo ) );
+        model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
 
-
-        try {restaurantCounterOrderDTO.setCustomerId(SuperController.idNo);
-            RestaurantCounterOrderDTO top = restaurantBO.findTopByOrderByRestIdDesc ( );
-            int x = ( top.getOrderId ( ) )+ 1;
-            restaurantCounterOrderDTO.setOrderId (  ( x ) );
+        try {
+            restaurantCounterOrderDTO.setCustomerId(SuperController.idNo);
+            RestaurantCounterOrderDTO top = restaurantBO.findTopByOrderByRestIdDesc();
+            int x = (top.getOrderId()) + 1;
+            restaurantCounterOrderDTO.setOrderId((x));
         } catch (NullPointerException e) {
-            restaurantCounterOrderDTO.setOrderId (  ( 1 ) );
+            restaurantCounterOrderDTO.setOrderId((1));
         }
 
-        restaurantBO.saveRestaurantOrder(restaurantCounterOrderDTO);
-
-
+        try {
+            restaurantBO.saveRestaurantOrder(restaurantCounterOrderDTO);
+        } catch (Exception e) {
+            return "redirect:/restaurantOrder";
+        }
         return "invoice";
     }
+    @GetMapping("/restaurantManage")
+    public String restaurantManage(Model model) {
+        model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
+        return "restaurantManage";
+    }
+
 }

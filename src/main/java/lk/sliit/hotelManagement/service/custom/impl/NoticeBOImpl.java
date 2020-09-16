@@ -1,7 +1,7 @@
 package lk.sliit.hotelManagement.service.custom.impl;
 
 import lk.sliit.hotelManagement.dao.hrDAO.DepartmentDAO;
-import lk.sliit.hotelManagement.dao.manageSystem.NoticeDAO;
+import lk.sliit.hotelManagement.dao.manageSystemDAO.NoticeDAO;
 import lk.sliit.hotelManagement.dto.manager.NoticeDTO;
 import lk.sliit.hotelManagement.entity.manager.Notice;
 import lk.sliit.hotelManagement.service.custom.NoticeBO;
@@ -10,6 +10,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 
@@ -37,7 +39,7 @@ public class NoticeBOImpl implements NoticeBO {
     @Override
     @Transactional(readOnly = true)
     public List<NoticeDTO> findAll() {
-        Iterable<Notice> all = noticeDAO.findAll();
+        Iterable<Notice> all = noticeDAO.findAllByOrderByDateDesc();
         List<NoticeDTO> dtos = new ArrayList<>();
         for (Notice a : all) {
             dtos.add(new NoticeDTO(
@@ -81,6 +83,27 @@ public class NoticeBOImpl implements NoticeBO {
         );
 
 
+    }
+
+    @Override
+    public List<NoticeDTO> findNoticeOneWeek() {
+
+        Date todaydate = new Date();
+        Calendar cal = Calendar.getInstance();
+        cal.add(Calendar.DATE, -7);
+        java.util.Date beforeWeek = cal.getTime();
+        Iterable <Notice> all = noticeDAO.findProjectsByDateBetweenOrderByDateDesc (beforeWeek ,todaydate);
+        List<NoticeDTO> dtos = new ArrayList<>();
+        for (Notice a : all) {
+            dtos.add(new NoticeDTO(
+                    a.getNoticeId(),
+                    a.getTitle(),
+                    a.getDescription(),
+                    a.getDate(),
+                    a.getDepartment().getDepartmentId()
+            ));
+        }
+        return dtos;
     }
 
 

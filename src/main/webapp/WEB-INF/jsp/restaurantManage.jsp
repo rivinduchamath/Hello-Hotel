@@ -199,53 +199,7 @@
                 </div>
 
                 <%-- ////////////////////////////////////////////// BODY /////////////////////////////////////////////////////////////--%>
-                <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
 
-
-                    <div class="col-sm-12 col-md-3 col-lg-3 col-xl-3">
-                        <a href="restaurantOrder">
-                            <button type="button" class="large-btn btn btn-dark">Order</button>
-                        </a>
-                    </div>
-
-                    <div class="col-sm-12 col-md-3 col-lg-3 col-xl-3">
-                        <a href="restaurantTable">
-                            <button type="button" class="large-btn btn btn-dark">Table</button>
-                        </a>
-                    </div>
-
-                    <div class="col-sm-12 col-md-3 col-lg-3 col-xl-3">
-                        <a href="onlineDashboard">
-                            <button type="button" class="large-btn btn btn-dark">Online</button>
-                        </a>
-                    </div>
-
-                    <div class="col-sm-12 col-md-3 col-lg-3 col-xl-3">
-                        <a href="restaurantManage">
-                        <button type="button" class="large-btn btn btn-dark">Manage</button>
-                        </a>
-                    </div>
-
-                </div>
-                <%--%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Chart Income %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%--%>
-                <%--Chart Income--%>
-                <%--Chart Today--%>
-                <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
-                    <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6">
-
-                        <div id="chartdiv"></div>
-                        <h6>Today Income</h6>
-                    </div>
-                    <%--/Chart Today--%>
-                    <%--Chart Yesterday--%>
-                    <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6">
-
-                        <div id="chartdiv1"></div>
-                       <h6>Yesterday Income</h6>
-                    </div>
-                    <%--/Chart Yesterday--%>
-                    <%--/Chart Income--%>
-                </div>
                 <%--                /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////--%>
 
 

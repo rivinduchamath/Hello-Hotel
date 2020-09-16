@@ -342,16 +342,22 @@
                                                     <td>${e.expDate}</td>
                                                     <td>${e.orderHolder}</td>
                                                     <td style="width: 20%" >
-                                                        <form action="updateQtyTom" method="post">
+                                                        <form action="updateQty" method="post">
                                                             <div class="input-group" >
                                                                 <input style="display: none" value="${e.inventoryId}" type="text" class="form-control" name="inventoryId">
-                                                                <input required type="number" class="form-control" name="orderQty">
-                                                                <span class="input-group-btn">
+                                                                <div class="input-group mb-3">
+                                                                    <input placeholder="qty" required type="number" class="form-control" name="orderQty">
+                                                                    <input placeholder="price" required type="number" class="form-control"  aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" name="getPrice">
+                                                                </div>
+                                                                <div class="input-group mb-3">
+                                                                    <input placeholder="supplierId" required type="text" class="form-control" name="supplierId">
+
+                                                                    <span class="input-group-btn">
                                                                      <button type="submit" style="font-weight: bolder;
                                                                       background-color: white; color: #b3adad;
                                                                       border: #0f0f0f solid 1px"
-                                                                             class="btn">+</button>
-                                                                    </span>
+                                                                             class="btn">+</button></span>  </div>
+                                                                </span>
                                                             </div>
                                                         </form>
                                                     </td>

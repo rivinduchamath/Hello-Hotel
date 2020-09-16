@@ -1,10 +1,13 @@
 package lk.sliit.hotelManagement.service.custom.impl;
 
+import lk.sliit.hotelManagement.dao.inventoryDAO.InventoryNoticeDAO;
 import lk.sliit.hotelManagement.dao.kitchenDAO.KitchenDAO;
 import lk.sliit.hotelManagement.dao.kitchenDAO.MenuDAO;
 import lk.sliit.hotelManagement.dao.kitchenDAO.MenuDetailsDAO;
+import lk.sliit.hotelManagement.dto.inventory.InventoryNoticeDTO;
 import lk.sliit.hotelManagement.dto.kitchen.FoodItemDTO;
 import lk.sliit.hotelManagement.dto.kitchen.MenuDTO;
+import lk.sliit.hotelManagement.entity.inventory.InventoryNotice;
 import lk.sliit.hotelManagement.entity.kitchen.FoodItem;
 import lk.sliit.hotelManagement.entity.kitchen.Menu;
 import lk.sliit.hotelManagement.entity.kitchen.MenuDetails;
@@ -14,6 +17,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 
@@ -26,6 +31,8 @@ public class KitchenBOImpl implements KitchenBO {
     MenuDAO menuDAO;
     @Autowired
     MenuDetailsDAO menuDetailsDAO;
+    @Autowired
+    InventoryNoticeDAO inventoryNoticeDAO;
     @Override
     public void saveFoodItem(FoodItemDTO foodItemDTO) {
         kitchenDAO.save(new FoodItem
@@ -143,5 +150,30 @@ public class KitchenBOImpl implements KitchenBO {
             ));
         }
         return menuDTOList;
+    }
+
+    @Override
+    public List<InventoryNoticeDTO> findWeekOrderNotice() {
+        Calendar cal = Calendar.getInstance();
+        cal.add(Calendar.DATE, -7);
+        java.util.Date beforeweek = cal.getTime();
+        Date todaya = new Date();
+        Iterable<InventoryNotice> allItems = inventoryNoticeDAO.findAllByDateBetween(beforeweek,todaya);
+        List<InventoryNoticeDTO> dtos = new ArrayList<>();
+        for (InventoryNotice notice : allItems) {
+            dtos.add(new InventoryNoticeDTO(
+                    notice.getNoticeId(),
+                    notice.getDepartment(),
+                    notice.getOrderQty(),
+                    notice.getDate(),
+                    notice.getExpDate(),
+                    notice.getOrderHolder(),
+                    notice.isState(),
+                    notice.getInventory().getInventoryId(),
+                    notice.getInventory().getText(),
+                    notice.getInventory().getOrderQty()
+            ));
+        }
+        return dtos;
     }
 }

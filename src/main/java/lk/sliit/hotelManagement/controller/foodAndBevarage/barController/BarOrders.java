@@ -51,7 +51,11 @@ public class BarOrders {
         } catch (NullPointerException e) {
             barOrderDTO.setId(1);
         }
-        barBO.saveBarOrder(barOrderDTO);
+        try {
+            barBO.saveBarOrder(barOrderDTO);
+        } catch (Exception e) {
+            return "redirect:/barOrder";
+        }
         return "invoice";
     }
 }

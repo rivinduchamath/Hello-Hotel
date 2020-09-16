@@ -9,6 +9,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page import="java.util.Date" %>
 <%@ page import="java.text.SimpleDateFormat" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <html lang="en">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -277,81 +278,105 @@
             <%--Input Feilds--%>
             <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
             <div class="col-12 col-sm-12 col-md-12 col-lg-5 col-xl-5">
-                <form method="POST"  action="/saveSupplier" name="saveSupplier">
 
+                    <form:form action="saveSupplier" method="post" modelAttribute="supplierDTO">
                     <div class="form-group">
 
-                        <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
-                            <label >User Id</label>
-                            <input type="text" class="form-control"
-                               required="required" name="id" value="${genId}"
-                               id="id" placeholder="User Id"/></div>
 
-                            <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
-                                <label for="id">User Name</label>
+                            <input type="hidden" class="form-control"
+                               required="required" name="id" value="${genId}"
+                               id="idSup" placeholder="User Id"/>
+
+                            <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6"> <br>
+                                <label >User Name</label>
                         <input type="text" class="form-control"
                                required="required" name="name"
-                               id="name" placeholder="User Name"/></div>
+                               id="nameSup" placeholder="User Name"/></div>
                     </div>
 
                     <div class="form-group">
-
-
                         <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6"> <br>
-                            <label for="id">Address</label>
+                            <label >Address</label>
                             <input type="text" class="form-control"
                                    required="required" name="address"
-                                   id="address" placeholder="Address"/></div>
+                                   id="addressSup" placeholder="Address"/></div>
                     </div>
 
 
                     <div class="form-group">
                         <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6"> <br>
-                            <label for="id">Email</label>
-                            <input type="text" class="form-control"
+                            <label >Email</label>
+                            <input type="email" class="form-control"
                                    required="required" name="email"
-                                   id="email" placeholder="Email"/></div>
+                                   id="emailSup" placeholder="Email"/></div>
 
                         <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6"> <br>
-                            <label for="id">Mobile No</label>
-                            <input type="text" class="form-control"
+                            <label >Mobile No</label>
+                            <input type="number" class="form-control"
                                    required="required" name="mobile"
-                                   id="mobileNo" placeholder="Mobile No"/></div>
+                                   id="mobileNoSup" placeholder="Mobile No"/></div>
                     </div>
 
                     <div class="form-group">
 
                         <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6"> <br>
-                            <label for="id">Gender</label>
-                            <input type="text" class="form-control"
-                                   required="required" name="gender"
-                                   id="gender" placeholder="Gender"/></div>
+                            <label >Gender</label>
+
+                            <select type="c" class="form-control"
+                                    required="required" name="gender"
+                                    id="genderSup" placeholder="Gender">
+                                <option>Male</option>
+                                <option>Female</option>
+                            </select>
+                        </div>
 
                         <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6"> <br>
-                            <label for="id">Date</label>
+                            <label >Date</label>
                             <input type="date" class="form-control"
                                    required="required" name="date"
-                                   id="date" placeholder="Date"/></div>
+                                   id="dateSup" placeholder="Date"/></div>
                         <br>
                     </div>
                     <div class="form-group">
 
-
-
                         <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6"> <br>
-                            <label for="id">DateOfBirth</label>
+                            <label>DateOfBirth</label>
                             <input type="date" class="form-control"
                                    required="required" name="birthday"
-                                   id="dateOfBirth" placeholder="DateOfBirth"/></div>
+                                   id="dateOfBirthSup" placeholder="DateOfBirth"/></div>
                         <br>
-                    </div>
 
-                    <button type='submit' class="btn btn-primary" style="width: 50%; top: 20px; position: relative" value="Register">
+                    </div>
+                    <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6"><br>
+                        <div class="col-md-5 col-lg-5 col-xl-5">
+
+                            <label for="img-preview">Image</label>
+                            <div class="img-upload-card ">
+                                <c:choose>
+                                    <c:when test="${empty supplierDTO.image}">
+                                        <img src="../../images/icons/unknown.png" id="img-preview"
+                                             style="width: 100%; height: 40px"/>
+                                    </c:when>
+                                    <c:otherwise>
+                                        <img src="${supplierDTO.image}" id="img-preview"
+                                             style="width: 100%;height: 40px"/>
+                                    </c:otherwise>
+                                </c:choose>
+                                <label class="file-upload-container" for="file-upload"
+                                       style="font-size: 13px; padding: -10px 5px 0px 5px; height: 30px">
+                                    <input id="file-upload" type="file" style="display:none;">
+                                    Select
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                        <form:hidden id="imgUrl" path="image" value="../../images/picture.jpg"/>
+                    <button type='submit' class="btn btn-dark" style="width: 50%; top: 20px; position: relative" value="Register">
                         Submit
                     </button>
                     <button type='reset' class="btn btn-outline-success" style="top: 20px; position: relative" value="">Reset</button>
 
-                </form>
+                    </form:form>
             </div>
             <%--/Input Feilds--%>
             <%--Table--%>
@@ -386,6 +411,7 @@
                                             <tr>
                                                 <th>Id</th>
                                                 <th>Name</th>
+                                                <th>img</th>
                                                 <th>Address</th>
                                                 <th>MobileNo</th>
                                                 <th>Email</th>
@@ -403,6 +429,8 @@
                                             <tr>
                                                 <td>${e.id}</td>
                                                 <td>${e.name}</td>
+                                                <td><img src="${e.image}"
+                                                         class="avatar" alt="Avatar"></td>
                                                 <td>${e.address}</td>
                                                 <td>${e.mobile}</td>
                                                 <td>${e.email}</td>
@@ -679,25 +707,64 @@
 
     }); // end am4core.ready()
 </script>
-
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 <script>
 
         var selectedRow = null;
         $("#datatable-buttons tbody").on('click', 'tr', function () {
             selectedRow = $(this);
-            $("#userId").val($(this).find("td:nth-child(1)").text());
-            $("#userName").val($(this).find("td:nth-child(2)").text());
-            $("#position").val($(this).find("td:nth-child(3)").text());
-            $("#mobileNo").val($(this).find("td:nth-child(4)").text());
-            $("#pic").val($(this).find("td:nth-child(5)").text());
-            $("#salary").val($(this).find("td:nth-child(6)").text());
-            $("#address").val($(this).find("td:nth-child(7)").text());
-            $("#email").val($(this).find("td:nth-child(8)").text());
-            $("#password").val($(this).find("td:nth-child(9)").text());
-            $("#gender").val($(this).find("td:nth-child(10)").text());
-            $("#date").val($(this).find("td:nth-child(11)").text());
-            $("#dateOfBirth").val($(this).find("td:nth-child(12)").text());
+            $("#idSup").val($(this).find("td:nth-child(1)").text());
+            $("#nameSup").val($(this).find("td:nth-child(2)").text());
+            $("#img-preview").val($(this).find("td:nth-child(3)").text());
+            $("#addressSup").val($(this).find("td:nth-child(4)").text());
+            $("#mobileNoSup").val($(this).find("td:nth-child(5)").text());
+            $("#emailSup").val($(this).find("td:nth-child(6)").text());
+            $("#genderSup").val($(this).find("td:nth-child(7)").text());
+            $("#dateSup").val($(this).find("td:nth-child(8)").text());
+            $("#dateOfBirthSup").val($(this).find("td:nth-child(9)").text());
+            $("#password").val($(this).find("td:nth-child(10)").text());
+            $("#gender").val($(this).find("td:nth-child(11)").text());
+            $("#date").val($(this).find("td:nth-child(12)").text());
+            $("#dateOfBirth").val($(this).find("td:nth-child(13)").text());
             selectedRow.addClass('row-selected');
+        });
+
+
+
+        let imgPreview = document.getElementById('img-preview');
+        let fileUpload = document.getElementById('file-upload');
+        let imgUrl = document.getElementById("imgUrl");
+        let CLOUDINARY_API_URL = 'https://api.cloudinary.com/v1_1/dwdv5hhga/upload';
+        let CLOUDINARY_UPLOAD_PRESET = 'sqdn7zkx';
+
+        fileUpload.addEventListener('change', function (event) {
+
+            let file = event.target.files[0];
+
+            let formData = new FormData();
+
+            formData.append('file', file);
+
+            console.log("form-data", file);
+
+            formData.append('upload_preset', CLOUDINARY_UPLOAD_PRESET);
+
+            axios({
+                url: CLOUDINARY_API_URL, method: 'POST', headers: {
+
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                }, data:
+
+                formData
+            }).then(function (res) {
+                imgPreview.src = res.data.secure_url;
+                imgUrl.value = res.data.secure_url;
+            }).catch(function (err) {
+
+                console.error(err);
+            });
+
+
         });
 </script>
 

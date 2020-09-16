@@ -12,5 +12,4 @@ public interface AttendanceDAO extends CrudRepository<Attendance,Integer> {
 
     Attendance findTopByOrderByAttendanceIdDesc();
 
-
 }

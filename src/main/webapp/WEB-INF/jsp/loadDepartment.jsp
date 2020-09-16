@@ -1,8 +1,8 @@
 <%--
   Created by IntelliJ IDEA.
-  User: Rivindu Chamath
-  Date: 21-May-20
-  Time: 2:43 AM
+  User: asus
+  Date: 9/7/2020
+  Time: 3:36 PM
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -25,10 +25,15 @@
     <link href="../../vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
     <!-- Custom Theme Style -->
     <link href="../../build/css/custom.min.css" rel="stylesheet">
+    <!-- Datatables -->
+    <link href="../../vendors/datatables.net-bs/css/dataTables.bootstrap.min.css" rel="stylesheet">
+    <link href="../../vendors/datatables.net-buttons-bs/css/buttons.bootstrap.min.css" rel="stylesheet">
+    <link href="../../vendors/datatables.net-fixedheader-bs/css/fixedHeader.bootstrap.min.css" rel="stylesheet">
+    <link href="../../vendors/datatables.net-responsive-bs/css/responsive.bootstrap.min.css" rel="stylesheet">
 
     <%
-        SimpleDateFormat sdf = new SimpleDateFormat ( "dd-MM-yyyy" );
-        String date = sdf.format ( new Date ( ) );
+        SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
+        String date = sdf.format(new Date());
     %>
     <style>
         .large-btn {
@@ -39,87 +44,45 @@
             font-size: 27px;
         }
 
-        .btnq2:hover {
+
+        .large-btn:hover {
+            color: #0f0f0f;
             transform: scale(1.05, 1.1);
+            border-color: #0f0f0f !important;
+            border-width: 2px !important;
             transition: 0.8s ease;
             -webkit-transition: 0.8s ease;
             -moz-transition: 0.8s ease;
         }
 
-        .btnq3:hover {
-            transform: scale(1.3, 1.3);
-            transition: 0.8s ease;
-            -webkit-transition: 0.8s ease;
-            -moz-transition: 0.8s ease;
-        }
+
         #chartdiv {
+            position: relative;
+            top: 40px;
             width: 100%;
-            height: 500px;
+            height: 400px;
         }
 
         #chartdiv1 {
-            width: 100%;
-            height: 500px;
-        }
-
-        .large-btn:hover {
-            color: #cebbbb;
-        }
-        /*//////////////////////////////////////////////////////////////*/
-
-        .containerx {
-            display: flex;
-
-        }
-
-        .btnq {
-            text-decoration: none;
-            border: 5px solid rgb(174, 182, 203);
             position: relative;
-            overflow: hidden;
-            height: 90px;
+            top: 40px;
             width: 100%;
-            font-size: 1.5rem;
-            text-align: center;
-            border-radius: 5px 5px;
+            height: 400px;
         }
-
-        .btnq:before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: -00%;
-            text-align: center;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(
-                    120deg,
-                    transparent,
-                    rgba(135, 141, 156, 0.4),
-                    transparent
-            );
-            transition: all .8s;
-        }
-
-        .btnq:hover:before {
-            left: 100%;
-        }
-
     </style>
 </head>
+
 <body class="nav-md" style="cursor: pointer">
 
-    <div class="form-container sign-in-container">
-///
 <div class="container body">
     <div class="main_container">
 
         <!-- Side header -->
-        <jsp:include page="sideHeader.jsp" />
+        <jsp:include page="sideHeader.jsp"/>
         <!-- /Side header -->
 
         <!-- Top header -->
-        <jsp:include page="topHeader.jsp" />
+        <jsp:include page="topHeader.jsp"/>
         <!-- /Top header -->
 
 
@@ -128,7 +91,7 @@
             <div class="">
                 <div class="page-title">
                     <div class="title_left">
-                        <h3>Reservation
+                        <h3>Departments
                             <small>Welcome To Hotel Hareesha</small>
                         </h3>
                     </div>
@@ -209,63 +172,33 @@
                                     </td>
                                 </tr>
                             </table>
-
                         </form>
                     </div>
                 </div>
+                <a href="/manageUser">
+                    <button style=" border: 5px solid rgb(174, 182, 203);background-color: #45526e;
+                                    color: #c6d4d3;font-weight: bolder" type="button" class="btnq2 btn"><i
+                            class="fa fa-reply">
+                        Back</i>
+                    </button>
+                </a>
                 <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
-
-
-                    <div class="col-sm-12 col-md-4 col-lg-4 col-xl-4">
-                        <div class="containerx">
-                            <a style=" font-family: Playfair Display, Georgia, Times New Roman, serif;
-                             background-color:#3d495f; color: #ffffff;font-weight: bolder"
-                               href="https://www.google.com/" class="btnq"><h2
-                                    style="position: relative; letter-spacing: 1px;
-                                     margin-top: 30px">Online Reservation</h2></a>
-                        </div>
-                        <br>
-                    </div>
-
-                    <div class="col-sm-12 col-md-4 col-lg-4 col-xl-4">
-                        <div class="containerx">
-                            <a style=" font-family: Playfair Display, Georgia, Times New Roman, serif;
-                             background-color:#3d495f; color: #ffffff;font-weight: bolder"
-                               href="/overTheCounterReservation" class="btnq"><h2
-                                    style="position: relative; letter-spacing: 1px;
-                                     margin-top: 30px">Over The Counter Reservation</h2></a>
-                        </div>
-                        <br>
-                    </div>
-
-                    <div class="col-sm-12 col-md-4 col-lg-4 col-xl-4">
-                        <div class="containerx">
-                            <a style=" font-family: Playfair Display, Georgia, Times New Roman, serif;
-                             background-color:#3d495f; color: #ffffff;font-weight: bolder"
-                               href="/banquetDelete" class="btnq"><h2
-                                    style="position: relative; letter-spacing: 1px;
-                                     margin-top: 30px">Daily Activity Report</h2></a>
-                        </div>
-                        <br>
-                    </div>
-
-                </div>
-
-                <%--                    /////////////////////////////////////////////////////--%>
-                <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
-                    <div class="row" style="display: block;">
-                        <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                    <%--Table--%>
+                    <div class="col-12 col-sm-12 col-md-12 col-lg-7 col-xl-7">
+                        <div class="row">
                             <div class="x_panel">
                                 <div class="x_title">
-                                    <h2>Latest Reservations</h2>
+                                    <h2>Find Departments
+                                        <small></small>
+                                    </h2>
                                     <ul class="nav navbar-right panel_toolbox">
                                         <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                                         </li>
                                         <li class="dropdown">
-                                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                                               aria-expanded="false"><i class="fa fa-wrench"></i></a>
                                             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                                                 <a class="dropdown-item" href="#">Settings 1</a>
-                                                <a class="dropdown-item" href="#">Settings 2</a>
                                             </div>
                                         </li>
                                         <li><a class="close-link"><i class="fa fa-close"></i></a>
@@ -274,69 +207,122 @@
                                     <div class="clearfix"></div>
                                 </div>
                                 <div class="x_content">
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <div class="card-box table-responsive">
+                                                <table style="" id="datatable-buttons"
+                                                       class="table table-striped table-bordered">
+                                                    <thead class="thead-light">
+                                                    <tr>
+                                                        <th>Department Id</th>
+                                                        <th>Name</th>
+                                                        <th></th>
+                                                    </tr>
 
-                                    <table class="table">
-                                        <thead>
-                                        <tr>
-                                            <th>Reservation Id</th>
-                                            <th>Customer Name</th>
-                                            <th>Mobile</th>
-                                            <th>Email</th>
-                                            <th>No of Rooms</th>
-
-                                        </tr>
-                                        </thead>
-                                        <tbody>
-                                        <c:forEach items="${loadTable1}" var="e">
-                                            <tr>
-                                                <td>${e.orderId}</td>
-                                                <td>${e.name}</td>
-                                                <td>${e.contactNumber}</td>
-                                                <td>${e.date}</td>
-                                                <td>${e.hallId}</td>
-                                                <td>${e.noOfPlates}</td>
-                                                <td>${e.advanceFee}</td>
-                                                <td>${e.orderState}</td>
-                                                <td><a href="/updateBanquetStatus?orderId=${e.orderId}">
-                                                    <button value="" id="billBtn" name="billBtn" class="btn btn-outline-success" style="font-size: 12px;">confirmed</button>
-                                                </a></td>
-                                            </tr>
-                                        </c:forEach>
-
-                                        </tbody>
-                                    </table>
-
+                                                    </thead>
+                                                    <tbody>
+                                                    <c:forEach items="${loadDepartment}" var="e">
+                                                        <tr>
+                                                            <td>${e.departmentId}</td>
+                                                            <td>${e.departmentName}</td>
+                                                            <td >  <a href="deleteDepartment/${e.departmentId}"
+                                                                     onclick="return confirm('Are you sure you want to delete?')"
+                                                                     class="btn btn-xs">
+                                                                <i class="fa fa-trash-o"></i></a></td>
+                                                        </tr>
+                                                    </c:forEach>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
+                    <div class="col-12 col-sm-12 col-md-12 col-lg-5 col-xl-5">
+                        <form method="POST" action="saveDepartment" name="saveDepartment">
 
+                            <div class="form-group">
+
+                                <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                                    <input type="hidden" class="form-control"
+                                           name="departmentId" value="0"
+                                           id="CBtId" placeholder="Bill ID"/></div>
+
+
+                            </div>
+
+                            <div class="form-group">
+                                <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12"><br>
+                                    <label>Department Name</label>
+                                    <input type="text" class="form-control"
+                                           required="required" name="departmentName" id="amount"
+                                           placeholder="Department"/></div>
+
+                            </div>
+
+
+                            <button type='submit' class="btn btn-dark" style="width: 30%; top: 20px; position: relative"
+                                    value="Register">
+                                Submit
+                            </button>
+
+                            <button type='reset' class="btn btn-outline-success" style="top: 20px; position: relative"
+                                    value="">Reset
+                            </button>
+
+                        </form>
+                    </div>
                 </div>
-                <%--/////////////////////////////////////////////    /////////////////////////////////////////////--%>
-
-
-
-
-
             </div>
         </div>
-        <!-- /page content -->
-
-        <!-- footer content -->
-        <jsp:include page="footer.jsp" />
-        <!-- /footer content -->
     </div>
 </div>
+<%--/////////////////////////////////////////////////--%>
 </div>
+<!-- /page content -->
 
+<!-- footer content -->
+<jsp:include page="footer.jsp"/>
+<!-- /footer content -->
 
+</div>
+</div>
 
 <!-- jQuery -->
 <script src="../../vendors/jquery/dist/jquery.min.js"></script>
 <!-- Bootstrap -->
 <script src="../../vendors/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- Datatables -->
+<script src="../../vendors/datatables.net/js/jquery.dataTables.min.js"></script>
+<script src="../../vendors/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+<%--Show Print Buttons--%>
+<script src="../../vendors/datatables.net-buttons/js/dataTables.buttons.min.js"></script>
+<script src="../../vendors/datatables.net-buttons-bs/js/buttons.bootstrap.min.js"></script>
+<script src="../../vendors/datatables.net-buttons/js/buttons.flash.min.js"></script>
+<script src="../../vendors/datatables.net-buttons/js/buttons.html5.min.js"></script>
+<script src="../../vendors/datatables.net-buttons/js/buttons.print.min.js"></script>
+<script src="../../vendors/datatables.net-fixedheader/js/dataTables.fixedHeader.min.js"></script>
+<script src="../../vendors/datatables.net-keytable/js/dataTables.keyTable.min.js"></script>
+<%--Responsive Table--%>
+<script src="../../vendors/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
+<script src="../../vendors/datatables.net-responsive-bs/js/responsive.bootstrap.js"></script>
+<%--<script src="../../vendors/datatables.net-scroller/js/dataTables.scroller.min.js"></script>--%>
+<%--Print--%>
+<script src="../../vendors/jszip/dist/jszip.min.js"></script>
 <!-- Custom Theme Scripts -->
 <script src="../../build/js/custom.min.js"></script>
+<script>
 
+    var selectedRow = null;
+    $("#datatable-buttons tbody").on('click', 'tr', function () {
+        selectedRow = $(this);
+
+        $("#CBtId").val($(this).find("td:nth-child(1)").text());
+        $("#amount").val($(this).find("td:nth-child(2)").text());
+    });
+</script>
 </body>
 </html>

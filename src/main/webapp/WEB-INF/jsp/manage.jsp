@@ -188,8 +188,8 @@
                         <button type="button" class="large-btn btn btn-dark">Food & Beverage</button></a>
                 </div>
                 <div class="col-sm-12 col-md-3 col-lg-3 col-xl-3">
-                    <a href="manageUser">
-                        <button type="button" class="large-btn btn btn-dark">Banquet Manage</button></a>
+                    <a href="kitchenDailyActivityReport">
+                        <button type="button" class="large-btn btn btn-dark">Kitchen Report</button></a>
                 </div>
                 <div class="col-sm-12 col-md-4 col-lg-4 col-xl-4">
                     <a href="manageDailyActivityReport">

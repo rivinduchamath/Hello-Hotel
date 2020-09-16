@@ -7,20 +7,20 @@ import java.util.List;
 public class BarOrderDTO {
 
     private int id;
-    private String customerId;
+    private int customerId;
     private int user;
     private List<BarOrderDetailDTO> orderDetails;
     private  String orderData;
     private Date date;
 
-    public BarOrderDTO(int id, String customerId, int user, List<BarOrderDetailDTO> orderDetails) {
+    public BarOrderDTO(int id, int customerId, int user, List<BarOrderDetailDTO> orderDetails) {
         this.id = id;
         this.customerId = customerId;
         this.user = user;
         this.orderDetails = orderDetails;
     }
 
-    public BarOrderDTO(int id, String customerId, int user, List<BarOrderDetailDTO> orderDetails, String orderData) {
+    public BarOrderDTO(int id, int customerId, int user, List<BarOrderDetailDTO> orderDetails, String orderData) {
         this.id = id;
         this.customerId = customerId;
         this.user = user;
@@ -28,7 +28,7 @@ public class BarOrderDTO {
         this.orderData = orderData;
     }
 
-    public BarOrderDTO(int id, String customerId, int user, List<BarOrderDetailDTO> orderDetails, String orderData, Date date) {
+    public BarOrderDTO(int id, int customerId, int user, List<BarOrderDetailDTO> orderDetails, String orderData, Date date) {
         this.id = id;
         this.customerId = customerId;
         this.user = user;
@@ -60,7 +60,7 @@ public class BarOrderDTO {
         this.orderData = orderData;
     }
 
-    public BarOrderDTO(int orderId, String customerId, int user) {
+    public BarOrderDTO(int orderId, int customerId, int user) {
         this.id = orderId;
         this.customerId = customerId;
         this.user = user;
@@ -75,11 +75,11 @@ public class BarOrderDTO {
     }
 
 
-    public String getCustomerId() {
+    public int getCustomerId() {
         return customerId;
     }
 
-    public void setCustomerId(String customerId) {
+    public void setCustomerId(int customerId) {
         this.customerId = customerId;
     }
 
