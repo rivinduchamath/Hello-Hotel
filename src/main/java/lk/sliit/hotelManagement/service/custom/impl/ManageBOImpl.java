@@ -157,4 +157,9 @@ public class ManageBOImpl implements ManageBO {
 
         ));
     }
+
+    @Override
+    public void deleteDepartment(int departmentId) {
+        departmentDAO.delete(departmentId);
+    }
 }

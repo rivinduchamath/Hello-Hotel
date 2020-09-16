@@ -10,11 +10,14 @@ import lk.sliit.hotelManagement.service.custom.ManageBO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.sql.SQLIntegrityConstraintViolationException;
 import java.util.List;
 
 @Controller
@@ -74,5 +77,23 @@ public class ManageController {
         return "redirect:/loadDepartment";
     }
 
+    @RequestMapping(value = "deleteDepartment/{departmentId}")
+    public String deleteDepartment(@PathVariable("departmentId") int departmentId, HttpServletResponse response) throws IOException {
+        List<EmployeeDTO> p = manageBO.findAllUser();
+        response.setContentType("text/html;charset=UTF-8");
+        PrintWriter out = response.getWriter();
+        for (EmployeeDTO s: p) {
+            if(s.getDepartment()== departmentId){
+                out.println("<script type=\"text/javascript\">");
+                out.println("alert('You Cant Delete this Department. This" +
+                        " Department Already Saved in Another Table');");
+                out.println("location='/manageUser';");
+                out.println("</script>");
 
+                return "redirect:/loadDepartment";
+            }
+        }
+                manageBO.deleteDepartment(departmentId);
+           return "redirect:/loadDepartment";
+    }
 }

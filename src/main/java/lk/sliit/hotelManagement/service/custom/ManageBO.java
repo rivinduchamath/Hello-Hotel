@@ -26,4 +26,6 @@ public interface ManageBO extends SuperBO {
     DepartmentDTO findDepertmentById(int departmentId);
 
     void saveDepertment(DepartmentDTO departmentDTO);
+
+    void deleteDepartment(int departmentId);
 }
