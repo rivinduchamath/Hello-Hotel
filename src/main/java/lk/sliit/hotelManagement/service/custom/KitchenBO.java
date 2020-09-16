@@ -4,6 +4,8 @@ import lk.sliit.hotelManagement.dto.inventory.InventoryNoticeDTO;
 import lk.sliit.hotelManagement.dto.kitchen.FoodItemDTO;
 import lk.sliit.hotelManagement.dto.kitchen.MenuDTO;
 import lk.sliit.hotelManagement.dto.manager.EmployeeDTO;
+import lk.sliit.hotelManagement.dto.restaurant.restaurantCounterOrder.RestaurantCounterOrderDetailDTO;
+import lk.sliit.hotelManagement.entity.restaurant.counterOrder.RestaurantCounterOrderDetail;
 import lk.sliit.hotelManagement.service.SuperBO;
 
 
@@ -35,4 +37,8 @@ public interface KitchenBO extends SuperBO {
 
 
     List<InventoryNoticeDTO> findWeekOrderNotice();
+
+    FoodItemDTO findFoodItemById(int itemId);
+
+    List<RestaurantCounterOrderDetailDTO> findAllOrders();
 }

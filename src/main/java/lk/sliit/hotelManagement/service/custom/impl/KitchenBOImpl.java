@@ -4,13 +4,17 @@ import lk.sliit.hotelManagement.dao.inventoryDAO.InventoryNoticeDAO;
 import lk.sliit.hotelManagement.dao.kitchenDAO.KitchenDAO;
 import lk.sliit.hotelManagement.dao.kitchenDAO.MenuDAO;
 import lk.sliit.hotelManagement.dao.kitchenDAO.MenuDetailsDAO;
+import lk.sliit.hotelManagement.dao.restaurantDAO.counterOrderDAO.RestaurantCounterOrderDetailDAO;
+import lk.sliit.hotelManagement.dao.restaurantDAO.onlineOrderDAO.RestaurantOnlineOrderDetailsDAO;
 import lk.sliit.hotelManagement.dto.inventory.InventoryNoticeDTO;
 import lk.sliit.hotelManagement.dto.kitchen.FoodItemDTO;
 import lk.sliit.hotelManagement.dto.kitchen.MenuDTO;
+import lk.sliit.hotelManagement.dto.restaurant.restaurantCounterOrder.RestaurantCounterOrderDetailDTO;
 import lk.sliit.hotelManagement.entity.inventory.InventoryNotice;
 import lk.sliit.hotelManagement.entity.kitchen.FoodItem;
 import lk.sliit.hotelManagement.entity.kitchen.Menu;
 import lk.sliit.hotelManagement.entity.kitchen.MenuDetails;
+import lk.sliit.hotelManagement.entity.restaurant.counterOrder.RestaurantCounterOrderDetail;
 import lk.sliit.hotelManagement.service.custom.KitchenBO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -31,8 +35,13 @@ public class KitchenBOImpl implements KitchenBO {
     MenuDAO menuDAO;
     @Autowired
     MenuDetailsDAO menuDetailsDAO;
+
     @Autowired
     InventoryNoticeDAO inventoryNoticeDAO;
+    @Autowired
+    RestaurantCounterOrderDetailDAO restaurantCounterOrderDetail;
+    @Autowired
+    RestaurantOnlineOrderDetailsDAO onlineOrderDetailsDAO;
     @Override
     public void saveFoodItem(FoodItemDTO foodItemDTO) {
         kitchenDAO.save(new FoodItem
@@ -176,4 +185,30 @@ public class KitchenBOImpl implements KitchenBO {
         }
         return dtos;
     }
+
+    @Override
+    public FoodItemDTO findFoodItemById(int itemId) {
+        FoodItem foodItem = kitchenDAO.findOne(itemId);
+        FoodItemDTO menuDTO = new FoodItemDTO(foodItem.getItemId(),
+                foodItem.getName(),
+                foodItem.getUnitePrice(),
+                foodItem.getCategory(),
+                foodItem.getSrc());
+        return menuDTO;
+    }
+
+    @Override
+    public List<RestaurantCounterOrderDetailDTO> findAllOrders() {
+        Iterable<RestaurantCounterOrderDetail> all = restaurantCounterOrderDetail.findAll();
+        List<RestaurantCounterOrderDetailDTO> dtos = new ArrayList<>();
+        for (RestaurantCounterOrderDetail a : all) {
+            dtos.add(new RestaurantCounterOrderDetailDTO(
+                    a.getFoodItem().getItemId(),
+                    a.getQuantity(),
+                    a.getUnitePrice()
+            ));
+        }
+        return dtos;
+    }
+
 }
