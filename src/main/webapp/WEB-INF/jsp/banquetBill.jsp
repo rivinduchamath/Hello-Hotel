@@ -231,7 +231,7 @@
 
                             <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6"> <br>
                                 <label for="banquetBillId">Other Prices</label>
-                                <input type="text" class="form-control"
+                                <input type="number" class="form-control"
                                        required="required" name="otherPrice"
                                        id="otherPrice" placeholder="Other Prices"/>
                             </div>

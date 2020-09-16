@@ -329,7 +329,7 @@
                             <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6"> <br>
                                 <label for="orderId">Mobile No</label>
                                 <input type="tel" class="form-control"
-                                       required="required" name="contactNumber"
+                                       pattern="[0-9]{10}" required name="contactNumber"
                                        id="contactNumber" placeholder="Mobile No"/></div>
                         </div>
 
