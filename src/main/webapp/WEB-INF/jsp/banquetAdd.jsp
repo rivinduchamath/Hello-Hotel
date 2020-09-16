@@ -28,14 +28,29 @@
         SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
         String date = sdf.format(new Date());
     %>
+    <%
+        if(request.getAttribute("myp1") != null){
+    %>
+        <script>alert("Date is Unavailable... Please check availability.")</script>
+    <%
+        }
+    %>
 
-    <c:if test="${not empty loginError}">
-        <script>
-            window.addEventListener("load",function(){
-                alert("${loginError}");
-            });
-        </script>
-    </c:if>
+    <%
+        if(request.getAttribute("myp2") != null){
+    %>
+    <script>alert("Hall 01 is Unavailable... Please check availability.")</script>
+    <%
+        }
+    %>
+
+    <%
+        if(request.getAttribute("myp3") != null){
+    %>
+    <script>alert("Hall 02 is Unavailable... Please check availability.")</script>
+    <%
+        }
+    %>
 
     <!-- Datatables -->
     <link href="../../vendors/datatables.net-bs/css/dataTables.bootstrap.min.css" rel="stylesheet">
@@ -282,7 +297,7 @@
 
                             <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
                                 <label for="orderId">Customer Id</label>
-                                <input type="text" value="${topCustomerId}" class="form-control"
+                                <input type="number" value="${topCustomerId}" class="form-control"
                                        required="required" name="customerId"
                                        id="customerId" placeholder="Customer Id" readonly/></div>
                         </div>
@@ -307,13 +322,13 @@
                         <div class="form-group">
                             <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6"> <br>
                                 <label for="orderId">Email</label>
-                                <input type="text" class="form-control"
+                                <input type="email" class="form-control"
                                        required="required" name="email"
                                        id="email" placeholder="Email"/></div>
 
                             <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6"> <br>
                                 <label for="orderId">Mobile No</label>
-                                <input type="text" class="form-control"
+                                <input type="tel" class="form-control"
                                        required="required" name="contactNumber"
                                        id="contactNumber" placeholder="Mobile No"/></div>
                         </div>
@@ -340,7 +355,7 @@
                         <div class="form-group">
                             <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6"> <br>
                                 <label for="orderId">Num Of Plates</label>
-                                <input type="text" class="form-control"
+                                <input type="number" size="6" min="10" max="1000" class="form-control"
                                        required="required" name="noOfPlates"
                                        id="noOfPlates" placeholder="Num Of Plates"/></div>
 
@@ -361,15 +376,11 @@
                                 <input type="hidden" required="required" name="banquetBillId"
                                        id="billId" value="${topBanquetBillId}">
                                 <label for="orderId">Advance Payment</label>
-                                <input type="text" class="form-control"
+                                <input type="number" class="form-control"
                                        required="required" name="advanceFee"
                                        id="advancePayment" placeholder="Advance Payment"/></div>
 
                         </div>
-
-
-
-
 
                         <button type='submit' class="btn btn-primary" style="width: 50%; top: 20px; position: relative" value="Register">
                             Submit
@@ -493,6 +504,26 @@
         selectedRow.addClass('row-selected');
     });
 </script>
+<script>
+    var dateControler = {
+        currentDate : null
+    }
+
+    $(document).on( "change", "#date",function( event, ui ) {
+        var now = new Date();
+        var selectedDate = new Date($(this).val());
+
+        if(selectedDate <= now) {
+            $(this).val("");
+            alert("Invalid date... Please enter future date... Can't enter today and old dates");
+
+        } else {
+            dateControler.currentDate = $(this).val();
+        }
+    });
+</script>
+
+
 
 
 </body>
