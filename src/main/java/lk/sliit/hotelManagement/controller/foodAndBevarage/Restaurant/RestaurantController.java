@@ -73,4 +73,9 @@ public class RestaurantController {
 
         return "invoice";
     }
+    @GetMapping("/restaurantManage")
+    public String restaurantManage(Model model) {
+        model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
+        return "restaurantManage";
+    }
 }
