@@ -1,7 +1,5 @@
 package lk.sliit.hotelManagement.controller;
 
-
-import lk.sliit.hotelManagement.dto.restaurant.RestaurantTableDTO;
 import lk.sliit.hotelManagement.dto.timeCheckDTO;
 import lk.sliit.hotelManagement.service.custom.TimeCheckBO;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,6 +34,7 @@ TimeCheckBO timeCheck1;
         System.out.println(meCheck.getTimeSett());
         return "redirect:/le";
     }
+
     @GetMapping("/loadTable")
     public String loadTable(Model model,@ModelAttribute timeCheckDTO meCheck){
         Time a = Time.valueOf(meCheck.getTimeSett()+":00");

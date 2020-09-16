@@ -44,7 +44,7 @@ public class OnlineOrder {
             }
 
             model.addAttribute("loadAllFoods", p1);
-        } catch (NullPointerException d) {
+        } catch (Exception d) {
             return "onlineOrder";
         }
         return "onlineOrder";

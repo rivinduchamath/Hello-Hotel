@@ -1,11 +1,7 @@
 package lk.sliit.hotelManagement.dao;
 
 import lk.sliit.hotelManagement.entity.TimeCheck;
-import org.jboss.logging.Param;
-import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
-
-
 import java.util.Date;
 
 public interface TimeDAO extends CrudRepository<TimeCheck, String> {

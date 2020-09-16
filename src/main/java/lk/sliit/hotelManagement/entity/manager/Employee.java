@@ -167,4 +167,28 @@ public class Employee implements SuperEntity {
     public void setImage(String image) {
         this.image = image;
     }
+
+    public List<Attendance> getAttendance() {
+        return attendance;
+    }
+
+    public void setAttendance(List<Attendance> attendance) {
+        this.attendance = attendance;
+    }
+
+    public List<Salary> getSalaries() {
+        return salaries;
+    }
+
+    public void setSalaries(List<Salary> salaries) {
+        this.salaries = salaries;
+    }
+
+    public List<RoomService> getOrderDetails() {
+        return orderDetails;
+    }
+
+    public void setOrderDetails(List<RoomService> orderDetails) {
+        this.orderDetails = orderDetails;
+    }
 }//End Class

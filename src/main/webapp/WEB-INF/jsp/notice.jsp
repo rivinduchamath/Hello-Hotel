@@ -96,15 +96,12 @@
                                 <div id="wizard" class="form_wizard wizard_horizontal">
 
                                     <div id="step-1">
-                                        <form class="form-horizontal form-label-left" method="post" action="noticSave"
+                                        <form class="form-horizontal form-label-left" method="post" action="noticeSave"
                                               name="noticSave">
 
                                             <div class="form-group row">
-                                                <label class="col-form-label col-md-3 col-sm-3 label-align"
-                                                       for="noticeId">Notice Id<span class="required">*</span>
-                                                </label>
                                                 <div class="col-md-6 col-sm-6 ">
-                                                    <input type="text" value="${genId}" readonly id="noticeId"
+                                                    <input type="hidden" value="0" readonly id="noticeId"
                                                            name="noticeId" required="required" class="form-control  ">
                                                 </div>
                                             </div>
@@ -141,20 +138,20 @@
 
 
                                             <div class="form-group row">
-                                                <label class="col-form-label col-md-3 col-sm-3 label-align" for="title">Description<span
-                                                        class="required">*</span>
+                                                <label class="col-form-label col-md-3 col-sm-3 label-align" for="title">Description
+                                                    <span class="required">*</span>
                                                 </label>
-                                                <div class="col-md-6 col-sm-6 ">
+                                                <div class="col-md-6 col-sm-6">
                                                     <textarea type="text" class="form-control"
                                                            style="height: 70px !important;"
                                                            required="required" name="description"
-                                                              id="description"> </textarea>
+                                                           id="description"> </textarea>
                                                 </div>
                                             </div>
                                             <div class="form-group row">
                                                 <label class="col-form-label col-md-3 col-sm-3 label-align" for="date">Date</label>
                                                 <div class="col-md-6 col-sm-6 ">
-                                                    <input id="date" class="date-picker form-control" type="date"
+                                                    <input id="date" class="date-picker form-control" type="date" required
                                                            name="date">
                                                 </div>
                                             </div>

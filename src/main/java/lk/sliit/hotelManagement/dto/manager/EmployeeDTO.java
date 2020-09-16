@@ -20,9 +20,10 @@ public class EmployeeDTO {
     private Date date;
     private String image;
     private int department ;
+    private double otHours;
+    private double totHours;
 
-    private List<Attendance> attendance;
-    private List<Salary> salaries;
+
 
 
     public EmployeeDTO(int userId, String name, String mobileNo, String email
@@ -47,9 +48,49 @@ public class EmployeeDTO {
     public EmployeeDTO() {
     }
 
+    public EmployeeDTO(int userId, String name, String mobileNo, String email,
+                       String address, String position, String password, Date dateOfBirth,
+                       String gender, double salary, Date date, String image, int department, double otHours, double totHours) {
+        this.userId = userId;
+        this.name = name;
+        this.mobileNo = mobileNo;
+        this.email = email;
+        this.address = address;
+        this.position = position;
+        this.password = password;
+        this.dateOfBirth = dateOfBirth;
+        this.gender = gender;
+        this.salary = salary;
+        this.date = date;
+        this.image = image;
+        this.department = department;
+        this.otHours = otHours;
+        this.totHours = totHours;
+    }
+
     public EmployeeDTO(int userId, String password) {
         this.userId = userId;
         this.password = password;
+    }
+
+    public double getOtHours() {
+        return otHours;
+    }
+
+    public void setOtHours(double otHours) {
+        this.otHours = otHours;
+    }
+
+    public double getTotHours() {
+        return totHours;
+    }
+
+    public void setTotHours(int totHours) {
+        this.totHours = totHours;
+    }
+
+    public EmployeeDTO(int userId) {
+        this.userId = userId;
     }
 
     public int getDepartment() {
@@ -156,12 +197,10 @@ public class EmployeeDTO {
         this.image = image;
     }
 
-
-
     @Override
     public String toString() {
         return "EmployeeDTO{" +
-                "userId='" + userId + '\'' +
+                "userId=" + userId +
                 ", name='" + name + '\'' +
                 ", mobileNo='" + mobileNo + '\'' +
                 ", email='" + email + '\'' +
@@ -173,8 +212,9 @@ public class EmployeeDTO {
                 ", salary=" + salary +
                 ", date=" + date +
                 ", image='" + image + '\'' +
-                ", attendance=" + attendance +
-                ", salaries=" + salaries +
+                ", department=" + department +
+                ", otHours=" + otHours +
+                ", totHours=" + totHours +
                 '}';
     }
 }

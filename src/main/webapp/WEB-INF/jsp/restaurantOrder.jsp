@@ -180,7 +180,7 @@
                             <div class="form-group">
                                 <label for="itemCode">Customer ID</label>
                                 <input type="text" class="form-control"
-                                       name="customerId"
+                                       name="customerId" value="0"
                                        id="customerId" placeholder="Customer ID"/>
                             </div>
 
@@ -259,7 +259,7 @@
                                 </h2>
                                 <form method="POST" action="invoiceRestaurantOrder" name="invoiceRestaurantOrder">
                                     <input style="display: none" type="text" id="itemPay" name="dataValue">
-                                    <input style="display: none" type="text" id="cId"  name="customerId">
+                                    <input style="display: none" type="text" id="cId" value="0"  name="customerId">
                                     <ul class="nav navbar-right panel_toolbox">
                                         <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                                         </li>

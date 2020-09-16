@@ -1,4 +1,3 @@
-
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
@@ -108,67 +107,64 @@
                     <div class="title_right">
                         <div class="col-md-5 col-sm-5   form-group pull-right top_search">
                             <a href="/allSalary">
-                            <button  type='submit' class="btn btn-secondary" style="width: 50%;float: right" value="Register" >
-                                List All salary
-                            </button>
+                                <button type='submit' class="btn btn-secondary" style="width: 50%;float: right"
+                                        value="Register">
+                                    List All salary
+                                </button>
                             </a>
                         </div>
                     </div>
                 </div>
 
                 <div class="clearfix"></div>
-                 <div class=" ">
-                     <div class="col-md-4 col-sm-4 " style="float: left">
-                    <form method="POST" action="/salarySave" name="salary">
-
+                <div class=" ">
+                    <div class="col-md-4 col-sm-4 " style="float: left">
+                        <form method="POST" action="/salarySave" name="salary">
 
 
                             <div class="form-group">
-                                <label for="itemCode">Employee Id</label>
-                                <input type="text" class="form-control"
-                                       required="required" name="employeeID"
-                                       id="itemCode" placeholder="Employee Id" />
+
+                                        <input type="hidden" class="form-control"
+                                               required="required" name="employeeID"
+                                               id="itemCode"/>
+
+                                        <label for="itemCode">Employee Name</label>
+                                        <input type="text" class="form-control"
+                                               required="required" name="employeeID"
+                                               id="itemName" placeholder="Employee Id"/>
+
                             </div>
 
                             <div class="form-group">
                                 <label for="itemCode">Basic Salary</label>
                                 <input type="text" class="form-control"
                                        required="required" name="basicSalary"
-                                       id="BasicSalary" placeholder="Basic Salary" />
+                                       id="BasicSalary" placeholder="Basic Salary"/>
                             </div>
 
                             <div class="form-group">
                                 <label for="itemCode">OT Rate</label>
                                 <input type="text" class="form-control"
-                                       required="required" name="otRate"
-                                       id="OTRate" placeholder="OT Rate" />
-                            </div>
-                            <div class="form-group">
-                                <label for="itemCode">OT Hrs</label>
-                                <input type="text" class="form-control"
                                        required="required" name="otHours"
-                                       id="OTHrs" placeholder="OT Hrs" />
+                                       id="OTRate" placeholder="OT Rate"/>
                             </div>
 
                             <div class="form-group">
                                 <label for="itemCode">Monthly Bonus</label>
                                 <input type="text" class="form-control"
                                        required="required" name="bonus"
-                                       id="MonthlyBonus"  placeholder="Monthly Bonus" />
+                                       id="MonthlyBonus" placeholder="Monthly Bonus"/>
                             </div>
-                            <div class="form-group">
-                                <label for="itemCode">Income Tax</label>
-                                <input type="text" class="form-control"
-                                       required="required" name="incomeTax"
-                                       id="IncomeTax" placeholder="Income Tax" />
-                            </div>
-                           <input style="display: none" type="text" id="itemPay1" name="SalaryId">
-                            <button type='submit' class="btn btn-primary" style="width: 50%" value="Register" >
+
+                            <input value="0" type="hidden" id="itemPay1" name="SalaryId">
+                            <button type='submit' class="btn btn-dark" style="width: 50%" value="Register">
                                 Submit
                             </button>
-                            <button onclick="document.getElementsByClassName('form-control').value = ''" type='reset' class="btn btn-outline-success" value="">Reset</button>
+                            <button onclick="document.getElementsByClassName('form-control').value = ''" type='reset'
+                                    class="btn btn-outline-success" value="">Reset
+                            </button>
 
-                    </form>
+                        </form>
 
                     </div>
                     <!--////////////////////////////////////////////-->
@@ -202,13 +198,14 @@
 
                                             </p>
 
-                                            <table id="datatable-responsive"
+                                            <table id="datatable-responsive" style="text-align: center"
                                                    class="table table-striped table-bordered dt-responsive nowrap"
                                                    cellspacing="0" width="100%">
                                                 <thead class="thead-dark">
                                                 <tr>
                                                     <th>Employee Name</th>
                                                     <th>Employee ID</th>
+                                                    <th>B.Salary</th>
 
                                                 </tr>
                                                 </thead>
@@ -217,6 +214,7 @@
                                                     <tr>
                                                         <td>${e.name}</td>
                                                         <td>${e.userId}</td>
+                                                        <td>${e.salary}</td>
                                                     </tr>
                                                 </c:forEach>
                                                 </tbody>
@@ -231,9 +229,9 @@
                         </div>
                     </div>
 
-<!--/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////-->
+                    <!--/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////-->
 
-                     <div class="col-md-8 col-sm-8" style="float: right; position: relative;display: inline-block">
+                    <div class="col-md-8 col-sm-8" style="float: right; position: relative;display: inline-block">
                         <div class="x_panel">
                             <div class="x_title">
                                 <h2>Employee Monthly Salary
@@ -264,13 +262,14 @@
 
                                         <div class="card-box table-responsive">
 
-                                            <table id="datatable-buttons"
+                                            <table style="text-align: center" id="datatable-buttons"
                                                    class="table table-striped jambo_table bulk_action table-bordered">
                                                 <thead class="thead-dark">
 
                                                 <tr>
                                                     <th>EmpId</th>
                                                     <th>Name</th>
+                                                    <th>img</th>
                                                     <th>Total Salary</th>
                                                     <th>Delete</th>
                                                     <th><input type="checkbox" id="check-all" class="flat"></th>
@@ -280,9 +279,10 @@
                                                 <tbody>
                                                 <c:forEach items="${listEmployeesTableSalary}" var="e">
                                                     <tr>
-                                                        <td>${e.employeeID.idNo}</td>
-                                                        <td>${e.employeeID.name}</td>
-                                                        <td>${((e.basicSalary+e.bonus)+(e.otRate*e.otHours))-e.incomeTax}</td>
+                                                        <td>${e.employeeID}</td>
+                                                        <td>${e.employeeName}</td>
+                                                        <td>${e.image}</td>
+                                                        <td>${e.salary}</td>
                                                         <td><a href="/deleteSalary?idNo=${e.salaryId}"><span
                                                                 class="glyphicon glyphicon-trash"></span></a></td>
                                                         <td class="a-center ">
@@ -302,39 +302,39 @@
                     <!--///////////////////////////////////////////////////////-->
 
                 </div>
-                </div>
-
             </div>
+
         </div>
-        <!-- /page content -->
+    </div>
+    <!-- /page content -->
 
 
-        <script>
-            function getValue() {
-                var checks = document.getElementsByClassName('checks');
-                var str = '';
+    <script>
+        function getValue() {
+            var checks = document.getElementsByClassName('checks');
+            var str = '';
 
-                for (i = 0; i < ${countEmployee2}; i++) {
-                    if (checks[i].checked === true) {
-                        str += checks[i].value + " ";
-                    }
+            for (i = 0; i < ${countEmployee2}; i++) {
+                if (checks[i].checked === true) {
+                    str += checks[i].value + " ";
                 }
-                $("#itemPay").val(str);
             }
-        </script>
-        <!-- footer content -->
+            $("#itemPay").val(str);
+        }
+    </script>
+    <!-- footer content -->
     <footer>
         <div class="pull-right">
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             Copyright © Employee Management 2020.<a href="https://github.com/rivinduchamath/Hello-Hote/l">
-            Created by ITP SLIIT &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  </a>
-<%--            Copyright © Employee Management 2020.<a href="https://rivinduchamath.github.io/pro/">Created by Chanuka Mullevidana</a>--%>
+            Created by ITP SLIIT &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </a>
+            <%--            Copyright © Employee Management 2020.<a href="https://rivinduchamath.github.io/pro/">Created by Chanuka Mullevidana</a>--%>
         </div>
         <div class="clearfix"></div>
     </footer>
     <!-- /footer content -->
-        <!-- /footer content -->
-    </div>
+    <!-- /footer content -->
+</div>
 </div>
 
 
@@ -369,6 +369,8 @@
         var today2 = date2.getHours() + ":" + (date.getMinutes()) + ":" + date.getSeconds();
         selectedRow = $(this);
         $("#itemCode").val($(this).find("td:nth-child(2)").text());
+        $("#itemName").val($(this).find("td:nth-child(1)").text());
+        $("#BasicSalary").val($(this).find("td:nth-child(3)").text());
         $("#datatable-responsive tbody tr").removeClass('row-selected');
         selectedRow.addClass('row-selected');
     });

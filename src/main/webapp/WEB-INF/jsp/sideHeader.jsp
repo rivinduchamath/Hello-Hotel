@@ -38,7 +38,7 @@
         <!-- menu profile quick info -->
         <div class="profile clearfix">
             <div class="profile_pic" style=" width: 80px;height: 80px">
-                <img src="../../images/icons/${loggerName.image}" alt="..." class="img-circle profile_img">
+                <img src="${loggerName.image}" alt="..." class="img-circle profile_img">
             </div>
             <div class="profile_info">
                 <span>Welcome,</span>
@@ -61,7 +61,7 @@
                     </li>
                     <li><a><i class="fa fa-tasks"></i> Front Desk <span class="fa fa-chevron-down"></span></a>
                         <ul class="nav child_menu">
-                            <li><a href="reservations">Reservation</a></li>
+                            <li><a href="reservation">Reservation</a></li>
                             <li><a href="banquets">BanquetManagement</a></li>
                         </ul>
                     </li>

@@ -1,4 +1,4 @@
-<%--
+<<%--
   Created by IntelliJ IDEA.
   User: USER
   Date: 8/6/2020
@@ -31,7 +31,7 @@
 
     <c:if test="${not empty loginError}">
         <script>
-            window.addEventListener("load",function(){
+            window.addEventListener("load", function () {
                 alert("${loginError}");
             });
         </script>
@@ -92,6 +92,7 @@
             -webkit-transition: 0.8s ease;
             -moz-transition: 0.8s ease;
         }
+
         #chartdiv {
             width: 100%;
             height: 500px;
@@ -105,6 +106,7 @@
         .large-btn:hover {
             color: #cebbbb;
         }
+
         /*//////////////////////////////////////////////////////////////*/
 
         .containerx {
@@ -166,15 +168,26 @@
         <div class="right_col" role="main">
             <div class="page-title">
                 <div class="title_left">
-                    <h3>Add Banquet
+
+                    <h3>New Reservation
                         <small>Welcome To Hotel Hareesha</small>
                     </h3>
+
+
                     <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
-                        <div class="col-6 col-sm-6 col-md-6 col-lg-4 col-xl-4">
-                            <a href="/banquets">
-                                <button style=" border: 5px solid rgb(174, 182, 203);background-color: #45526e;
-                                    color: #c6d4d3;font-weight: bolder" type="button"  class="btnq2 btn"><i class="fa fa-reply">
+                        <div class="col-6 col-sm-6 col-md-8 col-lg-8 col-xl-8">
+                            <a href="/reservation">
+                                <button style="display: inline-block; border: 5px solid rgb(174, 182, 203);background-color: #45526e;
+                                    color: #c6d4d3;font-weight: bolder" type="button" class="btnq2 btn"><i
+                                        class="fa fa-reply">
                                     Back</i>
+                                </button>
+                            </a>
+                            <a href="/reservation">
+                                <button style=" border: 5px solid rgb(174, 182, 203);background-color: #45526e;
+                                    color: #c6d4d3;font-weight: bolder" type="button" class="btnq2 btn"><i
+                                        class="fa fa-fast-forward">
+                                    Next</i>
                                 </button>
                             </a>
 
@@ -270,112 +283,67 @@
             <%--Input Feilds--%>
             <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
                 <div class="col-12 col-sm-12 col-md-12 col-lg-5 col-xl-5">
-                    <form method="POST"  action="saveBanquet" name="saveBanquet">
+                    <form method="POST" action="saveOverTheCounterCustomer">
 
                         <div class="form-group">
 
-                            <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
-                                <label >Banquet Id</label>
-                                <input type="number" value="${topBanquetId}" class="form-control"
-                                       required="required" name="orderId"
-                                       id="orderId" placeholder="Banquet Id" readonly/></div>
 
                             <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
-                                <label for="orderId">Customer Id</label>
-                                <input type="text" value="${topCustomerId}" class="form-control"
+                                <label>Customer Id</label>
+                                <input type="number" value="" class="form-control"
                                        required="required" name="customerId"
-                                       id="customerId" placeholder="Customer Id" readonly/></div>
-                        </div>
-
-                        <div class="form-group">
+                                       id="customerId" placeholder="Customer Id"/></div>
 
 
-                            <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6"> <br>
-                                <label for="orderId">Customer Name</label>
-                                <input type="text" class="form-control"
-                                       required="required" name="name"
-                                       id="name" placeholder="Customer Name"/></div>
-
-                            <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6"> <br>
-                                <label for="orderId">Address</label>
-                                <input type="text" class="form-control"
-                                       required="required" name="address"
-                                       id="address" placeholder="Address"/></div>
-                        </div>
+                            <div class="form-group">
 
 
-                        <div class="form-group">
-                            <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6"> <br>
-                                <label for="orderId">Email</label>
-                                <input type="text" class="form-control"
-                                       required="required" name="email"
-                                       id="email" placeholder="Email"/></div>
+                                <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6"><br>
+                                    <label>Customer Name</label>
+                                    <input type="text" class="form-control"
+                                           required="required" name="name"
+                                           id="name" placeholder="Customer Name"/></div>
 
-                            <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6"> <br>
-                                <label for="orderId">Mobile No</label>
-                                <input type="text" class="form-control"
-                                       required="required" name="contactNumber"
-                                       id="contactNumber" placeholder="Mobile No"/></div>
-                        </div>
-
-                        <div class="form-group">
-
-                            <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6"> <br>
-                                <label for="orderId">Date</label>
-                                <input type="date" class="form-control"
-                                       required="required" name="date"
-                                       id="date" placeholder="Date"/></div>
-                            <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6"> <br>
-                                <label for="orderId">Hall No</label>
-                                <select class="form-control"required="required" name="hallId"
-                                        id="hallId">
-                                    <option>Choose Hall No</option>
-                                    <option value="No 1">No 1</option>
-                                    <option value="No 2">No 2</option>
-                                </select>
-
-                            </div>
-                            <br>
-                        </div>
-                        <div class="form-group">
-                            <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6"> <br>
-                                <label for="orderId">Num Of Plates</label>
-                                <input type="text" class="form-control"
-                                       required="required" name="noOfPlates"
-                                       id="noOfPlates" placeholder="Num Of Plates"/></div>
-
-                            <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6"> <br>
-                                <label for="orderId">Package</label>
-                                <select class="form-control"required="required" name="menuId"
-                                        id="menuId">
-                                    <option>Choose Package</option>
-                                    <option value="1">Bronze</option>
-                                    <option value="2">Silver</option>
-                                    <option value="3">Gold</option>
-                                    <option value="4">Platinum</option>
-                                </select>
-
+                                <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6"><br>
+                                    <label>Address</label>
+                                    <input type="text" class="form-control"
+                                           required="required" name="address"
+                                           id="address" placeholder="Address"/></div>
                             </div>
 
-                            <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6"> <br>
-                                <input type="hidden" required="required" name="banquetBillId"
-                                       id="billId" value="${topBanquetBillId}">
-                                <label for="orderId">Advance Payment</label>
-                                <input type="text" class="form-control"
-                                       required="required" name="advanceFee"
-                                       id="advancePayment" placeholder="Advance Payment"/></div>
 
+                            <div class="form-group">
+                                <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6"><br>
+                                    <label>Email</label>
+                                    <input type="email" class="form-control"
+                                           required="required" name="email"
+                                           id="email" placeholder="Email"/></div>
+
+                                <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6"><br>
+                                    <label>Mobile No</label>
+                                    <input type="number" class="form-control"
+                                           required="required" name="contactNumber"
+                                           id="contactNumber" placeholder="Mobile No"/></div>
+                            </div>
+
+
+                            <div class="form-group">
+                                <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6"><br>
+                                    <label>Age</label>
+                                    <input type="number" class="form-control"
+                                           required="required" name="noOfPlates"
+                                           id="noOfPlates" placeholder="Age"/></div>
+                            </div>
+
+
+                            <button type='submit' class="btn btn-primary"
+                                    style="width: 50%; top: 20px; position: relative" value="Register">
+                                Submit
+                            </button>
+                            <button type='reset' class="btn btn-outline-success" style="top: 20px; position: relative"
+                                    value="">Reset
+                            </button>
                         </div>
-
-
-
-
-
-                        <button type='submit' class="btn btn-primary" style="width: 50%; top: 20px; position: relative" value="Register">
-                            Submit
-                        </button>
-                        <button type='reset' class="btn btn-outline-success" style="top: 20px; position: relative" value="">Reset</button>
-
                     </form>
                 </div>
                 <%--/Input Feilds--%>
@@ -404,35 +372,38 @@
                             </div>
                             <div class="x_content">
                                 <div class="row">
-                                    <div class="col-sm-12">
-                                        <div class="card-box table-responsive">
-                                            <table id="datatable-buttons" class="table table-striped table-bordered">
-                                                <thead class="thead-light">
+                                    <div class="card-box table-responsive">
+                                        <table id="datatable-buttons" class="table table-striped table-bordered">
+                                            <thead class="thead-light">
+                                            <tr>
+                                                <th>Customer Id</th>
+                                                <th>Name</th>
+                                                <th>Address</th>
+                                                <th>MobileNo</th>
+                                                <th>Email</th>
+                                                <th></th>
+
+
+                                            </tr>
+
+                                            </thead>
+                                            <tbody>
+                                            <c:forEach items="${loadReservationCustomer}" var="a">
                                                 <tr>
-                                                    <th>Customer Id</th>
-                                                    <th>Name</th>
-                                                    <th>Address</th>
-                                                    <th>MobileNo</th>
-                                                    <th>Email</th>
-
-
+                                                    <td>${a.customerId}</td>
+                                                    <td>${a.name}</td>
+                                                    <td>${a.address}</td>
+                                                    <td>${a.contactNumber}</td>
+                                                    <td>${a.email}</td>
+                                                    <td><a href="deleteCustomer/${a.customerId}">
+                                                        <i class="fa fa-trash"></i>
+                                                    </a></td>
                                                 </tr>
-
-                                                </thead>
-                                                <tbody>
-                                                <c:forEach items="${loadTable}" var="a">
-                                                    <tr>
-                                                        <td>${a.customerId}</td>
-                                                        <td>${a.name}</td>
-                                                        <td>${a.address}</td>
-                                                        <td>${a.contactNumber}</td>
-                                                        <td>${a.email}</td>
-                                                    </tr>
-                                                </c:forEach>
-                                                </tbody>
-                                            </table>
-                                        </div>
+                                            </c:forEach>
+                                            </tbody>
+                                        </table>
                                     </div>
+
                                 </div>
                             </div>
                         </div>
@@ -440,17 +411,17 @@
                 </div>
                 <%--/Table--%>
 
-            <%--/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////--%>
+                <%--/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////--%>
 
 
+            </div>
         </div>
-    </div>
-    <!-- /page content -->
+        <!-- /page content -->
 
-    <!-- footer content -->
-    <jsp:include page="footer.jsp"/>
-    <!-- /footer content -->
-</div>
+        <!-- footer content -->
+        <jsp:include page="footer.jsp"/>
+        <!-- /footer content -->
+    </div>
 </div>
 
 

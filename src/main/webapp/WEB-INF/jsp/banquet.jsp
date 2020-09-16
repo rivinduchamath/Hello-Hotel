@@ -263,7 +263,7 @@
                         <div class="containerx">
                             <a style=" font-family: Playfair Display, Georgia, Times New Roman, serif;
                              background-color:#3d495f; color: #ffffff;font-weight: bolder"
-                               href="inventoryMainReport" class="btnq"><h2
+                               href="/banquetCheckAvailability" class="btnq"><h2
                                     style="position: relative; letter-spacing: 1px;
                                      margin-top: 30px">Check Availability</h2></a>
                         </div>
@@ -285,7 +285,7 @@
                         <div class="containerx">
                             <a style=" font-family: Playfair Display, Georgia, Times New Roman, serif;
                              background-color:#3d495f; color: #ffffff;font-weight: bolder"
-                               href="inventoryMainReport" class="btnq"><h2
+                               href="/banquetBill" class="btnq"><h2
                                     style="position: relative; letter-spacing: 1px;
                                      margin-top: 30px">Banquet Bill</h2></a>
                         </div>

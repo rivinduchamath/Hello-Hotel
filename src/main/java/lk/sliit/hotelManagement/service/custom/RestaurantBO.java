@@ -26,5 +26,5 @@ public interface RestaurantBO {
     void saveOnlineOrder(RestaurantOnlineOrderDTO onlineOrderDTO);
 
 
-    List<RestaurantTableDTO> findAllTableDateEqual(Date reservedDate);
+    List<RestaurantTableDTO> getAviTables(Date date, Date startTime, Date endTime);
 }

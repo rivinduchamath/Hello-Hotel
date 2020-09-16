@@ -18,4 +18,5 @@ public interface NoticeBO extends SuperBO {
     NoticeDTO findNoticeById(int noticeId);
 
 
+    List<NoticeDTO> findNoticeOneWeek();
 }

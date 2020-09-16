@@ -3,6 +3,7 @@ package lk.sliit.hotelManagement.entity.hr;
 import lk.sliit.hotelManagement.entity.SuperEntity;
 import lk.sliit.hotelManagement.entity.manager.Employee;
 import javax.persistence.*;
+import java.util.Date;
 
 
 @Entity
@@ -24,6 +25,9 @@ public class Salary implements SuperEntity {
     private double hours;
     @Column(nullable = true)
     private double salary;
+    private boolean state;
+    @Temporal(TemporalType.DATE)
+    private Date date;
 
     @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.REFRESH, CascadeType.DETACH, CascadeType.MERGE})
     @JoinColumn(name = "employeeID", referencedColumnName = "userId", nullable = true)
@@ -31,9 +35,8 @@ public class Salary implements SuperEntity {
 
     public Salary() {}
 
-    public Salary(int salaryId, double basicSalary, double etf, double epf,
-                  double serviceCharge, double otHours, double hours, double salary,
-                   Employee employeeID) {
+    public Salary(int salaryId, double basicSalary, double etf, double epf, double serviceCharge, double otHours,
+                  double hours, double salary, boolean state, Date date, Employee employeeID) {
         this.salaryId = salaryId;
         this.basicSalary = basicSalary;
         this.etf = etf;
@@ -42,9 +45,18 @@ public class Salary implements SuperEntity {
         this.otHours = otHours;
         this.hours = hours;
         this.salary = salary;
+        this.state = state;
+        this.date = date;
         this.employeeID = employeeID;
     }
 
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
+    }
 
     public int getSalaryId() {
         return salaryId;
@@ -116,5 +128,13 @@ public class Salary implements SuperEntity {
 
     public void setEmployeeID(Employee employeeID) {
         this.employeeID = employeeID;
+    }
+
+    public boolean isState() {
+        return state;
+    }
+
+    public void setState(boolean state) {
+        this.state = state;
     }
 }

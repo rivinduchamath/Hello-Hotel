@@ -3,6 +3,7 @@ package lk.sliit.hotelManagement.controller.foodAndBevarage.Restaurant;
 import lk.sliit.hotelManagement.controller.SuperController;
 import lk.sliit.hotelManagement.dto.restaurant.RestaurantTableDTO;
 import lk.sliit.hotelManagement.dto.restaurant.restaurantOnlineTable.OnlineTableReservationDTO;
+import lk.sliit.hotelManagement.dto.timeCheckDTO;
 import lk.sliit.hotelManagement.service.custom.IndexLoginBO;
 import lk.sliit.hotelManagement.service.custom.OnlineCustomerBO;
 import lk.sliit.hotelManagement.service.custom.RestaurantBO;
@@ -11,10 +12,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-
+import java.sql.Date;
+import java.sql.Time;
 import java.util.List;
 
 @Controller
@@ -32,8 +33,7 @@ public class OnlineTable {
         try {
             int onlineCustomerId = Integer.parseInt(session.getAttribute("userId").toString());
             model.addAttribute("loggerId", onlineCustomerBO.findOne(onlineCustomerId));
-            System.out.println("Sttttttttttttttttttttttttt444444444444444444444ttttart");
-        } catch (NullPointerException d) {
+        } catch (Exception d) {
             return "onlineTable";
         }
         return "onlineTable";
@@ -44,26 +44,19 @@ public class OnlineTable {
 
         List<RestaurantTableDTO> p1 = restaurantBO.findAllTable();
         model.addAttribute("loadAllTables", p1);
-        System.out.println("Sttttttttttttttttttttttttt444444444444444444444ttttart");
         return "onlineTableDetails";
     }
 
     @GetMapping("/checkTimeForTable")
     public String checkTimeForTable(@ModelAttribute OnlineTableReservationDTO onlineTable, Model model, HttpSession session) {
-/*        Time a = Time.valueOf(onlineTable.getStartTime()+":00");
-        Time a2 = Time.valueOf(onlineTable.getEndTime()+":00");
+        Time a = Time.valueOf(onlineTable.getvStatT()+":00");
+        Time a2 = Time.valueOf(onlineTable.getvEndT()+":00");
         onlineTable.setStartTime(a);
-        onlineTable.setEndTime(a2);*/
-
-        System.out.println("Sttttttttttttttttttttttttt444444444444444444444ttttart"+onlineTable.getReservedDate());
-
-        List<RestaurantTableDTO> p1 = restaurantBO.findAllTableDateEqual(onlineTable.getReservedDate());
-        for (RestaurantTableDTO r: p1){
-            System.out.println(r+"rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr");
-        }
-        model.addAttribute("loadAllTables", p1);
-
-        System.out.println("Ennnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnd");
+        onlineTable.setEndTime(a2);
+        Date date =Date.valueOf(onlineTable.getvDate());
+        onlineTable.setReservedDate(date);
+        List<RestaurantTableDTO> p2 =restaurantBO.getAviTables(onlineTable.getReservedDate(),onlineTable.getStartTime(),onlineTable.getEndTime());
+        model.addAttribute("loadAllTables", p2);
         try {
             int onlineCustomerId = Integer.parseInt(session.getAttribute("userId").toString());
             model.addAttribute("loggerId", onlineCustomerBO.findOne(onlineCustomerId));

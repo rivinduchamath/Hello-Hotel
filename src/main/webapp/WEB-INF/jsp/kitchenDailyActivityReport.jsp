@@ -1,10 +1,3 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: USER
-  Date: 8/7/2020
-  Time: 9:10 PM
-  To change this template use File | Settings | File Templates.
---%>
 
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
@@ -52,8 +45,8 @@
             <div class="">
                 <div class="page-title">
                     <div class="title_left">
-                        <h3>Banquet Report
-                            <small>weekly report</small>
+                        <h3>Invoice
+                            <small>Submit Payment And Print Bill</small>
                         </h3>
                     </div>
 
@@ -148,8 +141,8 @@
                     <div class="col-md-12">
                         <div class="x_panel">
                             <div class="x_title">
-                                <h2>Report Print
-                                    <small>Banquet Weekly Report</small>
+                                <h2>Invoice Print
+                                    <small>Employee invoice</small>
                                 </h2>
                                 <ul class="nav navbar-right panel_toolbox">
                                     <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
@@ -174,7 +167,7 @@
                                     <div class="row">
                                         <div class="  invoice-header">
                                             <h1>
-                                                <i class="fa fa-globe"></i> Banquet Report.
+                                                <i class="fa fa-globe"></i> Invoice.
                                                 <small><%=date%>
                                                 </small>
                                             </h1>
@@ -183,22 +176,34 @@
                                     <!-- info row -->
                                     <div class="row invoice-info">
                                         <div class="col-sm-4 invoice-col">
-                                            Address:
+                                            From
                                             <address>
-                                                <strong>Hotel Hareesha </strong>
+                                                <strong>Chanuka Mullevidana</strong>
+                                                <br>Ambalangoda
                                                 <br>Galle, Sri Lanka
                                                 <br>Phone: 0767188591
-                                                <br>Email: HotelHareesha@gmail.lk
+                                                <br>Email: it19166070@my.sliit.lk
                                             </address>
                                         </div>
-
+                                        <!-- /.col -->
                                         <div class="col-sm-4 invoice-col">
-                                            <b>Report #007612</b>
+                                            To
+                                            <address>
+                                                <strong>Rivindu Wijayarathna</strong>
+                                                <br>Yakkalamulla
+                                                <br>Galle, Sri Lanka
+                                                <br>Phone: 0778799940
+                                                <br>Email: it18141948@my.sliit.lk
+                                            </address>
+                                        </div>
+                                        <!-- /.col -->
+                                        <div class="col-sm-4 invoice-col">
+                                            <b>Invoice #007612</b>
                                             <br>
                                             <br>
-                                            <b>Department:</b> Banquet Department
+                                            <b>Order ID:</b> 4F3S8J
                                             <br>
-                                            <b>Generate Date:</b><%=date%>
+                                            <b>Payment Due:</b><%=date%>
                                             <br>
                                             <b>Account:</b> 968-34567
                                         </div>
@@ -211,31 +216,34 @@
                                         <div class="  table">
                                             <table id="saq" class="table table-striped">
                                                 <thead>
+
                                                 <tr>
-                                                    <th>Banquet Id</th>
-                                                    <th>Bill Id</th>
-                                                    <th>Date</th>
-                                                    <th>Cus Name</th>
-                                                    <th>Mobile</th>
-                                                    <th>Hall No</th>
-                                                    <th>Package</th>
-                                                    <th>plates</th>
-                                                    <th>Advance Fee</th>
-                                                    <th>Total Pay</th>
-                                                    <th>Status</th>
+                                                    <th>SalaryId</th>
+                                                    <th>Emp Id</th>
+                                                    <th>Name</th>
+                                                    <th>Basic Salary</th>
+                                                    <th>OT Salary</th>
+                                                    <th>Bonus Salary</th>
+                                                    <th>Tax</th>
+                                                    <th>Total Salary</th>
                                                 </tr>
                                                 </thead>
-
                                                 <tbody>
-                                                <c:forEach items="${tableData}" var="e">
+                                                <c:forEach items="${loadFoodOrderWeek}" var="e">
                                                     <tr>
-                                                        <td>${e.salaryId}</td>
-                                                        <td>${e.employeeID.idNo}</td>
-                                                        <td>${e.employeeID.name}</td>
-                                                        <td>${e.basicSalary}</td>
-                                                        <td>${e.otHours*e.otRate}</td>
-                                                        <td>${e.bonus}</td>
+                                                        <td>${e.noticeId}</td>
+                                                        <td>${e.date}</td>
+                                                        <td>${e.orderQty}</td>
+                                                        <td>${e.inventoryId}</td>
+                                                        <td>${e.requiredQty}</td>
+                                                        <td>${e.state}</td>
+                                                        <td>${e.orderHolder}</td>
+                                                        <td>${e.expDate}</td>
                                                     </tr>
+                                                    <script>
+                                                        var aa = aa + ${e.orderHolder};
+                                                        document.getElementById("demo").innerHTML = 11;
+                                                    </script>
                                                 </c:forEach>
 
                                                 </tbody>
@@ -248,72 +256,52 @@
                                     <div class="row">
                                         <!-- accepted payments column -->
                                         <div class="col-md-6">
+                                            <p class="lead">Payment Methods:</p>
+                                            <img src="../../images/visa.png" alt="Visa">
+                                            <img src="../../images/mastercard.png" alt="Mastercard">
+                                            <img src="../../images/american-express.png" alt="American Express">
+                                            <img src="../../images/paypal.png" alt="Paypal">
+                                            <p class="text-muted well well-sm no-shadow" style="margin-top: 10px;">
+                                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus
+                                                atque corporis culpa cupiditate dolore doloremque, dolores eaque eos
+                                                ipsam itaque laborum maiores porro quis recusandae, sapiente sequi
+                                                suscipit ullam ut!
+                                            </p>
+                                        </div>
+                                        <!-- /.col -->
+                                        <div class="col-md-6">
                                             <p class="lead">Amount Due 2/22/2014</p>
                                             <div class="table-responsive">
                                                 <table class="table">
                                                     <tbody>
                                                     <tr>
                                                         <th style="width:50%">Basic Tot:</th>
-                                                        <!--<td><span id="val2"></span></td>-->
-                                                        <td>30000</td>
+                                                        <td><span id="val2"></span></td>
                                                     </tr>
                                                     <tr>
-                                                        <th>Tax: </th>
-                                                        <small style="font-weight: bold"><span id="val9"></span>
-                                                        </small>
+                                                        <th>Tax
+                                                            <small style="font-weight: bold"><span id="val9"></span>
+                                                            </small>
                                                         </th>
-                                                        <!--<td><span id="val3"></span></td>-->
-                                                        <td>0</td>
+                                                        <td><span id="val3"></span></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>OT Tot:</th>
+                                                        <td><span id="val4"></span></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>Bonus Tot:</th>
+                                                        <td><span id="val5"></span></td>
                                                     </tr>
                                                     <tr>
                                                         <th>Total:</th>
-                                                        <!--<td><span id="val"></span></td>-->
-                                                        <td>30000</td>
+                                                        <td><span id="val"></span></td>
                                                     </tr>
                                                     </tbody>
                                                 </table>
-                                                <p class="lead">Payment Methods:</p>
-                                                <img src="../../images/visa.png" alt="Visa">
-                                                <img src="../../images/mastercard.png" alt="Mastercard">
-                                                <img src="../../images/american-express.png" alt="American Express">
-                                                <img src="../../images/paypal.png" alt="Paypal">
-                                                <p class="text-muted well well-sm no-shadow" style="margin-top: 10px;">
-                                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus
-                                                    atque corporis culpa cupiditate dolore doloremque, dolores eaque eos
-                                                    ipsam itaque laborum maiores porro quis recusandae, sapiente sequi
-                                                    suscipit ullam ut!
-                                                </p>
                                             </div>
                                         </div>
-
-
-                                        <!--chart -->
-                                        <div class="col-md-6 col-sm-6  ">
-                                            <div class="x_panel">
-                                                <div class="x_title">
-                                                    <h2>Banquet Report <small>Weekly</small></h2>
-                                                    <ul class="nav navbar-right panel_toolbox">
-                                                        <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
-                                                        </li>
-
-                                                        <li><a class="close-link"><i class="fa fa-close"></i></a>
-                                                        </li>
-                                                    </ul>
-                                                    <div class="clearfix"></div>
-                                                </div>
-                                                <div class="x_content">
-                                                    <canvas id="mybarChart"></canvas>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="clearfix"></div>
-                                    <!--/chart-->
                                         <!-- /.col -->
-
-                                </section>
-                                        <!-- /.col -->
-
                                     </div>
                                     <!-- /.row -->
 
@@ -321,8 +309,8 @@
                                     <div class="row no-print">
                                         <div class=" ">
 
-                                            <form>
-                                                <input style="display: none" type="text" id="itemPay" name="SalaryId">
+
+
                                                 <ul class="nav navbar-right panel_toolbox">
                                                     <button type="submit" value="Register"
                                                             style="font-weight: bold;color: white" ; id="name" onclick="window.print();"
@@ -330,7 +318,7 @@
                                                     </button>
                                                 </ul>
 
-                                            </form>
+
 
                                         </div>
                                     </div>
@@ -384,19 +372,15 @@
 
 </script>
 
-<!-- jQuery -->
-<script src="../vendors/jquery/dist/jquery.min.js"></script>
 <!-- Bootstrap -->
-<script src="../vendors/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+<script src="../../vendors/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 <!-- FastClick -->
-<script src="../vendors/fastclick/lib/fastclick.js"></script>
+<script src="../../vendors/fastclick/lib/fastclick.js"></script>
 <!-- NProgress -->
-<script src="../vendors/nprogress/nprogress.js"></script>
-<!-- Chart.js -->
-<script src="../vendors/Chart.js/dist/Chart.min.js"></script>
+<script src="../../vendors/nprogress/nprogress.js"></script>
 
 <!-- Custom Theme Scripts -->
-<script src="../build/js/custom.min.js"></script>
+<script src="../../build/js/custom.min.js"></script>
 
 </body>
 </html>

@@ -281,57 +281,59 @@
 
                     <div class="form-group">
 
-                        <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
-                            <label >User Id</label>
-                            <input type="text" class="form-control"
-                               required="required" name="id" value="${genId}"
-                               id="id" placeholder="User Id"/></div>
 
-                            <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
-                                <label for="id">User Name</label>
+                            <input type="hidden" class="form-control"
+                               required="required" name="id" value="${genId}"
+                               id="idSup" placeholder="User Id"/>
+
+                            <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6"> <br>
+                                <label >User Name</label>
                         <input type="text" class="form-control"
                                required="required" name="name"
-                               id="name" placeholder="User Name"/></div>
+                               id="nameSup" placeholder="User Name"/></div>
                     </div>
 
                     <div class="form-group">
-
-
                         <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6"> <br>
-                            <label for="id">Address</label>
+                            <label >Address</label>
                             <input type="text" class="form-control"
                                    required="required" name="address"
-                                   id="address" placeholder="Address"/></div>
+                                   id="addressSup" placeholder="Address"/></div>
                     </div>
 
 
                     <div class="form-group">
                         <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6"> <br>
-                            <label for="id">Email</label>
-                            <input type="text" class="form-control"
+                            <label >Email</label>
+                            <input type="email" class="form-control"
                                    required="required" name="email"
-                                   id="email" placeholder="Email"/></div>
+                                   id="emailSup" placeholder="Email"/></div>
 
                         <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6"> <br>
-                            <label for="id">Mobile No</label>
-                            <input type="text" class="form-control"
+                            <label >Mobile No</label>
+                            <input type="number" class="form-control"
                                    required="required" name="mobile"
-                                   id="mobileNo" placeholder="Mobile No"/></div>
+                                   id="mobileNoSup" placeholder="Mobile No"/></div>
                     </div>
 
                     <div class="form-group">
 
                         <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6"> <br>
-                            <label for="id">Gender</label>
-                            <input type="text" class="form-control"
-                                   required="required" name="gender"
-                                   id="gender" placeholder="Gender"/></div>
+                            <label >Gender</label>
+
+                            <select type="c" class="form-control"
+                                    required="required" name="gender"
+                                    id="genderSup" placeholder="Gender">
+                                <option>Male</option>
+                                <option>Female</option>
+                            </select>
+                        </div>
 
                         <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6"> <br>
-                            <label for="id">Date</label>
+                            <label >Date</label>
                             <input type="date" class="form-control"
                                    required="required" name="date"
-                                   id="date" placeholder="Date"/></div>
+                                   id="dateSup" placeholder="Date"/></div>
                         <br>
                     </div>
                     <div class="form-group">
@@ -339,14 +341,19 @@
 
 
                         <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6"> <br>
-                            <label for="id">DateOfBirth</label>
+                            <label>DateOfBirth</label>
                             <input type="date" class="form-control"
                                    required="required" name="birthday"
-                                   id="dateOfBirth" placeholder="DateOfBirth"/></div>
+                                   id="dateOfBirthSup" placeholder="DateOfBirth"/></div>
                         <br>
+                        <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6"> <br>
+                            <label>Image</label>
+                            <input type="date" class="form-control"
+                                   required="required" name="image"
+                                   id="imageEmp" /></div>
                     </div>
 
-                    <button type='submit' class="btn btn-primary" style="width: 50%; top: 20px; position: relative" value="Register">
+                    <button type='submit' class="btn btn-dark" style="width: 50%; top: 20px; position: relative" value="Register">
                         Submit
                     </button>
                     <button type='reset' class="btn btn-outline-success" style="top: 20px; position: relative" value="">Reset</button>
@@ -685,14 +692,14 @@
         var selectedRow = null;
         $("#datatable-buttons tbody").on('click', 'tr', function () {
             selectedRow = $(this);
-            $("#userId").val($(this).find("td:nth-child(1)").text());
-            $("#userName").val($(this).find("td:nth-child(2)").text());
-            $("#position").val($(this).find("td:nth-child(3)").text());
-            $("#mobileNo").val($(this).find("td:nth-child(4)").text());
-            $("#pic").val($(this).find("td:nth-child(5)").text());
-            $("#salary").val($(this).find("td:nth-child(6)").text());
-            $("#address").val($(this).find("td:nth-child(7)").text());
-            $("#email").val($(this).find("td:nth-child(8)").text());
+            $("#idSup").val($(this).find("td:nth-child(1)").text());
+            $("#nameSup").val($(this).find("td:nth-child(2)").text());
+            $("#addressSup").val($(this).find("td:nth-child(3)").text());
+            $("#mobileNoSup").val($(this).find("td:nth-child(4)").text());
+            $("#emailSup").val($(this).find("td:nth-child(5)").text());
+            $("#genderSup").val($(this).find("td:nth-child(6)").text());
+            $("#dateSup").val($(this).find("td:nth-child(7)").text());
+            $("#dateOfBirthSup").val($(this).find("td:nth-child(8)").text());
             $("#password").val($(this).find("td:nth-child(9)").text());
             $("#gender").val($(this).find("td:nth-child(10)").text());
             $("#date").val($(this).find("td:nth-child(11)").text());
