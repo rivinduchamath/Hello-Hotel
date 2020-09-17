@@ -111,7 +111,7 @@
                                                                    for="itemId">Item Id<span class="required">*</span>
                                                             </label>
                                                             <div class="col-md-11 col-sm-11 ">
-                                                                <input type="text" value="${itemId}" id="itemId"
+                                                                <input type="text" value="0" id="itemId"
                                                                        name="inventoryId" required="required"
                                                                        class="form-control  ">
                                                             </div>

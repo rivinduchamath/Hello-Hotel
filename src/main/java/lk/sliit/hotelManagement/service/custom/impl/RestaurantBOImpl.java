@@ -10,15 +10,12 @@ import lk.sliit.hotelManagement.dao.restaurantDAO.onlineOrderDAO.RestaurantOnlin
 import lk.sliit.hotelManagement.dao.restaurantDAO.onlineOrderDAO.RestaurantOnlineOrderDetailsDAO;
 import lk.sliit.hotelManagement.dao.restaurantDAO.onlineTableReservationDAO.OnlineTableReservationDAO;
 import lk.sliit.hotelManagement.dto.kitchen.FoodItemDTO;
-import lk.sliit.hotelManagement.dto.manager.NoticeDTO;
 import lk.sliit.hotelManagement.dto.restaurant.RestaurantTableDTO;
 import lk.sliit.hotelManagement.dto.restaurant.restaurantCounterOrder.RestaurantCounterOrderDTO;
 import lk.sliit.hotelManagement.dto.restaurant.restaurantCounterOrder.RestaurantCounterOrderDetailDTO;
 import lk.sliit.hotelManagement.dto.restaurant.restaurantOnlineOrder.RestaurantOnlineOrderDTO;
 import lk.sliit.hotelManagement.dto.restaurant.restaurantOnlineOrder.RestaurantOnlineOrderDetailsDTO;
-import lk.sliit.hotelManagement.dto.restaurant.restaurantOnlineTable.OnlineTableReservationDTO;
 import lk.sliit.hotelManagement.entity.kitchen.FoodItem;
-import lk.sliit.hotelManagement.entity.manager.Notice;
 import lk.sliit.hotelManagement.entity.restaurant.RestaurantTable;
 import lk.sliit.hotelManagement.entity.restaurant.counterOrder.RestaurantCounterOrder;
 import lk.sliit.hotelManagement.entity.restaurant.counterOrder.RestaurantCounterOrderDetail;
@@ -31,8 +28,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.sql.Date;
-import java.sql.Time;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
@@ -170,7 +165,7 @@ public class RestaurantBOImpl implements RestaurantBO {
     public void saveOnlineOrder(RestaurantOnlineOrderDTO onlineOrderDTO) {
         java.util.List<RestaurantOnlineOrderDetailsDTO> list = new ArrayList<>();
         String arr = onlineOrderDTO.getOrderData();
-        System.out.println("arrrrrrrrrrrrrrrrrrrrrrrrrr" + arr);
+
         String yo[] = arr.split(" ");
         int count = 0;
         RestaurantOnlineOrderDetailsDTO itm = new RestaurantOnlineOrderDetailsDTO();
@@ -321,47 +316,11 @@ public class RestaurantBOImpl implements RestaurantBO {
         );
     }
 
-    public List<RestaurantTableDTO> findAllTableDateEqual(Date date, String startTime,
-                                                          String endTime) {
 
-/////////////////////////////////////////////////////////////////////////////
-//        Iterable<OnlineTableReservation> all = onlineTableReservationDAO.findOnlineTableReservationsByDateEquals(date);
-        Date s = Date.valueOf(startTime);
-        Date s1 = Date.valueOf(endTime);
-        //  Iterable<OnlineTableReservation> all1 = onlineTableReservationDAO.findOnlineTableReservationsByStartTimeBeforeAndEndTimeAfterAndDateEquals(s, s1, date);
-        List<OnlineTableReservationDTO> dtos = new ArrayList<>();
-        // for (OnlineTableReservation a : all1) {
-      /*      dtos.add(new OnlineTableReservationDTO(
-                    a.getOnlineTableReservationId(),
-                    a.getType(),
-                    a.getUnitPrice()
-            ));*/
-        // }
+    //Online table
 
 
-        return null;
-    }
-
-    ///////////////////////////////////////////////////////////////////////////////////////////
-    // @Override
-    public List<RestaurantTableDTO> findAllTableDateEqual(OnlineTableReservationDTO onlineTable) {
-
-        Time s = (Time.valueOf(onlineTable.getStartTime() + ":00"));
-        Time s1 = (Time.valueOf(onlineTable.getEndTime() + ":00"));
-        // Iterable<OnlineTableReservation> all1 = onlineTableReservationDAO.findOnlineTableReservationsByStartTimeBeforeAndEndTimeAfterAndDateEquals(onlineTable.getDate());
-        // for (OnlineTableReservation d : all1) {
-        //     System.out.println("ssssssssssssssssssssssssssssssssssssssss"+d);
-        // }
-
-        List<OnlineTableReservationDTO> dtos = new ArrayList<>();
-
-        return null;
-    }
-
-//    Online table
-
-
-    //Onlene Order
+    //Online Order
 
 
     //Counter Table
