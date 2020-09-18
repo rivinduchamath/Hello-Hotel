@@ -213,18 +213,14 @@ public class RestaurantBOImpl implements RestaurantBO {
         Iterable<OnlineTableReservation> all3 = onlineTableReservationDAO.findAllByEndTimeGreaterThanEqualAndStartTimeLessThanEqualAndDateEquals(endTime, startTime, date);
       */
         Iterable<OnlineTableReservation> all4 = onlineTableReservationDAO.getAllBetweenDates(endTime, startTime,date);
+        Iterable<RestaurantTable> allTable = restaurantTableDAO.findAll();
         Iterable<OnlineTableReservationDetails> al4;
 
         System.out.println(date);
         System.out.println("Tset 1 " + startTime);
         System.out.println("Tset 2 " + endTime);
 
-
         for (OnlineTableReservation a : all4) {
-/*            System.out.println("CCCCCCCC " + a.getOnlineTableReservationId());
-            System.out.println("CCCCCCCC " + a.getEndTime());
-            System.out.println("CCCCCCCC " + a.getStartTime());
-            System.out.println("CCCCCCCC " + a.getDate());*/
             for (OnlineTableReservation a1 : all4) {
                 al4 = a1.getOrderDetails();
                 for (OnlineTableReservationDetails s : al4) {
