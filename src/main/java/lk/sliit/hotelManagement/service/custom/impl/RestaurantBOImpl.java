@@ -208,63 +208,30 @@ public class RestaurantBOImpl implements RestaurantBO {
 
     @Override
     public List<RestaurantTableDTO> getAviTables(java.util.Date date, java.util.Date startTime, java.util.Date endTime) {
-        Iterable<OnlineTableReservation> all = onlineTableReservationDAO.findAllByStartTimeBetweenAndDateEquals(startTime, endTime, date);
+      /*  Iterable<OnlineTableReservation> all = onlineTableReservationDAO.findAllByStartTimeBetweenAndDateEquals(startTime, endTime, date);
         Iterable<OnlineTableReservation> all2 = onlineTableReservationDAO.findAllByEndTimeBetweenAndDateEquals(startTime, endTime, date);
         Iterable<OnlineTableReservation> all3 = onlineTableReservationDAO.findAllByEndTimeGreaterThanEqualAndStartTimeLessThanEqualAndDateEquals(endTime, startTime, date);
+      */
+        Iterable<OnlineTableReservation> all4 = onlineTableReservationDAO.getAllBetweenDates(endTime, startTime,date);
         Iterable<OnlineTableReservationDetails> al4;
-        ArrayList<Integer> lista = new ArrayList<>();
 
         System.out.println(date);
         System.out.println("Tset 1 " + startTime);
         System.out.println("Tset 2 " + endTime);
 
-        for (OnlineTableReservation a : all) {
-            al4 = a.getOrderDetails();
-            for (OnlineTableReservationDetails s : al4) {
-                System.out.println("Table " +s.getTableId().getTableId());
-                if (lista.contains(s.getTableId().getTableId())) {
-                    System.out.println("Account found");
-                    lista.add(s.getTableId().getTableId());
-                } else {
-                    System.out.println("Account not found");
-                }
-            }
-        }
-        for (OnlineTableReservation a : all3) {
-            System.out.println("CCCCCCCC " + a.getOnlineTableReservationId());
+
+        for (OnlineTableReservation a : all4) {
+/*            System.out.println("CCCCCCCC " + a.getOnlineTableReservationId());
             System.out.println("CCCCCCCC " + a.getEndTime());
             System.out.println("CCCCCCCC " + a.getStartTime());
-            System.out.println("CCCCCCCC " + a.getDate());
-            al4 = a.getOrderDetails();
-            for (OnlineTableReservationDetails s : al4) {
-                System.out.println("Table " +s.getTableId().getTableId());
-                if (lista.contains(s.getTableId().getTableId())) {
-                    System.out.println("Account found");
-                    lista.add(s.getTableId().getTableId());
-                } else {
-                    System.out.println("Account not found");
+            System.out.println("CCCCCCCC " + a.getDate());*/
+            for (OnlineTableReservation a1 : all4) {
+                al4 = a1.getOrderDetails();
+                for (OnlineTableReservationDetails s : al4) {
+                    System.out.println("Table " +s.getTableId().getTableId());
                 }
             }
         }
-
-        for (OnlineTableReservation a : all2) {
-            System.out.println("BBBBBBBBB " + a.getOnlineTableReservationId());
-            System.out.println("BBBBBBBBB " + a.getEndTime());
-            System.out.println("BBBBBBBBB " + a.getStartTime());
-            System.out.println("BBBBBBBBB " + a.getDate());
-            al4 = a.getOrderDetails();
-            for (OnlineTableReservationDetails s : al4) {
-                System.out.println("Table " +s.getTableId().getTableId());
-                if (lista.contains(s.getTableId().getTableId())) {
-                    System.out.println("Account found");
-                    lista.add(s.getTableId().getTableId());
-                } else {
-                    System.out.println("Account not found");
-                }
-            }
-
-        }
-        System.out.println(lista+" All values");
         return null;
     }
 
