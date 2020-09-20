@@ -215,20 +215,42 @@ public class RestaurantBOImpl implements RestaurantBO {
         Iterable<OnlineTableReservation> all4 = onlineTableReservationDAO.getAllBetweenDates(endTime, startTime,date);
         Iterable<RestaurantTable> allTable = restaurantTableDAO.findAll();
         Iterable<OnlineTableReservationDetails> al4;
+        List<RestaurantTable> list = new ArrayList<>();
+        List<RestaurantTable> list2 = new ArrayList<>();
 
         System.out.println(date);
         System.out.println("Tset 1 " + startTime);
         System.out.println("Tset 2 " + endTime);
 
-        for (OnlineTableReservation a : all4) {
-            for (OnlineTableReservation a1 : all4) {
-                al4 = a1.getOrderDetails();
-                for (OnlineTableReservationDetails s : al4) {
-                    System.out.println("Table " +s.getTableId().getTableId());
+        for (RestaurantTable d : allTable) {
+            for (OnlineTableReservation d2: all4 ) {
+               al4 = d2.getOrderDetails();
+                for (OnlineTableReservationDetails d3 : al4) {
+
+                    if (d.getTableId() != d3.getTableId().getTableId()) {
+                        if (!list.contains(d3.getTableId())) {
+                            list.add(d3.getTableId());
+                        }
+                    }
                 }
             }
+
         }
-        return null;
+        for (RestaurantTable b : allTable) {
+            if (!list.contains(b)){
+                list2.add(b);
+            }
+
+        }
+        List<RestaurantTableDTO> dtoList = new ArrayList<>();
+        for (RestaurantTable a : list2) {
+            dtoList.add(new RestaurantTableDTO(
+                    a.getTableId(),
+                    a.getType(),
+                    a.getUnitPrice()));
+
+        }
+        return dtoList;
     }
 
     @Override
