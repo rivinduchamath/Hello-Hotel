@@ -31,7 +31,6 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 @Transactional
@@ -209,7 +208,7 @@ public class RestaurantBOImpl implements RestaurantBO {
 
     @Override
     public List<RestaurantTableDTO> getAviTables(java.util.Date date, java.util.Date startTime, java.util.Date endTime) {
-      /*  Iterable<OnlineTableReservation> all = onlineTableReservationDAO.findAllByStartTimeBetweenAndDateEquals(startTime, endTime, date);
+    /*  Iterable<OnlineTableReservation> all = onlineTableReservationDAO.findAllByStartTimeBetweenAndDateEquals(startTime, endTime, date);
         Iterable<OnlineTableReservation> all2 = onlineTableReservationDAO.findAllByEndTimeBetweenAndDateEquals(startTime, endTime, date);
         Iterable<OnlineTableReservation> all3 = onlineTableReservationDAO.findAllByEndTimeGreaterThanEqualAndStartTimeLessThanEqualAndDateEquals(endTime, startTime, date);
       */
@@ -217,30 +216,48 @@ public class RestaurantBOImpl implements RestaurantBO {
         Iterable<RestaurantTable> allTable = restaurantTableDAO.findAll();
         Iterable<OnlineTableReservationDetails> al4;
         List<RestaurantTable> list = new ArrayList<>();
+        List<RestaurantTable> list2 = new ArrayList<>();
 
+        System.out.println(date);
+        System.out.println("Tset 1 " + startTime);
+        System.out.println("Tset 2 " + endTime);
 
         for (RestaurantTable d: allTable) {
-            for (OnlineTableReservation a1 : all4) {
-                al4 = a1.getOrderDetails();
-                for (OnlineTableReservationDetails s : al4) {
-                        if(d.getTableId() != s.getTableId().getTableId()){
-                               if(!list.contains(s.getTableId())) {
-                                   list.add(s.getTableId());
-                               }
+            for (OnlineTableReservation d2 : all4) {
+                al4 = d2.getOrderDetails();
+                for (OnlineTableReservationDetails d3 : al4) {
+                    if(d.getTableId() != d3.getTableId().getTableId()){
+                        if(!list.contains(d3.getTableId())) {
+                            list.add(d3.getTableId());
                         }
                     }
                 }
             }
-
-
-        for (RestaurantTable  s: allTable) {
-            if(!list.contains(s.getTableId())){
-
-            }
         }
 
-        return null;
+        for (RestaurantTable  b: allTable) {
+            if (!list.contains(b)) {
+                list2.add(b);
+            }
+        }
+        List<RestaurantTableDTO> dtoList = new ArrayList<>();
+        for (RestaurantTable a : list2) {
+            dtoList.add(new RestaurantTableDTO(
+                    a.getTableId(),
+                    a.getType(),
+                    a.getUnitPrice()
+            ));
+        }
+        return dtoList;
     }
+/*
+*     @Override
+    public List<RestaurantTableDTO> getAviTables(java.util.Date date, java.util.Date startTime, java.util.Date endTime) {
+      /*  Iterable<OnlineTableReservation> all = onlineTableReservationDAO.findAllByStartTimeBetweenAndDateEquals(startTime, endTime, date);
+        Iterable<OnlineTableReservation> all2 = onlineTableReservationDAO.findAllByEndTimeBetweenAndDateEquals(startTime, endTime, date);
+        Iterable<OnlineTableReservation> all3 = onlineTableReservationDAO.findAllByEndTimeGreaterThanEqualAndStartTimeLessThanEqualAndDateEquals(endTime, startTime, date);
+      */
+
 
     @Override
     public RestaurantTableDTO findHighestTableId() {
@@ -250,13 +267,14 @@ public class RestaurantBOImpl implements RestaurantBO {
         } catch (Exception e){
 
         }
+
         return new RestaurantTableDTO(lastItem.getTableId());
     }
 
     @Override
     public void saveTable(RestaurantTableDTO restaurantTableDTO) {
         restaurantTableDAO.save(new RestaurantTable
-                        (restaurantTableDTO.getTableId(),
+                (restaurantTableDTO.getTableId(),
                         restaurantTableDTO.getType(),
                         restaurantTableDTO.getUnitPrice()));
     }

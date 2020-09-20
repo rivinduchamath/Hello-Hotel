@@ -11,14 +11,8 @@ import java.util.List;
 
 public interface OnlineTableReservationDAO extends CrudRepository<OnlineTableReservation,Integer> {
 
-  /*  Iterable<OnlineTableReservation> findAllByStartTimeBetweenAndDateEquals(Date startTime, Date endTime, Date date);
 
-    Iterable<OnlineTableReservation> findAllByEndTimeBetweenAndDateEquals(Date startTime, Date endTime, Date date);
-
-    Iterable<OnlineTableReservation> findAllByEndTimeGreaterThanEqualAndStartTimeLessThanEqualAndDateEquals(Date startTime, Date endTime, Date date);
-*/
-
-
-    @Query(value = "from OnlineTableReservation t where (t.startTime between :endTime and :startTimes) or (t.endTime between :endTime and :startTimes) and t.date = :date")
+    @Query(value = "from OnlineTableReservation t where (t.startTime between :endTime and :startTimes) or (t.endTime between :endTime and :startTimes) or (t.endTime >=  :startTimes and t.startTime <=  :endTime) and t.date = :date")
     Iterable<OnlineTableReservation> getAllBetweenDates(@Param("startTimes")Date startTimes, @Param("endTime")Date endTime, @Param("date")Date date);
+
 }
