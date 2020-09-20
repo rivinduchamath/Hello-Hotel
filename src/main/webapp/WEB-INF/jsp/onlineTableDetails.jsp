@@ -141,7 +141,7 @@
                                                         src="../../onlineRestaurant/restaurant/images/pngwave.png"
                                                         alt=""></figure>
 
-                                                <h5 style=""><span id="selectedTableId" style="font-size: 20px">${e.tableId} </span><a
+                                                <h5 onclick="myFunction(${e.tableId})" style=""><span id="selectedTableId" style="font-size: 20px">${e.tableId} </span><a
                                                         class="button1x">+</a></h5>
                                             </div>
                                         </div>
@@ -197,7 +197,7 @@
 
 </div>
 <script type="text/javascript"> Cufon.now(); </script>
-
+<script src="../../vendors/jquery/dist/jquery.min.js"></script>
 <script>
     $(window).scroll(function () {
         if ($(document).scrollTop() > 224) {
@@ -207,6 +207,17 @@
         }
     });
 </script>
+<script>
+    var selectedRow = null;
+    function myFunction(x) {
+        selectedRow = $(this)
+
+
+    }
+
+</script>
+
+
 
 <script src="../../js/addOnlineTable.js"></script>
 </body>
