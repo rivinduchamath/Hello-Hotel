@@ -4,6 +4,7 @@ import lk.sliit.hotelManagement.controller.SuperController;
 import lk.sliit.hotelManagement.dto.kitchen.FoodItemDTO;
 import lk.sliit.hotelManagement.dto.restaurant.OnlineCustomerDTO;
 import lk.sliit.hotelManagement.dto.restaurant.restaurantOnlineOrder.RestaurantOnlineOrderDTO;
+import lk.sliit.hotelManagement.dto.restaurant.restaurantOnlineTable.OnlineTableReservationDTO;
 import lk.sliit.hotelManagement.service.custom.IndexLoginBO;
 import lk.sliit.hotelManagement.service.custom.KitchenBO;
 import lk.sliit.hotelManagement.service.custom.OnlineCustomerBO;
@@ -72,6 +73,28 @@ public class OnlineOrder {
             return "redirect:/onlineOrder";
         }
         return "redirect:/onlineOrder";
+    }
+    @PostMapping("/saveOnlineTable")
+    public String saveOnlineTable(@ModelAttribute OnlineTableReservationDTO onlineOrderDTO, HttpSession session) {
+
+        try {
+            OnlineTableReservationDTO top = restaurantBO.findHighestOnlineTableId();
+            int x = (top.getOnlineTableReservationId()) + 1;
+            onlineOrderDTO.setOnlineTableReservationId((x));
+        } catch (NullPointerException e) {
+
+            System.out.println("In Try Catch");
+            onlineOrderDTO.setOnlineTableReservationId((1));
+        }
+
+        try {
+            int onlineCustomerId = Integer.parseInt(session.getAttribute("userId").toString());
+            onlineOrderDTO.setCustomer(onlineCustomerId);
+            restaurantBO.saveOnlineTableId(onlineOrderDTO);
+        } catch (NullPointerException d) {
+            return "redirect:/onlineTableDetails";
+        }
+        return "redirect:/onlineTableDetails";
     }
 
 }

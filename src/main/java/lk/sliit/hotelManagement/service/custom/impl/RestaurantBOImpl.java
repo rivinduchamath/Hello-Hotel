@@ -6,6 +6,7 @@ import lk.sliit.hotelManagement.dao.restaurantDAO.OnlineCustomerDAO;
 import lk.sliit.hotelManagement.dao.restaurantDAO.RestaurantTableDAO;
 import lk.sliit.hotelManagement.dao.restaurantDAO.counterOrderDAO.RestaurantCounterOrderDAO;
 import lk.sliit.hotelManagement.dao.restaurantDAO.counterOrderDAO.RestaurantCounterOrderDetailDAO;
+import lk.sliit.hotelManagement.dao.restaurantDAO.counterTableReservationDAO.CounterTableReservationDAO;
 import lk.sliit.hotelManagement.dao.restaurantDAO.onlineOrderDAO.RestaurantOnlineOrderDAO;
 import lk.sliit.hotelManagement.dao.restaurantDAO.onlineOrderDAO.RestaurantOnlineOrderDetailsDAO;
 import lk.sliit.hotelManagement.dao.restaurantDAO.onlineTableReservationDAO.OnlineTableReservationDAO;
@@ -15,10 +16,12 @@ import lk.sliit.hotelManagement.dto.restaurant.restaurantCounterOrder.Restaurant
 import lk.sliit.hotelManagement.dto.restaurant.restaurantCounterOrder.RestaurantCounterOrderDetailDTO;
 import lk.sliit.hotelManagement.dto.restaurant.restaurantOnlineOrder.RestaurantOnlineOrderDTO;
 import lk.sliit.hotelManagement.dto.restaurant.restaurantOnlineOrder.RestaurantOnlineOrderDetailsDTO;
+import lk.sliit.hotelManagement.dto.restaurant.restaurantOnlineTable.OnlineTableReservationDTO;
 import lk.sliit.hotelManagement.entity.kitchen.FoodItem;
 import lk.sliit.hotelManagement.entity.restaurant.RestaurantTable;
 import lk.sliit.hotelManagement.entity.restaurant.counterOrder.RestaurantCounterOrder;
 import lk.sliit.hotelManagement.entity.restaurant.counterOrder.RestaurantCounterOrderDetail;
+import lk.sliit.hotelManagement.entity.restaurant.counterTableReservation.CounterTableReservation;
 import lk.sliit.hotelManagement.entity.restaurant.onlineOrder.RestaurantOnlineOrder;
 import lk.sliit.hotelManagement.entity.restaurant.onlineOrder.RestaurantOnlineOrderDetails;
 import lk.sliit.hotelManagement.entity.restaurant.onlineTableReservation.OnlineTableReservation;
@@ -43,6 +46,8 @@ public class RestaurantBOImpl implements RestaurantBO {
     RestaurantTableDAO restaurantTableDAO;
     @Autowired
     OnlineTableReservationDAO onlineTableReservationDAO;
+    @Autowired
+    CounterTableReservationDAO counterTableReservationDAO ;
     @Autowired
     RestaurantCounterOrderDAO restaurantCounterOrderDAO;
     @Autowired
@@ -208,11 +213,9 @@ public class RestaurantBOImpl implements RestaurantBO {
 
     @Override
     public List<RestaurantTableDTO> getAviTables(java.util.Date date, java.util.Date startTime, java.util.Date endTime) {
-    /*  Iterable<OnlineTableReservation> all = onlineTableReservationDAO.findAllByStartTimeBetweenAndDateEquals(startTime, endTime, date);
-        Iterable<OnlineTableReservation> all2 = onlineTableReservationDAO.findAllByEndTimeBetweenAndDateEquals(startTime, endTime, date);
-        Iterable<OnlineTableReservation> all3 = onlineTableReservationDAO.findAllByEndTimeGreaterThanEqualAndStartTimeLessThanEqualAndDateEquals(endTime, startTime, date);
-      */
+
         Iterable<OnlineTableReservation> all4 = onlineTableReservationDAO.getAllBetweenDates(endTime, startTime,date);
+        Iterable<CounterTableReservation> all5 = counterTableReservationDAO.getAllBetweenDates(endTime, startTime,date);
         Iterable<RestaurantTable> allTable = restaurantTableDAO.findAll();
         Iterable<OnlineTableReservationDetails> al4;
         List<RestaurantTable> list = new ArrayList<>();
@@ -250,13 +253,7 @@ public class RestaurantBOImpl implements RestaurantBO {
         }
         return dtoList;
     }
-/*
-*     @Override
-    public List<RestaurantTableDTO> getAviTables(java.util.Date date, java.util.Date startTime, java.util.Date endTime) {
-      /*  Iterable<OnlineTableReservation> all = onlineTableReservationDAO.findAllByStartTimeBetweenAndDateEquals(startTime, endTime, date);
-        Iterable<OnlineTableReservation> all2 = onlineTableReservationDAO.findAllByEndTimeBetweenAndDateEquals(startTime, endTime, date);
-        Iterable<OnlineTableReservation> all3 = onlineTableReservationDAO.findAllByEndTimeGreaterThanEqualAndStartTimeLessThanEqualAndDateEquals(endTime, startTime, date);
-      */
+
 
 
     @Override
@@ -305,6 +302,58 @@ public class RestaurantBOImpl implements RestaurantBO {
                 table.getType(),
                 table.getUnitPrice()
         );
+    }
+
+    @Override
+    public OnlineTableReservationDTO findHighestOnlineTableId() {
+        OnlineTableReservation lastItem = null;
+        try {
+            lastItem = onlineTableReservationDAO.findTopByOrderByOnlineTableReservationIdDesc();
+        } catch (Exception e){
+
+        }
+
+        return new OnlineTableReservationDTO(lastItem.getOnlineTableReservationId());
+    }
+
+    @Override
+    public void saveOnlineTableId(OnlineTableReservationDTO onlineOrderDTO) {
+        java.util.List<OnlineTableReservationDTO> list = new ArrayList<>();
+        String arr = onlineOrderDTO.getOrderData();
+
+        String yo[] = arr.split(" ");
+        int count = 0;
+        OnlineTableReservationDTO itm = new OnlineTableReservationDTO();
+        for (String str : yo) {
+            if (count == 0) {
+                itm = new OnlineTableReservationDTO();
+                itm.setOnlineTableReservationId(Integer.parseInt(str));
+                count++;
+
+            } else if (count == 2) {
+                itm.setOnlineTableReservationId(Integer.parseInt(str));
+                list.add(itm);
+                count = 0;
+            }
+        }
+      /*  Calendar cal = Calendar.getInstance();
+        cal.add(Calendar.DATE, 0);
+        java.util.Date today = cal.getTime();
+        onlineOrderDTO.setDate(today);
+        onlineOrderDAO.save(new OnlineTableReservation(
+                onlineOrderDTO.getOrderId(),
+                onlineOrderDTO.getOrderState(),
+                onlineOrderDTO.getDate(),
+                onlineCustomerDAO.findOne(onlineOrderDTO.getCustomer())));
+
+        for (OnlineTableReservationDTO orderDetail : list) {
+            onlineOrderDetailsDAO.save(new OnlineTableReservationDetails(
+                    onlineOrderDTO.g(),
+                    orderDetail.getOnlineTableReservationId(),
+                    orderDetail.getQuantity(),
+                    orderDetail.getUnitePrice()));
+
+        }*/
     }
 
 

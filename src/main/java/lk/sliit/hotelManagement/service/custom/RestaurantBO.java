@@ -37,4 +37,8 @@ public interface RestaurantBO {
     void deleteTable(int tableId);
 
     RestaurantTableDTO findTableById(int tableId);
+
+    OnlineTableReservationDTO findHighestOnlineTableId();
+
+    void saveOnlineTableId(OnlineTableReservationDTO onlineOrderDTO);
 }
