@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="../../onlineRestaurant/restaurant/css/style.css" type="text/css" media="all">
     <link rel="stylesheet" href="../../onlineRestaurant/restaurant/css/zerogrid.css" type="text/css" media="all">
     <link rel="stylesheet" href="../../onlineRestaurant/restaurant/css/responsive.css" type="text/css" media="all">
-    <script type="text/javascript" src="../../onlineRestaurant/restaurant/js/jquery-1.6.js"></script>
+    <%--<script type="text/javascript" src="../../onlineRestaurant/restaurant/js/jquery-1.6.js"></script>
     <script type="text/javascript" src="../../onlineRestaurant/restaurant/js/cufon-yui.js"></script>
     <script type="text/javascript" src="../../onlineRestaurant/restaurant/js/cufon-replace.js"></script>
     <script type="text/javascript" src="../../onlineRestaurant/restaurant/js/Forum_400.font.js"></script>
@@ -18,6 +18,7 @@
     <script type="text/javascript" src="../../onlineRestaurant/restaurant/js/css3-mediaqueries.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script type="text/javascript" src="../../onlineRestaurant/restaurant/js/html5.js"></script>
+  --%>
     <style type="text/css">
         .slider_bg {
             behavior: url(../../onlineRestaurant/restaurant/js/PIE.htc)
@@ -127,11 +128,13 @@
                     <h5>Please Select </h5>
                     <div class="wrapper">
 
-                        <button href="#" class="col-1-1 button1x1" id="submitButton"> Submit</button>
+                        <button href="#" type="submit" onclick="getValue()" class="col-1-1 button1x1" id="submitButton">
+                            Submit
+                        </button>
                         <br>
-                        <table id="reservationTable">
+                        <table>
 
-                            <tbody>
+                            <tbody id="reservationTable">
                             <c:forEach items="${loadAllTables}" var="e">
                                 <tr>
                                     <div class="col-1-4">
@@ -141,7 +144,9 @@
                                                         src="../../onlineRestaurant/restaurant/images/pngwave.png"
                                                         alt=""></figure>
 
-                                                <h5 style=""><span id="selectedTableId" style="font-size: 20px">${e.tableId} </span><a
+                                                <h5 onclick="myFunction(${e.tableId})" style=""><span
+                                                        id="selectedTableId"
+                                                        style="font-size: 20px">${e.tableId} </span><a
                                                         class="button1x">+</a></h5>
                                             </div>
                                         </div>
@@ -196,8 +201,30 @@
     </div>
 
 </div>
-<script type="text/javascript"> Cufon.now(); </script>
+<%--<script type="text/javascript"> Cufon.now(); </script>--%>
 
+<%--//////////////////////////--%>
+
+<!-- jQuery -->
+<script src="../../vendors/jquery/dist/jquery.min.js"></script>
+<!-- Bootstrap -->
+<script src="../../vendors/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- Datatables -->
+<script src="../../vendors/datatables.net/js/jquery.dataTables.min.js"></script>
+<script src="../../vendors/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+<%--Show Print Buttons--%>
+<script src="../../vendors/datatables.net-buttons/js/dataTables.buttons.min.js"></script>
+<script src="../../vendors/datatables.net-buttons-bs/js/buttons.bootstrap.min.js"></script>
+<script src="../../vendors/datatables.net-buttons/js/buttons.flash.min.js"></script>
+<script src="../../vendors/datatables.net-buttons/js/buttons.html5.min.js"></script>
+<script src="../../vendors/datatables.net-buttons/js/buttons.print.min.js"></script>
+<script src="../../vendors/datatables.net-fixedheader/js/dataTables.fixedHeader.min.js"></script>
+<script src="../../vendors/datatables.net-keytable/js/dataTables.keyTable.min.js"></script>
+<%--Responsive Table--%>
+<script src="../../vendors/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
+<script src="../../vendors/datatables.net-responsive-bs/js/responsive.bootstrap.js"></script>
+<%--//////////////////////////////////--%>
 <script>
     $(window).scroll(function () {
         if ($(document).scrollTop() > 224) {
@@ -208,6 +235,7 @@
     });
 </script>
 
-<script src="../../js/addOnlineTable.js"></script>
+
+
 </body>
 </html>

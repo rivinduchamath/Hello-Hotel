@@ -31,6 +31,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 @Transactional
@@ -215,19 +216,29 @@ public class RestaurantBOImpl implements RestaurantBO {
         Iterable<OnlineTableReservation> all4 = onlineTableReservationDAO.getAllBetweenDates(endTime, startTime,date);
         Iterable<RestaurantTable> allTable = restaurantTableDAO.findAll();
         Iterable<OnlineTableReservationDetails> al4;
+        List<RestaurantTable> list = new ArrayList<>();
 
-        System.out.println(date);
-        System.out.println("Tset 1 " + startTime);
-        System.out.println("Tset 2 " + endTime);
 
-        for (OnlineTableReservation a : all4) {
+        for (RestaurantTable d: allTable) {
             for (OnlineTableReservation a1 : all4) {
                 al4 = a1.getOrderDetails();
                 for (OnlineTableReservationDetails s : al4) {
-                    System.out.println("Table " +s.getTableId().getTableId());
+                        if(d.getTableId() != s.getTableId().getTableId()){
+                               if(!list.contains(s.getTableId())) {
+                                   list.add(s.getTableId());
+                               }
+                        }
+                    }
                 }
             }
+
+
+        for (RestaurantTable  s: allTable) {
+            if(!list.contains(s.getTableId())){
+
+            }
         }
+
         return null;
     }
 
@@ -239,7 +250,6 @@ public class RestaurantBOImpl implements RestaurantBO {
         } catch (Exception e){
 
         }
-
         return new RestaurantTableDTO(lastItem.getTableId());
     }
 
