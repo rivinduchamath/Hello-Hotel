@@ -41,9 +41,6 @@ public class OnlineTable {
 
     @GetMapping("/onlineTableDetails")
     public String onlineTableDetails(Model model, HttpServletRequest request) {
-
-        List<RestaurantTableDTO> p1 = restaurantBO.findAllTable();
-        model.addAttribute("loadAllTables", p1);
         return "onlineTableDetails";
     }
 

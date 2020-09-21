@@ -128,10 +128,10 @@
                     <div class="wrapper">
 
                             <form method="POST" action="saveOnlineTable" name="saveOnlineTable">
-                                <input style="display: none" type="text" id="itemPay" name="orderData">
-                                <input type="date" id="vDate" value="${reservedDate}" name="vDate">
-                                <input type="time" id="timeIn" value="${timeIn}" name="vStatT">
-                                <input  type="time" id="timeOut" value="${timeOut}" name="vEndT">
+                                <input style="display: none" readonly required type="text" id="itemPay" name="orderData">
+                                <input  style="" readonly required="required" type="date" id="vDate" value="${reservedDate}" name="vDate">
+                                <input readonly required ="required"type="time" id="timeIn" value="${timeIn}" name="vStatT">
+                                <input readonly required ="required" type="time" id="timeOut" value="${timeOut}" name="vEndT">
                             <button type="submit" onclick="getValue()" class="col-1-1 button1x1" id="submitButton">
                                 Submit
                             </button>
@@ -234,6 +234,12 @@
     }
 
     function getValue() {
+
+        if (vDate == "" || timeIn == "" || timeOut == "") {
+            alert("Please Select Item In Table");
+            return;
+        }
+
         var str, stre = "";
         var inputArray = []
 

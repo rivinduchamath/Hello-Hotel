@@ -79,14 +79,17 @@ public class OnlineOrder {
     @PostMapping("/saveOnlineTable")
     public String saveOnlineTable(@ModelAttribute OnlineTableReservationDTO onlineOrderDTO, HttpSession session) {
         System.out.println(onlineOrderDTO+"ssssssssaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
-        Time a = Time.valueOf(onlineOrderDTO.getvStatT());
-        Time a2 = Time.valueOf(onlineOrderDTO.getvEndT());
+       try {
+           Time a = Time.valueOf(onlineOrderDTO.getvStatT());
+           Time a2 = Time.valueOf(onlineOrderDTO.getvEndT());
+           onlineOrderDTO.setStartTime(a);
+           onlineOrderDTO.setEndTime(a2);
+           Date date = Date.valueOf(onlineOrderDTO.getvDate());
+           onlineOrderDTO.setReservedDate(date);
+       }catch (IllegalArgumentException s){
 
-        onlineOrderDTO.setStartTime(a);
-        onlineOrderDTO.setEndTime(a2);
-        Date date =Date.valueOf(onlineOrderDTO.getvDate());
-        onlineOrderDTO.setReservedDate(date);
-        try {
+       }
+       try {
             OnlineTableReservationDTO top = restaurantBO.findHighestOnlineTableId();
             int x = (top.getOnlineTableReservationId()) + 1;
             onlineOrderDTO.setOnlineTableReservationId((x));
@@ -101,9 +104,9 @@ public class OnlineOrder {
             onlineOrderDTO.setCustomer(1);
             restaurantBO.saveOnlineTableId(onlineOrderDTO);
         } catch (NullPointerException d) {
-            return "redirect:/onlineTableDetails";
+            return "redirect:/onlineTable";
         }
-        return "redirect:/onlineTableDetails";
+        return "redirect:/onlineTable";
     }
 
 }
