@@ -328,8 +328,6 @@ public class RestaurantBOImpl implements RestaurantBO {
         java.util.List<OnlineTableReservationDetailsDTO> list = new ArrayList<>();
         String arr = onlineOrderDTO.getOrderData();
 
-        System.out.println(arr+"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
-
         String yo[] = arr.split(" ");
         int count = 0;
         OnlineTableReservationDetailsDTO itm = new OnlineTableReservationDetailsDTO();
@@ -337,7 +335,6 @@ public class RestaurantBOImpl implements RestaurantBO {
             if(count == 0 ) {
                 itm = new OnlineTableReservationDetailsDTO();
                 itm.setTableId(Integer.parseInt(str));
-                System.out.println(str+"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
                 list.add(itm);
                 count =0;
 
@@ -356,7 +353,7 @@ public class RestaurantBOImpl implements RestaurantBO {
                 Time.valueOf(onlineOrderDTO.getvStatT()),
                 Time.valueOf(onlineOrderDTO.getvEndT()),
                 2,
-                onlineCustomerDAO.findOne(1)));
+                onlineCustomerDAO.findOne(onlineOrderDTO.getCustomer())));
 
 
         for (OnlineTableReservationDetailsDTO orderDetail : list) {

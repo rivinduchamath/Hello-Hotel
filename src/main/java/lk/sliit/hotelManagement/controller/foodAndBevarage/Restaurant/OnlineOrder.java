@@ -100,8 +100,8 @@ public class OnlineOrder {
         }
 
         try {
-            //int onlineCustomerId = Integer.parseInt(session.getAttribute("userId").toString());
-            onlineOrderDTO.setCustomer(1);
+            int onlineCustomerId = Integer.parseInt(session.getAttribute("userId").toString());
+            onlineOrderDTO.setCustomer(onlineCustomerId);
             restaurantBO.saveOnlineTableId(onlineOrderDTO);
         } catch (NullPointerException d) {
             return "redirect:/onlineTable";
