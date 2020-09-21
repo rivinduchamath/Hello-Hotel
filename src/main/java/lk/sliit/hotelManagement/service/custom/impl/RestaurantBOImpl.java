@@ -25,6 +25,7 @@ import lk.sliit.hotelManagement.entity.restaurant.RestaurantTable;
 import lk.sliit.hotelManagement.entity.restaurant.counterOrder.RestaurantCounterOrder;
 import lk.sliit.hotelManagement.entity.restaurant.counterOrder.RestaurantCounterOrderDetail;
 import lk.sliit.hotelManagement.entity.restaurant.counterTableReservation.CounterTableReservation;
+import lk.sliit.hotelManagement.entity.restaurant.counterTableReservation.CounterTableReservationDetails;
 import lk.sliit.hotelManagement.entity.restaurant.onlineOrder.RestaurantOnlineOrder;
 import lk.sliit.hotelManagement.entity.restaurant.onlineOrder.RestaurantOnlineOrderDetails;
 import lk.sliit.hotelManagement.entity.restaurant.onlineTableReservation.OnlineTableReservation;
@@ -225,7 +226,9 @@ public class RestaurantBOImpl implements RestaurantBO {
         Iterable<CounterTableReservation> all5 = counterTableReservationDAO.getAllBetweenDates(endTime, startTime,date);
         Iterable<RestaurantTable> allTable = restaurantTableDAO.findAll();
         Iterable<OnlineTableReservationDetails> al4;
+        Iterable<CounterTableReservationDetails> al5;
         List<RestaurantTable> list = new ArrayList<>();
+        List<RestaurantTable> list22 = new ArrayList<>();
         List<RestaurantTable> list2 = new ArrayList<>();
 
         System.out.println(date);
@@ -244,9 +247,21 @@ public class RestaurantBOImpl implements RestaurantBO {
                 }
             }
         }
+        for (RestaurantTable d: allTable) {
+            for (CounterTableReservation d2 : all5) {
+                al5 = d2.getOrderDetails();
+                for (CounterTableReservationDetails d3 : al5) {
+                    if(d.getTableId() != d3.getTableId().getTableId()){
+                        if(!list22.contains(d3.getTableId())) {
+                            list22.add(d3.getTableId());
+                        }
+                    }
+                }
+            }
+        }
 
         for (RestaurantTable  b: allTable) {
-            if (!list.contains(b)) {
+            if (!list.contains(b) && !list22.contains(b)) {
                 list2.add(b);
             }
         }
