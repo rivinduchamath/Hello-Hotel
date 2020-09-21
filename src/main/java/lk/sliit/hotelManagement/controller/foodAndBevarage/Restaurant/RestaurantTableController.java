@@ -67,4 +67,16 @@ public class RestaurantTableController {
             e.printStackTrace();
         }
     }
+
+    @GetMapping("/restaurantTableIndex")
+    public String restaurantTableIndex(Model model) {
+        model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
+        return "restaurantTableIndex";
+    }
+
+    @GetMapping("/restaurantTableReservation")
+    public String restaurantTableReservation(Model model) {
+        model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
+        return "restaurantTableReservation";
+    }
 }

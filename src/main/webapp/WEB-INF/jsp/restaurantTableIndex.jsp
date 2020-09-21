@@ -102,7 +102,7 @@
                         </h3>
                         <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
                             <div class="col-6 col-sm-6 col-md-6 col-lg-4 col-xl-4">
-                                <a href="/foodAndBeverage">
+                                <a href="/restaurant">
                                     <button type="button" class=" btn btn-dark"><i class="fa fa-mail-reply"> Back to Dashboard</i>
                                     </button>
                                 </a>
@@ -196,29 +196,19 @@
                 <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
 
 
-                    <div class="col-sm-12 col-md-3 col-lg-3 col-xl-3">
-                        <a href="restaurantOrder">
-                            <button type="button" class="large-btn btn btn-dark">Order</button>
+                    <div class="col-sm-12 col-md-3 col-lg-6 col-xl-6">
+                        <a href="restaurantTableReservation">
+                            <button type="button" class="large-btn btn btn-dark">+ new Table Reservation</button>
                         </a>
                     </div>
 
-                    <div class="col-sm-12 col-md-3 col-lg-3 col-xl-3">
-                        <a href="restaurantTableIndex">
-                            <button type="button" class="large-btn btn btn-dark">Table</button>
+                    <div class="col-sm-12 col-md-3 col-lg-6 col-xl-6">
+                        <a href="restaurantTable">
+                            <button type="button" class="large-btn btn btn-dark">+ new Restaurant Table</button>
                         </a>
                     </div>
 
-                    <div class="col-sm-12 col-md-3 col-lg-3 col-xl-3">
-                        <a href="onlineDashboard">
-                            <button type="button" class="large-btn btn btn-dark">Online</button>
-                        </a>
-                    </div>
 
-                    <div class="col-sm-12 col-md-3 col-lg-3 col-xl-3">
-                        <a href="restaurantManage">
-                        <button type="button" class="large-btn btn btn-dark">Manage</button>
-                        </a>
-                    </div>
 
                 </div>
                 <%--%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Chart Income %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%--%>

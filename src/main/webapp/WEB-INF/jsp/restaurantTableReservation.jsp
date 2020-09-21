@@ -102,8 +102,8 @@
                         </h3>
                         <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
                             <div class="col-6 col-sm-6 col-md-6 col-lg-4 col-xl-4">
-                                <a href="/foodAndBeverage">
-                                    <button type="button" class=" btn btn-dark"><i class="fa fa-mail-reply"> Back to Dashboard</i>
+                                <a href="restaurantTableIndex">
+                                    <button type="button" class=" btn btn-dark"><i class="fa fa-mail-reply"> Back </i>
                                     </button>
                                 </a>
 
@@ -196,31 +196,49 @@
                 <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
 
 
-                    <div class="col-sm-12 col-md-3 col-lg-3 col-xl-3">
-                        <a href="restaurantOrder">
-                            <button type="button" class="large-btn btn btn-dark">Order</button>
-                        </a>
-                    </div>
+                    <div class="row">
+                        <div class="col-md-12 col-sm-12 ">
+                            <div class="x_panel">
+                                <div class="x_title">
+                                    <h2>Check Available Tables....</h2>
+                                    <ul class="nav navbar-right panel_toolbox">
+                                        <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                                        </li>
+                                        <li class="dropdown">
+                                            <a aria-expanded="false" aria-haspopup="true" class="dropdown-toggle"
+                                               data-toggle="dropdown"
+                                               href="#" role="button"><i
+                                                    class="fa fa-wrench"></i></a>
+                                        </li>
+                                    </ul>
+                                    <div class="clearfix"></div>
+                                </div>
+                                <div class="x_content">
+                                    <br/>
+                                    <label>
+                                        Date:
+                                        <input type="date" placeholder="Booking Date" name="vDate" id="vDate" required>
+                                    </label>
 
-                    <div class="col-sm-12 col-md-3 col-lg-3 col-xl-3">
-                        <a href="restaurantTableIndex">
-                            <button type="button" class="large-btn btn btn-dark">Table</button>
-                        </a>
-                    </div>
+                                    <label>
+                                        Time In:
+                                        <input type="time"  placeholder="In Time" name="vStatT" id="email" required>
+                                    </label>
 
-                    <div class="col-sm-12 col-md-3 col-lg-3 col-xl-3">
-                        <a href="onlineDashboard">
-                            <button type="button" class="large-btn btn btn-dark">Online</button>
-                        </a>
-                    </div>
+                                    <label>
+                                        Time Out:
+                                        <input type="time" placeholder="Out Time" name="vEndT" id="message">                                    </label>
 
-                    <div class="col-sm-12 col-md-3 col-lg-3 col-xl-3">
-                        <a href="restaurantManage">
-                        <button type="button" class="large-btn btn btn-dark">Manage</button>
-                        </a>
+                                    <input class="sendButton" type="submit" name="Submit" value="Check">
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
                 </div>
+
+
+            </div>
                 <%--%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Chart Income %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%--%>
                 <%--Chart Income--%>
                 <%--Chart Today--%>
