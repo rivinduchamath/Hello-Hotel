@@ -18,6 +18,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.sql.Date;
+import java.sql.Time;
 import java.util.List;
 
 @Controller
@@ -76,7 +78,14 @@ public class OnlineOrder {
     }
     @PostMapping("/saveOnlineTable")
     public String saveOnlineTable(@ModelAttribute OnlineTableReservationDTO onlineOrderDTO, HttpSession session) {
+        System.out.println(onlineOrderDTO+"ssssssssaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+        Time a = Time.valueOf(onlineOrderDTO.getvStatT());
+        Time a2 = Time.valueOf(onlineOrderDTO.getvEndT());
 
+        onlineOrderDTO.setStartTime(a);
+        onlineOrderDTO.setEndTime(a2);
+        Date date =Date.valueOf(onlineOrderDTO.getvDate());
+        onlineOrderDTO.setReservedDate(date);
         try {
             OnlineTableReservationDTO top = restaurantBO.findHighestOnlineTableId();
             int x = (top.getOnlineTableReservationId()) + 1;
@@ -88,8 +97,8 @@ public class OnlineOrder {
         }
 
         try {
-            int onlineCustomerId = Integer.parseInt(session.getAttribute("userId").toString());
-            onlineOrderDTO.setCustomer(onlineCustomerId);
+            //int onlineCustomerId = Integer.parseInt(session.getAttribute("userId").toString());
+            onlineOrderDTO.setCustomer(1);
             restaurantBO.saveOnlineTableId(onlineOrderDTO);
         } catch (NullPointerException d) {
             return "redirect:/onlineTableDetails";
