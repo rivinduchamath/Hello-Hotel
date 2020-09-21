@@ -24,6 +24,7 @@ TimeCheckBO timeCheck1;
 
     @PostMapping("/loadTime")
     public String dateTime(@ModelAttribute timeCheckDTO meCheck) {
+        System.out.println("ssssssssssssssssssssssaaaaaaaaaaaaaaaaaaaaaaaaaaa"+meCheck);
         Time a = Time.valueOf(meCheck.getTimeSett()+":00");
         Time a1 = Time.valueOf(meCheck.getTimeSett2()+":00");
         meCheck.setTdate(a);

@@ -10,6 +10,8 @@ import lk.sliit.hotelManagement.dao.restaurantDAO.counterTableReservationDAO.Cou
 import lk.sliit.hotelManagement.dao.restaurantDAO.onlineOrderDAO.RestaurantOnlineOrderDAO;
 import lk.sliit.hotelManagement.dao.restaurantDAO.onlineOrderDAO.RestaurantOnlineOrderDetailsDAO;
 import lk.sliit.hotelManagement.dao.restaurantDAO.onlineTableReservationDAO.OnlineTableReservationDAO;
+import lk.sliit.hotelManagement.dao.restaurantDAO.onlineTableReservationDAO.OnlineTableReservationDetailsDAO;
+import lk.sliit.hotelManagement.dto.beverage.BarOrderDetailDTO;
 import lk.sliit.hotelManagement.dto.kitchen.FoodItemDTO;
 import lk.sliit.hotelManagement.dto.restaurant.RestaurantTableDTO;
 import lk.sliit.hotelManagement.dto.restaurant.restaurantCounterOrder.RestaurantCounterOrderDTO;
@@ -17,11 +19,13 @@ import lk.sliit.hotelManagement.dto.restaurant.restaurantCounterOrder.Restaurant
 import lk.sliit.hotelManagement.dto.restaurant.restaurantOnlineOrder.RestaurantOnlineOrderDTO;
 import lk.sliit.hotelManagement.dto.restaurant.restaurantOnlineOrder.RestaurantOnlineOrderDetailsDTO;
 import lk.sliit.hotelManagement.dto.restaurant.restaurantOnlineTable.OnlineTableReservationDTO;
+import lk.sliit.hotelManagement.dto.restaurant.restaurantOnlineTable.OnlineTableReservationDetailsDTO;
 import lk.sliit.hotelManagement.entity.kitchen.FoodItem;
 import lk.sliit.hotelManagement.entity.restaurant.RestaurantTable;
 import lk.sliit.hotelManagement.entity.restaurant.counterOrder.RestaurantCounterOrder;
 import lk.sliit.hotelManagement.entity.restaurant.counterOrder.RestaurantCounterOrderDetail;
 import lk.sliit.hotelManagement.entity.restaurant.counterTableReservation.CounterTableReservation;
+import lk.sliit.hotelManagement.entity.restaurant.counterTableReservation.CounterTableReservationDetails;
 import lk.sliit.hotelManagement.entity.restaurant.onlineOrder.RestaurantOnlineOrder;
 import lk.sliit.hotelManagement.entity.restaurant.onlineOrder.RestaurantOnlineOrderDetails;
 import lk.sliit.hotelManagement.entity.restaurant.onlineTableReservation.OnlineTableReservation;
@@ -31,6 +35,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.sql.Date;
+import java.sql.Time;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
@@ -44,6 +50,8 @@ public class RestaurantBOImpl implements RestaurantBO {
     KitchenDAO foodItem;
     @Autowired
     RestaurantTableDAO restaurantTableDAO;
+    @Autowired
+    OnlineTableReservationDetailsDAO onlineTableReservationDetailsDAO;
     @Autowired
     OnlineTableReservationDAO onlineTableReservationDAO;
     @Autowired
@@ -218,7 +226,9 @@ public class RestaurantBOImpl implements RestaurantBO {
         Iterable<CounterTableReservation> all5 = counterTableReservationDAO.getAllBetweenDates(endTime, startTime,date);
         Iterable<RestaurantTable> allTable = restaurantTableDAO.findAll();
         Iterable<OnlineTableReservationDetails> al4;
+        Iterable<CounterTableReservationDetails> al5;
         List<RestaurantTable> list = new ArrayList<>();
+        List<RestaurantTable> list22 = new ArrayList<>();
         List<RestaurantTable> list2 = new ArrayList<>();
 
         System.out.println(date);
@@ -237,9 +247,21 @@ public class RestaurantBOImpl implements RestaurantBO {
                 }
             }
         }
+        for (RestaurantTable d: allTable) {
+            for (CounterTableReservation d2 : all5) {
+                al5 = d2.getOrderDetails();
+                for (CounterTableReservationDetails d3 : al5) {
+                    if(d.getTableId() != d3.getTableId().getTableId()){
+                        if(!list22.contains(d3.getTableId())) {
+                            list22.add(d3.getTableId());
+                        }
+                    }
+                }
+            }
+        }
 
         for (RestaurantTable  b: allTable) {
-            if (!list.contains(b)) {
+            if (!list.contains(b) && !list22.contains(b)) {
                 list2.add(b);
             }
         }
@@ -318,53 +340,45 @@ public class RestaurantBOImpl implements RestaurantBO {
 
     @Override
     public void saveOnlineTableId(OnlineTableReservationDTO onlineOrderDTO) {
-        java.util.List<OnlineTableReservationDTO> list = new ArrayList<>();
+        java.util.List<OnlineTableReservationDetailsDTO> list = new ArrayList<>();
         String arr = onlineOrderDTO.getOrderData();
 
         String yo[] = arr.split(" ");
         int count = 0;
-        OnlineTableReservationDTO itm = new OnlineTableReservationDTO();
-        for (String str : yo) {
-            if (count == 0) {
-                itm = new OnlineTableReservationDTO();
-                itm.setOnlineTableReservationId(Integer.parseInt(str));
-                count++;
-
-            } else if (count == 2) {
-                itm.setOnlineTableReservationId(Integer.parseInt(str));
+        OnlineTableReservationDetailsDTO itm = new OnlineTableReservationDetailsDTO();
+        for(String str:yo) {
+            if(count == 0 ) {
+                itm = new OnlineTableReservationDetailsDTO();
+                itm.setTableId(Integer.parseInt(str));
                 list.add(itm);
-                count = 0;
+                count =0;
+
             }
         }
-      /*  Calendar cal = Calendar.getInstance();
+
+
+        Calendar cal = Calendar.getInstance();
         cal.add(Calendar.DATE, 0);
         java.util.Date today = cal.getTime();
         onlineOrderDTO.setDate(today);
-        onlineOrderDAO.save(new OnlineTableReservation(
-                onlineOrderDTO.getOrderId(),
-                onlineOrderDTO.getOrderState(),
+        onlineTableReservationDAO.save(new OnlineTableReservation(
+                onlineOrderDTO.getOnlineTableReservationId(),
+                Date.valueOf(onlineOrderDTO.getvDate()),
                 onlineOrderDTO.getDate(),
+                Time.valueOf(onlineOrderDTO.getvStatT()),
+                Time.valueOf(onlineOrderDTO.getvEndT()),
+                2,
                 onlineCustomerDAO.findOne(onlineOrderDTO.getCustomer())));
 
-        for (OnlineTableReservationDTO orderDetail : list) {
-            onlineOrderDetailsDAO.save(new OnlineTableReservationDetails(
-                    onlineOrderDTO.g(),
-                    orderDetail.getOnlineTableReservationId(),
-                    orderDetail.getQuantity(),
-                    orderDetail.getUnitePrice()));
 
-        }*/
+        for (OnlineTableReservationDetailsDTO orderDetail : list) {
+            onlineTableReservationDetailsDAO.save(new OnlineTableReservationDetails(
+                    orderDetail.getTableId(),
+                    onlineOrderDTO.getOnlineTableReservationId(),
+                    0,
+                   0));
+
+        }
     }
 
-
-    //Online table
-
-
-    //Online Order
-
-
-    //Counter Table
-
-
-    //Counter Order
 }

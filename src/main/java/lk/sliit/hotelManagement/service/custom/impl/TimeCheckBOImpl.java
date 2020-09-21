@@ -32,7 +32,6 @@ public class TimeCheckBOImpl implements TimeCheckBO {
                 Time.valueOf(meCheck.getTimeSett2()+":00"),
                 Date.valueOf(meCheck.getDateSett())
         ));
-
     }
 
     @Override
