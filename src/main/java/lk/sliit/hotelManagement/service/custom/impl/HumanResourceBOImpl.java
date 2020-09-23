@@ -102,7 +102,7 @@ public class HumanResourceBOImpl implements HumanResourceBO {
         try {
             attendance = attendanceDAO.findTopByOrderByAttendanceIdDesc();
         } catch (Exception e) {
-            Logger.getLogger("lk.sliit.project.employeeManagement.service.custom.impl").log(Level.SEVERE, null, e); //Add Logger To Catch Exception
+
         }
         return new AttendanceDTO(
                 attendance.getAttendanceId()

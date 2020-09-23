@@ -276,7 +276,50 @@ public class RestaurantBOImpl implements RestaurantBO {
         }
         return dtoList;
     }
+    @Override
+    public List<CounterTableReservationDTO> getBookedTables() {
+        java.util.Date date = new java.util.Date();
+        List<CounterTableReservationDTO> list = new ArrayList<>();
+        List<OnlineTableReservationDetails> list4 = new ArrayList<>();
+        List<CounterTableReservationDetails> list5 = new ArrayList<>();
+        Iterable<OnlineTableReservation> onlineTableReservations = null;
+        Iterable<CounterTableReservation> counterTableReservations = null;
+        System.out.println("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+        try {
+            onlineTableReservations = onlineTableReservationDAO.findOnlineTableReservationByDateEquals(date);
+            counterTableReservations = counterTableReservationDAO.findOnlineTableReservationByDateEquals(date);
+        } catch (NullPointerException e){}
 
+        for (OnlineTableReservation d2 : onlineTableReservations) {
+            list4 = d2.getOrderDetails();
+            for (OnlineTableReservationDetails a : list4) {
+
+                list.add(new CounterTableReservationDTO(
+                        d2.getOnlineTableReservationId(),
+                        d2.getStartTime(),
+                        d2.getEndTime(),
+                        a.getTableId().getType()
+                ));
+            }
+        }
+        for (CounterTableReservation d2 : counterTableReservations) {
+            list5 = d2.getOrderDetails();
+            for (CounterTableReservationDetails a : list5) {
+
+                list.add(new CounterTableReservationDTO(
+                        d2.getCounterTableReserveId(),
+                        d2.getStartTime(),
+                        d2.getEndTime(),
+                        a.getTableId().getType()
+                ));
+            }
+
+        }
+
+        System.out.println(list+"sssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss");
+
+        return list;
+    }
 
 
     @Override
@@ -356,8 +399,6 @@ public class RestaurantBOImpl implements RestaurantBO {
 
             }
         }
-
-
         Calendar cal = Calendar.getInstance();
         cal.add(Calendar.DATE, 0);
         java.util.Date today = cal.getTime();
@@ -382,16 +423,6 @@ public class RestaurantBOImpl implements RestaurantBO {
         }
     }
 
-    @Override
-    public List<CounterTableReservationDTO> getBookedTables() {
-        java.util.Date date = new java.util.Date();
-        Iterable<OnlineTableReservation> onlineTableReservations = null;
-        try {
-            onlineTableReservations = onlineTableReservationDAO.findOnlineTableReservationByDateEquals(date);
-        } catch (NullPointerException e){
 
-        }
-        return null;
-    }
 
 }

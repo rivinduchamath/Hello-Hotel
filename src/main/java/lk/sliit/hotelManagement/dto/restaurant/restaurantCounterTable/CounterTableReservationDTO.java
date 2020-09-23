@@ -27,10 +27,12 @@ public class CounterTableReservationDTO {
         this.date = date;
     }
 
-    public CounterTableReservationDTO(int counterTableReserveId, Time startTime, Time endTime, String type) {
-        this.counterTableReserveId = counterTableReserveId;
-        this.startTime = startTime;
-        this.endTime = endTime;
+
+
+    public CounterTableReservationDTO(int onlineTableReservationId, java.util.Date startTime, java.util.Date endTime, String type) {
+        this.counterTableReserveId = onlineTableReservationId;
+        this.startTime = (Time) startTime;
+        this.endTime = (Time) endTime;
         this.type = type;
     }
 
