@@ -16,6 +16,7 @@ import lk.sliit.hotelManagement.dto.kitchen.FoodItemDTO;
 import lk.sliit.hotelManagement.dto.restaurant.RestaurantTableDTO;
 import lk.sliit.hotelManagement.dto.restaurant.restaurantCounterOrder.RestaurantCounterOrderDTO;
 import lk.sliit.hotelManagement.dto.restaurant.restaurantCounterOrder.RestaurantCounterOrderDetailDTO;
+import lk.sliit.hotelManagement.dto.restaurant.restaurantCounterTable.CounterTableReservationDTO;
 import lk.sliit.hotelManagement.dto.restaurant.restaurantOnlineOrder.RestaurantOnlineOrderDTO;
 import lk.sliit.hotelManagement.dto.restaurant.restaurantOnlineOrder.RestaurantOnlineOrderDetailsDTO;
 import lk.sliit.hotelManagement.dto.restaurant.restaurantOnlineTable.OnlineTableReservationDTO;
@@ -379,6 +380,18 @@ public class RestaurantBOImpl implements RestaurantBO {
                    0));
 
         }
+    }
+
+    @Override
+    public List<CounterTableReservationDTO> getBookedTables() {
+        java.util.Date date = new java.util.Date();
+        Iterable<OnlineTableReservation> onlineTableReservations = null;
+        try {
+            onlineTableReservations = onlineTableReservationDAO.findOnlineTableReservationByDateEquals(date);
+        } catch (NullPointerException e){
+
+        }
+        return null;
     }
 
 }

@@ -16,4 +16,6 @@ public interface OnlineTableReservationDAO extends CrudRepository<OnlineTableRes
     Iterable<OnlineTableReservation> getAllBetweenDates(@Param("startTimes")Date startTimes, @Param("endTime")Date endTime, @Param("date")Date date);
 
     OnlineTableReservation findTopByOrderByOnlineTableReservationIdDesc();
+
+    Iterable<OnlineTableReservation> findOnlineTableReservationByDateEquals(Date date);
 }

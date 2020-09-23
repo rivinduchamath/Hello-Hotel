@@ -2,6 +2,8 @@ package lk.sliit.hotelManagement.controller.foodAndBevarage.Restaurant;
 
 import lk.sliit.hotelManagement.controller.SuperController;
 import lk.sliit.hotelManagement.dto.restaurant.RestaurantTableDTO;
+import lk.sliit.hotelManagement.dto.restaurant.restaurantCounterTable.CounterTableReservationDTO;
+import lk.sliit.hotelManagement.dto.restaurant.restaurantOnlineTable.OnlineTableReservationDTO;
 import lk.sliit.hotelManagement.service.custom.IndexLoginBO;
 import lk.sliit.hotelManagement.service.custom.RestaurantBO;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +15,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.sql.Date;
+import java.sql.Time;
 import java.util.List;
 
 @Controller
@@ -71,6 +76,8 @@ public class RestaurantTableController {
     @GetMapping("/restaurantTableIndex")
     public String restaurantTableIndex(Model model) {
         model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
+        List<CounterTableReservationDTO> p2 =restaurantBO.getBookedTables();
+        model.addAttribute("todayBookedTables", p2);
         return "restaurantTableIndex";
     }
 
@@ -78,5 +85,22 @@ public class RestaurantTableController {
     public String restaurantTableReservation(Model model) {
         model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
         return "restaurantTableReservation";
+    }
+
+    @GetMapping("/checkTimeForTable")
+    public String checkTimeForTable(@ModelAttribute CounterTableReservationDTO counterTableReservationDTO, Model model, HttpSession session) {
+        Time a = Time.valueOf(counterTableReservationDTO.getvStatT()+":00");
+        Time a2 = Time.valueOf(counterTableReservationDTO.getvEndT()+":00");
+        counterTableReservationDTO.setStartTime(a);
+        counterTableReservationDTO.setEndTime(a2);
+        Date date =Date.valueOf(counterTableReservationDTO.getvDate());
+        counterTableReservationDTO.setDate(date);
+        model.addAttribute("reservedDate", (counterTableReservationDTO.getDate()));
+        model.addAttribute("timeIn", (counterTableReservationDTO.getStartTime()));
+        model.addAttribute("timeOut", (counterTableReservationDTO.getEndTime()));
+        List<RestaurantTableDTO> p2 =restaurantBO.getAviTables(counterTableReservationDTO.getDate(),counterTableReservationDTO.getStartTime(),counterTableReservationDTO.getEndTime());
+        model.addAttribute("loadAllTables", p2);
+
+        return "restaurantTableReservationDetails";
     }
 }
