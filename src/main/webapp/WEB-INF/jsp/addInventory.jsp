@@ -107,11 +107,8 @@
                                                     <div class="col-md-6 col-sm-6 ">
                                                             <%--Item Id Auto Fill--%>
                                                         <div class="form-group row">
-                                                            <label class="col-form-label col-md-11 col-sm-11"
-                                                                   for="itemId">Item Id<span class="required">*</span>
-                                                            </label>
                                                             <div class="col-md-11 col-sm-11 ">
-                                                                <input type="text" value="0" id="itemId"
+                                                                <input type="hidden" value="0" id="itemId"
                                                                        name="inventoryId" required="required"
                                                                        class="form-control  ">
                                                             </div>

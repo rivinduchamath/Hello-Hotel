@@ -408,17 +408,12 @@ public class InventoryBOImpl implements InventoryBO {
 
     @Override
     public InventoryDTO findHighestId() {
-
-
         Inventory a = inventoryDAO.findTopByOrderByInventoryIdDesc();
-        try {
-            return new InventoryDTO(
+
+        return new InventoryDTO(
                     a.getInventoryId()
             );
-        } catch (NullPointerException e) {
-            System.out.println("No Item Fond");
-        }
-        return null;
+
     }
 
     @Override
