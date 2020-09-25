@@ -36,6 +36,7 @@ TimeCheckBO timeCheck1;
         return "redirect:/le";
     }
 
+
     @GetMapping("/loadTable")
     public String loadTable(Model model,@ModelAttribute timeCheckDTO meCheck){
         Time a = Time.valueOf(meCheck.getTimeSett()+":00");
