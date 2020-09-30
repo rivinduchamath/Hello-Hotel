@@ -215,6 +215,7 @@
                                 </div>
                                 <div class="x_content">
                                     <br/>
+                                    <form name="form1" id="ff" action="checkTimeForTables">
                                     <label>
                                         Date:
                                         <input type="date" placeholder="Booking Date" name="vDate" id="vDate" required>
@@ -230,6 +231,7 @@
                                         <input type="time" placeholder="Out Time" name="vEndT" id="message">                                    </label>
 
                                     <input class="sendButton" type="submit" name="Submit" value="Check">
+                                    </form>
                                 </div>
                             </div>
                         </div>

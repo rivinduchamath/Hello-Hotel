@@ -17,5 +17,5 @@ public interface OnlineTableReservationDAO extends CrudRepository<OnlineTableRes
 
     OnlineTableReservation findTopByOrderByOnlineTableReservationIdDesc();
 
-    Iterable<OnlineTableReservation> findOnlineTableReservationByDateEquals(Date date);
+    Iterable<OnlineTableReservation> findOnlineTableReservationByReservedDateEquals(Date date);
 }

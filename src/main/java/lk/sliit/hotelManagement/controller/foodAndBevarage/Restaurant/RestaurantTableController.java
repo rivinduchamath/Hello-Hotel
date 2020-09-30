@@ -87,7 +87,7 @@ public class RestaurantTableController {
         return "restaurantTableReservation";
     }
 
-  /*  @GetMapping("/checkTimeForTable")
+   @GetMapping("/checkTimeForTables")
     public String checkTimeForTable(@ModelAttribute CounterTableReservationDTO counterTableReservationDTO, Model model, HttpSession session) {
         Time a = Time.valueOf(counterTableReservationDTO.getvStatT()+":00");
         Time a2 = Time.valueOf(counterTableReservationDTO.getvEndT()+":00");
@@ -102,5 +102,5 @@ public class RestaurantTableController {
         model.addAttribute("loadAllTables", p2);
 
         return "restaurantTableReservationDetails";
-    }*/
+    }
 }

@@ -286,8 +286,8 @@ public class RestaurantBOImpl implements RestaurantBO {
         Iterable<CounterTableReservation> counterTableReservations = null;
         System.out.println("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
         try {
-            onlineTableReservations = onlineTableReservationDAO.findOnlineTableReservationByDateEquals(date);
-            counterTableReservations = counterTableReservationDAO.findOnlineTableReservationByDateEquals(date);
+            onlineTableReservations = onlineTableReservationDAO.findOnlineTableReservationByReservedDateEquals(date);
+            counterTableReservations = counterTableReservationDAO.findCounterTableReservationByDateEquals(date);
         } catch (NullPointerException e){}
 
         for (OnlineTableReservation d2 : onlineTableReservations) {
