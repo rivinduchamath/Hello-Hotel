@@ -250,9 +250,11 @@
                                                 <tbody>
                                                 <c:forEach items="${todayBookedTables}" var="e">
                                                     <tr>
-                                                        <td>${e.userId}</td>
-                                                        <td>${e.name}</td>
-                                                        <td>${e.position}</td>
+
+                                                        <td>${e.counterTableReserveId}</td>
+                                                        <td>${e.startTime}</td>
+                                                        <td>${e.endTime}</td>
+
                                                         <td>${e.type}</td>
 
                                                     </tr>

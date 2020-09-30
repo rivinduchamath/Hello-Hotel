@@ -15,4 +15,8 @@ public interface CounterTableReservationDAO extends CrudRepository<CounterTableR
     Iterable<CounterTableReservation> getAllBetweenDates(@Param("startTimes") Date startTimes, @Param("endTime")Date endTime, @Param("date")Date date);
 
     Iterable<CounterTableReservation> findCounterTableReservationByDateEquals(Date date);
+<<<<<<< HEAD
+
+=======
+>>>>>>> b2d3f72e7e3a3c6d833f3de93e01e3dcb0e798e3
 }
