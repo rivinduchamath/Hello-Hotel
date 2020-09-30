@@ -253,7 +253,7 @@
                                                         <td>${e.userId}</td>
                                                         <td>${e.name}</td>
                                                         <td>${e.position}</td>
-                                                        <td>${e.mobileNo}</td>
+                                                        <td>${e.type}</td>
 
                                                     </tr>
                                                 </c:forEach>
