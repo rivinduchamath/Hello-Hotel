@@ -11,7 +11,6 @@ import lk.sliit.hotelManagement.dao.restaurantDAO.onlineOrderDAO.RestaurantOnlin
 import lk.sliit.hotelManagement.dao.restaurantDAO.onlineOrderDAO.RestaurantOnlineOrderDetailsDAO;
 import lk.sliit.hotelManagement.dao.restaurantDAO.onlineTableReservationDAO.OnlineTableReservationDAO;
 import lk.sliit.hotelManagement.dao.restaurantDAO.onlineTableReservationDAO.OnlineTableReservationDetailsDAO;
-import lk.sliit.hotelManagement.dto.beverage.BarOrderDetailDTO;
 import lk.sliit.hotelManagement.dto.kitchen.FoodItemDTO;
 import lk.sliit.hotelManagement.dto.restaurant.RestaurantTableDTO;
 import lk.sliit.hotelManagement.dto.restaurant.restaurantCounterOrder.RestaurantCounterOrderDTO;
@@ -284,9 +283,12 @@ public class RestaurantBOImpl implements RestaurantBO {
         List<CounterTableReservationDetails> list5 = new ArrayList<>();
         Iterable<OnlineTableReservation> onlineTableReservations = null;
         Iterable<CounterTableReservation> counterTableReservations = null;
-        System.out.println("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
         try {
+<<<<<<< HEAD
             onlineTableReservations = onlineTableReservationDAO.findOnlineTableReservationByReservedDateEquals(date);
+=======
+            onlineTableReservations = onlineTableReservationDAO.findOnlineTableReservationByDateEquals(date);
+>>>>>>> b2d3f72e7e3a3c6d833f3de93e01e3dcb0e798e3
             counterTableReservations = counterTableReservationDAO.findCounterTableReservationByDateEquals(date);
         } catch (NullPointerException e){}
 
@@ -315,8 +317,6 @@ public class RestaurantBOImpl implements RestaurantBO {
             }
 
         }
-
-        System.out.println(list+"sssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss");
 
         return list;
     }

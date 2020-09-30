@@ -38,8 +38,8 @@ public class InventoryDTO {
 
     }
 
-    public InventoryDTO(int orderId) {
-        this.orderId =orderId;
+    public InventoryDTO(int inventoryId) {
+        this.inventoryId = inventoryId;
     }
 
     public int getOrderId() {
@@ -137,6 +137,24 @@ public class InventoryDTO {
 
     public void setType(String type) {
         this.type = type;
+    }
+
+    @Override
+    public String toString() {
+        return "InventoryDTO{" +
+                "inventoryId=" + inventoryId +
+                ", text='" + text + '\'' +
+                ", description='" + description + '\'' +
+                ", orderQty=" + orderQty +
+                ", type='" + type + '\'' +
+                ", orderLimit='" + orderLimit + '\'' +
+                ", getPrice=" + getPrice +
+                ", sellingPrice=" + sellingPrice +
+                ", date=" + date +
+                ", supplierId=" + supplierId +
+                ", orderId=" + orderId +
+                ", orderHolder=" + orderHolder +
+                '}';
     }
 }//End Class
 

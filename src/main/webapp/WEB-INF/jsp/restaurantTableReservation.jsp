@@ -215,7 +215,11 @@
                                 </div>
                                 <div class="x_content">
                                     <br/>
+<<<<<<< HEAD
                                     <form name="form1" id="ff" action="checkTimeForTables">
+=======
+                                    <form name="form1" id="ff" action="checkTimeForTable">
+>>>>>>> b2d3f72e7e3a3c6d833f3de93e01e3dcb0e798e3
                                     <label>
                                         Date:
                                         <input type="date" placeholder="Booking Date" name="vDate" id="vDate" required>

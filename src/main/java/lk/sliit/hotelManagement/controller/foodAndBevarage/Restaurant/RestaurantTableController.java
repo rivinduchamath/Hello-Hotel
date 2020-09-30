@@ -30,7 +30,7 @@ public class RestaurantTableController {
     RestaurantBO restaurantBO;
 
     @GetMapping("/restaurantTable")
-    public String loginPage(Model model){
+    public String loginPage(Model model) {
         model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
         List<RestaurantTableDTO> tableList = restaurantBO.findTables();
         model.addAttribute("loadAllTablesTable", tableList);
@@ -39,7 +39,7 @@ public class RestaurantTableController {
 
     @PostMapping("/saveTable")
     public String addNewTable(Model model, @ModelAttribute RestaurantTableDTO restaurantTableDTO) {
-        System.out.println(restaurantTableDTO+" aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+        System.out.println(restaurantTableDTO + " aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
         try {
             RestaurantTableDTO tableDTO1 = restaurantBO.findHighestTableId();
             RestaurantTableDTO tableDTO2 = null;
@@ -63,6 +63,7 @@ public class RestaurantTableController {
         restaurantBO.saveTable(restaurantTableDTO);
         return "redirect:/restaurantTable";
     }
+
     @GetMapping(value = "deleteTable/{tableId}")
     public void deleteTable(@PathVariable("tableId") int tableId, HttpServletResponse response) {
         restaurantBO.deleteTable(tableId);
@@ -76,7 +77,7 @@ public class RestaurantTableController {
     @GetMapping("/restaurantTableIndex")
     public String restaurantTableIndex(Model model) {
         model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
-        List<CounterTableReservationDTO> p2 =restaurantBO.getBookedTables();
+        List<CounterTableReservationDTO> p2 = restaurantBO.getBookedTables();
         model.addAttribute("todayBookedTables", p2);
         return "restaurantTableIndex";
     }
@@ -87,7 +88,9 @@ public class RestaurantTableController {
         return "restaurantTableReservation";
     }
 
-   @GetMapping("/checkTimeForTables")
+}
+   /* @GetMapping("/checkTimeForTable")
+>>>>>>> b2d3f72e7e3a3c6d833f3de93e01e3dcb0e798e3
     public String checkTimeForTable(@ModelAttribute CounterTableReservationDTO counterTableReservationDTO, Model model, HttpSession session) {
         Time a = Time.valueOf(counterTableReservationDTO.getvStatT()+":00");
         Time a2 = Time.valueOf(counterTableReservationDTO.getvEndT()+":00");
@@ -103,4 +106,4 @@ public class RestaurantTableController {
 
         return "restaurantTableReservationDetails";
     }
-}
+}*/
