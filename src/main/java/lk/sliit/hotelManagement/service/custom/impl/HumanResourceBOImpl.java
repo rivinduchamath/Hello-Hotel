@@ -6,6 +6,7 @@ import lk.sliit.hotelManagement.dao.hrDAO.SalaryDAO;
 import lk.sliit.hotelManagement.dao.manageSystemDAO.EmployeeDAO;
 import lk.sliit.hotelManagement.dto.houseKeeping.HotelRoomDTO;
 import lk.sliit.hotelManagement.dto.hr.AttendanceDTO;
+import lk.sliit.hotelManagement.dto.hr.MonthlySalary;
 import lk.sliit.hotelManagement.dto.hr.SalaryDTO;
 import lk.sliit.hotelManagement.dto.manager.EmployeeDTO;
 import lk.sliit.hotelManagement.entity.houseKeeping.HotelRoom;
@@ -23,8 +24,6 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 @Service
 @Transactional
@@ -93,6 +92,8 @@ public class HumanResourceBOImpl implements HumanResourceBO {
                 attendanceDTO.getOutTime(),
                 attendanceDTO.getOvertimeHours(),
                 employeeDAO.findOne(attendanceDTO.getEmployeeID())));
+
+
     }//End attendance save method
 
     @Override
@@ -165,27 +166,33 @@ public class HumanResourceBOImpl implements HumanResourceBO {
 
     @Override
     public List<EmployeeDTO> findAllUserwithOT() {
-        Iterable<Employee> all = manageDAO.findAll();
 
-        List<EmployeeDTO> dtos = new ArrayList<>();
-        for (Employee employee : all) {
-            dtos.add(new EmployeeDTO(
-                    employee.getUserId(),
-                    employee.getName(),
-                    employee.getMobileNo(),
-                    employee.getEmail(),
-                    employee.getAddress(),
-                    employee.getPosition(),
-                    employee.getPassword(),
-                    employee.getDateOfBirth(),
-                    employee.getGender(),
-                    employee.getSalary(),
-                    employee.getDate(),
-                    employee.getImage(),
-                    employee.getDepartment().getDepartmentId()
-            ));
+        System.out.println("HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH");
+        Date todaydate = new Date();
+        Calendar cal = Calendar.getInstance();
+        cal.add(Calendar.MONTH, -1);
+        java.util.Date dt = cal.getTime();
+        List<Iterable<Double>> list = new ArrayList<>();
+        Iterable<Employee> allTable = employeeDAO.findAll();
+
+        Double all4 = 0.0;
+        List<MonthlySalary> dtoList = new ArrayList<>();
+        List<MonthlySalary> dtoList1 = new ArrayList<>();
+        for (Employee a: allTable) {
+         all4 = attendanceDAO.findAllByDateBetweenAndEmployeeID_UserIdEquals(dt,todaydate,a.getUserId());
+
+        System.out.println("sssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss"+all4);
+                dtoList.add(new MonthlySalary(
+                        a.getUserId(),
+                        a.getName(),
+                        a.getSalary(),
+                        all4
+                ));
         }
-        return dtos;
+        for (MonthlySalary a:dtoList) {
+                System.out.println(a + "uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu");
+        }
+        return null;
     }
 
     @Override
@@ -266,6 +273,28 @@ public class HumanResourceBOImpl implements HumanResourceBO {
             ));
         }
         return dtos;
+    }
+
+    @Override
+    public List<SalaryDTO> findthisMonthSalary() {
+       /* Iterable<Salary> all = salaryDAO.findAllByDateBetweenAndStateEquals(false);
+        List<SalaryDTO> dtos = new ArrayList<>();
+        for (Salary salary : all) {
+            dtos.add(new SalaryDTO(
+                    salary.getSalaryId(),
+                    salary.getBasicSalary(),
+                    salary.getEtf(),
+                    salary.getEpf(),
+                    salary.getServiceCharge(),
+                    salary.getOtHours(),
+                    salary.getHours(),
+                    salary.getSalary(),
+                    salary.getEmployeeID().getUserId(),
+                    salary.getEmployeeID().getName(),
+                    salary.getEmployeeID().getImage()
+            ));
+        }*/
+        return null;
     }
 
 }
