@@ -33,8 +33,6 @@
 <body class="nav-md" style="cursor: pointer">
 <div class="container body">
     <div class="main_container">
-        <div class="">
-            <div class="">
 
 
                 <!-- Side header -->
