@@ -202,28 +202,27 @@
     </div>
     <!-- /page content -->
 
-
     <script>
         function getValue() {
+
             var checks = document.getElementsByClassName('checks');
             var str = '';
 
-            for (i = 0; i < ${countEmployee2}; i++) {
+            for (i = 0; i < ${salaryCount}; i++) {
                 if (checks[i].checked === true) {
                     str += checks[i].value + " ";
                 }
             }
-            $("#itemPay").val(str);
+          //  $("#itemPay").val(str);
+            alert(str)
         }
     </script>
-    <!-- footer content -->
 
     <footer>
         <div class="pull-right">
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             Copyright © Employee Management 2020.<a href="https://github.com/rivinduchamath/Hello-Hote/l">
             Created by ITP SLIIT &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </a>
-            <%--            Copyright © Employee Management 2020.<a href="https://rivinduchamath.github.io/pro/">Created by Chanuka Mullevidana</a>--%>
         </div>
         <div class="clearfix"></div>
     </footer>
@@ -271,7 +270,8 @@
     });
 </script>
 
-<script> $(document).ready(function () {
+<script>
+    $(document).ready(function () {
     $("#btn_enable").click(function () {
         $("#name").prop("disabled", false);
     });

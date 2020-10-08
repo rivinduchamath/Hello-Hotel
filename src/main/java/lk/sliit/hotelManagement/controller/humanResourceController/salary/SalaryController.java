@@ -30,7 +30,7 @@ public class SalaryController {
     @Autowired
     HumanResourceBO humanResourceBO;
     @GetMapping("/salary")
-    public String salary(Model model) {
+    public ModelAndView salary(Model model) {
         ModelAndView mav = new ModelAndView ( "salary" );
         List<MonthlySalary> p = humanResourceBO.findAllUserwithOT();
         List<SalaryDTO> p2 = humanResourceBO.findAllsalaryStateNotFalse();
@@ -41,11 +41,12 @@ public class SalaryController {
         //Get All Data In Salary Table
         List <SalaryDTO> salaryDTOS = humanResourceBO.findAllSalary ( );
         int i = 0;
-        for (SalaryDTO e : salaryDTOS) {
+        for (MonthlySalary e : p) {
             i++; // Get Count
         }
-        mav.addObject ( "countEmployee2", i );
-        return "salary";
+
+        mav.addObject ( "salaryCount", i );
+        return mav;
     }
     //Load All Salaries To a Table
     @GetMapping("/allSalary")
