@@ -231,7 +231,7 @@ public class HumanResourceBOImpl implements HumanResourceBO {
 
     @Override
     public List<SalaryDTO> findAllsalaryStateNotFalse() {
-        Iterable<Salary> all = salaryDAO.findAllByStateEquals(false);
+        Iterable<Salary> all = salaryDAO.findAllByStateAndDateEquals(false, new Date());
 
         List<SalaryDTO> dtos = new ArrayList<>();
         for (Salary salary : all) {
