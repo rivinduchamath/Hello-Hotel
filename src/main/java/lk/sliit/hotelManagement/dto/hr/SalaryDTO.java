@@ -49,6 +49,22 @@ public class SalaryDTO {
         this.salaryId = salaryId;
     }
 
+    public SalaryDTO(int salaryId, double otHours, double hours, int userId, String name, String image) {
+        this.salaryId = salaryId;
+        this.employeeName = name;
+        this.otHours = otHours;
+        this.hours = hours;
+        this.image = image;
+        this.employeeID = userId;
+    }
+
+    public SalaryDTO(int salaryId, double otHours, double hours, int userId) {
+        this.salaryId = salaryId;
+        this.otHours = otHours;
+        this.hours = hours;
+        this.employeeID = userId;
+    }
+
 
     public String getImage() {
         return image;

@@ -147,13 +147,8 @@ public class HumanResourceBOImpl implements HumanResourceBO {
         for (Salary a : all) {
             dtos.add(new SalaryDTO(
                     a.getSalaryId(),
-                    a.getBasicSalary(),
-                    a.getEtf(),
-                    a.getEpf(),
-                    a.getServiceCharge(),
                     a.getOtHours(),
                     a.getHours(),
-                    a.getSalary(),
                     a.getEmployeeID().getUserId(),
                     a.getEmployeeID().getName(),
                     a.getEmployeeID().getImage()
@@ -206,13 +201,8 @@ public class HumanResourceBOImpl implements HumanResourceBO {
         Salary salary = salaryDAO.findOne(salaryId);
         SalaryDTO salaryDTO = new SalaryDTO(
                 salary.getSalaryId(),
-                salary.getBasicSalary(),
-                salary.getEtf(),
-                salary.getEpf(),
-                salary.getServiceCharge(),
                 salary.getOtHours(),
                 salary.getHours(),
-                salary.getSalary(),
                 salary.getEmployeeID().getUserId()
         );
         return salaryDTO;
@@ -224,18 +214,13 @@ public class HumanResourceBOImpl implements HumanResourceBO {
         Calendar cal = Calendar.getInstance();
         int m =(todaydate.getMonth());
         java.util.Date beforeWeek = cal.getTime();
-
+        System.out.println(":::::::::SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS"+salary.getHours());
      Employee employee =  employeeDAO.findOne(salary.getEmployeeID());
 
         salaryDAO.save(new Salary(
                 salary.getSalaryId(),
-                employee.getSalary(),
-                salary.getEtf(),
-                salary.getEpf(),
-                salary.getServiceCharge(),
                 salary.getOtHours(),
-                salary.getOtHours(),
-                salary.getSalary(),
+                salary.getHours(),
                 false,
                 new Date(),
                 employee
@@ -252,13 +237,8 @@ public class HumanResourceBOImpl implements HumanResourceBO {
         for (Salary salary : all) {
             dtos.add(new SalaryDTO(
                     salary.getSalaryId(),
-                    salary.getBasicSalary(),
-                    salary.getEtf(),
-                    salary.getEpf(),
-                    salary.getServiceCharge(),
                     salary.getOtHours(),
                     salary.getHours(),
-                    salary.getSalary(),
                     salary.getEmployeeID().getUserId(),
                     salary.getEmployeeID().getName(),
                     salary.getEmployeeID().getImage()

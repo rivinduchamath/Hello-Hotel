@@ -87,7 +87,6 @@ public class HRController {
             if (employeeID == (eId)) {//Check JSP Employee ID Already in today attendance
                 attendance.setAttendanceId(attendanceID); //IF true Set Attendance Id and save
                 humanResourceBO.saveOrUpdate(attendance);
-
                 salaryManage(eId, attendance.getOvertimeHours() , hours);
                 return "redirect:/attendance";
             }
@@ -102,13 +101,12 @@ public class HRController {
             attendance.setAttendanceId(1);
         }
         newSalaryManage(attendance.getEmployeeID(),attendance.getOvertimeHours(),hours);
-        humanResourceBO.saveOrUpdate(attendance);//Else Attendance Save Under Previous Attendance ID
+        humanResourceBO.saveOrUpdate(attendance);
 
         return "redirect:/attendance";
     }//End addTodayAttendance Method
 
     private void newSalaryManage(int eId, double overtimeHours,double hours) {
-
         SalaryDTO totalCount = new SalaryDTO();
         try {
              totalCount = humanResourceBO.findHighestSalaryId();
@@ -122,7 +120,7 @@ public class HRController {
         totalCount.setHours(hours);
         totalCount.setOtHours(overtimeHours);
 
-        humanResourceBO.saveSalary(totalCount);//Else Attendance Save Under Previous Attendance ID
+        humanResourceBO.saveSalary(totalCount);
 
     }
 
@@ -131,15 +129,14 @@ public class HRController {
         int employeeID = 0, salaryId = 0;
         salaryDTOS = humanResourceBO.findAllsalaryStateNotFalse();
         for (SalaryDTO a : salaryDTOS) {
-            eId = a.getEmployeeID();
-            employeeID = a.getEmployeeID();//add EmployeeID From Attendance
-            salaryId = a.getSalaryId();//add AttendanceId From Attendance
-            if (employeeID == (eId)) {//Check JSP Employee ID Already in today attendance
+            employeeID = a.getEmployeeID();
+            salaryId = a.getSalaryId();
+            if (employeeID == (eId)) {
                 a.setOtHours(ot);
-                a.setSalaryId(salaryId); //IF true Set Attendance Id and save
+                System.out.println(hours+"tttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttt");
+                a.setSalaryId(salaryId);
                 a.setHours(hours);
                 humanResourceBO.saveSalary(a);
-
             }
         }
     }
