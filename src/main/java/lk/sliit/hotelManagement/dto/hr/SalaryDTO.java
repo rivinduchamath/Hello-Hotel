@@ -12,7 +12,7 @@ public class SalaryDTO {
     private int employeeID;
     private String  employeeName;
     private String  image;
-    private String source;
+
 
     public SalaryDTO() {
     }
@@ -40,13 +40,7 @@ public class SalaryDTO {
         this.employeeID = userId;
     }
 
-    public String getSource() {
-        return source;
-    }
 
-    public void setSource(String source) {
-        this.source = source;
-    }
 
     public String getImage() {
         return image;

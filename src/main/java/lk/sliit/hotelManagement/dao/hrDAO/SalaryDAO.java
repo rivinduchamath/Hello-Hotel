@@ -17,6 +17,11 @@ public interface SalaryDAO extends CrudRepository<Salary,Integer> {
     @Query(value = "from Salary t where (t.otHours between :endTime and :startTimes)  and t.date = :date")
     Iterable<Salary> getAllBetweenDates(@Param("startTimes") Date startTimes, @Param("endTime")Date endTime, @Param("date")Date date);
 
+    @Query("SELECT SUM(m.otHours) FROM Salary m where  m.employeeID.userId = :userId")
+    double findAllByDateBetweenAndEmployeeID_UserIdEquals(@Param("userId")int userId);
+
+    @Query("SELECT SUM(m.hours) FROM Salary m where  m.employeeID.userId = :userId")
+    double findAllByDateBetweenAndEmployeeID_UserIdEqual(@Param("userId")int userId);
 
     // void findSalariesByDateMonthAndEmployeeIDEquals(int m, int employeeID);
 }

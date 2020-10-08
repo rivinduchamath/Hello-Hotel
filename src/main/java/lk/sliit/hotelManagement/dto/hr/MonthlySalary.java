@@ -1,5 +1,7 @@
 package lk.sliit.hotelManagement.dto.hr;
 
+import java.util.Date;
+
 public class MonthlySalary {
 
     private int userId;
@@ -13,6 +15,7 @@ public class MonthlySalary {
         this.salary = salary;
         this.totOT = totOT;
     }
+
 
 
 

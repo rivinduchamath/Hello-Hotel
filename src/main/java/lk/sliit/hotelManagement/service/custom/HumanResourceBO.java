@@ -4,6 +4,7 @@ import lk.sliit.hotelManagement.dto.houseKeeping.HotelRoomDTO;
 import lk.sliit.hotelManagement.dto.hr.AttendanceDTO;
 import lk.sliit.hotelManagement.dto.hr.MonthlySalary;
 import lk.sliit.hotelManagement.dto.hr.SalaryDTO;
+import lk.sliit.hotelManagement.dto.hr.SalaryPay;
 import lk.sliit.hotelManagement.dto.manager.EmployeeDTO;
 import lk.sliit.hotelManagement.service.SuperBO;
 
@@ -33,5 +34,5 @@ public interface HumanResourceBO extends SuperBO {
 
     List<SalaryDTO> findAllsalaryStateNotFalse();
 
-    List<Object> getSalaryPayment(String source);
+    List<SalaryPay> getSalaryPayment(String source);
 }

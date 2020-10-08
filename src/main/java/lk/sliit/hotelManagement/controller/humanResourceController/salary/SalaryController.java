@@ -3,6 +3,7 @@ package lk.sliit.hotelManagement.controller.humanResourceController.salary;
 import lk.sliit.hotelManagement.controller.SuperController;
 import lk.sliit.hotelManagement.dto.hr.MonthlySalary;
 import lk.sliit.hotelManagement.dto.hr.SalaryDTO;
+import lk.sliit.hotelManagement.dto.hr.SalaryPay;
 import lk.sliit.hotelManagement.dto.manager.EmployeeDTO;
 import lk.sliit.hotelManagement.service.custom.HumanResourceBO;
 import lk.sliit.hotelManagement.service.custom.IndexLoginBO;
@@ -84,7 +85,7 @@ public class SalaryController {
     }
 
     @RequestMapping("addSalary")
-    public ModelAndView loadInvoicePage(@ModelAttribute SalaryDTO salaryDTO, Model model) {
+    public ModelAndView loadInvoicePage(@ModelAttribute SalaryPay salaryDTO, Model model) {
         ModelAndView mav = new ModelAndView ( "salaryPayment" );
 
         model.addAttribute ( "loggerName", indexLoginBO.getEmployeeByIdNo ( SuperController.idNo ) );
