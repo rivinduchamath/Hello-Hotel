@@ -13,6 +13,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.ServletException;
@@ -81,5 +82,17 @@ public class SalaryController {
         humanResourceBO.saveSalary(salaryDTO);
         return "redirect:/salary";
     }
+
+    @RequestMapping("addSalary")
+    public ModelAndView loadInvoicePage(@ModelAttribute SalaryDTO salaryDTO, Model model) {
+        ModelAndView mav = new ModelAndView ( "salaryPayment" );
+
+        model.addAttribute ( "loggerName", indexLoginBO.getEmployeeByIdNo ( SuperController.idNo ) );
+
+        model.addAttribute ( "getSalaryData", humanResourceBO.getSalaryPayment ( salaryDTO.getSource ( ) ) );
+        return mav;
+    }
+
+
 }
 

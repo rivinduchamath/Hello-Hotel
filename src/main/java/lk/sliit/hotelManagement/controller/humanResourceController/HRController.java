@@ -48,8 +48,6 @@ public class HRController {
 
     @RequestMapping(value = "tablesAdd", method = RequestMethod.POST)
     public String addTodayAttendance(@ModelAttribute AttendanceDTO attendance, Model model) {
-        System.out.println("ssssssssssssssssssssssssssaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"+attendance.getInTime());
-
 
         String start = attendance.getInTime();
         String end = attendance.getOutTime();
@@ -133,8 +131,7 @@ public class HRController {
             salaryId = a.getSalaryId();
             if (employeeID == (eId)) {
                 a.setOtHours(ot);
-                System.out.println(hours+"tttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttt");
-                a.setSalaryId(salaryId);
+                 a.setSalaryId(salaryId);
                 a.setHours(hours);
                 humanResourceBO.saveSalary(a);
             }

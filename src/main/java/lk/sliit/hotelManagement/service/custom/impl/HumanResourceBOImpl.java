@@ -162,8 +162,7 @@ public class HumanResourceBOImpl implements HumanResourceBO {
     @Override
     public List<MonthlySalary> findAllUserwithOT() {
 
-        System.out.println("HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH");
-        Date todaydate = new Date();
+      Date todaydate = new Date();
         Calendar cal = Calendar.getInstance();
         cal.add(Calendar.MONTH, -1);
         java.util.Date dt = cal.getTime();
@@ -176,17 +175,14 @@ public class HumanResourceBOImpl implements HumanResourceBO {
         for (Employee a: allTable) {
             all4 = attendanceDAO.findAllByDateBetweenAndEmployeeID_UserIdEquals(dt,todaydate,a.getUserId());
 
-            System.out.println("sssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss"+all4);
-            dtoList.add(new MonthlySalary(
+           dtoList.add(new MonthlySalary(
                     a.getUserId(),
                     a.getName(),
                     a.getSalary(),
                     all4
             ));
         }
-        for (MonthlySalary a:dtoList) {
-            System.out.println(a + "uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu");
-        }
+
         return dtoList;
     }
 
@@ -253,5 +249,29 @@ public class HumanResourceBOImpl implements HumanResourceBO {
         }
         return dtos;
     }
+
+    @Override
+    public List<Object> getSalaryPayment(String source) {
+        List<String> list=new ArrayList<String>();
+        String[] sourceAry = source.split(" "); //Split that String source
+
+        for(String value : sourceAry) { //Add String Array to List
+            list.add (value );
+        }
+   /*     Iterable <Salary> all = salaryDAO.findAll (list); //Find All Salary In the List
+        List <SalaryDTO> dtos = new ArrayList<> ();
+        for (Salary salary : all) {
+            dtos.add(new SalaryDTO (
+                    salary.getSalaryId (),
+                    salary.getBasicSalary (),
+                    salary.getOtHours (),
+                    salary.getOtRate (),
+                    salary.getBonus (),
+                    salary.getIncomeTax (),
+                    salary.getEmployeeID ()));
+        }*/
+        return null;
+    }
+
 
 }

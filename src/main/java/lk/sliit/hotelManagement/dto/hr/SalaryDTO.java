@@ -12,38 +12,13 @@ public class SalaryDTO {
     private int employeeID;
     private String  employeeName;
     private String  image;
+    private String source;
 
     public SalaryDTO() {
     }
 
-    public SalaryDTO(int salaryId, double basicSalary, double etf,
-                     double epf, double serviceCharge, double otHours, double hours,
-                     double salary, int employeeID) {
-        this.salaryId = salaryId;
-        this.basicSalary = basicSalary;
-        this.etf = etf;
-        this.epf = epf;
-        this.serviceCharge = serviceCharge;
-        this.otHours = otHours;
-        this.hours = hours;
-        this.salary = salary;
-        this.employeeID = employeeID;
-    }
 
-    public SalaryDTO(int salaryId, double basicSalary, double etf, double epf, double serviceCharge, double otHours,
-                     double hours, double salary, int employeeID, String employeeName, String image) {
-        this.salaryId = salaryId;
-        this.basicSalary = basicSalary;
-        this.etf = etf;
-        this.epf = epf;
-        this.serviceCharge = serviceCharge;
-        this.otHours = otHours;
-        this.hours = hours;
-        this.salary = salary;
-        this.employeeID = employeeID;
-        this.employeeName = employeeName;
-        this.image = image;
-    }
+
 
     public SalaryDTO(int salaryId) {
         this.salaryId = salaryId;
@@ -65,6 +40,13 @@ public class SalaryDTO {
         this.employeeID = userId;
     }
 
+    public String getSource() {
+        return source;
+    }
+
+    public void setSource(String source) {
+        this.source = source;
+    }
 
     public String getImage() {
         return image;

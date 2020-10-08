@@ -130,8 +130,8 @@
                                     <small>Click CheckBox And Pay Salary
                                     </small>
                                 </h2>
-                                <form method="POST" action="/invoice" name="invoice">
-                                    <input style="display: none" type="text" id="itemPay" name="SalaryId">
+                                <form method="POST" action="/addSalary" name="invoice">
+                                    <input style="display: none" type="text" id="itemPay" name="source">
                                     <ul class="nav navbar-right panel_toolbox">
                                         <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                                         </li>
@@ -213,7 +213,9 @@
                     str += checks[i].value + " ";
                 }
             }
-          //  $("#itemPay").val(str);
+
+
+           $("#itemPay").val(str);
             alert(str)
         }
     </script>
