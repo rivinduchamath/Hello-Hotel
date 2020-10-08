@@ -227,7 +227,6 @@ public class HumanResourceBOImpl implements HumanResourceBO {
 
      Employee employee =  employeeDAO.findOne(salary.getEmployeeID());
 
-//
         salaryDAO.save(new Salary(
                 salary.getSalaryId(),
                 employee.getSalary(),
