@@ -230,12 +230,12 @@ public class HumanResourceBOImpl implements HumanResourceBO {
 //
         salaryDAO.save(new Salary(
                 salary.getSalaryId(),
-                salary.getBasicSalary(),
+                employee.getSalary(),
                 salary.getEtf(),
                 salary.getEpf(),
                 salary.getServiceCharge(),
                 salary.getOtHours(),
-                salary.getHours(),
+                salary.getOtHours(),
                 salary.getSalary(),
                 false,
                 new Date(),
