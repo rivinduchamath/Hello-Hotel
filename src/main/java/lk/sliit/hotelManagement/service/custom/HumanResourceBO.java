@@ -31,8 +31,4 @@ public interface HumanResourceBO extends SuperBO {
     void saveSalary(SalaryDTO salaryDTO);
 
     List<SalaryDTO> findAllsalaryStateNotFalse();
-
-    List<SalaryDTO> findthisMonthSalary();
-
-
 }
