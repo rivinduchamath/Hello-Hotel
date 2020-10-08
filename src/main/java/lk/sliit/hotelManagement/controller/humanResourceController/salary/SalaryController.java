@@ -1,6 +1,7 @@
 package lk.sliit.hotelManagement.controller.humanResourceController.salary;
 
 import lk.sliit.hotelManagement.controller.SuperController;
+import lk.sliit.hotelManagement.dto.hr.MonthlySalary;
 import lk.sliit.hotelManagement.dto.hr.SalaryDTO;
 import lk.sliit.hotelManagement.dto.manager.EmployeeDTO;
 import lk.sliit.hotelManagement.service.custom.HumanResourceBO;
@@ -30,11 +31,20 @@ public class SalaryController {
     HumanResourceBO humanResourceBO;
     @GetMapping("/salary")
     public String salary(Model model) {
-        List<EmployeeDTO> p = humanResourceBO.findAllUserwithOT();
+        ModelAndView mav = new ModelAndView ( "salary" );
+        List<MonthlySalary> p = humanResourceBO.findAllUserwithOT();
         List<SalaryDTO> p2 = humanResourceBO.findAllsalaryStateNotFalse();
         model.addAttribute("loadAllUsers", p);
-        model.addAttribute("listEmployeesTableSalary", p2);
+        model.addAttribute("listEmployeesTableSalary", p);
         model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
+        //Pass Salary Row Count
+        //Get All Data In Salary Table
+        List <SalaryDTO> salaryDTOS = humanResourceBO.findAllSalary ( );
+        int i = 0;
+        for (SalaryDTO e : salaryDTOS) {
+            i++; // Get Count
+        }
+        mav.addObject ( "countEmployee2", i );
         return "salary";
     }
     //Load All Salaries To a Table

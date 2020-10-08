@@ -6,6 +6,7 @@ import lk.sliit.hotelManagement.dao.hrDAO.SalaryDAO;
 import lk.sliit.hotelManagement.dao.manageSystemDAO.EmployeeDAO;
 import lk.sliit.hotelManagement.dto.houseKeeping.HotelRoomDTO;
 import lk.sliit.hotelManagement.dto.hr.AttendanceDTO;
+import lk.sliit.hotelManagement.dto.hr.MonthlySalary;
 import lk.sliit.hotelManagement.dto.hr.SalaryDTO;
 import lk.sliit.hotelManagement.dto.manager.EmployeeDTO;
 import lk.sliit.hotelManagement.entity.houseKeeping.HotelRoom;
@@ -159,28 +160,34 @@ public class HumanResourceBOImpl implements HumanResourceBO {
     }
 
     @Override
-    public List<EmployeeDTO> findAllUserwithOT() {
-        Iterable<Employee> all = manageDAO.findAll();
+    public List<MonthlySalary> findAllUserwithOT() {
 
-        List<EmployeeDTO> dtos = new ArrayList<>();
-        for (Employee employee : all) {
-            dtos.add(new EmployeeDTO(
-                    employee.getUserId(),
-                    employee.getName(),
-                    employee.getMobileNo(),
-                    employee.getEmail(),
-                    employee.getAddress(),
-                    employee.getPosition(),
-                    employee.getPassword(),
-                    employee.getDateOfBirth(),
-                    employee.getGender(),
-                    employee.getSalary(),
-                    employee.getDate(),
-                    employee.getImage(),
-                    employee.getDepartment().getDepartmentId()
+        System.out.println("HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH");
+        Date todaydate = new Date();
+        Calendar cal = Calendar.getInstance();
+        cal.add(Calendar.MONTH, -1);
+        java.util.Date dt = cal.getTime();
+        List<Iterable<Double>> list = new ArrayList<>();
+        Iterable<Employee> allTable = employeeDAO.findAll();
+
+        Double all4 = 0.0;
+        List<MonthlySalary> dtoList = new ArrayList<>();
+        List<MonthlySalary> dtoList1 = new ArrayList<>();
+        for (Employee a: allTable) {
+            all4 = attendanceDAO.findAllByDateBetweenAndEmployeeID_UserIdEquals(dt,todaydate,a.getUserId());
+
+            System.out.println("sssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss"+all4);
+            dtoList.add(new MonthlySalary(
+                    a.getUserId(),
+                    a.getName(),
+                    a.getSalary(),
+                    all4
             ));
         }
-        return dtos;
+        for (MonthlySalary a:dtoList) {
+            System.out.println(a + "uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu");
+        }
+        return dtoList;
     }
 
     @Override

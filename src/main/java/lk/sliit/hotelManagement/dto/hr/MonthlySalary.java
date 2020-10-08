@@ -1,7 +1,5 @@
 package lk.sliit.hotelManagement.dto.hr;
 
-import java.util.List;
-
 public class MonthlySalary {
 
     private int userId;
