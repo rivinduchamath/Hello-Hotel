@@ -1,4 +1,3 @@
-
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page import="java.util.Date" %>
@@ -25,8 +24,8 @@
     <link href="../../build/css/custom.min.css" rel="stylesheet">
 
     <%
-        SimpleDateFormat sdf = new SimpleDateFormat ( "dd-MM-yyyy" );
-        String date = sdf.format ( new Date ( ) );
+        SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
+        String date = sdf.format(new Date());
     %>
 </head>
 
@@ -35,13 +34,13 @@
     <div class="main_container">
 
 
-                <!-- Side header -->
-                <jsp:include page="sideHeader.jsp"/>
-                <!-- /Side header -->
+        <!-- Side header -->
+        <jsp:include page="sideHeader.jsp"/>
+        <!-- /Side header -->
 
-                <!-- Top header -->
-                <jsp:include page="topHeader.jsp"/>
-                <!-- /Top header -->
+        <!-- Top header -->
+        <jsp:include page="topHeader.jsp"/>
+        <!-- /Top header -->
 
         <!-- page content -->
         <div class="right_col" role="main">
@@ -312,12 +311,15 @@
                                     <div class="row no-print">
                                         <div class=" ">
 
-                                            <form method="POST" action="/deleteInvoiceSalary" name="deleteInvoiceSalary">
+                                            <form method="POST" action="/deleteInvoiceSalary"
+                                                  name="deleteInvoiceSalary">
                                                 <input style="display: none" type="text" id="itemPay" name="SalaryId">
                                                 <ul class="nav navbar-right panel_toolbox">
                                                     <button type="submit" value="Register"
-                                                            style="font-weight: bold;color: white" ; id="name" onclick="window.print();"
-                                                            class="btn btn-success "> Submit Payment <i class="fa fa-file-image-o"></i>
+                                                            style="font-weight: bold;color: white" ; id="name"
+                                                            onclick="window.print();"
+                                                            class="btn btn-success "> Submit Payment <i
+                                                            class="fa fa-file-image-o"></i>
                                                     </button>
                                                 </ul>
 
@@ -354,11 +356,12 @@
     var rowCount = document.getElementById('saq').rows.length;
     var table = document.getElementById("saq"), sumVal2 = 0.0, sumVal3 = 0.0, sumVal4 = 0.0, sumVal5 = 0.0;
     var sumVal = 0.0;
-    var avgTax = 0.0;    var str = '';
+    var avgTax = 0.0;
+    var str = '';
 
 
     for (var i = 1; i < table.rows.length; i++) {
-        str = str+ (table.rows[i].cells[0].innerHTML)+" ";
+        str = str + (table.rows[i].cells[0].innerHTML) + " ";
         sumVal = sumVal + parseFloat(table.rows[i].cells[7].innerHTML);
         sumVal2 = sumVal2 + parseFloat(table.rows[i].cells[3].innerHTML);
         sumVal3 = sumVal3 + parseFloat(table.rows[i].cells[6].innerHTML);
