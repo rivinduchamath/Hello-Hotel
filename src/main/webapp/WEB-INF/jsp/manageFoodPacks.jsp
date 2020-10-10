@@ -97,7 +97,7 @@
                                               data-parsley-validate
                                               id="demo-form3">
 
-                                            <input type="hidden" id="packId" name="getMenuId">
+                                            <input type="hidden" id="packId" value="0" name="menuId">
                                             <div class=" form-group">
                                                 <label class=" label-align">Package Name: <span
                                                         class="required">*  &nbsp;</span>
@@ -137,6 +137,7 @@
 
                                             <div class=" form-group">
                                                 <div class=" ">
+
                                                     <button class="btn btn-dark" type="submit">+ Add / Update</button>
                                                     <button class="btn btn-outline-dark" type="reset">Reset</button>
 

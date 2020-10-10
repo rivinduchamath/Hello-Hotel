@@ -115,6 +115,7 @@
                                                             <td>
                                                                 <form action="" method="post">
                                                                 <i class="fa fa-plus-square"></i>
+                                                                </form>
                                                             </td>
                                                         </tr>
                                                     </c:forEach>
