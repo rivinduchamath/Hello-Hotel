@@ -1,7 +1,6 @@
 package lk.sliit.hotelManagement.controller.reservationController;
 
 import lk.sliit.hotelManagement.controller.SuperController;
-import lk.sliit.hotelManagement.dto.manager.EmployeeDTO;
 import lk.sliit.hotelManagement.dto.reservation.CustomerDTO;
 import lk.sliit.hotelManagement.service.custom.IndexLoginBO;
 import lk.sliit.hotelManagement.service.custom.ReservationBO;
@@ -21,23 +20,34 @@ public class CustomerAdd {
     ReservationBO reservationBO;
     @Autowired
     IndexLoginBO indexLoginBO;
-    @GetMapping("/overTheCounterReservation")
+
+    @GetMapping("/customerRegistration")
     public String attendance(Model model) {
         List<CustomerDTO> list = reservationBO.findAll();
         model.addAttribute("loadReservationCustomer",list);
         model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
 
-            return "overTheCounterReservation";
+            return "customerRegistration";
     }
-@PostMapping("/saveOverTheCounterCustomer")
+
+    @GetMapping("/counterReservation")
+    public String counterReservation(Model model) {
+        model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
+
+        return "counterReservation";
+    }
+
+
+    @PostMapping("/saveOverTheCounterCustomer")
     public String saveOverTheCounterCustomer(@ModelAttribute CustomerDTO customerDTO){
         reservationBO.savecustomer(customerDTO);
 
-        return "redirect:/overTheCounterReservation";
-}
-@GetMapping(value = "/deleteCustomer/{customerId}")
+        return "customerRegistration";
+    }
+
+    @GetMapping(value = "/deleteCustomer/{customerId}")
     public String deleteCustpomer(@PathVariable int customerId){
       reservationBO.deleteCustomer(customerId);
-    return "redirect:/overTheCounterReservation";
-}
+    return "customerRegistration";
+    }
 }

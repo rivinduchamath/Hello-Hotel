@@ -220,7 +220,7 @@
                         <div class="containerx">
                             <a style=" font-family: Playfair Display, Georgia, Times New Roman, serif;
                              background-color:#3d495f; color: #ffffff;font-weight: bolder"
-                               href="https://www.google.com/" class="btnq"><h2
+                               href="/onlineReservation" class="btnq"><h2
                                     style="position: relative; letter-spacing: 1px;
                                      margin-top: 30px">Online Reservation</h2></a>
                         </div>
@@ -231,7 +231,7 @@
                         <div class="containerx">
                             <a style=" font-family: Playfair Display, Georgia, Times New Roman, serif;
                              background-color:#3d495f; color: #ffffff;font-weight: bolder"
-                               href="/overTheCounterReservation" class="btnq"><h2
+                               href="/customerRegistration" class="btnq"><h2
                                     style="position: relative; letter-spacing: 1px;
                                      margin-top: 30px">Over The Counter Reservation</h2></a>
                         </div>
