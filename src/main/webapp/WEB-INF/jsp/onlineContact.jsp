@@ -67,7 +67,7 @@
 
                             <div id="contact_form">
                                 <strong>Hello !! You can send message to us.</strong>
-                                <form name="form1" id="ff" method="post" action="Contacts.php">
+                                <form name="form1" id="ff" method="post" action="/sendMailFromOnline">
                                     <label>
                                         Name*:
                                         <input type="text" placeholder="Please enter your name" name="name" id="name" required>

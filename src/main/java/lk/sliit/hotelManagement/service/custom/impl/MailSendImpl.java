@@ -1,6 +1,7 @@
 package lk.sliit.hotelManagement.service.custom.impl;
 
 import lk.sliit.hotelManagement.dto.manager.EmployeeDTO;
+import lk.sliit.hotelManagement.dto.manager.MailDTO;
 import lk.sliit.hotelManagement.service.custom.MailSend;
 import org.springframework.stereotype.Service;
 
@@ -80,5 +81,74 @@ public class MailSendImpl implements MailSend {
 
         }
 
+    }
+
+    @Override
+    public void sendMailToCustomer(MailDTO mailDTO) {
+        String smsSender =mailDTO.getEmail();
+
+        //Using the Java Mail Api to send the email
+        //Storing the mail address of the user which we need to send the mail
+        String to = "mailspringitp@gmail.com";
+
+        Properties props = new Properties();
+
+        props.put("mail.smtp.host", "true");
+
+        props.put("mail.smtp.starttls.enable", "true");
+
+        props.put("mail.smtp.host", "smtp.gmail.com");
+
+        props.put("mail.smtp.port", "587");
+
+        props.put("mail.smtp.auth", "true");
+
+        //Establishing a session with required user details
+
+        Session session = Session.getInstance(props, new javax.mail.Authenticator() {
+
+            protected PasswordAuthentication getPasswordAuthentication() {
+
+                return new PasswordAuthentication(smsSender, "springmailitp");
+
+            }
+
+        });
+
+        try {
+
+            //Creating a Message object to set the email content
+
+            MimeMessage msg = new MimeMessage(session);
+
+
+            InternetAddress[] address = InternetAddress.parse(to, true);
+
+
+            msg.setRecipients(Message.RecipientType.TO, address);
+
+
+            msg.setSubject("Hotel Hareesha Online Mail");
+            msg.setSentDate(new Date());
+            msg.setFrom(smsSender);
+
+
+            msg.setText("Sender Name: " + mailDTO.getName() + "\n\n" +
+                    "Floor Number: " + mailDTO.getEmail() + "\n\n" +
+                    "dsdsa" + mailDTO.getMessage()
+            );
+
+
+            msg.setHeader("XPriority", "1");
+
+            Transport.send(msg);
+
+            System.out.println("Mail has been sent successfully");
+
+        } catch (MessagingException mex) {
+
+            System.out.println("Unable to send an email" + mex);
+
+        }
     }
 }

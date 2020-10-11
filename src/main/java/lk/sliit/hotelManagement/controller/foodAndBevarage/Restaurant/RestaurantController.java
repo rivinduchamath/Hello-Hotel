@@ -83,7 +83,15 @@ public class RestaurantController {
     @GetMapping("/restaurantManage")
     public String restaurantManage(Model model) {
         model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
+
+        List<RestaurantTableDTO> tableList = restaurantBO.findTablesOnline();
+        model.addAttribute("listAllOnlineTable", tableList);
+        List<RestaurantTableDTO> tableList1 = restaurantBO.findTablesOnline();
+        model.addAttribute("onlineTableReservation", tableList1);
+
         return "restaurantManage";
     }
+
+
 
 }

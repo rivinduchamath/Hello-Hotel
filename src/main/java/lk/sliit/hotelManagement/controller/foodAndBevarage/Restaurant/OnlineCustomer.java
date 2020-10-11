@@ -2,33 +2,40 @@ package lk.sliit.hotelManagement.controller.foodAndBevarage.Restaurant;
 
 import lk.sliit.hotelManagement.controller.SuperController;
 import lk.sliit.hotelManagement.dto.beverage.BarOrderDTO;
+import lk.sliit.hotelManagement.dto.manager.MailDTO;
 import lk.sliit.hotelManagement.dto.restaurant.OnlineCustomerDTO;
+import lk.sliit.hotelManagement.dto.restaurant.OnlineCustomerLocationsDTO;
+import lk.sliit.hotelManagement.dto.restaurant.RestaurantTableDTO;
 import lk.sliit.hotelManagement.service.custom.IndexLoginBO;
+import lk.sliit.hotelManagement.service.custom.MailSend;
 import lk.sliit.hotelManagement.service.custom.OnlineCustomerBO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import javax.inject.Scope;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.io.IOException;
+import java.util.List;
 
 @Controller
 public class OnlineCustomer {
 
     @Autowired
     IndexLoginBO indexLoginBO;
-
+    @Autowired
+    MailSend mailSend;
     @Autowired
     OnlineCustomerBO onlineCustomerBO;
 
 
     @GetMapping("/onlineCustomer")
     public String loadForm_validationSaveMode(Model model, HttpServletRequest request) {
+        List<OnlineCustomerLocationsDTO> tableList = onlineCustomerBO.findDeliveryLocation();
+        model.addAttribute("loadLocationType", tableList);
         return "onlineCustomer";
     }
 
@@ -64,6 +71,15 @@ public class OnlineCustomer {
 
     }
 
+    @PostMapping("/sendMailFromOnline")
+    public String sendMailFromOnline( @ModelAttribute MailDTO mailDTO) {
+
+        mailSend.sendMailToCustomer(mailDTO);
+
+        return "redirect:/onlineContact";
+    }
+
+
     @RequestMapping("/onlineDashboard")
     public String registerUser(Model model, HttpSession session) {
         try {
@@ -75,5 +91,48 @@ public class OnlineCustomer {
         return "onlineDashboard";
     }
 
+    @GetMapping("/addLocation")
+    public String addCustomerLocations(Model model) {
+        model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
+        List<OnlineCustomerLocationsDTO> tableList = onlineCustomerBO.findDeliveryLocation();
+        model.addAttribute("loadDeliveryLocations", tableList);
+
+        return "addLocation";
+    }
+    @GetMapping(value = "deleteLocation/{locationId}")
+    public void deleteTable(@PathVariable("locationId") int locationId, HttpServletResponse response) {
+        onlineCustomerBO.deleteLocation(locationId);
+        try {
+            response.sendRedirect("/addLocation");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @PostMapping("/saveLocation")
+    public String addNewTable(Model model, @ModelAttribute OnlineCustomerLocationsDTO onlineCustomerLocationsDTO) {
+        try {
+            OnlineCustomerLocationsDTO tableDTO1 = onlineCustomerBO.findHighestOnlineLocationId();
+            OnlineCustomerLocationsDTO tableDTO2 = null;
+            try {
+                tableDTO2 = onlineCustomerBO.findOnlineLocationbyId(onlineCustomerLocationsDTO.getLocationId());
+            } catch (NullPointerException d) {
+                int maxId = (tableDTO1.getLocationId());
+                if (onlineCustomerLocationsDTO.getLocationId() == (maxId)) {
+                    onlineCustomerLocationsDTO.setLocationId((maxId));
+                } else {
+                    maxId++;
+                    onlineCustomerLocationsDTO.setLocationId((maxId));
+                }
+            }
+
+        } catch (NullPointerException e) {
+            onlineCustomerLocationsDTO.setLocationId(1);
+        }
+
+        model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
+        onlineCustomerBO.saveLocation(onlineCustomerLocationsDTO);
+        return "redirect:/addLocation";
+    }
 
 }

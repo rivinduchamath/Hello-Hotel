@@ -44,6 +44,8 @@ public class OnlineTable {
         return "onlineTableDetails";
     }
 
+
+
     @GetMapping("/checkTimeForTable")
     public String checkTimeForTable(@ModelAttribute OnlineTableReservationDTO onlineTable, Model model, HttpSession session) {
         Time a = Time.valueOf(onlineTable.getvStatT()+":00");

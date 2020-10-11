@@ -120,7 +120,6 @@ public class RestaurantBOImpl implements RestaurantBO {
                 restaurantCounterOrderDTO.getOrderState(),
                 restaurantCounterOrderDTO.getQuantity(),
                 restaurantCounterOrderDTO.getDate(),
-                restaurantCounterOrderDTO.getCustomerId(),
                 restaurantCounterOrderDTO.getOrderHolder()));
 
         for (RestaurantCounterOrderDetailDTO orderDetail : list) {
@@ -332,11 +331,9 @@ public class RestaurantBOImpl implements RestaurantBO {
         java.util.List<CounterTableReservationDetailsDTO> list = new ArrayList<>();
         String arr = onlineOrderDTO.getOrderData();
 
-        System.out.println(arr+"AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
-
         String yo[] = arr.split(" ");
         int count = 0;
-        CounterTableReservationDetailsDTO itm = new CounterTableReservationDetailsDTO();
+        CounterTableReservationDetailsDTO itm;
         for (String str : yo) {
             if (count == 0) {
                 itm = new CounterTableReservationDetailsDTO();
@@ -358,7 +355,6 @@ public class RestaurantBOImpl implements RestaurantBO {
                 Date.valueOf(onlineOrderDTO.getvDate())
         ));
 
-        System.out.println("DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD");
         for (CounterTableReservationDetailsDTO orderDetail : list) {
             counterTableReservationDetailsDAO.save(new CounterTableReservationDetails(
                     onlineOrderDTO.getCounterTableReserveId(),
@@ -370,6 +366,14 @@ public class RestaurantBOImpl implements RestaurantBO {
         }
     }
 
+    @Override
+    public List<RestaurantTableDTO> findTablesOnline() {
+   /*     Iterable<OnlineTableReservation> all4 = onlineTableReservationDAO.get();
+        try {
+              lastItem = onlineTableReservationDAO.findTopByOrderByOnlineTableReservationIdDesc();
+        } catch (Exception e){}*/
+        return null;
+    }
 
 
     @Override
@@ -377,10 +381,7 @@ public class RestaurantBOImpl implements RestaurantBO {
         RestaurantTable lastItem = null;
         try {
             lastItem = restaurantTableDAO.findTopByOrderByTableIdDesc();
-        } catch (Exception e){
-
-        }
-
+        } catch (Exception e){}
         return new RestaurantTableDTO(lastItem.getTableId());
     }
 
@@ -398,9 +399,11 @@ public class RestaurantBOImpl implements RestaurantBO {
         List<RestaurantTableDTO> tableDTOList = new ArrayList<>();
 
         for (RestaurantTable item: tables) {
-            tableDTOList.add(new RestaurantTableDTO(item.getTableId(),
+            tableDTOList.add(new RestaurantTableDTO(
+                    item.getTableId(),
                     item.getType(),
-                    item.getUnitPrice()));
+                    item.getUnitPrice()
+            ));
         }
         return tableDTOList;
     }
@@ -484,7 +487,4 @@ public class RestaurantBOImpl implements RestaurantBO {
 
         }
     }
-
-
-
 }
