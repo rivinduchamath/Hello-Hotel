@@ -2,7 +2,9 @@ package lk.sliit.hotelManagement.service.custom;
 
 import lk.sliit.hotelManagement.dto.houseKeeping.HotelRoomDTO;
 import lk.sliit.hotelManagement.dto.hr.AttendanceDTO;
+import lk.sliit.hotelManagement.dto.hr.MonthlySalary;
 import lk.sliit.hotelManagement.dto.hr.SalaryDTO;
+import lk.sliit.hotelManagement.dto.hr.SalaryPay;
 import lk.sliit.hotelManagement.dto.manager.EmployeeDTO;
 import lk.sliit.hotelManagement.service.SuperBO;
 
@@ -22,7 +24,7 @@ public interface HumanResourceBO extends SuperBO {
 
     List<SalaryDTO> findAllSalary();
 
-    List<EmployeeDTO> findAllUserwithOT();
+    List<MonthlySalary> findAllUserwithOT();
 
     SalaryDTO findHighestSalaryId();
 
@@ -31,4 +33,6 @@ public interface HumanResourceBO extends SuperBO {
     void saveSalary(SalaryDTO salaryDTO);
 
     List<SalaryDTO> findAllsalaryStateNotFalse();
+
+    List<SalaryPay> getSalaryPayment(String source);
 }

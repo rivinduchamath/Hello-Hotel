@@ -62,10 +62,8 @@ public class MailSendImpl implements MailSend {
             msg.setFrom(smsSender);
 
 
-
-
-            msg.setText("Sender Name: " + employeeDTO.getName() +"\n\n"+
-                    "Floor Number: " + employeeDTO.getEmail() +"\n\n"+
+            msg.setText("Sender Name: " + employeeDTO.getName() + "\n\n" +
+                    "Floor Number: " + employeeDTO.getEmail() + "\n\n" +
                     "dsdsa" + employeeDTO.getPassword()
             );
 
