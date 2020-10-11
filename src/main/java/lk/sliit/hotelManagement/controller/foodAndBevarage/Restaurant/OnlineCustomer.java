@@ -80,7 +80,7 @@ public class OnlineCustomer {
             mailDTO.setCustomerAddress(onlineCustomerDTO.getAddress());
             mailDTO.setCustomerName(onlineCustomerDTO.getName());
             mailDTO.setEmail(onlineCustomerDTO.getEmail());
-            model.addAttribute("loggerId", onlineCustomerBO.findOne(onlineCustomerId));
+
             mailSend.sendMailToCustomer(mailDTO);
         } catch (Exception d) {
             return "redirect:/onlineContact";

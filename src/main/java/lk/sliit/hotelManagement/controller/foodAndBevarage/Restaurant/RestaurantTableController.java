@@ -39,8 +39,7 @@ public class RestaurantTableController {
 
     @PostMapping("/saveTable")
     public String addNewTable(Model model, @ModelAttribute RestaurantTableDTO restaurantTableDTO) {
-        System.out.println(restaurantTableDTO + " aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
-        try {
+         try {
             RestaurantTableDTO tableDTO1 = restaurantBO.findHighestTableId();
             RestaurantTableDTO tableDTO2 = null;
             try {
@@ -90,7 +89,8 @@ public class RestaurantTableController {
 
 
     @GetMapping("/counterTableDetails")
-    public String checkTimeForTable(@ModelAttribute CounterTableReservationDTO counterTableReservationDTO, Model model, HttpSession session) {
+    public String checkTimeForTable(@ModelAttribute CounterTableReservationDTO counterTableReservationDTO,
+                                    Model model) {
         Time a = Time.valueOf(counterTableReservationDTO.getvStatT()+":00");
         Time a2 = Time.valueOf(counterTableReservationDTO.getvEndT()+":00");
         counterTableReservationDTO.setStartTime(a);
@@ -100,40 +100,35 @@ public class RestaurantTableController {
         model.addAttribute("reservedDate", (counterTableReservationDTO.getDate()));
         model.addAttribute("timeIn", (counterTableReservationDTO.getStartTime()));
         model.addAttribute("timeOut", (counterTableReservationDTO.getEndTime()));
-        List<RestaurantTableDTO> p2 =restaurantBO.getAviTables(counterTableReservationDTO.getDate(),counterTableReservationDTO.getStartTime(),counterTableReservationDTO.getEndTime());
+        List<RestaurantTableDTO> p2 =restaurantBO.getAviTables(counterTableReservationDTO.getDate(),
+                counterTableReservationDTO.getStartTime(),counterTableReservationDTO.getEndTime());
         model.addAttribute("loadAllTable", p2);
-
         return "counterTableDetails";
     }
 
     @PostMapping("/saveCounterTable")
     public String saveOnlineTable(@ModelAttribute CounterTableReservationDTO onlineOrderDTO, HttpSession session) {
 
-        System.out.println("DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"+onlineOrderDTO.getOrderData());
-        try {
+
+        System.out.println(onlineOrderDTO.getOrderData()+"YYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY");
+         try {
             Time a = Time.valueOf(onlineOrderDTO.getvStatT());
             Time a2 = Time.valueOf(onlineOrderDTO.getvEndT());
             onlineOrderDTO.setStartTime(a);
             onlineOrderDTO.setEndTime(a2);
             Date date = Date.valueOf(onlineOrderDTO.getvDate());
             onlineOrderDTO.setDate(date);
-        }catch (IllegalArgumentException s){
-
-        }
+        }catch (IllegalArgumentException s){}
         try {
-            System.out.println("EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE");
-            CounterTableReservationDTO top = restaurantBO.findHighestCounterTableId();
+             CounterTableReservationDTO top = restaurantBO.findHighestCounterTableId();
             int x = (top.getCounterTableReserveId()) + 1;
             onlineOrderDTO.setCounterTableReserveId((x));
         } catch (NullPointerException e) {
-
             System.out.println("In Try Catch");
             onlineOrderDTO.setCounterTableReserveId((1));
         }
-
         try {
-            System.out.println("SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS");
-            restaurantBO.saveCounterTableId(onlineOrderDTO);
+             restaurantBO.saveCounterTableId(onlineOrderDTO);
         } catch (NullPointerException d) {
             return "redirect:/restaurantTableReservation";
         }

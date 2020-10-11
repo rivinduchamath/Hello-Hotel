@@ -330,24 +330,27 @@ public class RestaurantBOImpl implements RestaurantBO {
     public void saveCounterTableId(CounterTableReservationDTO onlineOrderDTO) {
         java.util.List<CounterTableReservationDetailsDTO> list = new ArrayList<>();
         String arr = onlineOrderDTO.getOrderData();
-
+        System.out.println("WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW "+onlineOrderDTO);
         String yo[] = arr.split(" ");
         int count = 0;
-        CounterTableReservationDetailsDTO itm;
+        CounterTableReservationDetailsDTO itm = new CounterTableReservationDetailsDTO();
         for (String str : yo) {
             if (count == 0) {
                 itm = new CounterTableReservationDetailsDTO();
-                itm.setCounterTableReservation(Integer.parseInt(str));
+                itm.setTableId(Integer.parseInt(str));
                 list.add(itm);
                 count = 0;
-
             }
         }
+
+        System.out.println(list+"EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE");
         Calendar cal = Calendar.getInstance();
         cal.add(Calendar.DATE, 0);
         java.util.Date today = cal.getTime();
         onlineOrderDTO.setDate(today);
+        System.out.println(onlineOrderDTO+"RRRRRTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTRRRRRRRRRRRRRR");
         counterTableReservationDAO.save(new CounterTableReservation(
+
                 onlineOrderDTO.getCounterTableReserveId(),
                 Time.valueOf(onlineOrderDTO.getvStatT()),
                 Time.valueOf(onlineOrderDTO.getvEndT()),
@@ -356,12 +359,54 @@ public class RestaurantBOImpl implements RestaurantBO {
         ));
 
         for (CounterTableReservationDetailsDTO orderDetail : list) {
+            System.out.println(orderDetail.getTableId()+"RRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR");
             counterTableReservationDetailsDAO.save(new CounterTableReservationDetails(
                     onlineOrderDTO.getCounterTableReserveId(),
                     orderDetail.getTableId(),
                     0,
                     0
             ));
+
+        }
+    }
+
+    @Override
+    public void saveOnlineTableId(OnlineTableReservationDTO onlineOrderDTO) {
+        java.util.List<OnlineTableReservationDetailsDTO> list = new ArrayList<>();
+        String arr = onlineOrderDTO.getOrderData();
+
+        String yo[] = arr.split(" ");
+        int count = 0;
+        OnlineTableReservationDetailsDTO itm = new OnlineTableReservationDetailsDTO();
+        for(String str:yo) {
+            if(count == 0 ) {
+                itm = new OnlineTableReservationDetailsDTO();
+                itm.setTableId(Integer.parseInt(str));
+                list.add(itm);
+                count =0;
+
+            }
+        }
+        Calendar cal = Calendar.getInstance();
+        cal.add(Calendar.DATE, 0);
+        java.util.Date today = cal.getTime();
+        onlineOrderDTO.setDate(today);
+        onlineTableReservationDAO.save(new OnlineTableReservation(
+                onlineOrderDTO.getOnlineTableReservationId(),
+                Date.valueOf(onlineOrderDTO.getvDate()),
+                onlineOrderDTO.getDate(),
+                Time.valueOf(onlineOrderDTO.getvStatT()),
+                Time.valueOf(onlineOrderDTO.getvEndT()),
+                2,
+                onlineCustomerDAO.findOne(onlineOrderDTO.getCustomer())));
+
+
+        for (OnlineTableReservationDetailsDTO orderDetail : list) {
+            onlineTableReservationDetailsDAO.save(new OnlineTableReservationDetails(
+                    orderDetail.getTableId(),
+                    onlineOrderDTO.getOnlineTableReservationId(),
+                    0,
+                    0));
 
         }
     }
@@ -447,44 +492,5 @@ public class RestaurantBOImpl implements RestaurantBO {
         return new CounterTableReservationDTO(lastItem.getCounterTableReserveId());
     }
 
-    @Override
-    public void saveOnlineTableId(OnlineTableReservationDTO onlineOrderDTO) {
-        java.util.List<OnlineTableReservationDetailsDTO> list = new ArrayList<>();
-        String arr = onlineOrderDTO.getOrderData();
 
-        String yo[] = arr.split(" ");
-        int count = 0;
-        OnlineTableReservationDetailsDTO itm = new OnlineTableReservationDetailsDTO();
-        for(String str:yo) {
-            if(count == 0 ) {
-                itm = new OnlineTableReservationDetailsDTO();
-                itm.setTableId(Integer.parseInt(str));
-                list.add(itm);
-                count =0;
-
-            }
-        }
-        Calendar cal = Calendar.getInstance();
-        cal.add(Calendar.DATE, 0);
-        java.util.Date today = cal.getTime();
-        onlineOrderDTO.setDate(today);
-        onlineTableReservationDAO.save(new OnlineTableReservation(
-                onlineOrderDTO.getOnlineTableReservationId(),
-                Date.valueOf(onlineOrderDTO.getvDate()),
-                onlineOrderDTO.getDate(),
-                Time.valueOf(onlineOrderDTO.getvStatT()),
-                Time.valueOf(onlineOrderDTO.getvEndT()),
-                2,
-                onlineCustomerDAO.findOne(onlineOrderDTO.getCustomer())));
-
-
-        for (OnlineTableReservationDetailsDTO orderDetail : list) {
-            onlineTableReservationDetailsDAO.save(new OnlineTableReservationDetails(
-                    orderDetail.getTableId(),
-                    onlineOrderDTO.getOnlineTableReservationId(),
-                    0,
-                   0));
-
-        }
-    }
 }
