@@ -1,6 +1,9 @@
 package lk.sliit.hotelManagement.dto.restaurant.restaurantOnlineOrder;
 
+import lk.sliit.hotelManagement.entity.restaurant.onlineOrder.RestaurantOnlineOrderDetails;
+
 import java.util.Date;
+import java.util.List;
 
 public class RestaurantOnlineOrderDTO {
 
@@ -9,6 +12,7 @@ public class RestaurantOnlineOrderDTO {
     private Date date;
     private int customer;
     private  String orderData;
+    List<RestaurantOnlineOrderDetails> orderDetails;
 
     public RestaurantOnlineOrderDTO(int orderId, String orderState, Date date, int customer) {
         this.orderId = orderId;
@@ -29,6 +33,14 @@ public class RestaurantOnlineOrderDTO {
         this.orderId = orderId;
     }
 
+    public RestaurantOnlineOrderDTO(int orderId, String orderState, Date date,int customer, List<RestaurantOnlineOrderDetails> orderDetails) {
+        this.orderId = orderId;
+        this.orderState = orderState;
+        this.date = date;
+        this.customer = customer;
+        this.orderDetails= orderDetails;
+    }
+
     public String getOrderData() {
         return orderData;
     }
@@ -38,6 +50,14 @@ public class RestaurantOnlineOrderDTO {
     }
 
     public RestaurantOnlineOrderDTO() {
+    }
+
+    public List<RestaurantOnlineOrderDetails> getOrderDetails() {
+        return orderDetails;
+    }
+
+    public void setOrderDetails(List<RestaurantOnlineOrderDetails> orderDetails) {
+        this.orderDetails = orderDetails;
     }
 
     public int getOrderId() {

@@ -297,14 +297,14 @@
                                                 </thead>
 
                                                 <tbody id="tblOrder">
-                                                <c:forEach items="${}" var="item">
+                                                <c:forEach items="${listAllOnlineOrders}" var="item">
                                                 <tr>
-                                                    <td>${item.}</td>
-                                                    <td>${item.}</td>
-                                                    <td>${item.}</td>
-                                                    <td>${item.}</td>
-                                                    <td>${item.}</td>
-                                                    <td>${item.}</td>
+                                                    <td>${item.orderId}</td>
+                                                    <td>${item.customer}</td>
+                                                    <td>${item.date}</td>
+                                                    <td>${item.orderData}</td>
+                                                    <td>${item.orderData}</td>
+                                                    <td>${item.orderData}</td>
                                                 </tr>
                                                 </c:forEach>
                                                 </tbody>

@@ -430,6 +430,26 @@ public class RestaurantBOImpl implements RestaurantBO {
         return tableDTOList;
     }
 
+    @Override
+    public List<RestaurantOnlineOrderDTO> findOrderOnline() {
+        java.util.Date todaydate = new java.util.Date();
+        Calendar cal = Calendar.getInstance();
+        cal.add(Calendar.MONTH, -1);
+        java.util.Date dt = cal.getTime();
+        Iterable<RestaurantOnlineOrder> all4 = onlineOrderDAO.findAllByDateBetween(dt,todaydate);
+        List<RestaurantOnlineOrderDTO> tableDTOList = new ArrayList<>();
+        for (RestaurantOnlineOrder item: all4) {
+            tableDTOList.add(new RestaurantOnlineOrderDTO(
+                    item.getOrderId(),
+                    item.getOrderState(),
+                    item.getDate(),
+                    item.getCustomer().getOnlineCustomerId(),
+                    item.getOrderDetails()
+            ));
+        }
+        return tableDTOList;
+    }
+
 
     @Override
     public RestaurantTableDTO findHighestTableId() {
