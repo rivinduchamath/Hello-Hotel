@@ -17,8 +17,6 @@ public class MailSendImpl implements MailSend {
     public void sendMailToNewEmployee(EmployeeDTO employeeDTO) {
         String smsSender = "mailspringitp@gmail.com";
 
-        //Using the Java Mail Api to send the email
-        //Storing the mail address of the user which we need to send the mail
         String to = employeeDTO.getEmail();
 
         Properties props = new Properties();
@@ -50,29 +48,17 @@ public class MailSendImpl implements MailSend {
             //Creating a Message object to set the email content
 
             MimeMessage msg = new MimeMessage(session);
-
-
             InternetAddress[] address = InternetAddress.parse(to, true);
-
-
             msg.setRecipients(Message.RecipientType.TO, address);
-
-
             msg.setSubject("Hotel Hareesha Employee Registration");
             msg.setSentDate(new Date());
             msg.setFrom(smsSender);
-
-
             msg.setText("Sender Name: " + employeeDTO.getName() + "\n\n" +
                     "Floor Number: " + employeeDTO.getEmail() + "\n\n" +
                     "dsdsa" + employeeDTO.getPassword()
             );
-
-
             msg.setHeader("XPriority", "1");
-
             Transport.send(msg);
-
             System.out.println("Mail has been sent successfully");
 
         } catch (MessagingException mex) {
@@ -85,11 +71,9 @@ public class MailSendImpl implements MailSend {
 
     @Override
     public void sendMailToCustomer(MailDTO mailDTO) {
-        String smsSender =mailDTO.getEmail();
+        String smsSender ="mailspringitp@gmail.com";
 
-        //Using the Java Mail Api to send the email
-        //Storing the mail address of the user which we need to send the mail
-        String to = "mailspringitp@gmail.com";
+        String to =  "sendsender6@gmail.com";;
 
         Properties props = new Properties();
 
@@ -135,6 +119,7 @@ public class MailSendImpl implements MailSend {
 
             msg.setText("Sender Name: " + mailDTO.getName() + "\n\n" +
                     "Floor Number: " + mailDTO.getEmail() + "\n\n" +
+                    "Floor Number: " + mailDTO.getCustomerName() + "\n\n" +
                     "dsdsa" + mailDTO.getMessage()
             );
 

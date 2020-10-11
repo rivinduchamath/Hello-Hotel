@@ -42,9 +42,12 @@
                 <h1><a href="/onlineDashboard" style="position: relative;left: -50px;top: -30px"id="logo"><img src="../../onlineRestaurant/restaurant/images/logo.png"/></a></h1>
                 <nav>
                     <ul id="top_nav">
-                        <li><a href="onlineDashboard"><img src="../../onlineRestaurant/restaurant/images/icon_1.gif" alt=""></a></li>
                         <li><a href="#"><img src="../../onlineRestaurant/restaurant/images/icon_2.gif" alt=""></a></li>
-                        <li class="end"><a href="onlineCustomer"><i class="fa fa-user" style="color: rgba(255,255,255,0.91); font-size:20px;"> LogIn</i></a></li>
+                        <li class="end"><a href="onlineCustomer"><i class="fa fa-user" style="color: rgba(255,255,255,0.91); font-size:20px;">
+                            LogIn ${loggerId.name}
+
+                        </i></a></li>
+
                     </ul>
                 </nav>
                 <nav>
@@ -74,13 +77,8 @@
                                     </label>
 
                                     <label>
-                                        Email*:
-                                        <input type="email" placeholder="youremail@gmail.com" name="email" id="email" required>
-                                    </label>
-
-                                    <label>
                                         Message*:
-                                        <textarea name="message" id="message">Please enter your message</textarea>
+                                        <textarea name="message" id="message" ></textarea>
                                     </label>
 
                                     <input class="sendButton" type="submit" name="Submit" value="Send">

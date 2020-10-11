@@ -72,10 +72,19 @@ public class OnlineCustomer {
     }
 
     @PostMapping("/sendMailFromOnline")
-    public String sendMailFromOnline( @ModelAttribute MailDTO mailDTO) {
+    public String sendMailFromOnline( @ModelAttribute MailDTO mailDTO, HttpSession session,Model model) {
 
-        mailSend.sendMailToCustomer(mailDTO);
-
+        try {
+            int onlineCustomerId = Integer.parseInt(session.getAttribute("userId").toString());
+            OnlineCustomerDTO onlineCustomerDTO = onlineCustomerBO.findOne(onlineCustomerId);
+            mailDTO.setCustomerAddress(onlineCustomerDTO.getAddress());
+            mailDTO.setCustomerName(onlineCustomerDTO.getName());
+            mailDTO.setEmail(onlineCustomerDTO.getEmail());
+            model.addAttribute("loggerId", onlineCustomerBO.findOne(onlineCustomerId));
+            mailSend.sendMailToCustomer(mailDTO);
+        } catch (Exception d) {
+            return "redirect:/onlineContact";
+        }
         return "redirect:/onlineContact";
     }
 
@@ -96,7 +105,6 @@ public class OnlineCustomer {
         model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
         List<OnlineCustomerLocationsDTO> tableList = onlineCustomerBO.findDeliveryLocation();
         model.addAttribute("loadDeliveryLocations", tableList);
-
         return "addLocation";
     }
     @GetMapping(value = "deleteLocation/{locationId}")
