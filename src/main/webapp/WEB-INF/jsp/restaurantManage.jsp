@@ -243,12 +243,10 @@
                                                         <tbody>
                                                         <c:forEach items="${onlineTableReservation}" var="item">
                                                             <tr>
-                                                                <td>${item.tableId}</td>
-                                                                <td>${item.unitPrice}</td>
-                                                                <td>${item.unitPrice}</td>
-                                                                <td><a href="deleteTable/${item.unitPrice}">
-                                                                    <i class="fa fa-trash"></i>
-                                                                </a></td>
+                                                                <td>${item.onlineTableReservationId}</td>
+                                                                <td>${item.date}</td>
+                                                                <td>${item.startTime}</td>
+                                                                <td>${item.endTime}</td>
                                                             </tr>
                                                         </c:forEach>
                                                         </tbody>
@@ -299,14 +297,14 @@
                                                 </thead>
 
                                                 <tbody id="tblOrder">
-                                                <c:forEach items="${listAllOnlineTable}" var="item">
+                                                <c:forEach items="${}" var="item">
                                                 <tr>
-                                                    <td>${item.tableId}</td>
-                                                    <td>${item.type}</td>
-                                                    <td>${item.unitPrice}</td>
-                                                    <td>${item.type}</td>
-                                                    <td>${item.type}</td>
-                                                    <td>${item.tableId}</td>
+                                                    <td>${item.}</td>
+                                                    <td>${item.}</td>
+                                                    <td>${item.}</td>
+                                                    <td>${item.}</td>
+                                                    <td>${item.}</td>
+                                                    <td>${item.}</td>
                                                 </tr>
                                                 </c:forEach>
                                                 </tbody>

@@ -21,4 +21,6 @@ public interface OnlineTableReservationDAO extends CrudRepository<OnlineTableRes
     Iterable<OnlineTableReservation> findOnlineTableReservationByReservedDateEquals(Date date);
 
 
+
+    Iterable<OnlineTableReservation> findAllByReservedDateBetween(Date todaydate, Date dt);
 }

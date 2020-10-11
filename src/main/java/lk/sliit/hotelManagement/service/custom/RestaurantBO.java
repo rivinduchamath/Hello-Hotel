@@ -48,5 +48,5 @@ public interface RestaurantBO {
 
     void saveCounterTableId(CounterTableReservationDTO onlineOrderDTO);
 
-    List<RestaurantTableDTO> findTablesOnline();
+    List<OnlineTableReservationDTO> findTablesOnline();
 }

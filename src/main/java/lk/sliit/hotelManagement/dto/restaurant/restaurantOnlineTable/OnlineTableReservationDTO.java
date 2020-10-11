@@ -1,5 +1,7 @@
 package lk.sliit.hotelManagement.dto.restaurant.restaurantOnlineTable;
 
+import lk.sliit.hotelManagement.entity.restaurant.OnlineCustomer;
+
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import java.util.Date;
@@ -39,6 +41,13 @@ public class OnlineTableReservationDTO {
 
     public OnlineTableReservationDTO(int onlineTableReservationId) {
         this.onlineTableReservationId = onlineTableReservationId;
+    }
+
+    public OnlineTableReservationDTO(int onlineTableReservationId, Date date, Date startTime, Date endTime) {
+        this.onlineTableReservationId = onlineTableReservationId;
+        this.date = date;
+        this.startTime = startTime;
+        this.endTime = endTime;
     }
 
     public String getOrderData() {

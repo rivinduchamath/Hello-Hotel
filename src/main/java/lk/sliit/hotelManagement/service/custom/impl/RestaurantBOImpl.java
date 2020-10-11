@@ -412,12 +412,22 @@ public class RestaurantBOImpl implements RestaurantBO {
     }
 
     @Override
-    public List<RestaurantTableDTO> findTablesOnline() {
-   /*     Iterable<OnlineTableReservation> all4 = onlineTableReservationDAO.get();
-        try {
-              lastItem = onlineTableReservationDAO.findTopByOrderByOnlineTableReservationIdDesc();
-        } catch (Exception e){}*/
-        return null;
+    public List<OnlineTableReservationDTO> findTablesOnline() {
+        java.util.Date todaydate = new java.util.Date();
+        Calendar cal = Calendar.getInstance();
+        cal.add(Calendar.MONTH, -1);
+        java.util.Date dt = cal.getTime();
+        Iterable<OnlineTableReservation> all4 = onlineTableReservationDAO.findAllByReservedDateBetween(dt,todaydate);
+        List<OnlineTableReservationDTO> tableDTOList = new ArrayList<>();
+        for (OnlineTableReservation item: all4) {
+            tableDTOList.add(new OnlineTableReservationDTO(
+                    item.getOnlineTableReservationId(),
+                    item.getDate(),
+                    item.getStartTime(),
+                    item.getEndTime()
+            ));
+        }
+        return tableDTOList;
     }
 
 
