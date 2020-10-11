@@ -193,7 +193,117 @@
                 </div>
 
                 <%-- ////////////////////////////////////////////// BODY /////////////////////////////////////////////////////////////--%>
+                <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6">
+                    <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                        <div class="row">
+                            <div class="x_panel">
+                                <div class="x_title">
+                                    <h2>Online Table Reservations
+                                        <small>list</small>
+                                    </h2>
+                                    <ul class="nav navbar-right panel_toolbox">
+                                        <li><a class="collapse-link"></a>
+                                        </li>
+                                        <li class="dropdown">
+                                            <a aria-expanded="false" class="dropdown-toggle" data-toggle="dropdown"
+                                               href="#"
+                                               role="button"><i class="fa fa-wrench"></i></a>
+                                        </li>
+                                    </ul>
+                                    <div class="clearfix"></div>
+                                </div>
+                                <div class="x_content">
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <div class="card-box table-responsive">
+                                                <table class="table table-striped table-bordered" id="datatable-buttons"
+                                                       style="text-align: center">
+                                                    <thead class="thead-light">
+                                                    <tr>
+                                                        <th>Reservation Id</th>
+                                                        <th>Date</th>
+                                                        <th>Start Time</th>
+                                                        <th>End Time</th>
+                                                        <th>State</th>
+                                                        <th></th>
 
+                                                    </tr>
+
+                                                    </thead>
+                                                    <tbody>
+                                                    <c:forEach items="${}" var="item">
+                                                        <tr>
+                                                            <td>${item.}</td>
+                                                            <td>${item.}</td>
+                                                            <td>${item.}</td>
+                                                            <td><a href="deleteTable/${item.}">
+                                                                <i class="fa fa-trash"></i>
+                                                            </a></td>
+                                                        </tr>
+                                                    </c:forEach>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6"
+                     style="float: right; position: relative;display: inline-block">
+                    <div class="x_panel">
+                        <div class="x_title">
+                            <h2>Restaurant Online Orders
+                                <small>Check And Submit
+                                </small>
+
+                            </h2>
+                            <form method="POST" action="invoiceRestaurantOrder" name="invoiceRestaurantOrder">
+                                <input style="display: none" type="text" id="itemPay" name="dataValue">
+                                <input style="display: none" type="text" id="cId" value="0"  name="customerId">
+                                <ul class="nav navbar-right panel_toolbox">
+                                    <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                                    </li>
+
+                                </ul>
+                            </form>
+
+                            <div class="clearfix"></div>
+                        </div>
+                        <div class="x_content">
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <div class="card-box table-responsive">
+                                        <table style="text-align: center"
+                                               class="table table-striped jambo_table bulk_action table-bordered">
+                                            <thead class="thead-dark">
+                                            <tr>
+                                                <th>OrderId</th>
+                                                <th>CustomerId</th>
+                                                <th>Date</th>
+                                                <th>food item id</th>
+                                                <th>Quantity</th>
+                                                <th>State</th>
+                                            </tr>
+                                            </thead>
+
+                                            <tbody id="tblOrder">
+                                            <%--                                                <c:forEach items="${listEmployeesTableSalary}" var="e">--%>
+
+                                            <%--                                                </c:forEach>--%>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
                 <%--                /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////--%>
 
 
