@@ -193,55 +193,58 @@
                 </div>
 
                 <%-- ////////////////////////////////////////////// BODY /////////////////////////////////////////////////////////////--%>
-                <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
 
-
-                    <div class="col-sm-12 col-md-3 col-lg-3 col-xl-3">
-                        <a href="restaurantOrder">
-                            <button type="button" class="large-btn btn btn-dark">Order</button>
-                        </a>
-                    </div>
-
-                    <div class="col-sm-12 col-md-3 col-lg-3 col-xl-3">
-                        <a href="restaurantTableIndex">
-                            <button type="button" class="large-btn btn btn-dark">Table</button>
-                        </a>
-                    </div>
-
-                    <div class="col-sm-12 col-md-3 col-lg-3 col-xl-3">
-                        <a href="onlineDashboard">
-                            <button type="button" class="large-btn btn btn-dark">Online</button>
-                        </a>
-                    </div>
-
-                    <div class="col-sm-12 col-md-3 col-lg-3 col-xl-3">
-                        <a href="restaurantManage">
-                        <button type="button" class="large-btn btn btn-dark">Manage Orders</button>
-                        </a>
-                    </div>
-
-                </div>
-                <%--%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Chart Income %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%--%>
-                <%--Chart Income--%>
-                <%--Chart Today--%>
-                <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
-                    <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6">
-
-                        <div id="chartdiv"></div>
-                        <h6>Today Income</h6>
-                    </div>
-                    <%--/Chart Today--%>
-                    <%--Chart Yesterday--%>
-                    <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6">
-
-                        <div id="chartdiv1"></div>
-                       <h6>Yesterday Income</h6>
-                    </div>
-                    <%--/Chart Yesterday--%>
-                    <%--/Chart Income--%>
-                </div>
                 <%--                /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////--%>
+                <div class="body2">
+                    <div class="main zerogrid">
+                        <article id="content2">
+                            <div class="wrapper">
+                                <section>
+                                    <h2>Available Tables</h2>
+                                    <h5>Please Select </h5>
+                                    <div class="wrapper">
 
+                                        <form method="POST" action="saveCounterTable" name="saveCounterTable">
+                                            <input style="display: none" readonly required type="text" id="itemPay" name="orderData">
+                                            <input  style="" readonly required="required" type="date" id="vDate" value="${reservedDate}" name="vDate">
+                                            <input readonly required ="required"type="time" id="timeIn" value="${timeIn}" name="vStatT">
+                                            <input readonly required ="required" type="time" id="timeOut" value="${timeOut}" name="vEndT">
+                                            <button type="submit" onclick="getValue()" class="col-1-1 button1x1" id="submitButton">
+                                                Submit
+                                            </button>
+                                        </form>
+                                        <br>
+                                        <table>
+
+                                            <tbody id="reservationTable">
+                                            <c:forEach items="${loadAllTable}" var="e">
+                                                <tr>
+                                                    <div class="col-1-4">
+                                                        <div class="wrap-col">
+                                                            <div class="wrapper pad_bot1" id="#0001">
+                                                                <figure style="   width: 10px;height: 10px;" class="pad_bot1"><img
+                                                                        style="   width: 100px;height: 100px;" src="../../onlineRestaurant/restaurant/images/pngwave.png"
+                                                                        alt=""></figure>
+
+
+                                                                <h5 onclick="myFunction(${e.tableId})" ><span
+                                                                        id="selectedTableId"
+                                                                        style="font-size: 20px">${e.tableId} </span><a
+                                                                        class="button1x">+</a></h5>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </tr>
+                                            </c:forEach>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </section>
+                            </div>
+                        </article>
+                        <!-- / content -->
+                    </div>
+                </div>
 
                 <%--////////////////////////////////////////////////////////////--%>
             </div>
@@ -265,170 +268,53 @@
 <!-- Custom Theme Scripts -->
 <script src="../../build/js/custom.min.js"></script>
 
-<!-- Chart code -->
-<script src="https://www.amcharts.com/lib/4/core.js"></script>
-<script src="https://www.amcharts.com/lib/4/charts.js"></script>
-<script src="https://www.amcharts.com/lib/4/themes/moonrisekingdom.js"></script>
-<script src="https://www.amcharts.com/lib/4/themes/spiritedaway.js"></script>
-<script src="https://www.amcharts.com/lib/4/themes/animated.js"></script>
-<script>
-    am4core.ready(function () {
-
-// Themes begin
-        am4core.useTheme(am4themes_moonrisekingdom);
-        am4core.useTheme(am4themes_animated);
-// Themes end
-
-// Create chart instance
-        var chart = am4core.create("chartdiv", am4charts.XYChart3D);
-
-// Add data
-        chart.data = [{
-            "Date": "Sunday",
-            "income": 4025
-        }, {
-            "Date": "Monday",
-            "income": 1882
-        }, {
-            "Date": "Tuesday",
-            "income": 1809
-        }, {
-            "Date": "Wednesday",
-            "income": 1322
-        }, {
-            "Date": "Thursday",
-            "income": 1122
-        }, {
-            "Date": "Friday",
-            "income": 1114
-        }, {
-            "Date": "Saturday",
-            "income": 984
-        }];
-
-// Create axes
-        let categoryAxis = chart.xAxes.push(new am4charts.CategoryAxis());
-        categoryAxis.dataFields.category = "Date";
-        categoryAxis.renderer.labels.template.rotation = 270;
-        categoryAxis.renderer.labels.template.hideOversized = false;
-        categoryAxis.renderer.minGridDistance = 20;
-        categoryAxis.renderer.labels.template.horizontalCenter = "right";
-        categoryAxis.renderer.labels.template.verticalCenter = "middle";
-        categoryAxis.tooltip.label.rotation = 270;
-        categoryAxis.tooltip.label.horizontalCenter = "right";
-        categoryAxis.tooltip.label.verticalCenter = "middle";
-
-        let valueAxis = chart.yAxes.push(new am4charts.ValueAxis());
-        valueAxis.title.text = "Income";
-        valueAxis.title.fontWeight = "bold";
-
-// Create series
-        var series = chart.series.push(new am4charts.ColumnSeries3D());
-        series.dataFields.valueY = "income";
-        series.dataFields.categoryX = "Date";
-        series.name = "income";
-        series.tooltipText = "{categoryX}: [bold]{valueY}[/]";
-        series.columns.template.fillOpacity = .8;
-
-        var columnTemplate = series.columns.template;
-        columnTemplate.strokeWidth = 2;
-        columnTemplate.strokeOpacity = 1;
-        columnTemplate.stroke = am4core.color("#FFFFFF");
-
-        columnTemplate.adapter.add("fill", function (fill, target) {
-            return chart.colors.getIndex(target.dataItem.index);
-        })
-
-        columnTemplate.adapter.add("stroke", function (stroke, target) {
-            return chart.colors.getIndex(target.dataItem.index);
-        })
-
-        chart.cursor = new am4charts.XYCursor();
-        chart.cursor.lineX.strokeOpacity = 0;
-        chart.cursor.lineY.strokeOpacity = 0;
-
-    }); // end am4core.ready()
-</script>
-
-<script>
-    am4core.ready(function () {
-
-// Themes begin
-        am4core.useTheme(am4themes_spiritedaway);
-        am4core.useTheme(am4themes_animated);
-// Themes end
-
-// Create chart instance
-        var chart = am4core.create("chartdiv1", am4charts.XYChart3D);
-
-// Add data
-        chart.data = [{
-            "Date": "Sunday",
-            "income": 4025
-        }, {
-            "Date": "Monday",
-            "income": 1882
-        }, {
-            "Date": "Tuesday",
-            "income": 1809
-        }, {
-            "Date": "Wednesday",
-            "income": 1322
-        }, {
-            "Date": "Thursday",
-            "income": 1122
-        }, {
-            "Date": "Friday",
-            "income": 1114
-        }, {
-            "Date": "Saturday",
-            "income": 984
-        }];
-
-// Create axes
-        let categoryAxis = chart.xAxes.push(new am4charts.CategoryAxis());
-        categoryAxis.dataFields.category = "Date";
-        categoryAxis.renderer.labels.template.rotation = 270;
-        categoryAxis.renderer.labels.template.hideOversized = false;
-        categoryAxis.renderer.minGridDistance = 20;
-        categoryAxis.renderer.labels.template.horizontalCenter = "right";
-        categoryAxis.renderer.labels.template.verticalCenter = "middle";
-        categoryAxis.tooltip.label.rotation = 270;
-        categoryAxis.tooltip.label.horizontalCenter = "right";
-        categoryAxis.tooltip.label.verticalCenter = "middle";
-
-        let valueAxis = chart.yAxes.push(new am4charts.ValueAxis());
-        valueAxis.title.text = "Income";
-        valueAxis.title.fontWeight = "bold";
-
-// Create series
-        var series = chart.series.push(new am4charts.ColumnSeries3D());
-        series.dataFields.valueY = "income";
-        series.dataFields.categoryX = "Date";
-        series.name = "income";
-        series.tooltipText = "{categoryX}: [bold]{valueY}[/]";
-        series.columns.template.fillOpacity = .8;
-
-        var columnTemplate = series.columns.template;
-        columnTemplate.strokeWidth = 2;
-        columnTemplate.strokeOpacity = 1;
-        columnTemplate.stroke = am4core.color("#FFFFFF");
-
-        columnTemplate.adapter.add("fill", function (fill, target) {
-            return chart.colors.getIndex(target.dataItem.index);
-        })
-
-        columnTemplate.adapter.add("stroke", function (stroke, target) {
-            return chart.colors.getIndex(target.dataItem.index);
-        })
-
-        chart.cursor = new am4charts.XYCursor();
-        chart.cursor.lineX.strokeOpacity = 0;
-        chart.cursor.lineY.strokeOpacity = 0;
-
-    }); // end am4core.ready()
-</script>
-
 
 </body>
+<script src="../../vendors/jquery/dist/jquery.min.js"></script>
+
+<script>
+    $(window).scroll(function () {
+        if ($(document).scrollTop() > 224) {
+            $(".button1x1").show();
+        } else {
+            $(".button1x1").hide();
+        }
+    });
+</script>
+<script>
+    var myTableArray = [];
+    var selectedRow = null;
+
+    function myFunction(x) {
+        selectedRow = $(this)
+        if (!myTableArray.includes(x)) {
+            alert("Added Table " + x);
+            myTableArray.push(x)
+        } else {
+            alert("Table " + x + " already Booked");
+        }
+    }
+
+    function getValue() {
+
+        if (vDate == "" || timeIn == "" || timeOut == "") {
+            alert("Please Select Item In Table");
+            return;
+        }
+
+        var str, stre = "";
+        var inputArray = []
+
+        for (var i = 0; i < myTableArray.length; i++) {
+            if (!inputArray.includes(myTableArray[i])) {
+                inputArray.push(myTableArray[i])
+                str = myTableArray[i] + " "
+                stre += str;
+            }
+        }
+
+        $("#itemPay").val(stre);
+    }
+</script>
+
 </html>

@@ -8,7 +8,7 @@ public class CounterTableReservationDetailsPK implements Serializable {
     private int tableId;
     private  int counterTableReserveId;
 
-    public CounterTableReservationDetailsPK(int tableId, int counterTableReserveId) {
+    public CounterTableReservationDetailsPK(int counterTableReserveId, int tableId) {
         this.tableId = tableId;
         this.counterTableReserveId = counterTableReserveId;
     }

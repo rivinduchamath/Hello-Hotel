@@ -3,12 +3,12 @@ package lk.sliit.hotelManagement.dto.restaurant.restaurantCounterTable;
 
 
 public class CounterTableReservationDetailsDTO {
-    private String counterTableReservation;
-    private String tableId;
+    private int counterTableReservation;
+    private int tableId;
     private double unitePrice;
     private double quantity;
 
-    public CounterTableReservationDetailsDTO(String counterTableReservation, String tableId, double unitePrice, double quantity) {
+    public CounterTableReservationDetailsDTO(int counterTableReservation, int tableId, double unitePrice, double quantity) {
         this.counterTableReservation = counterTableReservation;
         this.tableId = tableId;
         this.unitePrice = unitePrice;
@@ -18,19 +18,19 @@ public class CounterTableReservationDetailsDTO {
     public CounterTableReservationDetailsDTO() {
     }
 
-    public String getCounterTableReservation() {
+    public int getCounterTableReservation() {
         return counterTableReservation;
     }
 
-    public void setCounterTableReservation(String counterTableReservation) {
+    public void setCounterTableReservation(int counterTableReservation) {
         this.counterTableReservation = counterTableReservation;
     }
 
-    public String getTableId() {
+    public int getTableId() {
         return tableId;
     }
 
-    public void setTableId(String tableId) {
+    public void setTableId(int tableId) {
         this.tableId = tableId;
     }
 

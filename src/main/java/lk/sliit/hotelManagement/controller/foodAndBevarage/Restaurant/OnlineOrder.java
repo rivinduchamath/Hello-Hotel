@@ -78,8 +78,7 @@ public class OnlineOrder {
     }
     @PostMapping("/saveOnlineTable")
     public String saveOnlineTable(@ModelAttribute OnlineTableReservationDTO onlineOrderDTO, HttpSession session) {
-        System.out.println(onlineOrderDTO+"ssssssssaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
-       try {
+         try {
            Time a = Time.valueOf(onlineOrderDTO.getvStatT());
            Time a2 = Time.valueOf(onlineOrderDTO.getvEndT());
            onlineOrderDTO.setStartTime(a);

@@ -31,7 +31,7 @@ public class Employee implements SuperEntity {
     private double salary;
     private Date date;
     private String image;
-    @OneToOne(cascade = {CascadeType.PERSIST,CascadeType.REFRESH, CascadeType.DETACH, CascadeType.MERGE})
+    @ManyToOne(cascade = {CascadeType.PERSIST,CascadeType.REFRESH, CascadeType.DETACH, CascadeType.MERGE})
     @JoinColumn(name="departmentId",referencedColumnName = "departmentId")
     private Department department;
     @OneToMany(mappedBy = "employeeID", cascade = { CascadeType.PERSIST, CascadeType.REFRESH, CascadeType.DETACH, CascadeType.MERGE})

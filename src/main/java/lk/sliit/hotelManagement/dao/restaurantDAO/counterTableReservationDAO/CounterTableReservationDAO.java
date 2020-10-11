@@ -16,4 +16,7 @@ public interface CounterTableReservationDAO extends CrudRepository<CounterTableR
 
     Iterable<CounterTableReservation> findCounterTableReservationByDateEquals(Date date);
 
+    CounterTableReservation findTopByOrderByCounterTableReserveIdDesc();
+
+
 }
