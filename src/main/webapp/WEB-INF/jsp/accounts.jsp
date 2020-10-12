@@ -209,32 +209,27 @@
                                                     <tr>
                                                         <th>Account Id</th>
                                                         <th>Department Id</th>
-                                                        <th>Department Name</th>
+                                                        <th>Cheque No</th>
+                                                        <th>Amount</th>
                                                         <th>Date</th>
-                                                        <th>Income</th>
-                                                        <th>Expenses</th>
+                                                        <th>Description</th>
+                                                        <th></th>
                                                     </tr>
-
                                                     </thead>
                                                     <tbody>
-
-                                                    <tr>
-                                                        <td>AC001</td>
-                                                        <td>D001</td>
-                                                        <td>Kitchen</td>
-                                                        <td>2020/09/19</td>
-                                                        <td>2234433.4</td>
-                                                        <td>12333.00</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>AC002</td>
-                                                        <td>D001</td>
-                                                        <td>banquet</td>
-                                                        <td>2020/09/19</td>
-                                                        <td>2234433.4</td>
-                                                        <td>12333.00</td>
-                                                    </tr>
-
+                                                    <c:forEach items ="${loadAccounts}" var = "e">
+                                                        <tr>
+                                                            <td>${e.accountId}</td>
+                                                            <td>${e.department}</td>
+                                                            <td>${e.chequeNo}</td>
+                                                            <td>${e.amount}</td>
+                                                            <td>${e.date}</td>
+                                                            <td>${e.description}</td>
+                                                            <td><a href="deleteAccounts/${e.accountId}"
+                                                                   class="btn btn-xs">
+                                                                <i class="fa fa-trash-o"></i></a></td>
+                                                        </tr>
+                                                    </c:forEach>
                                                     </tbody>
                                                 </table>
                                             </div>
@@ -273,7 +268,7 @@
                                 <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12"><br>
                                     <label>Date</label>
                                     <input type="date" class="form-control"
-                                           required="required" name="address"
+                                           required="required" name="date"
                                            id="address" placeholder="Date"/></div>
                             </div>
 
@@ -294,8 +289,8 @@
                                 <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12"><br>
                                     <label>Description</label>
                                     <input type="text" class="form-control"
-                                           required="required" name="dateTo"
-                                           id="description" placeholder="description"/></div>
+                                           required="required" name="description"
+                                           id="description" placeholder="Description"/></div>
                             </div>
 
 

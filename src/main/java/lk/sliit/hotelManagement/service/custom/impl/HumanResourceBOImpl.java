@@ -236,6 +236,29 @@ public class HumanResourceBOImpl implements HumanResourceBO {
         }*/
         return dtoList;
     }
+
+    @Override
+    public List<AccountsDTO> findAllAccounts() {
+        Iterable<Accounts> list = accountsDAO.findAll();
+        List<AccountsDTO> list2 = new ArrayList<>();
+        for (Accounts accounts:list) {
+            list2.add(new AccountsDTO(
+                    accounts.getAccountId(),
+                    accounts.getChequeNo(),
+                    accounts.getAmount(),
+                    accounts.getDate(),
+                    accounts.getDepartment().getDepartmentId(),
+                    accounts.getDescription()
+            ));
+        }
+        return list2;
+    }
+
+    @Override
+    public void deleteAccount(int accountId) {
+        accountsDAO.delete(accountId);
+    }
+
     @Override
     public SalaryDTO findHighestSalaryId() {
         Salary salary = null;
