@@ -260,7 +260,7 @@
                                             style="width: 100%; border-color: lightgray"
                                             name="department">
                                         <c:forEach items="${loadDepartment}" var="category">
-                                            <option value="${category.departmentName}"
+                                            <option value="${category.departmentId}"
                                                     <c:if test="${category.departmentId eq p2}">selected="selected"</c:if> >
                                                     ${category.departmentName}
                                             </option>
