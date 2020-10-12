@@ -91,6 +91,7 @@ public class RestaurantTableController {
     @GetMapping("/counterTableDetails")
     public String checkTimeForTable(@ModelAttribute CounterTableReservationDTO counterTableReservationDTO,
                                     Model model) {
+        model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
         Time a = Time.valueOf(counterTableReservationDTO.getvStatT()+":00");
         Time a2 = Time.valueOf(counterTableReservationDTO.getvEndT()+":00");
         counterTableReservationDTO.setStartTime(a);
@@ -109,9 +110,7 @@ public class RestaurantTableController {
     @PostMapping("/saveCounterTable")
     public String saveOnlineTable(@ModelAttribute CounterTableReservationDTO onlineOrderDTO, HttpSession session) {
 
-
-        System.out.println(onlineOrderDTO.getOrderData()+"YYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY");
-         try {
+        try {
             Time a = Time.valueOf(onlineOrderDTO.getvStatT());
             Time a2 = Time.valueOf(onlineOrderDTO.getvEndT());
             onlineOrderDTO.setStartTime(a);

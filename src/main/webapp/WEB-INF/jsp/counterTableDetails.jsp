@@ -12,68 +12,55 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <link rel="icon" type="image/png" href="../../images/icons/gdfgd.png"/>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.min.js"></script>
     <!-- Bootstrap -->
     <link href="../../vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Font Awesome -->
     <link href="../../vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
     <!-- Custom Theme Style -->
     <link href="../../build/css/custom.min.css" rel="stylesheet">
-
     <%
         SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
         String date = sdf.format(new Date());
     %>
+    <%--Chrat--%>
+
+    <script src="https://www.amcharts.com/lib/4/core.js"></script>
+    <script src="https://www.amcharts.com/lib/4/charts.js"></script>
+    <script src="https://www.amcharts.com/lib/4/themes/spiritedaway.js"></script>
+    <script src="https://www.amcharts.com/lib/4/themes/animated.js"></script>
+    <%--/Pie Chrat--%>
+
+    <!-- Datatables -->
+    <link href="../../vendors/datatables.net-bs/css/dataTables.bootstrap.min.css" rel="stylesheet">
+    <link href="../../vendors/datatables.net-buttons-bs/css/buttons.bootstrap.min.css" rel="stylesheet">
+    <link href="../../vendors/datatables.net-fixedheader-bs/css/fixedHeader.bootstrap.min.css" rel="stylesheet">
+    <link href="../../vendors/datatables.net-responsive-bs/css/responsive.bootstrap.min.css" rel="stylesheet">
+
     <style>
         .large-btn {
-            height: 90px;
+            height: 40px;
             width: 100%;
             font-family: "Playfair Display", Georgia, "Times New Roman", serif;
             font-weight: bolder;
-            font-size: 27px;
-        }
 
-        #chartdiv {
-            width: 100%;
-            height: 500px;
-        }
-
-        #chartdiv1 {
-            width: 100%;
-            height: 500px;
         }
 
         .large-btn:hover {
             color: #0f0f0f;
         }
 
-        #backImg {
-            background-image: url("../../images/picture.jpg");
+        #chartdiv {
+            position: relative;
+            top: 40px;
+            width: 100%;
+            height: 500px;
         }
 
-        #myVideo {
-            position: fixed;
-            right: 0;
-            bottom: 0;
-            top: 110px;
-            min-width: 100%;
-            min-height: 100%;
-        }
-
-
-        #myBtn {
-            width: 200px;
-            font-size: 18px;
-            padding: 10px;
-            border: none;
-            background: #000;
-            color: #fff;
-            cursor: pointer;
-        }
-
-        #myBtn:hover {
-            background: #ddd;
-            color: black;
+        #chartdiv1 {
+            position: relative;
+            top: 40px;
+            width: 100%;
+            height: 500px;
         }
     </style>
 </head>
@@ -81,6 +68,8 @@
 <body class="nav-md" style="cursor: pointer">
 <div class="container body">
     <div class="main_container">
+
+
         <!-- Side header -->
         <jsp:include page="sideHeader.jsp"/>
         <!-- /Side header -->
@@ -90,174 +79,168 @@
         <!-- /Top header -->
 
         <!-- page content -->
+        <div class="right_col" role="main">
+            <div class="page-title">
+                <div class="title_left">
+                    <h3>Manage Restaurant Table<br>
+                        <small>Welcome To Hotel Hareesha</small>
+                    </h3>
+                    <h2>Available Tables</h2>
+                </div>
 
-        <%--/////////aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa--%>
-        <div id="" class="right_col " role="main">
+                <%--Time--%>
+                <div class="title_right">
 
-            <div class="">
-                <div class="page-title">
-                    <div class="title_left">
-                        <h3>Restaurant Manage
-                            <small>Welcome To Hotel Hareesha</small>
-                        </h3>
-                        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
-                            <div class="col-6 col-sm-6 col-md-6 col-lg-4 col-xl-4">
-                                <a href="/foodAndBeverage">
-                                    <button type="button" class=" btn btn-dark"><i class="fa fa-mail-reply"> Back to Dashboard</i>
-                                    </button>
-                                </a>
+                    <script>
 
-                            </div>
-                        </div>
-                    </div>
+                        function formatTime() {
+                            now = new Date();
+                            hour = now.getHours();
+                            min = now.getMinutes();
+                            sec = now.getSeconds();
 
-
-                    <div class="title_right">
-                        <script>
-
-                            function formatTime() {
-                                now = new Date();
-                                hour = now.getHours();
-                                min = now.getMinutes();
-                                sec = now.getSeconds();
-
-                                if (document.clock.sivamtime[0].checked) {
-                                    if (min <= 9) {
-                                        min = "0" + min;
-                                    }
-                                    if (sec <= 9) {
-                                        sec = "0" + sec;
-                                    }
-                                    if (hour > 12) {
-                                        hour = hour - 12;
-                                        add = " p.m.";
-                                    } else {
-                                        hour = hour;
-                                        add = " a.m.";
-                                    }
-                                    if (hour == 12) {
-                                        add = " p.m.";
-                                    }
-                                    if (hour == 0) {
-                                        hour = "12";
-                                    }
-
-                                    document.clock.sivam.value = ((hour <= 9) ? "0" + hour : hour) + ":" + min + ":" + sec + add;
+                            if (document.clock.sivamtime[0].checked) {
+                                if (min <= 9) {
+                                    min = "0" + min;
+                                }
+                                if (sec <= 9) {
+                                    sec = "0" + sec;
+                                }
+                                if (hour > 12) {
+                                    hour = hour - 12;
+                                    add = " p.m.";
+                                } else {
+                                    hour = hour;
+                                    add = " a.m.";
+                                }
+                                if (hour == 12) {
+                                    add = " p.m.";
+                                }
+                                if (hour == 0) {
+                                    hour = "12";
                                 }
 
-                                if (document.clock.sivamtime[1].checked) {
-                                    if (min <= 9) {
-                                        min = "0" + min;
-                                    }
-                                    if (sec <= 9) {
-                                        sec = "0" + sec;
-                                    }
-                                    if (hour < 10) {
-                                        hour = "0" + hour;
-                                    }
-                                    document.clock.sivam.value = hour + ':' + min + ':' + sec;
-                                }
-
-                                setTimeout("formatTime()", 1000);
+                                document.clock.sivam.value = ((hour <= 9) ? "0" + hour : hour) + ":" + min + ":" + sec + add;
                             }
 
-                            window.onload = formatTime;
+                            if (document.clock.sivamtime[1].checked) {
+                                if (min <= 9) {
+                                    min = "0" + min;
+                                }
+                                if (sec <= 9) {
+                                    sec = "0" + sec;
+                                }
+                                if (hour < 10) {
+                                    hour = "0" + hour;
+                                }
+                                document.clock.sivam.value = hour + ':' + min + ':' + sec;
+                            }
 
-                        </script>
-                        <form name="clock" style="float: right">
-                            <table class="clock" width="135">
-                                <tr>
-                                    <td class="clock2">
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <h6 style="color:#73879C; float:right;border: none;background-color: #f6f6f6">
-                                        <input style="color:#73879C; float:right;border: none;background-color: #f6f6f6"
-                                               class="clock2" type="text" name="sivam" size="12"><br>
-                                        <p><%=date%>
-                                        </p>
-                                    </h6>
+                            setTimeout("formatTime()", 1000);
+                        }
 
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <label class="clock3" for="1"><input type="radio" style="display: none" id="1"
-                                                                             name="sivamtime" checked></label><br>
-                                        <label class="clock3" for="2"><input type="radio" style="display: none" id="2"
-                                                                             name="sivamtime"></label>
-                                    </td>
-                                </tr>
-                            </table>
-                        </form>
-                    </div>
+                        window.onload = formatTime;
+
+                    </script>
+                    <form name="clock" style="float: right">
+                        <table class="clock" width="135">
+                            <tr>
+                                <td class="clock2">
+                                </td>
+                            </tr>
+                            <tr>
+                                <h6 style="color:#73879C; float:right;border: none;background-color: #f6f6f6">
+                                    <input style="color:#73879C; float:right;border: none;background-color: #f6f6f6"
+                                           class="clock2" type="text" name="sivam" size="12"><br>
+                                    <p><%=date%>
+                                    </p>
+                                </h6>
+
+                            </tr>
+                            <tr>
+                                <td>
+                                    <label class="clock3" for="1"><input type="radio" style="display: none" id="1"
+                                                                         name="sivamtime" checked></label><br>
+                                    <label class="clock3" for="2"><input type="radio" style="display: none" id="2"
+                                                                         name="sivamtime"></label>
+                                </td>
+                            </tr>
+                        </table>
+
+                    </form>
                 </div>
+            </div>
+            <%--/Time--%>
 
-                <%-- ////////////////////////////////////////////// BODY /////////////////////////////////////////////////////////////--%>
-
-                <%--                /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////--%>
-                <div class="body2">
-                    <div class="main zerogrid">
-                        <article id="content2">
-                            <div class="wrapper">
-                                <section>
-                                    <h2>Available Tables</h2>
-                                    <h5>Please Select </h5>
-                                    <div class="wrapper">
-
-                                        <form method="POST" action="saveCounterTable" name="saveCounterTable">
-                                            <input style="display: none" readonly required type="text" id="itemPay" name="orderData">
-                                            <input  style="" readonly required="required" type="date" id="vDate" value="${reservedDate}" name="vDate">
-                                            <input readonly required ="required"type="time" id="timeIn" value="${timeIn}" name="vStatT">
-                                            <input readonly required ="required" type="time" id="timeOut" value="${timeOut}" name="vEndT">
-                                            <button type="submit" onclick="getValue()" class="col-1-1 button1x1" id="submitButton">
-                                                Submit
-                                            </button>
-                                        </form>
-                                        <br>
-                                        <table>
-
-                                            <tbody id="reservationTable">
-                                            <c:forEach items="${loadAllTable}" var="e">
-                                                <tr>
-                                                    <div class="col-1-4">
-                                                        <div class="wrap-col">
-                                                            <div class="wrapper pad_bot1" id="#0001">
-                                                                <figure style="   width: 10px;height: 10px;" class="pad_bot1"><img
-                                                                        style="   width: 100px;height: 100px;" src="../../onlineRestaurant/restaurant/images/pngwave.png"
-                                                                        alt=""></figure>
+            <%--Table--%>
+            <div class="col-12 col-sm-12 col-md-12 col-lg-7 col-xl-7">
 
 
-                                                                <h5 onclick="myFunction(${e.tableId})" ><span
-                                                                        id="selectedTableId"
-                                                                        style="font-size: 20px">${e.tableId} </span><a
-                                                                        class="button1x">+</a></h5>
-                                                            </div>
+            </div>
+
+            <%--///////////////////////////////////////////////////////////////////////////////////////////////////////////--%>
+
+            <div class="body2">
+                <div class="main zerogrid">
+                    <article id="content2">
+                        <div class="wrapper">
+                            <section>
+
+                                <div class="wrapper">
+
+                                    <form method="POST" action="saveCounterTable" name="saveCounterTable">
+                                        <input style="display: none" readonly required type="text" id="itemPay" name="orderData">
+                                        <input  style="" readonly required="required" type="date" id="vDate" value="${reservedDate}" name="vDate">
+                                        <input readonly required ="required"type="time" id="timeIn" value="${timeIn}" name="vStatT">
+                                        <input readonly required ="required" type="time" id="timeOut" value="${timeOut}" name="vEndT">
+                                        <button type="submit" onclick="getValue()" class="col-1-1 button1x1" id="submitButton">
+                                            Submit
+                                        </button>
+                                    </form>
+                                    <br>
+                                    <table>
+
+                                        <tbody id="reservationTable">
+                                        <c:forEach items="${loadAllTable}" var="e">
+                                            <td style="width: 120px">
+                                                <div class="col ">
+                                                    <div class="wrap-col">
+                                                        <div class="wrapper pad_bot1" id="#0001">
+                                                            <figure style="   width: 10px;height: 10px;" class="pad_bot1"><img
+                                                                    style="   width: 100px;height: 100px;" src="../../onlineRestaurant/restaurant/images/pngwave.png"
+                                                                    alt=""></figure>
+
+
+                                                            <h5 style="font-size: 20px;margin-top: 100px; background-color: #630000;
+                                                            color: white" onclick="myFunction(${e.tableId})" ><span
+                                                                    id="selectedTableId"> &nbsp;&nbsp;&nbsp;&nbsp; ${e.tableId} </span><a
+                                                                    class="button1x">+</a></h5>
                                                         </div>
                                                     </div>
-                                                </tr>
-                                            </c:forEach>
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </section>
-                            </div>
-                        </article>
-                        <!-- / content -->
-                    </div>
+                                                </div>
+                                            </td>
+                                        </c:forEach>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </section>
+                        </div>
+                    </article>
+                    <!-- / content -->
                 </div>
-
-                <%--////////////////////////////////////////////////////////////--%>
             </div>
+
+            <%--/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////--%>
+
+
         </div>
-
-        <!-- /page content -->
-
-
-        <!-- footer content -->
-        <jsp:include page="footer.jsp"/>
-        <!-- /footer content -->
-
     </div>
+    <!-- /page content -->
+
+    <!-- footer content -->
+    <jsp:include page="footer.jsp"/>
+    <!-- /footer content -->
+</div>
 </div>
 
 
@@ -265,12 +248,26 @@
 <script src="../../vendors/jquery/dist/jquery.min.js"></script>
 <!-- Bootstrap -->
 <script src="../../vendors/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- Datatables -->
+<script src="../../vendors/datatables.net/js/jquery.dataTables.min.js"></script>
+<script src="../../vendors/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+<%--Show Print Buttons--%>
+<script src="../../vendors/datatables.net-buttons/js/dataTables.buttons.min.js"></script>
+<script src="../../vendors/datatables.net-buttons-bs/js/buttons.bootstrap.min.js"></script>
+<script src="../../vendors/datatables.net-buttons/js/buttons.flash.min.js"></script>
+<script src="../../vendors/datatables.net-buttons/js/buttons.html5.min.js"></script>
+<script src="../../vendors/datatables.net-buttons/js/buttons.print.min.js"></script>
+<script src="../../vendors/datatables.net-fixedheader/js/dataTables.fixedHeader.min.js"></script>
+<script src="../../vendors/datatables.net-keytable/js/dataTables.keyTable.min.js"></script>
+<%--Responsive Table--%>
+<script src="../../vendors/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
+<script src="../../vendors/datatables.net-responsive-bs/js/responsive.bootstrap.js"></script>
+<%--<script src="../../vendors/datatables.net-scroller/js/dataTables.scroller.min.js"></script>--%>
+<%--Print--%>
+<script src="../../vendors/jszip/dist/jszip.min.js"></script>
 <!-- Custom Theme Scripts -->
 <script src="../../build/js/custom.min.js"></script>
-
-
-</body>
-<script src="../../vendors/jquery/dist/jquery.min.js"></script>
 
 <script>
     $(window).scroll(function () {
@@ -317,4 +314,8 @@
     }
 </script>
 
+
+
+<%--/Pie Chart 2--%>
+</body>
 </html>
