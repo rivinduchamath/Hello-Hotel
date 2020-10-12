@@ -185,17 +185,13 @@
                     <article id="content2">
                         <div class="wrapper">
                             <section>
-
                                 <div class="wrapper">
-
                                     <form method="POST" action="saveCounterTable" name="saveCounterTable">
                                         <input style="display: none" readonly required type="text" id="itemPay" name="orderData">
                                         <input  style="" readonly required="required" type="date" id="vDate" value="${reservedDate}" name="vDate">
                                         <input readonly required ="required"type="time" id="timeIn" value="${timeIn}" name="vStatT">
                                         <input readonly required ="required" type="time" id="timeOut" value="${timeOut}" name="vEndT">
-                                        <button type="submit" onclick="getValue()" class="col-1-1 button1x1" id="submitButton">
-                                            Submit
-                                        </button>
+                                        <button type="submit" onclick="getValue()" class="col-1-1 button1x1" id="submitButton">Submit</button>
                                     </form>
                                     <br>
                                     <table>
