@@ -156,8 +156,8 @@ public class HRController {
 
     @GetMapping("/accounts")
     public String accounts(Model model) {
-        List<DepartmentDTO> list = manageBO.findAllDepartment();
-        model.addAttribute("loadDepartment", list);
+        List<DepartmentDTO> p2 = manageBO.findAllDepartment();
+        model.addAttribute("loadDepartment", p2);
         model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
         return "accounts";
     }

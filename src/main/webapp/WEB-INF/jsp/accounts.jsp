@@ -261,7 +261,7 @@
                                             name="department">
                                         <c:forEach items="${loadDepartment}" var="category">
                                             <option value="${category.departmentName}"
-                                                    <c:if test="${category.departmentId eq p}">selected="selected"</c:if> >
+                                                    <c:if test="${category.departmentId eq p2}">selected="selected"</c:if> >
                                                     ${category.departmentName}
                                             </option>
                                         </c:forEach>
@@ -294,8 +294,8 @@
                                 <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12"><br>
                                     <label>Description</label>
                                     <input type="text" class="form-control"
-                                           required="required" name="dateTo"
-                                           id="description" placeholder="description"/></div>
+                                           required="required" name="description"
+                                           id="description" placeholder="Description"/></div>
                             </div>
 
 
