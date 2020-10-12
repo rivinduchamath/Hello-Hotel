@@ -7,6 +7,7 @@ import lk.sliit.hotelManagement.dao.restaurantDAO.RestaurantTableDAO;
 import lk.sliit.hotelManagement.dao.restaurantDAO.counterOrderDAO.RestaurantCounterOrderDAO;
 import lk.sliit.hotelManagement.dao.restaurantDAO.counterOrderDAO.RestaurantCounterOrderDetailDAO;
 import lk.sliit.hotelManagement.dao.restaurantDAO.counterTableReservationDAO.CounterTableReservationDAO;
+import lk.sliit.hotelManagement.dao.restaurantDAO.counterTableReservationDAO.CounterTableReservationDetailsDAO;
 import lk.sliit.hotelManagement.dao.restaurantDAO.onlineOrderDAO.RestaurantOnlineOrderDAO;
 import lk.sliit.hotelManagement.dao.restaurantDAO.onlineOrderDAO.RestaurantOnlineOrderDetailsDAO;
 import lk.sliit.hotelManagement.dao.restaurantDAO.onlineTableReservationDAO.OnlineTableReservationDAO;
@@ -16,6 +17,7 @@ import lk.sliit.hotelManagement.dto.restaurant.RestaurantTableDTO;
 import lk.sliit.hotelManagement.dto.restaurant.restaurantCounterOrder.RestaurantCounterOrderDTO;
 import lk.sliit.hotelManagement.dto.restaurant.restaurantCounterOrder.RestaurantCounterOrderDetailDTO;
 import lk.sliit.hotelManagement.dto.restaurant.restaurantCounterTable.CounterTableReservationDTO;
+import lk.sliit.hotelManagement.dto.restaurant.restaurantCounterTable.CounterTableReservationDetailsDTO;
 import lk.sliit.hotelManagement.dto.restaurant.restaurantOnlineOrder.RestaurantOnlineOrderDTO;
 import lk.sliit.hotelManagement.dto.restaurant.restaurantOnlineOrder.RestaurantOnlineOrderDetailsDTO;
 import lk.sliit.hotelManagement.dto.restaurant.restaurantOnlineTable.OnlineTableReservationDTO;
@@ -55,7 +57,9 @@ public class RestaurantBOImpl implements RestaurantBO {
     @Autowired
     OnlineTableReservationDAO onlineTableReservationDAO;
     @Autowired
-    CounterTableReservationDAO counterTableReservationDAO ;
+    CounterTableReservationDAO counterTableReservationDAO;
+    @Autowired
+    CounterTableReservationDetailsDAO counterTableReservationDetailsDAO;
     @Autowired
     RestaurantCounterOrderDAO restaurantCounterOrderDAO;
     @Autowired
@@ -116,7 +120,6 @@ public class RestaurantBOImpl implements RestaurantBO {
                 restaurantCounterOrderDTO.getOrderState(),
                 restaurantCounterOrderDTO.getQuantity(),
                 restaurantCounterOrderDTO.getDate(),
-                restaurantCounterOrderDTO.getCustomerId(),
                 restaurantCounterOrderDTO.getOrderHolder()));
 
         for (RestaurantCounterOrderDetailDTO orderDetail : list) {
@@ -222,8 +225,8 @@ public class RestaurantBOImpl implements RestaurantBO {
     @Override
     public List<RestaurantTableDTO> getAviTables(java.util.Date date, java.util.Date startTime, java.util.Date endTime) {
 
-        Iterable<OnlineTableReservation> all4 = onlineTableReservationDAO.getAllBetweenDates(endTime, startTime,date);
-        Iterable<CounterTableReservation> all5 = counterTableReservationDAO.getAllBetweenDates(endTime, startTime,date);
+        Iterable<OnlineTableReservation> all4 = onlineTableReservationDAO.getAllBetweenDates(endTime, startTime, date);
+        Iterable<CounterTableReservation> all5 = counterTableReservationDAO.getAllBetweenDates(endTime, startTime, date);
         Iterable<RestaurantTable> allTable = restaurantTableDAO.findAll();
         Iterable<OnlineTableReservationDetails> al4;
         Iterable<CounterTableReservationDetails> al5;
@@ -235,24 +238,24 @@ public class RestaurantBOImpl implements RestaurantBO {
         System.out.println("Tset 1 " + startTime);
         System.out.println("Tset 2 " + endTime);
 
-        for (RestaurantTable d: allTable) {
+        for (RestaurantTable d : allTable) {
             for (OnlineTableReservation d2 : all4) {
                 al4 = d2.getOrderDetails();
                 for (OnlineTableReservationDetails d3 : al4) {
-                    if(d.getTableId() != d3.getTableId().getTableId()){
-                        if(!list.contains(d3.getTableId())) {
+                    if (d.getTableId() != d3.getTableId().getTableId()) {
+                        if (!list.contains(d3.getTableId())) {
                             list.add(d3.getTableId());
                         }
                     }
                 }
             }
         }
-        for (RestaurantTable d: allTable) {
+        for (RestaurantTable d : allTable) {
             for (CounterTableReservation d2 : all5) {
                 al5 = d2.getOrderDetails();
                 for (CounterTableReservationDetails d3 : al5) {
-                    if(d.getTableId() != d3.getTableId().getTableId()){
-                        if(!list22.contains(d3.getTableId())) {
+                    if (d.getTableId() != d3.getTableId().getTableId()) {
+                        if (!list22.contains(d3.getTableId())) {
                             list22.add(d3.getTableId());
                         }
                     }
@@ -260,7 +263,7 @@ public class RestaurantBOImpl implements RestaurantBO {
             }
         }
 
-        for (RestaurantTable  b: allTable) {
+        for (RestaurantTable b : allTable) {
             if (!list.contains(b) && !list22.contains(b)) {
                 list2.add(b);
             }
@@ -275,6 +278,7 @@ public class RestaurantBOImpl implements RestaurantBO {
         }
         return dtoList;
     }
+
     @Override
     public List<CounterTableReservationDTO> getBookedTables() {
         java.util.Date date = new java.util.Date();
@@ -285,10 +289,13 @@ public class RestaurantBOImpl implements RestaurantBO {
         Iterable<CounterTableReservation> counterTableReservations = null;
         try {
 
+
             onlineTableReservations = onlineTableReservationDAO.findOnlineTableReservationByReservedDateEquals(date);
 
+
             counterTableReservations = counterTableReservationDAO.findCounterTableReservationByDateEquals(date);
-        } catch (NullPointerException e){}
+        } catch (NullPointerException e) {
+        }
 
         for (OnlineTableReservation d2 : onlineTableReservations) {
             list4 = d2.getOrderDetails();
@@ -319,65 +326,48 @@ public class RestaurantBOImpl implements RestaurantBO {
         return list;
     }
 
-
     @Override
-    public RestaurantTableDTO findHighestTableId() {
-        RestaurantTable lastItem = null;
-        try {
-            lastItem = restaurantTableDAO.findTopByOrderByTableIdDesc();
-        } catch (Exception e){
-
+    public void saveCounterTableId(CounterTableReservationDTO onlineOrderDTO) {
+        java.util.List<CounterTableReservationDetailsDTO> list = new ArrayList<>();
+        String arr = onlineOrderDTO.getOrderData();
+        System.out.println("WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW "+onlineOrderDTO);
+        String yo[] = arr.split(" ");
+        int count = 0;
+        CounterTableReservationDetailsDTO itm = new CounterTableReservationDetailsDTO();
+        for (String str : yo) {
+            if (count == 0) {
+                itm = new CounterTableReservationDetailsDTO();
+                itm.setTableId(Integer.parseInt(str));
+                list.add(itm);
+                count = 0;
+            }
         }
 
-        return new RestaurantTableDTO(lastItem.getTableId());
-    }
+        System.out.println(list+"EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE");
+        Calendar cal = Calendar.getInstance();
+        cal.add(Calendar.DATE, 0);
+        java.util.Date today = cal.getTime();
+        onlineOrderDTO.setDate(today);
+        System.out.println(onlineOrderDTO+"RRRRRTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTRRRRRRRRRRRRRR");
+        counterTableReservationDAO.save(new CounterTableReservation(
 
-    @Override
-    public void saveTable(RestaurantTableDTO restaurantTableDTO) {
-        restaurantTableDAO.save(new RestaurantTable
-                (restaurantTableDTO.getTableId(),
-                        restaurantTableDTO.getType(),
-                        restaurantTableDTO.getUnitPrice()));
-    }
+                onlineOrderDTO.getCounterTableReserveId(),
+                Time.valueOf(onlineOrderDTO.getvStatT()),
+                Time.valueOf(onlineOrderDTO.getvEndT()),
+                3,
+                Date.valueOf(onlineOrderDTO.getvDate())
+        ));
 
-    @Override
-    public List<RestaurantTableDTO> findTables() {
-        Iterable<RestaurantTable> tables = restaurantTableDAO.findAll();
-        List<RestaurantTableDTO> tableDTOList = new ArrayList<>();
-
-        for (RestaurantTable item: tables) {
-            tableDTOList.add(new RestaurantTableDTO(item.getTableId(),
-                    item.getType(),
-                    item.getUnitPrice()));
-        }
-        return tableDTOList;
-    }
-
-    @Override
-    public void deleteTable(int tableId) {
-        restaurantTableDAO.delete(tableId);
-    }
-
-    @Override
-    public RestaurantTableDTO findTableById(int tableId) {
-        RestaurantTable table = restaurantTableDAO.findOne(tableId);
-        return new RestaurantTableDTO(
-                table.getTableId(),
-                table.getType(),
-                table.getUnitPrice()
-        );
-    }
-
-    @Override
-    public OnlineTableReservationDTO findHighestOnlineTableId() {
-        OnlineTableReservation lastItem = null;
-        try {
-            lastItem = onlineTableReservationDAO.findTopByOrderByOnlineTableReservationIdDesc();
-        } catch (Exception e){
+        for (CounterTableReservationDetailsDTO orderDetail : list) {
+            System.out.println(orderDetail.getTableId()+"RRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR");
+            counterTableReservationDetailsDAO.save(new CounterTableReservationDetails(
+                    onlineOrderDTO.getCounterTableReserveId(),
+                    orderDetail.getTableId(),
+                    0,
+                    0
+            ));
 
         }
-
-        return new OnlineTableReservationDTO(lastItem.getOnlineTableReservationId());
     }
 
     @Override
@@ -416,11 +406,121 @@ public class RestaurantBOImpl implements RestaurantBO {
                     orderDetail.getTableId(),
                     onlineOrderDTO.getOnlineTableReservationId(),
                     0,
-                   0));
+                    0));
 
         }
     }
 
+    @Override
+    public List<OnlineTableReservationDTO> findTablesOnline() {
+        java.util.Date todaydate = new java.util.Date();
+        Calendar cal = Calendar.getInstance();
+        cal.add(Calendar.MONTH, -1);
+        java.util.Date dt = cal.getTime();
+        Iterable<OnlineTableReservation> all4 = onlineTableReservationDAO.findAllByReservedDateBetween(dt,todaydate);
+        List<OnlineTableReservationDTO> tableDTOList = new ArrayList<>();
+        for (OnlineTableReservation item: all4) {
+            tableDTOList.add(new OnlineTableReservationDTO(
+                    item.getOnlineTableReservationId(),
+                    item.getDate(),
+                    item.getStartTime(),
+                    item.getEndTime()
+            ));
+        }
+        return tableDTOList;
+    }
+
+    @Override
+    public List<RestaurantOnlineOrderDTO> findOrderOnline() {
+        java.util.Date todaydate = new java.util.Date();
+        Calendar cal = Calendar.getInstance();
+        cal.add(Calendar.MONTH, -1);
+        java.util.Date dt = cal.getTime();
+        Iterable<RestaurantOnlineOrder> all4 = onlineOrderDAO.findAllByDateBetween(dt,todaydate);
+        List<RestaurantOnlineOrderDTO> tableDTOList = new ArrayList<>();
+        for (RestaurantOnlineOrder item: all4) {
+            tableDTOList.add(new RestaurantOnlineOrderDTO(
+                    item.getOrderId(),
+                    item.getOrderState(),
+                    item.getDate(),
+                    item.getCustomer().getOnlineCustomerId(),
+                    item.getOrderDetails()
+            ));
+        }
+        return tableDTOList;
+    }
+
+
+    @Override
+    public RestaurantTableDTO findHighestTableId() {
+        RestaurantTable lastItem = null;
+        try {
+            lastItem = restaurantTableDAO.findTopByOrderByTableIdDesc();
+        } catch (Exception e){}
+        return new RestaurantTableDTO(lastItem.getTableId());
+    }
+
+    @Override
+    public void saveTable(RestaurantTableDTO restaurantTableDTO) {
+        restaurantTableDAO.save(new RestaurantTable
+                (restaurantTableDTO.getTableId(),
+                        restaurantTableDTO.getType(),
+                        restaurantTableDTO.getUnitPrice()));
+    }
+
+    @Override
+    public List<RestaurantTableDTO> findTables() {
+        Iterable<RestaurantTable> tables = restaurantTableDAO.findAll();
+        List<RestaurantTableDTO> tableDTOList = new ArrayList<>();
+
+        for (RestaurantTable item: tables) {
+            tableDTOList.add(new RestaurantTableDTO(
+                    item.getTableId(),
+                    item.getType(),
+                    item.getUnitPrice()
+            ));
+        }
+        return tableDTOList;
+    }
+
+    @Override
+    public void deleteTable(int tableId) {
+        restaurantTableDAO.delete(tableId);
+    }
+
+    @Override
+    public RestaurantTableDTO findTableById(int tableId) {
+        RestaurantTable table = restaurantTableDAO.findOne(tableId);
+        return new RestaurantTableDTO(
+                table.getTableId(),
+                table.getType(),
+                table.getUnitPrice()
+        );
+    }
+
+    @Override
+    public OnlineTableReservationDTO findHighestOnlineTableId() {
+        OnlineTableReservation lastItem = null;
+        try {
+            lastItem = onlineTableReservationDAO.findTopByOrderByOnlineTableReservationIdDesc();
+        } catch (Exception e){
+
+        }
+
+        return new OnlineTableReservationDTO(lastItem.getOnlineTableReservationId());
+    }
+
+    @Override
+    public CounterTableReservationDTO findHighestCounterTableId() {
+        CounterTableReservation lastItem = null;
+        try {
+            lastItem = counterTableReservationDAO.findTopByOrderByCounterTableReserveIdDesc();
+        } catch (Exception e){
+
+        }
+
+        return new CounterTableReservationDTO(lastItem.getCounterTableReserveId());
+    }
 
 
 }

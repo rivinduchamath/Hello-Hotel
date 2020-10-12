@@ -2,7 +2,7 @@ package lk.sliit.hotelManagement.dto.restaurant.restaurantCounterTable;
 
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import java.sql.Date;
+import java.util.Date;
 import java.sql.Time;
 
 public class CounterTableReservationDTO {
@@ -18,6 +18,7 @@ public class CounterTableReservationDTO {
     private String vEndT;
     private String vDate;
     private String type;
+    private String orderData;
 
     public CounterTableReservationDTO(int counterTableReserveId, Time startTime, Time endTime, int noOfTables, Date date) {
         this.counterTableReserveId = counterTableReserveId;
@@ -36,11 +37,23 @@ public class CounterTableReservationDTO {
         this.type = type;
     }
 
+    public CounterTableReservationDTO(int counterTableReserveId) {
+        this.counterTableReserveId = counterTableReserveId;
+    }
+
     public String getType() { return type; }
 
     public void setType(String type) { this.type = type; }
 
     public CounterTableReservationDTO() {
+    }
+
+    public String getOrderData() {
+        return orderData;
+    }
+
+    public void setOrderData(String orderData) {
+        this.orderData = orderData;
     }
 
     public int getCounterTableReserveId() {

@@ -169,7 +169,7 @@
             <div class="page-title">
                 <div class="title_left">
 
-                    <h3>New Reservation
+                    <h3>Customer Registration
                         <small>Welcome To Hotel Hareesha</small>
                     </h3>
 
@@ -183,7 +183,7 @@
                                     Back</i>
                                 </button>
                             </a>
-                            <a href="/reservation">
+                            <a href="/counterReservation">
                                 <button style=" border: 5px solid rgb(174, 182, 203);background-color: #45526e;
                                     color: #c6d4d3;font-weight: bolder" type="button" class="btnq2 btn"><i
                                         class="fa fa-fast-forward">

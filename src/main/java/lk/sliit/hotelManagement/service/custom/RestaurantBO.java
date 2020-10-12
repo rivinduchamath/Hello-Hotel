@@ -40,8 +40,15 @@ public interface RestaurantBO {
     RestaurantTableDTO findTableById(int tableId);
 
     OnlineTableReservationDTO findHighestOnlineTableId();
+    CounterTableReservationDTO  findHighestCounterTableId();
 
     void saveOnlineTableId(OnlineTableReservationDTO onlineOrderDTO);
 
     List<CounterTableReservationDTO> getBookedTables();
+
+    void saveCounterTableId(CounterTableReservationDTO onlineOrderDTO);
+
+    List<OnlineTableReservationDTO> findTablesOnline();
+
+    List<RestaurantOnlineOrderDTO> findOrderOnline();
 }
