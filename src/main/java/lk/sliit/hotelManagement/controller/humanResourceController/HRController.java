@@ -15,6 +15,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -159,7 +161,16 @@ public class HRController {
         List<DepartmentDTO> p2 = manageBO.findAllDepartment();
         model.addAttribute("loadDepartment", p2);
         model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
+
+        List<AccountsDTO> p3 = humanResourceBO.findAllAccounts();
+        model.addAttribute("loadAccounts", p3);
         return "accounts";
+    }
+
+    @RequestMapping(value = "deleteAccounts/{accountId}")
+    public void deleteEmployee(@PathVariable("accountId") int accountId, HttpServletRequest request, HttpServletResponse response) throws IOException, IOException {
+        humanResourceBO.deleteAccount(accountId);
+        response.sendRedirect("/accounts");
     }
 
     @PostMapping("/saveAccount")

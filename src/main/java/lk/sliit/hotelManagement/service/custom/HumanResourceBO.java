@@ -43,4 +43,7 @@ public interface HumanResourceBO extends SuperBO {
 
     List<SalaryPay> getSalaryPayment(String source);
 
+    List<AccountsDTO> findAllAccounts();
+
+    void deleteAccount(int accountId);
 }
