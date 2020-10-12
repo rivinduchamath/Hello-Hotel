@@ -1,14 +1,18 @@
 package lk.sliit.hotelManagement.service.custom.impl;
 
 import lk.sliit.hotelManagement.dao.houseKeepingDAO.HouseKeepingDAO;
+import lk.sliit.hotelManagement.dao.hrDAO.AccountsDAO;
 import lk.sliit.hotelManagement.dao.hrDAO.AttendanceDAO;
+import lk.sliit.hotelManagement.dao.hrDAO.DepartmentDAO;
 import lk.sliit.hotelManagement.dao.hrDAO.SalaryDAO;
 import lk.sliit.hotelManagement.dao.manageSystemDAO.EmployeeDAO;
 import lk.sliit.hotelManagement.dto.houseKeeping.HotelRoomDTO;
+import lk.sliit.hotelManagement.dto.hr.AccountsDTO;
 import lk.sliit.hotelManagement.dto.hr.AttendanceDTO;
 import lk.sliit.hotelManagement.dto.hr.SalaryDTO;
 import lk.sliit.hotelManagement.dto.manager.EmployeeDTO;
 import lk.sliit.hotelManagement.entity.houseKeeping.HotelRoom;
+import lk.sliit.hotelManagement.entity.hr.Accounts;
 import lk.sliit.hotelManagement.entity.hr.Attendance;
 import lk.sliit.hotelManagement.entity.hr.Salary;
 import lk.sliit.hotelManagement.entity.manager.Employee;
@@ -39,6 +43,10 @@ public class HumanResourceBOImpl implements HumanResourceBO {
     SalaryDAO salaryDAO;
     @Autowired
     EmployeeDAO manageDAO;
+    @Autowired
+    AccountsDAO accountsDAO;
+    @Autowired
+    DepartmentDAO departmentDAO;
 
     @Override
     public void updateRoomHR(HotelRoomDTO hotelRoomDTO) {
@@ -266,6 +274,44 @@ public class HumanResourceBOImpl implements HumanResourceBO {
             ));
         }
         return dtos;
+    }
+
+    @Override
+    public AccountsDTO findHighestAccountId() {
+        Accounts accounts = null;
+        try{
+            accounts = accountsDAO.findTopByOrderByAccountIdDesc();
+        }
+        catch(Exception e){
+
+        }
+        return new AccountsDTO(accounts.getAccountId());
+    }
+
+    @Override
+    public AccountsDTO findAccountById(int accountId) {
+        Accounts accounts = accountsDAO.findOne(accountId);
+        AccountsDTO accountsDTO = new AccountsDTO(
+                accounts.getAccountId(),
+                accounts.getChequeNo(),
+                accounts.getAmount(),
+                accounts.getDate(),
+                accounts.getDepartment().getDepartmentId(),
+                accounts.getDescription()
+        );
+        return accountsDTO;
+    }
+
+    @Override
+    public void saveAccounts(AccountsDTO accountsDTO) {
+        accountsDAO.save(new Accounts(
+                accountsDTO.getAccountId(),
+                accountsDTO.getChequeNo(),
+                accountsDTO.getAmount(),
+                accountsDTO.getDate(),
+                accountsDTO.getDescription(),
+                departmentDAO.findOne(accountsDTO.getDepartment())
+        ));
     }
 
 }

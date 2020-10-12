@@ -1,7 +1,9 @@
 package lk.sliit.hotelManagement.controller.humanResourceController;
 
 import lk.sliit.hotelManagement.controller.SuperController;
+import lk.sliit.hotelManagement.dto.hr.AccountsDTO;
 import lk.sliit.hotelManagement.dto.hr.AttendanceDTO;
+import lk.sliit.hotelManagement.dto.hr.DepartmentDTO;
 import lk.sliit.hotelManagement.dto.manager.EmployeeDTO;
 import lk.sliit.hotelManagement.service.custom.HumanResourceBO;
 import lk.sliit.hotelManagement.service.custom.IndexLoginBO;
@@ -28,6 +30,7 @@ public class HRController {
     ManageBO manageBO;
     @Autowired
     HumanResourceBO humanResourceBO;
+
     @GetMapping("/hr")
     public String loginPage(Model model) {
         model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
@@ -40,57 +43,82 @@ public class HRController {
 
         List<EmployeeDTO> p = manageBO.findAllUser();
         model.addAttribute("loadAllUsers", p);
-        model.addAttribute ( "listAttendance", humanResourceBO.findTodayAttendance ( ) );
+        model.addAttribute("listAttendance", humanResourceBO.findTodayAttendance());
         return "attendance";
     }
 
     @RequestMapping(value = "tablesAdd", method = RequestMethod.POST)
     public String addTodayAttendance(@ModelAttribute AttendanceDTO attendance, Model model) {
 
-        DateFormat dateFormat = new SimpleDateFormat( "yyyy/MM/dd" );
-        Date date = new Date ( ); //Get Date
-        attendance.setDate ( date ); //set today Date
-        List <AttendanceDTO> todayAttendance = null;
+        DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
+        Date date = new Date(); //Get Date
+        attendance.setDate(date); //set today Date
+        List<AttendanceDTO> todayAttendance = null;
         int eId = 0;
         int attendanceID = 0;
         int employeeID = 0;
-        todayAttendance = humanResourceBO.findTodayAttendance ( );//Get All Today Attendance
+        todayAttendance = humanResourceBO.findTodayAttendance();//Get All Today Attendance
 
         try {
-            eId = attendance.getEmployeeID ( );//add EmployeeID From JSP
+            eId = attendance.getEmployeeID();//add EmployeeID From JSP
         } catch (NullPointerException e) {
-            Logger.getLogger("lk.sliit.project.employeeManagement").log(Level.SEVERE, null,e); //Add Logger To Catch NullPointerException
+            Logger.getLogger("lk.sliit.project.employeeManagement").log(Level.SEVERE, null, e); //Add Logger To Catch NullPointerException
             return "redirect:/attendance";//If NullPointerException, Reload Attendance.jsp
         }
         for (AttendanceDTO a : todayAttendance) {
-            employeeID = a.getEmployeeID ( );//add EmployeeID From Attendance
-            attendanceID = a.getAttendanceId ();//add AttendanceId From Attendance
-            if (employeeID == ( eId )) {//Check JSP Employee ID Already in today attendance
-                attendance.setAttendanceId ( attendanceID ); //IF true Set Attendance Id and save
-                humanResourceBO.saveOrUpdate ( attendance );
+            employeeID = a.getEmployeeID();//add EmployeeID From Attendance
+            attendanceID = a.getAttendanceId();//add AttendanceId From Attendance
+            if (employeeID == (eId)) {//Check JSP Employee ID Already in today attendance
+                attendance.setAttendanceId(attendanceID); //IF true Set Attendance Id and save
+                humanResourceBO.saveOrUpdate(attendance);
                 return "redirect:/attendance";
             }
         }
 
 
         try {
-            AttendanceDTO totalCount = humanResourceBO.findTopByOrderByAttendanceIdDesc ( );
-            int x =  ( totalCount.getAttendanceId ( ) )+ 1;
-            attendance.setAttendanceId(  x);
+            AttendanceDTO totalCount = humanResourceBO.findTopByOrderByAttendanceIdDesc();
+            int x = (totalCount.getAttendanceId()) + 1;
+            attendance.setAttendanceId(x);
         } catch (NullPointerException e) {
-            attendance.setAttendanceId( 1);
+            attendance.setAttendanceId(1);
         }
 
-        humanResourceBO.saveOrUpdate ( attendance );//Else Attendance Save Under Previous Attendance ID
+        humanResourceBO.saveOrUpdate(attendance);//Else Attendance Save Under Previous Attendance ID
         return "redirect:/attendance";
     }//End addTodayAttendance Method
 
 
-
     @GetMapping("/accounts")
-    public String accounts(Model model){
-        model.addAttribute("loggerName",indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
+    public String accounts(Model model) {
+        List<DepartmentDTO> list = manageBO.findAllDepartment();
+        model.addAttribute("loadDepartment", list);
+        model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
         return "accounts";
+    }
+
+    @PostMapping("/saveAccount")
+    public String saveAccounts(@ModelAttribute AccountsDTO accountsDTO, Model model) {
+        model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
+        try {
+            AccountsDTO accountsDTO1 = humanResourceBO.findHighestAccountId();
+            AccountsDTO accountsDTO2 = null;
+            try {
+                accountsDTO2 = humanResourceBO.findAccountById(accountsDTO.getAccountId());
+            } catch (NullPointerException d) {
+                int maxId = (accountsDTO1.getAccountId());
+                if (accountsDTO.getAccountId() == (maxId)) {
+                    accountsDTO.setAccountId((maxId));
+                } else {
+                    maxId++;
+                    accountsDTO.setAccountId(maxId);
+                }
+            }
+        } catch (NullPointerException e) {
+            accountsDTO.setAccountId(1);
+        }
+        humanResourceBO.saveAccounts(accountsDTO);
+        return "redirect:/accounts";
     }
 
     @GetMapping("/accountsReport")

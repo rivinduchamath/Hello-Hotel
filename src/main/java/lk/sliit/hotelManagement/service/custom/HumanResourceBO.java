@@ -1,6 +1,7 @@
 package lk.sliit.hotelManagement.service.custom;
 
 import lk.sliit.hotelManagement.dto.houseKeeping.HotelRoomDTO;
+import lk.sliit.hotelManagement.dto.hr.AccountsDTO;
 import lk.sliit.hotelManagement.dto.hr.AttendanceDTO;
 import lk.sliit.hotelManagement.dto.hr.SalaryDTO;
 import lk.sliit.hotelManagement.dto.manager.EmployeeDTO;
@@ -31,4 +32,10 @@ public interface HumanResourceBO extends SuperBO {
     void saveSalary(SalaryDTO salaryDTO);
 
     List<SalaryDTO> findAllsalaryStateNotFalse();
+
+    AccountsDTO findHighestAccountId();
+
+    AccountsDTO findAccountById(int accountId);
+
+    void saveAccounts(AccountsDTO accountsDTO);
 }

@@ -245,32 +245,33 @@
                         </div>
                     </div>
                     <div class="col-12 col-sm-12 col-md-12 col-lg-5 col-xl-5">
-                        <form method="POST" action="/saveUser" name="saveUser">
+                        <form method="POST" action="/saveAccount" name="saveAccount">
 
                             <div class="form-group">
 
                                 <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
-                                    <label>Account ID</label>
-                                    <input type="text" class="form-control"
+                                    <input type="hidden" class="form-control"
                                            required="required" name="userId"
-                                           id="accountId" placeholder="Account ID"/></div>
+                                           id="accountId" placeholder="Account ID" value="0"/></div>
 
                                 <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
-                                    <label for="departmentId">Department ID</label>
-                                    <input type="text" class="form-control"
-                                           required="required" name="name"
-                                           id="departmentId" placeholder="Department ID"/></div>
+                                    <label>Department Name</label>
+                                    <select id="setType" class="form-control"
+                                            style="width: 100%; border-color: lightgray"
+                                            name="department">
+                                        <c:forEach items="${loadDepartment}" var="category">
+                                            <option value="${category.departmentName}"
+                                                    <c:if test="${category.departmentId eq p}">selected="selected"</c:if> >
+                                                    ${category.departmentName}
+                                            </option>
+                                        </c:forEach>
+                                    </select>
                             </div>
 
                             <div class="form-group">
-                                <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12"><br>
-                                    <label for="departmentId">Department Name</label>
-                                    <input type="text" class="form-control"
-                                           required="required" name="position"
-                                           id="departmentName" placeholder="Department Name"/></div>
 
                                 <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12"><br>
-                                    <label for="departmentId">Date</label>
+                                    <label>Date</label>
                                     <input type="date" class="form-control"
                                            required="required" name="address"
                                            id="address" placeholder="Date"/></div>
@@ -278,19 +279,23 @@
 
                             <div class="form-group">
                                 <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12"><br>
-                                    <label for="departmentId">Date From</label>
-                                    <input type="number" class="form-control"
-                                           required="required" name="password"
-                                           id="password" placeholder="Date from"/></div>
+                                    <label>Cheque No</label>
+                                    <input type="text" class="form-control"
+                                           required="required" name="chequeNo"
+                                           id="password" placeholder="Cheque No"/></div>
 
 
                                 <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12"><br>
-                                    <label for="departmentId">Date To </label>
+                                    <label>Amount</label>
                                     <input type="number" class="form-control"
-                                           required="required" name="expenses"
-                                           id="expenses" placeholder="Date to"/></div>
+                                           required="required" name="amount"
+                                           id="expenses" placeholder="Amount"/></div>
 
-
+                                <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12"><br>
+                                    <label>Description</label>
+                                    <input type="text" class="form-control"
+                                           required="required" name="dateTo"
+                                           id="description" placeholder="description"/></div>
                             </div>
 
 
@@ -304,7 +309,7 @@
                             <button type='reset' class="btn btn-outline-success" style="top: 20px; position: relative"
                                     value="">Reset
                             </button>
-
+                            </div>
                         </form>
                     </div>
                 </div>
