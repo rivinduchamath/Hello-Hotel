@@ -36,7 +36,6 @@ public class KitchenBOImpl implements KitchenBO {
     MenuDAO menuDAO;
     @Autowired
     MenuDetailsDAO menuDetailsDAO;
-
     @Autowired
     InventoryNoticeDAO inventoryNoticeDAO;
     @Autowired
