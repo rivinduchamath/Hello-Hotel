@@ -61,7 +61,7 @@
             <!--Content//////////////////////////////////////////////////////////////////-->
             <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
                 <div class="col-6 col-sm-6 col-md-6 col-lg-2 col-xl-2">
-                    <a href="/manageMenu">
+                    <a href="/manageFoodPacks">
                         <button type="button" class="large-btn btn btn-dark"><i class="fa fa-mail-reply">
                             Back</i>
                         </button>
@@ -98,6 +98,8 @@
                                                         <tr>
                                                             <th>Id</th>
                                                             <th>Item Name</th>
+                                                            <th>Category</th>
+                                                            <th>Price</th>
                                                             <th></th>
 
                                                         </tr>
@@ -107,9 +109,17 @@
                                                         <c:forEach items="${loadSelectedFood}" var="item">
                                                         <tr>
                                                             <td>${item.itemId}</td>
-                                                            <td>${item.menuId}</td>
+                                                            <td>${item.itemName}</td>
+                                                            <td>${item.itemCategory}</td>
+                                                            <td>${item.unitePrice}</td>
                                                             <td>
-                                                                a
+                                                                <form action="removeItemFromPack">
+                                                                    <input type="hidden" name ="menuId"  value="${menuItem.menuId}">
+                                                                    <input type="hidden" name ="itemId"  value="${item.itemId}">
+
+                                                                    <button  type="submit"><i  class="fa fa-plus-square"></i></button>
+
+                                                                </form>
                                                             </td>
                                                         </tr>
                                                         </c:forEach>

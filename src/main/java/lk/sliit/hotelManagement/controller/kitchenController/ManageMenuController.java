@@ -3,6 +3,8 @@ package lk.sliit.hotelManagement.controller.kitchenController;
 import lk.sliit.hotelManagement.controller.SuperController;
 import lk.sliit.hotelManagement.dto.kitchen.FoodItemDTO;
 import lk.sliit.hotelManagement.dto.kitchen.MenuDTO;
+import lk.sliit.hotelManagement.dto.kitchen.MenuDetailsDTO;
+import lk.sliit.hotelManagement.entity.kitchen.FoodItem;
 import lk.sliit.hotelManagement.service.custom.IndexLoginBO;
 import lk.sliit.hotelManagement.service.custom.KitchenBO;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +14,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -93,17 +96,65 @@ public class ManageMenuController {
     public String editFoodPack(Model model, @ModelAttribute MenuDTO menuDTO) {
         model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
         model.addAttribute("menuItem", kitchenBO.findMenuItemById(menuDTO.getMenuId()));
-        model.addAttribute("loadFoodItemTable",kitchenBO.findFoodItems());
+
+        List<FoodItemDTO> foodItemDTOS = kitchenBO.findFoodItems();
+        ArrayList<FoodItemDTO> selectedFoodItems = new ArrayList<>();
+
+        if (kitchenBO.findFoodItemsDetails(menuDTO.getMenuId()) != null){
+            List<MenuDetailsDTO> menuDetailsDTOS = kitchenBO.findFoodItemsDetails(menuDTO.getMenuId());
+
+            int index = 0;
+            for (MenuDetailsDTO menuItem: menuDetailsDTOS){
+                for (FoodItemDTO item: foodItemDTOS){
+                    if (item.getItemId() == menuItem.getFoodItemID()){
+                        selectedFoodItems.add(item);
+                        //foodItemDTOS.remove(item);
+                    }
+                }
+                index++;
+            }
+
+        }
+
+        model.addAttribute("loadSelectedFood",selectedFoodItems);
+        model.addAttribute("loadFoodItemTable",foodItemDTOS);
+
         return "/editFoodPack";
     }
     @GetMapping("/addItemToPack")
     public String addItemToPack(Model model, @ModelAttribute MenuDTO menuDTO) {
         model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
         model.addAttribute("menuItem", kitchenBO.findMenuItemById(menuDTO.getMenuId()));
-        model.addAttribute("loadFoodItemTable",kitchenBO.findFoodItems());
         kitchenBO.saveFoodDetail(menuDTO);
 
-        model.addAttribute("loadSelectedFood",kitchenBO.findFoodItemsDetails(menuDTO.getMenuId()));
+        List<FoodItemDTO> foodItemDTOS = kitchenBO.findFoodItems();
+        ArrayList<FoodItemDTO> selectedFoodItems = new ArrayList<>();
+
+        if (kitchenBO.findFoodItemsDetails(menuDTO.getMenuId()) != null){
+            List<MenuDetailsDTO> menuDetailsDTOS = kitchenBO.findFoodItemsDetails(menuDTO.getMenuId());
+
+            int index = 0;
+            for (MenuDetailsDTO menuItem: menuDetailsDTOS){
+                for (FoodItemDTO item: foodItemDTOS){
+                    if (item.getItemId() == menuItem.getFoodItemID()){
+                        selectedFoodItems.add(item);
+                        //foodItemDTOS.remove(index);
+                    }
+                }
+                index++;
+            }
+
+        }
+
+
+        model.addAttribute("loadSelectedFood",selectedFoodItems);
+        model.addAttribute("loadFoodItemTable",foodItemDTOS);
+        return "/editFoodPack";
+    }
+
+    @GetMapping("/removeItemFromPack")
+    public String removeItemFromPack(Model model, @ModelAttribute MenuDTO menuDTO){
+
         return "/editFoodPack";
     }
 
