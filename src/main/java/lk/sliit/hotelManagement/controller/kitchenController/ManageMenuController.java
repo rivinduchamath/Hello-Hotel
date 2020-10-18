@@ -104,10 +104,12 @@ public class ManageMenuController {
             List<MenuDetailsDTO> menuDetailsDTOS = kitchenBO.findFoodItemsDetails(menuDTO.getMenuId());
 
             int index = 0;
+            FoodItemDTO temp;
             for (MenuDetailsDTO menuItem: menuDetailsDTOS){
                 for (FoodItemDTO item: foodItemDTOS){
                     if (item.getItemId() == menuItem.getFoodItemID()){
-                        selectedFoodItems.add(item);
+                        temp = item;
+                        selectedFoodItems.add(temp);
                         //foodItemDTOS.remove(item);
                     }
                 }
@@ -134,11 +136,13 @@ public class ManageMenuController {
             List<MenuDetailsDTO> menuDetailsDTOS = kitchenBO.findFoodItemsDetails(menuDTO.getMenuId());
 
             int index = 0;
+            FoodItemDTO temp;
             for (MenuDetailsDTO menuItem: menuDetailsDTOS){
                 for (FoodItemDTO item: foodItemDTOS){
                     if (item.getItemId() == menuItem.getFoodItemID()){
-                        selectedFoodItems.add(item);
-                        //foodItemDTOS.remove(index);
+                        temp = item;
+                        selectedFoodItems.add(temp);
+                        //foodItemDTOS.remove(item);
                     }
                 }
                 index++;
