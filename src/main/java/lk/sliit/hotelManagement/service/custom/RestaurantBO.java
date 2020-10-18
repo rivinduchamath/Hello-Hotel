@@ -4,6 +4,7 @@ import lk.sliit.hotelManagement.dto.kitchen.FoodItemDTO;
 import lk.sliit.hotelManagement.dto.restaurant.OnlineCustomerDTO;
 import lk.sliit.hotelManagement.dto.restaurant.RestaurantTableDTO;
 import lk.sliit.hotelManagement.dto.restaurant.restaurantCounterOrder.RestaurantCounterOrderDTO;
+import lk.sliit.hotelManagement.dto.restaurant.restaurantCounterTable.CounterTableReservationDTO;
 import lk.sliit.hotelManagement.dto.restaurant.restaurantOnlineOrder.RestaurantOnlineOrderDTO;
 import lk.sliit.hotelManagement.dto.restaurant.restaurantOnlineTable.OnlineTableReservationDTO;
 
@@ -37,4 +38,10 @@ public interface RestaurantBO {
     void deleteTable(int tableId);
 
     RestaurantTableDTO findTableById(int tableId);
+
+    OnlineTableReservationDTO findHighestOnlineTableId();
+
+    void saveOnlineTableId(OnlineTableReservationDTO onlineOrderDTO);
+
+    List<CounterTableReservationDTO> getBookedTables();
 }

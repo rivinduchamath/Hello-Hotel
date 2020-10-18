@@ -57,7 +57,6 @@ public class FoodItemManageController {
                     foodItemDTO.setItemId((maxId));
                 }
             }
-
         } catch (NullPointerException e){
             foodItemDTO.setItemId(1);
         }

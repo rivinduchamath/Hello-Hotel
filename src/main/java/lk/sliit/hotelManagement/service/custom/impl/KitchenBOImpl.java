@@ -72,10 +72,7 @@ public class KitchenBOImpl implements KitchenBO {
         FoodItem lastItem = null;
         try {
             lastItem = kitchenDAO.findTopByOrderByItemIdDesc();
-        } catch (Exception e){
-
-        }
-
+        } catch (Exception e){}
         return new FoodItemDTO(lastItem.getItemId());
     }
 

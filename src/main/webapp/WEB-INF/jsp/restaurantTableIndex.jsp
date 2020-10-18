@@ -12,6 +12,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <link rel="icon" type="image/png" href="../../images/icons/gdfgd.png"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.min.js"></script>
     <!-- Bootstrap -->
     <link href="../../vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Font Awesome -->
@@ -25,12 +26,54 @@
     %>
     <style>
         .large-btn {
+            height: 90px;
+            width: 100%;
             font-family: "Playfair Display", Georgia, "Times New Roman", serif;
             font-weight: bolder;
+            font-size: 27px;
+        }
+
+        #chartdiv {
+            width: 100%;
+            height: 500px;
+        }
+
+        #chartdiv1 {
+            width: 100%;
+            height: 500px;
         }
 
         .large-btn:hover {
             color: #0f0f0f;
+        }
+
+        #backImg {
+            background-image: url("../../images/picture.jpg");
+        }
+
+        #myVideo {
+            position: fixed;
+            right: 0;
+            bottom: 0;
+            top: 110px;
+            min-width: 100%;
+            min-height: 100%;
+        }
+
+
+        #myBtn {
+            width: 200px;
+            font-size: 18px;
+            padding: 10px;
+            border: none;
+            background: #000;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        #myBtn:hover {
+            background: #ddd;
+            color: black;
         }
     </style>
 </head>
@@ -38,26 +81,36 @@
 <body class="nav-md" style="cursor: pointer">
 <div class="container body">
     <div class="main_container">
-
         <!-- Side header -->
-        <jsp:include page="sideHeader.jsp" />
+        <jsp:include page="sideHeader.jsp"/>
         <!-- /Side header -->
 
         <!-- Top header -->
-        <jsp:include page="topHeader.jsp" />
+        <jsp:include page="topHeader.jsp"/>
         <!-- /Top header -->
 
-
-
         <!-- page content -->
-        <div class="right_col" role="main">
+
+        <%--/////////aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa--%>
+        <div id="" class="right_col " role="main">
+
             <div class="">
                 <div class="page-title">
                     <div class="title_left">
-                        <h3>Kitchen Manage
-                            <small>Food Item List</small>
+                        <h3>Restaurant Manage
+                            <small>Welcome To Hotel Hareesha</small>
                         </h3>
+                        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                            <div class="col-6 col-sm-6 col-md-6 col-lg-4 col-xl-4">
+                                <a href="/restaurant">
+                                    <button type="button" class=" btn btn-dark"><i class="fa fa-mail-reply"> Back to Dashboard</i>
+                                    </button>
+                                </a>
+
+                            </div>
+                        </div>
                     </div>
+
 
                     <div class="title_right">
                         <script>
@@ -135,110 +188,96 @@
                                     </td>
                                 </tr>
                             </table>
-
                         </form>
                     </div>
                 </div>
-                <%--/////////////////////////////////// Page Body ////////////////////////////////////////--%>
-                <%--  Buttons--%>
+
+                <%-- ////////////////////////////////////////////// BODY /////////////////////////////////////////////////////////////--%>
                 <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
 
 
-                    <form method="POST" action="/addNewFoodItems" name="projectController">
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="x_panel">
-                                    <div class="x_title">
-                                        <h2>Food List</h2>
-                                        <ul class="nav navbar-right panel_toolbox">
-                                            <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
-                                            </li>
-                                            <li class="dropdown">
-                                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
-                                                   aria-expanded="false"><i class="fa fa-wrench"></i></a>
-                                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                                    <a class="dropdown-item" href="#">Settings 1</a>
-                                                    <a class="dropdown-item" href="#">Settings 2</a>
-                                                </div>
-                                            </li>
-                                            <li><a class="close-link"><i class="fa fa-close"></i></a>
-                                            </li>
-                                        </ul>
-                                        <div class="clearfix"></div>
-                                    </div>
-                                    <div class="x_content">
+                    <div class="col-sm-12 col-md-3 col-lg-6 col-xl-6">
+                        <a href="restaurantTableReservation">
+                            <button type="button" class="large-btn btn btn-dark">+ new Table Reservation</button>
+                        </a>
+                    </div>
 
-                                        <p style="font-weight: bold; font-size: 14px">Click Here To Add New Items >>
-                                            &emsp;
-                                            <button class="btn-outline-info" style="width: 12%;font-weight: bolder;color: black;
-                          height:36px; " href="/"
-                                                    onMouseOver="this.style.color='white'; this.style.fontWeight='bold'"
-                                                    onMouseOut="this.style.color='black'; "
-                                            >+New
-                                            </button>
-                                            <a href="/kitchen">
-                                                <button style="position: absolute;right: 0" type="button"
-                                                        class="large-btn btn btn-secondary"><i
-                                                        class="fa fa-backward"></i> Back
-                                                </button>
-                                            </a>
-                                        </p>
+                    <div class="col-sm-12 col-md-3 col-lg-6 col-xl-6">
+                        <a href="restaurantTable">
+                            <button type="button" class="large-btn btn btn-dark">+ new Restaurant Table</button>
+                        </a>
+                    </div>
 
-                                        <!-- start project list -->
-                                        <table id="datatable-buttons" class="table table-striped table-bordered">
-                                            <thead>
-                                            <tr>
-                                                <th>Item Id</th>
-                                                <th>Item Name</th>
-                                                <th>Time</th>
-                                                <th style="width: 20%">#Edit</th>
-                                            </tr>
-                                            </thead>
-                                            <tbody>
-                                            <%--                                            <c:forEach items="${lias}" var="a">--%>
-                                            <tr>
-                                                <td>C001${a.itemId}</td>
-                                                <td>
-                                                    <a>Name${a.itemName}</a>
 
-                                                </td>
-                                                <td>
-                                                    <ul class="list-inline">
-                                                        <small>Expected ${a.duration}</small>
-                                                    </ul>
-                                                </td>
-                                                <td>
-                                                    <a href="/itemId_detail?projectId=${a.itemId }"
-                                                       class="btn btn-primary btn-xs"><i
-                                                            class="fa fa-folder"></i> View </a>
-                                                    <a href="/edit-ItemId?projectId=${a.itemId }"
-                                                       class="btn btn-info btn-xs"><i class="fa fa-pencil"></i>
-                                                        Edit </a>
-                                                    <a href="/deleteItemId?pid=${a.itemId }"
-                                                       class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i>
-                                                        Delete </a>
-                                                </td>
-                                            </tr>
-                                            <%--                                            </c:forEach>--%>
-                                            </tbody>
-                                        </table>
-                                        <!-- end project list -->
 
+                </div>
+                <%--%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Chart Income %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%--%>
+                <div class="col-12 col-sm-12 col-md-12 col-lg-7 col-xl-7">
+                    <div class="row">
+                        <div class="x_panel">
+                            <div class="x_title">
+                                <h2>Find Tables</h2>
+                                <ul class="nav navbar-right panel_toolbox">
+                                    <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                                    </li>
+                                    <li class="dropdown">
+                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                                           aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                            <a class="dropdown-item" href="#">Settings 1</a>
+                                        </div>
+                                    </li>
+                                    <li><a class="close-link"><i class="fa fa-close"></i></a>
+                                    </li>
+                                </ul>
+                                <div class="clearfix"></div>
+                            </div>
+                            <div class="x_content">
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <div class="card-box table-responsive">
+                                            <table id="datatable-buttons" class="table table-striped table-bordered">
+                                                <thead class="thead-light">
+                                                <tr>
+                                                    <th>Id</th>
+                                                    <th>Start Time</th>
+                                                    <th>End Time</th>
+                                                    <th>Type</th>
+
+                                                </tr>
+
+                                                </thead>
+                                                <tbody>
+                                                <c:forEach items="${todayBookedTables}" var="e">
+                                                    <tr>
+
+                                                        <td>${e.counterTableReserveId}</td>
+                                                        <td>${e.startTime}</td>
+                                                        <td>${e.endTime}</td>
+
+                                                        <td>${e.type}</td>
+
+                                                    </tr>
+                                                </c:forEach>
+                                                </tbody>
+                                            </table>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </form>
+                    </div>
                 </div>
-                <%-- End Buttons--%>
-                <%--//////////////////////////////////////////////////////////////////////////////////////////////--%>
+
+                <%--////////////////////////////////////////////////////////////--%>
             </div>
         </div>
+
         <!-- /page content -->
 
 
         <!-- footer content -->
-        <jsp:include page="footer.jsp" />
+        <jsp:include page="footer.jsp"/>
         <!-- /footer content -->
 
     </div>
@@ -251,6 +290,9 @@
 <script src="../../vendors/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 <!-- Custom Theme Scripts -->
 <script src="../../build/js/custom.min.js"></script>
+
+
+
 
 </body>
 </html>

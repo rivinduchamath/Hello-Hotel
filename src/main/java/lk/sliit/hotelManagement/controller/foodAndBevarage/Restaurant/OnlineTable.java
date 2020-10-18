@@ -41,9 +41,6 @@ public class OnlineTable {
 
     @GetMapping("/onlineTableDetails")
     public String onlineTableDetails(Model model, HttpServletRequest request) {
-
-        List<RestaurantTableDTO> p1 = restaurantBO.findAllTable();
-        model.addAttribute("loadAllTables", p1);
         return "onlineTableDetails";
     }
 
@@ -55,6 +52,9 @@ public class OnlineTable {
         onlineTable.setEndTime(a2);
         Date date =Date.valueOf(onlineTable.getvDate());
         onlineTable.setReservedDate(date);
+        model.addAttribute("reservedDate", (onlineTable.getReservedDate()));
+        model.addAttribute("timeIn", (onlineTable.getStartTime()));
+        model.addAttribute("timeOut", (onlineTable.getEndTime()));
         List<RestaurantTableDTO> p2 =restaurantBO.getAviTables(onlineTable.getReservedDate(),onlineTable.getStartTime(),onlineTable.getEndTime());
         model.addAttribute("loadAllTables", p2);
         try {

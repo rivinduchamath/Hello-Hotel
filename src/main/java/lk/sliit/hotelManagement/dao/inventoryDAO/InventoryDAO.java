@@ -6,4 +6,6 @@ import org.springframework.data.repository.CrudRepository;
 
 public interface InventoryDAO extends CrudRepository<Inventory,Integer> {
     Iterable<Inventory> findAllByTypeEquals(String name);
+
+    Inventory findTopByOrderByInventoryIdDesc();
 }

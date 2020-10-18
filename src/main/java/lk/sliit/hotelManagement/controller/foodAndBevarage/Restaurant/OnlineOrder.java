@@ -4,6 +4,7 @@ import lk.sliit.hotelManagement.controller.SuperController;
 import lk.sliit.hotelManagement.dto.kitchen.FoodItemDTO;
 import lk.sliit.hotelManagement.dto.restaurant.OnlineCustomerDTO;
 import lk.sliit.hotelManagement.dto.restaurant.restaurantOnlineOrder.RestaurantOnlineOrderDTO;
+import lk.sliit.hotelManagement.dto.restaurant.restaurantOnlineTable.OnlineTableReservationDTO;
 import lk.sliit.hotelManagement.service.custom.IndexLoginBO;
 import lk.sliit.hotelManagement.service.custom.KitchenBO;
 import lk.sliit.hotelManagement.service.custom.OnlineCustomerBO;
@@ -17,6 +18,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.sql.Date;
+import java.sql.Time;
 import java.util.List;
 
 @Controller
@@ -72,6 +75,38 @@ public class OnlineOrder {
             return "redirect:/onlineOrder";
         }
         return "redirect:/onlineOrder";
+    }
+    @PostMapping("/saveOnlineTable")
+    public String saveOnlineTable(@ModelAttribute OnlineTableReservationDTO onlineOrderDTO, HttpSession session) {
+        System.out.println(onlineOrderDTO+"ssssssssaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+       try {
+           Time a = Time.valueOf(onlineOrderDTO.getvStatT());
+           Time a2 = Time.valueOf(onlineOrderDTO.getvEndT());
+           onlineOrderDTO.setStartTime(a);
+           onlineOrderDTO.setEndTime(a2);
+           Date date = Date.valueOf(onlineOrderDTO.getvDate());
+           onlineOrderDTO.setReservedDate(date);
+       }catch (IllegalArgumentException s){
+
+       }
+       try {
+            OnlineTableReservationDTO top = restaurantBO.findHighestOnlineTableId();
+            int x = (top.getOnlineTableReservationId()) + 1;
+            onlineOrderDTO.setOnlineTableReservationId((x));
+        } catch (NullPointerException e) {
+
+            System.out.println("In Try Catch");
+            onlineOrderDTO.setOnlineTableReservationId((1));
+        }
+
+        try {
+            int onlineCustomerId = Integer.parseInt(session.getAttribute("userId").toString());
+            onlineOrderDTO.setCustomer(onlineCustomerId);
+            restaurantBO.saveOnlineTableId(onlineOrderDTO);
+        } catch (NullPointerException d) {
+            return "redirect:/onlineTable";
+        }
+        return "redirect:/onlineTable";
     }
 
 }

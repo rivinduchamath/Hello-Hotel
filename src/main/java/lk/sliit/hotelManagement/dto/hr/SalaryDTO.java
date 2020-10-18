@@ -13,41 +13,33 @@ public class SalaryDTO {
     private String  employeeName;
     private String  image;
 
+
     public SalaryDTO() {
     }
 
-    public SalaryDTO(int salaryId, double basicSalary, double etf,
-                     double epf, double serviceCharge, double otHours, double hours,
-                     double salary, int employeeID) {
-        this.salaryId = salaryId;
-        this.basicSalary = basicSalary;
-        this.etf = etf;
-        this.epf = epf;
-        this.serviceCharge = serviceCharge;
-        this.otHours = otHours;
-        this.hours = hours;
-        this.salary = salary;
-        this.employeeID = employeeID;
-    }
 
-    public SalaryDTO(int salaryId, double basicSalary, double etf, double epf, double serviceCharge, double otHours,
-                     double hours, double salary, int employeeID, String employeeName, String image) {
-        this.salaryId = salaryId;
-        this.basicSalary = basicSalary;
-        this.etf = etf;
-        this.epf = epf;
-        this.serviceCharge = serviceCharge;
-        this.otHours = otHours;
-        this.hours = hours;
-        this.salary = salary;
-        this.employeeID = employeeID;
-        this.employeeName = employeeName;
-        this.image = image;
-    }
+
 
     public SalaryDTO(int salaryId) {
         this.salaryId = salaryId;
     }
+
+    public SalaryDTO(int salaryId, double otHours, double hours, int userId, String name, String image) {
+        this.salaryId = salaryId;
+        this.employeeName = name;
+        this.otHours = otHours;
+        this.hours = hours;
+        this.image = image;
+        this.employeeID = userId;
+    }
+
+    public SalaryDTO(int salaryId, double otHours, double hours, int userId) {
+        this.salaryId = salaryId;
+        this.otHours = otHours;
+        this.hours = hours;
+        this.employeeID = userId;
+    }
+
 
 
     public String getImage() {

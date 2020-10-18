@@ -57,15 +57,13 @@ public class MailSendImpl implements MailSend {
             msg.setRecipients(Message.RecipientType.TO, address);
 
 
-            msg.setSubject("Hotel Hareesha Emplloyee Registration");
+            msg.setSubject("Hotel Hareesha Employee Registration");
             msg.setSentDate(new Date());
             msg.setFrom(smsSender);
 
 
-
-
-            msg.setText("Sender Name: " + employeeDTO.getName() +"\n\n"+
-                    "Floor Number: " + employeeDTO.getEmail() +"\n\n"+
+            msg.setText("Sender Name: " + employeeDTO.getName() + "\n\n" +
+                    "Floor Number: " + employeeDTO.getEmail() + "\n\n" +
                     "dsdsa" + employeeDTO.getPassword()
             );
 
