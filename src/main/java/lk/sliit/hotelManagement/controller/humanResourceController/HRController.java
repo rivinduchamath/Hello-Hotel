@@ -1,7 +1,9 @@
 package lk.sliit.hotelManagement.controller.humanResourceController;
 
 import lk.sliit.hotelManagement.controller.SuperController;
+import lk.sliit.hotelManagement.dto.hr.AccountsDTO;
 import lk.sliit.hotelManagement.dto.hr.AttendanceDTO;
+import lk.sliit.hotelManagement.dto.hr.DepartmentDTO;
 import lk.sliit.hotelManagement.dto.hr.SalaryDTO;
 import lk.sliit.hotelManagement.dto.manager.EmployeeDTO;
 import lk.sliit.hotelManagement.service.custom.HumanResourceBO;
@@ -13,6 +15,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -107,7 +111,7 @@ public class HRController {
     private void newSalaryManage(int eId, double overtimeHours,double hours) {
         SalaryDTO totalCount = new SalaryDTO();
         try {
-             totalCount = humanResourceBO.findHighestSalaryId();
+            totalCount = humanResourceBO.findHighestSalaryId();
             int x = (totalCount.getSalaryId()) + 1;
             totalCount.setSalaryId(x);
         } catch (NullPointerException e) {
@@ -131,18 +135,11 @@ public class HRController {
             salaryId = a.getSalaryId();
             if (employeeID == (eId)) {
                 a.setOtHours(ot);
-                 a.setSalaryId(salaryId);
+                a.setSalaryId(salaryId);
                 a.setHours(hours);
                 humanResourceBO.saveSalary(a);
             }
         }
-    }
-
-
-    @GetMapping("/accounts")
-    public String accounts(Model model) {
-        model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
-        return "accounts";
     }
 
     @GetMapping("/accountsReport")
@@ -157,6 +154,47 @@ public class HRController {
         //Get All Employees After Delete
         //   request.setAttribute ( "listEmployeesTable", humanResourceBO.findAllEmployees ( ) );
         return "redirect:/attendance";
+    }
+
+    @GetMapping("/accounts")
+    public String accounts(Model model) {
+        List<DepartmentDTO> p2 = manageBO.findAllDepartment();
+        model.addAttribute("loadDepartment", p2);
+        model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
+
+        List<AccountsDTO> p3 = humanResourceBO.findAllAccounts();
+        model.addAttribute("loadAccounts", p3);
+        return "accounts";
+    }
+
+    @RequestMapping(value = "deleteAccounts/{accountId}")
+    public void deleteEmployee(@PathVariable("accountId") int accountId, HttpServletRequest request, HttpServletResponse response) throws IOException, IOException {
+        humanResourceBO.deleteAccount(accountId);
+        response.sendRedirect("/accounts");
+    }
+
+    @PostMapping("/saveAccount")
+    public String saveAccounts(@ModelAttribute AccountsDTO accountsDTO, Model model) {
+        model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
+        try {
+            AccountsDTO accountsDTO1 = humanResourceBO.findHighestAccountId();
+            AccountsDTO accountsDTO2 = null;
+            try {
+                accountsDTO2 = humanResourceBO.findAccountById(accountsDTO.getAccountId());
+            } catch (NullPointerException d) {
+                int maxId = (accountsDTO1.getAccountId());
+                if (accountsDTO.getAccountId() == (maxId)) {
+                    accountsDTO.setAccountId((maxId));
+                } else {
+                    maxId++;
+                    accountsDTO.setAccountId(maxId);
+                }
+            }
+        } catch (NullPointerException e) {
+            accountsDTO.setAccountId(1);
+        }
+        humanResourceBO.saveAccounts(accountsDTO);
+        return "redirect:/accounts";
     }
 
 }

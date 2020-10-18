@@ -32,6 +32,8 @@ public class CounterTableReservation {
     public CounterTableReservation() {
     }
 
+
+
     public Time getStartTime() {
         return startTime;
     }
@@ -80,4 +82,6 @@ public class CounterTableReservation {
     public void setOrderDetails(List<CounterTableReservationDetails> orderDetails) {
         this.orderDetails = orderDetails;
     }
+
+
 }

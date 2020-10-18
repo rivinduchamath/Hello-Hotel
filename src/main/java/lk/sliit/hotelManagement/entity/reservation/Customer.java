@@ -15,6 +15,7 @@ public class Customer {
     private String name;
     private String address;
     private String contactNumber;
+    private int age;
     @OneToMany(mappedBy = "customer", cascade = {CascadeType.PERSIST,CascadeType.REFRESH, CascadeType.DETACH, CascadeType.MERGE})
     private List<Reservation> reservations = new ArrayList<>();
     @OneToMany(mappedBy = "customer", cascade = {CascadeType.PERSIST,CascadeType.REFRESH, CascadeType.DETACH, CascadeType.MERGE})
@@ -33,6 +34,15 @@ public class Customer {
         this.name = name;
         this.address = address;
         this.contactNumber = contactNumber;
+    }
+
+    public Customer(int customerId, String email, String name, String address, String contactNumber, int age) {
+        this.customerId = customerId;
+        this.email = email;
+        this.name = name;
+        this.address = address;
+        this.contactNumber = contactNumber;
+        this.age = age;
     }
 
     public Customer() {
@@ -78,5 +88,11 @@ public class Customer {
         this.contactNumber = contactNumber;
     }
 
+    public int getAge() {
+        return age;
+    }
 
+    public void setAge(int age) {
+        this.age = age;
+    }
 }

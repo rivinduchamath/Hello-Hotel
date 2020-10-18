@@ -216,7 +216,7 @@
                                 <div class="x_content">
                                     <br/>
 
-                                    <form name="form1" id="ff" action="checkTimeForTable">
+                                    <form name="form1" id="ff" action="counterTableDetails">
 
                                     <label>
                                         Date:
