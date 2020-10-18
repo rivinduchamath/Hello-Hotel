@@ -87,9 +87,7 @@ public class SalaryController {
     @RequestMapping("addSalary")
     public ModelAndView loadInvoicePage(@ModelAttribute SalaryPay salaryDTO, Model model) {
         ModelAndView mav = new ModelAndView ( "salaryPayment" );
-
         model.addAttribute ( "loggerName", indexLoginBO.getEmployeeByIdNo ( SuperController.idNo ) );
-
         model.addAttribute ( "getSalaryData", humanResourceBO.getSalaryPayment ( salaryDTO.getSource ( ) ) );
         return mav;
     }
