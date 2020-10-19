@@ -19,6 +19,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -119,6 +120,8 @@ public class HouseKeepingBOImpl implements HouseKeepingBO {
 
     @Override
     public void saveLaundry(LaundryDTO laundryDTO) {
+        Date a = new java.sql.Date(new java.util.Date().getTime());
+        laundryDTO.setDate(a);
         laundryOrderDAO.save(new LaundryOrders(
                 laundryDTO.getLaundryId(),
                 laundryDTO.getOrderHolder(),

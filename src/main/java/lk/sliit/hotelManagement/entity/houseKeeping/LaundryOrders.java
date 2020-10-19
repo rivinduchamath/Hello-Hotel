@@ -2,6 +2,9 @@ package lk.sliit.hotelManagement.entity.houseKeeping;
 
 
 import lk.sliit.hotelManagement.entity.reservation.Customer;
+import org.hibernate.annotations.Generated;
+import org.hibernate.annotations.GenerationTime;
+
 import javax.persistence.*;
 import java.sql.Date;
 
@@ -13,7 +16,8 @@ public class LaundryOrders {
     private int orderHolder;
     private double  pieces;
     private Date expectedDate;
-    private Date date;
+
+    private Date date ;
     @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.REFRESH, CascadeType.DETACH, CascadeType.MERGE})
     @JoinColumn(name = "customerId", referencedColumnName = "customerId")
     private Customer customerId;
