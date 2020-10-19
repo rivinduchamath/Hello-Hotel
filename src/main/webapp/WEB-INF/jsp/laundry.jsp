@@ -97,7 +97,7 @@
             <div class="">
                 <div class="page-title">
                     <div class="title_left">
-                        <h3>Bar Stock Manage
+                        <h3>Laundry Manage
                             <small>Welcome To Hotel Hareesha</small>
                         </h3>
                     </div>
@@ -195,7 +195,7 @@
                 </div>
 
                 <div class="col-md-4 col-sm-4" style="float: left; position: relative;display: inline-block">
-                    <form method="POST" action="/addBarNotice" name="saveUser">
+                    <form method="POST" action="addLaundry" name="addLaundry">
 
                         <div class="form-group">
 

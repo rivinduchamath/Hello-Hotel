@@ -7,7 +7,7 @@ import java.sql.Date;
 public class Accounts {
     @Id
     private int accountId;
-    private int chequeNo;
+    private String chequeNo;
     private double amount;
     private Date date;
     private String description;
@@ -16,7 +16,7 @@ public class Accounts {
     @JoinColumn(name = "departmentId", referencedColumnName = "departmentId")
     private Department department;
 
-    public Accounts(int accountId, int chequeNo, double amount, Date date, String description, Department department) {
+    public Accounts(int accountId, String chequeNo, double amount, Date date, String description, Department department) {
         this.accountId = accountId;
         this.chequeNo = chequeNo;
         this.amount = amount;
@@ -36,11 +36,11 @@ public class Accounts {
         this.accountId = accountId;
     }
 
-    public int getChequeNo() {
+    public String getChequeNo() {
         return chequeNo;
     }
 
-    public void setChequeNo(int chequeNo) {
+    public void setChequeNo(String chequeNo) {
         this.chequeNo = chequeNo;
     }
 

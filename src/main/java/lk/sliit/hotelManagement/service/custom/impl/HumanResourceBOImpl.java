@@ -182,14 +182,15 @@ public class HumanResourceBOImpl implements HumanResourceBO {
         List<MonthlySalary> dtoList = new ArrayList<>();
 
         for (Employee a : allTable) {
-            all4 = attendanceDAO.findAllByDateBetweenAndEmployeeID_UserIdEquals(dt, todaydate, a.getUserId());
-
-            dtoList.add(new MonthlySalary(
-                    a.getUserId(),
-                    a.getName(),
-                    a.getSalary(),
-                    all4
-            ));
+            try {
+                all4 = attendanceDAO.findAllByDateBetweenAndEmployeeID_UserIdEquals(dt, todaydate, a.getUserId());
+                dtoList.add(new MonthlySalary(
+                        a.getUserId(),
+                        a.getName(),
+                        a.getSalary(),
+                        all4
+                ));
+            }catch (Exception e){}
         }
 
         return dtoList;

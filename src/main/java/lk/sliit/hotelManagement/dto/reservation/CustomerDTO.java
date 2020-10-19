@@ -6,6 +6,7 @@ public class CustomerDTO {
     private String name;
     private String address;
     private String contactNumber;
+    private String state;
 
     public CustomerDTO(int customerId, String email, String name, String address, String contactNumber) {
         this.customerId = customerId;
@@ -15,7 +16,24 @@ public class CustomerDTO {
         this.contactNumber = contactNumber;
     }
 
+    public CustomerDTO(int customerId, String email, String name, String address, String contactNumber, String state) {
+        this.customerId = customerId;
+        this.email = email;
+        this.name = name;
+        this.address = address;
+        this.contactNumber = contactNumber;
+        this.state = state;
+    }
+
     public CustomerDTO() {
+    }
+
+    public String getState() {
+        return state;
+    }
+
+    public void setState(String state) {
+        this.state = state;
     }
 
     public CustomerDTO(int customerId) {
