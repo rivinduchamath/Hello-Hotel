@@ -8,25 +8,25 @@ import javax.persistence.*;
 import java.sql.Date;
 
 @Entity
-public class Notice1 implements SuperEntity {
+public class solidDate implements SuperEntity {
 
     @Id
     private int noticeId ;
     private String title;
     @Column(length = 1000)
-    private String description;
+    private String cost;
     private String date;
 
 
-    public Notice1(int noticeId, String title, String description, String date) {
+    public solidDate(int noticeId, String title, String cost, String date) {
         this.noticeId = noticeId;
         this.title = title;
-        this.description = description;
+        this.cost = cost;
         this.date = date;
 
     }
 
-    public Notice1() {
+    public solidDate() {
     }
 
     public int getNoticeId() {
@@ -46,11 +46,11 @@ public class Notice1 implements SuperEntity {
     }
 
     public String getDescription() {
-        return description;
+        return cost;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setDescription(String cost) {
+        this.cost = cost;
     }
 
     public String getDate() {
