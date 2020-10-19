@@ -8,12 +8,16 @@ import lk.sliit.hotelManagement.dto.houseKeeping.HotelRoomDTO;
 import lk.sliit.hotelManagement.dto.houseKeeping.LaundryDTO;
 import lk.sliit.hotelManagement.dto.houseKeeping.RoomServiceDTO;
 import lk.sliit.hotelManagement.dto.kitchen.FoodItemDTO;
+import lk.sliit.hotelManagement.dto.manager.EmployeeDTO;
 import lk.sliit.hotelManagement.dto.manager.NoticeDTO;
+import lk.sliit.hotelManagement.dto.reservation.CustomerDTO;
 import lk.sliit.hotelManagement.entity.houseKeeping.HotelRoom;
 import lk.sliit.hotelManagement.entity.houseKeeping.LaundryOrders;
 import lk.sliit.hotelManagement.entity.houseKeeping.RoomService;
 import lk.sliit.hotelManagement.entity.kitchen.FoodItem;
+import lk.sliit.hotelManagement.entity.manager.Employee;
 import lk.sliit.hotelManagement.entity.manager.Notice;
+import lk.sliit.hotelManagement.entity.reservation.Customer;
 import lk.sliit.hotelManagement.service.custom.HouseKeepingBO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -131,6 +135,26 @@ public class HouseKeepingBOImpl implements HouseKeepingBO {
                 customerDAO.findOne(laundryDTO.getCustomerId())
         ));
     }
+
+    @Override
+    public List<CustomerDTO> findCustomers() {
+        Iterable<Customer> all = customerDAO.findAllByStateEquals("In");
+
+        List<CustomerDTO> dtos = new ArrayList<>();
+        for (Customer customer: all) {
+            dtos.add(new CustomerDTO(
+                    customer.getCustomerId(),
+                   customer.getEmail(),
+                    customer.getName(),
+                    customer.getAddress(),
+                    customer.getContactNumber(),
+                    customer.getState()
+            ));
+        }
+        return dtos;
+
+    }
+
 
     private List<HotelRoomDTO> getHotelRoomDTOS(Iterable<HotelRoom> hotelRooms) {
         List<HotelRoomDTO> hotelDirtyRoomDTOList = new ArrayList<>();

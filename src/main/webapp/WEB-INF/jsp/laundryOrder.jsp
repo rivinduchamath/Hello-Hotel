@@ -61,6 +61,14 @@
         SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
         String date = sdf.format(new Date());
     %>
+
+    <%
+        if(request.getAttribute("notSelectCustomer") != null){
+    %>
+    <script>alert("Please Select Customer From Table")</script>
+    <%
+        }
+    %>
     <c:if test="${not empty loginError}">
         <script>
             window.addEventListener("load", function () {
@@ -141,20 +149,20 @@
                 <div class="clearfix"></div>
                 <div class=" ">
                     <div class="col-sm-12 col-md-12 col-lg-3 col-xl-3" style="float: left">
-                        <form method="POST" action="addLaundry" name="addLaundry">
+                        <form method="POST" action="laundryOrder" name="addLaundry">
 
                             <div class="form-group">
-                                <input type="hidden" class="form-control" value="0"
-                                       required="required" name="laundryId"
+                                <input type="hidden" class="form-control"
+                                       required="required" name="laundryId"value="0"
                                        id="laundryId"/>
                                 <label >Customer Id</label>
                                 <input type="text" class="form-control"
-                                       required name="customerId"
+                                       required name="customerId" readonly  value="0"
                                        id="itemCode" placeholder="Customer Id"/>
                                 <label >Customer Name</label>
                                 <input type="text" class="form-control" readonly
                                        required name="customerName"
-                                       id="customerName" placeholder="Customer Name"/>
+                                       id="name" placeholder="Customer Name"/>
 
                                 <label>Number of pieces</label>
                                 <input type="number" class="form-control"
@@ -215,11 +223,12 @@
                                                 </tr>
                                                 </thead>
                                                 <tbody>
-                                                <c:forEach items="${loadInventoryBarTable}" var="e">
+                                                <c:forEach items="${customerAllIn}" var="e">
 
                                                     <tr>
-                                                        <td scope="row">${e.text}</td>
-                                                        <td>${e.inventoryId}</td>
+                                                        <td>${e.name}</td>
+                                                        <td scope="row">${e.customerId}</td>
+
                                                     </tr>
                                                 </c:forEach>
                                                 </tbody>
@@ -330,10 +339,9 @@
         var date2 = new Date();
         var today = date.getDate() + ":" + (date.getMonth()) + ":" + date.getFullYear();
         selectedRow = $(this);
-        $("#itemName").val($(this).find("td:nth-child(1)").text());
+        $("#name").val($(this).find("td:nth-child(1)").text());
         $("#itemCode").val($(this).find("td:nth-child(2)").text());
-        $("#price").val($(this).find("td:nth-child(3)").text());
-        $("#date").val(today);
+
         $("#dataTablesButton1 tbody tr").removeClass('row-selected');
         selectedRow.addClass('row-selected');
     });
@@ -347,7 +355,17 @@
     });
 });
 </script>
+<script>
 
+
+    $("#btnAdd").click(function () {
+        var itemCode = $('#itemCode').val();
+        if (itemCode == "") {
+            alert("Please Select Item In Table");
+            return;
+        }
+    })
+</script>
 
 <script src="../../vendors/datatables.net/js/jquery.dataTables.min.js"></script>
 <script src="../../vendors/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
@@ -364,7 +382,6 @@
 <script src="../../vendors/jszip/dist/jszip.min.js"></script>
 <script src="../../vendors/iCheck/icheck.min.js"></script>
 
-<script src="../../js/addTable.js"></script>
 <!-- Custom Theme Scripts -->
 <script src="../../build/js/custom.min.js"></script>
 </body>

@@ -2,6 +2,7 @@ package lk.sliit.hotelManagement.service.custom;
 
 import lk.sliit.hotelManagement.dto.houseKeeping.HotelRoomDTO;
 import lk.sliit.hotelManagement.dto.houseKeeping.LaundryDTO;
+import lk.sliit.hotelManagement.dto.reservation.CustomerDTO;
 import lk.sliit.hotelManagement.service.SuperBO;
 import java.util.List;
 
@@ -25,4 +26,6 @@ public interface HouseKeepingBO extends SuperBO {
     LaundryDTO findLaundryOrderById(int laundryId);
 
     void saveLaundry(LaundryDTO laundryDTO);
+
+    List<CustomerDTO> findCustomers();
 }
