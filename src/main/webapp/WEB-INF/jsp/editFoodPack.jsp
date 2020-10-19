@@ -117,7 +117,7 @@
                                                                     <input type="hidden" name ="menuId"  value="${menuItem.menuId}">
                                                                     <input type="hidden" name ="itemId"  value="${item.itemId}">
 
-                                                                    <button  type="submit"><i  class="fa fa-plus-square"></i></button>
+                                                                    <button  type="submit"><i  class="fa fa-minus-square"></i></button>
 
                                                                 </form>
                                                             </td>
