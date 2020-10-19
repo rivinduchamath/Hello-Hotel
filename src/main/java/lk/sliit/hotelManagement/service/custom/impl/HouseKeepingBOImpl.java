@@ -1,11 +1,16 @@
 package lk.sliit.hotelManagement.service.custom.impl;
 
 import lk.sliit.hotelManagement.dao.houseKeepingDAO.HouseKeepingDAO;
+import lk.sliit.hotelManagement.dao.houseKeepingDAO.LaundryOrderDAO;
+import lk.sliit.hotelManagement.dao.manageSystemDAO.EmployeeDAO;
+import lk.sliit.hotelManagement.dao.reservationDAO.CustomerDAO;
 import lk.sliit.hotelManagement.dto.houseKeeping.HotelRoomDTO;
+import lk.sliit.hotelManagement.dto.houseKeeping.LaundryDTO;
 import lk.sliit.hotelManagement.dto.houseKeeping.RoomServiceDTO;
 import lk.sliit.hotelManagement.dto.kitchen.FoodItemDTO;
 import lk.sliit.hotelManagement.dto.manager.NoticeDTO;
 import lk.sliit.hotelManagement.entity.houseKeeping.HotelRoom;
+import lk.sliit.hotelManagement.entity.houseKeeping.LaundryOrders;
 import lk.sliit.hotelManagement.entity.houseKeeping.RoomService;
 import lk.sliit.hotelManagement.entity.kitchen.FoodItem;
 import lk.sliit.hotelManagement.entity.manager.Notice;
@@ -23,6 +28,10 @@ public class HouseKeepingBOImpl implements HouseKeepingBO {
 
     @Autowired
     HouseKeepingDAO houseKeepingDAO;
+    @Autowired
+    LaundryOrderDAO laundryOrderDAO;
+    @Autowired
+    CustomerDAO customerDAO;
 
     @Override
     public void saveRoomDetails(HotelRoomDTO hotelRoomDTO) {
@@ -82,6 +91,42 @@ public class HouseKeepingBOImpl implements HouseKeepingBO {
     public List<HotelRoomDTO> findDirtyRooms(String notCleaned) {
         Iterable<HotelRoom> hotelRooms = houseKeepingDAO.findAllByStatusEquals(notCleaned);
         return getHotelRoomDTOS(hotelRooms);
+    }
+
+    @Override
+    public LaundryDTO findHighestId() {
+
+        LaundryOrders laundryOrders = null;
+        try {
+            laundryOrders = laundryOrderDAO.findTopByOrderByLaundryIdDesc();
+        } catch (Exception e){}
+
+        return new LaundryDTO(laundryOrders.getLaundryId());
+    }
+
+    @Override
+    public LaundryDTO findLaundryOrderById(int laundryId) {
+        LaundryOrders laundryOrders = laundryOrderDAO.findOne(laundryId);
+        return new LaundryDTO(
+                laundryOrders.getLaundryId(),
+                laundryOrders.getCustomerId().getCustomerId(),
+                laundryOrders.getOrderHolder(),
+                laundryOrders.getPieces(),
+                laundryOrders.getExpectedDate(),
+                laundryOrders.getDate()
+        );
+    }
+
+    @Override
+    public void saveLaundry(LaundryDTO laundryDTO) {
+        laundryOrderDAO.save(new LaundryOrders(
+                laundryDTO.getLaundryId(),
+                laundryDTO.getOrderHolder(),
+                laundryDTO.getPieces(),
+                laundryDTO.getExpectedDate(),
+                laundryDTO.getDate(),
+                customerDAO.findOne(laundryDTO.getCustomerId())
+        ));
     }
 
     private List<HotelRoomDTO> getHotelRoomDTOS(Iterable<HotelRoom> hotelRooms) {

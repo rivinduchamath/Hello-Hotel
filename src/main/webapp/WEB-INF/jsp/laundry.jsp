@@ -187,7 +187,7 @@
 
 
                     <div class="col-sm-12 col-md-3 col-lg-3 col-xl-3">
-                        <a href="bar">
+                        <a href="housekeeping">
                             <button type="button" class="btn btn-dark"><i class="fa fa-reply"></i>&nbsp;Back</button>
                         </a>
                     </div>
@@ -200,29 +200,29 @@
                         <div class="form-group">
 
                             <label>Item Id</label>
-                            <input type="text" class="form-control"
-                                   required="required" name="inventoryId" readonly
-                                   id="itemId" placeholder="Item Id"/>
+                            <input type="hidden" class="form-control" value="0"
+                                   required="required" name="laundryId" readonly
+                                   id="laundryId"/>
 
 
                             <label>Item Name</label>
-                            <input type="text" class="form-control"
-                                   required="required" name="text"readonly
-                                   id="itemName" placeholder="Item Name"/>
+                            <input type="number" class="form-control"
+                                   required="required" name="pieces"readonly
+                                   id="pieces" placeholder="Number of pieces"/>
                         </div>
 
                         <div class="form-group">
 
                             <label >Order Qty</label>
-                            <input type="number" class="form-control"
-                                   required="required" name="orderQty"
-                                   id="qty" placeholder="Qty"/>
+                            <input type="date" class="form-control"
+                                   required="required" name="date"
+                                   id="date" placeholder="Expected Date"/>
 
 
                             <label >Expected Date</label>
                             <input type="date" class="form-control"
                                    required="required" name="expDate"
-                                   id="date" placeholder="mm/dd/yy"/></div>
+                                   id="customerId" placeholder="mm/dd/yy"/></div>
 
                         <button type='submit' class="btn btn-dark" style="width: 50%; top: 20px; position: relative"
                                 value="Register">
