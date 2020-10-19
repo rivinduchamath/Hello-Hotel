@@ -3,45 +3,51 @@ package lk.sliit.hotelManagement.dto.hr;
 import java.sql.Date;
 
 public class AccountsDTO {
-    private String accountId;
-    private double expenses;
-    private double income;
+    private int accountId;
+    private String chequeNo;
+    private double amount;
     private Date date;
-    private String department;
+    private int department;
+    private String description;
 
-    public AccountsDTO(String accountId, double expenses, double income, Date date, String department) {
+    public AccountsDTO(int accountId, String chequeNo, double amount, Date date, int department, String description) {
         this.accountId = accountId;
-        this.expenses = expenses;
-        this.income = income;
+        this.chequeNo = chequeNo;
+        this.amount = amount;
         this.date = date;
         this.department = department;
+        this.description = description;
     }
 
     public AccountsDTO() {
     }
 
-    public String getAccountId() {
-        return accountId;
-    }
-
-    public void setAccountId(String accountId) {
+    public AccountsDTO(int accountId) {
         this.accountId = accountId;
     }
 
-    public double getExpenses() {
-        return expenses;
+    public int getAccountId() {
+        return accountId;
     }
 
-    public void setExpenses(double expenses) {
-        this.expenses = expenses;
+    public void setAccountId(int accountId) {
+        this.accountId = accountId;
     }
 
-    public double getIncome() {
-        return income;
+    public String getChequeNo() {
+        return chequeNo;
     }
 
-    public void setIncome(double income) {
-        this.income = income;
+    public void setChequeNo(String chequeNo) {
+        this.chequeNo = chequeNo;
+    }
+
+    public double getAmount() {
+        return amount;
+    }
+
+    public void setAmount(double amount) {
+        this.amount = amount;
     }
 
     public Date getDate() {
@@ -52,22 +58,31 @@ public class AccountsDTO {
         this.date = date;
     }
 
-    public String getDepartment() {
+    public int getDepartment() {
         return department;
     }
 
-    public void setDepartment(String department) {
+    public void setDepartment(int department) {
         this.department = department;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     @Override
     public String toString() {
         return "AccountsDTO{" +
-                "accountId='" + accountId + '\'' +
-                ", expenses=" + expenses +
-                ", income=" + income +
+                "accountId=" + accountId +
+                ", chequeNo=" + chequeNo +
+                ", amount=" + amount +
                 ", date=" + date +
-                ", department='" + department + '\'' +
+                ", department=" + department +
+                ", description='" + description + '\'' +
                 '}';
     }
 }

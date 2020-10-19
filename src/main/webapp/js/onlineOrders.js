@@ -138,5 +138,4 @@ function getValue() {
 
     $("#itemPay").val(stre);
 
-
 }

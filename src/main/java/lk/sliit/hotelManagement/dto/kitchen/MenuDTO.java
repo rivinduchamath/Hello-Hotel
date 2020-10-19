@@ -11,7 +11,6 @@ public class MenuDTO {
     private String type;
     private String picture;
     private double unitPrice;
-    private String getMenuId;
 
     public MenuDTO(int menuId, String name, String type, String picture, double unitPrice) {
         this.menuId = menuId;
@@ -33,13 +32,7 @@ public class MenuDTO {
         this.itemId = itemId;
     }
 
-    public String getGetMenuId() {
-        return getMenuId;
-    }
 
-    public void setGetMenuId(String getMenuId) {
-        this.getMenuId = getMenuId;
-    }
 
     public int getItemId() {
         return itemId;

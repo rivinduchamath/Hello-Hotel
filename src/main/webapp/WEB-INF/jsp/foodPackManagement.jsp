@@ -1,10 +1,4 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: Rivindu Chamath
-  Date: 21-May-20
-  Time: 2:43 AM
-  To change this template use File | Settings | File Templates.
---%>
+
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page import="java.util.Date" %>
@@ -115,6 +109,7 @@
                                                             <td>
                                                                 <form action="" method="post">
                                                                 <i class="fa fa-plus-square"></i>
+                                                                </form>
                                                             </td>
                                                         </tr>
                                                     </c:forEach>

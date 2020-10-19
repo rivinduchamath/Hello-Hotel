@@ -238,6 +238,7 @@
                                                     <tbody>
                                                     <c:forEach items="${loadTable1}" var="e">
                                                         <tr>
+
                                                             <td>${e.orderId}</td>
                                                             <td>${e.name}</td>
                                                             <td>${e.address}</td>

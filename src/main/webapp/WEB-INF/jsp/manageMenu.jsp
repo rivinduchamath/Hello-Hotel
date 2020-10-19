@@ -227,8 +227,8 @@
 
                                         <div class=" form-group">
                                             <label class=" label-align"
-                                                   for="itemName">Item Name: <span
-                                                    class="required">*  &nbsp;</span>
+                                                   for="itemName">Item Name:
+                                                <span class="required">*  &nbsp;</span>
                                             </label>
                                             <div class=" ">
                                                 <input class="form-control" name="itemName" id="itemName"

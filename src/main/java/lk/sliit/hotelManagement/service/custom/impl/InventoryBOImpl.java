@@ -6,9 +6,11 @@ import lk.sliit.hotelManagement.dto.inventory.InventoryDTO;
 import lk.sliit.hotelManagement.dto.inventory.InventoryNoticeDTO;
 import lk.sliit.hotelManagement.dto.inventory.ItemTypeDTO;
 import lk.sliit.hotelManagement.dto.inventory.SupplierDTO;
+import lk.sliit.hotelManagement.dto.manager.NoticeDTO;
 import lk.sliit.hotelManagement.entity.TimeCheck;
 import lk.sliit.hotelManagement.entity.barManage.BarOrders;
 import lk.sliit.hotelManagement.entity.inventory.*;
+import lk.sliit.hotelManagement.entity.manager.Notice;
 import lk.sliit.hotelManagement.service.custom.InventoryBO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -404,4 +406,31 @@ public class InventoryBOImpl implements InventoryBO {
         }
     }
 
+    @Override
+    public InventoryDTO findHighestId() {
+        Inventory a = inventoryDAO.findTopByOrderByInventoryIdDesc();
+
+        return new InventoryDTO(
+                    a.getInventoryId()
+            );
+
+    }
+
+    @Override
+    public InventoryDTO findFoodItemById(int inventoryId) {
+        Inventory inventoryDTO1 = inventoryDAO.findOne(inventoryId);
+        return new InventoryDTO(
+                inventoryDTO1.getInventoryId(),
+                inventoryDTO1.getText(),
+                inventoryDTO1.getDescription(),
+                inventoryDTO1.getOrderQty(),
+                inventoryDTO1.getType(),
+                inventoryDTO1.getOrderLimit(),
+                inventoryDTO1.getGetPrice(),
+                inventoryDTO1.getSellingPrice(),
+                inventoryDTO1.getDate()
+        );
+
+
+    }
 }

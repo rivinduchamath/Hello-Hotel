@@ -7,18 +7,21 @@ import java.sql.Date;
 public class Accounts {
     @Id
     private int accountId;
-    private double expenses;
-    private double income;
+    private String chequeNo;
+    private double amount;
     private Date date;
+    private String description;
+
     @OneToOne(cascade = {CascadeType.PERSIST, CascadeType.REFRESH, CascadeType.DETACH, CascadeType.MERGE})
     @JoinColumn(name = "departmentId", referencedColumnName = "departmentId")
     private Department department;
 
-    public Accounts(int accountId, double expenses, double income, Date date, Department department) {
+    public Accounts(int accountId, String chequeNo, double amount, Date date, String description, Department department) {
         this.accountId = accountId;
-        this.expenses = expenses;
-        this.income = income;
+        this.chequeNo = chequeNo;
+        this.amount = amount;
         this.date = date;
+        this.description = description;
         this.department = department;
     }
 
@@ -33,20 +36,20 @@ public class Accounts {
         this.accountId = accountId;
     }
 
-    public double getExpenses() {
-        return expenses;
+    public String getChequeNo() {
+        return chequeNo;
     }
 
-    public void setExpenses(double expenses) {
-        this.expenses = expenses;
+    public void setChequeNo(String chequeNo) {
+        this.chequeNo = chequeNo;
     }
 
-    public double getIncome() {
-        return income;
+    public double getAmount() {
+        return amount;
     }
 
-    public void setIncome(double income) {
-        this.income = income;
+    public void setAmount(double amount) {
+        this.amount = amount;
     }
 
     public Date getDate() {
@@ -55,6 +58,14 @@ public class Accounts {
 
     public void setDate(Date date) {
         this.date = date;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public Department getDepartment() {

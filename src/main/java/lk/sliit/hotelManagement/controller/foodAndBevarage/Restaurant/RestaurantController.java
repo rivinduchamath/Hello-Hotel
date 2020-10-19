@@ -6,6 +6,8 @@ import lk.sliit.hotelManagement.dto.inventory.InventoryDTO;
 import lk.sliit.hotelManagement.dto.kitchen.FoodItemDTO;
 import lk.sliit.hotelManagement.dto.restaurant.RestaurantTableDTO;
 import lk.sliit.hotelManagement.dto.restaurant.restaurantCounterOrder.RestaurantCounterOrderDTO;
+import lk.sliit.hotelManagement.dto.restaurant.restaurantOnlineOrder.RestaurantOnlineOrderDTO;
+import lk.sliit.hotelManagement.dto.restaurant.restaurantOnlineTable.OnlineTableReservationDTO;
 import lk.sliit.hotelManagement.service.custom.BarBO;
 import lk.sliit.hotelManagement.service.custom.IndexLoginBO;
 import lk.sliit.hotelManagement.service.custom.KitchenBO;
@@ -35,6 +37,7 @@ public class RestaurantController {
         model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
         return "restaurant";
     }
+
 
     @GetMapping("/restaurantOrder")
     public String restaurantOrders(Model model, HttpServletRequest request) {
@@ -82,7 +85,15 @@ public class RestaurantController {
     @GetMapping("/restaurantManage")
     public String restaurantManage(Model model) {
         model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
+
+        List<RestaurantOnlineOrderDTO> tableList = restaurantBO.findOrderOnline();
+        model.addAttribute("listAllOnlineOrders", tableList);
+        List<OnlineTableReservationDTO> tableList1 = restaurantBO.findTablesOnline();
+        model.addAttribute("onlineTableReservation", tableList1);
+
         return "restaurantManage";
     }
+
+
 
 }

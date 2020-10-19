@@ -127,11 +127,19 @@
                     <h5>Please Select </h5>
                     <div class="wrapper">
 
-                        <button href="#" class="col-1-1 button1x1" id="submitButton"> Submit</button>
+                            <form method="POST" action="saveOnlineTable" name="saveOnlineTable">
+                                <input style="display: none" readonly required type="text" id="itemPay" name="orderData">
+                                <input  style="" readonly required="required" type="date" id="vDate" value="${reservedDate}" name="vDate">
+                                <input readonly required ="required"type="time" id="timeIn" value="${timeIn}" name="vStatT">
+                                <input readonly required ="required" type="time" id="timeOut" value="${timeOut}" name="vEndT">
+                            <button type="submit" onclick="getValue()" class="col-1-1 button1x1" id="submitButton">
+                                Submit
+                            </button>
+                        </form>
                         <br>
-                        <table id="reservationTable">
+                        <table>
 
-                            <tbody>
+                            <tbody id="reservationTable">
                             <c:forEach items="${loadAllTables}" var="e">
                                 <tr>
                                     <div class="col-1-4">
@@ -141,7 +149,10 @@
                                                         src="../../onlineRestaurant/restaurant/images/pngwave.png"
                                                         alt=""></figure>
 
-                                                <h5 style=""><span id="selectedTableId" style="font-size: 20px">${e.tableId} </span><a
+
+                                                <h5 onclick="myFunction(${e.tableId})" ><span
+                                                        id="selectedTableId"
+                                                        style="font-size: 20px">${e.tableId} </span><a
                                                         class="button1x">+</a></h5>
                                             </div>
                                         </div>
@@ -168,8 +179,7 @@
                     <div class="wrap-col">
                         <h3>Hot-line: <span>+94 778 7999 40</span></h3>
                         Designed by <a rel="nofollow" href="" target="_blank">Team Reliance</a> | <a
-                            href="https://github.com/rivinduchamath/Hello-Hotel" title="free website templates">Project
-                        ITP</a>
+                            href="https://github.com/rivinduchamath/Hello-Hotel" title="free website templates">Project ITP</a>
                     </div>
                 </section>
                 <section class="col-1-3">
@@ -196,7 +206,9 @@
     </div>
 
 </div>
+
 <script type="text/javascript"> Cufon.now(); </script>
+<script src="../../vendors/jquery/dist/jquery.min.js"></script>
 
 <script>
     $(window).scroll(function () {
@@ -207,7 +219,42 @@
         }
     });
 </script>
+<script>
+    var myTableArray = [];
+    var selectedRow = null;
 
-<script src="../../js/addOnlineTable.js"></script>
+    function myFunction(x) {
+        selectedRow = $(this)
+        if (!myTableArray.includes(x)) {
+            alert("Added Table " + x);
+            myTableArray.push(x)
+        } else {
+            alert("Table " + x + " already Booked");
+        }
+    }
+
+    function getValue() {
+
+        if (vDate == "" || timeIn == "" || timeOut == "") {
+            alert("Please Select Item In Table");
+            return;
+        }
+
+        var str, stre = "";
+        var inputArray = []
+
+        for (var i = 0; i < myTableArray.length; i++) {
+            if (!inputArray.includes(myTableArray[i])) {
+                inputArray.push(myTableArray[i])
+                str = myTableArray[i] + " "
+                stre += str;
+            }
+        }
+
+        $("#itemPay").val(stre);
+    }
+</script>
+
+
 </body>
 </html>

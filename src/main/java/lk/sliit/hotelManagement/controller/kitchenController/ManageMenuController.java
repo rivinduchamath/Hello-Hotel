@@ -3,6 +3,8 @@ package lk.sliit.hotelManagement.controller.kitchenController;
 import lk.sliit.hotelManagement.controller.SuperController;
 import lk.sliit.hotelManagement.dto.kitchen.FoodItemDTO;
 import lk.sliit.hotelManagement.dto.kitchen.MenuDTO;
+import lk.sliit.hotelManagement.dto.kitchen.MenuDetailsDTO;
+import lk.sliit.hotelManagement.entity.kitchen.FoodItem;
 import lk.sliit.hotelManagement.service.custom.IndexLoginBO;
 import lk.sliit.hotelManagement.service.custom.KitchenBO;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +14,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -23,17 +26,17 @@ public class ManageMenuController {
     KitchenBO kitchenBO;
 
     @PostMapping("/FoodPacks")
-    public String addFoodPack(Model model, @ModelAttribute MenuDTO menuDTO){
+    public String addFoodPack(Model model, @ModelAttribute MenuDTO menuDTO) {
         model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
 
         try {
             MenuDTO menuItem = kitchenBO.findHighestFoodPackId();
             MenuDTO menuDTO1 = null;
             try {
-                  menuDTO1 = kitchenBO.findMenuItemById(menuDTO.getMenuId());
-               }catch (NullPointerException d){
+                menuDTO1 = kitchenBO.findMenuItemById(menuDTO.getMenuId());
+            } catch (NullPointerException d) {
                 int maxId = (menuItem.getMenuId());
-                if (menuDTO.getMenuId()==(maxId)) {
+                if (menuDTO.getMenuId() == (maxId)) {
                     menuDTO.setMenuId((maxId));
                 } else {
                     maxId++;
@@ -41,7 +44,7 @@ public class ManageMenuController {
                 }
             }
 
-        } catch (NullPointerException e){
+        } catch (NullPointerException e) {
             menuDTO.setMenuId(1);
         }
         kitchenBO.saveMenuItem(menuDTO);
@@ -49,7 +52,7 @@ public class ManageMenuController {
     }
 
     @GetMapping("/manageFoodPacks")
-    public String foodPackPage(Model model){
+    public String foodPackPage(Model model) {
         model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
         List<MenuDTO> menuItemList = kitchenBO.findMenuItems();
         List<FoodItemDTO> foodItemDTOList = kitchenBO.findFoodItems();
@@ -59,14 +62,13 @@ public class ManageMenuController {
     }
 
 
-
     @GetMapping(value = "/deleteFoodPackage/{menuId}")
-    public void deleteMenuItem(Model model, @PathVariable("menuId") int menuItemId, HttpServletResponse response){
+    public void deleteMenuItem(Model model, @PathVariable("menuId") int menuItemId, HttpServletResponse response) {
         model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
         kitchenBO.deleteMenuItem(menuItemId);
         try {
             response.sendRedirect("/manageFoodPacks");
-        } catch (IOException e){
+        } catch (IOException e) {
 
         }
     }
@@ -93,18 +95,99 @@ public class ManageMenuController {
     public String editFoodPack(Model model, @ModelAttribute MenuDTO menuDTO) {
         model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
         model.addAttribute("menuItem", kitchenBO.findMenuItemById(menuDTO.getMenuId()));
-        model.addAttribute("loadFoodItemTable",kitchenBO.findFoodItems());
+
+        List<FoodItemDTO> foodItemDTOS = kitchenBO.findFoodItems();
+        List<FoodItemDTO> notSelectedFoodItems = new ArrayList<>();
+        ArrayList<FoodItemDTO> selectedFoodItems = new ArrayList<>();
+
+        if (kitchenBO.findFoodItemsDetails(menuDTO.getMenuId()) != null) {
+            List<MenuDetailsDTO> menuDetailsDTOS = kitchenBO.findFoodItemsDetails(menuDTO.getMenuId());
+
+            if (menuDetailsDTOS.size() != 0) {
+                for (MenuDetailsDTO menuItem : menuDetailsDTOS) {
+                    for (FoodItemDTO item : foodItemDTOS) {
+                        if (item.getItemId() == menuItem.getFoodItemID()) {
+                            selectedFoodItems.add(item);
+                        }
+                    }
+                }
+            }
+
+            if (selectedFoodItems.size() != 0){
+                for (FoodItemDTO item: foodItemDTOS){
+                    if (!searchListByID(selectedFoodItems, item)){
+                        notSelectedFoodItems.add(item);
+                    }
+                }
+            }
+
+        }
+
+        model.addAttribute("loadSelectedFood", selectedFoodItems);
+        model.addAttribute("loadFoodItemTable", notSelectedFoodItems);
+
         return "/editFoodPack";
     }
+
     @GetMapping("/addItemToPack")
     public String addItemToPack(Model model, @ModelAttribute MenuDTO menuDTO) {
         model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
         model.addAttribute("menuItem", kitchenBO.findMenuItemById(menuDTO.getMenuId()));
-        model.addAttribute("loadFoodItemTable",kitchenBO.findFoodItems());
         kitchenBO.saveFoodDetail(menuDTO);
 
-        model.addAttribute("loadSelectedFood",kitchenBO.findFoodItemsDetails(menuDTO.getMenuId()));
+
+        List<FoodItemDTO> foodItemDTOS = kitchenBO.findFoodItems();
+        List<FoodItemDTO> notSelectedFoodItems = new ArrayList<>();
+        ArrayList<FoodItemDTO> selectedFoodItems = new ArrayList<>();
+
+        if (kitchenBO.findFoodItemsDetails(menuDTO.getMenuId()) != null) {
+            List<MenuDetailsDTO> menuDetailsDTOS = kitchenBO.findFoodItemsDetails(menuDTO.getMenuId());
+
+            if (menuDetailsDTOS.size() != 0) {
+                for (MenuDetailsDTO menuItem : menuDetailsDTOS) {
+                    for (FoodItemDTO item : foodItemDTOS) {
+                        if (item.getItemId() == menuItem.getFoodItemID()) {
+                            selectedFoodItems.add(item);
+                        }
+                    }
+                }
+            }
+
+            if (selectedFoodItems.size() != 0){
+                for (FoodItemDTO item: foodItemDTOS){
+                    if (!searchListByID(selectedFoodItems, item)){
+                        notSelectedFoodItems.add(item);
+                    }
+                }
+            }
+
+        }
+
+        model.addAttribute("loadSelectedFood", selectedFoodItems);
+        model.addAttribute("loadFoodItemTable", notSelectedFoodItems);
+
         return "/editFoodPack";
+    }
+
+    @GetMapping(value = "/removeItemFromPack/{menuId}")
+    public void deleteFoodItemFromPack(Model model, @PathVariable("menuId") int menuItemId, HttpServletResponse response) {
+        model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
+        kitchenBO.deleteMenuItem(menuItemId);
+        try {
+            response.sendRedirect("/editFoodPack");
+        } catch (IOException e) {
+
+        }
+    }
+
+    public boolean searchListByID(List<FoodItemDTO> list, FoodItemDTO object){
+        for (FoodItemDTO item: list){
+            if (item.getItemId() == object.getItemId()){
+                return true;
+            }
+        }
+
+        return false;
     }
 
 }

@@ -1,14 +1,20 @@
 package lk.sliit.hotelManagement.service.custom.impl;
 
 import lk.sliit.hotelManagement.dao.houseKeepingDAO.HouseKeepingDAO;
+import lk.sliit.hotelManagement.dao.hrDAO.AccountsDAO;
 import lk.sliit.hotelManagement.dao.hrDAO.AttendanceDAO;
+import lk.sliit.hotelManagement.dao.hrDAO.DepartmentDAO;
 import lk.sliit.hotelManagement.dao.hrDAO.SalaryDAO;
 import lk.sliit.hotelManagement.dao.manageSystemDAO.EmployeeDAO;
 import lk.sliit.hotelManagement.dto.houseKeeping.HotelRoomDTO;
+import lk.sliit.hotelManagement.dto.hr.AccountsDTO;
 import lk.sliit.hotelManagement.dto.hr.AttendanceDTO;
+import lk.sliit.hotelManagement.dto.hr.MonthlySalary;
 import lk.sliit.hotelManagement.dto.hr.SalaryDTO;
+import lk.sliit.hotelManagement.dto.hr.SalaryPay;
 import lk.sliit.hotelManagement.dto.manager.EmployeeDTO;
 import lk.sliit.hotelManagement.entity.houseKeeping.HotelRoom;
+import lk.sliit.hotelManagement.entity.hr.Accounts;
 import lk.sliit.hotelManagement.entity.hr.Attendance;
 import lk.sliit.hotelManagement.entity.hr.Salary;
 import lk.sliit.hotelManagement.entity.manager.Employee;
@@ -39,6 +45,10 @@ public class HumanResourceBOImpl implements HumanResourceBO {
     SalaryDAO salaryDAO;
     @Autowired
     EmployeeDAO manageDAO;
+    @Autowired
+    AccountsDAO accountsDAO;
+    @Autowired
+    DepartmentDAO departmentDAO;
 
     @Override
     public void updateRoomHR(HotelRoomDTO hotelRoomDTO) {
@@ -102,7 +112,7 @@ public class HumanResourceBOImpl implements HumanResourceBO {
         try {
             attendance = attendanceDAO.findTopByOrderByAttendanceIdDesc();
         } catch (Exception e) {
-            Logger.getLogger("lk.sliit.project.employeeManagement.service.custom.impl").log(Level.SEVERE, null, e); //Add Logger To Catch Exception
+
         }
         return new AttendanceDTO(
                 attendance.getAttendanceId()
@@ -147,13 +157,8 @@ public class HumanResourceBOImpl implements HumanResourceBO {
         for (Salary a : all) {
             dtos.add(new SalaryDTO(
                     a.getSalaryId(),
-                    a.getBasicSalary(),
-                    a.getEtf(),
-                    a.getEpf(),
-                    a.getServiceCharge(),
                     a.getOtHours(),
                     a.getHours(),
-                    a.getSalary(),
                     a.getEmployeeID().getUserId(),
                     a.getEmployeeID().getName(),
                     a.getEmployeeID().getImage()
@@ -164,28 +169,95 @@ public class HumanResourceBOImpl implements HumanResourceBO {
     }
 
     @Override
-    public List<EmployeeDTO> findAllUserwithOT() {
-        Iterable<Employee> all = manageDAO.findAll();
+    public List<MonthlySalary> findAllUserwithOT() {
 
-        List<EmployeeDTO> dtos = new ArrayList<>();
-        for (Employee employee : all) {
-            dtos.add(new EmployeeDTO(
-                    employee.getUserId(),
-                    employee.getName(),
-                    employee.getMobileNo(),
-                    employee.getEmail(),
-                    employee.getAddress(),
-                    employee.getPosition(),
-                    employee.getPassword(),
-                    employee.getDateOfBirth(),
-                    employee.getGender(),
+        Date todaydate = new Date();
+        Calendar cal = Calendar.getInstance();
+        cal.add(Calendar.MONTH, -1);
+        java.util.Date dt = cal.getTime();
+        List<Iterable<Double>> list = new ArrayList<>();
+        Iterable<Employee> allTable = employeeDAO.findAll();
+
+        Double all4 = 0.0;
+        List<MonthlySalary> dtoList = new ArrayList<>();
+
+        for (Employee a : allTable) {
+            try {
+                all4 = attendanceDAO.findAllByDateBetweenAndEmployeeID_UserIdEquals(dt, todaydate, a.getUserId());
+                dtoList.add(new MonthlySalary(
+                        a.getUserId(),
+                        a.getName(),
+                        a.getSalary(),
+                        all4
+                ));
+            }catch (Exception e){}
+        }
+
+        return dtoList;
+    }
+    @Override
+    public List<SalaryPay> getSalaryPayment(String source) {
+        List<String> list = new ArrayList<String>();
+        String[] sourceAry = source.split(" ");
+        List<SalaryPay> dtoList = new ArrayList<>();
+        for (String value : sourceAry) {
+            list.add(value);
+        }
+        Double all4 = 0.0;
+        Double all5 = 0.0;
+        for (String aa : list) {
+            int a = Integer.parseInt(aa);
+          all4=  salaryDAO.findAllByDateBetweenAndEmployeeID_UserIdEquals(a);
+          all5=  salaryDAO.findAllByDateBetweenAndEmployeeID_UserIdEqual(a);
+            Employee employee = employeeDAO.findOne(Integer.valueOf(a));
+            dtoList.add(new SalaryPay(
                     employee.getSalary(),
-                    employee.getDate(),
-                    employee.getImage(),
-                    employee.getDepartment().getDepartmentId()
+                    new Date(),
+                    0,
+                    0,
+                    all5,
+                    all4,
+                    employee.getSalary(),
+                    0,
+                    false,
+                    employee.getUserId()
             ));
         }
-        return dtos;
+       /* Iterable <Salary> all = salaryDAO.findAll (list);
+        List <SalaryDTO> dtos = new ArrayList<> ();
+        for (Salary salary : all) {
+            dtos.add(new SalaryDTO (
+                    salary.getSalaryId (),
+                    salary.getBasicSalary (),
+                    salary.getOtHours (),
+                    salary.getOtRate (),
+                    salary.getBonus (),
+                    salary.getIncomeTax (),
+                    salary.getEmployeeID ()));
+        }*/
+        return dtoList;
+    }
+
+    @Override
+    public List<AccountsDTO> findAllAccounts() {
+        Iterable<Accounts> list = accountsDAO.findAll();
+        List<AccountsDTO> list2 = new ArrayList<>();
+        for (Accounts accounts:list) {
+            list2.add(new AccountsDTO(
+                    accounts.getAccountId(),
+                    accounts.getChequeNo(),
+                    accounts.getAmount(),
+                    accounts.getDate(),
+                    accounts.getDepartment().getDepartmentId(),
+                    accounts.getDescription()
+            ));
+        }
+        return list2;
+    }
+
+    @Override
+    public void deleteAccount(int accountId) {
+        accountsDAO.delete(accountId);
     }
 
     @Override
@@ -206,13 +278,8 @@ public class HumanResourceBOImpl implements HumanResourceBO {
         Salary salary = salaryDAO.findOne(salaryId);
         SalaryDTO salaryDTO = new SalaryDTO(
                 salary.getSalaryId(),
-                salary.getBasicSalary(),
-                salary.getEtf(),
-                salary.getEpf(),
-                salary.getServiceCharge(),
                 salary.getOtHours(),
                 salary.getHours(),
-                salary.getSalary(),
                 salary.getEmployeeID().getUserId()
         );
         return salaryDTO;
@@ -222,21 +289,14 @@ public class HumanResourceBOImpl implements HumanResourceBO {
     public void saveSalary(SalaryDTO salary) {
         Date todaydate = new Date();
         Calendar cal = Calendar.getInstance();
-        int m =(todaydate.getMonth());
+        int m = (todaydate.getMonth());
         java.util.Date beforeWeek = cal.getTime();
+        Employee employee = employeeDAO.findOne(salary.getEmployeeID());
 
-     Employee employee =  employeeDAO.findOne(salary.getEmployeeID());
-
-//
         salaryDAO.save(new Salary(
                 salary.getSalaryId(),
-                salary.getBasicSalary(),
-                salary.getEtf(),
-                salary.getEpf(),
-                salary.getServiceCharge(),
                 salary.getOtHours(),
                 salary.getHours(),
-                salary.getSalary(),
                 false,
                 new Date(),
                 employee
@@ -247,19 +307,14 @@ public class HumanResourceBOImpl implements HumanResourceBO {
 
     @Override
     public List<SalaryDTO> findAllsalaryStateNotFalse() {
-        Iterable<Salary> all = salaryDAO.findAllByStateEquals(false);
+        Iterable<Salary> all = salaryDAO.findAllByStateAndDateEquals(false, new Date());
 
         List<SalaryDTO> dtos = new ArrayList<>();
         for (Salary salary : all) {
             dtos.add(new SalaryDTO(
                     salary.getSalaryId(),
-                    salary.getBasicSalary(),
-                    salary.getEtf(),
-                    salary.getEpf(),
-                    salary.getServiceCharge(),
                     salary.getOtHours(),
                     salary.getHours(),
-                    salary.getSalary(),
                     salary.getEmployeeID().getUserId(),
                     salary.getEmployeeID().getName(),
                     salary.getEmployeeID().getImage()
@@ -268,4 +323,41 @@ public class HumanResourceBOImpl implements HumanResourceBO {
         return dtos;
     }
 
+    @Override
+    public AccountsDTO findHighestAccountId() {
+        Accounts accounts = null;
+        try{
+            accounts = accountsDAO.findTopByOrderByAccountIdDesc();
+        }
+        catch(Exception e){
+
+        }
+        return new AccountsDTO(accounts.getAccountId());
+    }
+
+    @Override
+    public AccountsDTO findAccountById(int accountId) {
+        Accounts accounts = accountsDAO.findOne(accountId);
+        AccountsDTO accountsDTO = new AccountsDTO(
+                accounts.getAccountId(),
+                accounts.getChequeNo(),
+                accounts.getAmount(),
+                accounts.getDate(),
+                accounts.getDepartment().getDepartmentId(),
+                accounts.getDescription()
+        );
+        return accountsDTO;
+    }
+
+    @Override
+    public void saveAccounts(AccountsDTO accountsDTO) {
+        accountsDAO.save(new Accounts(
+                accountsDTO.getAccountId(),
+                accountsDTO.getChequeNo(),
+                accountsDTO.getAmount(),
+                accountsDTO.getDate(),
+                accountsDTO.getDescription(),
+                departmentDAO.findOne(accountsDTO.getDepartment())
+        ));
+    }
 }
