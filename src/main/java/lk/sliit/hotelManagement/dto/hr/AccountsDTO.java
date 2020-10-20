@@ -4,13 +4,13 @@ import java.sql.Date;
 
 public class AccountsDTO {
     private int accountId;
-    private int chequeNo;
+    private String chequeNo;
     private double amount;
     private Date date;
     private int department;
     private String description;
 
-    public AccountsDTO(int accountId, int chequeNo, double amount, Date date, int department, String description) {
+    public AccountsDTO(int accountId, String chequeNo, double amount, Date date, int department, String description) {
         this.accountId = accountId;
         this.chequeNo = chequeNo;
         this.amount = amount;
@@ -34,11 +34,11 @@ public class AccountsDTO {
         this.accountId = accountId;
     }
 
-    public int getChequeNo() {
+    public String getChequeNo() {
         return chequeNo;
     }
 
-    public void setChequeNo(int chequeNo) {
+    public void setChequeNo(String chequeNo) {
         this.chequeNo = chequeNo;
     }
 
