@@ -43,4 +43,6 @@ public interface KitchenBO extends SuperBO {
     FoodItemDTO findFoodItemById(int itemId);
 
     List<RestaurantCounterOrderDetailDTO> findAllOrders();
+
+    void deleteItemFromPack(int menuItemId, int foodItemID);
 }

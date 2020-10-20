@@ -4,7 +4,6 @@ import lk.sliit.hotelManagement.controller.SuperController;
 import lk.sliit.hotelManagement.dto.kitchen.FoodItemDTO;
 import lk.sliit.hotelManagement.dto.kitchen.MenuDTO;
 import lk.sliit.hotelManagement.dto.kitchen.MenuDetailsDTO;
-import lk.sliit.hotelManagement.entity.kitchen.FoodItem;
 import lk.sliit.hotelManagement.service.custom.IndexLoginBO;
 import lk.sliit.hotelManagement.service.custom.KitchenBO;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -65,7 +64,12 @@ public class ManageMenuController {
     @GetMapping(value = "/deleteFoodPackage/{menuId}")
     public void deleteMenuItem(Model model, @PathVariable("menuId") int menuItemId, HttpServletResponse response) {
         model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
-        kitchenBO.deleteMenuItem(menuItemId);
+        try {
+            kitchenBO.deleteMenuItem(menuItemId);
+        } catch (Exception e){
+
+        }
+
         try {
             response.sendRedirect("/manageFoodPacks");
         } catch (IOException e) {
@@ -169,15 +173,23 @@ public class ManageMenuController {
         return "/editFoodPack";
     }
 
-    @GetMapping(value = "/removeItemFromPack/{menuId}")
-    public void deleteFoodItemFromPack(Model model, @PathVariable("menuId") int menuItemId, HttpServletResponse response) {
+    @GetMapping(value = "/removeItemFromPack")
+    public String deleteFoodItemFromPack(Model model, @ModelAttribute MenuDetailsDTO menuDetailsDTO) {
         model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
-        kitchenBO.deleteMenuItem(menuItemId);
-        try {
-            response.sendRedirect("/editFoodPack");
-        } catch (IOException e) {
 
-        }
+        MenuDTO menuDTO = kitchenBO.findMenuItemById(menuDetailsDTO.getMenuID());
+        model.addAttribute("menuItem", menuDTO);
+
+        kitchenBO.deleteItemFromPack(menuDetailsDTO.getFoodItemID(),menuDetailsDTO.getFoodItemID());
+
+        try {
+            System.out.println("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$"+"    "+menuDetailsDTO.getFoodItemID()+"   "+menuDetailsDTO.getMenuID());
+            kitchenBO.deleteItemFromPack(menuDetailsDTO.getFoodItemID(),menuDetailsDTO.getMenuID());
+            System.out.println("Delete called.................");
+        } catch (Exception e){}
+
+        return "/editFoodPack";
+
     }
 
     public boolean searchListByID(List<FoodItemDTO> list, FoodItemDTO object){
