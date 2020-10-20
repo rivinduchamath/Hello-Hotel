@@ -271,7 +271,7 @@
                                                 </thead>
 
                                                 <tbody id="tblOrder">
-                                      <c:forEach items="${viewAcceptedOrders}" var="e">
+                                      <c:forEach items="${viewProcessing}" var="e">
                                           <tr>
                                               <td>${e.customerId}</td>
                                               <td>${e.pieces}</td>

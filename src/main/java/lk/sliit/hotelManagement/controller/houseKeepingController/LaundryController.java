@@ -34,6 +34,8 @@ public class LaundryController {
         model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
         List<CustomerDTO> customerDTOS = houseKeepingBO.findCustomers();
         model.addAttribute("customerAllIn", customerDTOS);
+        List<LaundryDTO> viewProcessing = houseKeepingBO.findProcessingLaundryData();
+        model.addAttribute("viewProcessing", viewProcessing);
 
         return "laundryOrder";
     }
@@ -58,6 +60,8 @@ public class LaundryController {
     public ModelAndView saveForLaundry(@ModelAttribute LaundryDTO laundryDTO, Model model, HttpServletRequest request) {
 
         ModelAndView a = new ModelAndView("laundryOrder");
+        List<LaundryDTO> viewProcessing = houseKeepingBO.findProcessingLaundryData();
+        model.addAttribute("viewProcessing", viewProcessing);
 
         model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
         List<CustomerDTO> customerDTOS = houseKeepingBO.findCustomers();
