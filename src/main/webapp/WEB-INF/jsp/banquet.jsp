@@ -339,7 +339,7 @@
                                             <th>plates</th>
                                             <th>Advance Payment</th>
                                             <th>Status</th>
-                                            <th>Confirm</th>
+                                            <th>Finish</th>
                                         </tr>
                                         </thead>
                                         <tbody>
@@ -353,8 +353,8 @@
                                                 <td>${e.noOfPlates}</td>
                                                 <td>${e.advanceFee}</td>
                                                 <td>${e.orderState}</td>
-                                                <td><a href="/updateBanquetStatus?orderId=${e.orderId}">
-                                                    <button value="" id="billBtn" name="billBtn" class="btn btn-outline-success" style="font-size: 12px;">confirmed</button>
+                                                <td><a href="/updateBanquetStatusAsFinished?orderId=${e.orderId}">
+                                                    <button value="" id="billBtn" name="billBtn" class="btn btn-outline-success" style="font-size: 12px;">finished</button>
                                                 </a></td>
                                             </tr>
                                         </c:forEach>
