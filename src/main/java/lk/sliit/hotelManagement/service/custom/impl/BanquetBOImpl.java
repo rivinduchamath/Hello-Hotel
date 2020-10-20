@@ -195,6 +195,12 @@ public class BanquetBOImpl implements BanquetBO {
     }
 
     @Override
+    public void updateBanquetStatusAsFinished(int orderId) {
+        String status ="finished";
+        banquetOrderDAO.updateBanStatus(status,orderId);
+    }
+
+    @Override
     public int checkAvailability(Date date) {
         int count = banquetOrderDAO.countBanquetOrderByDateEquals(date);
         return count;

@@ -76,17 +76,14 @@ public class BarBOImpl implements BarBO {
             if(count == 0 ) {
                 itm = new BarOrderDetailDTO();
                 itm.setItemCode(Integer.parseInt(str));
-                System.out.println(str+"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
                 count ++;
 
             }else if(count == 1) {
                 itm.setItemPrice(Double.parseDouble(str));
-                System.out.println(str+"bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb");
                 count ++;
 
             }else if(count == 2) {
                 itm.setQty(Double.parseDouble(str));
-                System.out.println(itm+"ccccccccccccccccccccccccccccccccccccc");
                 list.add(itm);
                 count = 0;
             }

@@ -9,6 +9,7 @@ import lk.sliit.hotelManagement.dao.restaurantDAO.onlineOrderDAO.RestaurantOnlin
 import lk.sliit.hotelManagement.dto.inventory.InventoryNoticeDTO;
 import lk.sliit.hotelManagement.dto.kitchen.FoodItemDTO;
 import lk.sliit.hotelManagement.dto.kitchen.MenuDTO;
+import lk.sliit.hotelManagement.dto.kitchen.MenuDetailsDTO;
 import lk.sliit.hotelManagement.dto.restaurant.restaurantCounterOrder.RestaurantCounterOrderDetailDTO;
 import lk.sliit.hotelManagement.entity.inventory.InventoryNotice;
 import lk.sliit.hotelManagement.entity.kitchen.FoodItem;
@@ -35,7 +36,6 @@ public class KitchenBOImpl implements KitchenBO {
     MenuDAO menuDAO;
     @Autowired
     MenuDetailsDAO menuDetailsDAO;
-
     @Autowired
     InventoryNoticeDAO inventoryNoticeDAO;
     @Autowired
@@ -144,18 +144,18 @@ public class KitchenBOImpl implements KitchenBO {
     }
 
     @Override
-    public List<MenuDTO> findFoodItemsDetails(int menuId) {
+    public List<MenuDetailsDTO> findFoodItemsDetails(int menuId) {
         Iterable<MenuDetails> menuItems = menuDetailsDAO.findMenuDetailsByMenu_MenuId(menuId);
 
-        List<MenuDTO> menuDTOList = new ArrayList<>();
+        List<MenuDetailsDTO> menuDetailsDTO = new ArrayList<>();
 
         for (MenuDetails item: menuItems){
-            menuDTOList.add(new MenuDTO(
+            menuDetailsDTO.add(new MenuDetailsDTO(
                     item.getMenuDetailId().getMenu(),
                     item.getMenuDetailId().getFoodItem()
             ));
         }
-        return menuDTOList;
+        return menuDetailsDTO;
     }
 
     @Override

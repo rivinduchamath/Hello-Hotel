@@ -269,7 +269,7 @@
                                     <label>Date</label>
                                     <input type="date" class="form-control"
                                            required="required" name="date"
-                                           id="address" placeholder="Date"/></div>
+                                           id="date" placeholder="Date"/></div>
                             </div>
 
                             <div class="form-group">
@@ -277,14 +277,14 @@
                                     <label>Cheque No</label>
                                     <input type="text" class="form-control"
                                            required="required" name="chequeNo"
-                                           id="password" placeholder="Cheque No"/></div>
+                                           id="chequeNo" placeholder="Cheque No"/></div>
 
 
                                 <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12"><br>
                                     <label>Amount</label>
                                     <input type="number" class="form-control"
                                            required="required" name="amount"
-                                           id="expenses" placeholder="Amount"/></div>
+                                           id="amount" placeholder="Amount"/></div>
 
                                 <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12"><br>
                                     <label>Description</label>
@@ -347,6 +347,19 @@
 <script src="../../vendors/jszip/dist/jszip.min.js"></script>
 <!-- Custom Theme Scripts -->
 <script src="../../build/js/custom.min.js"></script>
+<script>
 
+    var selectedRow = null;
+    $("#datatable-buttons tbody").on('click', 'tr', function () {
+        selectedRow = $(this);
+
+        $("#accountId").val($(this).find("td:nth-child(1)").text());
+        $("#setType").val($(this).find("td:nth-child(2)").text());
+        $("#chequeNo").val($(this).find("td:nth-child(3)").text());
+        $("#amount").val($(this).find("td:nth-child(4)").text());
+        $("#date").val($(this).find("td:nth-child(5)").text());
+        $("#description").val($(this).find("td:nth-child(6)").text());
+    });
+</script>
 </body>
 </html>
