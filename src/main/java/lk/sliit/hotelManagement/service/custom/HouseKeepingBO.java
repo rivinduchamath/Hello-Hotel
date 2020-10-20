@@ -28,4 +28,8 @@ public interface HouseKeepingBO extends SuperBO {
     void saveLaundry(LaundryDTO laundryDTO);
 
     List<CustomerDTO> findCustomers();
+
+    List<LaundryDTO> findLaundryData();
+
+    void deleteLaundryOrder(int id);
 }

@@ -11,6 +11,7 @@ public class LaundryDTO {
     private double  pieces;
     private Date expectedDate;
     private Date date;
+    private String state;
 
     public LaundryDTO() {}
 
@@ -21,6 +22,24 @@ public class LaundryDTO {
         this.pieces = pieces;
         this.expectedDate = expectedDate;
         this.date = date;
+    }
+
+    public LaundryDTO(int laundryId, int customerId, int orderHolder, double pieces, Date expectedDate, Date date, String state) {
+        this.laundryId = laundryId;
+        this.customerId = customerId;
+        this.orderHolder = orderHolder;
+        this.pieces = pieces;
+        this.expectedDate = expectedDate;
+        this.date = date;
+        this.state = state;
+    }
+
+    public String getState() {
+        return state;
+    }
+
+    public void setState(String state) {
+        this.state = state;
     }
 
     public LaundryDTO(int laundryId) {
@@ -84,6 +103,7 @@ public class LaundryDTO {
                 ", pieces=" + pieces +
                 ", expectedDate=" + expectedDate +
                 ", date=" + date +
+                ", state='" + state + '\'' +
                 '}';
     }
 }

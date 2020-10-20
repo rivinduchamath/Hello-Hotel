@@ -9,16 +9,12 @@ import lk.sliit.hotelManagement.service.custom.IndexLoginBO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.Date;
+import java.io.PrintWriter;
 import java.util.List;
 
 
@@ -38,21 +34,39 @@ public class LaundryController {
         model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
         List<CustomerDTO> customerDTOS = houseKeepingBO.findCustomers();
         model.addAttribute("customerAllIn", customerDTOS);
+
         return "laundryOrder";
     }
-
-    @RequestMapping("/laundryOrder")
-    public ModelAndView saveForLaundry(@ModelAttribute LaundryDTO laundryDTO, HttpServletResponse response, Model model, HttpServletRequest request) {
-        ModelAndView a = new ModelAndView("laundryOrder");
+    @GetMapping("/allLaundryOrders")
+    public String allLaundryOrders(Model model) {
+        List<LaundryDTO> laundryDTOS = houseKeepingBO.findLaundryData();
+        model.addAttribute("viewAcceptedOrders", laundryDTOS);
         model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
         List<CustomerDTO> customerDTOS = houseKeepingBO.findCustomers();
         model.addAttribute("customerAllIn", customerDTOS);
+
+        return "allLaundryOrders";
+    }
+    @GetMapping(value = "deleteLaundryOrder/{laundryId}")
+    public void deleteEmployee(@PathVariable("laundryId") int id,HttpServletResponse response) throws IOException {
+
+            houseKeepingBO.deleteLaundryOrder(id);
+            response.sendRedirect("/allLaundryOrders");
+
+    }
+    @PostMapping("/laundryOrder")
+    public ModelAndView saveForLaundry(@ModelAttribute LaundryDTO laundryDTO, Model model, HttpServletRequest request) {
+
+        ModelAndView a = new ModelAndView("laundryOrder");
+
+        model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
+        List<CustomerDTO> customerDTOS = houseKeepingBO.findCustomers();
+        a.addObject("customerAllIn", customerDTOS);
 
         if (laundryDTO.getCustomerId() == 0) {
             request.setAttribute("notSelectCustomer", "True");
             return a;
         }
-
         try {
             LaundryDTO laundryDTO2 = houseKeepingBO.findHighestId();
             LaundryDTO laundryDTO1 = null;
