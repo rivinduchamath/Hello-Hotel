@@ -29,4 +29,6 @@ public interface BanquetOrderDAO extends CrudRepository<BanquetOrder,Integer> {
     int countBanquetOrderByDateEquals(Date date);
 
     int countBanquetOrderByDateEqualsAndHallIdEquals(Date date, String hallNo);
+
+
 }

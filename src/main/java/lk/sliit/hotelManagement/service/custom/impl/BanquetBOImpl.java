@@ -201,6 +201,34 @@ public class BanquetBOImpl implements BanquetBO {
     }
 
     @Override
+    public List<BanquetAddDTO> findLastWeakBanquets() {
+        Date todayDate = new Date();
+        Calendar cal1 = Calendar.getInstance();
+        cal1.add(Calendar.DATE, -7);
+        java.util.Date afterWeek = cal1.getTime();
+
+
+        Iterable <BanquetOrder> banquetOrders = banquetOrderDAO.findBanquetOrdersByDateBetween(afterWeek ,todayDate);
+        List <BanquetAddDTO> dtos = new ArrayList<>();
+        for ( BanquetOrder a: banquetOrders){
+            dtos.add(new BanquetAddDTO(
+                    a.getOrderId(),
+                    a.getBanquetBill().getBillId(),
+                    a.getDate(),
+                    a.getCustomer().getName(),
+                    a.getCustomer().getContactNumber(),
+                    a.getHallId(),
+                    a.getMenu().getMenuId(),
+                    a.getNoOfPlates(),
+                    a.getBanquetBill().getAdvancePayment(),
+                    a.getBanquetBill().getTotal(),
+                    a.getOrderState()
+            ));
+        }
+        return dtos;
+    }
+
+    @Override
     public int checkAvailability(Date date) {
         int count = banquetOrderDAO.countBanquetOrderByDateEquals(date);
         return count;

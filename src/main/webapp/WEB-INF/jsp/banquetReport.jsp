@@ -227,14 +227,19 @@
                                                 </thead>
 
                                                 <tbody>
-                                                <c:forEach items="${tableData}" var="e">
+                                                <c:forEach items="${loadTable}" var="e">
                                                     <tr>
-                                                        <td>${e.salaryId}</td>
-                                                        <td>${e.employeeID.idNo}</td>
-                                                        <td>${e.employeeID.name}</td>
-                                                        <td>${e.basicSalary}</td>
-                                                        <td>${e.otHours*e.otRate}</td>
-                                                        <td>${e.bonus}</td>
+                                                        <td>${e.orderId}</td>
+                                                        <td>${e.banquetBillId}</td>
+                                                        <td>${e.date}</td>
+                                                        <td>${e.name}</td>
+                                                        <td>${e.contactNumber}</td>
+                                                        <td>${e.hallId}</td>
+                                                        <td>${e.menuId}</td>
+                                                        <td>${e.noOfPlates}</td>
+                                                        <td>${e.advanceFee}</td>
+                                                        <td>${e.total}</td>
+                                                        <td>${e.orderState}</td>
                                                     </tr>
                                                 </c:forEach>
 
@@ -248,27 +253,26 @@
                                     <div class="row">
                                         <!-- accepted payments column -->
                                         <div class="col-md-6">
-                                            <p class="lead">Amount Due 2/22/2014</p>
+                                            <p class="lead">Weekly Profit <%=date%> </p>
                                             <div class="table-responsive">
                                                 <table class="table">
                                                     <tbody>
                                                     <tr>
-                                                        <th style="width:50%">Basic Tot:</th>
+                                                        <th style="width:50%">Basic Total:</th>
                                                         <!--<td><span id="val2"></span></td>-->
-                                                        <td>30000</td>
+                                                        <td>${fullTotal}</td>
                                                     </tr>
                                                     <tr>
-                                                        <th>Tax: </th>
+                                                        <th>Tax (4%): </th>
                                                         <small style="font-weight: bold"><span id="val9"></span>
                                                         </small>
                                                         </th>
                                                         <!--<td><span id="val3"></span></td>-->
-                                                        <td>0</td>
-                                                    </tr>
+                                                        <td>${tax}</tr>
                                                     <tr>
-                                                        <th>Total:</th>
+                                                        <th>weekly profit</th>
                                                         <!--<td><span id="val"></span></td>-->
-                                                        <td>30000</td>
+                                                        <td>${profit}</td>
                                                     </tr>
                                                     </tbody>
                                                 </table>
@@ -286,10 +290,9 @@
                                                 <img src="../../images/american-express.png" alt="American Express">
                                                 <img src="../../images/paypal.png" alt="Paypal">
                                                 <p class="text-muted well well-sm no-shadow" style="margin-top: 10px;">
-                                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus
-                                                    atque corporis culpa cupiditate dolore doloremque, dolores eaque eos
-                                                    ipsam itaque laborum maiores porro quis recusandae, sapiente sequi
-                                                    suscipit ullam ut!
+                                                    Hotel Hareesha is a guest house grade A hotel Which is situated in Galle.
+                                                    Over the years they have come a long way in winning the hearts of local as well as foreign tourists.
+
                                                 </p>
                                             </div>
                                         </div>
