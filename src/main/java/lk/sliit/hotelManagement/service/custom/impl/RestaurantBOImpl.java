@@ -234,9 +234,7 @@ public class RestaurantBOImpl implements RestaurantBO {
         List<RestaurantTable> list22 = new ArrayList<>();
         List<RestaurantTable> list2 = new ArrayList<>();
 
-        System.out.println(date);
-        System.out.println("Tset 1 " + startTime);
-        System.out.println("Tset 2 " + endTime);
+
 
         for (RestaurantTable d : allTable) {
             for (OnlineTableReservation d2 : all4) {
@@ -289,10 +287,7 @@ public class RestaurantBOImpl implements RestaurantBO {
         Iterable<CounterTableReservation> counterTableReservations = null;
         try {
 
-
             onlineTableReservations = onlineTableReservationDAO.findOnlineTableReservationByReservedDateEquals(date);
-
-
             counterTableReservations = counterTableReservationDAO.findCounterTableReservationByDateEquals(date);
         } catch (NullPointerException e) {
         }

@@ -208,4 +208,9 @@ public class KitchenBOImpl implements KitchenBO {
         return dtos;
     }
 
+    @Override
+    public void deleteItemFromPack(int foodItemId, int menuItemId) {
+        menuDetailsDAO.deleteMenuDetailsByID(foodItemId,menuItemId);
+    }
+
 }

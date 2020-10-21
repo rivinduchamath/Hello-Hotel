@@ -9,6 +9,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page import="java.util.Date" %>
 <%@ page import="java.text.SimpleDateFormat" %>
+<%@ page import="javax.swing.*" %>
 <html lang="en">
 <head>
     <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
@@ -113,12 +114,18 @@
                                                             <td>${item.itemCategory}</td>
                                                             <td>${item.unitePrice}</td>
                                                             <td>
+                                                                <!--
+                                                                <a href="removeItemFromPack/${item.itemId}%${menuItem.menuId}%">
+                                                                    <i class="fa fa-minus-square-o"></i>
+                                                                </a> -->
+
                                                                 <form action="removeItemFromPack">
-                                                                    <input type="hidden" name ="menuId"  value="${menuItem.menuId}">
-                                                                    <input type="hidden" name ="itemId"  value="${item.itemId}">
+                                                                    <input type="hidden" name ="menuID"  value="${menuItem.menuId}">
+                                                                    <input type="hidden" name ="foodItemID"  value="${item.itemId}">
 
-                                                                    <button  type="submit"><i  class="fa fa-minus-square"></i></button>
-
+                                                                    <button type="submit">
+                                                                        <i class="fa fa-minus-square-o"></i>
+                                                                    </button>
                                                                 </form>
                                                             </td>
                                                         </tr>
@@ -185,7 +192,10 @@
                                                                     <input type="hidden" name ="menuId"  value="${menuItem.menuId}">
                                                                     <input type="hidden" name ="itemId"  value="${item.itemId}">
 
-                                                                        <button  type="submit"><i  class="fa fa-plus-square"></i></button>
+                                                                    <button type="submit">
+                                                                        <i  class="fa fa-plus-square-o"></i>
+                                                                    </button>
+
 
                                                                 </form>
 
