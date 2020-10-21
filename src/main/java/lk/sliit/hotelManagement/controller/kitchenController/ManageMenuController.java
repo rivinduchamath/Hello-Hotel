@@ -117,17 +117,17 @@ public class ManageMenuController {
     }
 
     @GetMapping("/addItemToPack")
-    public String addItemToPack(Model model, @ModelAttribute MenuDTO menuDTO) {
+    public String addItemToPack(Model model, @ModelAttribute MenuDetailsDTO menuDTO) {
         model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
-        model.addAttribute("menuItem", kitchenBO.findMenuItemById(menuDTO.getMenuId()));
+        model.addAttribute("menuItem", kitchenBO.findMenuItemById(menuDTO.getMenuID()));
         kitchenBO.saveFoodDetail(menuDTO);
 
         List<FoodItemDTO> foodItemDTOS = kitchenBO.findFoodItems();
         List<FoodItemDTO> notSelectedFoodItems = new ArrayList<>();
         List<FoodItemDTO> selectedFoodItems = new ArrayList<>();
 
-        if (kitchenBO.findFoodItemsDetails(menuDTO.getMenuId()) != null) {
-            List<MenuDetailsDTO> menuDetailsDTOS = kitchenBO.findFoodItemsDetails(menuDTO.getMenuId());
+        if (kitchenBO.findFoodItemsDetails(menuDTO.getMenuID()) != null) {
+            List<MenuDetailsDTO> menuDetailsDTOS = kitchenBO.findFoodItemsDetails(menuDTO.getMenuID());
             selectedFoodItems = loadSelectedFoodItems(selectedFoodItems, foodItemDTOS, menuDetailsDTOS);
             notSelectedFoodItems = loadNotSelectedFoodItems(selectedFoodItems, foodItemDTOS, notSelectedFoodItems);
         }

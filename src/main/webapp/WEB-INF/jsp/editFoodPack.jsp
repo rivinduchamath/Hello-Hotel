@@ -1,10 +1,4 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: Rivindu Chamath
-  Date: 21-May-20
-  Time: 2:43 AM
-  To change this template use File | Settings | File Templates.
---%>
+
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page import="java.util.Date" %>
@@ -189,8 +183,8 @@
                                                             <td>${item.unitePrice}</td>
                                                             <td>
                                                                 <form action="addItemToPack">
-                                                                    <input type="hidden" name ="menuId"  value="${menuItem.menuId}">
-                                                                    <input type="hidden" name ="itemId"  value="${item.itemId}">
+                                                                    <input type="hidden" name ="menuID"  value="${menuItem.menuId}">
+                                                                    <input type="hidden" name ="foodItemID"  value="${item.itemId}">
 
                                                                     <button type="submit">
                                                                         <i  class="fa fa-plus-square-o"></i>
