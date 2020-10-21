@@ -35,11 +35,10 @@
                     <div class="form-header">
                         <h1>Make your reservation</h1>
                     </div>
-                    <form action="onlineBooking" name="onlineBooking" method="post">
-                        <div class="form-group">
-                            <input class="form-control" type="text" placeholder="Name">
-                            <span class="form-label">Name</span>
-                        </div>
+
+                    <form action="onlineBooking" name="onlineBooking" >
+
+
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
@@ -56,22 +55,6 @@
                         </div>
 
 
-                        <!--
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <input class="form-control" type="email" placeholder="Enter your Email">
-                                    <span class="form-label">Email</span>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <input class="form-control" type="tel" placeholder="Enter you Phone">
-                                    <span class="form-label">Phone</span>
-                                </div>
-                            </div>
-                        </div>
-                        -->
 
                         <div class="form-btn">
                             <button class="submit-btn">CHECK AVAILABILITY</button>

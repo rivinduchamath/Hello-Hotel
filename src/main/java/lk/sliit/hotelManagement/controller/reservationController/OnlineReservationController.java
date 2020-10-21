@@ -1,6 +1,7 @@
 package lk.sliit.hotelManagement.controller.reservationController;
 
 import lk.sliit.hotelManagement.controller.SuperController;
+
 import lk.sliit.hotelManagement.dto.houseKeeping.HotelRoomDTO;
 import lk.sliit.hotelManagement.dto.reservation.CustomerDTO;
 import lk.sliit.hotelManagement.dto.reservation.FindAvailabilityDTO;
@@ -29,8 +30,53 @@ public class OnlineReservationController {
 
     @GetMapping("/onlineReservation")
     public String loginPage(Model model) {
-        model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
+         model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
         return "onlineReservation";
+    }
+
+
+
+
+    @GetMapping("/roomSelection")
+    public String loginPage1(Model model) {
+        model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
+        return "roomSelection";
+        }
+
+    @GetMapping("/about")
+    public String loginPage2(Model model) {
+        model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
+        return "about";
+    }
+
+    @GetMapping("/contact")
+    public String loginPage3(Model model) {
+        model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
+        return "contact";
+    }
+
+    @GetMapping("/dinning")
+    public String loginPage4(Model model) {
+        model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
+        return "dinning";
+    }
+
+    @GetMapping("/gallery")
+    public String loginPage5(Model model) {
+        model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
+        return "gallery";
+    }
+
+    @GetMapping("/news")
+    public String loginPage6(Model model) {
+        model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
+        return "news";
+    }
+
+    @GetMapping("/rooms")
+    public String loginPage7(Model model) {
+        model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
+        return "rooms";
     }
 
 
