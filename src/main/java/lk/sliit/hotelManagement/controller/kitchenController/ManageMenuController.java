@@ -102,29 +102,12 @@ public class ManageMenuController {
 
         List<FoodItemDTO> foodItemDTOS = kitchenBO.findFoodItems();
         List<FoodItemDTO> notSelectedFoodItems = new ArrayList<>();
-        ArrayList<FoodItemDTO> selectedFoodItems = new ArrayList<>();
+        List<FoodItemDTO> selectedFoodItems = new ArrayList<>();
 
         if (kitchenBO.findFoodItemsDetails(menuDTO.getMenuId()) != null) {
             List<MenuDetailsDTO> menuDetailsDTOS = kitchenBO.findFoodItemsDetails(menuDTO.getMenuId());
-
-            if (menuDetailsDTOS.size() != 0) {
-                for (MenuDetailsDTO menuItem : menuDetailsDTOS) {
-                    for (FoodItemDTO item : foodItemDTOS) {
-                        if (item.getItemId() == menuItem.getFoodItemID()) {
-                            selectedFoodItems.add(item);
-                        }
-                    }
-                }
-            }
-
-            if (selectedFoodItems.size() != 0){
-                for (FoodItemDTO item: foodItemDTOS){
-                    if (!searchListByID(selectedFoodItems, item)){
-                        notSelectedFoodItems.add(item);
-                    }
-                }
-            }
-
+            selectedFoodItems = loadSelectedFoodItems(selectedFoodItems, foodItemDTOS, menuDetailsDTOS);
+            notSelectedFoodItems = loadNotSelectedFoodItems(selectedFoodItems, foodItemDTOS, notSelectedFoodItems);
         }
 
         model.addAttribute("loadSelectedFood", selectedFoodItems);
@@ -139,32 +122,14 @@ public class ManageMenuController {
         model.addAttribute("menuItem", kitchenBO.findMenuItemById(menuDTO.getMenuId()));
         kitchenBO.saveFoodDetail(menuDTO);
 
-
         List<FoodItemDTO> foodItemDTOS = kitchenBO.findFoodItems();
         List<FoodItemDTO> notSelectedFoodItems = new ArrayList<>();
-        ArrayList<FoodItemDTO> selectedFoodItems = new ArrayList<>();
+        List<FoodItemDTO> selectedFoodItems = new ArrayList<>();
 
         if (kitchenBO.findFoodItemsDetails(menuDTO.getMenuId()) != null) {
             List<MenuDetailsDTO> menuDetailsDTOS = kitchenBO.findFoodItemsDetails(menuDTO.getMenuId());
-
-            if (menuDetailsDTOS.size() != 0) {
-                for (MenuDetailsDTO menuItem : menuDetailsDTOS) {
-                    for (FoodItemDTO item : foodItemDTOS) {
-                        if (item.getItemId() == menuItem.getFoodItemID()) {
-                            selectedFoodItems.add(item);
-                        }
-                    }
-                }
-            }
-
-            if (selectedFoodItems.size() != 0){
-                for (FoodItemDTO item: foodItemDTOS){
-                    if (!searchListByID(selectedFoodItems, item)){
-                        notSelectedFoodItems.add(item);
-                    }
-                }
-            }
-
+            selectedFoodItems = loadSelectedFoodItems(selectedFoodItems, foodItemDTOS, menuDetailsDTOS);
+            notSelectedFoodItems = loadNotSelectedFoodItems(selectedFoodItems, foodItemDTOS, notSelectedFoodItems);
         }
 
         model.addAttribute("loadSelectedFood", selectedFoodItems);
@@ -200,6 +165,36 @@ public class ManageMenuController {
         }
 
         return false;
+    }
+
+    public List<FoodItemDTO> loadSelectedFoodItems(List<FoodItemDTO> selectedFoodItems, List<FoodItemDTO> foodItemDTOS, List<MenuDetailsDTO> menuDetailsDTOS){
+
+        if (menuDetailsDTOS.size() != 0) {
+            for (MenuDetailsDTO menuItem : menuDetailsDTOS) {
+                for (FoodItemDTO item : foodItemDTOS) {
+                    if (item.getItemId() == menuItem.getFoodItemID()) {
+                        selectedFoodItems.add(item);
+                    }
+                }
+            }
+        }
+        System.out.println("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$"+selectedFoodItems.size());
+        return selectedFoodItems;
+    }
+
+    public List<FoodItemDTO> loadNotSelectedFoodItems(List<FoodItemDTO> selectedFoodItems, List<FoodItemDTO> foodItemDTOS, List<FoodItemDTO> notSelectedFoodItems){
+        if (selectedFoodItems.size() != 0){
+            for (FoodItemDTO item: foodItemDTOS){
+                if (!searchListByID(selectedFoodItems, item)){
+                    notSelectedFoodItems.add(item);
+                }
+            }
+        } else {
+            notSelectedFoodItems = foodItemDTOS;
+        }
+        System.out.println("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%"+notSelectedFoodItems.size());
+        System.out.println("dasdas"+foodItemDTOS.size());
+        return notSelectedFoodItems;
     }
 
 }
