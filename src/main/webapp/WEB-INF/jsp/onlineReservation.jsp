@@ -35,11 +35,13 @@
                     <div class="form-header">
                         <h1>Make your reservation</h1>
                     </div>
-                    <form action="onlineBooking">
+                    <form action="roomSelection">
+                        <!--
                         <div class="form-group">
                             <input class="form-control" type="text" placeholder="Name">
                             <span class="form-label">Name</span>
                         </div>
+                        -->
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
@@ -54,6 +56,7 @@
                                 </div>
                             </div>
                         </div>
+                        <!--
                         <div class="row">
                             <div class="col-md-4">
                                 <div class="form-group">
@@ -68,6 +71,9 @@
                                     <span class="form-label">Rooms</span>
                                 </div>
                             </div>
+                            -->
+
+                            <!--
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <select class="form-control" required>
@@ -80,6 +86,9 @@
                                     <span class="form-label">Adults</span>
                                 </div>
                             </div>
+                            -->
+
+                            <!--
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <select class="form-control" required>
@@ -93,6 +102,7 @@
                                 </div>
                             </div>
                         </div>
+                        -->
 
                         <!--
                         <div class="row">
@@ -112,7 +122,7 @@
                         -->
 
                         <div class="form-btn">
-                            <button class="submit-btn">CHECK AVAILABILTY</button>
+                            <button class="submit-btn">CHECK AVAILABILITY</button>
                         </div>
                     </form>
                 </div>
