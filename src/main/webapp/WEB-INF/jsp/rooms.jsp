@@ -49,11 +49,11 @@
                     <div class="col-md-2 col-sm-6 col-xs-6">
                         <div id="logo">
                             <!--<a href="index.html"><img src="images/logo.png" alt="logo"></a>-->
-                            <a href="roomSelection"><span>Ha</span>reesha</a>
+                            <a href="home"><span>Ha</span>reesha</a>
                         </div>
                     </div>
                     <div class="col-sm-6 visible-sm">
-                        <div class="text-right"><button type="button" class="book-now-btn">Book Now</button></div>
+                        <div class="text-right"><a href="availableRooms" > <button type="button" class="book-now-btn">Book Now</button></a></div>
                     </div>
                     <div class="col-md-8 col-sm-12 col-xs-12 remove-padd">
                         <nav class="navbar navbar-default">
@@ -68,19 +68,19 @@
                             </div>
                             <div class="collapse navigation navbar-collapse navbar-ex1-collapse remove-space">
                                 <ul class="list-unstyled nav1 cl-effect-10">
-                                    <li><a  data-hover="Home" href="roomSelection"><span>Home</span></a></li>
+                                    <li><a  data-hover="Home" href="home"><span>Home</span></a></li>
                                     <li><a data-hover="About"  href="about"><span>About</span></a></li>
                                     <li><a data-hover="Rooms"  class="active"><span>Rooms</span></a></li>
                                     <li><a data-hover="Gallery"  href="gallery"><span>Gallery</span></a></li>
                                     <li><a data-hover="Dinning" href="dinning"><span>Dinning</span></a></li>
-                                    <li><a data-hover="News" href="blog"><span>News</span></a></li>
+                                    <li><a data-hover="News" href="news"><span>News</span></a></li>
                                     <li><a data-hover="Contact Us" href="contact"><span>contact Us</span></a></li>
                                 </ul>
                             </div>
                         </nav>
                     </div>
                     <div class="col-md-2  col-sm-4 col-xs-12 hidden-sm">
-                        <div class="text-right"><button type="button" class="book-now-btn">Book Now</button></div>
+                        <div class="text-right"><a href="availableRooms" > <button type="button" class="book-now-btn">Book Now</button></a></div>
                     </div>
                 </div>
             </div>
@@ -105,7 +105,7 @@
                         <img class="img-responsive" src="../../images/reservation/room1.png">
                         <div class="overlay">
                             <a class="info pop example-image-link img-responsive" href="../../images/reservation/room1.png" data-lightbox="example-1"><i class="fa fa-search" aria-hidden="true"></i></a>
-                            <p><a>delux room</a></p>
+                            <p><a>Single Room</a></p>
                         </div>
                     </div>
                 </div>
@@ -114,7 +114,7 @@
                         <img class="img-responsive" src="../../images/reservation/room2.png">
                         <div class="overlay">
                             <a class="info pop example-image-link img-responsive" href="../../images/reservation/room2.png" data-lightbox="example-1"><i class="fa fa-search" aria-hidden="true"></i></a>
-                            <p><a>delux room</a></p>
+                            <p><a>Double Room</a></p>
                         </div>
                     </div>
                 </div>
@@ -123,7 +123,7 @@
                         <img class="img-responsive" src="../../images/reservation/room3.png">
                         <div class="overlay">
                             <a class="info pop example-image-link img-responsive" href="../../images/reservation/room3.png" data-lightbox="example-1"><i class="fa fa-search" aria-hidden="true"></i></a>
-                            <p><a>delux room</a></p>
+                            <p><a>Quad Room</a></p>
                         </div>
                     </div>
                 </div>
@@ -132,7 +132,7 @@
                         <img class="img-responsive" src="../../images/reservation/room4.png">
                         <div class="overlay">
                             <a class="info pop example-image-link img-responsive" href="../../images/reservation/room4.png" data-lightbox="example-1"><i class="fa fa-search" aria-hidden="true"></i></a>
-                            <p><a>delux room</a></p>
+                            <p><a>Queen Room</a></p>
                         </div>
                     </div>
                 </div>
@@ -222,13 +222,13 @@
                     <div class="footer-details">
                         <h4>explore</h4>
                         <ul class="list-unstyled footer-links">
-                            <li><a href="index.html">Home</a></li>
-                            <li><a href="about.html">About</a></li>
+                            <li><a href="home">Home</a></li>
+                            <li><a href="about">About</a></li>
                             <li class="active"><a>Rooms</a></li>
-                            <li><a href="gallery.html">Gallery</a></li>
-                            <li><a href="#">Dinning</a></li>
-                            <li> <a href="news.html">News</a></li>
-                            <li> <a href="contact.html">Contact</a></li>
+                            <li><a href="gallery">Gallery</a></li>
+                            <li><a href="dinning">Dinning</a></li>
+                            <li> <a href="news">News</a></li>
+                            <li> <a href="contact">Contact</a></li>
                         </ul>
                     </div>
                 </div>

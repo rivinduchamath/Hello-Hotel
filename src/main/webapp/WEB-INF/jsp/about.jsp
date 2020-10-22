@@ -49,7 +49,7 @@
                     <div class="col-md-2 col-sm-6 col-xs-6">
                         <div id="logo">
                             <!--<a href="index.html"><img src="images/logo.png" alt="logo"></a>-->
-                            <a href="roomSelection"><span>Ha</span>reesha</a>
+                            <a href="home"><span>Ha</span>reesha</a>
                         </div>
                     </div>
                     <div class="col-sm-6 visible-sm">
@@ -68,7 +68,7 @@
                             </div>
                             <div class="collapse navigation navbar-collapse navbar-ex1-collapse remove-space">
                                 <ul class="list-unstyled nav1 cl-effect-10">
-                                    <li><a data-hover="Home" href="roomSelection"><span>Home</span></a></li>
+                                    <li><a data-hover="Home" href="home"><span>Home</span></a></li>
                                     <li><a data-hover="About"  class="active"><span>About</span></a></li>
                                     <li><a data-hover="Rooms" href="rooms"><span>Rooms</span></a></li>
                                     <li><a data-hover="Gallery"  href="gallery"><span>Gallery</span></a></li>
@@ -80,7 +80,7 @@
                         </nav>
                     </div>
                     <div class="col-md-2  col-sm-4 col-xs-12 hidden-sm">
-                        <div class="text-right"><button type="button" class="book-now-btn">Book Now</button></div>
+                        <div class="text-right"><a href="availableRooms" > <button type="button" class="book-now-btn">Book Now</button></a></div>
                     </div>
                 </div>
             </div>
@@ -101,19 +101,16 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-5 about-left">
-                    <p>Lorem <label>ipsum</label> dol  <span>-sitamet</span></p>
+                    <p>Hotel <label>Hareesha</label></p>
                 </div>
                 <div class="col-md-7 about-right">
-                    <h3>Lorem ipsum dolor sit amet, consec</h3>
-                    <p>Donec bibendum massa metus, vel aliquet nunc varius eu. Curabitur nec scelerisque dui. Quisque mattis libero et enim ultricies gravida. Nulla ut commodo massa, eget tincidunt ligula. Vivamus eu ante tincidunt, fermentum risus nec, pharetra turpis. Donec rhoncus eros sed felis aliquet tincidunt. In consectetur tempor quam</p>
+                    <h3>A new level of luxury hospitality in Sri Lanka</h3>
+                    <p>Every great city deserves a truly great international hotel - a special place that reflects the importance and the beauty of its location with world-class luxury and the very finest service.</p>
                     <ul class="list-unstyled list-inline">
-                        <li>Sed vitae facilisis nisi, in finibus lacus. Duis vel nulla orci.</li>
-                        <li>fringilla, at ultrices felis dignissim. Integer ultricies posuere odio</li>
-                        <li>Sed vestibulum mattis laoreet. Donec sollicitudin justo luctus nulla consectetur</li>
-                        <li>Nam dolor tellus, dictum sit amet libero eu, semper placerat massa.</li>
-                        <li>consectetur tempor quam, aliquam dignissim diam hendrerit nec. Cras sodales at nisl</li>
-                    </ul>
-                    <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit</span>
+                        <li>Hotel Hareesha, Galle is delighted to welcome you to the enchanting Sri Lanka - a precious jewel in the Indian Ocean, with a glittering cultural heritage and a long, proud history.</li>
+                        <li>The hotel benefits from a prime location by the sea that is in the bottom of the country and buzzing social hotspot. A personal tropical sanctuary that is perfect for escaping the city, it offers some of the finest, most modern accommodation in the country, with 500 luxurious guest rooms and suites, and 41 serviced apartments.</li>
+                        <li>An exciting new dining and social scene has come to life around the hotel's outstanding restaurant and bar.</li>
+                    <span>Hotel Hareesha, Galle, looks forward to welcoming you soon.</span>
                 </div>
             </div>
             <div class="clearfix"> </div>
@@ -160,7 +157,7 @@
                     <div class="footer-details">
                         <h4>explore</h4>
                         <ul class="list-unstyled footer-links">
-                            <li><a href="roomSelection">Home</a></li>
+                            <li><a href="home">Home</a></li>
                             <li class="active"><a>About</a></li>
                             <li><a href="rooms">Rooms</a></li>
                             <li><a href="gallery">Gallery</a></li>
