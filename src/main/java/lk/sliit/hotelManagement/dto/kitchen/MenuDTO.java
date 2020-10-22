@@ -6,7 +6,7 @@ import lk.sliit.hotelManagement.entity.kitchen.MenuDetailsPK;
 
 public class MenuDTO {
     private int menuId;
-    private int itemId;
+
     private String name;
     private String type;
     private String picture;
@@ -29,18 +29,12 @@ public class MenuDTO {
 
     public MenuDTO(int foodItem, int itemId) {
         this.menuId = foodItem;
-        this.itemId = itemId;
+
     }
 
 
 
-    public int getItemId() {
-        return itemId;
-    }
 
-    public void setItemId(int itemId) {
-        this.itemId = itemId;
-    }
 
     public int getMenuId() {
         return menuId;

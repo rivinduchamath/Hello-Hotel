@@ -74,7 +74,12 @@ public class FoodItemManageController {
                 return "redirect:/manageMenu";
             }
         }
-        kitchenBO.deleteFoodItem(foodItemId);
+        try{
+            kitchenBO.deleteFoodItem(foodItemId);
+        } catch (Exception e){
+            return "redirect:/manageMenu";
+        }
+
         return "redirect:/manageMenu";
     }
 }

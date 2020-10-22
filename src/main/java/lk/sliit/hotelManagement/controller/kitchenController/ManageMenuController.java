@@ -4,7 +4,6 @@ import lk.sliit.hotelManagement.controller.SuperController;
 import lk.sliit.hotelManagement.dto.kitchen.FoodItemDTO;
 import lk.sliit.hotelManagement.dto.kitchen.MenuDTO;
 import lk.sliit.hotelManagement.dto.kitchen.MenuDetailsDTO;
-import lk.sliit.hotelManagement.entity.kitchen.FoodItem;
 import lk.sliit.hotelManagement.service.custom.IndexLoginBO;
 import lk.sliit.hotelManagement.service.custom.KitchenBO;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -65,7 +64,12 @@ public class ManageMenuController {
     @GetMapping(value = "/deleteFoodPackage/{menuId}")
     public void deleteMenuItem(Model model, @PathVariable("menuId") int menuItemId, HttpServletResponse response) {
         model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
-        kitchenBO.deleteMenuItem(menuItemId);
+        try {
+            kitchenBO.deleteMenuItem(menuItemId);
+        } catch (Exception e){
+
+        }
+
         try {
             response.sendRedirect("/manageFoodPacks");
         } catch (IOException e) {
@@ -98,29 +102,12 @@ public class ManageMenuController {
 
         List<FoodItemDTO> foodItemDTOS = kitchenBO.findFoodItems();
         List<FoodItemDTO> notSelectedFoodItems = new ArrayList<>();
-        ArrayList<FoodItemDTO> selectedFoodItems = new ArrayList<>();
+        List<FoodItemDTO> selectedFoodItems = new ArrayList<>();
 
         if (kitchenBO.findFoodItemsDetails(menuDTO.getMenuId()) != null) {
             List<MenuDetailsDTO> menuDetailsDTOS = kitchenBO.findFoodItemsDetails(menuDTO.getMenuId());
-
-            if (menuDetailsDTOS.size() != 0) {
-                for (MenuDetailsDTO menuItem : menuDetailsDTOS) {
-                    for (FoodItemDTO item : foodItemDTOS) {
-                        if (item.getItemId() == menuItem.getFoodItemID()) {
-                            selectedFoodItems.add(item);
-                        }
-                    }
-                }
-            }
-
-            if (selectedFoodItems.size() != 0){
-                for (FoodItemDTO item: foodItemDTOS){
-                    if (!searchListByID(selectedFoodItems, item)){
-                        notSelectedFoodItems.add(item);
-                    }
-                }
-            }
-
+            selectedFoodItems = loadSelectedFoodItems(selectedFoodItems, foodItemDTOS, menuDetailsDTOS);
+            notSelectedFoodItems = loadNotSelectedFoodItems(selectedFoodItems, foodItemDTOS, notSelectedFoodItems);
         }
 
         model.addAttribute("loadSelectedFood", selectedFoodItems);
@@ -130,37 +117,19 @@ public class ManageMenuController {
     }
 
     @GetMapping("/addItemToPack")
-    public String addItemToPack(Model model, @ModelAttribute MenuDTO menuDTO) {
+    public String addItemToPack(Model model, @ModelAttribute MenuDetailsDTO menuDTO) {
         model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
-        model.addAttribute("menuItem", kitchenBO.findMenuItemById(menuDTO.getMenuId()));
+        model.addAttribute("menuItem", kitchenBO.findMenuItemById(menuDTO.getMenuID()));
         kitchenBO.saveFoodDetail(menuDTO);
-
 
         List<FoodItemDTO> foodItemDTOS = kitchenBO.findFoodItems();
         List<FoodItemDTO> notSelectedFoodItems = new ArrayList<>();
-        ArrayList<FoodItemDTO> selectedFoodItems = new ArrayList<>();
+        List<FoodItemDTO> selectedFoodItems = new ArrayList<>();
 
-        if (kitchenBO.findFoodItemsDetails(menuDTO.getMenuId()) != null) {
-            List<MenuDetailsDTO> menuDetailsDTOS = kitchenBO.findFoodItemsDetails(menuDTO.getMenuId());
-
-            if (menuDetailsDTOS.size() != 0) {
-                for (MenuDetailsDTO menuItem : menuDetailsDTOS) {
-                    for (FoodItemDTO item : foodItemDTOS) {
-                        if (item.getItemId() == menuItem.getFoodItemID()) {
-                            selectedFoodItems.add(item);
-                        }
-                    }
-                }
-            }
-
-            if (selectedFoodItems.size() != 0){
-                for (FoodItemDTO item: foodItemDTOS){
-                    if (!searchListByID(selectedFoodItems, item)){
-                        notSelectedFoodItems.add(item);
-                    }
-                }
-            }
-
+        if (kitchenBO.findFoodItemsDetails(menuDTO.getMenuID()) != null) {
+            List<MenuDetailsDTO> menuDetailsDTOS = kitchenBO.findFoodItemsDetails(menuDTO.getMenuID());
+            selectedFoodItems = loadSelectedFoodItems(selectedFoodItems, foodItemDTOS, menuDetailsDTOS);
+            notSelectedFoodItems = loadNotSelectedFoodItems(selectedFoodItems, foodItemDTOS, notSelectedFoodItems);
         }
 
         model.addAttribute("loadSelectedFood", selectedFoodItems);
@@ -169,15 +138,23 @@ public class ManageMenuController {
         return "/editFoodPack";
     }
 
-    @GetMapping(value = "/removeItemFromPack/{menuId}")
-    public void deleteFoodItemFromPack(Model model, @PathVariable("menuId") int menuItemId, HttpServletResponse response) {
+    @GetMapping(value = "/removeItemFromPack")
+    public String deleteFoodItemFromPack(Model model, @ModelAttribute MenuDetailsDTO menuDetailsDTO) {
         model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
-        kitchenBO.deleteMenuItem(menuItemId);
-        try {
-            response.sendRedirect("/editFoodPack");
-        } catch (IOException e) {
 
-        }
+        MenuDTO menuDTO = kitchenBO.findMenuItemById(menuDetailsDTO.getMenuID());
+        model.addAttribute("menuItem", menuDTO);
+
+        kitchenBO.deleteItemFromPack(menuDetailsDTO.getFoodItemID(),menuDetailsDTO.getFoodItemID());
+
+        try {
+            System.out.println("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$"+"    "+menuDetailsDTO.getFoodItemID()+"   "+menuDetailsDTO.getMenuID());
+            kitchenBO.deleteItemFromPack(menuDetailsDTO.getFoodItemID(),menuDetailsDTO.getMenuID());
+            System.out.println("Delete called.................");
+        } catch (Exception e){}
+
+        return "/editFoodPack";
+
     }
 
     public boolean searchListByID(List<FoodItemDTO> list, FoodItemDTO object){
@@ -188,6 +165,36 @@ public class ManageMenuController {
         }
 
         return false;
+    }
+
+    public List<FoodItemDTO> loadSelectedFoodItems(List<FoodItemDTO> selectedFoodItems, List<FoodItemDTO> foodItemDTOS, List<MenuDetailsDTO> menuDetailsDTOS){
+
+        if (menuDetailsDTOS.size() != 0) {
+            for (MenuDetailsDTO menuItem : menuDetailsDTOS) {
+                for (FoodItemDTO item : foodItemDTOS) {
+                    if (item.getItemId() == menuItem.getFoodItemID()) {
+                        selectedFoodItems.add(item);
+                    }
+                }
+            }
+        }
+        System.out.println("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$"+selectedFoodItems.size());
+        return selectedFoodItems;
+    }
+
+    public List<FoodItemDTO> loadNotSelectedFoodItems(List<FoodItemDTO> selectedFoodItems, List<FoodItemDTO> foodItemDTOS, List<FoodItemDTO> notSelectedFoodItems){
+        if (selectedFoodItems.size() != 0){
+            for (FoodItemDTO item: foodItemDTOS){
+                if (!searchListByID(selectedFoodItems, item)){
+                    notSelectedFoodItems.add(item);
+                }
+            }
+        } else {
+            notSelectedFoodItems = foodItemDTOS;
+        }
+        System.out.println("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%"+notSelectedFoodItems.size());
+        System.out.println("dasdas"+foodItemDTOS.size());
+        return notSelectedFoodItems;
     }
 
 }

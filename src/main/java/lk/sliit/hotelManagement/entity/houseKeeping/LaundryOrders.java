@@ -16,19 +16,29 @@ public class LaundryOrders {
     private int orderHolder;
     private double  pieces;
     private Date expectedDate;
+    private String state;
 
     private Date date ;
     @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.REFRESH, CascadeType.DETACH, CascadeType.MERGE})
     @JoinColumn(name = "customerId", referencedColumnName = "customerId")
     private Customer customerId;
 
-    public LaundryOrders(int laundryId,  int orderHolder, double pieces, Date expectedDate, Date date,Customer customerId) {
+    public LaundryOrders(int laundryId, int orderHolder, double pieces, Date expectedDate, String state, Date date, Customer customerId) {
         this.laundryId = laundryId;
-        this.customerId = customerId;
         this.orderHolder = orderHolder;
         this.pieces = pieces;
         this.expectedDate = expectedDate;
+        this.state = state;
         this.date = date;
+        this.customerId = customerId;
+    }
+
+    public String getState() {
+        return state;
+    }
+
+    public void setState(String state) {
+        this.state = state;
     }
 
     public LaundryOrders() {

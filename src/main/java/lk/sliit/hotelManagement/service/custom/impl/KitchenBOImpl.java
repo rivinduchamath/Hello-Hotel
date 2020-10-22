@@ -137,10 +137,10 @@ public class KitchenBOImpl implements KitchenBO {
     }
 
     @Override
-    public void saveFoodDetail(MenuDTO menuDTO) {
+    public void saveFoodDetail(MenuDetailsDTO menuDTO) {
         menuDetailsDAO.save(new MenuDetails(
-                menuDTO.getMenuId(),
-                menuDTO.getItemId()));
+                menuDTO.getMenuID(),
+                menuDTO.getFoodItemID()));
     }
 
     @Override
@@ -206,6 +206,11 @@ public class KitchenBOImpl implements KitchenBO {
             ));
         }
         return dtos;
+    }
+
+    @Override
+    public void deleteItemFromPack(int foodItemId, int menuItemId) {
+        menuDetailsDAO.deleteMenuDetailsByID(foodItemId,menuItemId);
     }
 
 }

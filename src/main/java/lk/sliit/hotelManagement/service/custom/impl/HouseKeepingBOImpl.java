@@ -131,6 +131,7 @@ public class HouseKeepingBOImpl implements HouseKeepingBO {
                 laundryDTO.getOrderHolder(),
                 laundryDTO.getPieces(),
                 laundryDTO.getExpectedDate(),
+                "Accept",
                 laundryDTO.getDate(),
                 customerDAO.findOne(laundryDTO.getCustomerId())
         ));
@@ -148,6 +149,51 @@ public class HouseKeepingBOImpl implements HouseKeepingBO {
                     customer.getName(),
                     customer.getAddress(),
                     customer.getContactNumber(),
+                    customer.getState()
+            ));
+        }
+        return dtos;
+
+    }
+
+    @Override
+    public List<LaundryDTO> findLaundryData() {
+        Iterable<LaundryOrders> all = laundryOrderDAO.findAllByStateEquals("Accept");
+
+        List<LaundryDTO> dtos = new ArrayList<>();
+        for (LaundryOrders customer: all) {
+            dtos.add(new LaundryDTO(
+                    customer.getLaundryId(),
+                    customer.getCustomerId().getCustomerId(),
+                    customer.getOrderHolder(),
+                    customer.getPieces(),
+                    customer.getExpectedDate(),
+                    customer.getDate(),
+                    customer.getState()
+            ));
+        }
+        return dtos;
+
+    }
+
+    @Override
+    public void deleteLaundryOrder(int id) {
+        laundryOrderDAO.delete(id);
+    }
+
+    @Override
+    public List<LaundryDTO> findProcessingLaundryData() {
+        Iterable<LaundryOrders> all = laundryOrderDAO.findAllByStateEquals("Processing");
+
+        List<LaundryDTO> dtos = new ArrayList<>();
+        for (LaundryOrders customer: all) {
+            dtos.add(new LaundryDTO(
+                    customer.getLaundryId(),
+                    customer.getCustomerId().getCustomerId(),
+                    customer.getOrderHolder(),
+                    customer.getPieces(),
+                    customer.getExpectedDate(),
+                    customer.getDate(),
                     customer.getState()
             ));
         }

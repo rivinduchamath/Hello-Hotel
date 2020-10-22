@@ -1,10 +1,4 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: Rivindu Chamath
-  Date: 21-May-20
-  Time: 2:43 AM
-  To change this template use File | Settings | File Templates.
---%>
+
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page import="java.util.Date" %>
@@ -272,14 +266,11 @@
                     </form>
                 </div>
             </div>
-            <%--/Time--%>
 
-            <%--Input Feilds--%>
             <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
 
-            <%--/Input Feilds--%>
-            <%--Table--%>
-            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+
+            <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
                     <div class="row">
                     <div class="x_panel">
                         <div class="x_title">
@@ -343,6 +334,69 @@
                 </div>
             </div>
             <%--Table--%>
+                <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+                    <div class="row">
+                        <div class="x_panel">
+                            <div class="x_title">
+                                <h2>Find Rooms
+                                    <small>Find Rooms</small>
+                                </h2>
+                                <ul class="nav navbar-right panel_toolbox">
+                                    <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                                    </li>
+                                    <li class="dropdown">
+                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                                           aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                            <a class="dropdown-item" href="#">Settings 1</a>
+                                        </div>
+                                    </li>
+                                    <li><a class="close-link"><i class="fa fa-close"></i></a>
+                                    </li>
+                                </ul>
+                                <div class="clearfix"></div>
+                            </div>
+                            <div class="x_content">
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <div class="card-box table-responsive">
+                                            <table id="datatable-buttons1" class="table table-striped table-bordered">
+                                                <thead class="thead-light">
+                                                <tr>
+                                                    <th>Id</th>
+                                                    <th>Name</th>
+                                                    <th>Description</th>
+                                                    <th>Submi3tted By</th>
+                                                    <th>State</th>
+                                                    <th>Condition</th>
+                                                    <th>Date</th>
+                                                    <th>Delete</th>
+
+                                                </tr>
+
+                                                </thead>
+                                                <tbody>
+
+                                                <tr>
+                                                    <td>R001</td>
+                                                    <td>Delux</td>
+                                                    <td>Lorem</td>
+                                                    <td>Cherif</td>
+                                                    <td>Cleaned</td>
+                                                    <td>A/C</td>
+                                                    <td>2020/09/09</td>
+                                                    <td>  <a href="deleteSupplier/${e.roomId}"onclick="return confirm('Are you sure you want to delete?')"  class="btn btn-xs">
+                                                        <i class="fa fa-trash-o"></i></a></td>
+                                                </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
         </div>
             <%--///////////////////////////////////////////////////////////////////////////////////////////////////////////--%>
 

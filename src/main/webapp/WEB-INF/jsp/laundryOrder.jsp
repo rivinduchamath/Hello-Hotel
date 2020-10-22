@@ -119,12 +119,12 @@
             <div class="">
                 <div class="page-title">
                     <div class="title_left">
-                        <h3>Bar Orders
+                        <h3>Laundry Orders
                             <small> +New Order</small>
                         </h3>
                         <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
                             <div class="col-6 col-sm-6 col-md-6 col-lg-6 col-xl-3">
-                                <a href="/bar">
+                                <a href="/housekeeping">
                                     <button type="button" class="large-btn btn btn-dark"><i class="fa fa-mail-reply">
                                         Back</i>
                                     </button>
@@ -136,7 +136,7 @@
 
                     <div class="title_right">
                         <div class="col-md-5 col-sm-5   form-group pull-right top_search">
-                            <a href="housekeeping">
+                            <a href="/allLaundryOrders">
                                 <button type='submit' class="btn btn-secondary" style="width: 50%;float: right"
                                         value="Register">
                                     List All Payment
@@ -241,29 +241,15 @@
                         </div>
                     </div>
 
-                    <!--/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////-->
-
                     <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6"
                          style="float: right; position: relative;display: inline-block">
                         <div class="x_panel">
                             <div class="x_title">
-                                <h2>Bar Orders
-                                    <small>Check And Submit
+                                <h2>Processing Orders
+                                    <small>
                                     </small>
 
                                 </h2>
-                                <form method="POST" action="invoiceBar" name="invoiceBar">
-                                    <input style="display: none" type="text" id="itemPay" name="orderData">
-                                    <input style="display: none" type="text" id="cId" value="0"  name="customerId">
-                                    <ul class="nav navbar-right panel_toolbox">
-                                        <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
-                                        </li>
-                                        <button type="submit" value="Register"
-                                                style="font-weight: bold;color: white" ; onclick="getValue()"
-                                                class="btn btn-success "> Pay <i class="fa fa-file-image-o"></i>
-                                        </button>
-                                    </ul>
-                                </form>
 
                                 <div class="clearfix"></div>
                             </div>
@@ -275,19 +261,26 @@
                                                    class="table table-striped jambo_table bulk_action table-bordered">
                                                 <thead class="thead-dark">
                                                 <tr>
-                                                    <th>ItemId</th>
-                                                    <th>Name</th>
-                                                    <th>Price</th>
-                                                    <th>Qty</th>
-                                                    <th>Total</th>
-                                                    <th>Delete</th>
+                                                    <th>Customer Id</th>
+                                                    <th>Pieces</th>
+                                                    <th>Expected Date</th>
+                                                    <th>Date</th>
+                                                    <th>Order Holder</th>
+
                                                 </tr>
                                                 </thead>
 
                                                 <tbody id="tblOrder">
-                                                <%--                                                <c:forEach items="${listEmployeesTableSalary}" var="e">--%>
+                                      <c:forEach items="${viewProcessing}" var="e">
+                                          <tr>
+                                              <td>${e.customerId}</td>
+                                              <td>${e.pieces}</td>
+                                              <td>${e.expectedDate}</td>
+                                              <td>${e.date}</td>
+                                              <td scope="row">${e.orderHolder}</td>
 
-                                                <%--                                                </c:forEach>--%>
+                                          </tr>
+                                       </c:forEach>
                                                 </tbody>
                                             </table>
                                         </div>
