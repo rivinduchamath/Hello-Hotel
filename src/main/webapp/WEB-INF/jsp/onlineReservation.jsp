@@ -57,7 +57,7 @@
 
 
                         <div class="form-btn">
-                            <button class="submit-btn">Check Availability</button>
+                            <button class="submit-btn">Check Availability</button></div>
                     </form>
                 </div>
             </div>

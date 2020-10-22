@@ -53,7 +53,7 @@
                         </div>
                     </div>
                     <div class="col-sm-6 visible-sm">
-                        <div class="text-right"><a href="availableRooms" > <button type="button" class="book-now-btn">Book Now</button></a></div>
+                        <div class="text-right"><a href="customerLogin" > <button type="button" class="book-now-btn">Book Now</button></a></div>
                     </div>
                     <div class="col-md-8 col-sm-12 col-xs-12 remove-padd">
                         <nav class="navbar navbar-default">
@@ -80,7 +80,7 @@
                         </nav>
                     </div>
                     <div class="col-md-2  col-sm-4 col-xs-12 hidden-sm">
-                        <div class="text-right"><a href="availableRooms" > <button type="button" class="book-now-btn">Book Now</button></a></div>
+                        <div class="text-right"><a href="customerLogin" > <button type="button" class="book-now-btn">Book Now</button></a></div>
                     </div>
                 </div>
             </div>
