@@ -52,6 +52,14 @@
         }
     %>
 
+    <%
+        if(request.getAttribute("successfulMsg") != null){
+    %>
+    <script>alert("Added Successfully")</script>
+    <%
+        }
+    %>
+
     <!-- Datatables -->
     <link href="../../vendors/datatables.net-bs/css/dataTables.bootstrap.min.css" rel="stylesheet">
     <link href="../../vendors/datatables.net-buttons-bs/css/buttons.bootstrap.min.css" rel="stylesheet">
@@ -344,7 +352,7 @@
                                 <label for="orderId">Hall No</label>
                                 <select class="form-control"required="required" name="hallId"
                                         id="hallId">
-                                    <option>Choose Hall No</option>
+                                    <option value="No 1">Choose Hall No</option>
                                     <option value="No 1">No 1</option>
                                     <option value="No 2">No 2</option>
                                 </select>
@@ -363,7 +371,7 @@
                                 <label for="orderId">Package</label>
                                 <select class="form-control"required="required" name="menuId"
                                         id="menuId">
-                                    <option>Choose Package</option>
+                                    <option value="1">Choose Package</option>
                                     <option value="1">Bronze</option>
                                     <option value="2">Silver</option>
                                     <option value="3">Gold</option>
