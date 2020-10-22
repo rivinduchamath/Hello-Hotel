@@ -165,7 +165,7 @@
                                                     <th>Name</th>
                                                     <th>img</th>
                                                     <th>Total Salary</th>
-                                                    <th>Delete</th>
+                                                    <th>Mobile</th>
                                                     <th><input type="checkbox" id="check-all" class="flat"></th>
                                                 </tr>
                                                 </thead>
@@ -175,11 +175,11 @@
                                                     <tr>
                                                         <td>${e.userId}</td>
                                                         <td>${e.name}</td>
-                                                        <td>${e.totOT}</td>
+                                                        <td><img src="${e.image}"
+                                                                 class="avatar" alt="Avatar"></td>
                                                         <td>${e.salary}</td>
-                                                        <td><a href="/deleteSalary?idNo=${e.userId}"><span
-                                                                class="glyphicon glyphicon-trash"></span></a></td>
-                                                        <td class="a-center ">
+                                                        <td>${e.mobileNo}</td>
+                                                       <td class="a-center ">
                                                             <input type="checkbox" class="flat checks"
                                                                    value="${e.userId}" name="table_records">
                                                         </td>

@@ -36,7 +36,7 @@
                         <h1>Make your reservation</h1>
                     </div>
 
-                    <form action="customerLogin" name="customerLogin" >
+                    <form action="availableRooms" name="availableRooms" >
 
 
                         <div class="row">

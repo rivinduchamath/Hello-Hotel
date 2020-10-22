@@ -54,7 +54,8 @@
         <form action="onlineReservation" method="post">
             <h1>Sign in</h1>
             <span>or use your account</span>
-            <input type="text" placeholder="User Name" name="userName"/>
+
+            <input type="text" placeholder="User Name" name="userName" />
             <input type="password" placeholder="Password" name="password"/>
             <a href="#">Forgot your password?</a>
             <button>Sign In</button>
