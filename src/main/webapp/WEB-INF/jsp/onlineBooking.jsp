@@ -1,16 +1,7 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <html class="supernova"><head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <!--
-    <link rel="alternate" type="application/json+oembed" href="https://www.jotform.com/oembed/?format=json&amp;url=https%3A%2F%2Fform.jotform.com%2F202835105286453" title="oEmbed Form">
-    <link rel="alternate" type="text/xml+oembed" href="https://www.jotform.com/oembed/?format=xml&amp;url=https%3A%2F%2Fform.jotform.com%2F202835105286453" title="oEmbed Form">
-    <meta property="og:title" content="Booking for Bed and Breakfast Form" >
-    <meta property="og:url" content="https://form.jotform.com/202835105286453" >
-    <meta property="og:description" content="Please click the link to complete this form.">
-    <meta name="slack-app-id" content="AHNMASS8M">
-    <link rel="shortcut icon" href="https://cdn.jotfor.ms/favicon.ico">
-    <link rel="canonical" href="https://form.jotform.com/202835105286453" />
-    -->
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=2.0, user-scalable=1" />
     <meta name="HandheldFriendly" content="true" />
     <title>Hotel Hareesha</title>
