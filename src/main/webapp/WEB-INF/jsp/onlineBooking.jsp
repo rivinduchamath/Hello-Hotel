@@ -71,7 +71,7 @@
     </script>
 </head>
 <body background="../../images/reservation/banner.jpg">
-<form class="jotform-form" action="https://submit.jotform.com/submit/202835105286453/" method="post" name="form_202835105286453" id="202835105286453" accept-charset="utf-8" autocomplete="on">
+<form class="" action="/onlineBookingTable" method="post" name="" accept-charset="utf-8" autocomplete="on">
     <input type="hidden" name="formID" value="202835105286453" />
     <input type="hidden" id="JWTContainer" value="" />
     <input type="hidden" id="cardinalOrderNumber" value="" />
@@ -232,7 +232,7 @@
             <li class="form-line" data-type="control_button" id="id_13">
                 <div id="cid_13" class="form-input-wide" data-layout="full">
                     <div data-align="auto" class="form-buttons-wrapper form-buttons-auto   jsTest-button-wrapperField">
-                        <button id="input_13" type="submit" class="form-submit-button submit-button jf-form-buttons jsTest-submitField" data-component="button" data-content="">
+                        <button id="" type="submit" class="form-submit-button submit-button jf-form-buttons jsTest-submitField" >
                             Book Now
                         </button>
 
@@ -263,22 +263,8 @@
     </div>
 
 
-    <!--
-    <div class="formFooter f6">
-        <div class="formFooter-wrapper formFooter-leftSide">
-            <a href="https://www.jotform.com/?utm_source=formfooter&utm_medium=banner&utm_term=202835105286453&utm_content=jotform_logo&utm_campaign=powered_by_jotform_le" target="_blank" class="formFooter-logoLink"><img class="formFooter-logo" src="https://cdn.jotfor.ms/assets/img/logo/logo-new@1x.png" alt="Jotform Logo"></a>
-        </div>
-        <div class="formFooter-wrapper formFooter-rightSide">
-      <span class="formFooter-text">
-        Now create your own JotForm - It's free!
-      </span>
-            <a class="formFooter-button" href="https://www.jotform.com/?utm_source=formfooter&utm_medium=banner&utm_term=202835105286453&utm_content=jotform_button&utm_campaign=powered_by_jotform_le" target="_blank">Create your own JotForm</a>
-        </div>
 
-    </div>
-    -->
 
 </form></body>
 </html>
 <script type="text/javascript">JotForm.ownerView=true;</script><script src="https://cdn.jotfor.ms//js/vendor/smoothscroll.min.js?v=3.3.20853"></script>
-<script src="https://cdn.jotfor.ms//js/errorNavigation.js?v=3.3.20853"></script>
