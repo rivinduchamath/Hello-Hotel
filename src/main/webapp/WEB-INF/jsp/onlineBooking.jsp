@@ -232,10 +232,10 @@
             <li class="form-line" data-type="control_button" id="id_13">
                 <div id="cid_13" class="form-input-wide" data-layout="full">
                     <div data-align="auto" class="form-buttons-wrapper form-buttons-auto   jsTest-button-wrapperField">
-                        <!-- <a href="onlineBookingTable" ><button id="input_13" type="submit" class="form-submit-button submit-button jf-form-buttons jsTest-submitField" data-component="button" data-content="">
+                        <button id="input_13" type="submit" class="form-submit-button submit-button jf-form-buttons jsTest-submitField" data-component="button" data-content="">
                             Book Now
-                        </button></a> -->
-                        <a href="onlineBookingTable" > <button type="button" class="book-now-btn">Select</button></a>
+                        </button>
+
                     </div>
                 </div>
             </li>
