@@ -98,7 +98,7 @@ public class OnlineReservationController {
         return "availableRooms";
     }
 
-    @GetMapping("/onlineBookingTable")
+    @PostMapping("/onlineBookingTable")
     public String saveOnlineTable4(Model model,@ModelAttribute FindAvailabilityDTO findAvailabilityDTO, HttpSession session) {
 
         model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));

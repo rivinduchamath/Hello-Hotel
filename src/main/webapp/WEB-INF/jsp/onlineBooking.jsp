@@ -80,7 +80,7 @@
     </script>
 </head>
 <body background="../../images/reservation/banner.jpg">
-<form class="jotform-form" action="https://submit.jotform.com/submit/202835105286453/" method="post" name="form_202835105286453" id="202835105286453" accept-charset="utf-8" autocomplete="on">
+<form class="jotform-form" action="onlineBookingTable" method="post" name="form_202835105286453" id="202835105286453" accept-charset="utf-8" autocomplete="on">
     <input type="hidden" name="formID" value="202835105286453" />
     <input type="hidden" id="JWTContainer" value="" />
     <input type="hidden" id="cardinalOrderNumber" value="" />
