@@ -10,6 +10,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
+
 import javax.servlet.http.HttpSession;
 import java.util.List;
 
@@ -21,7 +23,7 @@ public class OnlineReservationController {
     @Autowired
     ReservationBO reservationBO;
 
-    @GetMapping("/onlineReservation")
+    @PostMapping("/checkSignIn")
     public String loginPage(Model model) {
          model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
         return "onlineReservation";
