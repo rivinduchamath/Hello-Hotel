@@ -10,6 +10,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
+
 import javax.servlet.http.HttpSession;
 import java.util.List;
 
@@ -21,16 +23,16 @@ public class OnlineReservationController {
     @Autowired
     ReservationBO reservationBO;
 
-    @GetMapping("/onlineReservation")
+    @PostMapping("/onlineReservation")
     public String loginPage(Model model) {
          model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
         return "onlineReservation";
     }
 
-    @GetMapping("/roomSelection")
+    @GetMapping("/home")
     public String loginPage1(Model model) {
         model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
-        return "roomSelection";
+        return "home";
         }
 
     @GetMapping("/about")
@@ -75,8 +77,34 @@ public class OnlineReservationController {
         model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
         List<HotelRoomDTO> hotelRoomDTOS = reservationBO.findAvilability(findAvailabilityDTO);
         model.addAttribute("loadAllTable", hotelRoomDTOS);
-        return "redirect:/onlineReservation";
+        return "onlineBooking";
     }
 
+    @GetMapping("/customerLogin")
+    public String saveOnlineTable2(Model model,@ModelAttribute FindAvailabilityDTO findAvailabilityDTO, HttpSession session) {
+
+        model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
+        List<HotelRoomDTO> hotelRoomDTOS = reservationBO.findAvilability(findAvailabilityDTO);
+        model.addAttribute("loadAllTable", hotelRoomDTOS);
+        return "customerLogin";
+    }
+
+    @GetMapping("/availableRooms")
+    public String saveOnlineTable3(Model model,@ModelAttribute FindAvailabilityDTO findAvailabilityDTO, HttpSession session) {
+
+        model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
+        List<HotelRoomDTO> hotelRoomDTOS = reservationBO.findAvilability(findAvailabilityDTO);
+        model.addAttribute("loadAllTable", hotelRoomDTOS);
+        return "availableRooms";
+    }
+
+    @PostMapping("/onlineBookingTable")
+    public String saveOnlineTable4(Model model,@ModelAttribute FindAvailabilityDTO findAvailabilityDTO, HttpSession session) {
+
+        model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
+        List<HotelRoomDTO> hotelRoomDTOS = reservationBO.findAvilability(findAvailabilityDTO);
+        model.addAttribute("loadAllTable", hotelRoomDTOS);
+        return "onlineBookingTable";
+    }
 }
 

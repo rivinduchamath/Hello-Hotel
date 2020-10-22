@@ -85,4 +85,5 @@ public class Salary implements SuperEntity {
     public void setState(boolean state) {
         this.state = state;
     }
+
 }

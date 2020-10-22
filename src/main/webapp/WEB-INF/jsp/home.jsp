@@ -52,11 +52,11 @@
                     <div class="col-md-2 col-sm-6 col-xs-6">
                         <div id="logo">
                             <!--<a href="index.html"><img src="images/logo.png" alt="logo"></a>-->
-                            <a href="roomSelection"><span>Ha</span>reesha</a>
+                            <a href="home"><span>Ha</span>reesha</a>
                         </div>
                     </div>
                     <div class="col-sm-6 visible-sm">
-                        <div class="text-right"><a href="onlineReservation" > <button type="button" class="book-now-btn">Book Now</button></a></div>
+                        <div class="text-right"><a href="customerLogin" > <button type="button" class="book-now-btn">Book Now</button></a></div>
                     </div>
                     <div class="col-md-8 col-sm-12 col-xs-12 remove-padd">
                         <nav class="navbar navbar-default">
@@ -72,19 +72,19 @@
                             <div class="collapse navigation navbar-collapse navbar-ex1-collapse remove-space">
                                 <ul class="list-unstyled nav1 cl-effect-10">
                                     <li><a  data-hover="Home" class="active"><span>Home</span></a></li>
-                                    <li><a data-hover="About"  href="about.html"><span>About</span></a></li>
-                                    <li><a data-hover="Rooms"  href="rooms.html"><span>Rooms</span></a></li>
-                                    <li><a data-hover="Gallery"  href="gallery.html"><span>Gallery</span></a></li>
-                                    <li><a data-hover="Dinning" href="dinning.html"><span>Dinning</span></a></li>
-                                    <li><a data-hover="News" href="news.html"><span>News</span></a></li>
-                                    <li><a data-hover="Contact Us" href="contact.html"><span>contact Us</span></a></li>
+                                    <li><a data-hover="About"  href="about"><span>About</span></a></li>
+                                    <li><a data-hover="Rooms"  href="rooms"><span>Rooms</span></a></li>
+                                    <li><a data-hover="Gallery"  href="gallery"><span>Gallery</span></a></li>
+                                    <li><a data-hover="Dinning" href="dinning"><span>Dinning</span></a></li>
+                                    <li><a data-hover="News" href="news"><span>News</span></a></li>
+                                    <li><a data-hover="Contact Us" href="contact"><span>contact Us</span></a></li>
                                 </ul>
 
                             </div>
                         </nav>
                     </div>
                     <div class="col-md-2  col-sm-4 col-xs-12 hidden-sm">
-                        <div class="text-right"><a href="onlineReservation" > <button type="button" class="book-now-btn">Book Now</button></a></div>
+                        <div class="text-right"><a href="customerLogin" > <button type="button" class="book-now-btn">Book Now</button></a></div>
                     </div>
                 </div>
             </div>
@@ -104,23 +104,23 @@
         <div class="carousel-inner">
             <div class="item active"> <img src="../../images/reservation/banner.png" style="width:100%; height: 500px" alt="First slide">
                 <div class="carousel-caption">
-                    <h1>vacayhome<br> spa & Resort</h1>
+                    <h1>Hotel<br> Hareesha</h1>
                 </div>
             </div>
             <div class="item"> <img src="../../images/reservation/banner2.png" style="width:100%; height: 500px" alt="Second slide">
                 <div class="carousel-caption">
-                    <h1>vacayhome<br> spa & Resort</h1>
+                    <h1>Hotel<br> Hareesha</h1>
                 </div>
             </div>
             <div class="item"> <img src="../../images/reservation/banner3.png" style="width:100%; height: 500px" alt="Third slide">
                 <div class="carousel-caption">
-                    <h1>vacayhome<br> spa & Resort</h1>
+                    <h1>Hotel<br> Hareesha</h1>
                 </div>
             </div>
 
         </div>
-        <a class="left carousel-control" href="#myCarousel1" data-slide="prev"> <img src="../../images/reservation/icons/left-arrow.png" onmouseover="this.src = 'images/icons/left-arrow-hover.png'" onmouseout="this.src = 'images/icons/left-arrow.png'" alt="left"></a>
-        <a class="right carousel-control" href="#myCarousel1" data-slide="next"><img src="../../images/reservation/icons/right-arrow.png" onmouseover="this.src = 'images/icons/right-arrow-hover.png'" onmouseout="this.src = 'images/icons/right-arrow.png'" alt="left"></a>
+        <a class="left carousel-control" href="#myCarousel1" data-slide="prev"> <img src="../../images/reservation/icons/left-arrow.png" onmouseover="this.src = '../../images/reservation/icons/left-arrow-hover.png'" onmouseout="this.src = '../../images/reservation/icons/left-arrow.png'" alt="left"></a>
+        <a class="right carousel-control" href="#myCarousel1" data-slide="next"><img src="../../images/reservation/icons/right-arrow.png" onmouseover="this.src = '../../images/reservation/icons/right-arrow-hover.png'" onmouseout="this.src = '../../images/reservation/icons/right-arrow.png'" alt="left"></a>
 
     </div>
     <div class="clearfix"></div>
@@ -174,7 +174,7 @@
                         <img class="img-responsive" src="../../images/reservation/room1.png">
                         <div class="overlay">
                             <a class="info pop example-image-link img-responsive" href="../../images/reservation/room1.png" data-lightbox="example-1"><i class="fa fa-search" aria-hidden="true"></i></a>
-                            <p><a>delux room</a></p>
+                            <p><a>single room</a></p>
                         </div>
                     </div>
                 </div>
@@ -183,7 +183,7 @@
                         <img class="img-responsive" src="../../images/reservation/room2.png">
                         <div class="overlay">
                             <a class="info pop example-image-link img-responsive" href="../../images/reservation/room2.png" data-lightbox="example-1"><i class="fa fa-search" aria-hidden="true"></i></a>
-                            <p><a>super room</a></p>
+                            <p><a>double room</a></p>
                         </div>
                     </div>
                 </div>
@@ -192,7 +192,7 @@
                         <img class="img-responsive" src="../../images/reservation/room3.png">
                         <div class="overlay">
                             <a class="info pop example-image-link img-responsive" href="../../images/reservation/room3.png" data-lightbox="example-1"><i class="fa fa-search" aria-hidden="true"></i></a>
-                            <p><a>single room</a></p>
+                            <p><a>quad room</a></p>
                         </div>
                     </div>
                 </div>
@@ -201,7 +201,7 @@
                         <img class="img-responsive" src="../../images/reservation/room4.png">
                         <div class="overlay">
                             <a class="info pop example-image-link img-responsive" href="../../images/reservation/room4.png" data-lightbox="example-1"><i class="fa fa-search" aria-hidden="true"></i></a>
-                            <p><a>double room</a></p>
+                            <p><a>queen room</a></p>
                         </div>
                     </div>
                 </div>
@@ -217,8 +217,8 @@
                     <div class="col-md-5 col-sm-6 col-xs-12">
                         <div class="vacation-offer-details">
                             <h1>Your vacation Awaits</h1>
-                            <h4>Lorem ipsum dolor sit amet, conse ctetuer adipiscing elit.</h4>
-                            <button type="button" class="btn btn-default">Choose a package</button>
+                            <h4>Enjoy much more beyond Golden Circle exclusive offers.</h4>
+                            <a href="customerLogin" ><button type="button" class="btn btn-default">Choose a package</button></a>
                         </div>
                     </div>
                 </div>
@@ -242,7 +242,8 @@
                     <div class="side-B">
                         <div class="product-desc-side">
                             <h3><a>luxury spa</a></h3>
-                            <p>Lorem ipsum dolor sit amet, consec adipiscing elit. Nunc lorem nulla, ornare eu felis luctus non maximus vitae, portt neque. ipsum dolor sit amet, consec adipiscing elit.</p>
+                            <p>The Spa draws inspiration from personal peace, enchantment and well-being.
+                                Private rooms are available both for individuals and for couples to experience a sublime selection of traditional Sri Lankan and other Asian treatments and therapies</p>
                             <div class="links"><a href="single-blog.html">Read more</a></div>
                         </div>
                     </div>
@@ -258,9 +259,9 @@
                     </div>
                     <div class="side-B">
                         <div class="product-desc-side">
-                            <h3><a>Beatusish ingl</a></h3>
-                            <p>Lorem ipsum dolor sit amet, consec adipiscing elit. Nunc lorem nulla, ornare eu felis luctus non maximus vitae, portt neque. ipsum dolor sit amet, consec adipiscing elit.</p>
-                            <div class="links"><a href="single-blog.html">Read more</a></div>
+                            <h3><a>Restaurant</a></h3>
+                            <p>Hotel Hareesha, offers an enthralling culinary journey across its restaurant & bar. Inspirational cuisine by our award-winning chefs is matched with vibrant atmospheres, cutting-edge concepts to create memorable experiences.</p>
+                            <div class="links"><a href="onlineDashboard">Have a look</a></div>
                         </div>
                     </div>
                 </div>
@@ -269,7 +270,7 @@
                     <div class="side-A">
                         <div class="product-desc-side">
                             <h3><a>luxury room</a></h3>
-                            <p>Lorem ipsum dolor sit amet, consec adipiscing elit. Nunc lorem nulla, ornare eu felis luctus non maximus vitae, portt neque. ipsum dolor sit amet, consec adipiscing elit.</p>
+                            <p>Offering striking views of the Indian Ocean, Beira Lake and the city beyond, our 500 guest rooms and suites, and 41 serviced apartments are tastefully furnished to complement the urban-oceanside location and are among the largest in Galle.</p>
                             <div class="links"><a href="single-blog.html">Read more</a></div>
                         </div>
                     </div>
@@ -321,7 +322,7 @@
                     <div class="carousel-inner" role="listbox">
                         <div class="item active">
                             <div class="blog-box">
-                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only</p>
+                                <p>A lovely place and hotel with elegant look from both outside and inside. A side of the hotel head to world famous Sinharaja Forest Reserve. The premises is well cleaned and  maintained with high standard. This has spacious functions hall and attractive swimming pool. Food is amazing. Hotel staff is well trained, gentle and so hospitable. The owner and his family is excellent, kind with good understand. Do visit and get a marvelous experience in it. All the best. Thanks.</p>
                             </div>
                             <div class="blog-view-box">
                                 <div class="media">
@@ -329,7 +330,7 @@
                                         <img src="../../images/reservation/client1.png" class="media-object">
                                     </div>
                                     <div class="media-body">
-                                        <h3 class="media-heading blog-title">Walter Hucko</h3>
+                                        <h3 class="media-heading blog-title">Major General Kumar Jayapathirana</h3>
                                         <h5 class="blog-rev">Satisfied Customer</h5>
                                     </div>
                                 </div>
@@ -337,7 +338,7 @@
                         </div>
                         <div class="item">
                             <div class="blog-box">
-                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only</p>
+                                <p>Hareesha Holiday Resort is located in Yakkalamulla which is about 25 kms from Galle Town. Yakkalamulla is a beautiful countryside located nearby Galle. This is a wonderful place to enjoy your holidays in Sri Lanka. If you are looking for a Nature Resort near by Galle this is the ideal place. Next to our comfortable hotel rooms we have cabanas in a tropical garden with a swimming pool. It is also a perfect place to celebrate your wedding day.</p>
                             </div>
                             <div class="blog-view-box">
                                 <div class="media">
@@ -345,7 +346,7 @@
                                         <img src="../../images/reservation/client2.png" class="media-object">
                                     </div>
                                     <div class="media-body">
-                                        <h3 class="media-heading blog-title">Jules Boutin</h3>
+                                        <h3 class="media-heading blog-title">Tharindu N Sampath</h3>
                                         <h5 class="blog-rev">Satisfied Customer</h5>
                                     </div>
                                 </div>
@@ -353,7 +354,7 @@
                         </div>
                         <div class="item">
                             <div class="blog-box">
-                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only</p>
+                                <p>A great hotel just 40 minutes away from the Galle fort. The place is surrounded by a forest. Rooms are non-modern with clean bathrooms. It's a pretty quiet place being busy only in the tourist season. The food is clean, delicious and prepared in front of you if you rather visit the kitchen. The place is run with very friendly staff which would cater to any of your needs.</p>
                             </div>
                             <div class="blog-view-box">
                                 <div class="media">
@@ -361,7 +362,7 @@
                                         <img src="../../images/reservation/client3.png" class="media-object">
                                     </div>
                                     <div class="media-body">
-                                        <h3 class="media-heading blog-title">Attilio Marzi</h3>
+                                        <h3 class="media-heading blog-title">Roger Perera</h3>
                                         <h5 class="blog-rev">Satisfied Customer</h5>
                                     </div>
                                 </div>
@@ -457,12 +458,12 @@
                         <h4>explore</h4>
                         <ul class="list-unstyled footer-links">
                             <li class="active"><a>Home</a></li>
-                            <li><a href="about.html">About</a></li>
-                            <li><a href="rooms.html">Rooms</a></li>
-                            <li><a href="gallery.html">Gallery</a></li>
-                            <li><a href="#">Dinning</a></li>
-                            <li> <a href="news.html">News</a></li>
-                            <li> <a href="contact.html">Contact</a></li>
+                            <li><a href="about">About</a></li>
+                            <li><a href="rooms">Rooms</a></li>
+                            <li><a href="gallery">Gallery</a></li>
+                            <li><a href="dinning">Dinning</a></li>
+                            <li> <a href="news">News</a></li>
+                            <li> <a href="contact">Contact</a></li>
                         </ul>
                     </div>
                 </div>
@@ -479,7 +480,7 @@
             </div>
 
             <div class="copyright">
-                &copy; 2020 All right reserved. Designed by <a href="http://www.themevault.net/" target="_blank">Team Reliance</a>
+                &copy; 2020 All right reserved. Designed by <a href="https://github.com/rivinduchamath/Hello-Hotel" target="_blank">Team Reliance</a>
             </div>
 
         </div>

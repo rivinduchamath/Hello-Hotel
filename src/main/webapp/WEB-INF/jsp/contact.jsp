@@ -49,11 +49,11 @@
                     <div class="col-md-2 col-sm-6 col-xs-6">
                         <div id="logo">
                             <!--<a href="index.html"><img src="images/logo.png" alt="logo"></a>-->
-                            <a href="roomSelection"><span>Ha</span>reesha</a>
+                            <a href="home"><span>Ha</span>reesha</a>
                         </div>
                     </div>
                     <div class="col-sm-6 visible-sm">
-                        <div class="text-right"><button type="button" class="book-now-btn">Book Now</button></div>
+                        <div class="text-right"><a href="customerLogin" > <button type="button" class="book-now-btn">Book Now</button></a></div>
                     </div>
                     <div class="col-md-8 col-sm-12 col-xs-12 remove-padd">
                         <nav class="navbar navbar-default">
@@ -68,7 +68,7 @@
                             </div>
                             <div class="collapse navigation navbar-collapse navbar-ex1-collapse remove-space">
                                 <ul class="list-unstyled nav1 cl-effect-10">
-                                    <li><a data-hover="Home" href="roomSelection"><span>Home</span></a></li>
+                                    <li><a data-hover="Home" href="home"><span>Home</span></a></li>
                                     <li><a data-hover="About" href="about"><span>About</span></a></li>
                                     <li><a data-hover="Rooms" href="rooms"><span>Rooms</span></a></li>
                                     <li><a data-hover="Gallery"  href="gallery"><span>Gallery</span></a></li>
@@ -80,7 +80,7 @@
                         </nav>
                     </div>
                     <div class="col-md-2  col-sm-4 col-xs-12 hidden-sm">
-                        <div class="text-right"><button type="button" class="book-now-btn">Book Now</button></div>
+                        <div class="text-right"><a href="customerLogin" > <button type="button" class="book-now-btn">Book Now</button></a></div>
                     </div>
                 </div>
             </div>
@@ -101,10 +101,10 @@
         <div class="container">
             <div class="col-md-6 contact-left-block">
                 <h3><span>Contact </span>Us</h3>
-                <p class="text-left">Nulla pharetra eleifend tellus in molestie. In vel neque sit amet urna gravida blandit nec id massa. Phasellus eu aliquet augue. Quisque fringilla urna quam.</p>
-                <p class="text-right">701 Old York Drive Richmond USA. <i class="fa fa-map-marker fa-lg"></i></p>
-                <p class="text-right"><a href="tel:+1-202-555-0100"> +1-202-555-0100 <i class="fa fa-phone fa-lg"></i></a></p>
-                <p class="text-right"><a href="mailto:demo@info.com"> demo@info.com <i class="fa fa-envelope"></i></a></p>
+                <p class="text-left">We are here to help and answer any question you might have. We look forward to hearing from you.</p>
+                <p class="text-right">Imduwa Road, Yakkalamulla, Galle, Sri Lanka. <i class="fa fa-map-marker fa-lg"></i></p>
+                <p class="text-right"><a href="tel:+94-76-673-7320"> +94-76-6737320 <i class="fa fa-phone fa-lg"></i></a></p>
+                <p class="text-right"><a href="mailto:mailspringitp@gmail.com"> mailspringitp@gmail.com <i class="fa fa-envelope"></i></a></p>
             </div>
             <div class="col-md-6 contact-form">
                 <h3>Send a <span>Message</span></h3>
@@ -123,7 +123,7 @@
     <section class="offspace-70">
         <div class="map">
             <div class="container">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d101257.12284776446!2d-77.56330202084071!3d37.52477641775529!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89b111095799c9ed%3A0xbfd83e6de2423cc5!2sRichmond%2C+VA%2C+USA!5e0!3m2!1sen!2sin!4v1488891294599"  frameborder="0" style="border:0; width: 100%; height: 400px" allowfullscreen></iframe>
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3967.20565399622!2d80.34800041448402!3d6.102984795580811!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ae16ed962653407%3A0xd1d0b4fa994c5691!2sHareesha%20Holiday%20Resort!5e0!3m2!1sen!2slk!4v1603281326668!5m2!1sen!2slk" frameborder="0" style="border:0; width: 100%; height: 400px" allowfullscreen></iframe>
             </div>
         </div>
     </section>
@@ -167,11 +167,11 @@
                     <div class="footer-details">
                         <h4>explore</h4>
                         <ul class="list-unstyled footer-links">
-                            <li><a href="roomSelection">Home</a></li>
+                            <li><a href="home">Home</a></li>
                             <li><a href="about">About</a></li>
                             <li><a href="rooms">Rooms</a></li>
                             <li><a href="gallery">Gallery</a></li>
-                            <li><a href="#">Dinning</a></li>
+                            <li><a href="dinning">Dinning</a></li>
                             <li> <a href="news">News</a></li>
                             <li class="active"> <a href="contact">Contact</a></li>
                         </ul>

@@ -74,11 +74,11 @@
                     <div class="col-md-2 col-sm-6 col-xs-6">
                         <div id="logo">
                             <!--<a href="index.html"><img src="images/logo.png" alt="logo"></a>-->
-                            <a href="roomSelection"><span>Ha</span>reesha</a>
+                            <a href="home"><span>Ha</span>reesha</a>
                         </div>
                     </div>
                     <div class="col-sm-6 visible-sm">
-                        <div class="text-right"><button type="button" class="book-now-btn">Book Now</button></div>
+                        <div class="text-right"><a href="customerLogin" > <button type="button" class="book-now-btn">Book Now</button></a></div>
                     </div>
                     <div class="col-md-8 col-sm-12 col-xs-12 remove-padd">
                         <nav class="navbar navbar-default">
@@ -93,7 +93,7 @@
                             </div>
                             <div class="collapse navigation navbar-collapse navbar-ex1-collapse remove-space">
                                 <ul class="list-unstyled nav1 cl-effect-10">
-                                    <li><a  data-hover="Home" href="roomSelection"><span>Home</span></a></li>
+                                    <li><a  data-hover="Home" href="home"><span>Home</span></a></li>
                                     <li><a data-hover="About" href="about"><span>About</span></a></li>
                                     <li><a data-hover="Rooms" href="rooms"><span>Rooms</span></a></li>
                                     <li><a data-hover="Gallery" class="active"><span>Gallery</span></a></li>
@@ -105,7 +105,7 @@
                         </nav>
                     </div>
                     <div class="col-md-2  col-sm-4 col-xs-12 hidden-sm">
-                        <div class="text-right"><button type="button" class="book-now-btn">Book Now</button></div>
+                        <div class="text-right"><a href="customerLogin" > <button type="button" class="book-now-btn">Book Now</button></a></div>
                     </div>
                 </div>
             </div>
@@ -195,11 +195,11 @@
                     <div class="footer-details">
                         <h4>explore</h4>
                         <ul class="list-unstyled footer-links">
-                            <li><a href="roomSelection">Home</a></li>
+                            <li><a href="home">Home</a></li>
                             <li><a href="about">About</a></li>
                             <li><a href="rooms">Rooms</a></li>
                             <li class="active"><a href="gallery">Gallery</a></li>
-                            <li><a href="#">Dinning</a></li>
+                            <li><a href="dinning">Dinning</a></li>
                             <li> <a href="news">News</a></li>
                             <li> <a href="contact">Contact</a></li>
                         </ul>
