@@ -20,6 +20,7 @@
 	position: relative;
 	max-width: 642px;
 	width: 100%;
+	height: auto;
 	margin: auto;
 	padding: 40px;
 	overflow: hidden;

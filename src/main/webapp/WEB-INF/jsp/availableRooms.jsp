@@ -82,7 +82,7 @@
                     <div class="col-md-2 col-sm-6 col-xs-6">
                         <div id="logo">
                             <!--<a href="index.html"><img src="images/logo.png" alt="logo"></a>-->
-                            <a href="roomSelection"><span>Ha</span>reesha</a>
+                            <a href="home"><span>Ha</span>reesha</a>
                         </div>
                     </div>
                     <div class="col-sm-6 visible-sm">
@@ -138,10 +138,16 @@
                     <div class="price">LKR 2000</div>
                     <div class="monthly">per night</div>
                     <ul>
-                        <li><b>10GB</b> Disk Space</li>
-                        <li><b>100GB</b> Monthly Bandwidth</li>
-                        <li><b>20</b> Email Accounts</li>
-                        <li><b>Unlimited</b> subdomains</li>
+                        <li><b>60 Square Meter</b> Room Size</li>
+                        <li><b>1 GB</b> Free Wi-Fi</li>
+                        <li>Tea/Coffee maker</li>
+                        <li>Air conditioning</li>
+                        <li>Tile/Marble floor</li>
+                        <li>Soundproof</li>
+                        <li>Ironing facilities</li>
+                        <li>Iron</li>
+                        <li>Electric kettle</li>
+
                     </ul>
 
                     <a href="onlineBooking" > <button type="button" class="book-now-btn">Select</button></a>
@@ -152,10 +158,15 @@
                     <div class="price">LKR 3500</div>
                     <div class="monthly">per night</div>
                     <ul>
-                        <li><b>5GB</b> Disk Space</li>
-                        <li><b>50GB</b> Monthly Bandwidth</li>
-                        <li><b>10</b> Email Accounts</li>
-                        <li><b>Unlimited</b> subdomains</li>
+                        <li><b>90 Square Meter</b> Room Size</li>
+                        <li><b>2 GB</b> Free Wi-Fi</li>
+                        <li>Tea/Coffee maker</li>
+                        <li>Air conditioning</li>
+                        <li>Tile/Marble floor</li>
+                        <li>Soundproof</li>
+                        <li>Ironing facilities</li>
+                        <li>Iron</li>
+                        <li>Electric kettle</li>
                     </ul>
                     <a href="onlineBooking" > <button type="button" class="book-now-btn">Select</button></a>
                 </div>
@@ -164,22 +175,32 @@
                     <div class="price">LKR 5000</div>
                     <div class="monthly">per night</div>
                     <ul>
-                        <li><b>3GB</b> Disk Space</li>
-                        <li><b>25GB</b> Monthly Bandwidth</li>
-                        <li><b>5</b> Email Accounts</li>
-                        <li><b>Unlimited</b> subdomains</li>
+                        <li><b>108 Square Meter</b> Room Size</li>
+                        <li><b>3 GB</b> Free Wi-Fi</li>
+                        <li>Tea/Coffee maker</li>
+                        <li>Air conditioning</li>
+                        <li>Tile/Marble floor</li>
+                        <li>Soundproof</li>
+                        <li>Ironing facilities</li>
+                        <li>Iron</li>
+                        <li>Electric kettle</li>
                     </ul>
                     <a href="onlineBooking" > <button type="button" class="book-now-btn">Select</button></a>
                 </div>
                 <div class="plan plan4">
-                    <div class="header">Queen</div>
+                    <div class="header">Premium</div>
                     <div class="price">LKR 7500</div>
                     <div class="monthly">per night</div>
                     <ul>
-                        <li><b>1GB</b> Disk Space</li>
-                        <li><b>10GB</b> Monthly Bandwidth</li>
-                        <li><b>2</b> Email Accounts</li>
-                        <li><b>Unlimited</b> subdomains</li>
+                        <li><b>130 Square Meter</b> Room Size</li>
+                        <li><b>5 GB</b> Free Wi-Fi</li>
+                        <li>Tea/Coffee maker</li>
+                        <li>Air conditioning</li>
+                        <li>Tile/Marble floor</li>
+                        <li>Soundproof</li>
+                        <li>Ironing facilities</li>
+                        <li>Iron</li>
+                        <li>Electric kettle</li>
                     </ul>
                     <a href="onlineBooking" > <button type="button" class="book-now-btn">Select</button></a>
                 </div>
@@ -227,7 +248,7 @@
                     <div class="footer-details">
                         <h4>explore</h4>
                         <ul class="list-unstyled footer-links">
-                            <li><a href="roomSelection">Home</a></li>
+                            <li><a href="home">Home</a></li>
                             <li><a href="about">About</a></li>
                             <li class="active"><a>Rooms</a></li>
                             <li><a href="gallery">Gallery</a></li>
@@ -321,7 +342,7 @@
                     <div class="col-md-2 col-sm-6 col-xs-6">
                         <div id="logo">
                             <!--<a href="index.html"><img src="images/logo.png" alt="logo"></a>-->
-                            <a href="roomSelection"><span>Ha</span>reesha</a>
+                            <a href="home"><span>Ha</span>reesha</a>
                         </div>
                     </div>
                     <div class="col-sm-6 visible-sm">
@@ -340,7 +361,7 @@
                             </div>
                             <div class="collapse navigation navbar-collapse navbar-ex1-collapse remove-space">
                                 <ul class="list-unstyled nav1 cl-effect-10">
-                                    <li><a  data-hover="Home" href="roomSelection"><span>Home</span></a></li>
+                                    <li><a  data-hover="Home" href="home"><span>Home</span></a></li>
                                     <li><a data-hover="About" href="about"><span>About</span></a></li>
                                     <li><a data-hover="Rooms" href="rooms"><span>Rooms</span></a></li>
                                     <li><a data-hover="Gallery" class="active"><span>Gallery</span></a></li>
@@ -376,10 +397,16 @@
                     <div class="price">LKR 2000</div>
                     <div class="monthly">per night</div>
                     <ul>
-                        <li><b>10GB</b> Disk Space</li>
-                        <li><b>100GB</b> Monthly Bandwidth</li>
-                        <li><b>20</b> Email Accounts</li>
-                        <li><b>Unlimited</b> subdomains</li>
+                        <li><b>60 Square Meter</b> Room Size</li>
+                        <li><b>1 GB</b> Free Wi-Fi</li>
+                        <li>Tea/Coffee maker</li>
+                        <li>Air conditioning</li>
+                        <li>Tile/Marble floor</li>
+                        <li>Soundproof</li>
+                        <li>Ironing facilities</li>
+                        <li>Iron</li>
+                        <li>Electric kettle</li>
+
                     </ul>
 
                     <a href="onlineBooking" > <button type="button" class="book-now-btn">Select</button></a>
@@ -390,10 +417,15 @@
                     <div class="price">LKR 3500</div>
                     <div class="monthly">per night</div>
                     <ul>
-                        <li><b>5GB</b> Disk Space</li>
-                        <li><b>50GB</b> Monthly Bandwidth</li>
-                        <li><b>10</b> Email Accounts</li>
-                        <li><b>Unlimited</b> subdomains</li>
+                        <li><b>90 Square Meter</b> Room Size</li>
+                        <li><b>2 GB</b> Free Wi-Fi</li>
+                        <li>Tea/Coffee maker</li>
+                        <li>Air conditioning</li>
+                        <li>Tile/Marble floor</li>
+                        <li>Soundproof</li>
+                        <li>Ironing facilities</li>
+                        <li>Iron</li>
+                        <li>Electric kettle</li>
                     </ul>
                     <a href="onlineBooking" > <button type="button" class="book-now-btn">Select</button></a>
                 </div>
@@ -402,22 +434,32 @@
                     <div class="price">LKR 5000</div>
                     <div class="monthly">per night</div>
                     <ul>
-                        <li><b>3GB</b> Disk Space</li>
-                        <li><b>25GB</b> Monthly Bandwidth</li>
-                        <li><b>5</b> Email Accounts</li>
-                        <li><b>Unlimited</b> subdomains</li>
+                        <li><b>108 Square Meter</b> Room Size</li>
+                        <li><b>3 GB</b> Free Wi-Fi</li>
+                        <li>Tea/Coffee maker</li>
+                        <li>Air conditioning</li>
+                        <li>Tile/Marble floor</li>
+                        <li>Soundproof</li>
+                        <li>Ironing facilities</li>
+                        <li>Iron</li>
+                        <li>Electric kettle</li>
                     </ul>
                     <a href="onlineBooking" > <button type="button" class="book-now-btn">Select</button></a>
                 </div>
                 <div class="plan plan4">
-                    <div class="header">Queen</div>
+                    <div class="header">Premium</div>
                     <div class="price">LKR 7500</div>
                     <div class="monthly">per night</div>
                     <ul>
-                        <li><b>1GB</b> Disk Space</li>
-                        <li><b>10GB</b> Monthly Bandwidth</li>
-                        <li><b>2</b> Email Accounts</li>
-                        <li><b>Unlimited</b> subdomains</li>
+                        <li><b>130 Square Meter</b> Room Size</li>
+                        <li><b>5 GB</b> Free Wi-Fi</li>
+                        <li>Tea/Coffee maker</li>
+                        <li>Air conditioning</li>
+                        <li>Tile/Marble floor</li>
+                        <li>Soundproof</li>
+                        <li>Ironing facilities</li>
+                        <li>Iron</li>
+                        <li>Electric kettle</li>
                     </ul>
                     <a href="onlineBooking" > <button type="button" class="book-now-btn">Select</button></a>
                 </div>
@@ -466,7 +508,7 @@
                     <div class="footer-details">
                         <h4>explore</h4>
                         <ul class="list-unstyled footer-links">
-                            <li><a href="roomSelection">Home</a></li>
+                            <li><a href="home">Home</a></li>
                             <li><a href="about">About</a></li>
                             <li><a href="rooms">Rooms</a></li>
                             <li class="active"><a href="gallery">Gallery</a></li>

@@ -283,10 +283,10 @@
 
 
                             <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
-                                <label>Customer Id</label>
+                                <label>Customer ID</label>
                                 <input type="number" value="" class="form-control"
                                        required="required" name="customerId"
-                                       id="customerId" placeholder="Customer Id"/></div>
+                                       id="customerId" placeholder="customer id"/></div>
 
 
                             <div class="form-group">
@@ -296,13 +296,13 @@
                                     <label>Customer Name</label>
                                     <input type="text" class="form-control"
                                            required="required" name="name"
-                                           id="name" placeholder="Customer Name"/></div>
+                                           id="name" placeholder="customer name"/></div>
 
                                 <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6"><br>
                                     <label>Address</label>
                                     <input type="text" class="form-control"
                                            required="required" name="address"
-                                           id="address" placeholder="Address"/></div>
+                                           id="address" placeholder="address"/></div>
                             </div>
 
 
@@ -311,13 +311,13 @@
                                     <label>Email</label>
                                     <input type="email" class="form-control"
                                            required="required" name="email"
-                                           id="email" placeholder="Email"/></div>
+                                           id="email" placeholder="email"/></div>
 
                                 <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6"><br>
                                     <label>Mobile No</label>
                                     <input type="number" class="form-control"
                                            required="required" name="contactNumber"
-                                           id="contactNumber" placeholder="Mobile No"/></div>
+                                           id="contactNumber" placeholder="mobile number"/></div>
                             </div>
 
 
@@ -326,7 +326,7 @@
                                     <label>Age</label>
                                     <input type="number" class="form-control"
                                            required="required" name="noOfPlates"
-                                           id="noOfPlates" placeholder="Age"/></div>
+                                           id="noOfPlates" placeholder="age"/></div>
                             </div>
 
 
@@ -370,7 +370,7 @@
                                         <table id="datatable-buttons" class="table table-striped table-bordered">
                                             <thead class="thead-light">
                                             <tr>
-                                                <th>Customer Id</th>
+                                                <th>Customer ID</th>
                                                 <th>Name</th>
                                                 <th>Address</th>
                                                 <th>MobileNo</th>
