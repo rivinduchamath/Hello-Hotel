@@ -5,6 +5,7 @@ import lk.sliit.hotelManagement.dto.beverage.BarOrderDTO;
 import lk.sliit.hotelManagement.dto.inventory.InventoryDTO;
 import lk.sliit.hotelManagement.service.custom.BarBO;
 import lk.sliit.hotelManagement.service.custom.IndexLoginBO;
+import lk.sliit.hotelManagement.service.custom.InventoryBO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,6 +18,8 @@ import java.util.List;
 public class BarOrders {
     @Autowired
     IndexLoginBO indexLoginBO;
+    @Autowired
+    InventoryBO inventoryBO;
     @Autowired
     BarBO barBO;
 
@@ -34,6 +37,8 @@ public class BarOrders {
 
     @RequestMapping("/barSettings")
     public String barSettings1(Model model, HttpServletRequest request) {
+        List<InventoryDTO> p1 = inventoryBO.findAllBeverageItems();
+        model.addAttribute("loadInventoryBeverage", p1);
         model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
         request.setAttribute("mode", "MODE_SETTINGS1");
         return "barSettings";
