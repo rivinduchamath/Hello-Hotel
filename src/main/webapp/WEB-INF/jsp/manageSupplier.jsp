@@ -457,7 +457,7 @@
 
             <%--Chart Income--%>
             <%--Chart Today--%>
-
+<%--
             <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
                 <div class="col-sm-12 col-md-7 col-lg-7 col-xl-7">
                 <div id="chartdiv"></div>
@@ -469,7 +469,7 @@
                     <br>
                     <P><h6>Yesterday Income</h6></P>
                 </div>
-            </div>
+            </div>--%>
             <%--/Chart Yesterday--%>
             <%--/Chart Income--%>
 
@@ -512,7 +512,7 @@
 <!-- Custom Theme Scripts -->
 <script src="../../build/js/custom.min.js"></script>
 <%--Pie Chart 1--%>
-<script>
+<%--<script>
     am4core.ready(function() {
 
 // Themes begin
@@ -573,9 +573,9 @@
 
     }); // end am4core.ready()
 </script>
-<%--/Pie Chart 1--%>
+&lt;%&ndash;/Pie Chart 1&ndash;%&gt;
 
-<%--Pie Chart 2--%>
+&lt;%&ndash;Pie Chart 2&ndash;%&gt;
 <script>
     am4core.ready(function() {
 
@@ -706,7 +706,7 @@
         })
 
     }); // end am4core.ready()
-</script>
+</script>--%>
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 <script>
 

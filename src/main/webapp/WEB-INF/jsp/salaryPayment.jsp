@@ -220,25 +220,23 @@
                                                 <thead>
 
                                                 <tr>
-                                                    <th>SalaryId</th>
+
                                                     <th>Emp Id</th>
                                                     <th>Name</th>
                                                     <th>Basic Salary</th>
-                                                    <th>OT Salary</th>
-                                                    <th>Bonus Salary</th>
-                                                    <th>Tax</th>
+                                                    <th>OT Hours</th>
+                                                    <th>Hours</th>
                                                     <th>Total Salary</th>
                                                 </tr>
                                                 </thead>
                                                 <tbody>
                                                 <c:forEach items="${getSalaryData}" var="e">
                                                     <tr>
-                                                        <td>${e.id}</td>
+
                                                         <td>${e.employee}</td>
-                                                        <td>${e.epf}</td>
+                                                        <td>${e.name}</td>
                                                         <td>${e.basicSalary}</td>
                                                         <td>${e.otHours}</td>
-                                                        <td>${e.date}</td>
                                                         <td>${e.hours}</td>
                                                         <td>${e.basicSalary}</td>
                                                     </tr>

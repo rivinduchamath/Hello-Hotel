@@ -3,7 +3,7 @@ package lk.sliit.hotelManagement.controller.humanResourceController.salary;
 import lk.sliit.hotelManagement.controller.SuperController;
 import lk.sliit.hotelManagement.dto.hr.MonthlySalary;
 import lk.sliit.hotelManagement.dto.hr.SalaryDTO;
-import lk.sliit.hotelManagement.dto.hr.SalaryPay;
+import lk.sliit.hotelManagement.dto.hr.SalaryPayDTO;
 import lk.sliit.hotelManagement.dto.manager.EmployeeDTO;
 import lk.sliit.hotelManagement.service.custom.HumanResourceBO;
 import lk.sliit.hotelManagement.service.custom.IndexLoginBO;
@@ -31,9 +31,10 @@ public class SalaryController {
     ManageBO manageBO;
     @Autowired
     HumanResourceBO humanResourceBO;
+
     @GetMapping("/salary")
     public ModelAndView salary(Model model) {
-        ModelAndView mav = new ModelAndView ( "salary" );
+        ModelAndView mav = new ModelAndView("salary");
         List<MonthlySalary> p = humanResourceBO.findAllUserwithOT();
         List<SalaryDTO> p2 = humanResourceBO.findAllsalaryStateNotFalse();
         List<EmployeeDTO> p3 = humanResourceBO.findAllsalaryStateNotFalseTot();
@@ -42,22 +43,24 @@ public class SalaryController {
         model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
         //Pass Salary Row Count
         //Get All Data In Salary Table
-        List <SalaryDTO> salaryDTOS = humanResourceBO.findAllSalary ( );
+        List<SalaryDTO> salaryDTOS = humanResourceBO.findAllSalary();
         int i = 0;
         for (EmployeeDTO e : p3) {
             i++; // Get Count
         }
-        mav.addObject ( "salaryCount", i );
+        mav.addObject("salaryCount", i);
         return mav;
     }
+
     //Load All Salaries To a Table
     @GetMapping("/allSalary")
     public ModelAndView loadAllSalary(Model model, @ModelAttribute EmployeeDTO employee, HttpServletRequest request, HttpServletResponse response) throws ServletException, IllegalStateException, IOException {
-        ModelAndView mav = new ModelAndView ( "allSalary" );
-        mav.addObject ( "listEmployeesTableSalarya", humanResourceBO.findAllSalary ( ) );
-        model.addAttribute ( "loggerName", indexLoginBO.getEmployeeByIdNo ( SuperController.idNo ) );
+        ModelAndView mav = new ModelAndView("allSalary");
+        mav.addObject("listEmployeesTableSalarya", humanResourceBO.findAllSalary());
+        model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
         return mav;
     }
+
     @PostMapping("salarySave")
     public String loadInvoicePage(@ModelAttribute SalaryDTO salaryDTO, Model model, HttpServletRequest request) {
         model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
@@ -67,9 +70,9 @@ public class SalaryController {
             SalaryDTO employeeDTO2 = null;
             try {
                 employeeDTO2 = humanResourceBO.findSalarybyId(salaryDTO.getSalaryId());
-            }catch (NullPointerException d){
+            } catch (NullPointerException d) {
                 int maxId = (employeeDTO1.getSalaryId());
-                if (salaryDTO.getSalaryId()==(maxId)) {
+                if (salaryDTO.getSalaryId() == (maxId)) {
                     salaryDTO.setSalaryId((maxId));
                 } else {
                     maxId++;
@@ -77,21 +80,25 @@ public class SalaryController {
                 }
             }
 
-        } catch (NullPointerException e){
+        } catch (NullPointerException e) {
             salaryDTO.setSalaryId(1);
         }
         humanResourceBO.saveSalary(salaryDTO);
         return "redirect:/salary";
     }
 
-    @RequestMapping("addSalary")
-    public ModelAndView loadInvoicePage(@ModelAttribute SalaryPay salaryDTO, Model model) {
-        System.out.println(salaryDTO.getSource()+"SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS");
-        ModelAndView mav = new ModelAndView ( "salaryPayment" );
-        model.addAttribute ( "loggerName", indexLoginBO.getEmployeeByIdNo ( SuperController.idNo ) );
-        model.addAttribute ( "getSalaryData", humanResourceBO.getSalaryPayment ( salaryDTO.getSource ( ) ) );
-        return mav;
+    @GetMapping("salaryPayment")
+    public String loadInvoicePage(@ModelAttribute SalaryPayDTO salaryDTO, Model model) throws IOException {
+        ModelAndView mav = new ModelAndView("salaryPayment");
+        model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
+        try {
+            List<SalaryPayDTO> salaryDTOS = humanResourceBO.getSalaryPayment(salaryDTO.getSource());
+            model.addAttribute("getSalaryData", salaryDTOS);
+
+        } catch (Exception e) { }
+       return "salaryPayment";
     }
+
 
 
 }

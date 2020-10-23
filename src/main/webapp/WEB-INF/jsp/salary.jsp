@@ -130,7 +130,7 @@
                                     <small>Click CheckBox And Pay Salary
                                     </small>
                                 </h2>
-                                <form method="POST" action="/addSalary" name="invoice">
+                                <form  action="/salaryPayment" name="invoice">
                                     <input style="display: none" type="text" id="itemPay" name="source">
                                     <ul class="nav navbar-right panel_toolbox">
                                         <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
@@ -145,7 +145,8 @@
                                 <!--href="/invoice"-->
                                 <div class="clearfix"></div>
                             </div>
-                            <button onclick="getValue();return false" ; style="float: right; font-weight: bold;color: white" ;
+                            <button onclick="getValue();return false" ;
+                                    style="float: right; font-weight: bold;color: white" ;
                                     id="btn_enable" class="btn btn-success ">Add Payment
                                 <i class="fa fa-plus-circle"></i></button>
                             <div class="x_content">
@@ -179,7 +180,7 @@
                                                                  class="avatar" alt="Avatar"></td>
                                                         <td>${e.salary}</td>
                                                         <td>${e.mobileNo}</td>
-                                                       <td class="a-center ">
+                                                        <td class="a-center ">
                                                             <input type="checkbox" class="flat checks"
                                                                    value="${e.userId}" name="table_records">
                                                         </td>
@@ -214,9 +215,14 @@
                 }
             }
 
+            if (str != '') {
+                alert(str)
+            }
+            if (str == '') {
+                alert("Not selected Items")
+            }
+            $("#itemPay").val(str);
 
-           $("#itemPay").val(str);
-            alert(str)
         }
     </script>
 
@@ -274,10 +280,10 @@
 
 <script>
     $(document).ready(function () {
-    $("#btn_enable").click(function () {
-        $("#name").prop("disabled", false);
+        $("#btn_enable").click(function () {
+            $("#name").prop("disabled", false);
+        });
     });
-});
 </script>
 <!-- Datatables -->
 <script src="../../vendors/datatables.net/js/jquery.dataTables.min.js"></script>
