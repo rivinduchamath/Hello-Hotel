@@ -229,6 +229,31 @@ public class BanquetBOImpl implements BanquetBO {
     }
 
     @Override
+    public int checkHall1AvailabilityAndGetBanquetId(Date date) {
+        String hallNo = "No 1";
+        int banquetId;
+        try {
+            banquetId = banquetOrderDAO.getOrderIdByDateEqualsAndHallIdEquals(date,hallNo);
+        }catch (Exception e){
+            banquetId=-1;
+        }
+        return banquetId;
+    }
+
+    @Override
+    public int checkHall2AvailabilityAndGetBanquetId(Date date) {
+        String hallNo = "No 2";
+        int banquetId;
+        try {
+            banquetId = banquetOrderDAO.getOrderIdByDateEqualsAndHallIdEquals(date,hallNo);
+        }catch (Exception e){
+            banquetId=-1;
+        }
+        return banquetId;
+    }
+
+
+    @Override
     public int checkAvailability(Date date) {
         int count = banquetOrderDAO.countBanquetOrderByDateEquals(date);
         return count;

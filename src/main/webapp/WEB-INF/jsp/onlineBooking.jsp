@@ -72,6 +72,7 @@
 </head>
 <body background="../../images/reservation/banner.jpg">
 <form class="" action="/onlineBookingTable" method="post" name="" accept-charset="utf-8" autocomplete="on">
+
     <input type="hidden" name="formID" value="202835105286453" />
     <input type="hidden" id="JWTContainer" value="" />
     <input type="hidden" id="cardinalOrderNumber" value="" />

@@ -5,6 +5,7 @@ import lk.sliit.hotelManagement.entity.kitchen.Menu;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.repository.query.Param;
 
 import java.util.Date;
 
@@ -30,5 +31,6 @@ public interface BanquetOrderDAO extends CrudRepository<BanquetOrder,Integer> {
 
     int countBanquetOrderByDateEqualsAndHallIdEquals(Date date, String hallNo);
 
-
+    @Query(value = "select b.orderId from BanquetOrder b where b.date=:date and b.hallId=:hallNo ")
+    int getOrderIdByDateEqualsAndHallIdEquals(@Param("date") Date date,@Param("hallNo") String hallNo);
 }

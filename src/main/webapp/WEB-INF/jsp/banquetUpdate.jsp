@@ -38,6 +38,38 @@
         </script>
     </c:if>
 
+    <%
+        if(request.getAttribute("myp1") != null){
+    %>
+    <script>alert("Date is Unavailable... Please check availability.")</script>
+    <%
+        }
+    %>
+
+    <%
+        if(request.getAttribute("myp2") != null){
+    %>
+    <script>alert("Hall 01 is Unavailable... Please check availability.")</script>
+    <%
+        }
+    %>
+
+    <%
+        if(request.getAttribute("myp3") != null){
+    %>
+    <script>alert("Hall 02 is Unavailable... Please check availability.")</script>
+    <%
+        }
+    %>
+
+    <%
+        if(request.getAttribute("successfulMsg") != null){
+    %>
+    <script>alert("Updated Successfully")</script>
+    <%
+        }
+    %>
+
     <!-- Datatables -->
     <link href="../../vendors/datatables.net-bs/css/dataTables.bootstrap.min.css" rel="stylesheet">
     <link href="../../vendors/datatables.net-buttons-bs/css/buttons.bootstrap.min.css" rel="stylesheet">
@@ -323,7 +355,7 @@
                         <div class="form-group">
                             <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6"> <br>
                                 <label for="orderId">Num Of Plates</label>
-                                <input type="text" class="form-control"
+                                <input type="number" size="6" min="10" max="1000" class="form-control"
                                        required="required" name="noOfPlates"
                                        id="noOfPlates" placeholder="Num Of Plates"/></div>
 
@@ -331,7 +363,7 @@
                                 <label for="orderId">Package</label>
                                 <select class="form-control"required="required" name="menuId"
                                         id="menuId">
-                                    <option>Choose Package</option>
+                                    <option >Choose Package</option>
                                     <option value="1">Bronze</option>
                                     <option value="2">Silver</option>
                                     <option value="3">Gold</option>
