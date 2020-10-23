@@ -79,19 +79,25 @@
             <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
 
 
-                <div class="col-sm-12 col-md-4 col-lg-4 col-xl-4">
+                <div class="col-sm-12 col-md-3 col-lg-3 col-xl-3">
                     <a href="manageMenu">
                         <button type="button" class="large-btn btn btn-dark">Menu Management</button>
                     </a>
                 </div>
 
-                <div class="col-sm-12 col-md-4 col-lg-4 col-xl-4">
+                <div class="col-sm-12 col-md-3 col-lg-3 col-xl-3">
                     <a href="banquetFoodOrder">
                         <button type="button" class="large-btn btn btn-secondary">Banquet Orders</button>
                     </a>
                 </div>
 
-                <div class="col-sm-12 col-md-4 col-lg-4 col-xl-4">
+                <div class="col-sm-12 col-md-3 col-lg-3 col-xl-3">
+                    <a href="restaurantOrders">
+                        <button type="button" class="large-btn btn btn-secondary">Restaurant Orders</button>
+                    </a>
+                </div>
+
+                <div class="col-sm-12 col-md-3 col-lg-3 col-xl-3">
                     <a href="/kitchenReport">
                         <button type="button" class="large-btn btn btn-dark">Daily Food Order Report</button>
                     </a>
@@ -100,12 +106,13 @@
                     <hr>
                 </div>
             </div>
-            <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
-                <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4">
                     <div class="row">
                         <div class="x_panel">
                             <div class="x_title">
-                                <h2>Select Menu</h2>
+                                <h2>Food Items on Menu: Day01 Breakfast</h2>
                                 <ul class="nav navbar-right panel_toolbox">
                                     <li><a class="collapse-link"></a>
                                     </li>
@@ -122,17 +129,32 @@
                                     <div class="col-sm-12">
                                         <div class="card-box table-responsive">
                                             <table class="table table-striped table-bordered"
-                                                   id="datatable-buttons2"
+                                                   id="datatable-buttons4"
                                                    style="text-align: center">
                                                 <thead class="thead-light">
                                                 <tr>
-                                                    <th>Id</th>
                                                     <th>Name</th>
                                                     <th>Type</th>
                                                 </tr>
 
                                                 </thead>
                                                 <tbody>
+                                                <tr>
+                                                    <td>Chicken Curry</td>
+                                                    <td>Main</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Rice</td>
+                                                    <td>Main</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Dhal Curry</td>
+                                                    <td>Main</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Ice cream</td>
+                                                    <td>Desserts</td>
+                                                </tr>
                                                 <c:forEach items="${loadMenuItemTable}" var="item">
                                                     <tr>
                                                         <td>${item.menuId}</td>
@@ -161,11 +183,86 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+                <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4">
                     <div class="row">
                         <div class="x_panel">
                             <div class="x_title">
-                                <h2>Food Items on Menu</h2>
+                                <h2>Food Items on Menu: Day01 Lunch</h2>
+                                <ul class="nav navbar-right panel_toolbox">
+                                    <li><a class="collapse-link"></a>
+                                    </li>
+                                    <li class="dropdown">
+                                        <a aria-expanded="false" class="dropdown-toggle" data-toggle="dropdown"
+                                           href="#"
+                                           role="button"><i class="fa fa-wrench"></i></a>
+                                    </li>
+                                </ul>
+                                <div class="clearfix"></div>
+                            </div>
+                            <div class="x_content">
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <div class="card-box table-responsive">
+                                            <table class="table table-striped table-bordered"
+                                                   id="datatable-buttons5"
+                                                   style="text-align: center">
+                                                <thead class="thead-light">
+                                                <tr>
+                                                    <th>Name</th>
+                                                    <th>Type</th>
+                                                </tr>
+
+                                                </thead>
+                                                <tbody>
+                                                <tr>
+                                                    <td>Chicken Curry</td>
+                                                    <td>Main</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Rice</td>
+                                                    <td>Main</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Dhal Curry</td>
+                                                    <td>Main</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Ice cream</td>
+                                                    <td>Desserts</td>
+                                                </tr>
+                                                <c:forEach items="${loadMenuItemTable}" var="item">
+                                                    <tr>
+                                                        <td>${item.menuId}</td>
+                                                        <td>${item.name}</td>
+                                                        <td>${item.type}</td>
+                                                        <td>
+                                                            <a href="foodPackage/${item.menuId}">
+                                                                <input type="button" value="Manage">
+                                                            </a>
+                                                        </td>
+
+                                                        <td>
+                                                            <a href="deleteFoodPackage/${item.menuId}">
+                                                                <i class="fa fa-trash" style="font-size: 20px"></i>
+                                                            </a>
+                                                        </td>
+                                                    </tr>
+                                                </c:forEach>
+
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4">
+                    <div class="row">
+                        <div class="x_panel">
+                            <div class="x_title">
+                                <h2>Food Items on Menu: Day01 Dinner</h2>
                                 <ul class="nav navbar-right panel_toolbox">
                                     <li><a class="collapse-link"></a>
                                     </li>
@@ -186,13 +283,28 @@
                                                    style="text-align: center">
                                                 <thead class="thead-light">
                                                 <tr>
-                                                    <th>Id</th>
                                                     <th>Name</th>
                                                     <th>Type</th>
                                                 </tr>
 
                                                 </thead>
                                                 <tbody>
+                                                <tr>
+                                                    <td>Chicken Curry</td>
+                                                    <td>Main</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Rice</td>
+                                                    <td>Main</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Dhal Curry</td>
+                                                    <td>Main</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Ice cream</td>
+                                                    <td>Desserts</td>
+                                                </tr>
                                                 <c:forEach items="${loadMenuItemTable}" var="item">
                                                     <tr>
                                                         <td>${item.menuId}</td>
@@ -221,7 +333,9 @@
                         </div>
                     </div>
                 </div>
+            </div>
 
+            <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
                 <!--Order items form-------------------------------------------------------------------->
                 <div class="col-sm-12 col-md-12 col-lg-4 col-xl-4">
                     <div class="row">
