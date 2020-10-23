@@ -225,7 +225,7 @@
                                                     <th>Name</th>
                                                     <th>Basic Salary</th>
                                                     <th>OT Hours</th>
-                                                    <th>Hours</th>
+
                                                     <th>Total Salary</th>
                                                 </tr>
                                                 </thead>
@@ -237,8 +237,7 @@
                                                         <td>${e.name}</td>
                                                         <td>${e.basicSalary}</td>
                                                         <td>${e.otHours}</td>
-                                                        <td>${e.hours}</td>
-                                                        <td>${e.basicSalary}</td>
+                                                        <td>${e.basicSalary + (e.otHours*200)}</td>
                                                     </tr>
                                                     <script>
                                                         var aa = aa + ${e.otHours};
@@ -270,32 +269,28 @@
                                         </div>
                                         <!-- /.col -->
                                         <div class="col-md-6">
-                                            <p class="lead">Amount Due 2/22/2014</p>
+                                            <p class="lead">Amount Due 10/23/2020</p>
                                             <div class="table-responsive">
                                                 <table class="table">
                                                     <tbody>
                                                     <tr>
                                                         <th style="width:50%">Basic Tot:</th>
-                                                        <td><span id="val2"></span></td>
+                                                        <td>100000.00<span id="val2"></span></td>
                                                     </tr>
                                                     <tr>
                                                         <th>Tax
                                                             <small style="font-weight: bold"><span id="val9"></span>
                                                             </small>
                                                         </th>
-                                                        <td><span id="val3"></span></td>
+                                                        <td>2%<span id="val3"></span></td>
                                                     </tr>
                                                     <tr>
                                                         <th>OT Tot:</th>
-                                                        <td><span id="val4"></span></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <th>Bonus Tot:</th>
-                                                        <td><span id="val5"></span></td>
+                                                        <td>11,200<span id="val4"></span></td>
                                                     </tr>
                                                     <tr>
                                                         <th>Total:</th>
-                                                        <td><span id="val"></span></td>
+                                                        <td>Rs: 111,200<span id="val"></span></td>
                                                     </tr>
                                                     </tbody>
                                                 </table>
