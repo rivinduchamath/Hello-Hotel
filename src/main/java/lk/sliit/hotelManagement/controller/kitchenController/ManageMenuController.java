@@ -178,7 +178,6 @@ public class ManageMenuController {
                 }
             }
         }
-        System.out.println("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$"+selectedFoodItems.size());
         return selectedFoodItems;
     }
 
@@ -192,7 +191,6 @@ public class ManageMenuController {
         } else {
             notSelectedFoodItems = foodItemDTOS;
         }
-        System.out.println("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%"+notSelectedFoodItems.size());
         System.out.println("dasdas"+foodItemDTOS.size());
         return notSelectedFoodItems;
     }
