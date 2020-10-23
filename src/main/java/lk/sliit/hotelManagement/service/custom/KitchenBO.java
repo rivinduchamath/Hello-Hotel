@@ -1,8 +1,10 @@
 package lk.sliit.hotelManagement.service.custom;
 
+import lk.sliit.hotelManagement.dao.kitchenDAO.MenuDetailsDAO;
 import lk.sliit.hotelManagement.dto.inventory.InventoryNoticeDTO;
 import lk.sliit.hotelManagement.dto.kitchen.FoodItemDTO;
 import lk.sliit.hotelManagement.dto.kitchen.MenuDTO;
+import lk.sliit.hotelManagement.dto.kitchen.MenuDetailsDTO;
 import lk.sliit.hotelManagement.dto.manager.EmployeeDTO;
 import lk.sliit.hotelManagement.dto.restaurant.restaurantCounterOrder.RestaurantCounterOrderDetailDTO;
 import lk.sliit.hotelManagement.entity.restaurant.counterOrder.RestaurantCounterOrderDetail;
@@ -31,9 +33,9 @@ public interface KitchenBO extends SuperBO {
 
     MenuDTO findMenuItemById(int menuItemId);
 
-    void saveFoodDetail(MenuDTO menuDTO);
+    void saveFoodDetail(MenuDetailsDTO menuDTO);
 
-    List<MenuDTO> findFoodItemsDetails(int menuId);
+    List<MenuDetailsDTO> findFoodItemsDetails(int menuId);
 
 
     List<InventoryNoticeDTO> findWeekOrderNotice();
@@ -41,4 +43,6 @@ public interface KitchenBO extends SuperBO {
     FoodItemDTO findFoodItemById(int itemId);
 
     List<RestaurantCounterOrderDetailDTO> findAllOrders();
+
+    void deleteItemFromPack(int menuItemId, int foodItemID);
 }

@@ -230,10 +230,10 @@
                         <div class="form-group">
 
                             <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6"> <br>
-                                <label for="banquetBillId">Other Prices</label>
+                                <label for="banquetBillId">Extra chargers</label>
                                 <input type="number" class="form-control"
                                        required="required" name="otherPrice"
-                                       id="otherPrice" placeholder="Other Prices"/>
+                                       id="otherPrice" placeholder="Extra chargers"/>
                             </div>
                         </div>
 
@@ -250,8 +250,8 @@
                     <div class="row">
                         <div class="x_panel">
                             <div class="x_title">
-                                <h2>Upcoming Banquets
-                                    <small>unconfirmed banquet</small>
+                                <h2> Banquet Bills
+                                    <small>Generate Total Bill</small>
                                 </h2>
                                 <ul class="nav navbar-right panel_toolbox">
                                     <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>

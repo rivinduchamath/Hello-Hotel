@@ -51,4 +51,12 @@ public interface BanquetBO extends SuperBO {
     void deleteBanquet(int idNo);
 
     void updateBill(BanquetAddDTO banquetAddDTO);
+
+    void updateBanquetStatusAsFinished(int orderId);
+
+    List<BanquetAddDTO> findLastWeakBanquets();
+
+    int checkHall1AvailabilityAndGetBanquetId(Date date);
+
+    int checkHall2AvailabilityAndGetBanquetId(Date date);
 }

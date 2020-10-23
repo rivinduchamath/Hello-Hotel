@@ -1,14 +1,7 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <html class="supernova"><head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <link rel="alternate" type="application/json+oembed" href="https://www.jotform.com/oembed/?format=json&amp;url=https%3A%2F%2Fform.jotform.com%2F202835105286453" title="oEmbed Form">
-    <link rel="alternate" type="text/xml+oembed" href="https://www.jotform.com/oembed/?format=xml&amp;url=https%3A%2F%2Fform.jotform.com%2F202835105286453" title="oEmbed Form">
-    <meta property="og:title" content="Booking for Bed and Breakfast Form" >
-    <meta property="og:url" content="https://form.jotform.com/202835105286453" >
-    <meta property="og:description" content="Please click the link to complete this form.">
-    <meta name="slack-app-id" content="AHNMASS8M">
-    <link rel="shortcut icon" href="https://cdn.jotfor.ms/favicon.ico">
-    <link rel="canonical" href="https://form.jotform.com/202835105286453" />
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=2.0, user-scalable=1" />
     <meta name="HandheldFriendly" content="true" />
     <title>Hotel Hareesha</title>
@@ -16,6 +9,7 @@
     <link type="text/css" rel="stylesheet" href="https://cdn.jotfor.ms/themes/CSS/5e6b428acc8c4e222d1beb91.css?themeRevisionID=5f6c4d5f89fb4a374f76b581"/>
     <link type="text/css" rel="stylesheet" href="https://cdn.jotfor.ms/css/styles/payment/payment_styles.css?3.3.20853" />
     <link type="text/css" rel="stylesheet" href="https://cdn.jotfor.ms/css/styles/payment/payment_feature.css?3.3.20853" />
+
     <style type="text/css" id="form-designer-style">
         /* Injected CSS Code */
         .form-label.form-label-auto {
@@ -76,8 +70,9 @@
             JotForm.paymentExtrasOnTheFly([null,null,null,null,null,null,null,null,null,{"name":"comments","qid":"9","text":"Comments","type":"control_textarea"},{"name":"noOf","qid":"10","text":"No. of People","type":"control_textbox"},null,null,{"name":"inviaIl13","qid":"13","text":"Book Now","type":"control_button"},{"name":"clickTo","qid":"14","text":"Book a Room","type":"control_head"},{"name":"dateFrom","qid":"15","text":"Date From","type":"control_datetime"},{"name":"dateTo","qid":"16","text":"Date To","type":"control_datetime"},{"name":"phoneNumber17","qid":"17","text":"Phone Number","type":"control_phone"},{"name":"email18","qid":"18","subLabel":"example@example.com","text":"E-mail","type":"control_email"},{"name":"name","qid":"19","text":"Name","type":"control_fullname"}]);}, 20);
     </script>
 </head>
-<body background="../../images/background.jpg">
-<form class="jotform-form" action="https://submit.jotform.com/submit/202835105286453/" method="post" name="form_202835105286453" id="202835105286453" accept-charset="utf-8" autocomplete="on">
+<body background="../../images/reservation/banner.jpg">
+<form class="" action="/onlineBookingTable" method="post" name="" accept-charset="utf-8" autocomplete="on">
+
     <input type="hidden" name="formID" value="202835105286453" />
     <input type="hidden" id="JWTContainer" value="" />
     <input type="hidden" id="cardinalOrderNumber" value="" />
@@ -238,9 +233,10 @@
             <li class="form-line" data-type="control_button" id="id_13">
                 <div id="cid_13" class="form-input-wide" data-layout="full">
                     <div data-align="auto" class="form-buttons-wrapper form-buttons-auto   jsTest-button-wrapperField">
-                        <button id="input_13" type="submit" class="form-submit-button submit-button jf-form-buttons jsTest-submitField" data-component="button" data-content="">
+                        <button id="" type="submit" class="form-submit-button submit-button jf-form-buttons jsTest-submitField" >
                             Book Now
                         </button>
+
                     </div>
                 </div>
             </li>
@@ -268,22 +264,8 @@
     </div>
 
 
-    <!--
-    <div class="formFooter f6">
-        <div class="formFooter-wrapper formFooter-leftSide">
-            <a href="https://www.jotform.com/?utm_source=formfooter&utm_medium=banner&utm_term=202835105286453&utm_content=jotform_logo&utm_campaign=powered_by_jotform_le" target="_blank" class="formFooter-logoLink"><img class="formFooter-logo" src="https://cdn.jotfor.ms/assets/img/logo/logo-new@1x.png" alt="Jotform Logo"></a>
-        </div>
-        <div class="formFooter-wrapper formFooter-rightSide">
-      <span class="formFooter-text">
-        Now create your own JotForm - It's free!
-      </span>
-            <a class="formFooter-button" href="https://www.jotform.com/?utm_source=formfooter&utm_medium=banner&utm_term=202835105286453&utm_content=jotform_button&utm_campaign=powered_by_jotform_le" target="_blank">Create your own JotForm</a>
-        </div>
 
-    </div>
-    -->
 
 </form></body>
 </html>
 <script type="text/javascript">JotForm.ownerView=true;</script><script src="https://cdn.jotfor.ms//js/vendor/smoothscroll.min.js?v=3.3.20853"></script>
-<script src="https://cdn.jotfor.ms//js/errorNavigation.js?v=3.3.20853"></script>

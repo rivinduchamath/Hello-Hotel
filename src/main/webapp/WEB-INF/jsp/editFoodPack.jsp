@@ -1,14 +1,9 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: Rivindu Chamath
-  Date: 21-May-20
-  Time: 2:43 AM
-  To change this template use File | Settings | File Templates.
---%>
+
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page import="java.util.Date" %>
 <%@ page import="java.text.SimpleDateFormat" %>
+<%@ page import="javax.swing.*" %>
 <html lang="en">
 <head>
     <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
@@ -61,7 +56,7 @@
             <!--Content//////////////////////////////////////////////////////////////////-->
             <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
                 <div class="col-6 col-sm-6 col-md-6 col-lg-2 col-xl-2">
-                    <a href="/manageMenu">
+                    <a href="/manageFoodPacks">
                         <button type="button" class="large-btn btn btn-dark"><i class="fa fa-mail-reply">
                             Back</i>
                         </button>
@@ -98,6 +93,8 @@
                                                         <tr>
                                                             <th>Id</th>
                                                             <th>Item Name</th>
+                                                            <th>Category</th>
+                                                            <th>Price</th>
                                                             <th></th>
 
                                                         </tr>
@@ -107,9 +104,23 @@
                                                         <c:forEach items="${loadSelectedFood}" var="item">
                                                         <tr>
                                                             <td>${item.itemId}</td>
-                                                            <td>${item.menuId}</td>
+                                                            <td>${item.itemName}</td>
+                                                            <td>${item.itemCategory}</td>
+                                                            <td>${item.unitePrice}</td>
                                                             <td>
-                                                                a
+                                                                <!--
+                                                                <a href="removeItemFromPack/${item.itemId}%${menuItem.menuId}%">
+                                                                    <i class="fa fa-minus-square-o"></i>
+                                                                </a> -->
+
+                                                                <form action="removeItemFromPack">
+                                                                    <input type="hidden" name ="menuID"  value="${menuItem.menuId}">
+                                                                    <input type="hidden" name ="foodItemID"  value="${item.itemId}">
+
+                                                                    <button type="submit">
+                                                                        <i class="fa fa-minus-square-o"></i>
+                                                                    </button>
+                                                                </form>
                                                             </td>
                                                         </tr>
                                                         </c:forEach>
@@ -172,10 +183,13 @@
                                                             <td>${item.unitePrice}</td>
                                                             <td>
                                                                 <form action="addItemToPack">
-                                                                    <input type="hidden" name ="menuId"  value="${menuItem.menuId}">
-                                                                    <input type="hidden" name ="itemId"  value="${item.itemId}">
+                                                                    <input type="hidden" name ="menuID"  value="${menuItem.menuId}">
+                                                                    <input type="hidden" name ="foodItemID"  value="${item.itemId}">
 
-                                                                        <button  type="submit"><i  class="fa fa-plus-square"></i></button>
+                                                                    <button type="submit">
+                                                                        <i  class="fa fa-plus-square-o"></i>
+                                                                    </button>
+
 
                                                                 </form>
 

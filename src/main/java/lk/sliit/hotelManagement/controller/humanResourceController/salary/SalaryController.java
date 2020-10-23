@@ -36,17 +36,17 @@ public class SalaryController {
         ModelAndView mav = new ModelAndView ( "salary" );
         List<MonthlySalary> p = humanResourceBO.findAllUserwithOT();
         List<SalaryDTO> p2 = humanResourceBO.findAllsalaryStateNotFalse();
+        List<EmployeeDTO> p3 = humanResourceBO.findAllsalaryStateNotFalseTot();
         model.addAttribute("loadAllUsers", p);
-        model.addAttribute("listEmployeesTableSalary", p);
+        model.addAttribute("listEmployeesTableSalary", p3);
         model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
         //Pass Salary Row Count
         //Get All Data In Salary Table
         List <SalaryDTO> salaryDTOS = humanResourceBO.findAllSalary ( );
         int i = 0;
-        for (MonthlySalary e : p) {
+        for (EmployeeDTO e : p3) {
             i++; // Get Count
         }
-
         mav.addObject ( "salaryCount", i );
         return mav;
     }
@@ -86,10 +86,9 @@ public class SalaryController {
 
     @RequestMapping("addSalary")
     public ModelAndView loadInvoicePage(@ModelAttribute SalaryPay salaryDTO, Model model) {
+        System.out.println(salaryDTO.getSource()+"SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS");
         ModelAndView mav = new ModelAndView ( "salaryPayment" );
-
         model.addAttribute ( "loggerName", indexLoginBO.getEmployeeByIdNo ( SuperController.idNo ) );
-
         model.addAttribute ( "getSalaryData", humanResourceBO.getSalaryPayment ( salaryDTO.getSource ( ) ) );
         return mav;
     }

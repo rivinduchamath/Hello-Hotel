@@ -1,10 +1,4 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: Rivindu Chamath
-  Date: 21-May-20
-  Time: 2:43 AM
-  To change this template use File | Settings | File Templates.
---%>
+
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page import="java.util.Date" %>
@@ -73,7 +67,7 @@
                 <!--Add food pack form and food pack table---------------------------------------->
 
                     <div class="col-sm-12 col-md-6 col-lg-5 col-xl-5">
-                        <!--Add food items form-------------------------------------------------------------------->
+                        <!--Add food packages form-------------------------------------------------------------------->
                         <div class="row">
                             <div class="col-md-12 col-sm-12 ">
                                 <div class="x_panel">
@@ -97,7 +91,7 @@
                                               data-parsley-validate
                                               id="demo-form3">
 
-                                            <input type="hidden" id="packId" name="getMenuId">
+                                            <input type="hidden" id="packId" value="0" name="menuId">
                                             <div class=" form-group">
                                                 <label class=" label-align">Package Name: <span
                                                         class="required">*  &nbsp;</span>
@@ -137,6 +131,7 @@
 
                                             <div class=" form-group">
                                                 <div class=" ">
+
                                                     <button class="btn btn-dark" type="submit">+ Add / Update</button>
                                                     <button class="btn btn-outline-dark" type="reset">Reset</button>
 
@@ -148,7 +143,7 @@
                                 </div>
                             </div>
                         </div>
-                        <!--/Order items form------------------------------------------------------------------->
+                        <!-------------------------------------------------------------------------------------------->
                     </div>
 
                     <!-------------------------------------------------------------------------------->
