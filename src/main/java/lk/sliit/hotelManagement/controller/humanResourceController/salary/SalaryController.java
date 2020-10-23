@@ -3,7 +3,7 @@ package lk.sliit.hotelManagement.controller.humanResourceController.salary;
 import lk.sliit.hotelManagement.controller.SuperController;
 import lk.sliit.hotelManagement.dto.hr.MonthlySalary;
 import lk.sliit.hotelManagement.dto.hr.SalaryDTO;
-import lk.sliit.hotelManagement.dto.hr.SalaryPay;
+import lk.sliit.hotelManagement.dto.hr.SalaryPayDTO;
 import lk.sliit.hotelManagement.dto.manager.EmployeeDTO;
 import lk.sliit.hotelManagement.service.custom.HumanResourceBO;
 import lk.sliit.hotelManagement.service.custom.IndexLoginBO;
@@ -88,15 +88,15 @@ public class SalaryController {
     }
 
     @GetMapping("salaryPayment")
-    public String loadInvoicePage(@ModelAttribute SalaryPay salaryDTO, Model model) throws IOException {
+    public String loadInvoicePage(@ModelAttribute SalaryPayDTO salaryDTO, Model model) throws IOException {
         ModelAndView mav = new ModelAndView("salaryPayment");
         model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
         try {
-            model.addAttribute("getSalaryData", humanResourceBO.getSalaryPayment(salaryDTO.getSource()));
-        } catch (Exception e) {
+            List<SalaryPayDTO> salaryDTOS = humanResourceBO.getSalaryPayment(salaryDTO.getSource());
+            model.addAttribute("getSalaryData", salaryDTOS);
 
-        }
-       return "redirect:/salaryPayment";
+        } catch (Exception e) { }
+       return "salaryPayment";
     }
 
 
