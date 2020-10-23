@@ -214,7 +214,7 @@
                         <div class="containerx">
                             <a style=" font-family: Playfair Display, Georgia, Times New Roman, serif;
                              background-color:#3d495f; color: #ffffff;font-weight: bolder"
-                               href="/roomSelection" class="btnq"><h2
+                               href="/home" class="btnq"><h2
                                     style="position: relative; letter-spacing: 1px;
                                      margin-top: 30px">Online Reservation</h2></a>
                         </div>

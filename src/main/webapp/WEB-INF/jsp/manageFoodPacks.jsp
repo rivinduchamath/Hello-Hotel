@@ -107,8 +107,9 @@
                                                 </label>
                                                 <select class="form-control" required="required" name="type"
                                                         id="packCat">
-                                                    <option>Wedding</option>
-                                                    <option>Birthday</option>
+                                                    <c:forEach items="${menuCategories}" var="item">
+                                                        <option>${item}</option>
+                                                    </c:forEach>
                                                 </select>
                                             </div>
                                             <div class=" form-group">

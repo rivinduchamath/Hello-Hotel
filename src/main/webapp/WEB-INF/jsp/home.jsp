@@ -56,7 +56,7 @@
                         </div>
                     </div>
                     <div class="col-sm-6 visible-sm">
-                        <div class="text-right"><a href="availableRooms" > <button type="button" class="book-now-btn">Book Now</button></a></div>
+                        <div class="text-right"><a href="customerLogin" > <button type="button" class="book-now-btn">Book Now</button></a></div>
                     </div>
                     <div class="col-md-8 col-sm-12 col-xs-12 remove-padd">
                         <nav class="navbar navbar-default">
@@ -84,7 +84,7 @@
                         </nav>
                     </div>
                     <div class="col-md-2  col-sm-4 col-xs-12 hidden-sm">
-                        <div class="text-right"><a href="availableRooms" > <button type="button" class="book-now-btn">Book Now</button></a></div>
+                        <div class="text-right"><a href="customerLogin" > <button type="button" class="book-now-btn">Book Now</button></a></div>
                     </div>
                 </div>
             </div>
@@ -174,7 +174,7 @@
                         <img class="img-responsive" src="../../images/reservation/room1.png">
                         <div class="overlay">
                             <a class="info pop example-image-link img-responsive" href="../../images/reservation/room1.png" data-lightbox="example-1"><i class="fa fa-search" aria-hidden="true"></i></a>
-                            <p><a>delux room</a></p>
+                            <p><a>single room</a></p>
                         </div>
                     </div>
                 </div>
@@ -183,7 +183,7 @@
                         <img class="img-responsive" src="../../images/reservation/room2.png">
                         <div class="overlay">
                             <a class="info pop example-image-link img-responsive" href="../../images/reservation/room2.png" data-lightbox="example-1"><i class="fa fa-search" aria-hidden="true"></i></a>
-                            <p><a>super room</a></p>
+                            <p><a>double room</a></p>
                         </div>
                     </div>
                 </div>
@@ -192,7 +192,7 @@
                         <img class="img-responsive" src="../../images/reservation/room3.png">
                         <div class="overlay">
                             <a class="info pop example-image-link img-responsive" href="../../images/reservation/room3.png" data-lightbox="example-1"><i class="fa fa-search" aria-hidden="true"></i></a>
-                            <p><a>single room</a></p>
+                            <p><a>quad room</a></p>
                         </div>
                     </div>
                 </div>
@@ -201,7 +201,7 @@
                         <img class="img-responsive" src="../../images/reservation/room4.png">
                         <div class="overlay">
                             <a class="info pop example-image-link img-responsive" href="../../images/reservation/room4.png" data-lightbox="example-1"><i class="fa fa-search" aria-hidden="true"></i></a>
-                            <p><a>double room</a></p>
+                            <p><a>queen room</a></p>
                         </div>
                     </div>
                 </div>
@@ -218,7 +218,7 @@
                         <div class="vacation-offer-details">
                             <h1>Your vacation Awaits</h1>
                             <h4>Enjoy much more beyond Golden Circle exclusive offers.</h4>
-                            <button type="button" class="btn btn-default">Choose a package</button>
+                            <a href="customerLogin" ><button type="button" class="btn btn-default">Choose a package</button></a>
                         </div>
                     </div>
                 </div>

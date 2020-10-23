@@ -46,4 +46,6 @@ public interface HumanResourceBO extends SuperBO {
     List<AccountsDTO> findAllAccounts();
 
     void deleteAccount(int accountId);
+
+    List<EmployeeDTO> findAllsalaryStateNotFalseTot();
 }

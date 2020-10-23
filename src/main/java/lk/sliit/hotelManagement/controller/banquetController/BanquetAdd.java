@@ -73,6 +73,7 @@ public class BanquetAdd {
                     int count1=banquetBO.checkHall1Availability(banquetAddDTO.getDate());
                     if(count1<1) {
                         banquetBO.saveBanquet(banquetAddDTO);
+                        request.setAttribute("successfulMsg","added successfully");
                     }
                     else{
                         request.setAttribute("myp2","can not enter");
@@ -82,6 +83,7 @@ public class BanquetAdd {
                     int count2=banquetBO.checkHall2Availability(banquetAddDTO.getDate());
                     if(count2 <1) {
                         banquetBO.saveBanquet(banquetAddDTO);
+                        request.setAttribute("successfulMsg","added successfully");
                     }
                     else{
                         request.setAttribute("myp3","can not enter");
