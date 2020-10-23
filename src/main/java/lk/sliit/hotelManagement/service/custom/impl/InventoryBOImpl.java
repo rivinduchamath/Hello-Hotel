@@ -433,4 +433,70 @@ public class InventoryBOImpl implements InventoryBO {
 
 
     }
+
+    @Override
+    public List<InventoryDTO> findKitchenStockData() {
+        Iterable<Inventory> all = inventoryDAO.findAllByTypeEquals("Kitchen");
+        List<InventoryDTO> dtos = new ArrayList<>();
+        for (Inventory a : all) {
+            dtos.add(new InventoryDTO(
+                    a.getInventoryId(),
+                    a.getText(),
+                    a.getDescription(),
+                    a.getOrderQty(),
+                    a.getType(),
+                    a.getOrderLimit(),
+                    a.getGetPrice(),
+                    a.getSellingPrice(),
+                    a.getDate()
+            ));
+        }
+        return dtos;
+    }
+    @Override
+    public List<InventoryDTO> findAllBeverageItems() {
+        Iterable<Inventory> all = inventoryDAO.findAllByTypeEquals("Beverage");
+        List<InventoryDTO> dtos = new ArrayList<>();
+        for (Inventory a : all) {
+            dtos.add(new InventoryDTO(
+                    a.getInventoryId(),
+                    a.getText(),
+                    a.getDescription(),
+                    a.getOrderQty(),
+                    a.getType(),
+                    a.getOrderLimit(),
+                    a.getGetPrice(),
+                    a.getSellingPrice(),
+                    a.getDate()
+            ));
+        }
+        return dtos;
+    }
+
+    @Override
+    public List<InventoryNoticeDTO> kitchenOrderNotices() {
+        Calendar cal = Calendar.getInstance();
+        cal.add(Calendar.DATE, -7);
+        java.util.Date beforeweek = cal.getTime();
+        Date todaya = new Date();
+        Iterable<InventoryNotice> allItems =
+                inventoryNoticeDAO.findAllByDateBetweenAndDepartmentEquals(beforeweek,todaya,"Kitchen");
+        List<InventoryNoticeDTO> dtos = new ArrayList<>();
+        for (InventoryNotice notice : allItems) {
+            dtos.add(new InventoryNoticeDTO(
+                    notice.getNoticeId(),
+                    notice.getDepartment(),
+                    notice.getOrderQty(),
+                    notice.getDate(),
+                    notice.getExpDate(),
+                    notice.getOrderHolder(),
+                    notice.isState(),
+                    notice.getInventory().getInventoryId(),
+                    notice.getInventory().getText(),
+                    notice.getInventory().getOrderQty()
+            ));
+        }
+        return dtos;
+    }
+
 }
