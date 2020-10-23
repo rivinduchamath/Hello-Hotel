@@ -27,6 +27,7 @@ public class ManageMenuController {
     @PostMapping("/FoodPacks")
     public String addFoodPack(Model model, @ModelAttribute MenuDTO menuDTO) {
         model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
+        model.addAttribute("menuCategories", KitchenUtil.menuCategories);
 
         try {
             MenuDTO menuItem = kitchenBO.findHighestFoodPackId();
@@ -57,6 +58,7 @@ public class ManageMenuController {
         List<FoodItemDTO> foodItemDTOList = kitchenBO.findFoodItems();
         model.addAttribute("loadFoodItemTable", foodItemDTOList);
         model.addAttribute("loadMenuItemTable", menuItemList);
+        model.addAttribute("menuCategories", KitchenUtil.menuCategories);
         return "manageFoodPacks";
     }
 
@@ -64,6 +66,8 @@ public class ManageMenuController {
     @GetMapping(value = "/deleteFoodPackage/{menuId}")
     public void deleteMenuItem(Model model, @PathVariable("menuId") int menuItemId, HttpServletResponse response) {
         model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
+        model.addAttribute("menuCategories", KitchenUtil.menuCategories);
+
         try {
             kitchenBO.deleteMenuItem(menuItemId);
         } catch (Exception e){
@@ -77,30 +81,14 @@ public class ManageMenuController {
         }
     }
 
-/*
-    @RequestMapping("/foodPackManagement")
-    public String addItemToMenu(Model model, @RequestParam String menuId){
-        model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
-        model.addAttribute("menuItem", kitchenBO.findMenuItemById(menuId));
-        model.addAttribute("loadFoodItemTable",kitchenBO.findFoodItems());
-        return "foodPackManagement";
 
-    }*/
-
-
-  /*  @GetMapping("/editFoodPack")
-    public String editFoodPacks(Model model){
-        model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
-
-        return "editFoodPack";
-    }*/
 
     @GetMapping("/editFoodPack")
     public String editFoodPack(Model model, @ModelAttribute MenuDTO menuDTO) {
         model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
         model.addAttribute("menuItem", kitchenBO.findMenuItemById(menuDTO.getMenuId()));
 
-        List<FoodItemDTO> foodItemDTOS = kitchenBO.findFoodItems();
+        List<FoodItemDTO> foodItemDTOS = kitchenBO.findFoodItemsForMenu();
         List<FoodItemDTO> notSelectedFoodItems = new ArrayList<>();
         List<FoodItemDTO> selectedFoodItems = new ArrayList<>();
 
@@ -122,7 +110,7 @@ public class ManageMenuController {
         model.addAttribute("menuItem", kitchenBO.findMenuItemById(menuDTO.getMenuId()));
         kitchenBO.saveFoodDetail(menuDTO);
 
-        List<FoodItemDTO> foodItemDTOS = kitchenBO.findFoodItems();
+        List<FoodItemDTO> foodItemDTOS = kitchenBO.findFoodItemsForMenu();
         List<FoodItemDTO> notSelectedFoodItems = new ArrayList<>();
         List<FoodItemDTO> selectedFoodItems = new ArrayList<>();
 
@@ -178,7 +166,7 @@ public class ManageMenuController {
                 }
             }
         }
-        System.out.println("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$"+selectedFoodItems.size());
+
         return selectedFoodItems;
     }
 
@@ -192,8 +180,7 @@ public class ManageMenuController {
         } else {
             notSelectedFoodItems = foodItemDTOS;
         }
-        System.out.println("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%"+notSelectedFoodItems.size());
-        System.out.println("dasdas"+foodItemDTOS.size());
+
         return notSelectedFoodItems;
     }
 

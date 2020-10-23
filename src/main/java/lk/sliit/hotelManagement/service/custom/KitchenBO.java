@@ -3,6 +3,7 @@ package lk.sliit.hotelManagement.service.custom;
 import lk.sliit.hotelManagement.dao.kitchenDAO.MenuDetailsDAO;
 import lk.sliit.hotelManagement.dto.inventory.InventoryNoticeDTO;
 import lk.sliit.hotelManagement.dto.kitchen.FoodItemDTO;
+import lk.sliit.hotelManagement.dto.kitchen.KitchenFoodOrderDTO;
 import lk.sliit.hotelManagement.dto.kitchen.MenuDTO;
 import lk.sliit.hotelManagement.dto.kitchen.MenuDetailsDTO;
 import lk.sliit.hotelManagement.dto.manager.EmployeeDTO;
@@ -11,13 +12,17 @@ import lk.sliit.hotelManagement.entity.restaurant.counterOrder.RestaurantCounter
 import lk.sliit.hotelManagement.service.SuperBO;
 
 
-
+import java.util.Date;
 import java.util.List;
 
 public interface KitchenBO extends SuperBO {
     void saveFoodItem(FoodItemDTO foodItemDTO);
 
     List<FoodItemDTO> findFoodItems();
+
+    List<FoodItemDTO> findFoodItemsForMenu();
+
+    List<FoodItemDTO> findFoodIngredient();
 
     FoodItemDTO findHighestId();
 
@@ -45,4 +50,14 @@ public interface KitchenBO extends SuperBO {
     List<RestaurantCounterOrderDetailDTO> findAllOrders();
 
     void deleteItemFromPack(int menuItemId, int foodItemID);
+
+    void saveKitchenFoodOrder(KitchenFoodOrderDTO kitchenFoodOrderDTO);
+
+    void deleteKitchenFoodOrder(int id);
+
+    KitchenFoodOrderDTO loadKitchenFoodOrderById( int id);
+
+    List<KitchenFoodOrderDTO> loadKitchenFoodOrderBydate(Date date);
+
+    List<KitchenFoodOrderDTO> loadKitchenFoodOrderByDescription(String description);
 }

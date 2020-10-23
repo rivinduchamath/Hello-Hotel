@@ -2,12 +2,8 @@ package lk.sliit.hotelManagement.controller.kitchenController;
 
 
 import lk.sliit.hotelManagement.controller.SuperController;
-import lk.sliit.hotelManagement.dto.inventory.SupplierDTO;
 import lk.sliit.hotelManagement.dto.kitchen.FoodItemDTO;
-import lk.sliit.hotelManagement.dto.kitchen.MenuDTO;
-import lk.sliit.hotelManagement.dto.manager.EmployeeDTO;
 import lk.sliit.hotelManagement.dto.restaurant.restaurantCounterOrder.RestaurantCounterOrderDetailDTO;
-import lk.sliit.hotelManagement.entity.restaurant.counterOrder.RestaurantCounterOrderDetail;
 import lk.sliit.hotelManagement.service.custom.IndexLoginBO;
 import lk.sliit.hotelManagement.service.custom.KitchenBO;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +15,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
 import java.util.List;
 
 @Controller
@@ -37,6 +32,7 @@ public class FoodItemManageController {
         FoodItemDTO foodItemDTO = new FoodItemDTO();
         model.addAttribute("foodItemDTO", foodItemDTO);
         model.addAttribute("loadFoodItemTable", foodItemList);
+        model.addAttribute("foodItemCategories", KitchenUtil.foodItemCategories);
         return "manageMenu";
     }
 
