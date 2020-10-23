@@ -124,7 +124,7 @@
                         </h3>
                         <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
                             <div class="col-6 col-sm-6 col-md-6 col-lg-6 col-xl-3">
-                                <a href="/allLaundryOrders">
+                                <a href="/housekeeping">
                                     <button type="button" class="large-btn btn btn-dark"><i class="fa fa-mail-reply">
                                         Back</i>
                                     </button>
@@ -266,7 +266,7 @@
                                                     <th>Expected Date</th>
                                                     <th>Date</th>
                                                     <th>Order Holder</th>
-                                                    <th></th>
+
                                                 </tr>
                                                 </thead>
 
@@ -278,10 +278,7 @@
                                               <td>${e.expectedDate}</td>
                                               <td>${e.date}</td>
                                               <td scope="row">${e.orderHolder}</td>
-                                              <td>
-                                                  <a href="deleteLaundryOrder/${e.laundryId}" onclick="return confirm('Are you sure you want to delete?')"
-                                                     class="btn btn-xs">
-                                                      <i class="fa fa-trash-o"></i></a></td>
+
                                           </tr>
                                        </c:forEach>
                                                 </tbody>

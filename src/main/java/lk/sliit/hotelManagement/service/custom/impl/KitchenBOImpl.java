@@ -177,10 +177,10 @@ public class KitchenBOImpl implements KitchenBO {
     }
 
     @Override
-    public void saveFoodDetail(MenuDTO menuDTO) {
+    public void saveFoodDetail(MenuDetailsDTO menuDTO) {
         menuDetailsDAO.save(new MenuDetails(
-                menuDTO.getMenuId(),
-                menuDTO.getItemId()));
+                menuDTO.getMenuID(),
+                menuDTO.getFoodItemID()));
     }
 
     @Override
