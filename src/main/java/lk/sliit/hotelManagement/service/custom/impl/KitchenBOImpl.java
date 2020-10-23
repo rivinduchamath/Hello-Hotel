@@ -235,6 +235,43 @@ public class KitchenBOImpl implements KitchenBO {
     }
 
     @Override
+    public List<MenuDTO> findMenusByType(String type) {
+        /*
+        Iterable<Menu> menus = menuDAO.findAllByTypeEquals(type);
+
+        List<MenuDTO> menuDTOS = new ArrayList<>();
+
+        for (Menu item: menus){
+            menuDTOS.add(new MenuDTO(
+                    item.getMenuId(),
+                    item.getName(),
+                    item.getType(),
+                    item.getPicture(),
+                    item.getUnitPrice()
+            ));
+        }
+        return menuDTOS;
+         */
+        return null;
+    }
+
+    @Override
+    public MenuDTO findMaxMenuIdByType(String type) {
+        /*
+        int menu = menuDAO.findTopByMenuIdAndTypeEquals(type);
+        return findMenuItemById(menu);
+
+         */
+        return null;
+    }
+
+    @Override
+    public MenuDTO findMinMenuIdByType(String type) {
+        //return findMenuItemById(menuDAO.findMinMenuIdByType(type));
+        return null;
+    }
+
+    @Override
     public List<RestaurantCounterOrderDetailDTO> findAllOrders() {
         Iterable<RestaurantCounterOrderDetail> all = restaurantCounterOrderDetail.findAll();
         List<RestaurantCounterOrderDetailDTO> dtos = new ArrayList<>();
