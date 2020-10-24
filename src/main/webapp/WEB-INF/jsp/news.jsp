@@ -80,7 +80,7 @@
                         </nav>
                     </div>
                     <div class="col-md-2  col-sm-4 col-xs-12 hidden-sm">
-                        <div class="text-right"><a href="customerLogin" > <button type="button" class="book-now-btn">Book Now</button></a></div>
+                        <div class="text-right"><a href="customerLogin" ><button type="button" class="book-now-btn">Book Now</button></a></div>
                     </div>
                 </div>
             </div>
