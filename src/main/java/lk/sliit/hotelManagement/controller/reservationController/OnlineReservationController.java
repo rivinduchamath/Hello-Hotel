@@ -23,11 +23,6 @@ public class OnlineReservationController {
     @Autowired
     ReservationBO reservationBO;
 
-    @PostMapping("/onlineReservation")
-    public String loginPage(Model model) {
-         model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
-        return "onlineReservation";
-    }
 
     @GetMapping("/home")
     public String loginPage1(Model model) {
@@ -80,14 +75,7 @@ public class OnlineReservationController {
         return "onlineBooking";
     }
 
-    @GetMapping("/customerLogin")
-    public String saveOnlineTable2(Model model,@ModelAttribute FindAvailabilityDTO findAvailabilityDTO, HttpSession session) {
 
-        model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
-        List<HotelRoomDTO> hotelRoomDTOS = reservationBO.findAvilability(findAvailabilityDTO);
-        model.addAttribute("loadAllTable", hotelRoomDTOS);
-        return "customerLogin";
-    }
 
     @GetMapping("/availableRooms")
     public String saveOnlineTable3(Model model,@ModelAttribute FindAvailabilityDTO findAvailabilityDTO, HttpSession session) {

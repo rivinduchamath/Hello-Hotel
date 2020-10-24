@@ -6,11 +6,15 @@ import lk.sliit.hotelManagement.dao.reservationDAO.ReservationDetailsDAO;
 import lk.sliit.hotelManagement.dto.houseKeeping.HotelRoomDTO;
 import lk.sliit.hotelManagement.dto.reservation.CustomerDTO;
 import lk.sliit.hotelManagement.dto.reservation.FindAvailabilityDTO;
+import lk.sliit.hotelManagement.dto.restaurant.OnlineCustomerDTO;
 import lk.sliit.hotelManagement.dto.restaurant.RestaurantTableDTO;
+import lk.sliit.hotelManagement.dto.restaurant.restaurantOnlineOrder.RestaurantOnlineOrderDTO;
 import lk.sliit.hotelManagement.entity.houseKeeping.HotelRoom;
 import lk.sliit.hotelManagement.entity.reservation.Customer;
 import lk.sliit.hotelManagement.entity.reservation.ReservationDetails;
+import lk.sliit.hotelManagement.entity.restaurant.OnlineCustomer;
 import lk.sliit.hotelManagement.entity.restaurant.RestaurantTable;
+import lk.sliit.hotelManagement.entity.restaurant.onlineOrder.RestaurantOnlineOrder;
 import lk.sliit.hotelManagement.entity.restaurant.onlineTableReservation.OnlineTableReservation;
 import lk.sliit.hotelManagement.entity.restaurant.onlineTableReservation.OnlineTableReservationDetails;
 import lk.sliit.hotelManagement.service.custom.HouseKeepingBO;
@@ -103,5 +107,52 @@ public class ReservationBOImpl implements ReservationBO {
             ));
         }
         return dtoList;
+    }
+
+    @Override
+    public CustomerDTO findHighestOnlineCustomerId() {
+        Customer orders = null;
+        try {
+            orders = customerDAO.findTopByOrderByCustomerIdDesc();
+        } catch (Exception e) {
+
+        }
+        return new CustomerDTO(
+                orders.getCustomerId()
+        );
+    }//End
+
+    @Override
+    public void saveOnlineCustomer(CustomerDTO customerDTO) {
+        customerDAO.save(new Customer(
+                customerDTO.getCustomerId(),
+                customerDTO.getEmail(),
+                customerDTO.getName(),
+                customerDTO.getAddress(),
+                customerDTO.getContactNumber(),
+                customerDTO.getAge(),
+                "false",
+                customerDTO.getPassword()
+        ));
+    }
+
+    @Override
+    public CustomerDTO findByUserNameAndPassword(int id, String password) {
+        Customer customer = customerDAO.findByCustomerIdAndPassword(id,password);
+        return new CustomerDTO(
+                customer.getCustomerId(),
+                customer.getName(),
+                customer.getPassword()
+        );
+    }
+
+    @Override
+    public CustomerDTO findId(int customerId) {
+        Customer customer = customerDAO.findOne(customerId);
+        return new CustomerDTO(
+                customer.getCustomerId(),
+                customer.getName(),
+                customer.getPassword()
+        );
     }
 }

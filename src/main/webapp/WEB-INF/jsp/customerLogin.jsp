@@ -32,22 +32,22 @@
         <form method="post" action="customerSignUp" name="customerSignUp">
             <h1>Create Account</h1>
             <span>or use your email for registration</span>
+            <input required type="text" placeholder="Nic" name="customerId" />
             <input required type="text" placeholder="Name" name="name" />
             <input required type="email" placeholder="Email" name="email" />
             <input required type="text" placeholder="Address" name="address" />
             <input required type="number" placeholder="Mobile" name="contactNumber"/>
-            <input required type="text" placeholder="User Name" name="userName" />
             <input  required type="password" placeholder="Password"  />
             <input required type="password" placeholder="Re-type Password" name="password"/>
             <button type="submit">Sign Up</button>
         </form>
     </div>
     <div class="form-container sign-in-container">
-        <form action="onlineReservation" method="post">
+        <form action="customerSignIn" method="post">
             <h1>Sign in</h1>
             <span>or use your account</span>
 
-            <input type="text" placeholder="User Name" name="userName" />
+            <input type="text" placeholder="User Id" name="customerId" />
             <input type="password" placeholder="Password" name="password"/>
             <a href="#">Forgot your password?</a>
             <button>Sign In</button>
