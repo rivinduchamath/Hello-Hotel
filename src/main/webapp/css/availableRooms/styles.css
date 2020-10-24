@@ -1,6 +1,4 @@
-/* Slider
-http://www.freshdesignweb.com/free-beautiful-css3-table-style.html
-*/
+
 #fdw-pricing-table {
 		margin:0 auto;
 		text-align: center;
@@ -20,7 +18,7 @@ http://www.freshdesignweb.com/free-beautiful-css3-table-style.html
 	/* --------------- */	
 
 	#fdw-pricing-table .plan {
-		font: 13px 'Lucida Sans', 'trebuchet MS', Arial, Helvetica;     
+		font: 16px 'Lato', 'trebuchet MS', Arial, Helvetica;
 		background: #fff;      
 		border: 1px solid #ddd;
 		color: #333;

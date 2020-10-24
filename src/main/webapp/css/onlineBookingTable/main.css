@@ -6,12 +6,12 @@
 
 @font-face {
   font-family: Lato-Regular;
-  src: url('../fonts/Lato/Lato-Regular.ttf'); 
+  src: url('../../fonts/onlineBookingTable/Lato/Lato-Regular.ttf');
 }
 
 @font-face {
   font-family: Lato-Bold;
-  src: url('../fonts/Lato/Lato-Bold.ttf'); 
+  src: url('../../fonts/onlineBookingTable/Lato/Lato-Bold.ttf');
 }
 
 /*//////////////////////////////////////////////////////////////////
@@ -131,6 +131,39 @@ iframe {
   top: 15px;
 }
 
+/*Book Now Button */
+.book-now-btn {
+  background: #ff4157 none repeat scroll 0 0;
+  border: medium none;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: 0;
+  padding: 8px 15px;
+  text-transform: uppercase;
+}
+.book-now-btn:hover, .vacation-offer-details .btn.btn-default:hover{
+  background: #162541;
+}
+/*///////////////////////////////*/
+
+/*Booked  Button */
+.reserved-btn {
+  background: #57b846 none repeat scroll 0 0;
+  border: medium none;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: 0;
+  padding: 8px 15px;
+  text-transform: uppercase;
+}
+.reserved-btn:hover, .vacation-offer-details .btn.btn-default:hover{
+  background: #162541;
+}
+/*///////////////////////////////*/
+
+
 
 /*//////////////////////////////////////////////////////////////////
 [ Table ]*/
@@ -176,7 +209,7 @@ th, td {
 }
 
 .column1 {
-  width: 33%;
+  width: 13%;
   padding-left: 40px;
 }
 
@@ -185,11 +218,11 @@ th, td {
 }
 
 .column3 {
-  width: 22%;
+  width: 13%;
 }
 
 .column4 {
-  width: 19%;
+  width: 13%;
 }
 
 .column5 {

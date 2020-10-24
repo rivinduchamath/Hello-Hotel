@@ -145,12 +145,11 @@
                         <li>Tile/Marble floor</li>
                         <li>Soundproof</li>
                         <li>Ironing facilities</li>
-                        <li>Iron</li>
                         <li>Electric kettle</li>
 
                     </ul>
 
-                    <a href="onlineBooking" > <button type="button" class="book-now-btn">Book Now</button></a>
+                    <a href="BookSingle" > <button type="button" class="book-now-btn">Book Now</button></a>
 
                 </div>
                 <div class="plan plan2"> <!-- plan 2 popular-plan -->
@@ -165,10 +164,9 @@
                         <li>Tile/Marble floor</li>
                         <li>Soundproof</li>
                         <li>Ironing facilities</li>
-                        <li>Iron</li>
                         <li>Electric kettle</li>
                     </ul>
-                    <a href="onlineBooking" > <button type="button" class="book-now-btn">Book Now</button></a>
+                    <a href="BookDouble" > <button type="button" class="book-now-btn">Book Now</button></a>
                 </div>
                 <div class="plan plan3">
                     <div class="header">Quad</div>
@@ -182,10 +180,9 @@
                         <li>Tile/Marble floor</li>
                         <li>Soundproof</li>
                         <li>Ironing facilities</li>
-                        <li>Iron</li>
                         <li>Electric kettle</li>
                     </ul>
-                    <a href="onlineBooking" > <button type="button" class="book-now-btn">Book Now</button></a>
+                    <a href="BookQuad" > <button type="button" class="book-now-btn">Book Now</button></a>
                 </div>
                 <div class="plan plan4">
                     <div class="header">Premium</div>
@@ -199,10 +196,9 @@
                         <li>Tile/Marble floor</li>
                         <li>Soundproof</li>
                         <li>Ironing facilities</li>
-                        <li>Iron</li>
                         <li>Electric kettle</li>
                     </ul>
-                    <a href="onlineBooking" > <button type="button" class="book-now-btn">Book Now</button></a>
+                    <a href="BookPremium" > <button type="button" class="book-now-btn">Book Now</button></a>
                 </div>
             </div>
         </header><!-- end header -->

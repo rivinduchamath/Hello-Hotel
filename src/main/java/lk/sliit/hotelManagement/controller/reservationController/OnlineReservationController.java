@@ -98,13 +98,41 @@ public class OnlineReservationController {
         return "availableRooms";
     }
 
-    @PostMapping("/onlineBookingTable")
-    public String saveOnlineTable4(Model model,@ModelAttribute FindAvailabilityDTO findAvailabilityDTO, HttpSession session) {
+    @PostMapping("/BookSingle")
+    public String saveTable1(Model model,@ModelAttribute FindAvailabilityDTO findAvailabilityDTO, HttpSession session) {
 
         model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
         List<HotelRoomDTO> hotelRoomDTOS = reservationBO.findAvilability(findAvailabilityDTO);
         model.addAttribute("loadAllTable", hotelRoomDTOS);
-        return "onlineBookingTable";
+        return "BookSingle";
     }
+
+    @PostMapping("/BookDouble")
+    public String saveTable2(Model model,@ModelAttribute FindAvailabilityDTO findAvailabilityDTO, HttpSession session) {
+
+        model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
+        List<HotelRoomDTO> hotelRoomDTOS = reservationBO.findAvilability(findAvailabilityDTO);
+        model.addAttribute("loadAllTable", hotelRoomDTOS);
+        return "BookDouble";
+    }
+
+    @PostMapping("/BookQuad")
+    public String saveTable3(Model model,@ModelAttribute FindAvailabilityDTO findAvailabilityDTO, HttpSession session) {
+
+        model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
+        List<HotelRoomDTO> hotelRoomDTOS = reservationBO.findAvilability(findAvailabilityDTO);
+        model.addAttribute("loadAllTable", hotelRoomDTOS);
+        return "BookQuad";
+    }
+
+    @PostMapping("/BookPremium")
+    public String saveTable4(Model model,@ModelAttribute FindAvailabilityDTO findAvailabilityDTO, HttpSession session) {
+
+        model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
+        List<HotelRoomDTO> hotelRoomDTOS = reservationBO.findAvilability(findAvailabilityDTO);
+        model.addAttribute("loadAllTable", hotelRoomDTOS);
+        return "BookPremium";
+    }
+
 }
 
