@@ -11,11 +11,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link rel="icon" type="image/png" href="../../images/icons/gdfgd.png"/>
+    <link rel="icon" type="image/png" href="../../images/icons/favicon.png"/>
 
 
     <!-- Main css -->
     <link rel="stylesheet" href="../../css/customerLogin/style.css">
+    <title>Luxury Hotel in Galle | Hotel Hareesha</title>
 </head>
 
 <body class="nav-md" style="cursor: pointer">
@@ -28,13 +29,13 @@
 <h2> Customer Registration </h2>
 <div class="container" id="container">
     <div class="form-container sign-up-container">
-        <form method="post" action="onlineReservation" name="onlineReservation">
+        <form method="post" action="customerSignUp" name="customerSignUp">
             <h1>Create Account</h1>
             <span>or use your email for registration</span>
             <input required type="text" placeholder="Name" name="name" />
             <input required type="email" placeholder="Email" name="email" />
-
-            <input required type="number" placeholder="Mobile" name="contact"/>
+            <input required type="text" placeholder="Address" name="address" />
+            <input required type="number" placeholder="Mobile" name="contactNumber"/>
             <input required type="text" placeholder="User Name" name="userName" />
             <input  required type="password" placeholder="Password"  />
             <input required type="password" placeholder="Re-type Password" name="password"/>

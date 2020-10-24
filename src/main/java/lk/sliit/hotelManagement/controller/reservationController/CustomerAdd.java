@@ -30,6 +30,21 @@ public class CustomerAdd {
             return "customerRegistration";
     }
 
+    @PostMapping("/customerSignUp")
+    public String saveOnlineCustomer(@ModelAttribute CustomerDTO customerDTO){
+        try {
+            CustomerDTO top = reservationBO.findHighestOnlineCustomerId();
+            int x = (top.getOnlineCustomerId()) + 1;
+            onlineCustomerDTO.setOnlineCustomerId((x));
+        } catch (NullPointerException e) {
+            onlineCustomerDTO.setOnlineCustomerId((1));
+        }
+        reservationBO.savecustomer(customerDTO);
+
+        return "redirect:/customerLogin";
+    }
+
+
     @GetMapping("/counterReservation")
     public String counterReservation(Model model) {
         model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));

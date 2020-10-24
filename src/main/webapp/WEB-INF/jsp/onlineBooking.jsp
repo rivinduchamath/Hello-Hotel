@@ -4,7 +4,7 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=2.0, user-scalable=1" />
     <meta name="HandheldFriendly" content="true" />
-    <title>Hotel Hareesha</title>
+    <title>Luxury Hotel in Galle | Hotel Hareesha</title>
     <link type="text/css" media="print" rel="stylesheet" href="https://cdn.jotfor.ms/css/printForm.css?3.3.20853" />
     <link type="text/css" rel="stylesheet" href="https://cdn.jotfor.ms/themes/CSS/5e6b428acc8c4e222d1beb91.css?themeRevisionID=5f6c4d5f89fb4a374f76b581"/>
     <link type="text/css" rel="stylesheet" href="https://cdn.jotfor.ms/css/styles/payment/payment_styles.css?3.3.20853" />

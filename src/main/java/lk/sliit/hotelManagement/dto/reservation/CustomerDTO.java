@@ -6,6 +6,8 @@ public class CustomerDTO {
     private String name;
     private String address;
     private String contactNumber;
+    private String userName;
+    private String password;
     private String state;
 
     public CustomerDTO(int customerId, String email, String name, String address, String contactNumber) {
@@ -14,6 +16,16 @@ public class CustomerDTO {
         this.name = name;
         this.address = address;
         this.contactNumber = contactNumber;
+    }
+
+    public CustomerDTO(int customerId, String email, String name, String address, String contactNumber, String userName, String password) {
+        this.customerId = customerId;
+        this.email = email;
+        this.name = name;
+        this.address = address;
+        this.contactNumber = contactNumber;
+        this.userName = userName;
+        this.password = password;
     }
 
     public CustomerDTO(int customerId, String email, String name, String address, String contactNumber, String state) {
