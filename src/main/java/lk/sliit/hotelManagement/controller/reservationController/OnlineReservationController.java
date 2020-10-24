@@ -86,7 +86,7 @@ public class OnlineReservationController {
         return "availableRooms";
     }
 
-    @PostMapping("/BookSingle")
+    @GetMapping("/BookSingle")
     public String saveTable1(Model model,@ModelAttribute FindAvailabilityDTO findAvailabilityDTO, HttpSession session) {
 
         model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
@@ -95,7 +95,7 @@ public class OnlineReservationController {
         return "BookSingle";
     }
 
-    @PostMapping("/BookDouble")
+    @GetMapping("/BookDouble")
     public String saveTable2(Model model,@ModelAttribute FindAvailabilityDTO findAvailabilityDTO, HttpSession session) {
 
         model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
@@ -104,7 +104,7 @@ public class OnlineReservationController {
         return "BookDouble";
     }
 
-    @PostMapping("/BookQuad")
+    @GetMapping("/BookQuad")
     public String saveTable3(Model model,@ModelAttribute FindAvailabilityDTO findAvailabilityDTO, HttpSession session) {
 
         model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
@@ -113,7 +113,7 @@ public class OnlineReservationController {
         return "BookQuad";
     }
 
-    @PostMapping("/BookPremium")
+    @GetMapping("/BookPremium")
     public String saveTable4(Model model,@ModelAttribute FindAvailabilityDTO findAvailabilityDTO, HttpSession session) {
 
         model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
