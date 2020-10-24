@@ -41,10 +41,15 @@ public class CustomerAdd {
     }
     @PostMapping("/customerSignUp")
     public String saveOnlineCustomer(@ModelAttribute CustomerDTO customerDTO){
-        try {
-            CustomerDTO top = reservationBO.findId(customerDTO.getCustomerId());
 
-        } catch (NullPointerException e) {
+        if(reservationBO.findEmail(customerDTO.getEmail())){
+            try {
+                CustomerDTO top = reservationBO.findHighestOnlineCustomerId();
+                int x = (top.getCustomerId()) + 1;
+                customerDTO.setCustomerId((x));
+            } catch (NullPointerException ea) {
+                customerDTO.setCustomerId((1));
+            }
             reservationBO.saveOnlineCustomer(customerDTO);
         }
         return "redirect:/customerLogin";
@@ -52,7 +57,7 @@ public class CustomerAdd {
     @PostMapping("/customerSignIn")
     public String onlineCustomerDetails(@ModelAttribute CustomerDTO customerDTO, Model model, HttpServletRequest request) {
         try {
-            CustomerDTO customerDTO1 = reservationBO.findByUserNameAndPassword(customerDTO.getCustomerId(), customerDTO.getPassword());
+            CustomerDTO customerDTO1 = reservationBO.findByUserNameAndPassword(customerDTO.getEmail(), customerDTO.getPassword());
             if (customerDTO1 != null) {
                 request.getSession().setAttribute("CustomerId", customerDTO1.getCustomerId());
                 return "redirect:/onlineReservation";

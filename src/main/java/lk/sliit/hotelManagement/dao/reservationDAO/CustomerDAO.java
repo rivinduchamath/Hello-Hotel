@@ -8,5 +8,7 @@ public interface CustomerDAO extends CrudRepository<Customer,Integer> {
 
     Iterable<Customer> findAllByStateEquals(String state);
 
-    Customer findByCustomerIdAndPassword(int useId, String password);
+    Customer findByEmailAndPassword(String email, String password);
+
+    Customer findCustomerByEmailEquals(String email);
 }
