@@ -21,7 +21,9 @@ public interface ReservationBO extends SuperBO {
 
     void saveOnlineCustomer(CustomerDTO customerDTO);
 
-    CustomerDTO findByUserNameAndPassword(int id, String password);
+    CustomerDTO findByUserNameAndPassword(String id, String password);
 
     CustomerDTO findId(int customerId);
+
+    boolean findEmail(String email);
 }

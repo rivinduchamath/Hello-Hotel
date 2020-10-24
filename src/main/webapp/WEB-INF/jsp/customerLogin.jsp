@@ -32,7 +32,6 @@
         <form method="post" action="customerSignUp" name="customerSignUp">
             <h1>Create Account</h1>
             <span>or use your email for registration</span>
-            <input required type="text" placeholder="Nic" name="customerId" />
             <input required type="text" placeholder="Name" name="name" />
             <input required type="email" placeholder="Email" name="email" />
             <input required type="text" placeholder="Address" name="address" />
@@ -47,7 +46,7 @@
             <h1>Sign in</h1>
             <span>or use your account</span>
 
-            <input type="text" placeholder="User Id" name="customerId" />
+            <input type="text" placeholder="Email" name="email" />
             <input type="password" placeholder="Password" name="password"/>
             <a href="#">Forgot your password?</a>
             <button>Sign In</button>

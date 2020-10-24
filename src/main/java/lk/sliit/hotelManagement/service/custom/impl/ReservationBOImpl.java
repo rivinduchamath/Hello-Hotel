@@ -137,8 +137,8 @@ public class ReservationBOImpl implements ReservationBO {
     }
 
     @Override
-    public CustomerDTO findByUserNameAndPassword(int id, String password) {
-        Customer customer = customerDAO.findByCustomerIdAndPassword(id,password);
+    public CustomerDTO findByUserNameAndPassword(String email, String password) {
+        Customer customer = customerDAO.findByEmailAndPassword(email,password);
         return new CustomerDTO(
                 customer.getCustomerId(),
                 customer.getName(),
@@ -154,5 +154,16 @@ public class ReservationBOImpl implements ReservationBO {
                 customer.getName(),
                 customer.getPassword()
         );
+    }
+
+    @Override
+    public boolean findEmail(String email) {
+        try {
+            Customer customer = customerDAO.findCustomerByEmailEquals( email);
+        }catch (Exception e){
+            return false;
+        }
+
+        return true;
     }
 }
