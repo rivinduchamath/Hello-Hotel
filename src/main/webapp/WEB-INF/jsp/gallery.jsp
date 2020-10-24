@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="../../images/reservation/icons/favicon.png"/>
-    <title>Hareesha</title>
+    <title>Luxury Hotel in Galle | Hotel Hareesha</title>
 
     <!-- Bootstrap core CSS -->
     <link href="../../css/onlineRe1/bootstrap.min.css" rel="stylesheet">
@@ -165,23 +165,23 @@
                         <ul class="list-unstyled footer-contact-list">
                             <li>
                                 <i class="fa fa-map-marker fa-lg"></i>
-                                <p>701 Old York Drive Richmond USA.</p>
+                                <p> Imduwa Road, Yakkalamulla, Galle, Sri Lanka. </p>
                             </li>
                             <li>
                                 <i class="fa fa-phone fa-lg"></i>
-                                <p><a href="tel:+1-202-555-0100"> +1-202-555-0100</a></p>
+                                <p><a href="tel:+94-76-673-7320"> +94-76-6737320 </a></p>
                             </li>
                             <li>
                                 <i class="fa fa-envelope-o fa-lg"></i>
-                                <p><a href="mailto:demo@info.com"> demo@info.com</a></p>
+                                <p><a href="mailto:mailspringitp@gmail.com"> mailspringitp@gmail.com </a></p>
                             </li>
                         </ul>
                         <div class="footer-social-icon">
-                            <a href="#"><i class="fa fa-facebook"></i></a>
-                            <a href="#"><i class="fa fa-twitter"></i></a>
-                            <a href="#"><i class="fa fa-instagram"></i></a>
-                            <a href="#"><i class="fa fa-google-plus"></i></a>
-                            <a href="#"><i class="fa fa-youtube-play"></i></a>
+                            <a href="https://www.facebook.com/"><i class="fa fa-facebook"></i></a>
+                            <a href="https://twitter.com/?lang=en"><i class="fa fa-twitter"></i></a>
+                            <a href="https://www.instagram.com/?hl=en"><i class="fa fa-instagram"></i></a>
+                            <a href="https://www.google.com/"><i class="fa fa-google-plus"></i></a>
+                            <a href="https://www.youtube.com/"><i class="fa fa-youtube-play"></i></a>
                         </div>
                         <div class="input-group" id="subscribe">
                             <input type="text" class="form-control subscribe-box" value="" name="subscribe" placeholder="EMAIL ID">
