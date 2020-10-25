@@ -11,5 +11,7 @@ public interface KitchenFoodOrderDAO extends CrudRepository<KitchenFoodOrders,In
 
     Iterable<KitchenFoodOrders> findTopByExpectedDateEquals(Date date);
 
+    KitchenFoodOrders findKitchenFoodOrdersByExpectedDateAndFoodItemIdEquals(int id, java.sql.Date date);
+
 
 }

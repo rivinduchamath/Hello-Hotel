@@ -85,23 +85,6 @@ public class KitchenBOImpl implements KitchenBO {
     }
 
     @Override
-    public List<FoodItemDTO> findFoodItemsForMenu() {
-        Iterable<FoodItem> foodItems = kitchenDAO.findOnlyFoods(KitchenUtil.ingredient);
-        List<FoodItemDTO> foodItemDTOS = new ArrayList<>();
-
-        for (FoodItem item: foodItems){
-            foodItemDTOS.add(new FoodItemDTO(
-                    item.getItemId(),
-                    item.getName(),
-                    item.getUnitePrice(),
-                    item.getCategory(),
-                    item.getSrc()));
-        }
-        return foodItemDTOS;
-    }
-
-
-    @Override
     public FoodItemDTO findHighestId() {
         FoodItem lastItem = null;
         try {
@@ -286,25 +269,23 @@ public class KitchenBOImpl implements KitchenBO {
 
     @Override
     public void saveKitchenFoodOrder(KitchenFoodOrderDTO kitchenFoodOrderDTO) {
-        if (kitchenFoodOrderDTO.getOrderId() == KitchenUtil.defaultID){
+        int lastID = 1;
+        if (kitchenFoodOrderDTO.getOrderId() == KitchenUtil.defaultID) {
 
             try {
-                int lastID = kitchenFoodOrderDAO.findTopByOrderByOrderIdDesc().getOrderId();
+                lastID = kitchenFoodOrderDAO.findTopByOrderByOrderIdDesc().getOrderId();
                 lastID++;
-                kitchenFoodOrderDTO.setOrderId(lastID);
-            } catch (Exception e){
-                kitchenFoodOrderDTO.setOrderId(1);
-            } finally {
-                kitchenFoodOrderDAO.save(new KitchenFoodOrders(
-                        kitchenFoodOrderDTO.getOrderId(),
-                        kitchenFoodOrderDTO.getFoodItemId(),
-                        kitchenFoodOrderDTO.getDescription(),
-                        kitchenFoodOrderDTO.getAmount(),
-                        kitchenFoodOrderDTO.getExpectedDate()
-                ));
+            } catch (Exception e) {
+                lastID = 1;
             }
-
         }
+        kitchenFoodOrderDAO.save(new KitchenFoodOrders(
+                lastID,
+                kitchenFoodOrderDTO.getFoodItemId(),
+                kitchenFoodOrderDTO.getDescription(),
+                kitchenFoodOrderDTO.getAmount(),
+                kitchenFoodOrderDTO.getExpectedDate()
+        ));
     }
 
     @Override
@@ -505,6 +486,17 @@ public class KitchenBOImpl implements KitchenBO {
             ));
         }
         return dtos;
+    }
+
+    @Override
+    public KitchenFoodOrderDTO getExisting(int foodItemId, java.sql.Date expectedDate) {
+        KitchenFoodOrders kitchenFoodOrders = kitchenFoodOrderDAO.findKitchenFoodOrdersByExpectedDateAndFoodItemIdEquals(foodItemId, expectedDate);
+        return new KitchenFoodOrderDTO(
+                kitchenFoodOrders.getOrderId(),
+                kitchenFoodOrders.getDescription(),
+                kitchenFoodOrders.getAmount(),
+                kitchenFoodOrders.getExpectedDate()
+        );
     }
 
 

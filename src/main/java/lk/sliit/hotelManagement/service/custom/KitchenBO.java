@@ -21,8 +21,6 @@ public interface KitchenBO extends SuperBO {
 
     List<FoodItemDTO> findFoodItems();
 
-    List<FoodItemDTO> findFoodItemsForMenu();
-
     FoodItemDTO findHighestId();
 
     void deleteFoodItem(int foodItemId);
@@ -80,4 +78,5 @@ public interface KitchenBO extends SuperBO {
 
     List<InventoryDTO> findKitchenInventory(String s);
 
+    KitchenFoodOrderDTO getExisting(int foodItemId, Date expectedDate);
 }

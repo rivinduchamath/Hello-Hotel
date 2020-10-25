@@ -42,11 +42,23 @@ public class KitchenController {
     public String loginPage(Model model) {
         model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
 
-        List<InventoryDTO> foodItemDTOS = kitchenBO.findKitchenInventory(KitchenUtil.department);
+        List<InventoryDTO> inventoryItems = kitchenBO.findKitchenInventory(KitchenUtil.department);
+        List<InventoryDTO> notOrderedItems = new ArrayList<>();
+        List<KitchenFoodOrderDTO> kitchenFoodOrderDTOS = kitchenBO.loadKitchenFoodOrderBydate(getTodaySql());
         List<FoodItemDTO> breakfastFoodItems, lunchFoodItems, dinnerFoodItems;
         List<MenuDTO> menuDTOS = kitchenBO.findMenuItems();
         MenuDTO breakfast, lunch, dinner;
         LimitDTO limitDTO = new LimitDTO();
+
+        if (!kitchenFoodOrderDTOS.isEmpty()){
+            for (KitchenFoodOrderDTO item : kitchenFoodOrderDTOS){
+                for (InventoryDTO inventoryDTO: inventoryItems){
+                    if (inventoryDTO.getInventoryId() != item.getFoodItemId()){
+                        notOrderedItems.add(inventoryDTO);
+                    }
+                }
+            }
+        }
 
         limitDTO.setLimit(KitchenUtil.kitchenMenuDate);
 
@@ -109,6 +121,9 @@ public class KitchenController {
                 lunch = oldMenus.get(1);
                 dinner = oldMenus.get(2);
             } catch (NullPointerException e2) {
+                breakfast = getNextItem(menuDTOS,breakfast);
+                lunch = getNextItem(menuDTOS,lunch);
+                dinner = getNextItem(menuDTOS,dinner);
             }
 
             //generate key string
@@ -125,7 +140,7 @@ public class KitchenController {
 
         // set model attributes
 
-        model.addAttribute("loadFoodItemTable", foodItemDTOS);
+        model.addAttribute("loadFoodItemTable", inventoryItems);
         model.addAttribute("breakfast", breakfast);
         model.addAttribute("breakfastTable", breakfastFoodItems);
         model.addAttribute("lunch", lunch);
@@ -158,12 +173,23 @@ public class KitchenController {
         inventoryNoticeDTO.setExpDate(kitchenFoodOrderDTO.getExpectedDate());
         inventoryNoticeDTO.setOrderHolder(SuperController.idNo);
         inventoryNoticeDTO.setState(false);
-
-        InventoryDTO inventoryDTO = new InventoryDTO();
-        //inventoryDTO.s
-        inventoryNoticeDTO.setInventoryId(kitchenFoodOrderDTO.getFoodItemId());
+        inventoryNoticeDTO.setInventory(kitchenFoodOrderDTO.getFoodItemId());
 
         kitchenBO.saveInventoryNotice(inventoryNoticeDTO);
+
+        //search existing order
+        try{
+            KitchenFoodOrderDTO old = kitchenBO.getExisting(kitchenFoodOrderDTO.getFoodItemId(), kitchenFoodOrderDTO.getExpectedDate());
+            kitchenFoodOrderDTO.setAmount(old.getAmount()+kitchenFoodOrderDTO.getAmount());
+            maxId = old.getOrderId();
+        } catch (NullPointerException e){
+            maxId = KitchenUtil.defaultID;
+        }
+
+        kitchenFoodOrderDTO.setOrderId(maxId);
+        kitchenFoodOrderDTO.setDescription(Integer.toString(inventoryNoticeDTO.getInventoryId()));
+
+        kitchenBO.saveKitchenFoodOrder(kitchenFoodOrderDTO);
 
         loginPage(model);
     }
