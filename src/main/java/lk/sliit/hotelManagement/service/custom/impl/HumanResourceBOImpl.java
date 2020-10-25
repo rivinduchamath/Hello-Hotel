@@ -7,11 +7,8 @@ import lk.sliit.hotelManagement.dao.hrDAO.DepartmentDAO;
 import lk.sliit.hotelManagement.dao.hrDAO.SalaryDAO;
 import lk.sliit.hotelManagement.dao.manageSystemDAO.EmployeeDAO;
 import lk.sliit.hotelManagement.dto.houseKeeping.HotelRoomDTO;
-import lk.sliit.hotelManagement.dto.hr.AccountsDTO;
-import lk.sliit.hotelManagement.dto.hr.AttendanceDTO;
-import lk.sliit.hotelManagement.dto.hr.MonthlySalary;
-import lk.sliit.hotelManagement.dto.hr.SalaryDTO;
-import lk.sliit.hotelManagement.dto.hr.SalaryPay;
+import lk.sliit.hotelManagement.dto.hr.*;
+
 import lk.sliit.hotelManagement.dto.manager.EmployeeDTO;
 import lk.sliit.hotelManagement.entity.houseKeeping.HotelRoom;
 import lk.sliit.hotelManagement.entity.hr.Accounts;
@@ -190,18 +187,19 @@ public class HumanResourceBOImpl implements HumanResourceBO {
             } catch (Exception e) {
             }
         }
-
         return dtoList;
     }
 
     @Override
-    public List<SalaryPay> getSalaryPayment(String source) {
-        List<String> list = new ArrayList<String>();
+    public List<SalaryPayDTO> getSalaryPayment(String source) {
+        List<String> list = new ArrayList<>();
         String[] sourceAry = source.split(" ");
-        List<SalaryPay> dtoList = new ArrayList<>();
+        List<SalaryPayDTO> dtoList = new ArrayList<>();
         for (String value : sourceAry) {
             list.add(value);
         }
+
+        addPayment(list);
         Double all4 = 0.0;
         Double all5 = 0.0;
         for (String aa : list) {
@@ -209,7 +207,7 @@ public class HumanResourceBOImpl implements HumanResourceBO {
             all4 = salaryDAO.findAllByDateBetweenAndEmployeeID_UserIdEquals(a);
             all5 = salaryDAO.findAllByDateBetweenAndEmployeeID_UserIdEqual(a);
             Employee employee = employeeDAO.findOne(Integer.valueOf(a));
-            dtoList.add(new SalaryPay(
+            dtoList.add(new SalaryPayDTO(
                     employee.getSalary(),
                     new Date(),
                     0,
@@ -219,22 +217,15 @@ public class HumanResourceBOImpl implements HumanResourceBO {
                     employee.getSalary(),
                     0,
                     false,
-                    employee.getUserId()
+                    employee.getUserId(),
+                    employee.getName()
             ));
         }
-       /* Iterable <Salary> all = salaryDAO.findAll (list);
-        List <SalaryDTO> dtos = new ArrayList<> ();
-        for (Salary salary : all) {
-            dtos.add(new SalaryDTO (
-                    salary.getSalaryId (),
-                    salary.getBasicSalary (),
-                    salary.getOtHours (),
-                    salary.getOtRate (),
-                    salary.getBonus (),
-                    salary.getIncomeTax (),
-                    salary.getEmployeeID ()));
-        }*/
         return dtoList;
+    }
+
+    private void addPayment(List<String> list) {
+
     }
 
     @Override

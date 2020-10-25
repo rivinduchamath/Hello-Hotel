@@ -65,7 +65,7 @@
                             <li><a href="banquets">BanquetManagement</a></li>
                         </ul>
                     </li>
-                    <li><a><i class="fa fa-cutlery"></i> Food and Beverage<span
+                    <li><a><i class="fa fa-coffee"></i> Food and Beverage<span
                             class="fa fa-chevron-down"></span></a>
                         <ul class="nav child_menu">
                             <li><a href="foodAndBeverage"> Food & Bev </a></li>
@@ -77,7 +77,7 @@
                             <li><a href="housekeeping">Room Manage</a></li>
                         </ul>
                     </li>
-                    <li><a><i class="fa fa-paw"></i> Kitchen<span
+                    <li><a><i class="fa fa-cutlery"></i> Kitchen<span
                             class="fa fa-chevron-down"></span></a>
                         <ul class="nav child_menu">
                             <li><a href="kitchen">Kitchen Manage</a></li>

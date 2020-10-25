@@ -67,113 +67,69 @@
             <div class="">
                 <div class="page-title">
                     <div class="title_left">
-                        <h3>Kitchen Management Dashboard
-                            <small>Welcome To Hotel Hareesha</small>
-                        </h3>
+                        <h3>Banquet Food Order List</h3>
                     </div>
                 </div>
             </div>
 
             <!--Content//////////////////////////////////////////////////////////////////-->
 
+            <!-- Back Button--------------------------------------->
             <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
-
-
-                <div class="col-sm-12 col-md-3 col-lg-3 col-xl-3">
-                    <a href="manageMenu">
-                        <button type="button" class="large-btn btn btn-dark">Menu Management</button>
-                    </a>
-                </div>
-
-                <div class="col-sm-12 col-md-3 col-lg-3 col-xl-3">
-                    <a href="banquetFoodOrder">
-                        <button type="button" class="large-btn btn btn-secondary">Banquet Orders</button>
-                    </a>
-                </div>
-
-                <div class="col-sm-12 col-md-3 col-lg-3 col-xl-3">
-                    <a href="restaurantOrders">
-                        <button type="button" class="large-btn btn btn-secondary">Restaurant Orders</button>
-                    </a>
-                </div>
-
-                <div class="col-sm-12 col-md-3 col-lg-3 col-xl-3">
-                    <a href="/kitchenReport">
-                        <button type="button" class="large-btn btn btn-dark">Daily Food Order Report</button>
+                <div class="col-sm-12 col-md-2 col-lg-2 col-xl-2">
+                    <a href="/banquetFoodOrder">
+                        <button type="button" class="large-btn btn btn-dark" style="height: 50px" ><i class="fa fa-mail-reply">
+                            Back</i>
+                        </button>
                     </a>
                 </div>
                 <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
                     <hr>
                 </div>
             </div>
-
-            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
-                <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4">
+            <!----------------------------------------------------->
+            <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
                     <div class="row">
                         <div class="x_panel">
                             <div class="x_title">
-                                <h2>Food Items on Menu: Day01 Breakfast</h2>
-                                <ul class="nav navbar-right panel_toolbox">
-                                    <li><a class="collapse-link"></a>
-                                    </li>
-                                    <li class="dropdown">
-                                        <a aria-expanded="false" class="dropdown-toggle" data-toggle="dropdown"
-                                           href="#"
-                                           role="button"><i class="fa fa-wrench"></i></a>
-                                    </li>
-                                </ul>
-                                <div class="clearfix"></div>
+                                <h2>Banquet Order Information</h2>
                             </div>
                             <div class="x_content">
                                 <div class="row">
                                     <div class="col-sm-12">
                                         <div class="card-box table-responsive">
                                             <table class="table table-striped table-bordered"
-                                                   id="datatable-buttons4"
+                                                   id="datatable-buttons2"
                                                    style="text-align: center">
                                                 <thead class="thead-light">
                                                 <tr>
-                                                    <th>Name</th>
-                                                    <th>Type</th>
+                                                    <th></th>
+                                                    <th></th>
                                                 </tr>
 
                                                 </thead>
                                                 <tbody>
-                                                <tr>
-                                                    <td>Chicken Curry</td>
-                                                    <td>Main</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Rice</td>
-                                                    <td>Main</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Dhal Curry</td>
-                                                    <td>Main</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Ice cream</td>
-                                                    <td>Desserts</td>
-                                                </tr>
-                                                <c:forEach items="${loadMenuItemTable}" var="item">
                                                     <tr>
-                                                        <td>${item.menuId}</td>
-                                                        <td>${item.name}</td>
-                                                        <td>${item.type}</td>
-                                                        <td>
-                                                            <a href="foodPackage/${item.menuId}">
-                                                                <input type="button" value="Manage">
-                                                            </a>
-                                                        </td>
-
-                                                        <td>
-                                                            <a href="deleteFoodPackage/${item.menuId}">
-                                                                <i class="fa fa-trash" style="font-size: 20px"></i>
-                                                            </a>
-                                                        </td>
+                                                        <td>Order ID</td>
+                                                        <td>${banquetOrder.orderId}</td>
                                                     </tr>
-                                                </c:forEach>
-
+                                                    <tr>
+                                                        <td>Hall ID</td>
+                                                        <td>${banquetOrder.hallId}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Number of Plates</td>
+                                                        <td>${banquetOrder.noOfPlates}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Required Date</td>
+                                                        <td>${banquetOrder.date}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Menu</td>
+                                                        <td>${menu.name}</td>
+                                                    </tr>
                                                 </tbody>
                                             </table>
                                         </div>
@@ -183,86 +139,11 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4">
+                <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
                     <div class="row">
                         <div class="x_panel">
                             <div class="x_title">
-                                <h2>Food Items on Menu: Day01 Lunch</h2>
-                                <ul class="nav navbar-right panel_toolbox">
-                                    <li><a class="collapse-link"></a>
-                                    </li>
-                                    <li class="dropdown">
-                                        <a aria-expanded="false" class="dropdown-toggle" data-toggle="dropdown"
-                                           href="#"
-                                           role="button"><i class="fa fa-wrench"></i></a>
-                                    </li>
-                                </ul>
-                                <div class="clearfix"></div>
-                            </div>
-                            <div class="x_content">
-                                <div class="row">
-                                    <div class="col-sm-12">
-                                        <div class="card-box table-responsive">
-                                            <table class="table table-striped table-bordered"
-                                                   id="datatable-buttons5"
-                                                   style="text-align: center">
-                                                <thead class="thead-light">
-                                                <tr>
-                                                    <th>Name</th>
-                                                    <th>Type</th>
-                                                </tr>
-
-                                                </thead>
-                                                <tbody>
-                                                <tr>
-                                                    <td>Chicken Curry</td>
-                                                    <td>Main</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Rice</td>
-                                                    <td>Main</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Dhal Curry</td>
-                                                    <td>Main</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Ice cream</td>
-                                                    <td>Desserts</td>
-                                                </tr>
-                                                <c:forEach items="${loadMenuItemTable}" var="item">
-                                                    <tr>
-                                                        <td>${item.menuId}</td>
-                                                        <td>${item.name}</td>
-                                                        <td>${item.type}</td>
-                                                        <td>
-                                                            <a href="foodPackage/${item.menuId}">
-                                                                <input type="button" value="Manage">
-                                                            </a>
-                                                        </td>
-
-                                                        <td>
-                                                            <a href="deleteFoodPackage/${item.menuId}">
-                                                                <i class="fa fa-trash" style="font-size: 20px"></i>
-                                                            </a>
-                                                        </td>
-                                                    </tr>
-                                                </c:forEach>
-
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4">
-                    <div class="row">
-                        <div class="x_panel">
-                            <div class="x_title">
-                                <h2>Food Items on Menu: Day01 Dinner</h2>
+                                <h2>Food Items on Menu</h2>
                                 <ul class="nav navbar-right panel_toolbox">
                                     <li><a class="collapse-link"></a>
                                     </li>
@@ -283,44 +164,18 @@
                                                    style="text-align: center">
                                                 <thead class="thead-light">
                                                 <tr>
+                                                    <th>Id</th>
                                                     <th>Name</th>
                                                     <th>Type</th>
                                                 </tr>
 
                                                 </thead>
                                                 <tbody>
-                                                <tr>
-                                                    <td>Chicken Curry</td>
-                                                    <td>Main</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Rice</td>
-                                                    <td>Main</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Dhal Curry</td>
-                                                    <td>Main</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Ice cream</td>
-                                                    <td>Desserts</td>
-                                                </tr>
-                                                <c:forEach items="${loadMenuItemTable}" var="item">
+                                                <c:forEach items="${loadFoodItemsInMenuTable}" var="item">
                                                     <tr>
-                                                        <td>${item.menuId}</td>
-                                                        <td>${item.name}</td>
-                                                        <td>${item.type}</td>
-                                                        <td>
-                                                            <a href="foodPackage/${item.menuId}">
-                                                                <input type="button" value="Manage">
-                                                            </a>
-                                                        </td>
-
-                                                        <td>
-                                                            <a href="deleteFoodPackage/${item.menuId}">
-                                                                <i class="fa fa-trash" style="font-size: 20px"></i>
-                                                            </a>
-                                                        </td>
+                                                        <td>${item.itemId}</td>
+                                                        <td>${item.itemName}</td>
+                                                        <td>${item.itemCategory}</td>
                                                     </tr>
                                                 </c:forEach>
 
@@ -333,9 +188,11 @@
                         </div>
                     </div>
                 </div>
+
             </div>
 
             <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+
                 <!--Order items form-------------------------------------------------------------------->
                 <div class="col-sm-12 col-md-12 col-lg-4 col-xl-4">
                     <div class="row">
@@ -360,26 +217,9 @@
                                           class="form-horizontal form-label-left">
 
                                         <input type="hidden" value="" name="itemId">
+                                        <input type="hidden" value="" name="description">
 
                                         <table style="border: none">
-
-                                            <tr>
-                                                <td>
-                                                    <div class="item form-group">
-                                                        <label class=" label-align">Item ID: <span class="required">*  &nbsp;</span>
-                                                        </label>
-                                                    </div>
-                                                </td>
-
-                                                <td>
-                                                    <div class="item form-group">
-                                                        <div class=" ">
-                                                            <input type="text" id="itemId" name="itemId" required="required" class="form-control ">
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                            </tr>
-
                                             <tr>
                                                 <td>
                                                     <div class="item form-group">
@@ -484,7 +324,7 @@
 
                                                 </thead>
                                                 <tbody>
-                                                <c:forEach items="${loadFoodItemTable}" var="item">
+                                                <c:forEach items="${loadFoodItemsTable}" var="item">
                                                     <tr>
                                                         <td>${item.itemId}</td>
                                                         <td>${item.itemName}</td>
@@ -500,7 +340,6 @@
                     </div>
                 </div>
                 <!--/Food Item list table--------------------------------------------------------------->
-
 
                 <!--Ordered Food Item list table---------------------------------------------------------------->
                 <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4">
@@ -531,7 +370,6 @@
                                                     <th>Id</th>
                                                     <th>Item Name</th>
                                                     <th>Quantity</th>
-                                                    <th>State</th>
                                                     <th></th>
 
                                                 </tr>
@@ -539,7 +377,7 @@
                                                 </thead>
                                                 <tbody>
                                                 <tr>
-                                                    <td>001</td>
+                                                    <td>4</td>
                                                     <td>Potato</td>
                                                     <td>200</td>
                                                     <td>
@@ -563,18 +401,11 @@
                     </div>
                 </div>
             </div>
+
         </div>
-        <!--/Ordered Food Item list table--------------------------------------------------------------->
-
-
-        <!--/Content/////////////////////////////////////////////////////////////////-->
-
 
     </div>
-    <!-- /page content -->
 
-
-    <!-- footer content -->
     <jsp:include page="footer.jsp"/>
 </div>
 

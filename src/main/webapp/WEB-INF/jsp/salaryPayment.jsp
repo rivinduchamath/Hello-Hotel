@@ -220,27 +220,24 @@
                                                 <thead>
 
                                                 <tr>
-                                                    <th>SalaryId</th>
+
                                                     <th>Emp Id</th>
                                                     <th>Name</th>
                                                     <th>Basic Salary</th>
-                                                    <th>OT Salary</th>
-                                                    <th>Bonus Salary</th>
-                                                    <th>Tax</th>
+                                                    <th>OT Hours</th>
+
                                                     <th>Total Salary</th>
                                                 </tr>
                                                 </thead>
                                                 <tbody>
                                                 <c:forEach items="${getSalaryData}" var="e">
                                                     <tr>
-                                                        <td>${e.id}</td>
+
                                                         <td>${e.employee}</td>
-                                                        <td>${e.epf}</td>
+                                                        <td>${e.name}</td>
                                                         <td>${e.basicSalary}</td>
                                                         <td>${e.otHours}</td>
-                                                        <td>${e.date}</td>
-                                                        <td>${e.hours}</td>
-                                                        <td>${e.basicSalary}</td>
+                                                        <td>${e.basicSalary + (e.otHours*200)}</td>
                                                     </tr>
                                                     <script>
                                                         var aa = aa + ${e.otHours};
@@ -272,7 +269,7 @@
                                         </div>
                                         <!-- /.col -->
                                         <div class="col-md-6">
-                                            <p class="lead">Amount Due 2/22/2014</p>
+                                            <p class="lead">Amount Due <%=date%></p>
                                             <div class="table-responsive">
                                                 <table class="table">
                                                     <tbody>
@@ -281,19 +278,15 @@
                                                         <td><span id="val2"></span></td>
                                                     </tr>
                                                     <tr>
-                                                        <th>Tax
+                                                        <th>Ot Tot:
                                                             <small style="font-weight: bold"><span id="val9"></span>
                                                             </small>
                                                         </th>
                                                         <td><span id="val3"></span></td>
                                                     </tr>
                                                     <tr>
-                                                        <th>OT Tot:</th>
-                                                        <td><span id="val4"></span></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <th>Bonus Tot:</th>
-                                                        <td><span id="val5"></span></td>
+                                                        <th>Tax:</th>
+                                                        <td>2%<span id="val4"></span></td>
                                                     </tr>
                                                     <tr>
                                                         <th>Total:</th>
@@ -311,7 +304,7 @@
                                     <div class="row no-print">
                                         <div class=" ">
 
-                                            <form method="POST" action="/deleteInvoiceSalary"
+                                            <form method="POST" action=""
                                                   name="deleteInvoiceSalary">
                                                 <input style="display: none" type="text" id="itemPay" name="SalaryId">
                                                 <ul class="nav navbar-right panel_toolbox">
@@ -362,12 +355,11 @@
 
     for (var i = 1; i < table.rows.length; i++) {
         str = str + (table.rows[i].cells[0].innerHTML) + " ";
-        sumVal = sumVal + parseFloat(table.rows[i].cells[7].innerHTML);
-        sumVal2 = sumVal2 + parseFloat(table.rows[i].cells[3].innerHTML);
-        sumVal3 = sumVal3 + parseFloat(table.rows[i].cells[6].innerHTML);
-        sumVal5 = sumVal5 + parseFloat(table.rows[i].cells[5].innerHTML);
-        sumVal4 = sumVal4 + parseFloat(table.rows[i].cells[4].innerHTML);
-        avgTax = sumVal3 / i;
+        sumVal = sumVal + parseFloat(table.rows[i].cells[4].innerHTML);
+        sumVal2 = sumVal2 + parseFloat(table.rows[i].cells[2].innerHTML);
+        sumVal3 = sumVal3 + parseFloat(table.rows[i].cells[3].innerHTML);
+
+
     }
 
 

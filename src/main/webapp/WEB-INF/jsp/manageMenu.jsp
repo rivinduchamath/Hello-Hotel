@@ -89,9 +89,7 @@
         <div class="right_col" role="main">
             <div class="page-title">
                 <div class="title_left">
-                    <h3>Edit Menu
-                        <small>Welcome To Hotel Hareesha</small>
-                    </h3>
+                    <h3>Edit Menu</h3>
                     <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
                         <div class="col-6 col-sm-6 col-md-6 col-lg-2 col-xl-2">
                             <a href="/kitchen">
@@ -240,8 +238,11 @@
                                             </label>
                                             <select class="form-control" required="required" name="itemCategory"
                                                     id="itemCat" data-placeholder="Select Category">
-                                                <option>Spicy</option>
-                                                <option>Sweet</option>
+
+                                                <c:forEach items="${foodItemCategories}" var="item">
+                                                    <option>${item}</option>
+                                                </c:forEach>
+
                                             </select>
                                         </div>
                                         <div class=" form-group">
@@ -369,39 +370,10 @@
         <!--/Content/////////////////////////////////////////////////////////////////-->
 
     </div>
-    <%--///////////////////////////////////////////////////////////////////////////////////////////////////////////--%>
-
-    <%--Chart Income--%>
-    <%--Chart Today--%>
-
-    <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
-        <div class="col-sm-12 col-md-7 col-lg-7 col-xl-7">
-            <div id="chartdiv"></div>
-            <br>
-            <P><h6>Top 5 Salaries</h6></P>
-        </div>
-        <div class="col-sm-12 col-md-5 col-lg-5 col-xl-5">
-            <div id="chartdiv1"></div>
-            <br>
-            <P><h6>Yesterday Income</h6></P>
-        </div>
-    </div>
-    <%--/Chart Yesterday--%>
-    <%--/Chart Income--%>
-
-    <%--/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////--%>
-
 
 </div>
-</div>
-<!-- /page content -->
 
-<!-- footer content -->
 <jsp:include page="footer.jsp"/>
-<!-- /footer content -->
-</div>
-</div>
-
 
 <!-- jQuery -->
 <script src="../../vendors/jquery/dist/jquery.min.js"></script>

@@ -2,17 +2,21 @@ package lk.sliit.hotelManagement.service.custom.impl;
 
 import lk.sliit.hotelManagement.dao.inventoryDAO.InventoryNoticeDAO;
 import lk.sliit.hotelManagement.dao.kitchenDAO.KitchenDAO;
+import lk.sliit.hotelManagement.dao.kitchenDAO.KitchenFoodOrderDAO;
 import lk.sliit.hotelManagement.dao.kitchenDAO.MenuDAO;
 import lk.sliit.hotelManagement.dao.kitchenDAO.MenuDetailsDAO;
 import lk.sliit.hotelManagement.dao.restaurantDAO.counterOrderDAO.RestaurantCounterOrderDetailDAO;
 import lk.sliit.hotelManagement.dao.restaurantDAO.onlineOrderDAO.RestaurantOnlineOrderDetailsDAO;
 import lk.sliit.hotelManagement.dto.inventory.InventoryNoticeDTO;
 import lk.sliit.hotelManagement.dto.kitchen.FoodItemDTO;
+import lk.sliit.hotelManagement.controller.kitchenController.KitchenUtil;
+import lk.sliit.hotelManagement.dto.kitchen.KitchenFoodOrderDTO;
 import lk.sliit.hotelManagement.dto.kitchen.MenuDTO;
 import lk.sliit.hotelManagement.dto.kitchen.MenuDetailsDTO;
 import lk.sliit.hotelManagement.dto.restaurant.restaurantCounterOrder.RestaurantCounterOrderDetailDTO;
 import lk.sliit.hotelManagement.entity.inventory.InventoryNotice;
 import lk.sliit.hotelManagement.entity.kitchen.FoodItem;
+import lk.sliit.hotelManagement.entity.kitchen.KitchenFoodOrders;
 import lk.sliit.hotelManagement.entity.kitchen.Menu;
 import lk.sliit.hotelManagement.entity.kitchen.MenuDetails;
 import lk.sliit.hotelManagement.entity.restaurant.counterOrder.RestaurantCounterOrderDetail;
@@ -42,6 +46,10 @@ public class KitchenBOImpl implements KitchenBO {
     RestaurantCounterOrderDetailDAO restaurantCounterOrderDetail;
     @Autowired
     RestaurantOnlineOrderDetailsDAO onlineOrderDetailsDAO;
+
+    @Autowired
+    KitchenFoodOrderDAO kitchenFoodOrderDAO;
+
     @Override
     public void saveFoodItem(FoodItemDTO foodItemDTO) {
         kitchenDAO.save(new FoodItem
@@ -65,6 +73,38 @@ public class KitchenBOImpl implements KitchenBO {
                     item.getSrc()));
         }
         return foodItemDTOList;
+    }
+
+    @Override
+    public List<FoodItemDTO> findFoodItemsForMenu() {
+        Iterable<FoodItem> foodItems = kitchenDAO.findOnlyFoods(KitchenUtil.ingredient);
+        List<FoodItemDTO> foodItemDTOS = new ArrayList<>();
+
+        for (FoodItem item: foodItems){
+            foodItemDTOS.add(new FoodItemDTO(
+                    item.getItemId(),
+                    item.getName(),
+                    item.getUnitePrice(),
+                    item.getCategory(),
+                    item.getSrc()));
+        }
+        return foodItemDTOS;
+    }
+
+    @Override
+    public List<FoodItemDTO> findFoodIngredient() {
+        Iterable<FoodItem> foodItems = kitchenDAO.findAllIngredients(KitchenUtil.ingredient);
+        List<FoodItemDTO> foodItemDTOS = new ArrayList<>();
+
+        for (FoodItem item: foodItems){
+            foodItemDTOS.add(new FoodItemDTO(
+                    item.getItemId(),
+                    item.getName(),
+                    item.getUnitePrice(),
+                    item.getCategory(),
+                    item.getSrc()));
+        }
+        return foodItemDTOS;
     }
 
     @Override
@@ -195,6 +235,43 @@ public class KitchenBOImpl implements KitchenBO {
     }
 
     @Override
+    public List<MenuDTO> findMenusByType(String type) {
+        /*
+        Iterable<Menu> menus = menuDAO.findAllByTypeEquals(type);
+
+        List<MenuDTO> menuDTOS = new ArrayList<>();
+
+        for (Menu item: menus){
+            menuDTOS.add(new MenuDTO(
+                    item.getMenuId(),
+                    item.getName(),
+                    item.getType(),
+                    item.getPicture(),
+                    item.getUnitPrice()
+            ));
+        }
+        return menuDTOS;
+         */
+        return null;
+    }
+
+    @Override
+    public MenuDTO findMaxMenuIdByType(String type) {
+        /*
+        int menu = menuDAO.findTopByMenuIdAndTypeEquals(type);
+        return findMenuItemById(menu);
+
+         */
+        return null;
+    }
+
+    @Override
+    public MenuDTO findMinMenuIdByType(String type) {
+        //return findMenuItemById(menuDAO.findMinMenuIdByType(type));
+        return null;
+    }
+
+    @Override
     public List<RestaurantCounterOrderDetailDTO> findAllOrders() {
         Iterable<RestaurantCounterOrderDetail> all = restaurantCounterOrderDetail.findAll();
         List<RestaurantCounterOrderDetailDTO> dtos = new ArrayList<>();
@@ -211,6 +288,68 @@ public class KitchenBOImpl implements KitchenBO {
     @Override
     public void deleteItemFromPack(int foodItemId, int menuItemId) {
         menuDetailsDAO.deleteMenuDetailsByID(foodItemId,menuItemId);
+    }
+
+    @Override
+    public void saveKitchenFoodOrder(KitchenFoodOrderDTO kitchenFoodOrderDTO) {
+        if (kitchenFoodOrderDTO.getOrderId() == KitchenUtil.defaultID){
+
+            try {
+                int lastID = kitchenFoodOrderDAO.findTopByOrderByOrderIdDesc().getOrderId();
+                lastID++;
+                kitchenFoodOrderDTO.setOrderId(lastID);
+            } catch (Exception e){
+                kitchenFoodOrderDTO.setOrderId(1);
+            } finally {
+                kitchenFoodOrderDAO.save(new KitchenFoodOrders(
+                        kitchenFoodOrderDTO.getOrderId(),
+                        kitchenFoodOrderDTO.getFoodItemId(),
+                        kitchenFoodOrderDTO.getDescription(),
+                        kitchenFoodOrderDTO.getAmount(),
+                        kitchenFoodOrderDTO.getExpectedDate()
+                ));
+            }
+
+        }
+    }
+
+    @Override
+    public void deleteKitchenFoodOrder(int id) {
+        kitchenFoodOrderDAO.delete(id);
+    }
+
+    @Override
+    public KitchenFoodOrderDTO loadKitchenFoodOrderById(int id) {
+        KitchenFoodOrders kitchenFoodOrders = kitchenFoodOrderDAO.findOne(id);
+        KitchenFoodOrderDTO kitchenFoodOrderDTO = new KitchenFoodOrderDTO(
+                kitchenFoodOrders.getOrderId(),
+                kitchenFoodOrders.getFoodItemId(),
+                kitchenFoodOrders.getDescription(),
+                kitchenFoodOrders.getAmount(),
+                kitchenFoodOrders.getExpectedDate()
+        );
+        return kitchenFoodOrderDTO;
+    }
+
+    @Override
+    public List<KitchenFoodOrderDTO> loadKitchenFoodOrderBydate(Date date) {
+        Iterable<KitchenFoodOrders> kitchenFoodOrders = kitchenFoodOrderDAO.findTopByExpectedDateEquals(date);
+        List<KitchenFoodOrderDTO> kitchenFoodOrderDTOS = new ArrayList<>();
+
+        for (KitchenFoodOrders item: kitchenFoodOrders){
+            kitchenFoodOrderDTOS.add(new KitchenFoodOrderDTO(
+                    item.getOrderId(),
+                    item.getFoodItemId(),
+                    item.getDescription(),
+                    item.getAmount(),item.getExpectedDate()
+            ));
+        }
+        return kitchenFoodOrderDTOS;
+    }
+
+    @Override
+    public List<KitchenFoodOrderDTO> loadKitchenFoodOrderByDescription(String description) {
+        return null;
     }
 
 }

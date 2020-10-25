@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="../../images/reservation/icons/favicon.png"/>
-    <title>Hareesha</title>
+    <title>Luxury Hotel in Galle | Hotel Hareesha</title>
 
     <!-- Bootstrap core CSS -->
     <link href="../../css/onlineRe1/bootstrap.min.css" rel="stylesheet">
@@ -53,7 +53,7 @@
                         </div>
                     </div>
                     <div class="col-sm-6 visible-sm">
-                        <div class="text-right"><a href="customerLogin" > <button type="button" class="book-now-btn">Book Now</button></a></div>
+                        <div class="text-right"><a href="customerLogin" > <button type="button" class="book-now-btn">Log In</button></a></div>
                     </div>
                     <div class="col-md-8 col-sm-12 col-xs-12 remove-padd">
                         <nav class="navbar navbar-default">
@@ -80,7 +80,7 @@
                         </nav>
                     </div>
                     <div class="col-md-2  col-sm-4 col-xs-12 hidden-sm">
-                        <div class="text-right"><a href="customerLogin" > <button type="button" class="book-now-btn">Book Now</button></a></div>
+                        <div class="text-right"><a href="customerLogin" > <button type="button" class="book-now-btn">Log In</button></a></div>
                     </div>
                 </div>
             </div>
@@ -111,6 +111,7 @@
                         <li>The hotel benefits from a prime location by the sea that is in the bottom of the country and buzzing social hotspot. A personal tropical sanctuary that is perfect for escaping the city, it offers some of the finest, most modern accommodation in the country, with 500 luxurious guest rooms and suites, and 41 serviced apartments.</li>
                         <li>An exciting new dining and social scene has come to life around the hotel's outstanding restaurant and bar.</li>
                     <span>Hotel Hareesha, Galle, looks forward to welcoming you soon.</span>
+                    </ul>
                 </div>
             </div>
             <div class="clearfix"> </div>
@@ -127,23 +128,23 @@
                         <ul class="list-unstyled footer-contact-list">
                             <li>
                                 <i class="fa fa-map-marker fa-lg"></i>
-                                <p>701 Old York Drive Richmond USA.</p>
+                                <p> Imduwa Road, Yakkalamulla, Galle, Sri Lanka. </p>
                             </li>
                             <li>
                                 <i class="fa fa-phone fa-lg"></i>
-                                <p><a href="tel:+1-202-555-0100"> +1-202-555-0100</a></p>
+                                <p><a href="tel:+94-76-673-7320"> +94-76-6737320 </a></p>
                             </li>
                             <li>
                                 <i class="fa fa-envelope-o fa-lg"></i>
-                                <p><a href="mailto:demo@info.com"> demo@info.com</a></p>
+                                <p><a href="mailto:mailspringitp@gmail.com"> mailspringitp@gmail.com </a></p>
                             </li>
                         </ul>
                         <div class="footer-social-icon">
-                            <a href="#"><i class="fa fa-facebook"></i></a>
-                            <a href="#"><i class="fa fa-twitter"></i></a>
-                            <a href="#"><i class="fa fa-instagram"></i></a>
-                            <a href="#"><i class="fa fa-google-plus"></i></a>
-                            <a href="#"><i class="fa fa-youtube-play"></i></a>
+                            <a href="https://www.facebook.com/"><i class="fa fa-facebook"></i></a>
+                            <a href="https://twitter.com/?lang=en"><i class="fa fa-twitter"></i></a>
+                            <a href="https://www.instagram.com/?hl=en"><i class="fa fa-instagram"></i></a>
+                            <a href="https://www.google.com/"><i class="fa fa-google-plus"></i></a>
+                            <a href="https://www.youtube.com/"><i class="fa fa-youtube-play"></i></a>
                         </div>
                         <div class="input-group" id="subscribe">
                             <input type="text" class="form-control subscribe-box" value="" name="subscribe" placeholder="EMAIL ID">

@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="../../images/reservation/icons/favicon.png"/>
-    <title>Hareesha</title>
+    <title>Luxury Hotel in Galle | Hotel Hareesha</title>
 
     <!-- Bootstrap core CSS -->
     <link href="../../css/onlineRe1/bootstrap.min.css" rel="stylesheet">
@@ -56,7 +56,7 @@
                         </div>
                     </div>
                     <div class="col-sm-6 visible-sm">
-                        <div class="text-right"><a href="customerLogin" > <button type="button" class="book-now-btn">Book Now</button></a></div>
+                        <div class="text-right"><a href="customerLogin" > <button type="button" class="book-now-btn">Log In</button></a></div>
                     </div>
                     <div class="col-md-8 col-sm-12 col-xs-12 remove-padd">
                         <nav class="navbar navbar-default">
@@ -84,7 +84,7 @@
                         </nav>
                     </div>
                     <div class="col-md-2  col-sm-4 col-xs-12 hidden-sm">
-                        <div class="text-right"><a href="customerLogin" > <button type="button" class="book-now-btn">Book Now</button></a></div>
+                        <div class="text-right"><a href="customerLogin" > <button type="button" class="book-now-btn">Log In</button></a></div>
                     </div>
                 </div>
             </div>
@@ -201,7 +201,7 @@
                         <img class="img-responsive" src="../../images/reservation/room4.png">
                         <div class="overlay">
                             <a class="info pop example-image-link img-responsive" href="../../images/reservation/room4.png" data-lightbox="example-1"><i class="fa fa-search" aria-hidden="true"></i></a>
-                            <p><a>queen room</a></p>
+                            <p><a>premium room</a></p>
                         </div>
                     </div>
                 </div>
@@ -244,7 +244,7 @@
                             <h3><a>luxury spa</a></h3>
                             <p>The Spa draws inspiration from personal peace, enchantment and well-being.
                                 Private rooms are available both for individuals and for couples to experience a sublime selection of traditional Sri Lankan and other Asian treatments and therapies</p>
-                            <div class="links"><a href="single-blog.html">Read more</a></div>
+                            <div class="links"><a href="#">Read more</a></div>
                         </div>
                     </div>
                 </div>
@@ -271,7 +271,7 @@
                         <div class="product-desc-side">
                             <h3><a>luxury room</a></h3>
                             <p>Offering striking views of the Indian Ocean, Beira Lake and the city beyond, our 500 guest rooms and suites, and 41 serviced apartments are tastefully furnished to complement the urban-oceanside location and are among the largest in Galle.</p>
-                            <div class="links"><a href="single-blog.html">Read more</a></div>
+                            <div class="links"><a href="rooms">Read more</a></div>
                         </div>
                     </div>
 
@@ -287,9 +287,9 @@
                 <div class="col-md-6 col-sm-12 col-xs-12 remove-padd-left">
                     <div class="side-A">
                         <div class="product-desc-side">
-                            <h3><a>heaven seanery</a></h3>
-                            <p>Lorem ipsum dolor sit amet, consec adipiscing elit. Nunc lorem nulla, ornare eu felis luctus non maximus vitae, portt neque. ipsum dolor sit amet, consec adipiscing elit.</p>
-                            <div class="links"><a href="single-blog.html">Read more</a></div>
+                            <h3><a>Tasty Foods</a></h3>
+                            <p>At Hotel Hareesha, we believe in the magic of great taste. Taste you turn to every day, taste you count on as part of your life. We make taste that does more than merely satisfying your taste buds, it actually gives you less to worry about and more to look forward to.</p>
+                            <div class="links"><a href="#">Read more</a></div>
                         </div>
                     </div>
 
@@ -375,7 +375,11 @@
         <div class="clearfix"></div>
     </section>
 
+
     <!---blog block--->
+
+    <!--
+
     <section class="blog-block">
         <div class="container">
             <div class="row offspace-45">
@@ -387,11 +391,11 @@
                     </div>
                     <div class="col-md-6 col-sm-6 col-xs-12 side-in-image">
                         <div class="event-blog-details">
-                            <h4><a href="single-blog.html">Lorem ipsum dolor sit amet</a></h4>
+                            <h4><a href="#">Lorem ipsum dolor sit amet</a></h4>
                             <h5>Post By Admin <a><i aria-hidden="true" class="fa fa-heart-o fa-lg"></i>Likes</a><a><i aria-hidden="true" class="fa fa-comment-o fa-lg"></i>comments</a></h5>
                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc lorem nulla, ornare eu felis quis, efficitur posuere nulla. Aliquam ac luctus turpis, non faucibus sem. Fusce ornare turpis neque, eu commodo sapien porta sed. Nam ut ante turpis. Nam arcu odio, scelerisque a vehicula vitae, auctor sit amet lectus. </p>
                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc lorem nulla, ornare eu felis quis, efficitur posuere nulla. Aliquam ac luctus turpis, non faucibus sem. Fusce ornard hendrerit tortor vulputate id. Vestibulum mauris nibh, luctus non maximus vitae, porttitor eget neque. Donec tristique nunc facilisis, dapibus libero ac</p>
-                            <a class="btn btn-default" href="single-blog.html">Read More</a>
+                            <a class="btn btn-default" href="#">Read More</a>
                         </div>
                     </div>
                 </div>
@@ -405,17 +409,19 @@
                     </div>
                     <div class="col-md-6 col-sm-6 col-xs-12 side-in-image">
                         <div class="event-blog-details">
-                            <h4><a href="single-blog.html">Lorem ipsum dolor sit amet</a></h4>
+                            <h4><a href="#">Lorem ipsum dolor sit amet</a></h4>
                             <h5>Post By Admin <a><i aria-hidden="true" class="fa fa-heart-o fa-lg"></i>Likes</a><a><i aria-hidden="true" class="fa fa-comment-o fa-lg"></i>comments</a></h5>
                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc lorem nulla, ornare eu felis quis, efficitur posuere nulla. Aliquam ac luctus turpis, non faucibus sem. Fusce ornare turpis neque, eu commodo sapien porta sed. Nam ut ante turpis. Nam arcu odio, scelerisque a vehicula vitae, auctor sit amet lectus. </p>
                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc lorem nulla, ornare eu felis quis, efficitur posuere nulla. Aliquam ac luctus turpis, non faucibus sem. Fusce ornard hendrerit tortor vulputate id. Vestibulum mauris nibh, luctus non maximus vitae, porttitor eget neque. Donec tristique nunc facilisis, dapibus libero ac</p>
-                            <a class="btn btn-default" href="single-blog.html">Read More</a>
+                            <a class="btn btn-default" href="#">Read More</a>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
+
+    -->
 
     <!---footer--->
     <footer>
@@ -427,23 +433,23 @@
                         <ul class="list-unstyled footer-contact-list">
                             <li>
                                 <i class="fa fa-map-marker fa-lg"></i>
-                                <p>701 Old York Drive Richmond USA.</p>
+                                <p> Imduwa Road, Yakkalamulla, Galle, Sri Lanka. </p>
                             </li>
                             <li>
                                 <i class="fa fa-phone fa-lg"></i>
-                                <p><a href="tel:+1-202-555-0100"> +1-202-555-0100</a></p>
+                                <p><a href="tel:+94-76-673-7320"> +94-76-6737320 </a></p>
                             </li>
                             <li>
                                 <i class="fa fa-envelope-o fa-lg"></i>
-                                <p><a href="mailto:demo@info.com"> demo@info.com</a></p>
+                                <p><a href="mailto:mailspringitp@gmail.com"> mailspringitp@gmail.com </a></p>
                             </li>
                         </ul>
                         <div class="footer-social-icon">
-                            <a href="#"><i class="fa fa-facebook"></i></a>
-                            <a href="#"><i class="fa fa-twitter"></i></a>
-                            <a href="#"><i class="fa fa-instagram"></i></a>
-                            <a href="#"><i class="fa fa-google-plus"></i></a>
-                            <a href="#"><i class="fa fa-youtube-play"></i></a>
+                            <a href="https://www.facebook.com/"><i class="fa fa-facebook"></i></a>
+                            <a href="https://twitter.com/?lang=en"><i class="fa fa-twitter"></i></a>
+                            <a href="https://www.instagram.com/?hl=en"><i class="fa fa-instagram"></i></a>
+                            <a href="https://www.google.com/"><i class="fa fa-google-plus"></i></a>
+                            <a href="https://www.youtube.com/"><i class="fa fa-youtube-play"></i></a>
                         </div>
                         <div class="input-group" id="subscribe">
                             <input type="text" class="form-control subscribe-box" value="" name="subscribe" placeholder="EMAIL ID">
