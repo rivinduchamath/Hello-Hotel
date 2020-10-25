@@ -17,9 +17,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import java.util.Date;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -59,7 +56,7 @@ public class BanquetOrderController {
 
         MenuDTO menuDTO = kitchenBO.findMenuItemById(banquetAddDTO.getMenuId());
         List<MenuDetailsDTO> menuDetailsDTOS = kitchenBO.findFoodItemsDetails(banquetAddDTO.getMenuId());
-        List<FoodItemDTO> allFoodItems = kitchenBO.findFoodItemsForMenu();
+        List<FoodItemDTO> allFoodItems = kitchenBO.findFoodItems();
         List<InventoryDTO> allIngredients = kitchenBO.findKitchenInventory(KitchenUtil.department);
         List<FoodItemDTO> foodItemDTOS = new ArrayList<>();
 
