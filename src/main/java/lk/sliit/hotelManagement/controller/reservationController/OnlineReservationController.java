@@ -4,6 +4,8 @@ import lk.sliit.hotelManagement.controller.SuperController;
 import lk.sliit.hotelManagement.dto.houseKeeping.HotelRoomDTO;
 import lk.sliit.hotelManagement.dto.reservation.CustomerDTO;
 import lk.sliit.hotelManagement.dto.reservation.FindAvailabilityDTO;
+import lk.sliit.hotelManagement.dto.reservation.ReservationDTO;
+import lk.sliit.hotelManagement.dto.restaurant.restaurantCounterOrder.RestaurantCounterOrderDTO;
 import lk.sliit.hotelManagement.service.custom.IndexLoginBO;
 import lk.sliit.hotelManagement.service.custom.ReservationBO;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -99,19 +101,32 @@ public class OnlineReservationController {
 
 
     @PostMapping("/saveOnlineRooms")
-    public String onlineCustomerDetails(@ModelAttribute CustomerDTO customerDTO, Model model, HttpServletRequest request) {
+    public String onlineCustomerDetails(@ModelAttribute ReservationDTO reservationDTO,Model model, HttpSession session) {
+
+        System.out.println(reservationDTO+"QQAAAAAAAAAAAAAAAAAAAQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ");
         try {
-            CustomerDTO customerDTO1 = reservationBO.findByUserNameAndPassword(customerDTO.getEmail(), customerDTO.getPassword());
-            if (customerDTO1 != null) {
-                request.getSession().setAttribute("CustomerId", customerDTO1.getCustomerId());
-                return "redirect:/roomTypes";
-            } else {
-                return "redirect:/customerLogin";
+            int onlineCustomerId = Integer.parseInt(session.getAttribute("CustomerId").toString());
+
+            model.addAttribute("loggedCustomer", reservationBO.findId(onlineCustomerId));
+            System.out.println("CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC");
+            try {
+                reservationDTO.setCustomer(onlineCustomerId);
+                ReservationDTO top = reservationBO.findTopByReservationId();
+                int x = (top.getReservationId()) + 1;
+                reservationDTO.setReservationId((x));
+            } catch (NullPointerException e) {
+                reservationDTO.setReservationId((1));
             }
-        } catch (NullPointerException e) {
-            return "redirect:/customerLogin";
+
+                System.out.println("DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD");
+                reservationBO.saveReservaation(reservationDTO);
+
+
+        } catch (Exception d) {
+            return "roomTypes";
         }
 
+        return "roomTypes";
     }
 
 

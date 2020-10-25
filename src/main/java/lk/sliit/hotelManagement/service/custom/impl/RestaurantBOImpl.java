@@ -325,8 +325,7 @@ public class RestaurantBOImpl implements RestaurantBO {
     public void saveCounterTableId(CounterTableReservationDTO onlineOrderDTO) {
         java.util.List<CounterTableReservationDetailsDTO> list = new ArrayList<>();
         String arr = onlineOrderDTO.getOrderData();
-        System.out.println("WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW "+onlineOrderDTO);
-        String yo[] = arr.split(" ");
+         String yo[] = arr.split(" ");
         int count = 0;
         CounterTableReservationDetailsDTO itm = new CounterTableReservationDetailsDTO();
         for (String str : yo) {
@@ -337,13 +336,10 @@ public class RestaurantBOImpl implements RestaurantBO {
                 count = 0;
             }
         }
-
-        System.out.println(list+"EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE");
         Calendar cal = Calendar.getInstance();
         cal.add(Calendar.DATE, 0);
         java.util.Date today = cal.getTime();
         onlineOrderDTO.setDate(today);
-        System.out.println(onlineOrderDTO+"RRRRRTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTRRRRRRRRRRRRRR");
         counterTableReservationDAO.save(new CounterTableReservation(
 
                 onlineOrderDTO.getCounterTableReserveId(),
@@ -354,7 +350,6 @@ public class RestaurantBOImpl implements RestaurantBO {
         ));
 
         for (CounterTableReservationDetailsDTO orderDetail : list) {
-            System.out.println(orderDetail.getTableId()+"RRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR");
             counterTableReservationDetailsDAO.save(new CounterTableReservationDetails(
                     onlineOrderDTO.getCounterTableReserveId(),
                     orderDetail.getTableId(),

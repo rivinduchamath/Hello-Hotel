@@ -102,9 +102,9 @@
                 </div>
                 <div class="col-md-2  col-sm-4 col-xs-12 hidden-sm">
                     <form method="POST" action="saveOnlineRooms" name="saveOnlineRooms">
-                        <input style="display: none" readonly required type="text" id="itemPay" name="orderData">
-                        <input  style="" readonly required="required" type="date" id="vDate" value="${checkIn}" name="vDate">
-                        <input readonly required ="required"type="date" id="timeIn" value="${checkOut}" name="vStatT">
+                        <input style="display: none" readonly required type="text" id="itemPay" name="details">
+                        <input  style="" readonly required="required" type="date" id="vDate" value="${checkIn}" name="checkIn">
+                        <input readonly required ="required"type="date" id="timeIn" value="${checkOut}" name="checkOut">
                         <button type="submit" onclick="getValue()" class="col-1-1 button1x1" id="submitButton">Submit</button>
                     </form>
                 </div>
@@ -250,7 +250,8 @@
             </div>
 
             <div class="copyright">
-                &copy; 2020 All right reserved. Designed by <a href="https://github.com/rivinduchamath/Hello-Hotel" target="_blank">Team Reliance</a>
+                &copy; 2020 All right reserved. Designed by
+                <a href="https://github.com/rivinduchamath/Hello-Hotel" target="_blank">Team Reliance</a>
             </div>
 
         </div>
@@ -279,11 +280,11 @@
 
     function getValue() {
 
-        if (vDate == "" || timeIn == "" || timeOut == "") {
+      /*  if (vDate == "" || timeIn == "" || timeOut == "") {
             alert("Please Select Room In Table");
             return;
         }
-
+*/
         var str, stre = "";
         var inputArray = []
 
@@ -294,7 +295,7 @@
                 stre += str;
             }
         }
-
+        alert(stre)
         $("#itemPay").val(stre);
     }
 </script>
