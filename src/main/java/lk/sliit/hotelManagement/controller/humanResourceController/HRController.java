@@ -40,6 +40,16 @@ public class HRController {
         return "hr";
     }
 
+    @GetMapping("/allAttendance")
+    public String allAttendance(Model model) {
+        model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
+
+        List<EmployeeDTO> p = manageBO.findAllUser();
+        model.addAttribute("loadAllUsers", p);
+        model.addAttribute("listAttendance", humanResourceBO.findTodayAttendance());
+        return "allAttendance";
+    }
+
     @GetMapping("/attendance")
     public String attendance(Model model) {
         model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));

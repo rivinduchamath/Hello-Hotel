@@ -1,10 +1,4 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: Rivindu Chamath
-  Date: 21-May-20
-  Time: 2:43 AM
-  To change this template use File | Settings | File Templates.
---%>
+
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page import="java.util.Date" %>
@@ -87,13 +81,13 @@
 
                 <div class="col-sm-12 col-md-3 col-lg-3 col-xl-3">
                     <a href="banquetFoodOrder">
-                        <button type="button" class="large-btn btn btn-secondary">Banquet Orders</button>
+                        <button type="button" class="large-btn btn btn-dark">Banquet Orders</button>
                     </a>
                 </div>
 
                 <div class="col-sm-12 col-md-3 col-lg-3 col-xl-3">
                     <a href="restaurantOrders">
-                        <button type="button" class="large-btn btn btn-secondary">Restaurant Orders</button>
+                        <button type="button" class="large-btn btn btn-dark">Restaurant Orders</button>
                     </a>
                 </div>
 
@@ -112,7 +106,7 @@
                     <div class="row">
                         <div class="x_panel">
                             <div class="x_title">
-                                <h2>Food Items on Menu: Day01 Breakfast</h2>
+                                <h2>Food Items on Menu:<br>${breakfast.name} <small>(Breakfast)</small></h2>
                                 <ul class="nav navbar-right panel_toolbox">
                                     <li><a class="collapse-link"></a>
                                     </li>
@@ -139,38 +133,11 @@
 
                                                 </thead>
                                                 <tbody>
-                                                <tr>
-                                                    <td>Chicken Curry</td>
-                                                    <td>Main</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Rice</td>
-                                                    <td>Main</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Dhal Curry</td>
-                                                    <td>Main</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Ice cream</td>
-                                                    <td>Desserts</td>
-                                                </tr>
-                                                <c:forEach items="${loadMenuItemTable}" var="item">
-                                                    <tr>
-                                                        <td>${item.menuId}</td>
-                                                        <td>${item.name}</td>
-                                                        <td>${item.type}</td>
-                                                        <td>
-                                                            <a href="foodPackage/${item.menuId}">
-                                                                <input type="button" value="Manage">
-                                                            </a>
-                                                        </td>
 
-                                                        <td>
-                                                            <a href="deleteFoodPackage/${item.menuId}">
-                                                                <i class="fa fa-trash" style="font-size: 20px"></i>
-                                                            </a>
-                                                        </td>
+                                                <c:forEach items="${breakfastTable}" var="item">
+                                                    <tr>
+                                                        <td>${item.itemName}</td>
+                                                        <td>${item.itemCategory}</td>
                                                     </tr>
                                                 </c:forEach>
 
@@ -187,7 +154,7 @@
                     <div class="row">
                         <div class="x_panel">
                             <div class="x_title">
-                                <h2>Food Items on Menu: Day01 Lunch</h2>
+                                <h2>Food Items on Menu:<br>${lunch.name} <small>(Lunch)</small></h2>
                                 <ul class="nav navbar-right panel_toolbox">
                                     <li><a class="collapse-link"></a>
                                     </li>
@@ -214,40 +181,13 @@
 
                                                 </thead>
                                                 <tbody>
-                                                <tr>
-                                                    <td>Chicken Curry</td>
-                                                    <td>Main</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Rice</td>
-                                                    <td>Main</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Dhal Curry</td>
-                                                    <td>Main</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Ice cream</td>
-                                                    <td>Desserts</td>
-                                                </tr>
-                                                <c:forEach items="${loadMenuItemTable}" var="item">
+                                                <c:forEach items="${lunchTable}" var="item">
                                                     <tr>
-                                                        <td>${item.menuId}</td>
-                                                        <td>${item.name}</td>
-                                                        <td>${item.type}</td>
-                                                        <td>
-                                                            <a href="foodPackage/${item.menuId}">
-                                                                <input type="button" value="Manage">
-                                                            </a>
-                                                        </td>
-
-                                                        <td>
-                                                            <a href="deleteFoodPackage/${item.menuId}">
-                                                                <i class="fa fa-trash" style="font-size: 20px"></i>
-                                                            </a>
-                                                        </td>
+                                                        <td>${item.itemName}</td>
+                                                        <td>${item.itemCategory}</td>
                                                     </tr>
                                                 </c:forEach>
+
 
                                                 </tbody>
                                             </table>
@@ -262,7 +202,7 @@
                     <div class="row">
                         <div class="x_panel">
                             <div class="x_title">
-                                <h2>Food Items on Menu: Day01 Dinner</h2>
+                                <h2>Food Items on Menu:<br>${dinner.name} <small>(Dinner)</small></h2>
                                 <ul class="nav navbar-right panel_toolbox">
                                     <li><a class="collapse-link"></a>
                                     </li>
@@ -289,38 +229,10 @@
 
                                                 </thead>
                                                 <tbody>
-                                                <tr>
-                                                    <td>Chicken Curry</td>
-                                                    <td>Main</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Rice</td>
-                                                    <td>Main</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Dhal Curry</td>
-                                                    <td>Main</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Ice cream</td>
-                                                    <td>Desserts</td>
-                                                </tr>
-                                                <c:forEach items="${loadMenuItemTable}" var="item">
+                                                <c:forEach items="${dinnerTable}" var="item">
                                                     <tr>
-                                                        <td>${item.menuId}</td>
-                                                        <td>${item.name}</td>
-                                                        <td>${item.type}</td>
-                                                        <td>
-                                                            <a href="foodPackage/${item.menuId}">
-                                                                <input type="button" value="Manage">
-                                                            </a>
-                                                        </td>
-
-                                                        <td>
-                                                            <a href="deleteFoodPackage/${item.menuId}">
-                                                                <i class="fa fa-trash" style="font-size: 20px"></i>
-                                                            </a>
-                                                        </td>
+                                                        <td>${item.itemName}</td>
+                                                        <td>${item.itemCategory}</td>
                                                     </tr>
                                                 </c:forEach>
 
@@ -356,10 +268,8 @@
                                 </div>
                                 <div class="x_content">
                                     <br/>
-                                    <form id="demo-form2" data-parsley-validate
+                                    <form action="/kitchen" method="post" id="demo-form2" data-parsley-validate
                                           class="form-horizontal form-label-left">
-
-                                        <input type="hidden" value="" name="itemId">
 
                                         <table style="border: none">
 
@@ -374,7 +284,7 @@
                                                 <td>
                                                     <div class="item form-group">
                                                         <div class=" ">
-                                                            <input type="text" id="itemId" name="itemId" required="required" class="form-control ">
+                                                            <input type="number" id="foodItemId" name="foodItemId" required="required" class="form-control ">
                                                         </div>
                                                     </div>
                                                 </td>
@@ -391,7 +301,7 @@
                                                 <td>
                                                     <div class="item form-group">
                                                         <div class=" ">
-                                                            <input type="text" id="itemName" required="required" class="form-control ">
+                                                            <input type="text" id="itemName" name="itemName" required="required" class="form-control ">
                                                         </div>
                                                     </div>
                                                 </td>
@@ -409,7 +319,7 @@
                                                 <td>
                                                     <div class="item form-group">
                                                         <div class="">
-                                                            <input type="number" id="itemQuantity" name="last-name"
+                                                            <input type="number" id="itemQuantity" name="amount"
                                                                    required="required"
                                                                    class="form-control">
                                                         </div>
@@ -429,7 +339,7 @@
                                                 <td>
                                                     <div class="item form-group">
                                                         <div class=" ">
-                                                            <input type="date"  id="expectedDate" required="required" class="form-control ">
+                                                            <input type="date" name="expectedDate"  id="expectedDate" required="required" class="form-control ">
                                                         </div>
                                                     </div>
                                                 </td>
@@ -474,7 +384,7 @@
                                 <div class="row">
                                     <div class="col-sm-12">
                                         <div class="card-box table-responsive">
-                                            <table id="datatable-buttons"
+                                            <table id="datatable-foodItem"
                                                    class="table table-striped table-bordered">
                                                 <thead class="thead-light">
                                                 <tr>
@@ -486,8 +396,8 @@
                                                 <tbody>
                                                 <c:forEach items="${loadFoodItemTable}" var="item">
                                                     <tr>
-                                                        <td>${item.itemId}</td>
-                                                        <td>${item.itemName}</td>
+                                                        <td>${item.inventoryId}</td>
+                                                        <td>${item.text}</td>
                                                     </tr>
                                                 </c:forEach>
                                                 </tbody>
@@ -524,7 +434,7 @@
                                 <div class="row">
                                     <div class="col-sm-12">
                                         <div class="card-box table-responsive">
-                                            <table id="datatable-buttons1"
+                                            <table id="datatable-orders"
                                                    class="table table-striped table-bordered">
                                                 <thead class="thead-light">
                                                 <tr>
@@ -579,13 +489,35 @@
 </div>
 
 
+<!------/autofill form script ------------------------------------------------->
+
 <!-- jQuery -->
 <script src="../../vendors/jquery/dist/jquery.min.js"></script>
 <!-- Bootstrap -->
 <script src="../../vendors/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 <!-- Custom Theme Scripts -->
 <script src="../../build/js/custom.min.js"></script>
+<!------autofill form script ------------------------------------------------->
+<script>
 
+    var selectedRow = null;
+    $("#datatable-foodItem tbody").on('click', 'tr', function () {
+        selectedRow = $(this);
+        $("#foodItemId").val($(this).find("td:first-child").text());
+        $("#itemName").val($(this).find("td:nth-child(2)").text());
+        selectedRow.addClass('row-selected');
+    });
+
+    $("#datatable-orders tbody").on('click', 'tr', function () {
+        selectedRow = $(this);
+        $("#foodItemId").val($(this).find("td:first-child").text());
+        $("#itemName").val($(this).find("td:nth-child(2)").text());
+        selectedRow.addClass('row-selected');
+    });
+
+
+
+</script>
 <!-- Datatables -->
 <script src="../../vendors/datatables.net/js/jquery.dataTables.min.js"></script>
 <script src="../../vendors/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>

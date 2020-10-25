@@ -175,6 +175,12 @@
                         </form>
                     </div>
                 </div>
+                <a href="/hr">
+                    <button class="btn btn-secondary" style="width:8%; height:5%" type="button"><i
+                            class="fa fa-reply">
+                        Back</i>
+                    </button>
+                </a>
                 <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
                     <%--Table--%>
                     <div class="col-12 col-sm-12 col-md-12 col-lg-7 col-xl-7">

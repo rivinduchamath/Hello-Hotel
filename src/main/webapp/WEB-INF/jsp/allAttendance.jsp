@@ -1,10 +1,4 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: Rivindu Chamath
-  Date: 03-Mar-20
-  Time: 4:33 AM
-  To change this template use File | Settings | File Templates.
---%>
+
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
@@ -77,16 +71,18 @@
         }
     </script>
     <style>
-        .row-selected{
+        .row-selected {
             background-color: rgba(36, 107, 218, 0.21) !important;
         }
     </style>
 </head>
 
 <body class="nav-md" style="cursor: pointer">
-<%! String date =""; %>
+<%! String date = ""; %>
 <div class="container body">
     <div class="main_container">
+
+
         <!-- Side header -->
         <jsp:include page="sideHeader.jsp"/>
         <!-- /Side header -->
@@ -94,27 +90,18 @@
         <!-- Top header -->
         <jsp:include page="topHeader.jsp"/>
         <!-- /Top header -->
+
+        <!-- /top navigation -->
         <!-- page content -->
         <div class="right_col" role="main">
             <div class="">
                 <div class="page-title">
                     <div class="title_left">
-                        <h3>Attendance
-                            <small>Manage Attendance</small>
+                        <h3>Tables
+                            <small>Some examples to get you started</small>
                         </h3>
-                        <a style=" float: left" href="allAttendance">
-                            <button   type='submit' class="btn btn-secondary" style="width: 100%;" value="Register" >
-                               Find All <i class="fa fa-forward"></i>
-                            </button>
-                        </a>
-                        &nbsp &nbsp
-                        <a href="/hr">
-                            <button class="btn btn-secondary" style="width: 20%; height:86%" type="button"><i
-                                    class="fa fa-reply">
-                                Back</i>
-                            </button>
-                        </a>
                     </div>
+
                     <div class="title_right">
                         <div class="col-md-5 col-sm-5   form-group pull-right top_search">
                             <!--/////-->
@@ -160,6 +147,7 @@
                                     }
                                     setTimeout("formatTime()", 1000);
                                 }
+
                                 window.onload = formatTime;
                             </script>
                             <form name="clock" style="float: right">
@@ -170,7 +158,8 @@
 
                                             <input style="color:#73879C; float:right;border: none;background-color: #f6f6f6"
                                                    class="clock2" type="text" name="sivam" size="12"><br>
-                                            <p><%=date%></p>
+                                            <p><%=date%>
+                                            </p>
 
                                         </h6>
 
@@ -197,161 +186,12 @@
                 <div class="row" style="display: block;">
 
                     <div class="clearfix"></div>
-                    <!--////////////////////////////////////////////////////////////////////////////-->
-
-              <%-- <form  method="POST" action="/tablesAdd" name="errorLog">
-                    <script>
-                        window.addEventListener("load",function(){
-                            alert("${errorLog}");
-                        })
-                    </script>
-                    </form>--%>
-                    <form  method="POST" action="tablesAdd" name="tablesAdd">
-                        <div style="display: none"><input id="attendanceId" name="attendanceId" value="0"></div>
-
-                        <div class="col-md-6 col-sm-6 " style="float: left">
-                            <label>Search aID</label>
-                            <input type="text" style="cursor: pointer;" id="myInput" onkeyup="myFunction()" placeholder="Search By ID..">
-
-                        </div>
-
-                        <div class="col-md-6 col-sm-6 " style="float: right">
-
-
-                            <div class="form-group">
-                                <label for="itemCode">Employee Id</label>
-                                <input type="text" class="form-control"
-                                       required name="employeeID"
-                                       id="itemCode" placeholder="ID" readonly/>
-                            </div>
-
-                            <div class="form-group">
-                                <label for="itemDesc">Employee Name </label>
-                                <input type="text" class="form-control" id="itemDesc"
-                                       placeholder="Name">
-                            </div>
-
-                            <div class="col-md-6 col-sm-6 ">
-                                <label for="itemDesc">set Time </label>
-                                <div class="input-group mb-3">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text">Time</span>
-                                        <span class="input-group-text">
-                                       IN
-                                </span>
-                                    </div>
-                                    <input type="text" class="form-control" required
-                                           name="inTime" id="itemTime"
-                                           aria-label="Dollar amount (with dot and two decimal places)">
-
-                                </div>
-                            </div>
-                            <div class="col-md-6 col-sm-6 ">
-                                <label for="itemDesc">&nbsp;</label>
-                                <div class="input-group mb-3" style="float: right">
-                                    <div class="input-group-prepend">
-                                <span class="input-group-text">
-                                       OUT
-                                </span>
-                                    </div>
-                                    <input type="text" class="form-control" required
-                                           id="itemTime2"  name="outTime" value="${attendance.outTime }"
-                                           aria-label="Dollar amount (with dot and two decimal places)"/>
-
-                                </div>
-                            </div>
-
-                            <div class="col-md-6 col-sm-6 ">
-                                <label for="itemDesc">&nbsp;</label>
-
-                                <div class="input-group mb-3" style="float: right">
-                                    <div class="input-group-prepend">
-                                <span class="input-group-text">
-                                       OT
-                                </span>
-                                    </div>
-                                    <input type="number" class="form-control"
-                                           name="overtimeHours" required value= "0" id="itemTime3" aria-label="Dollar amount (with dot and two decimal places)">
-
-                                </div>
-                            </div>
-                            <div class="col-md-6 col-sm-6 ">
-                                <label for="itemDesc">&nbsp;</label>
-                                <div class="input-group mb-3" style="float: right">
-
-                                    <button type='submit' class="btn btn-dark" style="width: 30%" value="Register">Submit</button>
-                                    <button type='reset' class="btn btn-outline-primary" value="">Reset</button>
-
-                                </div>
-                            </div>
-                        </div>
-
-
-                        <div class="col-md-6 col-sm-6 " style="float: left">
-                            <div class="x_panel">
-                                <div class="x_title">
-                                    <h2>Employees
-                                        <small>Users</small>
-                                    </h2>
-                                    <ul class="nav navbar-right panel_toolbox">
-                                        <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
-                                        </li>
-                                        <li class="dropdown">
-                                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
-                                               aria-expanded="false"><i class="fa fa-wrench"></i></a>
-                                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                                <a class="dropdown-item" href="#">Settings 1</a>
-                                                <a class="dropdown-item" href="#">Settings 2</a>
-                                            </div>
-                                        </li>
-                                        <li><a class="close-link"><i class="fa fa-close"></i></a>
-                                        </li>
-                                    </ul>
-                                    <div class="clearfix"></div>
-                                </div>
-                                <div class="x_content">
-                                    <div class="row">
-                                        <div class="col-sm-12">
-                                            <div class="card-box table-responsive">
-                                                <p class="text-muted font-13 m-b-30">
-
-                                                </p>
-
-                                                <table id="datatable-responsive"
-                                                       class="table table-striped table-bordered dt-responsive nowrap"
-                                                       cellspacing="0" width="100%">
-                                                    <thead class="thead-dark">
-                                                    <tr>
-                                                        <th>Employee ID</th>
-                                                        <th>Name</th>
-
-                                                    </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                    <c:forEach items="${loadAllUsers}" var="e">
-                                                        <tr>
-                                                            <td>${e.userId}</td>
-                                                            <td>${e.name}</td>
-                                                        </tr>
-                                                    </c:forEach>
-                                                    </tbody>
-
-                                                </table>
-
-
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
+                    <div class="row">
                         <div class="col-md-12 col-sm-12 ">
                             <div class="x_panel">
                                 <div class="x_title">
-                                    <h2>Today active users
-                                        <small>Update Today
-                                            Users</small>
+                                    <h2>Find Users
+                                        <small>User Page</small>
                                     </h2>
                                     <ul class="nav navbar-right panel_toolbox">
                                         <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
@@ -369,42 +209,57 @@
                                     </ul>
                                     <div class="clearfix"></div>
                                 </div>
+                                <a href="/attendance">
+                                    <button style="float: right;font-weight: bolder" class="btn btn-success"><i
+                                            class="fa fa-backward"></i> Back
+                                    </button>
+                                </a>
                                 <div class="x_content">
                                     <div class="row">
                                         <div class="col-sm-12">
                                             <div class="card-box table-responsive">
                                                 <p class="text-muted font-13 m-b-30">
-                                                    The User Table Provide To Find Data Of Users.If You Want Edit OR Remove User You Can Find
+                                                    The User Table Provide To Find Data Of Users.If You Want Edit OR
+                                                    Remove User You Can Find
                                                     User And Just Click On User Row.
                                                 </p>
-                                                <table style="text-align: center" id="datatable-buttons" class="table table-striped table-bordered">
+                                                <table id="datatable-buttons"
+                                                       class="table table-striped table-bordered">
                                                     <thead class="thead-light">
                                                     <tr>
                                                         <th>Attendance ID</th>
-                                                        <th>User ID</th>
+                                                        <th>Date</th>
+                                                        <th>Employee Id</th>
                                                         <th>Name</th>
                                                         <th>Position</th>
-                                                        <th>inTime</th>
-                                                        <th>OutTime</th>
-                                                        <th>OverTime</th>
+                                                        <th>Img</th>
+                                                        <th>In Time</th>
+                                                        <th>Out Time</th>
+                                                        <th>OT Hours</th>
                                                         <th>Delete</th>
-
                                                     </tr>
 
                                                     </thead>
                                                     <tbody>
-                                                    <c:forEach items="${listAttendance}" var="e">
-                                                        <tr>
-                                                            <td>${e.attendanceId}</td>
-                                                            <td>${e.employeeID}</td>
-                                                            <td>${e.empName}</td>
-                                                            <td>${e.position}</td>
-                                                            <td>${e.inTime}</td>
-                                                            <td>${e.outTime}</td>
-                                                            <td>${e.overtimeHours}</td>
-                                                            <td><a href="/deleteAttendance?pid=${e.attendanceId}"><span
-                                                                    class="glyphicon glyphicon-trash"></span></a></td>
-                                                        </tr>
+                                                    <c:forEach items="${listAttendanceTable}" var="e">
+
+                                                        <td>${e.attendanceId}</td>
+                                                        <td>${e.date}</td>
+                                                        <td>${e.employeeID}</td>
+                                                        <td>${e.empName}</td>
+                                                        <td>${e.position}</td>
+                                                        <td>
+                                                            <ul class="list-inline">
+                                                                <li>
+                                                                    <img src="../../images/icons/${e.pic}"
+                                                                         class="avatar" alt="Avatar">
+                                                                </li>
+                                                            </ul>
+                                                        </td>
+                                                        <td>${e.inTime}</td>
+                                                        <td>${e.outTime}</td>
+                                                        <td>${e.overtimeHours}</td>
+
                                                     </c:forEach>
                                                     </tbody>
                                                 </table>
@@ -414,13 +269,15 @@
                                 </div>
                             </div>
                         </div>
-                    </form>
+                    </div>
+
                 </div>
-<%--                //--%>
             </div>
         </div>
+        <!-- /page content -->
 
         <jsp:include page="footer.jsp"/>
+        <!-- /footer content -->
 
     </div>
 </div>
@@ -441,7 +298,7 @@
 <script src="../../vendors/datatables.net-buttons/js/dataTables.buttons.min.js"></script>
 <script src="../../vendors/datatables.net-buttons-bs/js/buttons.bootstrap.min.js"></script>
 <script src="../../vendors/datatables.net-buttons/js/buttons.flash.min.js"></script>
-<%--<script src="../../vendors/datatables.net-buttons/js/buttons.html5.min.js"></script>--%>
+<script src="../../vendors/datatables.net-buttons/js/buttons.html5.min.js"></script>
 <script src="../../vendors/datatables.net-buttons/js/buttons.print.min.js"></script>
 <script src="../../vendors/datatables.net-fixedheader/js/dataTables.fixedHeader.min.js"></script>
 <script src="../../vendors/datatables.net-keytable/js/dataTables.keyTable.min.js"></script>
@@ -449,15 +306,16 @@
 <script src="../../vendors/datatables.net-responsive-bs/js/responsive.bootstrap.js"></script>
 <script src="../../vendors/datatables.net-scroller/js/dataTables.scroller.min.js"></script>
 <script src="../../vendors/jszip/dist/jszip.min.js"></script>
-
+<script src="../../vendors/pdfmake/build/pdfmake.min.js"></script>
+<script src="../../vendors/pdfmake/build/vfs_fonts.js"></script>
 <script>
     var selectedRow = null;
     $("#datatable-responsive tbody").on('click', 'tr', function () {
         var date = new Date();
         var date2 = new Date();
-        var today = date.getHours() +":" + (date.getMinutes())+":"+date.getSeconds();
-        date2.setHours(date.getHours()+8);
-        var today2 = date2.getHours() +":" + (date.getMinutes())+":"+date.getSeconds();
+        var today = date.getHours() + ":" + (date.getMinutes()) + ":" + date.getSeconds();
+        date2.setHours(date.getHours() + 8);
+        var today2 = date2.getHours() + ":" + (date.getMinutes()) + ":" + date.getSeconds();
         selectedRow = $(this);
         $("#itemCode").val($(this).find("td:first-child").text());
         $("#itemDesc").val($(this).find("td:nth-child(2)").text());
@@ -472,7 +330,6 @@
     $("#datatable-buttons tbody").on('click', 'tr', function () {
 
         selectedRow = $(this);
-        $("#attendanceId").val($(this).find("td:nth-child(1)").text());
         $("#itemCode").val($(this).find("td:nth-child(2)").text());
         $("#itemTime").val($(this).find("td:nth-child(5)").text());
         $("#itemDesc").val($(this).find("td:nth-child(3)").text());
