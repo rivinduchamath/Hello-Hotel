@@ -292,7 +292,7 @@
 
 
                             <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
-                                <label>Customer Id</label>
+                                <label>Customer ID</label>
                                 <input type="number" value="" class="form-control"
                                        required="required" name="customerId"
                                        id="customerId" placeholder="customer Id"/></div>
@@ -302,40 +302,42 @@
 
 
                                 <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6"><br>
-                                    <label>No of Rooms</label>
+                                    <label>Room Type</label>
                                     <input type="text" class="form-control"
                                            required="required" name="No of Rooms"
                                            id="name" placeholder="no of rooms"/></div>
 
                                 <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6"><br>
-                                    <label>Address</label>
+                                    <label>Check-In</label>
                                     <input type="text" class="form-control"
                                            required="required" name="address"
-                                           id="address" placeholder="Address"/></div>
+                                           id="address" placeholder="check-in"/></div>
                             </div>
 
 
                             <div class="form-group">
                                 <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6"><br>
-                                    <label>Email</label>
-                                    <input type="email" class="form-control"
+                                        <label>Check-Out</label>
+                                    <input type="text" class="form-control"
                                            required="required" name="email"
-                                           id="email" placeholder="Email"/></div>
+                                           id="email" placeholder="check-out"/></div>
 
+                                <!--
                                 <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6"><br>
                                     <label>Mobile No</label>
                                     <input type="number" class="form-control"
                                            required="required" name="contactNumber"
                                            id="contactNumber" placeholder="Mobile No"/></div>
+                                           -->
                             </div>
 
 
                             <div class="form-group">
                                 <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6"><br>
-                                    <label>Age</label>
+                                    <label>No of Rooms</label>
                                     <input type="number" class="form-control"
                                            required="required" name="noOfPlates"
-                                           id="noOfPlates" placeholder="Age"/></div>
+                                           id="noOfPlates" placeholder="no of rooms"/></div>
                             </div>
 
 
@@ -379,10 +381,11 @@
                                         <table id="datatable-buttons" class="table table-striped table-bordered">
                                             <thead class="thead-light">
                                             <tr>
-                                                <th>Customer Id</th>
-                                                <th>Room Id</th>
+                                                <th>Customer ID</th>
                                                 <th>Check-In</th>
                                                 <th>Check-Out</th>
+                                                <th>Room Type</th>
+                                                <th>Quantity</th>
 
                                             </tr>
 

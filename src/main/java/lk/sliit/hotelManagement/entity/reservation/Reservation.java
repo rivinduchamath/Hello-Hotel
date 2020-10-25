@@ -29,6 +29,8 @@ public class Reservation {
         this.customer = customer;
     }
 
+
+
     public Collection<ReservationDetails> getReservationDetails() {
         return reservationDetails;
     }

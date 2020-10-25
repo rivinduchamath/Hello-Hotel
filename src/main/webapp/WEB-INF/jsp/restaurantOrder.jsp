@@ -177,12 +177,10 @@
                                        id="qty" placeholder="Qty"/>
                             </div>
 
-                            <div class="form-group">
-                                <label for="itemCode">Customer ID</label>
-                                <input type="text" class="form-control"
+
+                                <input  type="hidden" class="form-control"
                                        name="customerId" value="0"
                                        id="customerId" placeholder="Customer ID"/>
-                            </div>
 
 
                             <button type='button' class="btn btn-primary" style="width: 50%" id="btnAdd"
@@ -257,7 +255,7 @@
                                     </small>
 
                                 </h2>
-                                <form method="POST" action="invoiceRestaurantOrder" name="invoiceRestaurantOrder">
+                                <form method="POST" action="invoice" name="invoiceRestaurantOrder">
                                     <input style="display: none" type="text" id="itemPay" name="dataValue">
                                     <input style="display: none" type="text" id="cId" value="0"  name="customerId">
                                     <ul class="nav navbar-right panel_toolbox">

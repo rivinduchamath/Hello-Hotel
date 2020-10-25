@@ -28,6 +28,16 @@ public class RestaurantCounterOrder {
         this.orderHolder = orderHolder;
     }
 
+    public RestaurantCounterOrder(int orderId, String orderState, double quantity,
+                                  Date date, int orderHolder, List<RestaurantCounterOrderDetail> orderDetails) {
+        this.orderId = orderId;
+        this.orderState = orderState;
+        this.quantity = quantity;
+        this.date = date;
+        this.orderHolder = orderHolder;
+        this.orderDetails = orderDetails;
+    }
+
     public RestaurantCounterOrder() {
     }
 
@@ -63,7 +73,13 @@ public class RestaurantCounterOrder {
         this.date = date;
     }
 
+    public List<RestaurantCounterOrderDetail> getOrderDetails() {
+        return orderDetails;
+    }
 
+    public void setOrderDetails(List<RestaurantCounterOrderDetail> orderDetails) {
+        this.orderDetails = orderDetails;
+    }
 
     public int getOrderId() {
         return orderId;

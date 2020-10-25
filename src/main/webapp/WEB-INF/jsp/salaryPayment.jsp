@@ -269,28 +269,28 @@
                                         </div>
                                         <!-- /.col -->
                                         <div class="col-md-6">
-                                            <p class="lead">Amount Due 10/23/2020</p>
+                                            <p class="lead">Amount Due <%=date%></p>
                                             <div class="table-responsive">
                                                 <table class="table">
                                                     <tbody>
                                                     <tr>
                                                         <th style="width:50%">Basic Tot:</th>
-                                                        <td>100000.00<span id="val2"></span></td>
+                                                        <td><span id="val2"></span></td>
                                                     </tr>
                                                     <tr>
-                                                        <th>Tax
+                                                        <th>Ot Tot:
                                                             <small style="font-weight: bold"><span id="val9"></span>
                                                             </small>
                                                         </th>
-                                                        <td>2%<span id="val3"></span></td>
+                                                        <td><span id="val3"></span></td>
                                                     </tr>
                                                     <tr>
-                                                        <th>OT Tot:</th>
-                                                        <td>11,200<span id="val4"></span></td>
+                                                        <th>Tax:</th>
+                                                        <td>2%<span id="val4"></span></td>
                                                     </tr>
                                                     <tr>
                                                         <th>Total:</th>
-                                                        <td>Rs: 111,200<span id="val"></span></td>
+                                                        <td><span id="val"></span></td>
                                                     </tr>
                                                     </tbody>
                                                 </table>
@@ -304,7 +304,7 @@
                                     <div class="row no-print">
                                         <div class=" ">
 
-                                            <form method="POST" action="/deleteInvoiceSalary"
+                                            <form method="POST" action=""
                                                   name="deleteInvoiceSalary">
                                                 <input style="display: none" type="text" id="itemPay" name="SalaryId">
                                                 <ul class="nav navbar-right panel_toolbox">
@@ -355,12 +355,11 @@
 
     for (var i = 1; i < table.rows.length; i++) {
         str = str + (table.rows[i].cells[0].innerHTML) + " ";
-        sumVal = sumVal + parseFloat(table.rows[i].cells[7].innerHTML);
-        sumVal2 = sumVal2 + parseFloat(table.rows[i].cells[3].innerHTML);
-        sumVal3 = sumVal3 + parseFloat(table.rows[i].cells[6].innerHTML);
-        sumVal5 = sumVal5 + parseFloat(table.rows[i].cells[5].innerHTML);
-        sumVal4 = sumVal4 + parseFloat(table.rows[i].cells[4].innerHTML);
-        avgTax = sumVal3 / i;
+        sumVal = sumVal + parseFloat(table.rows[i].cells[4].innerHTML);
+        sumVal2 = sumVal2 + parseFloat(table.rows[i].cells[2].innerHTML);
+        sumVal3 = sumVal3 + parseFloat(table.rows[i].cells[3].innerHTML);
+
+
     }
 
 
