@@ -166,7 +166,7 @@
         <div class="right_col" role="main">
             <div class="page-title">
                 <div class="title_left">
-                    <h3>Packages And Menus Prices<br>
+                    <h3>Package Prices and Menus <br>
                     </h3>
                     <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
                         <div class="col-6 col-sm-6 col-md-6 col-lg-4 col-xl-4">
@@ -303,7 +303,10 @@
                                                                     <li type="disc"><strong>MAIN DISHES</strong></li>
                                                                     <li>Chicken Curry</li>
                                                                     <li>Fish ambulthiyal</li>
-
+                                                                    <li>.</li>
+                                                                    <li>.</li>
+                                                                    <li>.</li>
+                                                                    <li>.</li>
                                                                 </ul>
                                                             </div>
                                                         </div>
@@ -333,12 +336,16 @@
                                                                     <li type="disc"><strong>SALADS</strong></li>
                                                                     <li>Egg and Onion Salad on Mirror</li>
                                                                     <li>Mix Vegetable Salad</li>
+                                                                    <li>Potato Salad with Onion</li>
                                                                     <li type="disc"><strong>RICE & NOODLES</strong></li>
                                                                     <li>Basmathi Chicken Fried Rice</li>
                                                                     <li>Vegetable Fried Noodles</li>
                                                                     <li type="disc"><strong>MAIN DISHES</strong></li>
                                                                     <li>Chicken Curry</li>
                                                                     <li>Fish ambulthiyal</li>
+                                                                    <li>Beef Chili Beef </li>
+                                                                    <li>.</li>
+                                                                    <li>.</li>
 
                                                                 </ul>
                                                             </div>
@@ -369,12 +376,16 @@
                                                                     <li type="disc"><strong>SALADS</strong></li>
                                                                     <li>Egg and Onion Salad on Mirror</li>
                                                                     <li>Mix Vegetable Salad</li>
+                                                                    <li>Potato Salad with Onion</li>
                                                                     <li type="disc"><strong>RICE & NOODLES</strong></li>
                                                                     <li>Basmathi Chicken Fried Rice</li>
                                                                     <li>Vegetable Fried Noodles</li>
+                                                                    <li>Basmathi Seafood Fried Rice</li>
                                                                     <li type="disc"><strong>MAIN DISHES</strong></li>
                                                                     <li>Chicken Curry</li>
                                                                     <li>Fish ambulthiyal</li>
+                                                                    <li>Beef Chili Beef </li>
+                                                                    <li>.</li>
 
                                                                 </ul>
                                                             </div>
@@ -405,12 +416,16 @@
                                                                     <li type="disc"><strong>SALADS</strong></li>
                                                                     <li>Egg and Onion Salad on Mirror</li>
                                                                     <li>Mix Vegetable Salad</li>
+                                                                    <li>Potato Salad with Onion</li>
                                                                     <li type="disc"><strong>RICE & NOODLES</strong></li>
                                                                     <li>Basmathi Chicken Fried Rice</li>
                                                                     <li>Vegetable Fried Noodles</li>
+                                                                    <li>Basmathi Seafood Fried Rice</li>
                                                                     <li type="disc"><strong>MAIN DISHES</strong></li>
                                                                     <li>Chicken Curry</li>
                                                                     <li>Fish ambulthiyal</li>
+                                                                    <li>Beef Chili Beef </li>
+                                                                    <li>Pork Deviled</li>
 
                                                                 </ul>
                                                             </div>
