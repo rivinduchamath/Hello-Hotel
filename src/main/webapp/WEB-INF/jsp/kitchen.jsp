@@ -81,13 +81,13 @@
 
                 <div class="col-sm-12 col-md-3 col-lg-3 col-xl-3">
                     <a href="banquetFoodOrder">
-                        <button type="button" class="large-btn btn btn-secondary">Banquet Orders</button>
+                        <button type="button" class="large-btn btn btn-dark">Banquet Orders</button>
                     </a>
                 </div>
 
                 <div class="col-sm-12 col-md-3 col-lg-3 col-xl-3">
                     <a href="restaurantOrders">
-                        <button type="button" class="large-btn btn btn-secondary">Restaurant Orders</button>
+                        <button type="button" class="large-btn btn btn-dark">Restaurant Orders</button>
                     </a>
                 </div>
 
