@@ -107,8 +107,14 @@
                                Find All <i class="fa fa-forward"></i>
                             </button>
                         </a>
+                        &nbsp &nbsp
+                        <a href="/hr">
+                            <button class="btn btn-secondary" style="width: 20%; height:86%" type="button"><i
+                                    class="fa fa-reply">
+                                Back</i>
+                            </button>
+                        </a>
                     </div>
-
                     <div class="title_right">
                         <div class="col-md-5 col-sm-5   form-group pull-right top_search">
                             <!--/////-->
@@ -200,7 +206,6 @@
                         })
                     </script>
                     </form>--%>
-
                     <form  method="POST" action="tablesAdd" name="tablesAdd">
                         <div style="display: none"><input id="attendanceId" name="attendanceId" value="0"></div>
 

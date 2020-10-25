@@ -139,6 +139,12 @@
                                                 style="font-weight: bold;color: white" ; id="name"
                                                 class="btn btn-success "> Pay <i class="fa fa-file-image-o"></i>
                                         </button>
+                                        <a href="/hr">
+                                            <button class="btn btn-secondary" style="width:100%; height:89%" type="button"><i
+                                                    class="fa fa-reply">
+                                                Back</i>
+                                            </button>
+                                        </a>
                                     </ul>
                                 </form>
 
