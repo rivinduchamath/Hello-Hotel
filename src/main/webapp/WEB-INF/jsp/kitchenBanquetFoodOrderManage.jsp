@@ -1,10 +1,4 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: Rivindu Chamath
-  Date: 21-May-20
-  Time: 2:43 AM
-  To change this template use File | Settings | File Templates.
---%>
+
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page import="java.util.Date" %>
@@ -93,7 +87,9 @@
                     <div class="row">
                         <div class="x_panel">
                             <div class="x_title">
-                                <h2>Banquet Order Information</h2>
+                                <h2>Banquet order information</h2>
+
+                                <div class="clearfix"></div>
                             </div>
                             <div class="x_content">
                                 <div class="row">
@@ -110,26 +106,26 @@
 
                                                 </thead>
                                                 <tbody>
-                                                    <tr>
-                                                        <td>Order ID</td>
-                                                        <td>${banquetOrder.orderId}</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Hall ID</td>
-                                                        <td>${banquetOrder.hallId}</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Number of Plates</td>
-                                                        <td>${banquetOrder.noOfPlates}</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Required Date</td>
-                                                        <td>${banquetOrder.date}</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Menu</td>
-                                                        <td>${menu.name}</td>
-                                                    </tr>
+                                                <tr>
+                                                    <td>Order ID</td>
+                                                    <td>${banquetOrder.orderId}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Hall ID</td>
+                                                    <td>${banquetOrder.hallId}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Number of Plates</td>
+                                                    <td>${banquetOrder.noOfPlates}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Required Date</td>
+                                                    <td>${banquetOrder.date}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Menu</td>
+                                                    <td>${menu.name}</td>
+                                                </tr>
                                                 </tbody>
                                             </table>
                                         </div>
@@ -199,7 +195,8 @@
                         <div class="col-md-12 col-sm-12 ">
                             <div class="x_panel">
                                 <div class="x_title">
-                                    <h2>Order Food Items Form <small>(Daily food item orders)</small></h2>
+                                    <h2>Order Food Items Form <br>
+                                        <small>(Banquet food item orders)</small></h2>
                                     <ul class="nav navbar-right panel_toolbox">
                                         <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                                         </li>
@@ -216,7 +213,7 @@
                                     <form id="demo-form2" data-parsley-validate
                                           class="form-horizontal form-label-left">
 
-                                        <input type="hidden" value="" name="itemId">
+                                        <input type="hidden" value="" name="itemId" id="foodItemId">
                                         <input type="hidden" value="" name="description">
 
                                         <table style="border: none">
@@ -412,6 +409,27 @@
 
 <!-- jQuery -->
 <script src="../../vendors/jquery/dist/jquery.min.js"></script>
+
+<script>
+
+    var selectedRow = null;
+    $("#datatable-buttons tbody").on('click', 'tr', function () {
+        selectedRow = $(this);
+        $("#foodItemId").val($(this).find("td:first-child").text());
+        $("#itemName").val($(this).find("td:nth-child(2)").text());
+        selectedRow.addClass('row-selected');
+    });
+
+    $("#datatable-buttons1 tbody").on('click', 'tr', function () {
+        selectedRow = $(this);
+        $("#foodItemId").val($(this).find("td:first-child").text());
+        $("#itemName").val($(this).find("td:nth-child(2)").text());
+        selectedRow.addClass('row-selected');
+    });
+
+
+
+</script>
 <!-- Bootstrap -->
 <script src="../../vendors/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 <!-- Custom Theme Scripts -->

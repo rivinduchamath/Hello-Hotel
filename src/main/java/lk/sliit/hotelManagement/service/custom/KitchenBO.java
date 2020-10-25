@@ -1,18 +1,17 @@
 package lk.sliit.hotelManagement.service.custom;
 
-import lk.sliit.hotelManagement.dao.kitchenDAO.MenuDetailsDAO;
+import com.sun.org.apache.xpath.internal.operations.Or;
+import lk.sliit.hotelManagement.dto.banquet.LimitDTO;
 import lk.sliit.hotelManagement.dto.inventory.InventoryNoticeDTO;
 import lk.sliit.hotelManagement.dto.kitchen.FoodItemDTO;
 import lk.sliit.hotelManagement.dto.kitchen.KitchenFoodOrderDTO;
 import lk.sliit.hotelManagement.dto.kitchen.MenuDTO;
 import lk.sliit.hotelManagement.dto.kitchen.MenuDetailsDTO;
-import lk.sliit.hotelManagement.dto.manager.EmployeeDTO;
 import lk.sliit.hotelManagement.dto.restaurant.restaurantCounterOrder.RestaurantCounterOrderDetailDTO;
-import lk.sliit.hotelManagement.entity.restaurant.counterOrder.RestaurantCounterOrderDetail;
 import lk.sliit.hotelManagement.service.SuperBO;
 
 
-import java.util.Date;
+import java.sql.Date;
 import java.util.List;
 
 public interface KitchenBO extends SuperBO {
@@ -66,4 +65,13 @@ public interface KitchenBO extends SuperBO {
     List<KitchenFoodOrderDTO> loadKitchenFoodOrderBydate(Date date);
 
     List<KitchenFoodOrderDTO> loadKitchenFoodOrderByDescription(String description);
-}
+
+    void saveDailyMenuId(String id);
+
+    public List<MenuDTO> getDailyMenuByType();
+
+    void saveMenuDate(LimitDTO limitDTO);
+
+    LimitDTO findMenuDate();
+
+    }

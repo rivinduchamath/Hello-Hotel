@@ -1,6 +1,6 @@
 package lk.sliit.hotelManagement.dto.kitchen;
 
-import java.util.Date;
+import java.sql.Date;
 
 public class KitchenFoodOrderDTO {
 
