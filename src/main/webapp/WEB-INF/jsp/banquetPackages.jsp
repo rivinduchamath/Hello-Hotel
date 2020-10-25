@@ -303,10 +303,9 @@
                                                                     <li type="disc"><strong>MAIN DISHES</strong></li>
                                                                     <li>Chicken Curry</li>
                                                                     <li>Fish ambulthiyal</li>
-                                                                    <li>.</li>
-                                                                    <li>.</li>
-                                                                    <li>.</li>
-                                                                    <li>.</li>
+                                                                    <c:forEach items="${card1}" var="e">
+                                                                        <li>${e.itemName}</li>
+                                                                    </c:forEach>
                                                                 </ul>
                                                             </div>
                                                         </div>
