@@ -80,7 +80,7 @@ public class RestaurantController {
         }
         try {
             restaurantBO.saveRestaurantOrder(restaurantCounterOrderDTO);
-//////////////////////////////////////////////////////////////////////////////////
+
             java.util.List<RestaurantCounterOrderDetailDTO> list = new ArrayList<>();
             String arr = restaurantCounterOrderDTO.getDataValue();
             String yo[] = arr.split(" ");
@@ -103,7 +103,6 @@ public class RestaurantController {
                 }
             }
 
-//            ////////////////////////////////////////////////////////////////
             for (RestaurantCounterOrderDetailDTO d : list) {
                 FoodItemDTO f = kitchenBO.findFoodItemById(d.getFoodItem());
                 d.setName(f.getItemName());
