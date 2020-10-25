@@ -2,6 +2,7 @@ package lk.sliit.hotelManagement.service.custom;
 
 import com.sun.org.apache.xpath.internal.operations.Or;
 import lk.sliit.hotelManagement.dto.banquet.LimitDTO;
+import lk.sliit.hotelManagement.dto.inventory.InventoryDTO;
 import lk.sliit.hotelManagement.dto.inventory.InventoryNoticeDTO;
 import lk.sliit.hotelManagement.dto.kitchen.FoodItemDTO;
 import lk.sliit.hotelManagement.dto.kitchen.KitchenFoodOrderDTO;
@@ -11,6 +12,7 @@ import lk.sliit.hotelManagement.dto.restaurant.restaurantCounterOrder.Restaurant
 import lk.sliit.hotelManagement.service.SuperBO;
 
 
+import javax.xml.soap.SAAJResult;
 import java.sql.Date;
 import java.util.List;
 
@@ -20,8 +22,6 @@ public interface KitchenBO extends SuperBO {
     List<FoodItemDTO> findFoodItems();
 
     List<FoodItemDTO> findFoodItemsForMenu();
-
-    List<FoodItemDTO> findFoodIngredient();
 
     FoodItemDTO findHighestId();
 
@@ -74,4 +74,10 @@ public interface KitchenBO extends SuperBO {
 
     LimitDTO findMenuDate();
 
-    }
+    void saveInventoryNotice(InventoryNoticeDTO inventoryNoticeDTO);
+
+    int findMaxKitchenOrderId();
+
+    List<InventoryDTO> findKitchenInventory(String s);
+
+}

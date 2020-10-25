@@ -10,4 +10,6 @@ public interface KitchenFoodOrderDAO extends CrudRepository<KitchenFoodOrders,In
     KitchenFoodOrders findTopByOrderByOrderIdDesc();
 
     Iterable<KitchenFoodOrders> findTopByExpectedDateEquals(Date date);
+
+
 }

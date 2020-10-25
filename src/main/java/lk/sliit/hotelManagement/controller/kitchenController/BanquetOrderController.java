@@ -2,6 +2,7 @@ package lk.sliit.hotelManagement.controller.kitchenController;
 
 import lk.sliit.hotelManagement.controller.SuperController;
 import lk.sliit.hotelManagement.dto.banquet.BanquetAddDTO;
+import lk.sliit.hotelManagement.dto.inventory.InventoryDTO;
 import lk.sliit.hotelManagement.dto.kitchen.FoodItemDTO;
 import lk.sliit.hotelManagement.dto.kitchen.KitchenFoodOrderDTO;
 import lk.sliit.hotelManagement.dto.kitchen.MenuDTO;
@@ -59,7 +60,7 @@ public class BanquetOrderController {
         MenuDTO menuDTO = kitchenBO.findMenuItemById(banquetAddDTO.getMenuId());
         List<MenuDetailsDTO> menuDetailsDTOS = kitchenBO.findFoodItemsDetails(banquetAddDTO.getMenuId());
         List<FoodItemDTO> allFoodItems = kitchenBO.findFoodItemsForMenu();
-        List<FoodItemDTO> allIngredients = kitchenBO.findFoodIngredient();
+        List<InventoryDTO> allIngredients = kitchenBO.findKitchenInventory(KitchenUtil.department);
         List<FoodItemDTO> foodItemDTOS = new ArrayList<>();
 
         if (menuDetailsDTOS.size() != 0){

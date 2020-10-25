@@ -1,7 +1,9 @@
 package lk.sliit.hotelManagement.controller.kitchenController;
 
 import lk.sliit.hotelManagement.controller.SuperController;
+import lk.sliit.hotelManagement.dao.inventoryDAO.InventoryDAO;
 import lk.sliit.hotelManagement.dto.banquet.LimitDTO;
+import lk.sliit.hotelManagement.dto.inventory.InventoryDTO;
 import lk.sliit.hotelManagement.dto.inventory.InventoryNoticeDTO;
 import lk.sliit.hotelManagement.dto.kitchen.FoodItemDTO;
 import lk.sliit.hotelManagement.dto.kitchen.KitchenFoodOrderDTO;
@@ -40,7 +42,7 @@ public class KitchenController {
     public String loginPage(Model model) {
         model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
 
-        List<FoodItemDTO> foodItemDTOS = kitchenBO.findFoodIngredient();
+        List<InventoryDTO> foodItemDTOS = kitchenBO.findKitchenInventory(KitchenUtil.department);
         List<FoodItemDTO> breakfastFoodItems, lunchFoodItems, dinnerFoodItems;
         List<MenuDTO> menuDTOS = kitchenBO.findMenuItems();
         MenuDTO breakfast, lunch, dinner;
@@ -133,16 +135,21 @@ public class KitchenController {
         return "kitchen";
     }
 
-    @PostMapping("/addDailyFoodItemOrder")
-    public String addDailyKitchenFoodOrder(Model model, @ModelAttribute KitchenFoodOrderDTO kitchenFoodOrderDTO) {
+    @PostMapping("/kitchen")
+    public void addDailyKitchenFoodOrder(Model model, @ModelAttribute KitchenFoodOrderDTO kitchenFoodOrderDTO) {
         model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
 
         //create inventory notice object
         InventoryNoticeDTO inventoryNoticeDTO = new InventoryNoticeDTO();
 
         //set notice id
-        int maxId = inventoryBO.findHighestId().getInventoryId();
-        maxId++;
+        int maxId = 1;
+        try {
+            maxId = inventoryBO.findHighestId().getInventoryId();
+            maxId++;
+        } catch (NullPointerException e){
+            maxId = 1;
+        }
 
         inventoryNoticeDTO.setNoticeId(maxId);
         inventoryNoticeDTO.setDepartment(KitchenUtil.department);
@@ -152,9 +159,15 @@ public class KitchenController {
         inventoryNoticeDTO.setOrderHolder(SuperController.idNo);
         inventoryNoticeDTO.setState(false);
 
+        InventoryDTO inventoryDTO = new InventoryDTO();
+        //inventoryDTO.s
+        inventoryNoticeDTO.setInventoryId(kitchenFoodOrderDTO.getFoodItemId());
 
-        return "kitchen";
+        kitchenBO.saveInventoryNotice(inventoryNoticeDTO);
+
+        loginPage(model);
     }
+
 
     @GetMapping("/kitchenReport")
     public String loadKitchenReport(Model model) {

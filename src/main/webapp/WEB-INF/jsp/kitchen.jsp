@@ -268,7 +268,7 @@
                                 </div>
                                 <div class="x_content">
                                     <br/>
-                                    <form action="/addDailyFoodItemOrder" method="post" id="demo-form2" data-parsley-validate
+                                    <form action="/kitchen" method="post" id="demo-form2" data-parsley-validate
                                           class="form-horizontal form-label-left">
 
                                         <table style="border: none">
@@ -396,8 +396,8 @@
                                                 <tbody>
                                                 <c:forEach items="${loadFoodItemTable}" var="item">
                                                     <tr>
-                                                        <td>${item.itemId}</td>
-                                                        <td>${item.itemName}</td>
+                                                        <td>${item.inventoryId}</td>
+                                                        <td>${item.text}</td>
                                                     </tr>
                                                 </c:forEach>
                                                 </tbody>

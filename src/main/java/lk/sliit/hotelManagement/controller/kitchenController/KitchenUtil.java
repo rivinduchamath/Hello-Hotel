@@ -6,7 +6,7 @@ import java.util.Date;
 
 public class KitchenUtil {
 
-    public static String ingredient = "Food Ingredient";
+    public static String ingredient = "Rice & Noodles";
     public static String daily_B_MenuType = "Daily-breakfast";
     public static String daily_L_MenuType = "Daily-lunch";
     public static String daily_D_MenuType = "Daily-dinner";
