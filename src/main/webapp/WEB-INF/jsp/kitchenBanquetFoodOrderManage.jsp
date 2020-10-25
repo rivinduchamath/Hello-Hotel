@@ -67,9 +67,7 @@
             <div class="">
                 <div class="page-title">
                     <div class="title_left">
-                        <h3>Banquet Food Order List
-                            <small>Welcome To Hotel Hareesha</small>
-                        </h3>
+                        <h3>Banquet Food Order List</h3>
                     </div>
                 </div>
             </div>
@@ -219,7 +217,7 @@
                                           class="form-horizontal form-label-left">
 
                                         <input type="hidden" value="" name="itemId">
-                                        <input type="hidden" value="${menu.itemId}/${banquetOrder.orderId}" name="description">
+                                        <input type="hidden" value="" name="description">
 
                                         <table style="border: none">
                                             <tr>

@@ -311,19 +311,19 @@
                                                 <tbody>
                                                 <%--                                            <c:forEach items="${listEmployeesTableSalary}" var="e">--%>
                                                 <tr>
-                                                    <td>Name</td>
+                                                    <td>Milk</td>
                                                     <td>Kamala</td>
-                                                    <td>4343</td>
-                                                    <td>200</td>
-                                                    <td>2020/09/09</td>
+                                                    <td>300.00</td>
+                                                    <td>30</td>
+                                                    <td>2020/10/16</td>
 
                                                 </tr>
                                                 <tr>
-                                                    <td>Name2</td>
-                                                    <td>Amal</td>
-                                                    <td>4313</td>
+                                                    <td>Dal</td>
+                                                    <td>Amal.p</td>
+                                                    <td>405.00</td>
                                                     <td>50</td>
-                                                    <td>2020/09/08</td>
+                                                    <td>2020/10/08</td>
 
                                                 </tr>
                                                 <%--                                            </c:forEach>--%>

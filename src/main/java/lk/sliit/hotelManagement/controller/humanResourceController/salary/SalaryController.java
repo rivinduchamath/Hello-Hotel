@@ -98,8 +98,5 @@ public class SalaryController {
         } catch (Exception e) { }
        return "salaryPayment";
     }
-
-
-
 }
 

@@ -67,7 +67,7 @@
             <div class="">
                 <div class="page-title">
                     <div class="title_left">
-                        <h3>Daily Food Ordder Report</h3>
+                        <h3>Daily Food Order Report</h3>
                     </div>
                 </div>
             </div>
@@ -110,18 +110,36 @@
                                                style="text-align: center">
                                             <thead class="thead-light">
                                             <tr>
-                                                <th>OrderId</th>
                                                 <th>Item Name</th>
+                                                <th>Selling Rate</th>
+                                                <th>Unit price</th>
                                                 <th>Requested Quantity</th>
+                                                <th>Total Value</th>
                                             </tr>
 
                                             </thead>
                                             <tbody>
                                             <!-------------------------------------------- -->
                                             <tr>
-                                                <td>1</td>
-                                                <td>Rice</td>
-                                                <td>250</td>
+                                                <td>Fried rice</td>
+                                                <td>26.32%</td>
+                                                <td>200.00</td>
+                                                <td>25</td>
+                                                <td>5000.00</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Chicken Kottu</td>
+                                                <td>52.63%</td>
+                                                <td>300.00</td>
+                                                <td>50</td>
+                                                <td>15000.0</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Burger</td>
+                                                <td>21.05%</td>
+                                                <td>150.00</td>
+                                                <td>20</td>
+                                                <td>3000.00</td>
                                             </tr>
                                             <!-------------------------------------------- -->
                                             <c:forEach items="${loadMenuItemTable}" var="item">
