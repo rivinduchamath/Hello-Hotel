@@ -259,10 +259,7 @@
                                                         <td>${e.inTime}</td>
                                                         <td>${e.outTime}</td>
                                                         <td>${e.overtimeHours}</td>
-                                                        <td><a href="/deleteAttendance?pid=${e.attendanceId}"><span
-                                                                class="glyphicon glyphicon-trash"></span></a></td>
 
-                                                        </tr>
                                                     </c:forEach>
                                                     </tbody>
                                                 </table>
@@ -279,9 +276,6 @@
         </div>
         <!-- /page content -->
 
-
-
-        <!-- footer content -->
         <jsp:include page="footer.jsp"/>
         <!-- /footer content -->
 
