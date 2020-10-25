@@ -148,7 +148,7 @@ public class KitchenController {
         inventoryNoticeDTO.setDepartment(KitchenUtil.department);
         inventoryNoticeDTO.setOrderQty(kitchenFoodOrderDTO.getAmount());
         inventoryNoticeDTO.setDate(getTodaySql());
-        //inventoryNoticeDTO.setExpDate(kitchenFoodOrderDTO.getExpectedDate());
+        inventoryNoticeDTO.setExpDate(kitchenFoodOrderDTO.getExpectedDate());
         inventoryNoticeDTO.setOrderHolder(SuperController.idNo);
         inventoryNoticeDTO.setState(false);
 
