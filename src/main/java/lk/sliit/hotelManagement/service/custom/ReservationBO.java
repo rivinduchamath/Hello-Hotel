@@ -26,4 +26,6 @@ public interface ReservationBO extends SuperBO {
     CustomerDTO findId(int customerId);
 
     boolean findEmail(String email);
+
+
 }

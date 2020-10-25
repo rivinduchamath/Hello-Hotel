@@ -1,6 +1,7 @@
 package lk.sliit.hotelManagement.controller.reservationController;
 
 import lk.sliit.hotelManagement.controller.SuperController;
+import lk.sliit.hotelManagement.dto.houseKeeping.HotelRoomDTO;
 import lk.sliit.hotelManagement.dto.reservation.CustomerDTO;
 import lk.sliit.hotelManagement.dto.reservation.FindAvailabilityDTO;
 import lk.sliit.hotelManagement.service.custom.IndexLoginBO;
@@ -59,7 +60,7 @@ public class CustomerAdd {
             CustomerDTO customerDTO1 = reservationBO.findByUserNameAndPassword(customerDTO.getEmail(), customerDTO.getPassword());
             if (customerDTO1 != null) {
                 request.getSession().setAttribute("CustomerId", customerDTO1.getCustomerId());
-                return "roomTypes";
+                return "redirect:/roomTypes";
             } else {
                 return "redirect:/customerLogin";
             }
@@ -68,6 +69,24 @@ public class CustomerAdd {
         }
 
     }
+
+
+    @GetMapping("/roomTypes")
+    public String saveOnlineTable3(Model model,@ModelAttribute FindAvailabilityDTO findAvailabilityDTO, HttpSession session) {
+
+        model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
+        List<HotelRoomDTO> hotelRoomDTOS = reservationBO.findAvilability(findAvailabilityDTO);
+        model.addAttribute("loadAllTable", hotelRoomDTOS);
+        try {
+            int onlineCustomerId = Integer.parseInt(session.getAttribute("CustomerId").toString());
+            model.addAttribute("loggedCustomer", reservationBO.findId(onlineCustomerId));
+         } catch (Exception d) {
+            return "roomTypes";
+        }
+        return "roomTypes";
+    }
+
+
     @GetMapping("/onlineReservation")
     public String loginPage(Model model) {
         model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));

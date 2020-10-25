@@ -76,14 +76,6 @@ public class OnlineReservationController {
 
 
 
-    @GetMapping("/roomTypes")
-    public String saveOnlineTable3(Model model,@ModelAttribute FindAvailabilityDTO findAvailabilityDTO, HttpSession session) {
-
-        model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
-        List<HotelRoomDTO> hotelRoomDTOS = reservationBO.findAvilability(findAvailabilityDTO);
-        model.addAttribute("loadAllTable", hotelRoomDTOS);
-        return "roomTypes";
-    }
 
 
     @GetMapping("/availableRooms")

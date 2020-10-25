@@ -158,12 +158,20 @@ public class ReservationBOImpl implements ReservationBO {
 
     @Override
     public boolean findEmail(String email) {
+        email = email.trim();
+        Customer customer = null;
         try {
-            Customer customer = customerDAO.findCustomerByEmailEquals( email);
+             customer = customerDAO.findCustomerByEmailEquals( email);
+
         }catch (Exception e){
+            return true;
+        }
+        if(customer == null){
+            return true;
+        }else {
             return false;
         }
-
-        return true;
     }
+
+
 }
