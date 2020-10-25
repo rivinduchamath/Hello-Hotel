@@ -37,8 +37,6 @@
                     </div>
 
                     <form action="availableRooms" name="availableRooms" >
-
-
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
@@ -53,11 +51,9 @@
                                 </div>
                             </div>
                         </div>
-
-
-
                         <div class="form-btn">
-                            <button class="submit-btn">Check Availability</button></div>
+                            <button class="submit-btn">Check Availability</button>
+                        </div>
                     </form>
                 </div>
             </div>

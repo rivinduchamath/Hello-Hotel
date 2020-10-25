@@ -1,4 +1,8 @@
 <!DOCTYPE html>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ page import="java.util.Date" %>
+<%@ page import="java.text.SimpleDateFormat" %>
 <html lang="en">
 <head>
     <meta charset="utf-8">
@@ -94,9 +98,15 @@
                             </div>
                         </nav>
                     </div>
-                    <div class="col-md-2  col-sm-4 col-xs-12 hidden-sm">
-                        <div class="text-right"><a href="home" > <button type="button" class="reserved-btn">Submit</button></a></div>
-                    </div>
+
+                </div>
+                <div class="col-md-2  col-sm-4 col-xs-12 hidden-sm">
+                    <form method="POST" action="saveOnlineRooms" name="saveOnlineRooms">
+                        <input style="display: none" readonly required type="text" id="itemPay" name="orderData">
+                        <input  style="" readonly required="required" type="date" id="vDate" value="${checkIn}" name="vDate">
+                        <input readonly required ="required"type="date" id="timeIn" value="${checkOut}" name="vStatT">
+                        <button type="submit" onclick="getValue()" class="col-1-1 button1x1" id="submitButton">Submit</button>
+                    </form>
                 </div>
             </div>
         </div>
@@ -129,62 +139,17 @@
                 <div class="table100-body js-pscroll">
                     <table>
                         <tbody>
+                        <c:forEach items="${loadAllTable}" var="a">
                         <tr class="row100 body">
-                            <td class="cell100 column1">1</td>
-                            <td class="cell100 column2">Single</td>
-                            <td class="cell100 column3">AC</td>
-                            <td class="cell100 column4">2020-10-28</td>
-                            <td class="cell100 column5"><button type="button" class="book-now-btn">Book Now</button></td>
+                            <td class="cell100 column1">${a.roomId2}</td>
+                            <td class="cell100 column2">${a.roomName}</td>
+                            <td class="cell100 column3">${a.type}</td>
+                            <td class="cell100 column4">${a.description}</td>
+                            <td class="cell100 column4">${a.status}</td>
+                            <td class="cell100 column5"><button onclick="myFunction(${a.roomId2})"
+                                                                type="button" class="book-now-btn">Book Now</button></td>
                         </tr>
-
-                        <tr class="row100 body">
-                            <td class="cell100 column1">2</td>
-                            <td class="cell100 column2">Double</td>
-                            <td class="cell100 column3">Non-AC</td>
-                            <td class="cell100 column4">2020-10-28</td>
-                            <td class="cell100 column5"><button class="reserved-btn">Reserved</button></td>
-                        </tr>
-
-                        <tr class="row100 body">
-                            <td class="cell100 column1">3</td>
-                            <td class="cell100 column2">Double</td>
-                            <td class="cell100 column3">AC</td>
-                            <td class="cell100 column4">2020-10-25</td>
-                            <td class="cell100 column5"><button type="button" class="book-now-btn">Book Now</button></td>
-                        </tr>
-
-                        <tr class="row100 body">
-                            <td class="cell100 column1">4</td>
-                            <td class="cell100 column2">Premium</td>
-                            <td class="cell100 column3">AC</td>
-                            <td class="cell100 column4">2020-10-28</td>
-                            <td class="cell100 column5"><button type="button" class="book-now-btn">Book Now</button></td>
-                        </tr>
-
-                        <tr class="row100 body">
-                            <td class="cell100 column1">5</td>
-                            <td class="cell100 column2">Double</td>
-                            <td class="cell100 column3">AC</td>
-                            <td class="cell100 column4">2020-10-25</td>
-                            <td class="cell100 column5"><button type="button" class="book-now-btn">Book Now</button></td>
-                        </tr>
-
-                        <tr class="row100 body">
-                            <td class="cell100 column1">6</td>
-                            <td class="cell100 column2">Double</td>
-                            <td class="cell100 column3">Non-AC</td>
-                            <td class="cell100 column4">2020-10-25</td>
-                            <td class="cell100 column5"><button type="button" class="book-now-btn">Book Now</button></td>
-                        </tr>
-
-                        <tr class="row100 body">
-                            <td class="cell100 column1">7</td>
-                            <td class="cell100 column2">Double</td>
-                            <td class="cell100 column3">AC</td>
-                            <td class="cell100 column4">2020-10-25</td>
-                            <td class="cell100 column5"><button type="button" class="book-now-btn">Book Now</button></td>
-                        </tr>
-
+                        </c:forEach>
                         </tbody>
                     </table>
                 </div>
@@ -252,7 +217,8 @@
                         <div class="input-group" id="subscribe">
                             <input type="text" class="form-control subscribe-box" value="" name="subscribe" placeholder="EMAIL ID">
                             <span class="input-group-btn">
-                                        <button type="button" class="btn subscribe-button"><i class="fa fa-paper-plane fa-lg"></i></button>
+                                        <button type="button" class="btn subscribe-button">
+                                            <i class="fa fa-paper-plane fa-lg"></i></button>
                                     </span>
                         </div>
                     </div>
@@ -297,5 +263,40 @@
     </a>
 
 </div>
+<script>
+    var myTableArray = [];
+    var selectedRow = null;
+
+    function myFunction(x) {
+        selectedRow = $(this)
+        if (!myTableArray.includes(x)) {
+            alert("Added Table " + x);
+            myTableArray.push(x)
+        } else {
+            alert("Table " + x + " already Booked");
+        }
+    }
+
+    function getValue() {
+
+        if (vDate == "" || timeIn == "" || timeOut == "") {
+            alert("Please Select Room In Table");
+            return;
+        }
+
+        var str, stre = "";
+        var inputArray = []
+
+        for (var i = 0; i < myTableArray.length; i++) {
+            if (!inputArray.includes(myTableArray[i])) {
+                inputArray.push(myTableArray[i])
+                str = myTableArray[i] + " "
+                stre += str;
+            }
+        }
+
+        $("#itemPay").val(stre);
+    }
+</script>
 </body>
 </html>
