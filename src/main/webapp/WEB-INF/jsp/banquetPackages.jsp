@@ -303,8 +303,8 @@
                                                                     <li type="disc"><strong>MAIN DISHES</strong></li>
                                                                     <li>Chicken Curry</li>
                                                                     <li>Fish ambulthiyal</li>
-                                                                    <c:forEach items="${card1}" var="e">
-                                                                        <li>${e.itemName}</li>
+                                                                    <c:forEach items="${card1category1}" var="e">
+                                                                        <li>${e}</li>
                                                                     </c:forEach>
                                                                 </ul>
                                                             </div>
