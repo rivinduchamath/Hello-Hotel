@@ -3,7 +3,6 @@ package lk.sliit.hotelManagement.controller.reservationController;
 import lk.sliit.hotelManagement.controller.SuperController;
 import lk.sliit.hotelManagement.dto.reservation.CustomerDTO;
 import lk.sliit.hotelManagement.dto.reservation.FindAvailabilityDTO;
-import lk.sliit.hotelManagement.dto.restaurant.OnlineCustomerDTO;
 import lk.sliit.hotelManagement.service.custom.IndexLoginBO;
 import lk.sliit.hotelManagement.service.custom.ReservationBO;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -60,7 +59,7 @@ public class CustomerAdd {
             CustomerDTO customerDTO1 = reservationBO.findByUserNameAndPassword(customerDTO.getEmail(), customerDTO.getPassword());
             if (customerDTO1 != null) {
                 request.getSession().setAttribute("CustomerId", customerDTO1.getCustomerId());
-                return "redirect:/onlineReservation";
+                return "roomTypes";
             } else {
                 return "redirect:/customerLogin";
             }
