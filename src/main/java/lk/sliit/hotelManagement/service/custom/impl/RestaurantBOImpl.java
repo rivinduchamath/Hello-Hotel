@@ -132,6 +132,7 @@ public class RestaurantBOImpl implements RestaurantBO {
         }
     }
 
+
     @Override
     public List<FoodItemDTO> findAllFoodItems(String restaurant) {
         Iterable<FoodItem> all = foodItem.findAllByCategoryEquals(restaurant);
@@ -235,7 +236,6 @@ public class RestaurantBOImpl implements RestaurantBO {
         List<RestaurantTable> list2 = new ArrayList<>();
 
 
-
         for (RestaurantTable d : allTable) {
             for (OnlineTableReservation d2 : all4) {
                 al4 = d2.getOrderDetails();
@@ -325,7 +325,7 @@ public class RestaurantBOImpl implements RestaurantBO {
     public void saveCounterTableId(CounterTableReservationDTO onlineOrderDTO) {
         java.util.List<CounterTableReservationDetailsDTO> list = new ArrayList<>();
         String arr = onlineOrderDTO.getOrderData();
-         String yo[] = arr.split(" ");
+        String yo[] = arr.split(" ");
         int count = 0;
         CounterTableReservationDetailsDTO itm = new CounterTableReservationDetailsDTO();
         for (String str : yo) {
@@ -368,12 +368,12 @@ public class RestaurantBOImpl implements RestaurantBO {
         String yo[] = arr.split(" ");
         int count = 0;
         OnlineTableReservationDetailsDTO itm = new OnlineTableReservationDetailsDTO();
-        for(String str:yo) {
-            if(count == 0 ) {
+        for (String str : yo) {
+            if (count == 0) {
                 itm = new OnlineTableReservationDetailsDTO();
                 itm.setTableId(Integer.parseInt(str));
                 list.add(itm);
-                count =0;
+                count = 0;
 
             }
         }
@@ -407,9 +407,9 @@ public class RestaurantBOImpl implements RestaurantBO {
         Calendar cal = Calendar.getInstance();
         cal.add(Calendar.MONTH, -1);
         java.util.Date dt = cal.getTime();
-        Iterable<OnlineTableReservation> all4 = onlineTableReservationDAO.findAllByReservedDateBetween(dt,todaydate);
+        Iterable<OnlineTableReservation> all4 = onlineTableReservationDAO.findAllByReservedDateBetween(dt, todaydate);
         List<OnlineTableReservationDTO> tableDTOList = new ArrayList<>();
-        for (OnlineTableReservation item: all4) {
+        for (OnlineTableReservation item : all4) {
             tableDTOList.add(new OnlineTableReservationDTO(
                     item.getOnlineTableReservationId(),
                     item.getDate(),
@@ -426,9 +426,9 @@ public class RestaurantBOImpl implements RestaurantBO {
         Calendar cal = Calendar.getInstance();
         cal.add(Calendar.MONTH, -1);
         java.util.Date dt = cal.getTime();
-        Iterable<RestaurantOnlineOrder> all4 = onlineOrderDAO.findAllByDateBetween(dt,todaydate);
+        Iterable<RestaurantOnlineOrder> all4 = onlineOrderDAO.findAllByDateBetween(dt, todaydate);
         List<RestaurantOnlineOrderDTO> tableDTOList = new ArrayList<>();
-        for (RestaurantOnlineOrder item: all4) {
+        for (RestaurantOnlineOrder item : all4) {
             tableDTOList.add(new RestaurantOnlineOrderDTO(
                     item.getOrderId(),
                     item.getOrderState(),
@@ -446,7 +446,8 @@ public class RestaurantBOImpl implements RestaurantBO {
         RestaurantTable lastItem = null;
         try {
             lastItem = restaurantTableDAO.findTopByOrderByTableIdDesc();
-        } catch (Exception e){}
+        } catch (Exception e) {
+        }
         return new RestaurantTableDTO(lastItem.getTableId());
     }
 
@@ -463,7 +464,7 @@ public class RestaurantBOImpl implements RestaurantBO {
         Iterable<RestaurantTable> tables = restaurantTableDAO.findAll();
         List<RestaurantTableDTO> tableDTOList = new ArrayList<>();
 
-        for (RestaurantTable item: tables) {
+        for (RestaurantTable item : tables) {
             tableDTOList.add(new RestaurantTableDTO(
                     item.getTableId(),
                     item.getType(),
@@ -493,7 +494,7 @@ public class RestaurantBOImpl implements RestaurantBO {
         OnlineTableReservation lastItem = null;
         try {
             lastItem = onlineTableReservationDAO.findTopByOrderByOnlineTableReservationIdDesc();
-        } catch (Exception e){
+        } catch (Exception e) {
 
         }
 
@@ -505,7 +506,7 @@ public class RestaurantBOImpl implements RestaurantBO {
         CounterTableReservation lastItem = null;
         try {
             lastItem = counterTableReservationDAO.findTopByOrderByCounterTableReserveIdDesc();
-        } catch (Exception e){
+        } catch (Exception e) {
 
         }
 

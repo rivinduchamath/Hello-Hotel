@@ -6,6 +6,7 @@ import lk.sliit.hotelManagement.dto.inventory.InventoryDTO;
 import lk.sliit.hotelManagement.dto.kitchen.FoodItemDTO;
 import lk.sliit.hotelManagement.dto.restaurant.RestaurantTableDTO;
 import lk.sliit.hotelManagement.dto.restaurant.restaurantCounterOrder.RestaurantCounterOrderDTO;
+import lk.sliit.hotelManagement.dto.restaurant.restaurantCounterOrder.RestaurantCounterOrderDetailDTO;
 import lk.sliit.hotelManagement.dto.restaurant.restaurantOnlineOrder.RestaurantOnlineOrderDTO;
 import lk.sliit.hotelManagement.dto.restaurant.restaurantOnlineTable.OnlineTableReservationDTO;
 import lk.sliit.hotelManagement.service.custom.BarBO;
@@ -20,6 +21,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -74,9 +76,35 @@ public class RestaurantController {
         } catch (NullPointerException e) {
             restaurantCounterOrderDTO.setOrderId((1));
         }
-
         try {
             restaurantBO.saveRestaurantOrder(restaurantCounterOrderDTO);
+//////////////////////////////////////////////////////////////////////////////////
+            java.util.List<RestaurantCounterOrderDetailDTO> list = new ArrayList<>();
+            String arr = restaurantCounterOrderDTO.getDataValue();
+            String yo[] = arr.split(" ");
+            int count = 0;
+            RestaurantCounterOrderDetailDTO itm = new RestaurantCounterOrderDetailDTO();
+            for (String str : yo) {
+                if (count == 0) {
+                    itm = new RestaurantCounterOrderDetailDTO();
+                    itm.setFoodItem(Integer.parseInt(str));
+                    count++;
+
+                } else if (count == 1) {
+                    itm.setUnitePrice(Double.parseDouble(str));
+                    count++;
+
+                } else if (count == 2) {
+                    itm.setQuantity(Double.parseDouble(str));
+                    list.add(itm);
+                    count = 0;
+                }
+            }
+
+//            ////////////////////////////////////////////////////////////////
+            model.addAttribute("listCounterOrders", restaurantCounterOrderDTO);
+            model.addAttribute("listCounterOrderDetails", list);
+
         } catch (Exception e) {
             return "redirect:/restaurantOrder";
         }

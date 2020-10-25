@@ -1,4 +1,3 @@
-
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page import="java.util.Date" %>
@@ -25,137 +24,23 @@
     <link href="../../build/css/custom.min.css" rel="stylesheet">
 
     <%
-        SimpleDateFormat sdf = new SimpleDateFormat ( "dd-MM-yyyy" );
-        String date = sdf.format ( new Date ( ) );
+        SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
+        String date = sdf.format(new Date());
     %>
 </head>
 
 <body class="nav-md" style="cursor: pointer">
 <div class="container body">
     <div class="main_container">
-        <div class="col-md-3 left_col">
-            <div class="left_col scroll-view">
-                <div class="navbar nav_title" style="border: 0;">
-                    <a href="Dashboard" class="site_title"> <img style="margin-top: -0px; width: 40px;height: 40px"
-                                                                 src="../../images/favicon.ico"><span
-                            style="margin-top: 20px;">&nbsp;Four Seasons!</span></a>
-                </div>
 
-                <div class="clearfix"></div>
 
-                <!-- menu profile quick info -->
-                <div class="profile clearfix">
-                    <div class="profile_pic" style=" width: 80px;height: 80px">
-                        <img src="../../images/icons/${loggerName.image}" alt="..." class="img-circle profile_img">
-                    </div>
-                    <div class="profile_info">
-                        <span>Welcome,</span>
-                        <h2> ${loggerName.name}</h2>
-                    </div>
-                </div>
-                <!-- /menu profile quick info -->
+        <!-- Side header -->
+        <jsp:include page="sideHeader.jsp"/>
+        <!-- /Side header -->
 
-                <br/>
-
-                <!-- sidebar menu -->
-                <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
-                    <div class="menu_section">
-                        <h3>General</h3>
-                        <ul class="nav side-menu">
-                            <li><a><i class="fa fa-home"></i> Home <span class="fa fa-chevron-down"></span></a>
-                                <ul class="nav child_menu">
-                                    <li><a href="Dashboard">Dashboard</a></li>
-                                </ul>
-                            </li>
-                            <li><a><i class="fa fa-edit"></i> Employee <span class="fa fa-chevron-down"></span></a>
-                                <ul class="nav child_menu">
-                                    <li><a href="tables_dynamic">Employee Manage</a></li>
-                                    <li><a href="attendance">Attendance</a></li>
-                                    <li><a href="salary">Salary Manage</a></li>
-                                </ul>
-                            </li>
-                            <li><a><i class="fa fa-desktop"></i>Project<span
-                                    class="fa fa-chevron-down"></span></a>
-                                <ul class="nav child_menu">
-                                    <li><a href="projects">Projects</a></li>
-                                </ul>
-                            </li>
-                            <li><a><i class="fa fa-table"></i> Notice <span class="fa fa-chevron-down"></span></a>
-                                <ul class="nav child_menu">
-                                    <li><a href="notice">View All</a></li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="menu_section">
-                        <h3>Live On</h3>
-                        <ul class="nav side-menu">
-                            <li><a><i class="fa fa-user"></i> Employee Data <span
-                                    class="fa fa-chevron-down"></span></a>
-                                <ul class="nav child_menu">
-                                    <li><a href="contacts">Contacts</a></li>
-                                    <li><a href="profile">Profile</a></li>
-                                </ul>
-                            </li>
-                            <li><a><i class="fa fa-windows"></i> Extras <span class="fa fa-chevron-down"></span></a>
-                                <ul class="nav child_menu">
-                                    <li><a href="media_gallery">View Images</a></li>
-                                    <li><a href="calendar">Calendar</a></li>
-                                    <li><a href="e_commerce">E-commerce</a></li>
-                                    <li><a href="pricing_tables">Pricing Tables</a></li>
-                                    <li><a href="login">Login Page</a></li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="sidebar-footer hidden-small">
-                    <a data-toggle="tooltip" data-placement="top" title="Settings">
-                        <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
-                    </a>
-                    <a data-toggle="tooltip" data-placement="top" title="FullScreen">
-                        <span class="glyphicon glyphicon-fullscreen" aria-hidden="true"></span>
-                    </a>
-                    <a data-toggle="tooltip" data-placement="top" title="Lock">
-                        <span class="glyphicon glyphicon-eye-close" aria-hidden="true"></span>
-                    </a>
-                    <a data-toggle="tooltip" data-placement="top" title="Logout" href="login">
-                        <span class="glyphicon glyphicon-off" aria-hidden="true"></span>
-                    </a>
-                </div>
-                <!-- /menu footer buttons -->
-            </div>
-        </div>
-
-        <!-- top navigation -->
-        <div class="top_nav">
-            <div class="nav_menu">
-                <div class="nav toggle">
-                    <a id="menu_toggle"><i class="fa fa-bars"></i></a>
-                </div>
-                <nav class="nav navbar-nav">
-                    <ul class=" navbar-right">
-                        <li class="nav-item dropdown open" style="padding-left: 15px;">
-                            <a href="javascript:;" class="user-profile dropdown-toggle" aria-haspopup="true"
-                               id="navbarDropdown" data-toggle="dropdown" aria-expanded="false">
-                                <img src="../../images/icons/${loggerName.image}" alt="">${loggerName.name}
-                            </a>
-                            <div class="dropdown-menu dropdown-usermenu pull-right" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="javascript:;"> Profile</a>
-                                <a class="dropdown-item" href="javascript:;">
-                                    <span class="badge bg-red pull-right">50%</span>
-                                    <span>Settings</span>
-                                </a>
-                                <a class="dropdown-item" href="javascript:;">Help</a>
-                                <a class="dropdown-item" href="/"><i class="fa fa-sign-out pull-right"></i> Log Out</a>
-                            </div>
-                        </li>
-
-                    </ul>
-                </nav>
-            </div>
-        </div>
-        <!-- /top navigation -->
+        <!-- Top header -->
+        <jsp:include page="topHeader.jsp"/>
+        <!-- /Top header -->
 
         <!-- page content -->
         <div class="right_col" role="main">
@@ -335,30 +220,26 @@
                                                 <thead>
 
                                                 <tr>
-                                                    <th>SalaryId</th>
+
                                                     <th>Emp Id</th>
                                                     <th>Name</th>
                                                     <th>Basic Salary</th>
-                                                    <th>OT Salary</th>
-                                                    <th>Bonus Salary</th>
-                                                    <th>Tax</th>
+                                                    <th>OT Hours</th>
+
                                                     <th>Total Salary</th>
                                                 </tr>
                                                 </thead>
                                                 <tbody>
-                                                <c:forEach items="${getSalaryData}" var="e">
+                                                <c:forEach items="${listCounterOrderDetails}" var="e">
                                                     <tr>
-                                                        <td>${e.salaryId}</td>
-                                                        <td>${e.employeeID.idNo}</td>
-                                                        <td>${e.employeeID.name}</td>
-                                                        <td>${e.basicSalary}</td>
-                                                        <td>${e.otHours*e.otRate}</td>
-                                                        <td>${e.bonus}</td>
-                                                        <td>${e.incomeTax}</td>
-                                                        <td>${((e.basicSalary+e.bonus)+(e.otRate*e.otHours))-e.incomeTax}</td>
+
+                                                        <td>${e.foodItem}</td>
+                                                        <td>${e.quantity}</td>
+                                                        <td>${e.unitePrice}</td>
+
                                                     </tr>
                                                     <script>
-                                                        var aa = aa + ${e.otHours};
+                                                        var aa = aa
                                                         document.getElementById("demo").innerHTML = 11;
                                                     </script>
                                                 </c:forEach>
@@ -387,7 +268,7 @@
                                         </div>
                                         <!-- /.col -->
                                         <div class="col-md-6">
-                                            <p class="lead">Amount Due 2/22/2014</p>
+                                            <p class="lead">Amount Due <%=date%></p>
                                             <div class="table-responsive">
                                                 <table class="table">
                                                     <tbody>
@@ -396,19 +277,15 @@
                                                         <td><span id="val2"></span></td>
                                                     </tr>
                                                     <tr>
-                                                        <th>Tax
+                                                        <th>Ot Tot:
                                                             <small style="font-weight: bold"><span id="val9"></span>
                                                             </small>
                                                         </th>
                                                         <td><span id="val3"></span></td>
                                                     </tr>
                                                     <tr>
-                                                        <th>OT Tot:</th>
-                                                        <td><span id="val4"></span></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <th>Bonus Tot:</th>
-                                                        <td><span id="val5"></span></td>
+                                                        <th>Tax:</th>
+                                                        <td>2%<span id="val4"></span></td>
                                                     </tr>
                                                     <tr>
                                                         <th>Total:</th>
@@ -426,12 +303,15 @@
                                     <div class="row no-print">
                                         <div class=" ">
 
-                                            <form method="POST" action="" name="deleteInvoiceSalary">
+                                            <form method="POST" action=""
+                                                  name="deleteInvoiceSalary">
                                                 <input style="display: none" type="text" id="itemPay" name="SalaryId">
                                                 <ul class="nav navbar-right panel_toolbox">
                                                     <button type="submit" value="Register"
-                                                            style="font-weight: bold;color: white" ; id="name" onclick="window.print();"
-                                                            class="btn btn-success "> Submit Payment <i class="fa fa-file-image-o"></i>
+                                                            style="font-weight: bold;color: white" ; id="name"
+                                                            onclick="window.print();"
+                                                            class="btn btn-success "> Submit Payment <i
+                                                            class="fa fa-file-image-o"></i>
                                                     </button>
                                                 </ul>
 
@@ -446,10 +326,7 @@
                 </div>
             </div>
         </div>
-        <!-- /page content -->
 
-
-        <!-- footer content -->
         <footer>
             <div class="pull-right">
                 Copyright © Employee Management 2020.<a href="https://rivinduchamath.github.io/pro/">Created by Chanuka
@@ -468,17 +345,17 @@
     var rowCount = document.getElementById('saq').rows.length;
     var table = document.getElementById("saq"), sumVal2 = 0.0, sumVal3 = 0.0, sumVal4 = 0.0, sumVal5 = 0.0;
     var sumVal = 0.0;
-    var avgTax = 0.0;    var str = '';
+    var avgTax = 0.0;
+    var str = '';
 
 
     for (var i = 1; i < table.rows.length; i++) {
-        str = str+ (table.rows[i].cells[0].innerHTML)+" ";
-        sumVal = sumVal + parseFloat(table.rows[i].cells[7].innerHTML);
-        sumVal2 = sumVal2 + parseFloat(table.rows[i].cells[3].innerHTML);
-        sumVal3 = sumVal3 + parseFloat(table.rows[i].cells[6].innerHTML);
-        sumVal5 = sumVal5 + parseFloat(table.rows[i].cells[5].innerHTML);
-        sumVal4 = sumVal4 + parseFloat(table.rows[i].cells[4].innerHTML);
-        avgTax = sumVal3 / i;
+        str = str + (table.rows[i].cells[0].innerHTML) + " ";
+        sumVal = sumVal + parseFloat(table.rows[i].cells[4].innerHTML);
+        sumVal2 = sumVal2 + parseFloat(table.rows[i].cells[2].innerHTML);
+        sumVal3 = sumVal3 + parseFloat(table.rows[i].cells[3].innerHTML);
+
+
     }
 
 
