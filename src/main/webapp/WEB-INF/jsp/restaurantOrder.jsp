@@ -255,7 +255,7 @@
                                     </small>
 
                                 </h2>
-                                <form method="POST" action="invoiceRestaurantOrder" name="invoiceRestaurantOrder">
+                                <form method="POST" action="invoice" name="invoiceRestaurantOrder">
                                     <input style="display: none" type="text" id="itemPay" name="dataValue">
                                     <input style="display: none" type="text" id="cId" value="0"  name="customerId">
                                     <ul class="nav navbar-right panel_toolbox">

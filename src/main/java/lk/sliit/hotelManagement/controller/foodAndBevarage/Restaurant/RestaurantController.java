@@ -9,6 +9,7 @@ import lk.sliit.hotelManagement.dto.restaurant.restaurantCounterOrder.Restaurant
 import lk.sliit.hotelManagement.dto.restaurant.restaurantCounterOrder.RestaurantCounterOrderDetailDTO;
 import lk.sliit.hotelManagement.dto.restaurant.restaurantOnlineOrder.RestaurantOnlineOrderDTO;
 import lk.sliit.hotelManagement.dto.restaurant.restaurantOnlineTable.OnlineTableReservationDTO;
+import lk.sliit.hotelManagement.entity.kitchen.FoodItem;
 import lk.sliit.hotelManagement.service.custom.BarBO;
 import lk.sliit.hotelManagement.service.custom.IndexLoginBO;
 import lk.sliit.hotelManagement.service.custom.KitchenBO;
@@ -64,7 +65,8 @@ public class RestaurantController {
         return "restaurantBill";
     }
 
-    @PostMapping("invoiceRestaurantOrder")
+
+    @PostMapping("invoice")
     public String loadInvoicePage(@ModelAttribute RestaurantCounterOrderDTO restaurantCounterOrderDTO, Model model, HttpServletRequest request) {
         model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
 
@@ -102,7 +104,12 @@ public class RestaurantController {
             }
 
 //            ////////////////////////////////////////////////////////////////
-            model.addAttribute("listCounterOrders", restaurantCounterOrderDTO);
+            for (RestaurantCounterOrderDetailDTO d : list) {
+                FoodItemDTO f = kitchenBO.findFoodItemById(d.getFoodItem());
+                d.setName(f.getItemName());
+            }
+
+            model.addAttribute("listCounterOrders", restaurantCounterOrderDTO.getOrderId());
             model.addAttribute("listCounterOrderDetails", list);
 
         } catch (Exception e) {
@@ -110,6 +117,13 @@ public class RestaurantController {
         }
         return "invoice";
     }
+
+    @GetMapping("/invoice")
+    public String restaurant(Model model) {
+        model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
+        return "invoice";
+    }
+
     @GetMapping("/restaurantManage")
     public String restaurantManage(Model model) {
         model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
@@ -121,7 +135,6 @@ public class RestaurantController {
 
         return "restaurantManage";
     }
-
 
 
 }

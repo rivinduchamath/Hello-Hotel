@@ -9,6 +9,7 @@ import java.util.List;
 public class RestaurantCounterOrderDTO {
     private int orderId;
     private String orderState;
+    private String foodName;
     private double quantity;
     private Date date;
     private String dataValue;
@@ -52,6 +53,27 @@ public class RestaurantCounterOrderDTO {
     }
 
     public RestaurantCounterOrderDTO() {
+    }
+
+    public RestaurantCounterOrderDTO(int orderId, String orderState, String foodName, double quantity, Date date,
+                                     String dataValue, int customerId, int orderHolder, List<RestaurantCounterOrderDetailDTO> orderDetails) {
+        this.orderId = orderId;
+        this.orderState = orderState;
+        this.foodName = foodName;
+        this.quantity = quantity;
+        this.date = date;
+        this.dataValue = dataValue;
+        this.customerId = customerId;
+        this.orderHolder = orderHolder;
+        this.orderDetails = orderDetails;
+    }
+
+    public String getFoodName() {
+        return foodName;
+    }
+
+    public void setFoodName(String foodName) {
+        this.foodName = foodName;
     }
 
     public List<RestaurantCounterOrderDetailDTO> getOrderDetails() {

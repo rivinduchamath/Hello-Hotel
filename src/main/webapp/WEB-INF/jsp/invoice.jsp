@@ -221,12 +221,11 @@
 
                                                 <tr>
 
-                                                    <th>Emp Id</th>
+                                                    <th>Food Id</th>
                                                     <th>Name</th>
-                                                    <th>Basic Salary</th>
-                                                    <th>OT Hours</th>
-
-                                                    <th>Total Salary</th>
+                                                    <th>Order Quantity</th>
+                                                    <th>Unite Price</th>
+                                                    <th>Total</th>
                                                 </tr>
                                                 </thead>
                                                 <tbody>
@@ -234,8 +233,10 @@
                                                     <tr>
 
                                                         <td>${e.foodItem}</td>
+                                                        <td>${e.name}</td>
                                                         <td>${e.quantity}</td>
                                                         <td>${e.unitePrice}</td>
+                                                        <td>${e.unitePrice * e.quantity}</td>
 
                                                     </tr>
                                                     <script>
@@ -273,20 +274,21 @@
                                                 <table class="table">
                                                     <tbody>
                                                     <tr>
-                                                        <th style="width:50%">Basic Tot:</th>
+                                                        <th>Tax:</th>
+                                                        <td>${listCounterOrders}<span id="val4"></span></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th style="width:50%">Tot Qty:</th>
                                                         <td><span id="val2"></span></td>
                                                     </tr>
                                                     <tr>
-                                                        <th>Ot Tot:
+                                                        <th>Basic Tot:
                                                             <small style="font-weight: bold"><span id="val9"></span>
                                                             </small>
                                                         </th>
                                                         <td><span id="val3"></span></td>
                                                     </tr>
-                                                    <tr>
-                                                        <th>Tax:</th>
-                                                        <td>2%<span id="val4"></span></td>
-                                                    </tr>
+
                                                     <tr>
                                                         <th>Total:</th>
                                                         <td><span id="val"></span></td>
