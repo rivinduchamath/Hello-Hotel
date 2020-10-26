@@ -268,7 +268,7 @@
                                 </div>
                                 <div class="x_content">
                                     <br/>
-                                    <form action="/addDailyFoodItemOrder" method="post" id="demo-form2" data-parsley-validate
+                                    <form action="/kitchen" method="post" id="demo-form2" data-parsley-validate
                                           class="form-horizontal form-label-left">
 
                                         <table style="border: none">
@@ -347,6 +347,8 @@
                                             </tr>
                                         </table>
 
+                                        <input type="hidden" value="${dailyOrderType}" name="description">
+
                                         <div class="item form-group">
                                             <div class=" offset-md-3">
                                                 <button class="btn btn-primary" type="reset">Reset</button>
@@ -396,8 +398,8 @@
                                                 <tbody>
                                                 <c:forEach items="${loadFoodItemTable}" var="item">
                                                     <tr>
-                                                        <td>${item.itemId}</td>
-                                                        <td>${item.itemName}</td>
+                                                        <td>${item.inventoryId}</td>
+                                                        <td>${item.text}</td>
                                                     </tr>
                                                 </c:forEach>
                                                 </tbody>
@@ -448,21 +450,30 @@
 
                                                 </thead>
                                                 <tbody>
-                                                <tr>
-                                                    <td>001</td>
-                                                    <td>Potato</td>
-                                                    <td>200</td>
-                                                    <td>
+                                                <c:forEach items="${loadOrderTable}" var="item">
+                                                    <tr>
+                                                        <td>${item.orderId}</td>
+                                                        <td>${item.itemName}</td>
+                                                        <td>${item.amount}</td>
 
-                                                        <label class="btn"
-                                                               data-toggle-class=""
-                                                               data-toggle-passive-class="btn-default">
-                                                            <input type="radio" name="gender" value="-Remove"
-                                                                   class="join-btn"><i class="fa fa-trash"></i>
-                                                        </label>
+                                                        <td>
+                                                            <form action="/kitchen" method="post">
+                                                                <input type="hidden" name="orderId" value="${item.orderId}">
 
-                                                    </td>
-                                                </tr>
+                                                                <label class="btn"
+                                                                       data-toggle-class=""
+                                                                       data-toggle-passive-class="btn-default">
+                                                                    <input type="submit" name="gender" value="-Remove"
+                                                                           class="join-btn"><i class="fa fa-trash"></i>
+                                                                </label>
+
+                                                            </form>
+
+                                                        </td>
+
+                                                    </tr>
+                                                </c:forEach>
+
                                                 </tbody>
                                             </table>
                                         </div>

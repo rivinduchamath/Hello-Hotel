@@ -13,7 +13,7 @@ public class InventoryDTO {
     private double getPrice;
     private double sellingPrice;
     private Date date;
-    //    ////////////////////////////////////
+    //   Save Inventory Order ////////////////////////////////////
     private int supplierId;
     private int orderId;
     private int orderHolder;

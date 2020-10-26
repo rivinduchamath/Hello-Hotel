@@ -1,12 +1,12 @@
 package lk.sliit.hotelManagement.controller.kitchenController;
 
 import lk.sliit.hotelManagement.controller.SuperController;
+import lk.sliit.hotelManagement.dao.inventoryDAO.InventoryDAO;
 import lk.sliit.hotelManagement.dto.banquet.LimitDTO;
+import lk.sliit.hotelManagement.dto.inventory.InventoryDTO;
 import lk.sliit.hotelManagement.dto.inventory.InventoryNoticeDTO;
-import lk.sliit.hotelManagement.dto.kitchen.FoodItemDTO;
-import lk.sliit.hotelManagement.dto.kitchen.KitchenFoodOrderDTO;
-import lk.sliit.hotelManagement.dto.kitchen.MenuDTO;
-import lk.sliit.hotelManagement.dto.kitchen.MenuDetailsDTO;
+import lk.sliit.hotelManagement.dto.kitchen.*;
+import lk.sliit.hotelManagement.entity.inventory.Inventory;
 import lk.sliit.hotelManagement.service.custom.IndexLoginBO;
 import lk.sliit.hotelManagement.service.custom.InventoryBO;
 import lk.sliit.hotelManagement.service.custom.KitchenBO;
@@ -40,11 +40,35 @@ public class KitchenController {
     public String loginPage(Model model) {
         model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
 
-        List<FoodItemDTO> foodItemDTOS = kitchenBO.findFoodIngredient();
+        List<InventoryDTO> inventoryItems = kitchenBO.findKitchenInventory(KitchenUtil.department);
+        List<KitchenFoodOrderDTO> kitchenFoodOrderDTOS = kitchenBO.loadKitchenFoodOrderBydateAndDescription(getTodaySql(), KitchenUtil.dailyFoodOrderType);
         List<FoodItemDTO> breakfastFoodItems, lunchFoodItems, dinnerFoodItems;
         List<MenuDTO> menuDTOS = kitchenBO.findMenuItems();
         MenuDTO breakfast, lunch, dinner;
         LimitDTO limitDTO = new LimitDTO();
+        InventoryDTO inventoryDTO;
+
+        //load not selected orders
+        if (!kitchenFoodOrderDTOS.isEmpty()){
+
+            for (KitchenFoodOrderDTO item : kitchenFoodOrderDTOS){
+
+                for (int i = 0; i < inventoryItems.size(); i++){
+                    inventoryDTO = inventoryItems.remove(i);
+
+                    if (inventoryDTO.getInventoryId() == item.getFoodItemId()){
+                        break;
+                    } else {
+                        inventoryItems.add(inventoryDTO);
+                    }
+                }
+
+            }
+
+            for (KitchenFoodOrderDTO item: kitchenFoodOrderDTOS){
+                item.setItemName(inventoryBO.findFoodItemById(item.getFoodItemId()).getText());
+            }
+        }
 
         limitDTO.setLimit(KitchenUtil.kitchenMenuDate);
 
@@ -107,6 +131,9 @@ public class KitchenController {
                 lunch = oldMenus.get(1);
                 dinner = oldMenus.get(2);
             } catch (NullPointerException e2) {
+                breakfast = getNextItem(menuDTOS,breakfast);
+                lunch = getNextItem(menuDTOS,lunch);
+                dinner = getNextItem(menuDTOS,dinner);
             }
 
             //generate key string
@@ -123,38 +150,105 @@ public class KitchenController {
 
         // set model attributes
 
-        model.addAttribute("loadFoodItemTable", foodItemDTOS);
+        model.addAttribute("loadFoodItemTable", inventoryItems);
+        model.addAttribute("loadOrderTable", kitchenFoodOrderDTOS);
         model.addAttribute("breakfast", breakfast);
         model.addAttribute("breakfastTable", breakfastFoodItems);
         model.addAttribute("lunch", lunch);
         model.addAttribute("lunchTable", lunchFoodItems);
         model.addAttribute("dinner", dinner);
         model.addAttribute("dinnerTable", dinnerFoodItems);
+        model.addAttribute("dailyOrderType", KitchenUtil.dailyFoodOrderType);
+
         return "kitchen";
     }
 
-    @PostMapping("/addDailyFoodItemOrder")
-    public String addDailyKitchenFoodOrder(Model model, @ModelAttribute KitchenFoodOrderDTO kitchenFoodOrderDTO) {
+    @PostMapping("/kitchen")
+    public void addDailyKitchenFoodOrder(Model model, @ModelAttribute KitchenFoodOrderDTO kitchenFoodOrderDTO) {
         model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
 
         //create inventory notice object
-        InventoryNoticeDTO inventoryNoticeDTO = new InventoryNoticeDTO();
+        KitchenInventoryNoticeDTO inventoryNoticeDTO = new KitchenInventoryNoticeDTO();
+        InventoryDTO inventoryDTO;
 
-        //set notice id
-        int maxId = inventoryBO.findHighestId().getInventoryId();
-        maxId++;
+        try {
 
-        inventoryNoticeDTO.setNoticeId(maxId);
-        inventoryNoticeDTO.setDepartment(KitchenUtil.department);
-        inventoryNoticeDTO.setOrderQty(kitchenFoodOrderDTO.getAmount());
-        inventoryNoticeDTO.setDate(getTodaySql());
-        inventoryNoticeDTO.setExpDate(kitchenFoodOrderDTO.getExpectedDate());
-        inventoryNoticeDTO.setOrderHolder(SuperController.idNo);
-        inventoryNoticeDTO.setState(false);
+            inventoryDTO = inventoryBO.findInventory(kitchenFoodOrderDTO.getFoodItemId());
+
+            //set Inventory entity object
+            Inventory inventory = new Inventory(
+                    inventoryDTO.getInventoryId(),
+                    inventoryDTO.getText(),
+                    inventoryDTO.getDescription(),
+                    inventoryDTO.getOrderQty(),
+                    inventoryDTO.getType(),
+                    inventoryDTO.getOrderLimit(),
+                    inventoryDTO.getGetPrice(),
+                    inventoryDTO.getSellingPrice(),
+                    inventoryDTO.getDate()
+            );
+
+            //set notice id
+            int maxId = 1;
+            try {
+                maxId = inventoryBO.findHighestId().getInventoryId();//error*********************************************
+                maxId++;
+            } catch (NullPointerException e){
+                maxId = 1;
+            }
+
+            inventoryNoticeDTO.setNoticeId(maxId);
+            inventoryNoticeDTO.setDepartment(KitchenUtil.department);
+            inventoryNoticeDTO.setDate(getTodaySql());
+            inventoryNoticeDTO.setExpDate(kitchenFoodOrderDTO.getExpectedDate());
+            inventoryNoticeDTO.setOrderHolder(SuperController.idNo);
+            inventoryNoticeDTO.setState(false);
+            inventoryNoticeDTO.setInventory(inventory);
 
 
-        return "kitchen";
+            //search existing order
+            try{
+                KitchenFoodOrderDTO old = kitchenBO.getExistingKitchenFoodOrder(kitchenFoodOrderDTO.getFoodItemId(),
+                                                                kitchenFoodOrderDTO.getExpectedDate(),
+                                                                kitchenFoodOrderDTO.getDescription());
+
+                //set amount in KitchenInventoryNotice
+                inventoryNoticeDTO.setOrderQty(kitchenFoodOrderDTO.getAmount() - old.getAmount());
+                maxId = old.getOrderId();
+
+            } catch (NullPointerException e){
+                maxId = KitchenUtil.defaultID;
+                inventoryNoticeDTO.setOrderQty(kitchenFoodOrderDTO.getAmount());
+            }
+            kitchenFoodOrderDTO.setOrderId(maxId);
+
+            kitchenBO.saveInventoryNotice(inventoryNoticeDTO);
+            kitchenBO.saveKitchenFoodOrder(kitchenFoodOrderDTO);
+
+        } catch (NullPointerException e){
+            //alert inventory object not found
+        }
+
+
+
+
+
+        loginPage(model);
     }
+
+/*
+    @PostMapping("/kitchen")
+    public void deleteDailyOrder(Model model, @ModelAttribute KitchenFoodOrderDTO kitchenFoodOrderDTO){
+
+        try{
+            //InventoryNoticeDTO inventoryNoticeDTO = kitchenBO.findInventoryNotice(kitchenFoodOrderDTO.getExpectedDate(),kitchenFoodOrderDTO.getFoodItemId());
+
+        } catch (NullPointerException e){
+
+        }
+    }
+*/
+
 
     @GetMapping("/kitchenReport")
     public String loadKitchenReport(Model model) {

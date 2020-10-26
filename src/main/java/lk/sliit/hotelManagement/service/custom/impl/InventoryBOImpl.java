@@ -93,7 +93,7 @@ public class InventoryBOImpl implements InventoryBO {
         Calendar cal = Calendar.getInstance();
         cal.add(Calendar.DATE, 2);
         java.util.Date dayAfterTomorrow = cal.getTime();
-        Iterable<InventoryNotice> allItems = inventoryNoticeDAO.findAllByExpDateEquals(dayAfterTomorrow);
+        Iterable<InventoryNotice> allItems = inventoryNoticeDAO.findAllByExpDateAndStateEquals(dayAfterTomorrow,false);
         List<InventoryNoticeDTO> dtos = new ArrayList<>();
         for (InventoryNotice notice : allItems) {
             dtos.add(new InventoryNoticeDTO(
@@ -117,7 +117,7 @@ public class InventoryBOImpl implements InventoryBO {
         Calendar cal = Calendar.getInstance();
         cal.add(Calendar.DATE, 0);
         java.util.Date today = cal.getTime();
-        Iterable<InventoryNotice> allItems = inventoryNoticeDAO.findAllByExpDateEquals(today);
+        Iterable<InventoryNotice> allItems = inventoryNoticeDAO.findAllByExpDateAndStateEquals(today,false);
         List<InventoryNoticeDTO> dtos = new ArrayList<>();
         for (InventoryNotice notice : allItems) {
             dtos.add(new InventoryNoticeDTO(
@@ -141,7 +141,7 @@ public class InventoryBOImpl implements InventoryBO {
         Calendar cal = Calendar.getInstance();
         cal.add(Calendar.DATE, 1);
         java.util.Date tomorrow = cal.getTime();
-        Iterable<InventoryNotice> allItems = inventoryNoticeDAO.findAllByExpDateEquals(tomorrow);
+        Iterable<InventoryNotice> allItems = inventoryNoticeDAO.findAllByExpDateAndStateEquals(tomorrow,false);
         List<InventoryNoticeDTO> dtos = new ArrayList<>();
         for (InventoryNotice notice : allItems) {
             dtos.add(new InventoryNoticeDTO(

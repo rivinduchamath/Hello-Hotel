@@ -139,7 +139,7 @@
                             <a href="/allLaundryOrders">
                                 <button type='submit' class="btn btn-secondary" style="width: 50%;float: right"
                                         value="Register">
-                                    List All Payment
+                                    List All Orders
                                 </button>
                             </a>
                         </div>

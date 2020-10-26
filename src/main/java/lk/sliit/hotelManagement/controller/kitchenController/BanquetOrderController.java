@@ -2,6 +2,7 @@ package lk.sliit.hotelManagement.controller.kitchenController;
 
 import lk.sliit.hotelManagement.controller.SuperController;
 import lk.sliit.hotelManagement.dto.banquet.BanquetAddDTO;
+import lk.sliit.hotelManagement.dto.inventory.InventoryDTO;
 import lk.sliit.hotelManagement.dto.kitchen.FoodItemDTO;
 import lk.sliit.hotelManagement.dto.kitchen.KitchenFoodOrderDTO;
 import lk.sliit.hotelManagement.dto.kitchen.MenuDTO;
@@ -16,9 +17,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import java.util.Date;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -58,8 +56,8 @@ public class BanquetOrderController {
 
         MenuDTO menuDTO = kitchenBO.findMenuItemById(banquetAddDTO.getMenuId());
         List<MenuDetailsDTO> menuDetailsDTOS = kitchenBO.findFoodItemsDetails(banquetAddDTO.getMenuId());
-        List<FoodItemDTO> allFoodItems = kitchenBO.findFoodItemsForMenu();
-        List<FoodItemDTO> allIngredients = kitchenBO.findFoodIngredient();
+        List<FoodItemDTO> allFoodItems = kitchenBO.findFoodItems();
+        List<InventoryDTO> allIngredients = kitchenBO.findKitchenInventory(KitchenUtil.department);
         List<FoodItemDTO> foodItemDTOS = new ArrayList<>();
 
         if (menuDetailsDTOS.size() != 0){

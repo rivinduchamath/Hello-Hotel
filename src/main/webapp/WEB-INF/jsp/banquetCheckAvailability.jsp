@@ -197,7 +197,7 @@
             </div>
             <div class="clearfix"></div>
                 <div class="col-12 col-sm-12 col-md-12 col-lg-5 col-xl-5">
-                    <form method="POST"  action="checkAvailability" name="checkAvailability">
+                    <form method="POST"  action="banquetCheckAvailability" name="checkAvailability">
 
 
 
