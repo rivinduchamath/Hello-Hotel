@@ -92,7 +92,7 @@
                 <div class="page-title">
                     <div class="title_left">
                         <h3>HR Department
-                            <small>Welcome To Hotel Hareesha</small>
+                            <small>Rooms Prices Management</small>
                         </h3>
                     </div>
 
@@ -188,7 +188,7 @@
                             <div class="x_panel">
                                 <div class="x_title">
                                     <h2>Find Rooms
-                                        <small>Hotel Room Prices Page</small>
+                                        <small>Hotel Room Prices Table</small>
                                     </h2>
                                     <ul class="nav navbar-right panel_toolbox">
                                         <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>

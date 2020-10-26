@@ -92,7 +92,7 @@
                 <div class="page-title">
                     <div class="title_left">
                         <h3>HR Department
-                            <small>Welcome To Hotel Hareesha</small>
+                            <small>Current Bills Management</small>
                         </h3>
                     </div>
 

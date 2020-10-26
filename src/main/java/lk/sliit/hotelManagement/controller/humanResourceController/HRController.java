@@ -40,6 +40,18 @@ public class HRController {
         return "hr";
     }
 
+    @GetMapping("/inventoryBillsHR")
+    public String inventoryBills(Model model){
+        model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
+        return "inventoryBillsHR";
+    }
+
+    @GetMapping("/activityList")
+    public String activityList(Model model){
+        model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
+        return "activityList";
+    }
+
     @GetMapping("/allAttendance")
     public String allAttendance(Model model) {
         model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
