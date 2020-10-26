@@ -65,17 +65,6 @@ public class HouseKeepingBOImpl implements HouseKeepingBO {
         return new HotelRoomDTO(lastRoom.getRoomId());
     }
 
-    @Override
-    public List<HotelRoomDTO> findRooms() {
-        Iterable<HotelRoom> hotelRooms = houseKeepingDAO.findAll();
-        return getHotelRoomDTOS(hotelRooms);
-    }
-
-    @Override
-    public void deleteRoomDetails(int roomId) {
-        houseKeepingDAO.delete(roomId);
-
-    }
 
     @Override
     public HotelRoomDTO findRoomIdByID(int roomId) {
@@ -92,11 +81,7 @@ public class HouseKeepingBOImpl implements HouseKeepingBO {
         );
     }
 
-    @Override
-    public List<HotelRoomDTO> findDirtyRooms(String notCleaned) {
-        Iterable<HotelRoom> hotelRooms = houseKeepingDAO.findAllByStatusEquals(notCleaned);
-        return getHotelRoomDTOS(hotelRooms);
-    }
+
 
     @Override
     public LaundryDTO findHighestId() {
@@ -201,7 +186,27 @@ public class HouseKeepingBOImpl implements HouseKeepingBO {
 
     }
 
+    @Override //Change State To Processing
+    public void changeState(int id) {
+        LaundryOrders all = laundryOrderDAO.findOne(id);
+        all.setState("Processing");
+        laundryOrderDAO.save(all);
+    }
 
+    @Override//Find All Rooms
+    public List<HotelRoomDTO> findRooms() {
+        Iterable<HotelRoom> hotelRooms = houseKeepingDAO.findAll();
+        return getHotelRoomDTOS(hotelRooms);
+    }
+
+
+    @Override //Find Dirty Rooms
+    public List<HotelRoomDTO> findDirtyRooms(String notCleaned) {
+        Iterable<HotelRoom> hotelRooms = houseKeepingDAO.findAllByStatusEquals(notCleaned);
+        return getHotelRoomDTOS(hotelRooms);
+    }
+
+    //Convert Entity object to DTO Object (Remove BoilerPlate Code)
     private List<HotelRoomDTO> getHotelRoomDTOS(Iterable<HotelRoom> hotelRooms) {
         List<HotelRoomDTO> hotelDirtyRoomDTOList = new ArrayList<>();
 
@@ -219,4 +224,11 @@ public class HouseKeepingBOImpl implements HouseKeepingBO {
         }
         return hotelDirtyRoomDTOList;
     }
+
+    @Override
+    public void deleteRoomDetails(int roomId) {
+        houseKeepingDAO.delete(roomId);
+
+    }
+
 }

@@ -129,19 +129,15 @@
 
                         </form>
 
-                        <!--////////////////////////-->
-
-
-                        <!--//////////////////////////-->
                     </div>
 
                 </div>
-                <form>
+                <form action="houseKeepingReport" method="post">
                 <div class="form-group">
                     <div class="col-12 col-sm-12 col-md-12 col-lg-3 col-xl-3"> <br>
                         <label for="date">Date from</label>
                         <input type="date" class="form-control"
-                               required="required" name="date"
+                               required="required" name="dateIn"
                                id="date" placeholder="Date from"/></div>
                     <br>
                 </div>
@@ -149,7 +145,7 @@
                     <div class="col-12 col-sm-12 col-md-12 col-lg-3 col-xl-3"> <br>
                         <label for="date">Date to </label>
                         <input type="date" class="form-control"
-                               required="required" name="date"
+                               required="required" name="dateOut"
                                id="date1" placeholder="Date to"/>
                     </div>
                     <br>
