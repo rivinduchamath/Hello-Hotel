@@ -100,14 +100,8 @@
                 <div class="page-title">
                     <div class="title_left">
                         <h3>HR Department
-                            <small>Employee Attendance Management</small>
+                            <small>Weekly Activity List Management</small>
                         </h3>
-                        <a style=" float: left" href="allAttendance">
-                            <button   type='submit' class="btn btn-secondary" style="width: 100%;" value="Register" >
-                               Find All <i class="fa fa-forward"></i>
-                            </button>
-                        </a>
-                        &nbsp &nbsp
                         <a href="/hr">
                             <button class="btn btn-secondary" style="width: 20%; height:86%" type="button"><i
                                     class="fa fa-reply">
@@ -210,8 +204,8 @@
                         <div style="display: none"><input id="attendanceId" name="attendanceId" value="0"></div>
 
                         <div class="col-md-6 col-sm-6 " style="float: left">
-                            <label>Search ID Here</label>
-                            <input type="text" style="cursor: pointer;" id="myInput" onkeyup="myFunction()" placeholder="Search By ID..">
+                            <label>Search Employee ID</label>
+                            <input type="text" style="cursor: pointer;" id="myInput" onkeyup="myFunction()" placeholder="Enter ID">
 
                         </div>
 
@@ -230,18 +224,18 @@
                                 <input type="text" class="form-control" id="itemDesc"
                                        placeholder="Name">
                             </div>
-
+                            <!-- Monday -->
                             <div class="col-md-6 col-sm-6 ">
-                                <label for="itemDesc">set Time </label>
+                                <label for="itemDesc">Monday </label>
                                 <div class="input-group mb-3">
                                     <div class="input-group-prepend">
                                         <span class="input-group-text">Time</span>
                                         <span class="input-group-text">
-                                       IN
+                                       Start
                                 </span>
                                     </div>
                                     <input type="text" class="form-control" required
-                                           name="inTime" id="itemTime"
+                                           name="inTime" id="intimeMonday"
                                            aria-label="Dollar amount (with dot and two decimal places)">
 
                                 </div>
@@ -251,40 +245,207 @@
                                 <div class="input-group mb-3" style="float: right">
                                     <div class="input-group-prepend">
                                 <span class="input-group-text">
-                                       OUT
+                                       End
                                 </span>
                                     </div>
                                     <input type="text" class="form-control" required
-                                           id="itemTime2"  name="outTime" value="${attendance.outTime }"
+                                           id="outTimeMonday"  name="outTime" value="${attendance.outTime }"
+                                           aria-label="Dollar amount (with dot and two decimal places)"/>
+
+                                </div>
+                            </div>
+                            <!-- Tuesday -->
+                            <div class="col-md-6 col-sm-6 ">
+                                <label for="itemDesc">Tuesday</label>
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">Time</span>
+                                        <span class="input-group-text">
+                                       Start
+                                </span>
+                                    </div>
+                                    <input type="text" class="form-control" required
+                                           name="inTime" id="inTimeTuesday"
+                                           aria-label="Dollar amount (with dot and two decimal places)">
+
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-sm-6 ">
+                                <label for="itemDesc">&nbsp;</label>
+                                <div class="input-group mb-3" style="float: right">
+                                    <div class="input-group-prepend">
+                                <span class="input-group-text">
+                                       End
+                                </span>
+                                    </div>
+                                    <input type="text" class="form-control" required
+                                           id="outTimeTuesday"  name="outTime" value="${attendance.outTime }"
+                                           aria-label="Dollar amount (with dot and two decimal places)"/>
+
+                                </div>
+                            </div>
+                            <!-- Wednesday -->
+                            <div class="col-md-6 col-sm-6 ">
+                                <label for="itemDesc">Wednesday </label>
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">Time</span>
+                                        <span class="input-group-text">
+                                       Start
+                                </span>
+                                    </div>
+                                    <input type="text" class="form-control" required
+                                           name="inTime" id="inTimeWednesday"
+                                           aria-label="Dollar amount (with dot and two decimal places)">
+
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-sm-6 ">
+                                <label for="itemDesc">&nbsp;</label>
+                                <div class="input-group mb-3" style="float: right">
+                                    <div class="input-group-prepend">
+                                <span class="input-group-text">
+                                       End
+                                </span>
+                                    </div>
+                                    <input type="text" class="form-control" required
+                                           id="outTimeWednesday"  name="outTime" value="${attendance.outTime }"
+                                           aria-label="Dollar amount (with dot and two decimal places)"/>
+
+                                </div>
+                            </div>
+                            <!-- Thursday -->
+                            <div class="col-md-6 col-sm-6 ">
+                                <label for="itemDesc">Thursday</label>
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">Time</span>
+                                        <span class="input-group-text">
+                                       Start
+                                </span>
+                                    </div>
+                                    <input type="text" class="form-control" required
+                                           name="inTime" id="inTimeThursday"
+                                           aria-label="Dollar amount (with dot and two decimal places)">
+
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-sm-6 ">
+                                <label for="itemDesc">&nbsp;</label>
+                                <div class="input-group mb-3" style="float: right">
+                                    <div class="input-group-prepend">
+                                <span class="input-group-text">
+                                       End
+                                </span>
+                                    </div>
+                                    <input type="text" class="form-control" required
+                                           id="outTimeThursday"  name="outTime" value="${attendance.outTime }"
+                                           aria-label="Dollar amount (with dot and two decimal places)"/>
+
+                                </div>
+                            </div>
+                            <!-- Friday -->
+                            <div class="col-md-6 col-sm-6 ">
+                                <label for="itemDesc">Friday</label>
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">Time</span>
+                                        <span class="input-group-text">
+                                       Start
+                                </span>
+                                    </div>
+                                    <input type="text" class="form-control" required
+                                           name="inTime" id="inTimeFriday"
+                                           aria-label="Dollar amount (with dot and two decimal places)">
+
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-sm-6 ">
+                                <label for="itemDesc">&nbsp;</label>
+                                <div class="input-group mb-3" style="float: right">
+                                    <div class="input-group-prepend">
+                                <span class="input-group-text">
+                                       End
+                                </span>
+                                    </div>
+                                    <input type="text" class="form-control" required
+                                           id="outTimeFriday"  name="outTime" value="${attendance.outTime }"
+                                           aria-label="Dollar amount (with dot and two decimal places)"/>
+
+                                </div>
+                            </div>
+                            <!-- Saturday -->
+                            <div class="col-md-6 col-sm-6 ">
+                                <label for="itemDesc">Saturday</label>
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">Time</span>
+                                        <span class="input-group-text">
+                                       Start
+                                </span>
+                                    </div>
+                                    <input type="text" class="form-control" required
+                                           name="inTime" id="inTimeSaturday"
+                                           aria-label="Dollar amount (with dot and two decimal places)">
+
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-sm-6 ">
+                                <label for="itemDesc">&nbsp;</label>
+                                <div class="input-group mb-3" style="float: right">
+                                    <div class="input-group-prepend">
+                                <span class="input-group-text">
+                                       End
+                                </span>
+                                    </div>
+                                    <input type="text" class="form-control" required
+                                           id="outTimeSaturday"  name="outTime" value="${attendance.outTime }"
+                                           aria-label="Dollar amount (with dot and two decimal places)"/>
+
+                                </div>
+                            </div>
+                            <!--Sunday-->
+                            <div class="col-md-6 col-sm-6 ">
+                                <label for="itemDesc">Sunday</label>
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">Time</span>
+                                        <span class="input-group-text">
+                                       Start
+                                </span>
+                                    </div>
+                                    <input type="text" class="form-control" required
+                                           name="inTime" id="inTimeSunday"
+                                           aria-label="Dollar amount (with dot and two decimal places)">
+
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-sm-6 ">
+                                <label for="itemDesc">&nbsp;</label>
+                                <div class="input-group mb-3" style="float: right">
+                                    <div class="input-group-prepend">
+                                <span class="input-group-text">
+                                       End
+                                </span>
+                                    </div>
+                                    <input type="text" class="form-control" required
+                                           id="outTimeSunday"  name="outTime" value="${attendance.outTime }"
                                            aria-label="Dollar amount (with dot and two decimal places)"/>
 
                                 </div>
                             </div>
 
-                            <div class="col-md-6 col-sm-6 ">
-                                <label for="itemDesc">&nbsp;</label>
 
-                                <div class="input-group mb-3" style="float: right">
-                                    <div class="input-group-prepend">
-                                <span class="input-group-text">
-                                       OT
-                                </span>
+                            <div class="col-md-6 col-sm-6 ">
                                     </div>
-                                    <input type="number" class="form-control"
-                                           name="overtimeHours" required value= "0" id="itemTime3" aria-label="Dollar amount (with dot and two decimal places)">
+                            <label for="itemDesc">&nbsp;</label>
+                            <div class="input-group mb-3" style="float: right">
 
-                                </div>
+                                <button type='submit' class="btn btn-dark" style="width: 30%" value="Register">Submit</button>
+                                <button type='reset' class="btn btn-outline-primary" value="">Reset</button>
+
                             </div>
-                            <div class="col-md-6 col-sm-6 ">
-                                <label for="itemDesc">&nbsp;</label>
-                                <div class="input-group mb-3" style="float: right">
-
-                                    <button type='submit' class="btn btn-dark" style="width: 30%" value="Register">Submit</button>
-                                    <button type='reset' class="btn btn-outline-primary" value="">Reset</button>
-
                                 </div>
-                            </div>
-                        </div>
 
 
                         <div class="col-md-6 col-sm-6 " style="float: left">
@@ -328,12 +489,7 @@
                                                     </tr>
                                                     </thead>
                                                     <tbody>
-                                                    <c:forEach items="${loadAllUsers}" var="e">
-                                                        <tr>
-                                                            <td>${e.userId}</td>
-                                                            <td>${e.name}</td>
-                                                        </tr>
-                                                    </c:forEach>
+
                                                     </tbody>
 
                                                 </table>
@@ -349,9 +505,8 @@
                         <div class="col-md-12 col-sm-12 ">
                             <div class="x_panel">
                                 <div class="x_title">
-                                    <h2>Today active users
-                                        <small>Update Today
-                                            Users</small>
+                                    <h2>Employee Timetable
+                                        <small>Weekly</small>
                                     </h2>
                                     <ul class="nav navbar-right panel_toolbox">
                                         <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
@@ -374,38 +529,25 @@
                                         <div class="col-sm-12">
                                             <div class="card-box table-responsive">
                                                 <p class="text-muted font-13 m-b-30">
-                                                    This table provide Attendance Details.
-                                                    To Edit or Remove details click on the relevant row.
+                                                    This table provides Weekly Timetable of Employees.
                                                 </p>
                                                 <table style="text-align: center" id="datatable-buttons" class="table table-striped table-bordered">
                                                     <thead class="thead-light">
                                                     <tr>
-                                                        <th>Attendance ID</th>
-                                                        <th>User ID</th>
-                                                        <th>Name</th>
-                                                        <th>Position</th>
-                                                        <th>inTime</th>
-                                                        <th>OutTime</th>
-                                                        <th>OverTime</th>
-                                                        <th>Delete</th>
-
+                                                        <th>Employee ID</th>
+                                                        <th>Employee Name</th>
+                                                        <th>Monday</th>
+                                                        <th>Tuesday</th>
+                                                        <th>Wednesday</th>
+                                                        <th>Thursday</th>
+                                                        <th>Friday</th>
+                                                        <th>Saturday</th>
+                                                        <th>Sunday</th>
                                                     </tr>
 
                                                     </thead>
                                                     <tbody>
-                                                    <c:forEach items="${listAttendance}" var="e">
-                                                        <tr>
-                                                            <td>${e.attendanceId}</td>
-                                                            <td>${e.employeeID}</td>
-                                                            <td>${e.empName}</td>
-                                                            <td>${e.position}</td>
-                                                            <td>${e.inTime}</td>
-                                                            <td>${e.outTime}</td>
-                                                            <td>${e.overtimeHours}</td>
-                                                            <td><a href="/deleteAttendance?pid=${e.attendanceId}"><span
-                                                                    class="glyphicon glyphicon-trash"></span></a></td>
-                                                        </tr>
-                                                    </c:forEach>
+
                                                     </tbody>
                                                 </table>
                                             </div>

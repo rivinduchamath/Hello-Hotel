@@ -21,6 +21,10 @@ public class SalarySettingsDTO {
     public SalarySettingsDTO() {
     }
 
+    public SalarySettingsDTO(int id) {
+        this.id = id;
+    }
+
     public int getId() {
         return id;
     }

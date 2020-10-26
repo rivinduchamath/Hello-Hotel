@@ -215,26 +215,92 @@
 
                                     <!-- Table row -->
                                     <div class="row">
+                                        <div class="col-md-5">
                                         <div class="  table">
                                             <table id="saq" class="table table-striped">
                                                 <tbody>
 
                                                     <tr>
-                                                        <td>Bill Id:&#9;</td>
-                                                        <td>${data.banquetBillId}</td>
+                                                        <th >Banquet Bill Id</th>
+                                                        <th width="60%">:${data.banquetBillId}</th>
+
                                                     </tr>
+                                                    <tr>
+                                                        <th>Customer Name</th>
+                                                        <th width="60%">:${data.name}</th>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>Customer Address</th>
+                                                        <th width="60%">:${data.address}</th>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>Banquet Order Id</th>
+                                                        <th width="60%">:${data.orderId}</th>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>Banquet Date</th>
+                                                        <th width="60%">:${data.date}</th>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>Hall No</th>
+                                                        <th width="60%">:${data.hallId}</th>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>Advance Fee</th>
+                                                        <th width="60%">:${data.advanceFee}</th>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>Food price</th>
+                                                        <th width="60%">:${data.foodPrice}</th>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>Extra Charges</th>
+                                                        <th width="60%">:${data.otherPrice}</th>
+                                                    </tr>
+
+                                                    <tr>
+                                                        <th>Order Status</th>
+                                                        <th width="60%">:${data.orderState}</th>
+                                                    </tr>
+
+
+
+
 
 
                                                 </tbody>
                                             </table>
                                         </div>
+                                        </div>
                                         <!-- /.col -->
-                                    </div>
-                                    <!-- /.row -->
+                                        <div class="col-md-7">
+                                            <p class="lead">Amount Due <%=date%></p>
+                                            <div class="table-responsive">
+                                                <table class="table">
+                                                    <tbody>
+                                                    <tr>
+                                                        <th>Tax&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:0.0</th>
+                                                        <td><span id="val4"></span></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th style="width:50%">Tot Qty&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:${data.noOfPlates}</th>
+                                                        <td><span id="val2"></span></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>Basic Tot&nbsp;&nbsp;:${data.total}
+                                                            <small style="font-weight: bold"><span id="val9"></span>
+                                                            </small>
+                                                        </th>
+                                                        <td><span id="val3"></span></td>
+                                                    </tr>
 
-                                    <div class="row">
-                                        <!-- accepted payments column -->
-                                        <div class="col-md-6">
+                                                    <tr>
+                                                        <th>Total&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:${data.total}</th>
+                                                        <td><span id="val"></span></td>
+                                                    </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
                                             <p class="lead">Payment Methods:</p>
                                             <img src="../../images/visa.png" alt="Visa">
                                             <img src="../../images/mastercard.png" alt="Mastercard">
@@ -247,39 +313,11 @@
                                                 suscipit ullam ut!
                                             </p>
                                         </div>
-                                        <!-- /.col -->
-                                        <div class="col-md-6">
-                                            <p class="lead">Amount Due <%=date%></p>
-                                            <div class="table-responsive">
-                                                <table class="table">
-                                                    <tbody>
-                                                    <tr>
-                                                        <th>Tax:</th>
-                                                        <td><span id="val4"></span></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <th style="width:50%">Tot Qty:</th>
-                                                        <td><span id="val2"></span></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <th>Basic Tot:
-                                                            <small style="font-weight: bold"><span id="val9"></span>
-                                                            </small>
-                                                        </th>
-                                                        <td><span id="val3"></span></td>
-                                                    </tr>
 
-                                                    <tr>
-                                                        <th>Total:</th>
-                                                        <td><span id="val"></span></td>
-                                                    </tr>
-                                                    </tbody>
-                                                </table>
-                                            </div>
-                                        </div>
-                                        <!-- /.col -->
                                     </div>
                                     <!-- /.row -->
+
+
 
                                     <!-- this row will not appear when printing -->
                                     <div class="row no-print">

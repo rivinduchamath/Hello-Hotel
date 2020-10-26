@@ -1,10 +1,4 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: asus
-  Date: 9/7/2020
-  Time: 3:36 PM
-  To change this template use File | Settings | File Templates.
---%>
+
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page import="java.util.Date" %>
@@ -215,11 +209,24 @@
                                                         <th>EPF (%)</th>
                                                         <th>ETF (%)</th>
                                                         <th>Service Charges (%)</th>
+                                                        <th>Date</th>
+                                                        <th></th>
                                                     </tr>
 
                                                     </thead>
                                                     <tbody>
-
+                                                    <c:forEach items="${getSalarySettings}" var="item">
+                                                        <tr>
+                                                            <td style="display: none">${item.id}</td>
+                                                            <td>${item.epf}</td>
+                                                            <td>${item.etf}</td>
+                                                            <td>${item.serviceCharge}</td>
+                                                            <td>${item.date}</td>
+                                                            <td><a href="deleteTable/${item.id}">
+                                                                <i class="fa fa-trash"></i>
+                                                            </a></td>
+                                                        </tr>
+                                                    </c:forEach>
                                                     </tbody>
                                                 </table>
                                             </div>
@@ -230,7 +237,7 @@
                         </div>
                     </div>
                     <div class="col-12 col-sm-12 col-md-12 col-lg-5 col-xl-5">
-                        <form method="POST" action="saveCurrentBill" name="saveCurrentBill">
+                        <form method="POST" action="saveSettings" name="saveSettings">
 
                             <div class="form-group">
                                 <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">

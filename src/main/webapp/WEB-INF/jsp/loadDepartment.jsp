@@ -256,9 +256,22 @@
                             <div class="form-group">
                                 <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12"><br>
                                     <label>Department Name</label>
-                                    <input type="text" class="form-control"
-                                           required="required" name="departmentName" id="amount"
-                                           placeholder="Department"/></div>
+
+                                    <select type="c" class="form-control"
+                                            required="required" name="departmentName"
+                                            id="amount" placeholder="Department">
+                                        <option>Manage</option>
+                                        <option>Kitchen</option>
+                                        <option>Restaurant</option>
+                                        <option>Inventory</option>
+                                        <option>Beverage</option>
+                                        <option>HR</option>
+                                        <option>HouseKeeping</option>
+                                        <option>FrontDesk</option>
+                                    </select>
+                                </div>
+
+
 
                             </div>
 

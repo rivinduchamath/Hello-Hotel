@@ -26,8 +26,7 @@ public class ManageBOImpl implements ManageBO {
     EmployeeDAO manageDAO;
     @Autowired
     DepartmentDAO departmentDAO;
-    @Autowired
-    DepartmentDAO humanResourceDAO;
+
     @Autowired
     AttendanceDAO attendanceDAO;
     @Override
@@ -46,7 +45,7 @@ public class ManageBOImpl implements ManageBO {
                 employeeDTO.getSalary(),
                 employeeDTO.getDate(),
                 employeeDTO.getImage(),
-                humanResourceDAO.findOne(employeeDTO.getDepartment())
+                departmentDAO.findOne(employeeDTO.getDepartment())
         ));
     }
 
@@ -83,7 +82,7 @@ public class ManageBOImpl implements ManageBO {
 
     @Override
     public List<DepartmentDTO> findAllDepartment() {
-        Iterable<Department> all = humanResourceDAO.findAll();
+        Iterable<Department> all = departmentDAO.findAll();
         List<DepartmentDTO> dtos = new ArrayList<>();
         for (Department department: all) {
             dtos.add(new DepartmentDTO(
