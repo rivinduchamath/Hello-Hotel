@@ -27,35 +27,35 @@ public class NoticeController { //notice.jsp For All Notice
     @Autowired
     ManageBO manageBO;
 
-    @GetMapping("notice")
+    @GetMapping("notice") //Load Notice jsp Page
     public ModelAndView load(Model model) {
         model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo((SuperController.idNo)));
         ModelAndView mav = new ModelAndView("notice");
 
-        List<NoticeDTO> p = noticeBO.findAll();
+        List<NoticeDTO> p = noticeBO.findAll();//Load All Notice
         model.addAttribute("loadNoticeTable", p);
-        List<DepartmentDTO> p2 = manageBO.findAllDepartment();
+        List<DepartmentDTO> p2 = manageBO.findAllDepartment();//Load All Department For Combo Box
         model.addAttribute("loadDepartment", p2);
         return mav;
     }
 
-    @PostMapping("noticeSave")
+    @PostMapping("noticeSave") //Save Notice
     public String saveForm(@ModelAttribute NoticeDTO noticeDTO) {
         try {
-            NoticeDTO noticeDTO1 = noticeBO.findId();
+            NoticeDTO noticeDTO1 = noticeBO.findId();//Find Highest Id
             NoticeDTO noticeDTO2 = null;
             try {
-                noticeDTO2 = noticeBO.findNoticeById(noticeDTO.getNoticeId());
+                noticeDTO2 = noticeBO.findNoticeById(noticeDTO.getNoticeId()); //Find Selected Id
             }catch (NullPointerException d){
                 int maxId = (noticeDTO1.getNoticeId());
-                if (noticeDTO.getNoticeId()==(maxId)) {
+                if (noticeDTO.getNoticeId()==(maxId)) {//Update
                     noticeDTO.setNoticeId((maxId));
-                } else {
+                } else {//New Notice
                     maxId++;
                     noticeDTO.setNoticeId((maxId));
                 }
             }
-        } catch (NullPointerException e){
+        } catch (NullPointerException e){//Initial Save
             noticeDTO.setNoticeId(1);
         }
 
@@ -71,7 +71,7 @@ public class NoticeController { //notice.jsp For All Notice
             return "redirect:/notice";
         }
         else{
-            return  "Notice is not available";
+            return  "redirect:/notice";
         }
     }
 

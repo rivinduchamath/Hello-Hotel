@@ -28,14 +28,14 @@ public class ManageUserController {
     @Autowired
     MailSend mailSend;
 
-    @GetMapping("/manageUser")
+    @GetMapping("/manageUser")//Load Manage User Page
     public String loginPage(HttpServletResponse response, Model model, HttpServletRequest request) {
         model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
         EmployeeDTO employeeDTO = new EmployeeDTO();
         model.addAttribute("employeeDTO", employeeDTO);
-        List<EmployeeDTO> p = manageBO.findAllUser();
+        List<EmployeeDTO> p = manageBO.findAllUser(); //find All registered Employees
         model.addAttribute("loadAllUserTable", p);
-        List<DepartmentDTO> p2 = manageBO.findAllDepartment();
+        List<DepartmentDTO> p2 = manageBO.findAllDepartment();//Find All Department in comboBox
         model.addAttribute("loadDepartment", p2);
         return "manageUser";
     }
@@ -65,15 +65,14 @@ public class ManageUserController {
         }
         manageBO.save(employeeDTO);
         try {
-            mailSend.sendMailToNewEmployee(employeeDTO);
+            mailSend.sendMailToNewEmployee(employeeDTO);//Send Mail
         } catch (Exception e) {
 
         }
-
         return "redirect:/manageUser";
     }
 
-    @RequestMapping(value = "deleteEmployee/{userId}")
+    @RequestMapping(value = "deleteEmployee/{userId}")// Delete Employee
     public void deleteEmployee(@PathVariable("userId") int userId, HttpServletRequest request, HttpServletResponse response) throws IOException {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
@@ -85,7 +84,15 @@ public class ManageUserController {
             out.println("</script>");
 
         } else {
-            manageBO.deleteEmployee(userId);
+            try {
+                manageBO.deleteEmployee(userId);
+            }catch (Exception e){
+                out.println("<script type=\"text/javascript\">");
+                out.println("alert('You Cant Delete this Employee. This" +
+                        " Employee Already Saved in Another Table');");
+                out.println("location='/manageUser';");
+                out.println("</script>");
+            }
             response.sendRedirect("/manageUser");
         }
 
