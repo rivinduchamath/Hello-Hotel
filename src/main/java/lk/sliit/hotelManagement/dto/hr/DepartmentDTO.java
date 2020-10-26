@@ -12,6 +12,10 @@ public class DepartmentDTO {
     public DepartmentDTO() {
     }
 
+    public DepartmentDTO(int departmentId) {
+        this.departmentId = departmentId;
+    }
+
     public int getDepartmentId() {
         return departmentId;
     }

@@ -84,52 +84,26 @@
 
                                                 <th>Item Id</th>
                                                 <th>Item Name</th>
-                                                <th>Department</th>
-                                                <th>Order Qty</th>
-                                                <th>Qty On Hand</th>
-                                                <th>Required Qty</th>
+                                                <th>Description</th>
+                                                <th>Order</th>
                                                 <th>Date</th>
-                                                <th>Expected Date</th>
-                                                <th>Order Holder</th>
-                                                <th>Add Item</th>
-                                                <th>State</th>
+                                                <th>Price</th>
+
                                             </tr>
 
 
                                             </thead>
                                             <tbody>
-                                            <c:forEach items="${loadInventoryNoticeItemTable}" var="e">
+                                            <c:forEach items="${loadInventoryBeverage}" var="e">
                                                 <tr>
 
                                                     <td>${e.inventoryId}</td>
                                                     <td>${e.text}</td>
-                                                    <td>${e.department}</td>
+                                                    <td>${e.description}</td>
                                                     <td>${e.orderQty}</td>
-                                                    <td>${e.qtyOnHand}</td>
-                                                    <td>
-                                                            ${e.qtyOnHand > e.orderQty ? 0.0 : e.orderQty-e.qtyOnHand}
-                                                    </td>
                                                     <td>${e.date}</td>
-                                                    <td>${e.expDate}</td>
-                                                    <td>${e.orderHolder}</td>
-                                                    <td style="width: 20%" >
-                                                        <form action="updateQtyToday1" method="post">
-                                                            <div class="input-group" >
-                                                                <input style="display: none" value="${e.inventoryId}" type="text" class="form-control" name="inventoryId">
-                                                                <input required type="number" class="form-control" name="orderQty">
-                                                                <span class="input-group-btn">
-                                                                     <button type="submit" style="font-weight: bolder;
-                                                                      background-color: white; color: #b3adad;
-                                                                      border: #0f0f0f solid 1px"
-                                                                             class="btn">+</button>
-                                                                    </span>
-                                                            </div>
-                                                        </form>
-                                                    </td>
-                                                    <td>
-                                                                     ${e.qtyOnHand < e.orderQty ? "Incomplete" : "Complete"}
+                                                    <td>${e.getPrice}</td>
 
-                                                    </td>
                                                 </tr>
 
 

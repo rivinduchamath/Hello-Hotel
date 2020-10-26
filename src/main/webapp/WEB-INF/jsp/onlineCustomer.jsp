@@ -32,7 +32,16 @@
                     <span>or use your email for registration</span>
                     <input required type="text" placeholder="Name" name="name" />
                     <input required type="email" placeholder="Email" name="email" />
-                    <input required type="text" placeholder="Address" name="address" />
+                    <select id="setType" class="form-control"
+                            style="width: 100%; border-color: lightgray; height: 35px; background-color: #eeeeee"
+                            name="address">
+                        <c:forEach items="${loadLocationType}" var="category">
+                            <option value="${category.locationNames}"
+                                    <c:if test="${category.locationId eq p}">selected="selected"</c:if> >
+                                    ${category.locationNames}
+                            </option>
+                        </c:forEach>
+                    </select>
                     <input required type="number" placeholder="Mobile" name="contact"/>
                     <input required type="text" placeholder="User Name" name="userName" />
                     <input  required type="password" placeholder="Password"  />

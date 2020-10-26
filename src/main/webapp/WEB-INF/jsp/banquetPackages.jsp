@@ -166,7 +166,7 @@
         <div class="right_col" role="main">
             <div class="page-title">
                 <div class="title_left">
-                    <h3>Packages And Menus Prices<br>
+                    <h3>Package Prices and Menus <br>
                     </h3>
                     <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
                         <div class="col-6 col-sm-6 col-md-6 col-lg-4 col-xl-4">
@@ -286,8 +286,8 @@
                                             <div class="col-md-3 col-sm-6  " style="color: #000000">
                                                 <div class="pricing">
                                                     <div class="title">
-                                                        <h1>Bronze</h1>
-                                                        <samall>A splendid package for your big day</samall>
+                                                        <h1>${menu1.name}</h1>
+                                                        <samall>A ${menu1.name} package for your big day</samall>
                                                     </div>
                                                     <div class="x_content">
                                                         <div class="">
@@ -295,21 +295,24 @@
                                                                 <ul class="list-unstyled text-left">
                                                                     <li type="disc"><strong> WELCOME DRINK</strong></li>
                                                                     <li type="disc"><strong>SALADS</strong></li>
-                                                                    <li>Egg and Onion Salad on Mirror</li>
-                                                                    <li>Mix Vegetable Salad</li>
+                                                                    <c:forEach items="${card1category1}" var="e">
+                                                                        <li>${e}</li>
+                                                                    </c:forEach>
                                                                     <li type="disc"><strong>RICE & NOODLES</strong></li>
-                                                                    <li>Basmathi Chicken Fried Rice</li>
-                                                                    <li>Vegetable Fried Noodles</li>
+                                                                    <c:forEach items="${card1category2}" var="e">
+                                                                        <li>${e}</li>
+                                                                    </c:forEach>
                                                                     <li type="disc"><strong>MAIN DISHES</strong></li>
-                                                                    <li>Chicken Curry</li>
-                                                                    <li>Fish ambulthiyal</li>
+                                                                    <c:forEach items="${card1category3}" var="e">
+                                                                        <li>${e}</li>
+                                                                    </c:forEach>
 
                                                                 </ul>
                                                             </div>
                                                         </div>
                                                         <div class="pricing_footer" style="background-color:#00aa88;
                                     color: #000000;font-weight: bolder">
-                                                            <h3>Rs. 2,750 </h3>nett per person
+                                                            <h3>Rs. ${menu1.unitPrice} </h3>nett per person
 
                                                         </div>
 
@@ -322,8 +325,8 @@
                                             <div class="col-md-3 col-sm-6  " style="color: #000000">
                                                 <div class="pricing">
                                                     <div class="title" >
-                                                        <h1>Silver</h1>
-                                                        <samall>A splendid package for your big day</samall>
+                                                        <h1>${menu2.name}</h1>
+                                                        <samall>A ${menu2.name} package for your big day</samall>
                                                     </div>
                                                     <div class="x_content">
                                                         <div class="">
@@ -331,21 +334,24 @@
                                                                 <ul class="list-unstyled text-left">
                                                                     <li type="disc"><strong> WELCOME DRINK</strong></li>
                                                                     <li type="disc"><strong>SALADS</strong></li>
-                                                                    <li>Egg and Onion Salad on Mirror</li>
-                                                                    <li>Mix Vegetable Salad</li>
+                                                                    <c:forEach items="${card2category1}" var="e">
+                                                                        <li>${e}</li>
+                                                                    </c:forEach>
                                                                     <li type="disc"><strong>RICE & NOODLES</strong></li>
-                                                                    <li>Basmathi Chicken Fried Rice</li>
-                                                                    <li>Vegetable Fried Noodles</li>
+                                                                    <c:forEach items="${card2category2}" var="e">
+                                                                        <li>${e}</li>
+                                                                    </c:forEach>
                                                                     <li type="disc"><strong>MAIN DISHES</strong></li>
-                                                                    <li>Chicken Curry</li>
-                                                                    <li>Fish ambulthiyal</li>
+                                                                    <c:forEach items="${card2category3}" var="e">
+                                                                        <li>${e}</li>
+                                                                    </c:forEach>
 
                                                                 </ul>
                                                             </div>
                                                         </div>
                                                         <div class="pricing_footer" style="background-color:#00aa88;
                                     color: #000000;font-weight: bolder">
-                                                            <h3>Rs. 3,250</h3>nett per person
+                                                            <h3>Rs. ${menu2.unitPrice}</h3>nett per person
 
                                                         </div>
 
@@ -358,8 +364,8 @@
                                             <div class="col-md-3 col-sm-6  " style="color: #000000">
                                                 <div class="pricing">
                                                     <div class="title">
-                                                        <h1>Gold</h1>
-                                                        <samall>A splendid package for your big day</samall>
+                                                        <h1>${menu3.name}</h1>
+                                                        <samall>A ${menu3.name} package for your big day</samall>
                                                     </div>
                                                     <div class="x_content">
                                                         <div class="">
@@ -367,21 +373,24 @@
                                                                 <ul class="list-unstyled text-left">
                                                                     <li type="disc"><strong> WELCOME DRINK</strong></li>
                                                                     <li type="disc"><strong>SALADS</strong></li>
-                                                                    <li>Egg and Onion Salad on Mirror</li>
-                                                                    <li>Mix Vegetable Salad</li>
+                                                                    <c:forEach items="${card3category1}" var="e">
+                                                                        <li>${e}</li>
+                                                                    </c:forEach>
                                                                     <li type="disc"><strong>RICE & NOODLES</strong></li>
-                                                                    <li>Basmathi Chicken Fried Rice</li>
-                                                                    <li>Vegetable Fried Noodles</li>
+                                                                    <c:forEach items="${card3category2}" var="e">
+                                                                        <li>${e}</li>
+                                                                    </c:forEach>
                                                                     <li type="disc"><strong>MAIN DISHES</strong></li>
-                                                                    <li>Chicken Curry</li>
-                                                                    <li>Fish ambulthiyal</li>
+                                                                    <c:forEach items="${card3category3}" var="e">
+                                                                        <li>${e}</li>
+                                                                    </c:forEach>
 
                                                                 </ul>
                                                             </div>
                                                         </div>
                                                         <div class="pricing_footer" style="background-color:#00aa88;
                                     color: #000000;font-weight: bolder">
-                                                            <h3>Rs. 3,750</h3>nett per person
+                                                            <h3>Rs. ${menu3.unitPrice}</h3>nett per person
 
                                                         </div>
 
@@ -394,8 +403,8 @@
                                             <div class="col-md-3 col-sm-6  " style="color: #000000">
                                                 <div class="pricing">
                                                     <div class="title">
-                                                        <h1>Platinum</h1>
-                                                        <samall>A splendid package for your big day</samall>
+                                                        <h1>${menu4.name}</h1>
+                                                        <samall>A ${menu4.name} package for your big day</samall>
                                                     </div>
                                                     <div class="x_content">
                                                         <div class="">
@@ -403,21 +412,24 @@
                                                                 <ul class="list-unstyled text-left">
                                                                     <li type="disc"><strong> WELCOME DRINK</strong></li>
                                                                     <li type="disc"><strong>SALADS</strong></li>
-                                                                    <li>Egg and Onion Salad on Mirror</li>
-                                                                    <li>Mix Vegetable Salad</li>
+                                                                    <c:forEach items="${card4category1}" var="e">
+                                                                        <li>${e}</li>
+                                                                    </c:forEach>
                                                                     <li type="disc"><strong>RICE & NOODLES</strong></li>
-                                                                    <li>Basmathi Chicken Fried Rice</li>
-                                                                    <li>Vegetable Fried Noodles</li>
+                                                                    <c:forEach items="${card4category2}" var="e">
+                                                                        <li>${e}</li>
+                                                                    </c:forEach>
                                                                     <li type="disc"><strong>MAIN DISHES</strong></li>
-                                                                    <li>Chicken Curry</li>
-                                                                    <li>Fish ambulthiyal</li>
+                                                                    <c:forEach items="${card4category3}" var="e">
+                                                                        <li>${e}</li>
+                                                                    </c:forEach>
 
                                                                 </ul>
                                                             </div>
                                                         </div>
                                                         <div class="pricing_footer" style="background-color:#00aa88;
                                     color: #000000;font-weight: bolder">
-                                                            <h3>Rs. 4,000</h3>nett per person
+                                                            <h3>Rs. ${menu4.unitPrice}</h3>nett per person
 
                                                         </div>
 

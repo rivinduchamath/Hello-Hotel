@@ -1,13 +1,17 @@
 package lk.sliit.hotelManagement.service.custom;
 
+import lk.sliit.hotelManagement.dto.banquet.LimitDTO;
+import lk.sliit.hotelManagement.dto.inventory.InventoryDTO;
 import lk.sliit.hotelManagement.dto.inventory.InventoryNoticeDTO;
 import lk.sliit.hotelManagement.dto.kitchen.FoodItemDTO;
+import lk.sliit.hotelManagement.dto.kitchen.KitchenFoodOrderDTO;
 import lk.sliit.hotelManagement.dto.kitchen.MenuDTO;
-import lk.sliit.hotelManagement.dto.manager.EmployeeDTO;
+import lk.sliit.hotelManagement.dto.kitchen.MenuDetailsDTO;
+import lk.sliit.hotelManagement.dto.restaurant.restaurantCounterOrder.RestaurantCounterOrderDetailDTO;
 import lk.sliit.hotelManagement.service.SuperBO;
 
 
-
+import java.sql.Date;
 import java.util.List;
 
 public interface KitchenBO extends SuperBO {
@@ -29,10 +33,48 @@ public interface KitchenBO extends SuperBO {
 
     MenuDTO findMenuItemById(int menuItemId);
 
-    void saveFoodDetail(MenuDTO menuDTO);
+    void saveFoodDetail(MenuDetailsDTO menuDTO);
 
-    List<MenuDTO> findFoodItemsDetails(int menuId);
+    List<MenuDetailsDTO> findFoodItemsDetails(int menuId);
 
 
     List<InventoryNoticeDTO> findWeekOrderNotice();
+
+    FoodItemDTO findFoodItemById(int itemId);
+
+    List<MenuDTO> findMenusByType(String type);
+
+    MenuDTO findMaxMenuIdByType(String type);
+
+    MenuDTO findMinMenuIdByType(String type);
+
+    List<RestaurantCounterOrderDetailDTO> findAllOrders();
+
+    void deleteItemFromPack(int menuItemId, int foodItemID);
+
+    void saveKitchenFoodOrder(KitchenFoodOrderDTO kitchenFoodOrderDTO);
+
+    void deleteKitchenFoodOrder(int id);
+
+    KitchenFoodOrderDTO loadKitchenFoodOrderById( int id);
+
+    List<KitchenFoodOrderDTO> loadKitchenFoodOrderBydate(Date date);
+
+    List<KitchenFoodOrderDTO> loadKitchenFoodOrderByDescription(String description);
+
+    void saveDailyMenuId(String id);
+
+    public List<MenuDTO> getDailyMenuByType();
+
+    void saveMenuDate(LimitDTO limitDTO);
+
+    LimitDTO findMenuDate();
+
+    void saveInventoryNotice(InventoryNoticeDTO inventoryNoticeDTO);
+
+    int findMaxKitchenOrderId();
+
+    List<InventoryDTO> findKitchenInventory(String s);
+
+    KitchenFoodOrderDTO getExisting(int foodItemId, Date expectedDate);
 }

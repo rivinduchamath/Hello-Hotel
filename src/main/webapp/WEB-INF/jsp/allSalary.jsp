@@ -138,14 +138,14 @@
                                                 <c:forEach items="${listEmployeesTableSalarya}" var="e">
                                                     <tr>
                                                         <td>${e.salaryId}</td>
-                                                        <td>${e.employeeID.idNo}</td>
-                                                        <td>${e.employeeID.name}</td>
+                                                        <td>${e.employeeID}</td>
+                                                        <td>${e.employeeName}</td>
                                                         <td>${e.basicSalary}</td>
-                                                        <td>${e.bonus}</td>
-                                                        <td>${e.incomeTax}</td>
                                                         <td>${e.otHours}</td>
-                                                        <td>${e.otRate}</td>
-                                                            </tr>
+                                                        <td>${e.employeeID}</td>
+                                                        <td>${e.otHours}</td>
+                                                        <td>${e.otHours}</td>
+                                                    </tr>
                                                 </c:forEach>
                                                 </tbody>
                                             </table>

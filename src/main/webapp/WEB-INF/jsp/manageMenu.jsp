@@ -9,6 +9,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page import="java.util.Date" %>
 <%@ page import="java.text.SimpleDateFormat" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <html lang="en">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -88,22 +89,20 @@
         <div class="right_col" role="main">
             <div class="page-title">
                 <div class="title_left">
-                    <h3>Edit Menu
-                        <small>Welcome To Hotel Hareesha</small>
-                    </h3>
+                    <h3>Edit Menu</h3>
                     <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
-                            <div class="col-6 col-sm-6 col-md-6 col-lg-2 col-xl-2">
-                                <a href="/kitchen">
-                                    <button type="button" class="large-btn btn btn-dark"><i class="fa fa-mail-reply">
-                                        Back</i>
-                                    </button>
-                                </a>
-                            </div>
-                            <div class="col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
-                                <a href="/manageFoodPacks">
-                                    <button type="button" class="large-btn btn btn-dark">Manage Food Packages</button>
-                                </a>
-                            </div>
+                        <div class="col-6 col-sm-6 col-md-6 col-lg-2 col-xl-2">
+                            <a href="/kitchen">
+                                <button type="button" class="large-btn btn btn-dark"><i class="fa fa-mail-reply">
+                                    Back</i>
+                                </button>
+                            </a>
+                        </div>
+                        <div class="col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+                            <a href="/manageFoodPacks">
+                                <button type="button" class="large-btn btn btn-dark">Manage Food Packages</button>
+                            </a>
+                        </div>
                     </div>
                 </div>
 
@@ -219,15 +218,15 @@
                                 </div>
                                 <div class="x_content">
                                     <br/>
-                                    <form action="saveFoodItem" method="POST" class="form-horizontal form-label-left"
-                                          data-parsley-validate id="demo-form3">
-                                        <input class="form-control" name="getId" id="itemId" type="hidden" >
+
+                                    <form:form action="saveFoodItem" method="post" modelAttribute="foodItemDTO">
+                                        <input class="form-control" name="itemId" value="0" id="itemId" type="hidden" >
 
 
                                         <div class=" form-group">
                                             <label class=" label-align"
-                                                   for="itemName">Item Name: <span
-                                                    class="required">*  &nbsp;</span>
+                                                   for="itemName">Item Name:
+                                                <span class="required">*  &nbsp;</span>
                                             </label>
                                             <div class=" ">
                                                 <input class="form-control" name="itemName" id="itemName"
@@ -239,8 +238,11 @@
                                             </label>
                                             <select class="form-control" required="required" name="itemCategory"
                                                     id="itemCat" data-placeholder="Select Category">
-                                                <option>Spicy</option>
-                                                <option>Sweet</option>
+
+                                                <c:forEach items="${foodItemCategories}" var="item">
+                                                    <option>${item}</option>
+                                                </c:forEach>
+
                                             </select>
                                         </div>
                                         <div class=" form-group">
@@ -253,14 +255,33 @@
                                             </div>
                                         </div>
                                         <div class=" form-group">
-                                            <label class="label-align">Image:
-                                                <span class="required">* &nbsp; &nbsp; &nbsp;</span>
-                                            </label>
-                                            <br>
-                                            <input type="file" name="src" style="margin: 5px">
-                                            <br><br>
-                                        </div>
+                                            <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6"><br>
+                                                <div class="col-md-5 col-lg-5 col-xl-5">
 
+                                                    <label for="img-preview">Image</label>
+                                                    <div class="img-upload-card ">
+                                                        <c:choose>
+                                                            <c:when test="${empty foodItemDTO.src}">
+                                                                <img src="../../images/icons/food.jpg" id="img-preview"
+                                                                     style="width: 100%; height: 40px"/>
+                                                            </c:when>
+                                                            <c:otherwise>
+                                                                <img src="${foodItemDTO.src}" id="img-preview"
+                                                                     style="width: 100%;height: 40px"/>
+                                                            </c:otherwise>
+                                                        </c:choose>
+                                                        <label class="file-upload-container" for="file-upload"
+                                                               style="font-size: 13px; padding: -10px 5px 0px 5px; height: 30px">
+                                                            <input id="file-upload" type="file" style="display:none;">
+                                                            Select
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <br>
+                                            <br>
+                                        </div>
+                                        <form:hidden id="imgUrl" path="src" value="../../images/icons/food.jpg"/>
                                         <div class=" form-group">
                                             <div class=" ">
                                                 <button class="btn btn-dark" type="submit" value="Register">+Add /
@@ -270,8 +291,7 @@
 
                                             </div>
                                         </div>
-
-                                    </form>
+                                    </form:form>
                                 </div>
                             </div>
                         </div>
@@ -309,6 +329,7 @@
                                                     <tr>
                                                         <th>Id</th>
                                                         <th>Item Name</th>
+                                                        <th>img</th>
                                                         <th>Category</th>
                                                         <th>Unit Price</th>
                                                         <th></th>
@@ -321,6 +342,8 @@
                                                         <tr>
                                                             <td>${item.itemId}</td>
                                                             <td>${item.itemName}</td>
+                                                            <td><img src="${item.src}"
+                                                                     class="avatar" alt="Avatar"></td>
                                                             <td>${item.itemCategory}</td>
                                                             <td>${item.unitePrice}</td>
                                                             <td><a href="deleteFoodItem/${item.itemId}">
@@ -347,39 +370,10 @@
         <!--/Content/////////////////////////////////////////////////////////////////-->
 
     </div>
-    <%--///////////////////////////////////////////////////////////////////////////////////////////////////////////--%>
-
-    <%--Chart Income--%>
-    <%--Chart Today--%>
-
-    <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
-        <div class="col-sm-12 col-md-7 col-lg-7 col-xl-7">
-            <div id="chartdiv"></div>
-            <br>
-            <P><h6>Top 5 Salaries</h6></P>
-        </div>
-        <div class="col-sm-12 col-md-5 col-lg-5 col-xl-5">
-            <div id="chartdiv1"></div>
-            <br>
-            <P><h6>Yesterday Income</h6></P>
-        </div>
-    </div>
-    <%--/Chart Yesterday--%>
-    <%--/Chart Income--%>
-
-    <%--/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////--%>
-
 
 </div>
-</div>
-<!-- /page content -->
 
-<!-- footer content -->
 <jsp:include page="footer.jsp"/>
-<!-- /footer content -->
-</div>
-</div>
-
 
 <!-- jQuery -->
 <script src="../../vendors/jquery/dist/jquery.min.js"></script>
@@ -405,7 +399,7 @@
 <script src="../../vendors/jszip/dist/jszip.min.js"></script>
 <!-- Custom Theme Scripts -->
 <script src="../../build/js/custom.min.js"></script>
-
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 <script>
 
     var selectedRow = null;
@@ -413,9 +407,46 @@
         selectedRow = $(this);
         $("#itemId").val($(this).find("td:first-child").text());
         $("#itemName").val($(this).find("td:nth-child(2)").text());
-        $("#itemCat").val($(this).find("td:nth-child(3)").text());
-        $("#unitPrice").val($(this).find("td:nth-child(4)").text());
+        $("#itemCat").val($(this).find("td:nth-child(4)").text());
+        $("#unitPrice").val($(this).find("td:nth-child(5)").text());
         selectedRow.addClass('row-selected');
+    });
+
+
+    let imgPreview = document.getElementById('img-preview');
+    let fileUpload = document.getElementById('file-upload');
+    let imgUrl = document.getElementById("imgUrl");
+    let CLOUDINARY_API_URL = 'https://api.cloudinary.com/v1_1/dwdv5hhga/upload';
+    let CLOUDINARY_UPLOAD_PRESET = 'sqdn7zkx';
+
+    fileUpload.addEventListener('change', function (event) {
+
+        let file = event.target.files[0];
+
+        let formData = new FormData();
+
+        formData.append('file', file);
+
+        console.log("form-data", file);
+
+        formData.append('upload_preset', CLOUDINARY_UPLOAD_PRESET);
+
+        axios({
+            url: CLOUDINARY_API_URL, method: 'POST', headers: {
+
+                'Content-Type': 'application/x-www-form-urlencoded'
+            }, data:
+
+            formData
+        }).then(function (res) {
+            imgPreview.src = res.data.secure_url;
+            imgUrl.value = res.data.secure_url;
+        }).catch(function (err) {
+
+            console.error(err);
+        });
+
+
     });
 </script>
 

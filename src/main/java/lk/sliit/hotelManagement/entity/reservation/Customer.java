@@ -14,7 +14,10 @@ public class Customer {
     private String email;
     private String name;
     private String address;
-    private int contactNumber;
+    private String contactNumber;
+    private int age;
+    private String state;
+    private String password;
     @OneToMany(mappedBy = "customer", cascade = {CascadeType.PERSIST,CascadeType.REFRESH, CascadeType.DETACH, CascadeType.MERGE})
     private List<Reservation> reservations = new ArrayList<>();
     @OneToMany(mappedBy = "customer", cascade = {CascadeType.PERSIST,CascadeType.REFRESH, CascadeType.DETACH, CascadeType.MERGE})
@@ -25,9 +28,19 @@ public class Customer {
     private List<BanquetOrder> banquetOrders = new ArrayList<>();
 
 
+    public Customer(int customerId, String email, String name,
+                    String address, String contactNumber, int age, String state, String password) {
+        this.customerId = customerId;
+        this.email = email;
+        this.name = name;
+        this.address = address;
+        this.contactNumber = contactNumber;
+        this.age = age;
+        this.state = state;
+        this.password = password;
+    }
 
-
-    public Customer(int customerId, String email, String name, String address, int contactNumber) {
+    public Customer(int customerId, String email, String name, String address, String contactNumber) {
         this.customerId = customerId;
         this.email = email;
         this.name = name;
@@ -35,7 +48,43 @@ public class Customer {
         this.contactNumber = contactNumber;
     }
 
+    public Customer(int customerId, String email, String name, String address, String contactNumber, int age) {
+        this.customerId = customerId;
+        this.email = email;
+        this.name = name;
+        this.address = address;
+        this.contactNumber = contactNumber;
+        this.age = age;
+    }
+
+    public Customer(int customerId, String email, String name, String address, String contactNumber, int age, String state) {
+
+        this.customerId = customerId;
+        this.email = email;
+        this.name = name;
+        this.address = address;
+        this.contactNumber = contactNumber;
+        this.age = age;
+        this.state = state;
+    }
+
     public Customer() {
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getState() {
+        return state;
+    }
+
+    public void setState(String state) {
+        this.state = state;
     }
 
     public String getEmail() {
@@ -70,13 +119,20 @@ public class Customer {
         this.address = address;
     }
 
-    public int getContactNumber() {
+    public String getContactNumber() {
         return contactNumber;
     }
 
-    public void setContactNumber(int contactNumber) {
+    public void setContactNumber(String contactNumber) {
         this.contactNumber = contactNumber;
     }
 
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
 
 }

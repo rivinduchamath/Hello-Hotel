@@ -227,14 +227,19 @@
                                                 </thead>
 
                                                 <tbody>
-                                                <c:forEach items="${tableData}" var="e">
+                                                <c:forEach items="${loadTable}" var="e">
                                                     <tr>
-                                                        <td>${e.salaryId}</td>
-                                                        <td>${e.employeeID.idNo}</td>
-                                                        <td>${e.employeeID.name}</td>
-                                                        <td>${e.basicSalary}</td>
-                                                        <td>${e.otHours*e.otRate}</td>
-                                                        <td>${e.bonus}</td>
+                                                        <td>${e.orderId}</td>
+                                                        <td>${e.banquetBillId}</td>
+                                                        <td>${e.date}</td>
+                                                        <td>${e.name}</td>
+                                                        <td>${e.contactNumber}</td>
+                                                        <td>${e.hallId}</td>
+                                                        <td>${e.menuId}</td>
+                                                        <td>${e.noOfPlates}</td>
+                                                        <td>${e.advanceFee}</td>
+                                                        <td>${e.total}</td>
+                                                        <td>${e.orderState}</td>
                                                     </tr>
                                                 </c:forEach>
 
@@ -248,67 +253,50 @@
                                     <div class="row">
                                         <!-- accepted payments column -->
                                         <div class="col-md-6">
-                                            <p class="lead">Amount Due 2/22/2014</p>
+                                            <p class="lead">Weekly Profit <%=date%> </p>
                                             <div class="table-responsive">
                                                 <table class="table">
                                                     <tbody>
                                                     <tr>
-                                                        <th style="width:50%">Basic Tot:</th>
+                                                        <th style="width:50%">Basic Total:</th>
                                                         <!--<td><span id="val2"></span></td>-->
-                                                        <td>30000</td>
+                                                        <td>${fullTotal}</td>
                                                     </tr>
                                                     <tr>
-                                                        <th>Tax: </th>
+                                                        <th>Tax (4%): </th>
                                                         <small style="font-weight: bold"><span id="val9"></span>
                                                         </small>
                                                         </th>
                                                         <!--<td><span id="val3"></span></td>-->
-                                                        <td>0</td>
-                                                    </tr>
+                                                        <td>${tax}</tr>
                                                     <tr>
-                                                        <th>Total:</th>
+                                                        <th>weekly profit</th>
                                                         <!--<td><span id="val"></span></td>-->
-                                                        <td>30000</td>
+                                                        <td>${profit}</td>
                                                     </tr>
                                                     </tbody>
                                                 </table>
+                                            </div>
+                                        </div>
+
+
+
+
+                                        <div class="col-md-6">
+
                                                 <p class="lead">Payment Methods:</p>
                                                 <img src="../../images/visa.png" alt="Visa">
                                                 <img src="../../images/mastercard.png" alt="Mastercard">
                                                 <img src="../../images/american-express.png" alt="American Express">
                                                 <img src="../../images/paypal.png" alt="Paypal">
                                                 <p class="text-muted well well-sm no-shadow" style="margin-top: 10px;">
-                                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus
-                                                    atque corporis culpa cupiditate dolore doloremque, dolores eaque eos
-                                                    ipsam itaque laborum maiores porro quis recusandae, sapiente sequi
-                                                    suscipit ullam ut!
+                                                    Hotel Hareesha is a guest house grade A hotel Which is situated in Galle.
+                                                    Over the years they have come a long way in winning the hearts of local as well as foreign tourists.
+
                                                 </p>
                                             </div>
                                         </div>
 
-
-                                        <!--chart -->
-                                        <div class="col-md-6 col-sm-6  ">
-                                            <div class="x_panel">
-                                                <div class="x_title">
-                                                    <h2>Banquet Report <small>Weekly</small></h2>
-                                                    <ul class="nav navbar-right panel_toolbox">
-                                                        <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
-                                                        </li>
-
-                                                        <li><a class="close-link"><i class="fa fa-close"></i></a>
-                                                        </li>
-                                                    </ul>
-                                                    <div class="clearfix"></div>
-                                                </div>
-                                                <div class="x_content">
-                                                    <canvas id="mybarChart"></canvas>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="clearfix"></div>
-                                    <!--/chart-->
                                         <!-- /.col -->
 
                                 </section>
@@ -355,34 +343,6 @@
 
 <!-- jQuery -->
 <script src="../../vendors/jquery/dist/jquery.min.js"></script>
-
-<script>
-    var rowCount = document.getElementById('saq').rows.length;
-    var table = document.getElementById("saq"), sumVal2 = 0.0, sumVal3 = 0.0, sumVal4 = 0.0, sumVal5 = 0.0;
-    var sumVal = 0.0;
-    var avgTax = 0.0;    var str = '';
-
-
-    for (var i = 1; i < table.rows.length; i++) {
-        str = str+ (table.rows[i].cells[0].innerHTML)+" ";
-        sumVal = sumVal + parseFloat(table.rows[i].cells[7].innerHTML);
-        sumVal2 = sumVal2 + parseFloat(table.rows[i].cells[3].innerHTML);
-        sumVal3 = sumVal3 + parseFloat(table.rows[i].cells[6].innerHTML);
-        sumVal5 = sumVal5 + parseFloat(table.rows[i].cells[5].innerHTML);
-        sumVal4 = sumVal4 + parseFloat(table.rows[i].cells[4].innerHTML);
-        avgTax = sumVal3 / i;
-    }
-
-
-    document.getElementById("val").innerHTML = "Rs: " + sumVal;
-    document.getElementById("val2").innerHTML = "Rs: " + sumVal2;
-    document.getElementById("val3").innerHTML = "Rs: " + sumVal3;
-    document.getElementById("val5").innerHTML = "Rs: " + sumVal5;
-    document.getElementById("val4").innerHTML = "Rs: " + sumVal4;
-    document.getElementById("val9").innerHTML = "(avg)" + avgTax + "%";
-    $("#itemPay").val(str);
-
-</script>
 
 <!-- jQuery -->
 <script src="../vendors/jquery/dist/jquery.min.js"></script>

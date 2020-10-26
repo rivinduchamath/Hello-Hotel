@@ -16,6 +16,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpServletRequest;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 @Controller
@@ -60,10 +63,72 @@ public class BanquetAdd {
         return mv;
     }
 
-    @PostMapping("saveBanquet")
-    public String saveForm(@ModelAttribute BanquetAddDTO banquetAddDTO){
-        banquetBO.saveBanquet(banquetAddDTO);
-        return "redirect:/banquetAdd";
+    @RequestMapping("saveBanquet")
+    public ModelAndView saveForm(@ModelAttribute BanquetAddDTO banquetAddDTO , HttpServletRequest request,Model model){
+
+        try {
+            int count = banquetBO.checkAvailability(banquetAddDTO.getDate());
+            if(count<2) {
+                if (banquetAddDTO.getHallId().equals("No 1")){
+                    int count1=banquetBO.checkHall1Availability(banquetAddDTO.getDate());
+                    if(count1<1) {
+                        banquetBO.saveBanquet(banquetAddDTO);
+                        request.setAttribute("successfulMsg","added successfully");
+                    }
+                    else{
+                        request.setAttribute("myp2","can not enter");
+                    }
+                }
+                if (banquetAddDTO.getHallId().equals("No 2")){
+                    int count2=banquetBO.checkHall2Availability(banquetAddDTO.getDate());
+                    if(count2 <1) {
+                        banquetBO.saveBanquet(banquetAddDTO);
+                        request.setAttribute("successfulMsg","added successfully");
+                    }
+                    else{
+                        request.setAttribute("myp3","can not enter");
+                    }
+                }
+            }
+            else{
+                request.setAttribute("myp1","can not enter");
+            }
+
+
+        }catch (Exception e){
+
+        }
+        ModelAndView mv = new ModelAndView("banquetAdd");
+        model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
+
+        try {
+            BanquetOrderDTO banquetOrderDTO = banquetBO.findTopBanquetId();
+            int topBanquet = (banquetOrderDTO.getOrderId()) + 1;
+            model.addAttribute("topBanquetId", topBanquet);
+        } catch (NullPointerException e) {
+            model.addAttribute("topBanquetId", 1);
+        }
+
+        try {
+            CustomerDTO customerDTO = banquetBO.findTopCustomerId();
+            int topCustomer = (customerDTO.getCustomerId()) + 1;
+            model.addAttribute("topCustomerId", topCustomer);
+        } catch (NullPointerException e){
+            model.addAttribute("topCustomerId", 1);
+        }
+
+        try {
+            BanquetBillDTO banquetBillDTO = banquetBO.findTopBanquetBillId();
+            int topBill = (banquetBillDTO.getBillId()) + 1;
+            model.addAttribute("topBanquetBillId", topBill);
+        } catch (NullPointerException e){
+            model.addAttribute("topBanquetBillId", 1);
+        }
+
+        List<CustomerDTO> list = banquetBO.findAllCustomers();
+        mv.addObject("loadTable",list);
+        return mv;
+
     }
 
 }

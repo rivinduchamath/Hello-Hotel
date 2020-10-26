@@ -1,10 +1,4 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: Rivindu Chamath
-  Date: 21-May-20
-  Time: 2:43 AM
-  To change this template use File | Settings | File Templates.
---%>
+
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page import="java.util.Date" %>
@@ -146,6 +140,14 @@
                             <a href="/notice">
                                 <button type="button" class="large-btn btn btn-dark"><i class="fa fa-bookmark">
                                     +Notice</i>
+                                </button>
+                            </a>
+
+                        </div>
+                        <div class="col-6 col-sm-6 col-md-6 col-lg-4 col-xl-4">
+                            <a href="/loadDepartment">
+                                <button type="button" class="large-btn btn btn-dark"><i class="fa fa-bookmark">
+                                    +Department</i>
                                 </button>
                             </a>
 
@@ -469,7 +471,7 @@
             <%--Chart Income--%>
             <%--Chart Today--%>
 
-            <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+        <%--    <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
                 <div class="col-sm-12 col-md-7 col-lg-7 col-xl-7">
                     <div id="chartdiv"></div>
                     <br>
@@ -480,7 +482,7 @@
                     <br>
                     <P><h6>Yesterday Income</h6></P>
                 </div>
-            </div>
+            </div>--%>
             <%--/Chart Yesterday--%>
             <%--/Chart Income--%>
 
@@ -523,7 +525,7 @@
 <!-- Custom Theme Scripts -->
 <script src="../../build/js/custom.min.js"></script>
 <%--Pie Chart 1--%>
-<script>
+<%--<script>
     am4core.ready(function () {
 
 // Themes begin
@@ -584,9 +586,9 @@
 
     }); // end am4core.ready()
 </script>
-<%--/Pie Chart 1--%>
+&lt;%&ndash;/Pie Chart 1&ndash;%&gt;
 
-<%--Pie Chart 2--%>
+&lt;%&ndash;Pie Chart 2&ndash;%&gt;
 <script>
     am4core.ready(function () {
 
@@ -723,7 +725,7 @@
         })
 
     }); // end am4core.ready()
-</script>
+</script>--%>
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 <script>
 

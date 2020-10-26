@@ -90,14 +90,16 @@ public class HouseKeepingController {
     }
 
     @GetMapping(value = "/roomDelete/{roomId}")
-    public void deleteRoom(Model model, @PathVariable("roomId") int roomId, HttpServletResponse response){
+    public String deleteRoom(Model model, @PathVariable("roomId") int roomId, HttpServletResponse response) throws IOException {
         model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
-        houseKeepingBO.deleteRoomDetails(roomId);
         try {
-            response.sendRedirect("/manageRooms");
-        } catch (IOException e){
+        houseKeepingBO.deleteRoomDetails(roomId);
+
+            return "redirect:/manageRooms";
+        } catch (Exception e){
 
         }
+       return "redirect:/manageRooms";
     }
 
 
@@ -105,9 +107,9 @@ public class HouseKeepingController {
     @GetMapping("/roomService")
     public String roomService(Model model){
         model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
-
         return "roomService";
-    }    @GetMapping("/houseKeepingReport")
+    }
+    @GetMapping("/houseKeepingReport")
     public String houseKeepingReport(Model model){
         model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
 

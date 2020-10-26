@@ -24,7 +24,8 @@ import java.util.List;
 public class ManageBOImpl implements ManageBO {
     @Autowired
     EmployeeDAO manageDAO;
-
+    @Autowired
+    DepartmentDAO departmentDAO;
     @Autowired
     DepartmentDAO humanResourceDAO;
     @Autowired
@@ -124,5 +125,41 @@ public class ManageBOImpl implements ManageBO {
                 employee.getDepartment().getDepartmentId()
         );
         return employeeDTO;
+    }
+
+    @Override
+    public DepartmentDTO findHighestDepartmentId() {
+        Department lastItem = null;
+        try {
+            lastItem = departmentDAO.findTopByOrderByDepartmentIdDesc();
+        } catch (Exception e){
+
+        }
+        return new DepartmentDTO(lastItem.getDepartmentId());
+    }
+
+    @Override
+    public DepartmentDTO findDepertmentById(int departmentId) {
+        Department department = departmentDAO.findOne(departmentId);
+        DepartmentDTO departmentDTO = new DepartmentDTO(
+                department.getDepartmentId(),
+                department.getDepartmentName()
+        );
+        return departmentDTO;
+    }
+
+
+    @Override
+    public void saveDepertment(DepartmentDTO departmentDTO) {
+        departmentDAO.save(new Department(
+                departmentDTO.getDepartmentId(),
+                departmentDTO.getDepartmentName()
+
+        ));
+    }
+
+    @Override
+    public void deleteDepartment(int departmentId) {
+        departmentDAO.delete(departmentId);
     }
 }

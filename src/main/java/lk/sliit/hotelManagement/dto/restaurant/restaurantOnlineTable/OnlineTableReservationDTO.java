@@ -1,5 +1,7 @@
 package lk.sliit.hotelManagement.dto.restaurant.restaurantOnlineTable;
 
+import lk.sliit.hotelManagement.entity.restaurant.OnlineCustomer;
+
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import java.util.Date;
@@ -7,7 +9,7 @@ import java.util.Date;
 
 public class OnlineTableReservationDTO {
 
-    private String onlineTableReservationId;
+    private int onlineTableReservationId;
     @Temporal(TemporalType.DATE)
     private Date reservedDate;
     private Date date;
@@ -16,13 +18,15 @@ public class OnlineTableReservationDTO {
     @Temporal(TemporalType.TIME)
     private Date endTime;
     private int noOfTables;
-    private String customer;
+    private int customer;
     private String vStatT;
     private String vEndT;
     private String vDate;
 
-    public OnlineTableReservationDTO(String onlineTableReservationId, Date reservedDate,
-                                     Date date, Date startTime, Date endTime, int noOfTables, String customer) {
+    private String orderData;
+
+    public OnlineTableReservationDTO(int onlineTableReservationId, Date reservedDate,
+                                     Date date, Date startTime, Date endTime, int noOfTables, int customer) {
         this.onlineTableReservationId = onlineTableReservationId;
         this.reservedDate = reservedDate;
         this.date = date;
@@ -35,11 +39,30 @@ public class OnlineTableReservationDTO {
     public OnlineTableReservationDTO() {
     }
 
-    public String getOnlineTableReservationId() {
+    public OnlineTableReservationDTO(int onlineTableReservationId) {
+        this.onlineTableReservationId = onlineTableReservationId;
+    }
+
+    public OnlineTableReservationDTO(int onlineTableReservationId, Date date, Date startTime, Date endTime) {
+        this.onlineTableReservationId = onlineTableReservationId;
+        this.date = date;
+        this.startTime = startTime;
+        this.endTime = endTime;
+    }
+
+    public String getOrderData() {
+        return orderData;
+    }
+
+    public void setOrderData(String orderData) {
+        this.orderData = orderData;
+    }
+
+    public int getOnlineTableReservationId() {
         return onlineTableReservationId;
     }
 
-    public void setOnlineTableReservationId(String onlineTableReservationId) {
+    public void setOnlineTableReservationId(int onlineTableReservationId) {
         this.onlineTableReservationId = onlineTableReservationId;
     }
 
@@ -83,11 +106,11 @@ public class OnlineTableReservationDTO {
         this.noOfTables = noOfTables;
     }
 
-    public String getCustomer() {
+    public int getCustomer() {
         return customer;
     }
 
-    public void setCustomer(String customer) {
+    public void setCustomer(int customer) {
         this.customer = customer;
     }
 

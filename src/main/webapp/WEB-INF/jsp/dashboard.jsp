@@ -166,7 +166,7 @@
                                             <span class="count_top"><i class="fa fa-user"></i> Total Users</span>
 
                                             <div class="count green">
-                                                32
+                                                45
                                             </div>
 
                                             <!--/////////////////////////////////////////////-->
@@ -174,31 +174,26 @@
                                         </div>
                                         <div class="col-md-2 col-sm-4 tile_stats_count">
                                             <span class="count_top"><i class="fa fa-clock-o"></i> Total Time</span>
-                                            <div class="count">2332 hrs</div>
+                                            <div class="count">2332 </div>
                                             <span class="count_bottom"><i class="green"><i
                                                     class="fa fa-sort-asc"></i>3% </i> From Attendance</span>
                                         </div>
                                         <div class="col-md-2 col-sm-4 tile_stats_count">
                                             <span class="count_top"><i class="fa fa-user"></i> Total Males</span>
-                                            <div class="count"> 22</div>
+                                            <div class="count"> 30</div>
                                             <span class="count_bottom"><i class="green"><i
                                                     class="fa fa-sort-asc"></i>34% </i> From last Week</span>
                                         </div>
                                         <div class="col-md-2 col-sm-4 tile_stats_count">
                                             <span class="count_top"><i class="fa fa-user"></i> Total Females</span>
-                                            <div class="count"> 42</div>
+                                            <div class="count"> 15</div>
                                             <span class="count_bottom"><i class="red"><i
                                                     class="fa fa-sort-desc"></i>12% </i> From last Week</span>
                                         </div>
-                                        <div class="col-md-2 col-sm-4 tile_stats_count">
-                                            <span class="count_top"><i class="fa fa-user"></i> Total Projects</span>
-                                            <div class="count">22</div>
-                                            <span class="count_bottom"><i class="green"><i
-                                                    class="fa fa-sort-asc"></i>34% </i> From last Week</span>
-                                        </div>
+
                                         <div class="col-md-2 col-sm-4 tile_stats_count">
                                             <span class="count_top"><i class="fa fa-user"></i> Today Attendance</span>
-                                            <div class="count">22</div>
+                                            <div class="count">2</div>
                                             <span class="count_bottom"><i class="green"><i
                                                     class="fa fa-sort-asc"></i>22%</i> Attendance</span>
                                         </div>
@@ -243,7 +238,7 @@
                                             <div class="tags">
                                                 <a href="" class="tag">
                                                     <span><img style="height: 50px;width: 50px;border-radius: 10%"
-                                                               src="../../images/icons/${e.pic}"></span>
+                                                               src="${e.pic}"></span>
                                                 </a>
                                             </div>
                                             <div class="block_content">
@@ -315,13 +310,13 @@
                     </div>
                 </div>
 <%--                ////////////////////////////////////////////////////////////////////////////////--%>
-                <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+            <%--    <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
                     <div class="col-sm-12 col-md-7 col-lg-7 col-xl-7">
                         <div id="chartdiv"></div>
                         <br>
                         <P><h6>Today Active Users</h6></P>
                     </div>
-                </div>
+                </div>--%>
 
                 <%--///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////--%>
             </div>
@@ -349,6 +344,7 @@
 <script src="https://www.amcharts.com/lib/4/themes/moonrisekingdom.js"></script>
 <script src="https://www.amcharts.com/lib/4/themes/animated.js"></script>
 <%--Pie Chart 2--%>
+<%--
 <script>
     am4core.ready(function() {
 
@@ -401,6 +397,7 @@
 
     }); // end am4core.ready()
 </script>
+--%>
 
 <%--/Pie Chart 2--%>
 </body>

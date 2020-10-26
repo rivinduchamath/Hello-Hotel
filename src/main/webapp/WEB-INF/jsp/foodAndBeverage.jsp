@@ -328,26 +328,16 @@
         chart.paddingBottom = 30;
         chart.angle = 35;
 
+
+
 // Add data
-        chart.data = [{
-            "Date": "Sunday",
-            "Income": 2025
-        }, {
-            "Date": "Monday",
-            "Income": 1882
-        }, {
-            "Date": "Tuesday",
-            "Income": 1809
-        }, {
-            "Date": "Wednesday",
-            "Income": 1322
-        }, {
-            "Date": "Friday",
-            "Income": 1122
-        }, {
-            "Date": "Saturday",
-            "Income": 1114
-        }];
+        chart.data = [
+            <c:forEach items="${ssssssssss}" var="e">
+            {"Date": "${e.itemName}",
+            "Income": "${e.unitePrice}"
+        },
+            </c:forEach>
+        ];
 // Create axes
         var categoryAxis = chart.xAxes.push(new am4charts.CategoryAxis());
         categoryAxis.dataFields.category = "Date";

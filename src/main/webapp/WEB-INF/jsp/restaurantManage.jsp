@@ -1,10 +1,3 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: Rivindu Chamath
-  Date: 21-May-20
-  Time: 2:43 AM
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page import="java.util.Date" %>
@@ -97,7 +90,6 @@
 
         <!-- page content -->
 
-        <%--/////////aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa--%>
         <div id="" class="right_col " role="main">
 
             <div class="">
@@ -108,10 +100,20 @@
                         </h3>
                         <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
                             <div class="col-6 col-sm-6 col-md-6 col-lg-4 col-xl-4">
-                                <a href="/foodAndBeverage">
-                                    <button type="button" class=" btn btn-dark"><i class="fa fa-mail-reply"> Back to Dashboard</i>
+                                <a href="/restaurant">
+                                    <button type="button" class=" btn btn-dark"><i class="fa fa-mail-reply"> Back to
+                                        Dashboard</i>
                                     </button>
                                 </a>
+
+
+
+                                    <li>
+                                        <a type='submit' class="img__wrap" href="/addLocation" value="Register">
+                                            <i style="font-size: 18px"  class="fa fa-gear img__img"><label class="img__description" style=" font-size: 15px"> &nbsp; Location Settings</label> </i>
+                                        </a>
+
+                                    </li>
 
                             </div>
                         </div>
@@ -199,7 +201,122 @@
                 </div>
 
                 <%-- ////////////////////////////////////////////// BODY /////////////////////////////////////////////////////////////--%>
+                <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                    <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6">
+                        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                            <div class="row">
+                                <div class="x_panel">
+                                    <div class="x_title">
+                                        <h2>Online Table Reservations
+                                            <small>list</small>
+                                        </h2>
+                                        <ul class="nav navbar-right panel_toolbox">
+                                            <li><a class="collapse-link"></a>
+                                            </li>
+                                            <li class="dropdown">
+                                                <a aria-expanded="false" class="dropdown-toggle" data-toggle="dropdown"
+                                                   href="#"
+                                                   role="button"><i class="fa fa-wrench"></i></a>
+                                            </li>
+                                        </ul>
+                                        <div class="clearfix"></div>
+                                    </div>
+                                    <div class="x_content">
+                                        <div class="row">
+                                            <div class="col-sm-12">
+                                                <div class="card-box table-responsive">
+                                                    <table class="table table-striped table-bordered"
+                                                           id="datatable-buttons"
+                                                           style="text-align: center">
+                                                        <thead class="thead-light">
+                                                        <tr>
+                                                            <th>Reservation Id</th>
+                                                            <th>Date</th>
+                                                            <th>Start Time</th>
+                                                            <th>End Time</th>
+                                                            <th>State</th>
 
+
+                                                        </tr>
+
+                                                        </thead>
+                                                        <tbody>
+                                                        <c:forEach items="${onlineTableReservation}" var="item">
+                                                            <tr>
+                                                                <td>${item.onlineTableReservationId}</td>
+                                                                <td>${item.date}</td>
+                                                                <td>${item.startTime}</td>
+                                                                <td>${item.endTime}</td>
+                                                                <td>confirm</td>
+                                                            </tr>
+                                                        </c:forEach>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6"
+                         style="float: right; position: relative;display: inline-block">
+                        <div class="x_panel">
+                            <div class="x_title">
+                                <h2>Restaurant Online Orders
+                                    <small>Check And Submit</small>
+                                </h2>
+                                <form method="POST" action="invoiceRestaurantOrder" name="invoiceRestaurantOrder">
+                                    <input style="display: none" type="text" id="itemPay" name="dataValue">
+                                    <input style="display: none" type="text" id="cId" value="0" name="customerId">
+                                    <ul class="nav navbar-right panel_toolbox">
+                                        <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                                        </li>
+
+                                    </ul>
+                                </form>
+
+                                <div class="clearfix"></div>
+                            </div>
+                            <div class="x_content">
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <div class="card-box table-responsive">
+                                            <table style="text-align: center"
+                                                   class="table table-striped jambo_table bulk_action table-bordered">
+                                                <thead class="thead-dark">
+                                                <tr>
+                                                    <th>OrderId</th>
+                                                    <th>CustomerId</th>
+                                                    <th>Date</th>
+                                                    <th>food item id</th>
+                                                    <th>Quantity</th>
+                                                    <th>State</th>
+                                                </tr>
+                                                </thead>
+
+                                                <tbody id="tblOrder">
+                                                <c:forEach items="${listAllOnlineOrders}" var="item">
+                                                <tr>
+                                                    <td>${item.orderId}</td>
+                                                    <td>${item.customer}</td>
+                                                    <td>${item.date}</td>
+                                                    <td>1</td>
+                                                    <td>2</td>
+                                                    <td>confirm</td>
+                                                </tr>
+                                                </c:forEach>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 <%--                /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////--%>
 
 
@@ -231,6 +348,7 @@
 <script src="https://www.amcharts.com/lib/4/themes/moonrisekingdom.js"></script>
 <script src="https://www.amcharts.com/lib/4/themes/spiritedaway.js"></script>
 <script src="https://www.amcharts.com/lib/4/themes/animated.js"></script>
+<%--
 <script>
     am4core.ready(function () {
 
@@ -388,6 +506,7 @@
 
     }); // end am4core.ready()
 </script>
+--%>
 
 
 </body>

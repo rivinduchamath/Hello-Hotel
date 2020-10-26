@@ -1,10 +1,4 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: Rivindu Chamath
-  Date: 21-May-20
-  Time: 2:43 AM
-  To change this template use File | Settings | File Templates.
---%>
+
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page import="java.util.Date" %>
@@ -220,7 +214,7 @@
                         <div class="containerx">
                             <a style=" font-family: Playfair Display, Georgia, Times New Roman, serif;
                              background-color:#3d495f; color: #ffffff;font-weight: bolder"
-                               href="https://www.google.com/" class="btnq"><h2
+                               href="/home" class="btnq"><h2
                                     style="position: relative; letter-spacing: 1px;
                                      margin-top: 30px">Online Reservation</h2></a>
                         </div>
@@ -231,7 +225,7 @@
                         <div class="containerx">
                             <a style=" font-family: Playfair Display, Georgia, Times New Roman, serif;
                              background-color:#3d495f; color: #ffffff;font-weight: bolder"
-                               href="/overTheCounterReservation" class="btnq"><h2
+                               href="/customerRegistration" class="btnq"><h2
                                     style="position: relative; letter-spacing: 1px;
                                      margin-top: 30px">Over The Counter Reservation</h2></a>
                         </div>

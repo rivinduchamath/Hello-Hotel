@@ -1,5 +1,9 @@
 package lk.sliit.hotelManagement.dto.hr;
 
+import lk.sliit.hotelManagement.entity.manager.Employee;
+
+import java.util.Date;
+
 public class SalaryDTO {
     private int salaryId;
     private double basicSalary;
@@ -11,23 +15,12 @@ public class SalaryDTO {
     private double salary;
     private int employeeID;
     private String  employeeName;
+    boolean state;
+    Date date;
     private String  image;
 
-    public SalaryDTO() {
-    }
 
-    public SalaryDTO(int salaryId, double basicSalary, double etf,
-                     double epf, double serviceCharge, double otHours, double hours,
-                     double salary, int employeeID) {
-        this.salaryId = salaryId;
-        this.basicSalary = basicSalary;
-        this.etf = etf;
-        this.epf = epf;
-        this.serviceCharge = serviceCharge;
-        this.otHours = otHours;
-        this.hours = hours;
-        this.salary = salary;
-        this.employeeID = employeeID;
+    public SalaryDTO() {
     }
 
     public SalaryDTO(int salaryId, double basicSalary, double etf, double epf, double serviceCharge, double otHours,
@@ -49,6 +42,46 @@ public class SalaryDTO {
         this.salaryId = salaryId;
     }
 
+    public SalaryDTO(int salaryId, double otHours, double hours, int userId, String name, String image) {
+        this.salaryId = salaryId;
+        this.employeeName = name;
+        this.otHours = otHours;
+        this.hours = hours;
+        this.image = image;
+        this.employeeID = userId;
+    }
+
+    public SalaryDTO(int salaryId, double otHours, double hours, int userId) {
+        this.salaryId = salaryId;
+        this.otHours = otHours;
+        this.hours = hours;
+        this.employeeID = userId;
+    }
+
+    public SalaryDTO(int salaryId, double otHours, double hours, boolean state, Date date, int employeeID) {
+        this.salaryId = salaryId;
+        this.otHours = otHours;
+        this.state =state;
+        this.hours = hours;
+        this.date =date;
+        this.employeeID = employeeID;
+    }
+
+    public boolean isState() {
+        return state;
+    }
+
+    public void setState(boolean state) {
+        this.state = state;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
+    }
 
     public String getImage() {
         return image;
@@ -141,7 +174,7 @@ public class SalaryDTO {
     @Override
     public String toString() {
         return "SalaryDTO{" +
-                "salaryId='" + salaryId + '\'' +
+                "salaryId=" + salaryId +
                 ", basicSalary=" + basicSalary +
                 ", etf=" + etf +
                 ", epf=" + epf +
@@ -149,7 +182,11 @@ public class SalaryDTO {
                 ", otHours=" + otHours +
                 ", hours=" + hours +
                 ", salary=" + salary +
-                ", employeeID='" + employeeID + '\'' +
+                ", employeeID=" + employeeID +
+                ", employeeName='" + employeeName + '\'' +
+                ", state=" + state +
+                ", date=" + date +
+                ", image='" + image + '\'' +
                 '}';
     }
 }

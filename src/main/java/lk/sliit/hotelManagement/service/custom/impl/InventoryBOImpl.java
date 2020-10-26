@@ -6,9 +6,11 @@ import lk.sliit.hotelManagement.dto.inventory.InventoryDTO;
 import lk.sliit.hotelManagement.dto.inventory.InventoryNoticeDTO;
 import lk.sliit.hotelManagement.dto.inventory.ItemTypeDTO;
 import lk.sliit.hotelManagement.dto.inventory.SupplierDTO;
+import lk.sliit.hotelManagement.dto.manager.NoticeDTO;
 import lk.sliit.hotelManagement.entity.TimeCheck;
 import lk.sliit.hotelManagement.entity.barManage.BarOrders;
 import lk.sliit.hotelManagement.entity.inventory.*;
+import lk.sliit.hotelManagement.entity.manager.Notice;
 import lk.sliit.hotelManagement.service.custom.InventoryBO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -295,7 +297,8 @@ public class InventoryBOImpl implements InventoryBO {
                 supplierDTO.getGender(),
                 supplierDTO.getDate(),
                 supplierDTO.getBirthday(),
-                supplierDTO.getSubmittedBy()
+                supplierDTO.getSubmittedBy(),
+                supplierDTO.getImage()
         ));
     }
 
@@ -313,7 +316,8 @@ public class InventoryBOImpl implements InventoryBO {
                     a.getGender(),
                     a.getDate(),
                     a.getBirthday(),
-                    a.getSubmittedBy()
+                    a.getSubmittedBy(),
+                    a.getImage()
             ));
         }
         return dtos;
@@ -400,6 +404,99 @@ public class InventoryBOImpl implements InventoryBO {
         } catch (NullPointerException f) {
             return false;
         }
+    }
+
+    @Override
+    public InventoryDTO findHighestId() {
+        Inventory a = inventoryDAO.findTopByOrderByInventoryIdDesc();
+
+        return new InventoryDTO(
+                    a.getInventoryId()
+            );
+
+    }
+
+    @Override
+    public InventoryDTO findFoodItemById(int inventoryId) {
+        Inventory inventoryDTO1 = inventoryDAO.findOne(inventoryId);
+        return new InventoryDTO(
+                inventoryDTO1.getInventoryId(),
+                inventoryDTO1.getText(),
+                inventoryDTO1.getDescription(),
+                inventoryDTO1.getOrderQty(),
+                inventoryDTO1.getType(),
+                inventoryDTO1.getOrderLimit(),
+                inventoryDTO1.getGetPrice(),
+                inventoryDTO1.getSellingPrice(),
+                inventoryDTO1.getDate()
+        );
+
+
+    }
+
+    @Override
+    public List<InventoryDTO> findKitchenStockData() {
+        Iterable<Inventory> all = inventoryDAO.findAllByTypeEquals("Kitchen");
+        List<InventoryDTO> dtos = new ArrayList<>();
+        for (Inventory a : all) {
+            dtos.add(new InventoryDTO(
+                    a.getInventoryId(),
+                    a.getText(),
+                    a.getDescription(),
+                    a.getOrderQty(),
+                    a.getType(),
+                    a.getOrderLimit(),
+                    a.getGetPrice(),
+                    a.getSellingPrice(),
+                    a.getDate()
+            ));
+        }
+        return dtos;
+    }
+    @Override
+    public List<InventoryDTO> findAllBeverageItems() {
+        Iterable<Inventory> all = inventoryDAO.findAllByTypeEquals("Beverage");
+        List<InventoryDTO> dtos = new ArrayList<>();
+        for (Inventory a : all) {
+            dtos.add(new InventoryDTO(
+                    a.getInventoryId(),
+                    a.getText(),
+                    a.getDescription(),
+                    a.getOrderQty(),
+                    a.getType(),
+                    a.getOrderLimit(),
+                    a.getGetPrice(),
+                    a.getSellingPrice(),
+                    a.getDate()
+            ));
+        }
+        return dtos;
+    }
+
+    @Override
+    public List<InventoryNoticeDTO> kitchenOrderNotices() {
+        Calendar cal = Calendar.getInstance();
+        cal.add(Calendar.DATE, -7);
+        java.util.Date beforeweek = cal.getTime();
+        Date todaya = new Date();
+        Iterable<InventoryNotice> allItems =
+                inventoryNoticeDAO.findAllByDateBetweenAndDepartmentEquals(beforeweek,todaya,"Kitchen");
+        List<InventoryNoticeDTO> dtos = new ArrayList<>();
+        for (InventoryNotice notice : allItems) {
+            dtos.add(new InventoryNoticeDTO(
+                    notice.getNoticeId(),
+                    notice.getDepartment(),
+                    notice.getOrderQty(),
+                    notice.getDate(),
+                    notice.getExpDate(),
+                    notice.getOrderHolder(),
+                    notice.isState(),
+                    notice.getInventory().getInventoryId(),
+                    notice.getInventory().getText(),
+                    notice.getInventory().getOrderQty()
+            ));
+        }
+        return dtos;
     }
 
 }

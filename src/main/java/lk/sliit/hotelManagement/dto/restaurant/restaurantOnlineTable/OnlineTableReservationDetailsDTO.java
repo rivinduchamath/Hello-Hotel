@@ -4,12 +4,12 @@ package lk.sliit.hotelManagement.dto.restaurant.restaurantOnlineTable;
 
 public class OnlineTableReservationDetailsDTO {
 
-    private String onlineTableReservation;
-    private String tableId;
+    private int onlineTableReservation;
+    private int tableId;
     private double quantity;
     private double unitePrice;
 
-    public OnlineTableReservationDetailsDTO(String onlineTableReservation, String tableId, double quantity, double unitePrice) {
+    public OnlineTableReservationDetailsDTO(int onlineTableReservation, int tableId, double quantity, double unitePrice) {
         this.onlineTableReservation = onlineTableReservation;
         this.tableId = tableId;
         this.quantity = quantity;
@@ -19,19 +19,19 @@ public class OnlineTableReservationDetailsDTO {
     public OnlineTableReservationDetailsDTO() {
     }
 
-    public String getOnlineTableReservation() {
+    public int getOnlineTableReservation() {
         return onlineTableReservation;
     }
 
-    public void setOnlineTableReservation(String onlineTableReservation) {
+    public void setOnlineTableReservation(int onlineTableReservation) {
         this.onlineTableReservation = onlineTableReservation;
     }
 
-    public String getTableId() {
+    public int getTableId() {
         return tableId;
     }
 
-    public void setTableId(String tableId) {
+    public void setTableId(int tableId) {
         this.tableId = tableId;
     }
 

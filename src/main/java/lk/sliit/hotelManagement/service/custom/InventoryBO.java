@@ -53,4 +53,13 @@ public interface InventoryBO extends SuperBO {
     InventoryDTO findTopByOrderByOrderIdDesc();
 
     boolean findOne(int supplierId);
+
+    InventoryDTO findHighestId();
+
+    InventoryDTO findFoodItemById(int inventoryId);
+
+    List<InventoryDTO> findKitchenStockData();
+    List<InventoryDTO> findAllBeverageItems();
+
+    List<InventoryNoticeDTO> kitchenOrderNotices();
 }

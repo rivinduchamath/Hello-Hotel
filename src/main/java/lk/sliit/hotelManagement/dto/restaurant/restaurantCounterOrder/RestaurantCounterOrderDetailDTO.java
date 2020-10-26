@@ -8,6 +8,7 @@ public class RestaurantCounterOrderDetailDTO {
     private int foodItem;
     private double quantity;
     private double unitePrice;
+    private String name;
 
     public RestaurantCounterOrderDetailDTO( int foodItem, double quantity, double unitePrice) {
 
@@ -16,9 +17,23 @@ public class RestaurantCounterOrderDetailDTO {
         this.unitePrice = unitePrice;
     }
 
+    public RestaurantCounterOrderDetailDTO(int foodItem, double quantity, double unitePrice, String name) {
+        this.foodItem = foodItem;
+        this.quantity = quantity;
+        this.unitePrice = unitePrice;
+        this.name = name;
+    }
+
     public RestaurantCounterOrderDetailDTO() {
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 
     public int getFoodItem() {
         return foodItem;

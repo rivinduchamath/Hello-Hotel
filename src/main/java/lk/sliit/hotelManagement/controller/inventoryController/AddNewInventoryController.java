@@ -4,6 +4,7 @@ import lk.sliit.hotelManagement.controller.SuperController;
 import lk.sliit.hotelManagement.dto.inventory.InventoryDTO;
 import lk.sliit.hotelManagement.dto.inventory.InventoryNoticeDTO;
 import lk.sliit.hotelManagement.dto.inventory.ItemTypeDTO;
+import lk.sliit.hotelManagement.dto.kitchen.FoodItemDTO;
 import lk.sliit.hotelManagement.service.custom.IndexLoginBO;
 import lk.sliit.hotelManagement.service.custom.InventoryBO;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -86,6 +87,26 @@ public class AddNewInventoryController {
 
     @PostMapping("inventoryItemSave")
     public String saveForm(@ModelAttribute InventoryDTO inventoryDTO) {
+
+        try {
+            InventoryDTO itemTypeDTO = inventoryBO.findHighestId();
+            System.out.println("ssssssssssssssssssssssssssssaaaaaaaaaaaaaaaaaaaaaaaaa"+itemTypeDTO.getInventoryId());
+            InventoryDTO inventoryDTO1 = null;
+            try {
+                inventoryDTO1 = inventoryBO.findFoodItemById(inventoryDTO.getInventoryId());
+            }catch (NullPointerException d){
+                System.out.println("LLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLL");
+                int maxId = (itemTypeDTO.getInventoryId());
+                if (inventoryDTO.getInventoryId()==(maxId)) {
+                    inventoryDTO.setInventoryId((maxId));
+                } else {
+                    maxId++;
+                    inventoryDTO.setInventoryId((maxId));
+                }
+            }
+        } catch (NullPointerException e){
+            inventoryDTO.setInventoryId(1);
+        }
         inventoryBO.saveInventoryItem(inventoryDTO);
         return "redirect:/addInventory";
     }

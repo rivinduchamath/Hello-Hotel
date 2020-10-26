@@ -20,4 +20,12 @@ public interface ManageBO extends SuperBO {
     EmployeeDTO findHighestEmployeeId();
 
     EmployeeDTO findEmployeeById(int userId);
+
+    DepartmentDTO findHighestDepartmentId();
+
+    DepartmentDTO findDepertmentById(int departmentId);
+
+    void saveDepertment(DepartmentDTO departmentDTO);
+
+    void deleteDepartment(int departmentId);
 }

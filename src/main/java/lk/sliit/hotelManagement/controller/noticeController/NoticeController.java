@@ -30,13 +30,12 @@ public class NoticeController { //notice.jsp For All Notice
     @GetMapping("notice")
     public ModelAndView load(Model model) {
         model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo((SuperController.idNo)));
-
         ModelAndView mav = new ModelAndView("notice");
+
         List<NoticeDTO> p = noticeBO.findAll();
         model.addAttribute("loadNoticeTable", p);
         List<DepartmentDTO> p2 = manageBO.findAllDepartment();
         model.addAttribute("loadDepartment", p2);
-
         return mav;
     }
 
@@ -56,7 +55,6 @@ public class NoticeController { //notice.jsp For All Notice
                     noticeDTO.setNoticeId((maxId));
                 }
             }
-
         } catch (NullPointerException e){
             noticeDTO.setNoticeId(1);
         }

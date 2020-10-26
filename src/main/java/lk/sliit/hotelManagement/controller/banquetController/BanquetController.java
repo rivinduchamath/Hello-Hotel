@@ -42,5 +42,11 @@ public class BanquetController {
         return "redirect:/banquets";
     }
 
+    @RequestMapping("/updateBanquetStatusAsFinished")
+    public String updateBanquetStatusAsFinished(@RequestParam int orderId) {
+        banquetBO.updateBanquetStatusAsFinished(orderId);
+        return "redirect:/banquets";
+    }
+
 
 }
