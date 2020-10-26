@@ -275,28 +275,30 @@
                                             <table id="datatable-buttons" class="table table-striped table-bordered">
                                                 <thead class="thead-light">
                                                 <tr>
-                                                    <th>Banquet Id</th>
+                                                    <th>Bill Id</th>
                                                     <th>Name</th>
                                                     <th>Date</th>
-                                                    <th>Bill Id</th>
                                                     <th>Advance Payment</th>
                                                     <th>Food Price</th>
                                                     <th>Other Price</th>
                                                     <th>Total Bill</th>
+                                                    <th>Print</th>
                                                 </tr>
 
                                                 </thead>
                                                 <tbody>
                                                 <c:forEach items="${loadTable}" var="e">
                                                     <tr>
-                                                        <td>${e.orderId}</td>
+                                                        <td>${e.banquetBillId}</td>
                                                         <td>${e.name}</td>
                                                         <td>${e.date}</td>
-                                                        <td>${e.banquetBillId}</td>
                                                         <td>${e.advanceFee}</td>
                                                         <td>${e.noOfPlates * e.unitPrise}</td>
                                                         <td>${e.otherPrice}</td>
                                                         <td>${(e.noOfPlates * e.unitPrise)+e.otherPrice}</td>
+                                                        <td><a href="/banquetInvoice?billId=${e.banquetBillId}">
+                                                            <button value="" id="billBtn" name="billBtn" class="btn btn-outline-danger" style="font-size: 13px;">PrintBill</button>
+                                                        </a></td>
                                                     </tr>
                                                 </c:forEach>
                                                 </tbody>
@@ -360,10 +362,10 @@
     var selectedRow = null;
     $("#datatable-buttons tbody").on('click', 'tr', function () {
         selectedRow = $(this);
-        $("#banquetBillId").val($(this).find("td:nth-child(4)").text());
-        $("#advanceFee").val($(this).find("td:nth-child(5)").text());
-        $("#foodPrice").val($(this).find("td:nth-child(6)").text());
-        $("#otherPrice").val($(this).find("td:nth-child(7)").text());
+        $("#banquetBillId").val($(this).find("td:nth-child(1)").text());
+        $("#advanceFee").val($(this).find("td:nth-child(4)").text());
+        $("#foodPrice").val($(this).find("td:nth-child(5)").text());
+        $("#otherPrice").val($(this).find("td:nth-child(6)").text());
         selectedRow.addClass('row-selected');
     });
 </script>

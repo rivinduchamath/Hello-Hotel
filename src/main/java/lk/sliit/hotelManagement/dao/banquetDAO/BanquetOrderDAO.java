@@ -1,5 +1,7 @@
 package lk.sliit.hotelManagement.dao.banquetDAO;
 
+import lk.sliit.hotelManagement.dto.banquet.BanquetAddDTO;
+import lk.sliit.hotelManagement.entity.banquet.BanquetBill;
 import lk.sliit.hotelManagement.entity.banquet.BanquetOrder;
 import lk.sliit.hotelManagement.entity.kitchen.Menu;
 import org.springframework.data.jpa.repository.Modifying;
@@ -33,4 +35,6 @@ public interface BanquetOrderDAO extends CrudRepository<BanquetOrder,Integer> {
 
     @Query(value = "select b.orderId from BanquetOrder b where b.date=:date and b.hallId=:hallNo ")
     int getOrderIdByDateEqualsAndHallIdEquals(@Param("date") Date date,@Param("hallNo") String hallNo);
+
+    BanquetOrder findBanquetOrderByBanquetBillEquals(BanquetBill banquetBill);
 }

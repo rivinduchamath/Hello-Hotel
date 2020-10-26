@@ -10,29 +10,23 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
-import java.util.List;
 
 @Controller
-public class BanquetBill {
+public class BanquetInvoice {
     @Autowired
     IndexLoginBO indexLoginBO;
     @Autowired
     BanquetBO banquetBO;
 
-    @GetMapping("/banquetBill")
-    public ModelAndView loginPage(Model model){
-        ModelAndView mv = new ModelAndView("banquetBill");
+    @GetMapping("/banquetInvoice")
+    public ModelAndView loginPage(@RequestParam int billId,Model model){
+        ModelAndView mv = new ModelAndView("banquetInvoice");
         model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
 
-        List<BanquetAddDTO> list = banquetBO.findBanquetBill();
-        mv.addObject("loadTable",list);
+        BanquetAddDTO banquetInvoice = banquetBO.findBanquetBillById(billId);
+        mv.addObject("data",banquetInvoice);
 
         return mv;
     }
 
-    @PostMapping("updateBill")
-    public String updateBill(@ModelAttribute BanquetAddDTO banquetAddDTO){
-        banquetBO.updateBill(banquetAddDTO);
-        return "redirect:/banquetBill";
-    }
 }
