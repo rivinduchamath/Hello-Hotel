@@ -503,7 +503,7 @@ public class KitchenBOImpl implements KitchenBO {
 
     @Override
     public KitchenFoodOrderDTO getExistingKitchenFoodOrder(int foodItemId, java.sql.Date expectedDate, String description) {
-        KitchenFoodOrders kitchenFoodOrders = kitchenFoodOrderDAO.findKitchenFoodOrdersByExpectedDateAndFoodItemIdAAndDescriptionEquals(expectedDate,foodItemId, description);
+        KitchenFoodOrders kitchenFoodOrders = kitchenFoodOrderDAO.findKitchenFoodOrdersByExpectedDateAndFoodItemIdAndDescriptionEquals(expectedDate,foodItemId, description);
         return new KitchenFoodOrderDTO(
                 kitchenFoodOrders.getOrderId(),
                 kitchenFoodOrders.getDescription(),
