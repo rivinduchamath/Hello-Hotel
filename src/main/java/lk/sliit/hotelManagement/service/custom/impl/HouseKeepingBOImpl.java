@@ -157,6 +157,7 @@ public class HouseKeepingBOImpl implements HouseKeepingBO {
             dtos.add(new LaundryDTO(
                     customer.getLaundryId(),
                     customer.getCustomerId().getCustomerId(),
+                    customer.getCustomerId().getName(),
                     customer.getOrderHolder(),
                     customer.getPieces(),
                     customer.getExpectedDate(),
@@ -182,6 +183,7 @@ public class HouseKeepingBOImpl implements HouseKeepingBO {
             dtos.add(new LaundryDTO(
                     customer.getLaundryId(),
                     customer.getCustomerId().getCustomerId(),
+                    customer.getCustomerId().getName(),
                     customer.getOrderHolder(),
                     customer.getPieces(),
                     customer.getExpectedDate(),
