@@ -226,8 +226,8 @@
 
                                                 <tr>
                                                     <th>Id</th>
-                                                    <th>RoomId</th>
-                                                    <th>Price</th>
+                                                    <th>Customer Id</th>
+                                                    <th>N Rooms</th>
                                                     <th>Date</th>
                                                 </tr>
                                                 </thead>
@@ -235,11 +235,10 @@
 
                                                 <c:forEach items="${loadHotelRoomTable}" var="e">
                                                     <tr>
-                                                        <td>${e.checkIn}</td>
-                                                        <td>${e.checkOut}</td>
+                                                        <td>${e.reservationId}</td>
                                                         <td>${e.customer}</td>
-                                                        <td>${e.details}</td>
                                                         <td>${e.noOfRooms}</td>
+                                                        <td>${e.checkIn}</td>
 
                                                     </tr>
                                                 </c:forEach>
