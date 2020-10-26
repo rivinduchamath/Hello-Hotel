@@ -168,30 +168,18 @@ public class KitchenController {
         model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
 
         //create inventory notice object
-        KitchenInventoryNoticeDTO inventoryNoticeDTO = new KitchenInventoryNoticeDTO();
+        InventoryNoticeDTO inventoryNoticeDTO = new InventoryNoticeDTO();
         InventoryDTO inventoryDTO;
 
         try {
 
             inventoryDTO = inventoryBO.findInventory(kitchenFoodOrderDTO.getFoodItemId());
 
-            //set Inventory entity object
-            Inventory inventory = new Inventory(
-                    inventoryDTO.getInventoryId(),
-                    inventoryDTO.getText(),
-                    inventoryDTO.getDescription(),
-                    inventoryDTO.getOrderQty(),
-                    inventoryDTO.getType(),
-                    inventoryDTO.getOrderLimit(),
-                    inventoryDTO.getGetPrice(),
-                    inventoryDTO.getSellingPrice(),
-                    inventoryDTO.getDate()
-            );
 
             //set notice id
             int maxId = 1;
             try {
-                maxId = inventoryBO.findHighestId().getInventoryId();//error*********************************************
+                //maxId = inventoryBO.findHighestId().getInventoryId();//error*********************************************
                 maxId++;
             } catch (NullPointerException e){
                 maxId = 1;
@@ -203,7 +191,7 @@ public class KitchenController {
             inventoryNoticeDTO.setExpDate(kitchenFoodOrderDTO.getExpectedDate());
             inventoryNoticeDTO.setOrderHolder(SuperController.idNo);
             inventoryNoticeDTO.setState(false);
-            inventoryNoticeDTO.setInventory(inventory);
+            inventoryNoticeDTO.setInventory(kitchenFoodOrderDTO.getFoodItemId());
 
 
             //search existing order

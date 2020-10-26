@@ -82,7 +82,7 @@ public interface KitchenBO extends SuperBO {
 
 
 
-    void saveInventoryNotice(KitchenInventoryNoticeDTO inventoryNoticeDTO);
+    void saveInventoryNotice(InventoryNoticeDTO inventoryNoticeDTO);
 
     KitchenInventoryNoticeDTO findInventoryNotice(Date date, int foodItemId);
 

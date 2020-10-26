@@ -436,11 +436,12 @@ public class KitchenBOImpl implements KitchenBO {
     }
 
     @Override
-    public void saveInventoryNotice(KitchenInventoryNoticeDTO inventoryNoticeDTO) {
+    public void saveInventoryNotice(InventoryNoticeDTO inventoryNoticeDTO) {
 
         try {
             InventoryNotice notice = inventoryNoticeDAO.findInventoryNoticeByInventoryAndExpDateEquals(
-                    inventoryNoticeDTO.getInventory(), inventoryNoticeDTO.getExpDate());
+                    inventoryDAO.findOne(inventoryNoticeDTO.getInventory()),
+                    inventoryNoticeDTO.getExpDate());
             inventoryNoticeDTO.setNoticeId(notice.getNoticeId());
             inventoryNoticeDTO.setOrderQty((inventoryNoticeDTO.getOrderQty() + notice.getOrderQty()));
         } catch (Exception e) {
@@ -454,7 +455,7 @@ public class KitchenBOImpl implements KitchenBO {
                 inventoryNoticeDTO.getExpDate(),
                 inventoryNoticeDTO.getOrderHolder(),
                 inventoryNoticeDTO.isState(),
-                inventoryNoticeDTO.getInventory()
+                inventoryDAO.findOne(inventoryNoticeDTO.getInventory())
 
         ));
     }
