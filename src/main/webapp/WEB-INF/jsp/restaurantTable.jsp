@@ -92,7 +92,7 @@
             <div class="">
                 <div class="page-title">
                     <div class="title_left">
-                        <h3>Restaurant Stock Manage
+                        <h3>Restaurant Table Manage
                             <small>Welcome To Hotel Hareesha</small>
                         </h3>
                     </div>
@@ -178,161 +178,10 @@
                     </div>
                 </div>
                 <%--//////////////////////////////////////////////////////////////////////////////////////////////////--%>
-                <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
 
-
-                    <div class="col-sm-12 col-md-3 col-lg-3 col-xl-3">
-                        <button type="button" class="large-btn btn btn-primary">Beverage</button>
-                    </div>
-
-                    <div class="col-sm-12 col-md-3 col-lg-3 col-xl-3">
-                        <button type="button" class="large-btn btn btn-info">Kitchen</button>
-                    </div>
-
-                    <div class="col-sm-12 col-md-3 col-lg-3 col-xl-3">
-                        <button type="button" class="large-btn btn btn-success">Items</button>
-                    </div>
-
-                    <div class="col-sm-12 col-md-3 col-lg-3 col-xl-3">
-                        <button type="button" class="large-btn btn btn-danger">Restaurant</button>
-                    </div>
-
-                </div>
                 <%--                    /////////////////////////////////////////////////////--%>
                 <!--////////////////////////////////////////////-->
-                <div class="col-md-6 col-sm-6" style="position: relative;display: inline-block">
-                    <div class="x_panel">
-                        <div class="x_title">
-                            <h2>Rest
-                                <small>Item</small>
-                            </h2>
-                            <ul class="nav navbar-right panel_toolbox">
-                                <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
-                                </li>
-                                <li class="dropdown">
-                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
-                                       aria-expanded="false"><i class="fa fa-wrench"></i></a>
-                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                        <a class="dropdown-item" href="#">Settings 1</a>
-                                        <a class="dropdown-item" href="#">Settings 2</a>
-                                    </div>
-                                </li>
-                                <li><a class="close-link"><i class="fa fa-close"></i></a>
-                                </li>
-                            </ul>
-                            <div class="clearfix"></div>
-                        </div>
-                        <div class="x_content">
-                            <div class="row">
-                                <div class="col-sm-12">
-                                    <div class="card-box table-responsive">
-                                        <p class="text-muted font-13 m-b-30">
 
-                                        </p>
-
-                                        <table id="datatable-responsive"
-                                               class="table table-striped table-bordered dt-responsive nowrap"
-                                               cellspacing="0" width="100%">
-                                            <thead class="thead-dark">
-                                            <tr>
-                                                <th> Name</th>
-                                                <th> ID</th>
-
-                                            </tr>
-                                            </thead>
-                                            <tbody>
-                                            <c:forEach items="${listEmployeesTable}" var="e">
-                                                <tr>
-                                                    <td>e.nam}</td>
-                                                    <td>e.idNo}</td>
-                                                </tr>
-                                            </c:forEach>
-                                            </tbody>
-
-                                        </table>
-
-
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <%--///////////////////////////////////Second Table /////////////////////////////--%>
-                <!--/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////-->
-                <div class="col-md-6 col-sm-6" style="float: right; position: relative;display: inline-block">
-                    <div class="x_panel">
-                        <div class="x_title">
-                            <h2>Rest Items
-                                <small>Click CheckBox And Cart Items
-                                </small>
-                            </h2>
-                            <form method="POST" action="/invoice" name="invoice">
-                                <input style="display: none" type="text" id="itemPay" name="SalaryId">
-                                <ul class="nav navbar-right panel_toolbox">
-                                    <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
-                                    </li>
-                                    <button type="submit" value="Register" disabled="true"
-                                            style="font-weight: bold;color: white" ; id="name"
-                                            class="btn btn-success "> Submit <i class="fa fa-file-image-o"></i>
-                                    </button>
-                                </ul>
-
-                            </form>
-
-                            <button onclick="getValue();return false" ;
-                                    style="float: right; font-weight: bold;color: white" ;
-                                    id="btn_enable" class="btn btn-success ">Add Cart <i class="fa fa-plus-circle"></i>
-                            </button>
-
-                            <!--href="/invoice"-->
-                            <div class="clearfix"></div>
-                        </div>
-
-                        <div class="x_content">
-
-                            <div class="row">
-
-                                <div class="col-sm-12">
-
-                                    <div class="card-box table-responsive">
-
-                                        <table id="datatable-buttons"
-                                               class="table table-striped jambo_table bulk_action table-bordered">
-                                            <thead class="thead-dark">
-
-                                            <tr>
-                                                <th>Id</th>
-                                                <th>Name</th>
-                                                <th>price</th>
-                                                <th>Delete</th>
-                                                <th><input type="checkbox" id="check-all" class="flat"></th>
-                                            </tr>
-                                            </thead>
-
-                                            <tbody>
-                                            <%--                                            <c:forEach items="${listEmployeesTableSalary}" var="e">--%>
-                                            <tr>
-                                                <td>sdsds}</td>
-                                                <td>same}</td>
-                                                <td>scSalarx}</td>
-                                                <td><a href=""><span
-                                                        class="glyphicon glyphicon-trash"></span></a></td>
-                                                <td class="a-center ">
-                                                    <input type="checkbox" class="flat checks"
-                                                           name="table_records">
-                                                </td>
-                                            </tr>
-                                            <%--                                            </c:forEach>--%>
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
                 <%--/////////////////////////////////////////////    /////////////////////////////////////////////--%>
             </div>
         </div>

@@ -8,12 +8,12 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
-public class RestaurantStockController {
+public class RestaurantTableController {
     @Autowired
     IndexLoginBO indexLoginBO;
-    @GetMapping("/restaurantStock")
+    @GetMapping("/restaurantTable")
     public String loginPage(Model model){
         model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
-        return "restaurantStock";
+        return "restaurantTable";
     }
 }

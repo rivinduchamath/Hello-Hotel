@@ -3,6 +3,8 @@ package lk.sliit.hotelManagement.entity.restaurant.onlineTableReservation;
 
 
 
+
+
 import lk.sliit.hotelManagement.entity.restaurant.RestaurantTable;
 
 import javax.persistence.*;
