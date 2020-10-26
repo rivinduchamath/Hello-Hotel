@@ -224,6 +224,7 @@ public class KitchenController {
         loginPage(model);
     }
 
+/*
     @PostMapping("/kitchen")
     public void deleteDailyOrder(Model model, @ModelAttribute KitchenFoodOrderDTO kitchenFoodOrderDTO){
 
@@ -234,6 +235,7 @@ public class KitchenController {
 
         }
     }
+*/
 
 
     @GetMapping("/kitchenReport")

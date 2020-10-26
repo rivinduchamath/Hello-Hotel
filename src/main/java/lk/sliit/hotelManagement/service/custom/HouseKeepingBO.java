@@ -34,4 +34,6 @@ public interface HouseKeepingBO extends SuperBO {
     void deleteLaundryOrder(int id);
 
     List<LaundryDTO> findProcessingLaundryData();
+
+    void changeState(int id);
 }

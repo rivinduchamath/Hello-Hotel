@@ -307,6 +307,7 @@
                                                 <th>Expected Date</th>
                                                 <th>Date</th>
                                                 <th>Order Holder</th>
+                                                <th>Chanage State</th>
                                                 <th></th>
 
                                             </tr>
@@ -321,6 +322,10 @@
                                                     <td>${e.expectedDate}</td>
                                                     <td>${e.date}</td>
                                                     <td scope="row">${e.orderHolder}</td>
+                                                    <td>
+                                                        <a href="processLaundryOrder/${e.laundryId}" onclick="return confirm('Are you sure you want to Process?')"
+                                                           class="btn btn-xs">
+                                                            <i class="fa fa-pencil"></i></a></td>
                                                     <td>
                                                         <a href="deleteLaundryOrder/${e.laundryId}" onclick="return confirm('Are you sure you want to delete?')"
                                                            class="btn btn-xs">
