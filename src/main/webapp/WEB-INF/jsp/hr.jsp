@@ -197,11 +197,14 @@
                     </div>
 
 
+
                     <div class="col-sm-12 col-md-4 col-lg-4 col-xl-4">
+
                         <br>
                         <a href="/roomsHR">
                             <button type="button" class="large-btn btn btn-dark">Hotel Room Price</button>
                         </a>
+
                     </div>
                     <div class="col-sm-12 col-md-4 col-lg-4 col-xl-4">
                         <br>
