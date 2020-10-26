@@ -36,7 +36,6 @@ public class InventoryNotice implements SuperEntity {
     }
 
 
-
     public int getNoticeId() {
         return noticeId;
     }

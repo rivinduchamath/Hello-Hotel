@@ -1,6 +1,7 @@
 package lk.sliit.hotelManagement.service.custom.impl;
 
 import lk.sliit.hotelManagement.dao.banquetDAO.LimitDAO;
+import lk.sliit.hotelManagement.dao.inventoryDAO.InventoryDAO;
 import lk.sliit.hotelManagement.dao.inventoryDAO.InventoryNoticeDAO;
 import lk.sliit.hotelManagement.dao.kitchenDAO.KitchenDAO;
 import lk.sliit.hotelManagement.dao.kitchenDAO.KitchenFoodOrderDAO;
@@ -9,14 +10,13 @@ import lk.sliit.hotelManagement.dao.kitchenDAO.MenuDetailsDAO;
 import lk.sliit.hotelManagement.dao.restaurantDAO.counterOrderDAO.RestaurantCounterOrderDetailDAO;
 import lk.sliit.hotelManagement.dao.restaurantDAO.onlineOrderDAO.RestaurantOnlineOrderDetailsDAO;
 import lk.sliit.hotelManagement.dto.banquet.LimitDTO;
+import lk.sliit.hotelManagement.dto.inventory.InventoryDTO;
 import lk.sliit.hotelManagement.dto.inventory.InventoryNoticeDTO;
-import lk.sliit.hotelManagement.dto.kitchen.FoodItemDTO;
+import lk.sliit.hotelManagement.dto.kitchen.*;
 import lk.sliit.hotelManagement.controller.kitchenController.KitchenUtil;
-import lk.sliit.hotelManagement.dto.kitchen.KitchenFoodOrderDTO;
-import lk.sliit.hotelManagement.dto.kitchen.MenuDTO;
-import lk.sliit.hotelManagement.dto.kitchen.MenuDetailsDTO;
 import lk.sliit.hotelManagement.dto.restaurant.restaurantCounterOrder.RestaurantCounterOrderDetailDTO;
 import lk.sliit.hotelManagement.entity.banquet.OrderLimit;
+import lk.sliit.hotelManagement.entity.inventory.Inventory;
 import lk.sliit.hotelManagement.entity.inventory.InventoryNotice;
 import lk.sliit.hotelManagement.entity.kitchen.FoodItem;
 import lk.sliit.hotelManagement.entity.kitchen.KitchenFoodOrders;
@@ -53,6 +53,8 @@ public class KitchenBOImpl implements KitchenBO {
     KitchenFoodOrderDAO kitchenFoodOrderDAO;
     @Autowired
     LimitDAO limitDAO;
+    @Autowired
+    InventoryDAO inventoryDAO;
 
     @Override
     public void saveFoodItem(FoodItemDTO foodItemDTO) {
@@ -77,38 +79,6 @@ public class KitchenBOImpl implements KitchenBO {
                     item.getSrc()));
         }
         return foodItemDTOList;
-    }
-
-    @Override
-    public List<FoodItemDTO> findFoodItemsForMenu() {
-        Iterable<FoodItem> foodItems = kitchenDAO.findOnlyFoods(KitchenUtil.ingredient);
-        List<FoodItemDTO> foodItemDTOS = new ArrayList<>();
-
-        for (FoodItem item: foodItems){
-            foodItemDTOS.add(new FoodItemDTO(
-                    item.getItemId(),
-                    item.getName(),
-                    item.getUnitePrice(),
-                    item.getCategory(),
-                    item.getSrc()));
-        }
-        return foodItemDTOS;
-    }
-
-    @Override
-    public List<FoodItemDTO> findFoodIngredient() {
-        Iterable<FoodItem> foodItems = kitchenDAO.findAllIngredients(KitchenUtil.ingredient);
-        List<FoodItemDTO> foodItemDTOS = new ArrayList<>();
-
-        for (FoodItem item: foodItems){
-            foodItemDTOS.add(new FoodItemDTO(
-                    item.getItemId(),
-                    item.getName(),
-                    item.getUnitePrice(),
-                    item.getCategory(),
-                    item.getSrc()));
-        }
-        return foodItemDTOS;
     }
 
     @Override
@@ -296,25 +266,23 @@ public class KitchenBOImpl implements KitchenBO {
 
     @Override
     public void saveKitchenFoodOrder(KitchenFoodOrderDTO kitchenFoodOrderDTO) {
-        if (kitchenFoodOrderDTO.getOrderId() == KitchenUtil.defaultID){
+        int lastID = 1;
+        if (kitchenFoodOrderDTO.getOrderId() == KitchenUtil.defaultID) {
 
             try {
-                int lastID = kitchenFoodOrderDAO.findTopByOrderByOrderIdDesc().getOrderId();
+                lastID = kitchenFoodOrderDAO.findTopByOrderByOrderIdDesc().getOrderId();
                 lastID++;
-                kitchenFoodOrderDTO.setOrderId(lastID);
-            } catch (Exception e){
-                kitchenFoodOrderDTO.setOrderId(1);
-            } finally {
-                kitchenFoodOrderDAO.save(new KitchenFoodOrders(
-                        kitchenFoodOrderDTO.getOrderId(),
-                        kitchenFoodOrderDTO.getFoodItemId(),
-                        kitchenFoodOrderDTO.getDescription(),
-                        kitchenFoodOrderDTO.getAmount(),
-                        kitchenFoodOrderDTO.getExpectedDate()
-                ));
+            } catch (Exception e) {
+                lastID = 1;
             }
-
         }
+        kitchenFoodOrderDAO.save(new KitchenFoodOrders(
+                lastID,
+                kitchenFoodOrderDTO.getFoodItemId(),
+                kitchenFoodOrderDTO.getDescription(),
+                kitchenFoodOrderDTO.getAmount(),
+                kitchenFoodOrderDTO.getExpectedDate()
+        ));
     }
 
     @Override
@@ -336,8 +304,8 @@ public class KitchenBOImpl implements KitchenBO {
     }
 
     @Override
-    public List<KitchenFoodOrderDTO> loadKitchenFoodOrderBydate(java.sql.Date date) {
-        Iterable<KitchenFoodOrders> kitchenFoodOrders = kitchenFoodOrderDAO.findTopByExpectedDateEquals(date);
+    public List<KitchenFoodOrderDTO> loadKitchenFoodOrderBydateAndDescription(java.sql.Date date, String  description) {
+        Iterable<KitchenFoodOrders> kitchenFoodOrders = kitchenFoodOrderDAO.findTopByExpectedDateAndDescriptionEquals(date,description);
         List<KitchenFoodOrderDTO> kitchenFoodOrderDTOS = new ArrayList<>();
 
         for (KitchenFoodOrders item: kitchenFoodOrders){
@@ -466,5 +434,83 @@ public class KitchenBOImpl implements KitchenBO {
                 orderLimit.getOrderLimit()
         );
     }
+
+    @Override
+    public void saveInventoryNotice(KitchenInventoryNoticeDTO inventoryNoticeDTO) {
+
+        try {
+            InventoryNotice notice = inventoryNoticeDAO.findInventoryNoticeByInventoryAndExpDateEquals(
+                    inventoryNoticeDTO.getInventory(), inventoryNoticeDTO.getExpDate());
+            inventoryNoticeDTO.setNoticeId(notice.getNoticeId());
+            inventoryNoticeDTO.setOrderQty((inventoryNoticeDTO.getOrderQty() + notice.getOrderQty()));
+        } catch (Exception e) {
+        }
+
+        inventoryNoticeDAO.save(new InventoryNotice(
+                inventoryNoticeDTO.getNoticeId(),
+                inventoryNoticeDTO.getDepartment(),
+                inventoryNoticeDTO.getOrderQty(),
+                inventoryNoticeDTO.getDate(),
+                inventoryNoticeDTO.getExpDate(),
+                inventoryNoticeDTO.getOrderHolder(),
+                inventoryNoticeDTO.isState(),
+                inventoryNoticeDTO.getInventory()
+
+        ));
+    }
+
+
+    @Override
+    public KitchenInventoryNoticeDTO findInventoryNotice(java.sql.Date date, int foodItemId) {
+        InventoryNotice inventoryNotice = inventoryNoticeDAO.findInventoryNoticeByExpDateAndDepartmentAndInventoryEquals(date,KitchenUtil.department,foodItemId);
+        return new KitchenInventoryNoticeDTO(
+                inventoryNotice.getNoticeId(),
+                inventoryNotice.getDepartment(),
+                inventoryNotice.getOrderQty(),
+                inventoryNotice.getDate(),
+                inventoryNotice.getExpDate(),
+                inventoryNotice.getOrderHolder(),
+                inventoryNotice.isState(),
+                inventoryNotice.getInventory()
+        );
+    }
+
+    @Override
+    public int findMaxKitchenOrderId() {
+        KitchenFoodOrders kitchenFoodOrders = kitchenFoodOrderDAO.findTopByOrderByOrderIdDesc();
+        return kitchenFoodOrders.getOrderId();
+    }
+
+    @Override
+    public List<InventoryDTO> findKitchenInventory(String s) {
+        Iterable<Inventory> all = inventoryDAO.findAllByTypeEquals(s);
+        List<InventoryDTO> dtos = new ArrayList<>();
+        for (Inventory a : all) {
+            dtos.add(new InventoryDTO(
+                    a.getInventoryId(),
+                    a.getText(),
+                    a.getDescription(),
+                    a.getOrderQty(),
+                    a.getType(),
+                    a.getOrderLimit(),
+                    a.getGetPrice(),
+                    a.getSellingPrice(),
+                    a.getDate()
+            ));
+        }
+        return dtos;
+    }
+
+    @Override
+    public KitchenFoodOrderDTO getExistingKitchenFoodOrder(int foodItemId, java.sql.Date expectedDate, String description) {
+        KitchenFoodOrders kitchenFoodOrders = kitchenFoodOrderDAO.findKitchenFoodOrdersByExpectedDateAndFoodItemIdAAndDescriptionEquals(expectedDate,foodItemId, description);
+        return new KitchenFoodOrderDTO(
+                kitchenFoodOrders.getOrderId(),
+                kitchenFoodOrders.getDescription(),
+                kitchenFoodOrders.getAmount(),
+                kitchenFoodOrders.getExpectedDate()
+        );
+    }
+
 
 }

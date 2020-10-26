@@ -323,8 +323,8 @@
                                                 <tbody>
                                                 <c:forEach items="${loadFoodItemsTable}" var="item">
                                                     <tr>
-                                                        <td>${item.itemId}</td>
-                                                        <td>${item.itemName}</td>
+                                                        <td>${item.inventoryId}</td>
+                                                        <td>${item.text}</td>
                                                     </tr>
                                                 </c:forEach>
                                                 </tbody>

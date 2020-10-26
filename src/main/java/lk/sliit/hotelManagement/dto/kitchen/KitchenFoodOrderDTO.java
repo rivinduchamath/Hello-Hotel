@@ -1,5 +1,7 @@
 package lk.sliit.hotelManagement.dto.kitchen;
 
+import lk.sliit.hotelManagement.dto.inventory.InventoryNoticeDTO;
+
 import java.sql.Date;
 
 public class KitchenFoodOrderDTO {
@@ -9,6 +11,8 @@ public class KitchenFoodOrderDTO {
     private String description;
     private double amount;
     private Date expectedDate;
+
+    String itemName;
 
     public KitchenFoodOrderDTO() {
     }
@@ -26,6 +30,14 @@ public class KitchenFoodOrderDTO {
         this.description = description;
         this.amount = amount;
         this.expectedDate = expectedDate;
+    }
+
+    public String getItemName() {
+        return itemName;
+    }
+
+    public void setItemName(String itemName) {
+        this.itemName = itemName;
     }
 
     public int getOrderId() {
@@ -67,4 +79,6 @@ public class KitchenFoodOrderDTO {
     public void setExpectedDate(Date expectedDate) {
         this.expectedDate = expectedDate;
     }
+
+
 }

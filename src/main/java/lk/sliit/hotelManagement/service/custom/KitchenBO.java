@@ -1,12 +1,9 @@
 package lk.sliit.hotelManagement.service.custom;
 
-import com.sun.org.apache.xpath.internal.operations.Or;
 import lk.sliit.hotelManagement.dto.banquet.LimitDTO;
+import lk.sliit.hotelManagement.dto.inventory.InventoryDTO;
 import lk.sliit.hotelManagement.dto.inventory.InventoryNoticeDTO;
-import lk.sliit.hotelManagement.dto.kitchen.FoodItemDTO;
-import lk.sliit.hotelManagement.dto.kitchen.KitchenFoodOrderDTO;
-import lk.sliit.hotelManagement.dto.kitchen.MenuDTO;
-import lk.sliit.hotelManagement.dto.kitchen.MenuDetailsDTO;
+import lk.sliit.hotelManagement.dto.kitchen.*;
 import lk.sliit.hotelManagement.dto.restaurant.restaurantCounterOrder.RestaurantCounterOrderDetailDTO;
 import lk.sliit.hotelManagement.service.SuperBO;
 
@@ -15,17 +12,16 @@ import java.sql.Date;
 import java.util.List;
 
 public interface KitchenBO extends SuperBO {
+
     void saveFoodItem(FoodItemDTO foodItemDTO);
 
     List<FoodItemDTO> findFoodItems();
 
-    List<FoodItemDTO> findFoodItemsForMenu();
-
-    List<FoodItemDTO> findFoodIngredient();
-
     FoodItemDTO findHighestId();
 
     void deleteFoodItem(int foodItemId);
+
+
 
     MenuDTO findHighestFoodPackId();
 
@@ -44,6 +40,8 @@ public interface KitchenBO extends SuperBO {
 
     List<InventoryNoticeDTO> findWeekOrderNotice();
 
+
+
     FoodItemDTO findFoodItemById(int itemId);
 
     List<MenuDTO> findMenusByType(String type);
@@ -52,9 +50,15 @@ public interface KitchenBO extends SuperBO {
 
     MenuDTO findMinMenuIdByType(String type);
 
+
+
     List<RestaurantCounterOrderDetailDTO> findAllOrders();
 
+
+
     void deleteItemFromPack(int menuItemId, int foodItemID);
+
+
 
     void saveKitchenFoodOrder(KitchenFoodOrderDTO kitchenFoodOrderDTO);
 
@@ -62,9 +66,11 @@ public interface KitchenBO extends SuperBO {
 
     KitchenFoodOrderDTO loadKitchenFoodOrderById( int id);
 
-    List<KitchenFoodOrderDTO> loadKitchenFoodOrderBydate(Date date);
+    List<KitchenFoodOrderDTO> loadKitchenFoodOrderBydateAndDescription(Date date, String description);
 
     List<KitchenFoodOrderDTO> loadKitchenFoodOrderByDescription(String description);
+
+
 
     void saveDailyMenuId(String id);
 
@@ -74,4 +80,15 @@ public interface KitchenBO extends SuperBO {
 
     LimitDTO findMenuDate();
 
-    }
+
+
+    void saveInventoryNotice(KitchenInventoryNoticeDTO inventoryNoticeDTO);
+
+    KitchenInventoryNoticeDTO findInventoryNotice(Date date, int foodItemId);
+
+    int findMaxKitchenOrderId();
+
+    List<InventoryDTO> findKitchenInventory(String s);
+
+    KitchenFoodOrderDTO getExistingKitchenFoodOrder(int foodItemId, Date expectedDate, String description);
+}

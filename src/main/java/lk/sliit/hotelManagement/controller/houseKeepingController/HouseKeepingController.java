@@ -42,7 +42,7 @@ public class HouseKeepingController {
         for (AttendanceDTO v:humanResourceBO.findTodayCleanAttendance ( )) {//Read Today Attendance
 
             if(v.getEmpDepartment().equals("HouseKeeping")){
-
+                System.out.println("Cake "+v.getEmpDepartment());
                 todayCleanAttendance.add(i,v);
               i++;
             }

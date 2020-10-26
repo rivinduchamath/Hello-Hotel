@@ -17,4 +17,6 @@ public interface InventoryNoticeDAO extends CrudRepository<InventoryNotice,Integ
     Iterable<InventoryNotice> findAllByDateBetween(Date today, Date beforeWeek);
 
     Iterable<InventoryNotice> findAllByDateBetweenAndDepartmentEquals(Date beforeweek, Date todaya,String dep);
+
+    InventoryNotice findInventoryNoticeByExpDateAndDepartmentAndInventoryEquals(java.sql.Date date, String department, int id);
 }

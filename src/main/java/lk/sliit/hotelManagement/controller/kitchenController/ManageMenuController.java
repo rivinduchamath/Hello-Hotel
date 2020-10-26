@@ -88,7 +88,7 @@ public class ManageMenuController {
         model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
         model.addAttribute("menuItem", kitchenBO.findMenuItemById(menuDTO.getMenuId()));
 
-        List<FoodItemDTO> foodItemDTOS = kitchenBO.findFoodItemsForMenu();
+        List<FoodItemDTO> foodItemDTOS = kitchenBO.findFoodItems();
         List<FoodItemDTO> notSelectedFoodItems = new ArrayList<>();
         List<FoodItemDTO> selectedFoodItems = new ArrayList<>();
 
@@ -110,7 +110,7 @@ public class ManageMenuController {
         model.addAttribute("menuItem", kitchenBO.findMenuItemById(menuDTO.getMenuID()));
         kitchenBO.saveFoodDetail(menuDTO);
 
-        List<FoodItemDTO> foodItemDTOS = kitchenBO.findFoodItemsForMenu();
+        List<FoodItemDTO> foodItemDTOS = kitchenBO.findFoodItems();
         List<FoodItemDTO> notSelectedFoodItems = new ArrayList<>();
         List<FoodItemDTO> selectedFoodItems = new ArrayList<>();
 
