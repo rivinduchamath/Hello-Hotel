@@ -84,100 +84,101 @@
         <!-- page content -->
         <div class="right_col" role="main">
             <div class="">
-                <div class="page-title">
-                    <div class="title_left">
-                        <h3>Employee Salaries
-                            <small>Find All Salary Details</small>
-                        </h3>
-                    </div>
+                <div class="">
+                    <div class="page-title">
+                        <div class="title_left">
+                            <h3>HR Department
+                                <small>Inventory Bills Management</small>
+                            </h3>
+                        </div>
 
-                    <div class="title_right">
-                        <script>
+                        <div class="title_right">
+                            <script>
 
-                            function formatTime() {
-                                now = new Date();
-                                hour = now.getHours();
-                                min = now.getMinutes();
-                                sec = now.getSeconds();
+                                function formatTime() {
+                                    now = new Date();
+                                    hour = now.getHours();
+                                    min = now.getMinutes();
+                                    sec = now.getSeconds();
 
-                                if (document.clock.sivamtime[0].checked) {
-                                    if (min <= 9) {
-                                        min = "0" + min;
-                                    }
-                                    if (sec <= 9) {
-                                        sec = "0" + sec;
-                                    }
-                                    if (hour > 12) {
-                                        hour = hour - 12;
-                                        add = " p.m.";
-                                    } else {
-                                        hour = hour;
-                                        add = " a.m.";
-                                    }
-                                    if (hour == 12) {
-                                        add = " p.m.";
-                                    }
-                                    if (hour == 0) {
-                                        hour = "12";
+                                    if (document.clock.sivamtime[0].checked) {
+                                        if (min <= 9) {
+                                            min = "0" + min;
+                                        }
+                                        if (sec <= 9) {
+                                            sec = "0" + sec;
+                                        }
+                                        if (hour > 12) {
+                                            hour = hour - 12;
+                                            add = " p.m.";
+                                        } else {
+                                            hour = hour;
+                                            add = " a.m.";
+                                        }
+                                        if (hour == 12) {
+                                            add = " p.m.";
+                                        }
+                                        if (hour == 0) {
+                                            hour = "12";
+                                        }
+
+                                        document.clock.sivam.value = ((hour <= 9) ? "0" + hour : hour) + ":" + min + ":" + sec + add;
                                     }
 
-                                    document.clock.sivam.value = ((hour <= 9) ? "0" + hour : hour) + ":" + min + ":" + sec + add;
+                                    if (document.clock.sivamtime[1].checked) {
+                                        if (min <= 9) {
+                                            min = "0" + min;
+                                        }
+                                        if (sec <= 9) {
+                                            sec = "0" + sec;
+                                        }
+                                        if (hour < 10) {
+                                            hour = "0" + hour;
+                                        }
+                                        document.clock.sivam.value = hour + ':' + min + ':' + sec;
+                                    }
+
+                                    setTimeout("formatTime()", 1000);
                                 }
 
-                                if (document.clock.sivamtime[1].checked) {
-                                    if (min <= 9) {
-                                        min = "0" + min;
-                                    }
-                                    if (sec <= 9) {
-                                        sec = "0" + sec;
-                                    }
-                                    if (hour < 10) {
-                                        hour = "0" + hour;
-                                    }
-                                    document.clock.sivam.value = hour + ':' + min + ':' + sec;
-                                }
+                                window.onload = formatTime;
 
-                                setTimeout("formatTime()", 1000);
-                            }
+                            </script>
+                            <form name="clock" style="float: right">
+                                <table class="clock" width="135">
+                                    <tr>
+                                        <td class="clock2">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <h6 style="color:#73879C; float:right;border: none;background-color: #f6f6f6">
+                                            <input style="color:#73879C; float:right;border: none;background-color: #f6f6f6"
+                                                   class="clock2" type="text" name="sivam" size="12"><br>
+                                            <p><%=date%>
+                                            </p>
+                                        </h6>
 
-                            window.onload = formatTime;
-
-                        </script>
-                        <form name="clock" style="float: right">
-                            <table class="clock" width="135">
-                                <tr>
-                                    <td class="clock2">
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <h6 style="color:#73879C; float:right;border: none;background-color: #f6f6f6">
-                                        <input style="color:#73879C; float:right;border: none;background-color: #f6f6f6"
-                                               class="clock2" type="text" name="sivam" size="12"><br>
-                                        <p><%=date%>
-                                        </p>
-                                    </h6>
-
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <label class="clock3" for="1"><input type="radio" style="display: none" id="1"
-                                                                             name="sivamtime" checked></label><br>
-                                        <label class="clock3" for="2"><input type="radio" style="display: none" id="2"
-                                                                             name="sivamtime"></label>
-                                    </td>
-                                </tr>
-                            </table>
-                        </form>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <label class="clock3" for="1"><input type="radio" style="display: none" id="1"
+                                                                                 name="sivamtime" checked></label><br>
+                                            <label class="clock3" for="2"><input type="radio" style="display: none" id="2"
+                                                                                 name="sivamtime"></label>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </form>
+                        </div>
                     </div>
-                </div>
                     <div class="col-md-12 col-sm-12 ">
                         <div class="x_panel">
                             <div class="x_title">
-                                <h2>All Salaries List
-                                    <small>Salary List Table</small>
+                                <h2>Inventory Bills
+                                    <small>Weekly Inventory Details</small>
                                 </h2>
                                 <div class="col-md-2 col-sm-2">
-                                <a href="salary">
+                                <a href="/hr">
                                     <button type='submit' class="btn btn-secondary" style="width: 50%;float: right"
                                             value="Register">
                                        <i class="fa fa-reply"></i> Back
@@ -205,35 +206,18 @@
                                     <div class="col-sm-12">
                                         <div class="card-box table-responsive">
                                             <p class="text-muted font-13 m-b-30">
-                                                This table provides all salary details of employees.
+                                                This table provide weekly details about Inventory Department
                                             </p>
                                             <table id="datatable-buttons" class="table table-striped table-bordered">
                                                 <thead class="thead-light">
                                                 <tr>
-                                                    <th>Salary ID</th>
-                                                    <th>Employee ID</th>
-                                                    <th>Employee Name</th>
-                                                    <th>Basic Salary</th>
-                                                    <th>Bonus</th>
-                                                    <th>Income Tax</th>
-                                                    <th>OT Hours</th>
-                                                    <th>OT Rate</th>
+                                                    <th>Inventory ID</th>
+                                                    <th>Description</th>
+                                                    <th>Amount</th>
                                                 </tr>
 
                                                 </thead>
                                                 <tbody>
-                                                <c:forEach items="${listEmployeesTableSalarya}" var="e">
-                                                    <tr>
-                                                        <td>${e.salaryId}</td>
-                                                        <td>${e.employeeID}</td>
-                                                        <td>${e.employeeName}</td>
-                                                        <td>${e.basicSalary}</td>
-                                                        <td>${e.otHours}</td>
-                                                        <td>${e.employeeID}</td>
-                                                        <td>${e.otHours}</td>
-                                                        <td>${e.otHours}</td>
-                                                    </tr>
-                                                </c:forEach>
                                                 </tbody>
                                             </table>
                                         </div>
@@ -250,13 +234,7 @@
         <!-- /page content -->
 
         <!-- footer content -->
-        <footer>
-            <div class="pull-right">
-                Copyright © Employee Management 2020.<a href="https://rivinduchamath.github.io/pro/">Created by Chanuka
-                Mullevidana</a>
-            </div>
-            <div class="clearfix"></div>
-        </footer>
+        <jsp:include page="footer.jsp"/>
         <!-- /footer content -->
     </div>
 </div>

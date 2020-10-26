@@ -167,7 +167,6 @@
                 </div>
                 <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
 
-
                     <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6">
                         <br>
                         <a href="/currentBill">
@@ -182,21 +181,19 @@
                         </a>
                     </div>
 
-
                     <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6">
                         <br>
                         <a href="/attendance">
                             <button type="button" class="large-btn btn btn-dark">Employee Attendance</button>
                         </a>
                     </div>
+
                     <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6">
                         <br>
                         <a href="/salary">
                             <button type="button" class="large-btn btn btn-dark">Employee Salary</button>
                         </a>
                     </div>
-
-
 
                     <div class="col-sm-12 col-md-4 col-lg-4 col-xl-4">
 
@@ -208,13 +205,14 @@
                     </div>
                     <div class="col-sm-12 col-md-4 col-lg-4 col-xl-4">
                         <br>
-                        <a href="#">
+                        <a href="/activityList">
                             <button type="button" class="large-btn btn btn-dark">Activity List</button>
                         </a>
                     </div>
+
                     <div class="col-sm-12 col-md-4 col-lg-4 col-xl-4">
                         <br>
-                        <a href="#">
+                        <a href="/inventoryBillsHR">
                             <button type="button" class="large-btn btn btn-dark">Inventory Bills</button>
                         </a>
                     </div>

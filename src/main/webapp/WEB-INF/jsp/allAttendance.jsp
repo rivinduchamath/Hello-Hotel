@@ -97,8 +97,8 @@
             <div class="">
                 <div class="page-title">
                     <div class="title_left">
-                        <h3>Tables
-                            <small>Some examples to get you started</small>
+                        <h3>Attendance
+                            <small>All Attendance Details</small>
                         </h3>
                     </div>
 
@@ -190,8 +190,8 @@
                         <div class="col-md-12 col-sm-12 ">
                             <div class="x_panel">
                                 <div class="x_title">
-                                    <h2>Find Users
-                                        <small>User Page</small>
+                                    <h2>Find Employees
+                                        <small>Attendance Table</small>
                                     </h2>
                                     <ul class="nav navbar-right panel_toolbox">
                                         <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
@@ -210,8 +210,9 @@
                                     <div class="clearfix"></div>
                                 </div>
                                 <a href="/attendance">
-                                    <button style="float: right;font-weight: bolder" class="btn btn-success"><i
-                                            class="fa fa-backward"></i> Back
+                                    <button class="btn btn-secondary" style="float:right;" style="width:8%; height:5%" type="button"><i
+                                            class="fa fa-reply">
+                                        Back</i>
                                     </button>
                                 </a>
                                 <div class="x_content">
@@ -219,9 +220,8 @@
                                         <div class="col-sm-12">
                                             <div class="card-box table-responsive">
                                                 <p class="text-muted font-13 m-b-30">
-                                                    The User Table Provide To Find Data Of Users.If You Want Edit OR
-                                                    Remove User You Can Find
-                                                    User And Just Click On User Row.
+                                                    This table provides Attendance details of Employees.
+                                                    To remove details, find the User and click the Delete icon.
                                                 </p>
                                                 <table id="datatable-buttons"
                                                        class="table table-striped table-bordered">
