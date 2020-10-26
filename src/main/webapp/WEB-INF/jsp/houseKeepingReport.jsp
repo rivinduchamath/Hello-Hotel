@@ -243,17 +243,12 @@
 
                                                     </tr>
                                                 </c:forEach>
-
-
                                                 </tbody>
                                             </table>
                                         </div>
                                         <!-- /.col -->
                                     </div>
-                                    <!-- /.row -->
 
-
-                                    <!-- /.row -->
 
                                     <!-- this row will not appear when printing -->
                                     <div class="row no-print">
