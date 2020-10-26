@@ -233,16 +233,17 @@
                                                 </thead>
                                                 <tbody>
 
+                                                <c:forEach items="${loadHotelRoomTable}" var="e">
                                                     <tr>
-                                                        <td>N001</td>
-                                                        <td>R001</td>
-                                                        <td>30000</td>
-                                                        <td>2020/09/09</td>
-                                                                 </tr>
-                                                    <script>
-                                                        var aa = aa + ${e.otHours};
-                                                        document.getElementById("demo").innerHTML = 11;
-                                                    </script>
+                                                        <td>${e.checkIn}</td>
+                                                        <td>${e.checkOut}</td>
+                                                        <td>${e.customer}</td>
+                                                        <td>${e.details}</td>
+                                                        <td>${e.noOfRooms}</td>
+
+                                                    </tr>
+                                                </c:forEach>
+
 
                                                 </tbody>
                                             </table>
@@ -251,68 +252,19 @@
                                     </div>
                                     <!-- /.row -->
 
-                                    <div class="row">
-                                        <!-- accepted payments column -->
-                                        <div class="col-md-6">
-                                            <p class="lead">Payment Methods:</p>
-                                            <img src="../../images/visa.png" alt="Visa">
-                                            <img src="../../images/mastercard.png" alt="Mastercard">
-                                            <img src="../../images/american-express.png" alt="American Express">
-                                            <img src="../../images/paypal.png" alt="Paypal">
-                                            <p class="text-muted well well-sm no-shadow" style="margin-top: 10px;">
-                                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus
-                                                atque corporis culpa cupiditate dolore doloremque, dolores eaque eos
-                                                ipsam itaque laborum maiores porro quis recusandae, sapiente sequi
-                                                suscipit ullam ut!
-                                            </p>
-                                        </div>
-                                        <!-- /.col -->
-                                        <div class="col-md-6">
-                                            <p class="lead">Amount Due 2/22/2014</p>
-                                            <div class="table-responsive">
-                                                <table class="table">
-                                                    <tbody>
-                                                    <tr>
-                                                        <th style="width:50%">Basic Tot:</th>
-                                                        <td><span id="val2"></span></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <th>Tax
-                                                            <small style="font-weight: bold"><span id="val9"></span>
-                                                            </small>
-                                                        </th>
-                                                        <td><span id="val3"></span></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <th>OT Tot:</th>
-                                                        <td><span id="val4"></span></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <th>Bonus Tot:</th>
-                                                        <td><span id="val5"></span></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <th>Total:</th>
-                                                        <td><span id="val"></span></td>
-                                                    </tr>
-                                                    </tbody>
-                                                </table>
-                                            </div>
-                                        </div>
-                                        <!-- /.col -->
-                                    </div>
+
                                     <!-- /.row -->
 
                                     <!-- this row will not appear when printing -->
                                     <div class="row no-print">
                                         <div class=" ">
 
-                                            <form method="POST" action="/deleteInvoiceSalary" name="deleteInvoiceSalary">
+                                            <form method="POST" action="/" name="deleteInvoiceSalary">
                                                 <input style="display: none" type="text" id="itemPay" name="SalaryId">
                                                 <ul class="nav navbar-right panel_toolbox">
                                                     <button type="submit" value="Register"
                                                             style="font-weight: bold;color: white" ; id="name" onclick="window.print();"
-                                                            class="btn btn-success "> Submit Payment <i class="fa fa-file-image-o"></i>
+                                                            class="btn btn-dark "> Print Report <i class="fa fa-file-image-o"></i>
                                                     </button>
                                                 </ul>
 

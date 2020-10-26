@@ -4,7 +4,9 @@ import lk.sliit.hotelManagement.controller.SuperController;
 import lk.sliit.hotelManagement.dto.houseKeeping.HotelRoomDTO;
 import lk.sliit.hotelManagement.dto.houseKeeping.RoomServiceDTO;
 import lk.sliit.hotelManagement.dto.hr.AttendanceDTO;
+import lk.sliit.hotelManagement.dto.inventory.GetDateHouseKeepingDTO;
 import lk.sliit.hotelManagement.dto.kitchen.MenuDTO;
+import lk.sliit.hotelManagement.dto.reservation.ReservationDTO;
 import lk.sliit.hotelManagement.service.custom.HouseKeepingBO;
 import lk.sliit.hotelManagement.service.custom.HumanResourceBO;
 import lk.sliit.hotelManagement.service.custom.IndexLoginBO;
@@ -12,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
@@ -118,11 +121,15 @@ public class HouseKeepingController {
         return "houseKeepingReport";
     }
     @PostMapping("/houseKeepingReport")
-    public String houseKeepingReports( @ModelAttribute HotelRoomDTO hotelRoomDTO,Model model ){
+    public ModelAndView houseKeepingReports(@ModelAttribute GetDateHouseKeepingDTO getDateHouseKeepingDTO, Model model ){
+        ModelAndView modelAndView = new ModelAndView("houseKeepingReport");
         model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
 
-        houseKeepingBO.saveRoomDetails(hotelRoomDTO);
-        return "redirect:/houseKeepingReport";
+        List<ReservationDTO> hotelRoomDTOList  =  houseKeepingBO.findBill(getDateHouseKeepingDTO);
+
+        model.addAttribute("loadHotelRoomTable", hotelRoomDTOList);
+
+        return modelAndView;
     }
 
 }

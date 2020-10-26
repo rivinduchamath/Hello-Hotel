@@ -4,13 +4,16 @@ import lk.sliit.hotelManagement.dao.houseKeepingDAO.HouseKeepingDAO;
 import lk.sliit.hotelManagement.dao.houseKeepingDAO.LaundryOrderDAO;
 import lk.sliit.hotelManagement.dao.manageSystemDAO.EmployeeDAO;
 import lk.sliit.hotelManagement.dao.reservationDAO.CustomerDAO;
+import lk.sliit.hotelManagement.dao.reservationDAO.ReservationDAO;
 import lk.sliit.hotelManagement.dto.houseKeeping.HotelRoomDTO;
 import lk.sliit.hotelManagement.dto.houseKeeping.LaundryDTO;
 import lk.sliit.hotelManagement.dto.houseKeeping.RoomServiceDTO;
+import lk.sliit.hotelManagement.dto.inventory.GetDateHouseKeepingDTO;
 import lk.sliit.hotelManagement.dto.kitchen.FoodItemDTO;
 import lk.sliit.hotelManagement.dto.manager.EmployeeDTO;
 import lk.sliit.hotelManagement.dto.manager.NoticeDTO;
 import lk.sliit.hotelManagement.dto.reservation.CustomerDTO;
+import lk.sliit.hotelManagement.dto.reservation.ReservationDTO;
 import lk.sliit.hotelManagement.entity.houseKeeping.HotelRoom;
 import lk.sliit.hotelManagement.entity.houseKeeping.LaundryOrders;
 import lk.sliit.hotelManagement.entity.houseKeeping.RoomService;
@@ -18,6 +21,8 @@ import lk.sliit.hotelManagement.entity.kitchen.FoodItem;
 import lk.sliit.hotelManagement.entity.manager.Employee;
 import lk.sliit.hotelManagement.entity.manager.Notice;
 import lk.sliit.hotelManagement.entity.reservation.Customer;
+import lk.sliit.hotelManagement.entity.reservation.Reservation;
+import lk.sliit.hotelManagement.entity.reservation.ReservationDetails;
 import lk.sliit.hotelManagement.service.custom.HouseKeepingBO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -35,6 +40,8 @@ public class HouseKeepingBOImpl implements HouseKeepingBO {
     HouseKeepingDAO houseKeepingDAO;
     @Autowired
     LaundryOrderDAO laundryOrderDAO;
+    @Autowired
+    ReservationDAO reservationDAO;
     @Autowired
     CustomerDAO customerDAO;
 
@@ -192,6 +199,25 @@ public class HouseKeepingBOImpl implements HouseKeepingBO {
         all.setState("Processing");
         laundryOrderDAO.save(all);
     }
+
+    @Override
+    public List<ReservationDTO> findBill(GetDateHouseKeepingDTO getDto) {
+        List<GetDateHouseKeepingDTO> hotelDirtyRoomDTOList = new ArrayList<>();
+        List<ReservationDTO> reservationDTOS = new ArrayList<>();
+        Iterable<Reservation> hotelRooms = reservationDAO.findAllByDateBetween(getDto.getDateIn(),getDto.getDateOut());
+
+        for (Reservation reservation : hotelRooms) {
+            reservationDTOS.add(new ReservationDTO(
+                 reservation.getReservationId(),
+                    reservation.getCustomer().getCustomerId(),
+                    reservation.getReservationDetails(),
+                    reservation.getDate(),
+                    reservation.getNoOfRooms()
+            ));
+        }
+        return reservationDTOS;
+    }
+
 
     @Override//Find All Rooms
     public List<HotelRoomDTO> findRooms() {
