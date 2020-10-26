@@ -191,7 +191,7 @@ public class KitchenController {
             //set notice id
             int maxId = 1;
             try {
-                maxId = inventoryBO.findHighestId().getInventoryId();
+                maxId = inventoryBO.findHighestId().getInventoryId();//error*********************************************
                 maxId++;
             } catch (NullPointerException e){
                 maxId = 1;

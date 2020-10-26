@@ -454,7 +454,7 @@ public class KitchenBOImpl implements KitchenBO {
                 inventoryNoticeDTO.getExpDate(),
                 inventoryNoticeDTO.getOrderHolder(),
                 inventoryNoticeDTO.isState(),
-                inventoryDAO.findOne(inventoryNoticeDTO.getInventory().getInventoryId())
+                inventoryNoticeDTO.getInventory()
 
         ));
     }
