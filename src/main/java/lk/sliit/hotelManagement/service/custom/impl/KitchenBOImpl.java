@@ -12,11 +12,8 @@ import lk.sliit.hotelManagement.dao.restaurantDAO.onlineOrderDAO.RestaurantOnlin
 import lk.sliit.hotelManagement.dto.banquet.LimitDTO;
 import lk.sliit.hotelManagement.dto.inventory.InventoryDTO;
 import lk.sliit.hotelManagement.dto.inventory.InventoryNoticeDTO;
-import lk.sliit.hotelManagement.dto.kitchen.FoodItemDTO;
+import lk.sliit.hotelManagement.dto.kitchen.*;
 import lk.sliit.hotelManagement.controller.kitchenController.KitchenUtil;
-import lk.sliit.hotelManagement.dto.kitchen.KitchenFoodOrderDTO;
-import lk.sliit.hotelManagement.dto.kitchen.MenuDTO;
-import lk.sliit.hotelManagement.dto.kitchen.MenuDetailsDTO;
 import lk.sliit.hotelManagement.dto.restaurant.restaurantCounterOrder.RestaurantCounterOrderDetailDTO;
 import lk.sliit.hotelManagement.entity.banquet.OrderLimit;
 import lk.sliit.hotelManagement.entity.inventory.Inventory;
@@ -307,8 +304,8 @@ public class KitchenBOImpl implements KitchenBO {
     }
 
     @Override
-    public List<KitchenFoodOrderDTO> loadKitchenFoodOrderBydate(java.sql.Date date) {
-        Iterable<KitchenFoodOrders> kitchenFoodOrders = kitchenFoodOrderDAO.findTopByExpectedDateEquals(date);
+    public List<KitchenFoodOrderDTO> loadKitchenFoodOrderBydateAndDescription(java.sql.Date date, String  description) {
+        Iterable<KitchenFoodOrders> kitchenFoodOrders = kitchenFoodOrderDAO.findTopByExpectedDateAndDescriptionEquals(date,description);
         List<KitchenFoodOrderDTO> kitchenFoodOrderDTOS = new ArrayList<>();
 
         for (KitchenFoodOrders item: kitchenFoodOrders){
@@ -439,11 +436,11 @@ public class KitchenBOImpl implements KitchenBO {
     }
 
     @Override
-    public void saveInventoryNotice(InventoryNoticeDTO inventoryNoticeDTO) {
+    public void saveInventoryNotice(KitchenInventoryNoticeDTO inventoryNoticeDTO) {
 
         try {
             InventoryNotice notice = inventoryNoticeDAO.findInventoryNoticeByInventoryAndExpDateEquals(
-                    inventoryDAO.findOne(inventoryNoticeDTO.getInventoryId()), inventoryNoticeDTO.getExpDate());
+                    inventoryNoticeDTO.getInventory(), inventoryNoticeDTO.getExpDate());
             inventoryNoticeDTO.setNoticeId(notice.getNoticeId());
             inventoryNoticeDTO.setOrderQty((inventoryNoticeDTO.getOrderQty() + notice.getOrderQty()));
         } catch (Exception e) {
@@ -457,9 +454,25 @@ public class KitchenBOImpl implements KitchenBO {
                 inventoryNoticeDTO.getExpDate(),
                 inventoryNoticeDTO.getOrderHolder(),
                 inventoryNoticeDTO.isState(),
-                inventoryDAO.findOne(inventoryNoticeDTO.getInventoryId())
+                inventoryDAO.findOne(inventoryNoticeDTO.getInventory().getInventoryId())
 
         ));
+    }
+
+
+    @Override
+    public KitchenInventoryNoticeDTO findInventoryNotice(java.sql.Date date, int foodItemId) {
+        InventoryNotice inventoryNotice = inventoryNoticeDAO.findInventoryNoticeByExpDateAndDepartmentAndInventoryEquals(date,KitchenUtil.department,foodItemId);
+        return new KitchenInventoryNoticeDTO(
+                inventoryNotice.getNoticeId(),
+                inventoryNotice.getDepartment(),
+                inventoryNotice.getOrderQty(),
+                inventoryNotice.getDate(),
+                inventoryNotice.getExpDate(),
+                inventoryNotice.getOrderHolder(),
+                inventoryNotice.isState(),
+                inventoryNotice.getInventory()
+        );
     }
 
     @Override
@@ -489,8 +502,8 @@ public class KitchenBOImpl implements KitchenBO {
     }
 
     @Override
-    public KitchenFoodOrderDTO getExisting(int foodItemId, java.sql.Date expectedDate) {
-        KitchenFoodOrders kitchenFoodOrders = kitchenFoodOrderDAO.findKitchenFoodOrdersByExpectedDateAndFoodItemIdEquals(foodItemId, expectedDate);
+    public KitchenFoodOrderDTO getExistingKitchenFoodOrder(int foodItemId, java.sql.Date expectedDate, String description) {
+        KitchenFoodOrders kitchenFoodOrders = kitchenFoodOrderDAO.findKitchenFoodOrdersByExpectedDateAndFoodItemIdAAndDescriptionEquals(expectedDate,foodItemId, description);
         return new KitchenFoodOrderDTO(
                 kitchenFoodOrders.getOrderId(),
                 kitchenFoodOrders.getDescription(),

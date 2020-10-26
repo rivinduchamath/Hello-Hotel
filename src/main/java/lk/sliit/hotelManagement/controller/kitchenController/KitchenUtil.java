@@ -18,6 +18,8 @@ public class KitchenUtil {
     public static String emptyMenuName = "Menu is empty.";
     public static String emptyItemList = "List is empty.";
     public static String emptyFoodItem = "Food item is empty";
+    public static String dailyFoodOrderType = "Daily";
+    public static String banquetFoodOrderType = "Banquet";
 
     public static String[] foodItemCategories = {
 

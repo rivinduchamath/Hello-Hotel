@@ -9,9 +9,9 @@ import java.util.Date;
 public interface KitchenFoodOrderDAO extends CrudRepository<KitchenFoodOrders,Integer> {
     KitchenFoodOrders findTopByOrderByOrderIdDesc();
 
-    Iterable<KitchenFoodOrders> findTopByExpectedDateEquals(Date date);
+    Iterable<KitchenFoodOrders> findTopByExpectedDateAndDescriptionEquals(Date date, String description);
 
-    KitchenFoodOrders findKitchenFoodOrdersByExpectedDateAndFoodItemIdEquals(int id, java.sql.Date date);
+    KitchenFoodOrders findKitchenFoodOrdersByExpectedDateAndFoodItemIdAAndDescriptionEquals(java.sql.Date date, int FoodItemId, String description);
 
 
 }

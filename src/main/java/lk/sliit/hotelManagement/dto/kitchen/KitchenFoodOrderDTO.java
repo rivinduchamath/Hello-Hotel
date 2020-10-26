@@ -12,6 +12,8 @@ public class KitchenFoodOrderDTO {
     private double amount;
     private Date expectedDate;
 
+    String itemName;
+
     public KitchenFoodOrderDTO() {
     }
 
@@ -28,6 +30,14 @@ public class KitchenFoodOrderDTO {
         this.description = description;
         this.amount = amount;
         this.expectedDate = expectedDate;
+    }
+
+    public String getItemName() {
+        return itemName;
+    }
+
+    public void setItemName(String itemName) {
+        this.itemName = itemName;
     }
 
     public int getOrderId() {
