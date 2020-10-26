@@ -2,6 +2,7 @@ package lk.sliit.hotelManagement.controller.houseKeepingController;
 
 import lk.sliit.hotelManagement.controller.SuperController;
 import lk.sliit.hotelManagement.dto.houseKeeping.HotelRoomDTO;
+import lk.sliit.hotelManagement.dto.houseKeeping.LaundryDTO;
 import lk.sliit.hotelManagement.dto.hr.AttendanceDTO;
 import lk.sliit.hotelManagement.service.custom.HouseKeepingBO;
 import lk.sliit.hotelManagement.service.custom.HumanResourceBO;
@@ -34,10 +35,28 @@ public class RoomServiceController {
     @GetMapping("/roomService")
     public String roomService(Model model){
         model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
+        List<LaundryDTO> laundryDTOS = houseKeepingBO.findLaundryData();
+        model.addAttribute("viewAcceptedOrders", laundryDTOS);
+        //Processing data
+        List<LaundryDTO> viewProcessing = houseKeepingBO.findProcessingLaundryData();
+        model.addAttribute("viewProcessing", viewProcessing);
         return "roomService";
     }
+    //Change State In Laundry Orders
+    @GetMapping(value = "processLaundryOrder2/{laundryId}")
+    public void processLaundryOrder(@PathVariable("laundryId") int id,HttpServletResponse response) throws IOException {
 
+        houseKeepingBO.changeState(id);
+        response.sendRedirect("/roomService");
 
+    }
+    @GetMapping(value = "deleteLaundryOrder2/{laundryId}")
+    public void deleteEmployee(@PathVariable("laundryId") int id,HttpServletResponse response) throws IOException {
+
+        houseKeepingBO.deleteLaundryOrder(id);
+        response.sendRedirect("/roomService");
+
+    }
 
 
 }

@@ -65,10 +65,7 @@ public class HouseKeepingBOImpl implements HouseKeepingBO {
         HotelRoom lastRoom = null;
         try {
             lastRoom = houseKeepingDAO.findTopByOrderByRoomIdDesc();
-        } catch (Exception e){
-
-        }
-
+        } catch (Exception e){}
         return new HotelRoomDTO(lastRoom.getRoomId());
     }
 
@@ -87,8 +84,6 @@ public class HouseKeepingBOImpl implements HouseKeepingBO {
                 hotelRoom.getDate()
         );
     }
-
-
 
     @Override
     public LaundryDTO findHighestId() {
@@ -157,6 +152,7 @@ public class HouseKeepingBOImpl implements HouseKeepingBO {
             dtos.add(new LaundryDTO(
                     customer.getLaundryId(),
                     customer.getCustomerId().getCustomerId(),
+                    customer.getCustomerId().getName(),
                     customer.getOrderHolder(),
                     customer.getPieces(),
                     customer.getExpectedDate(),
@@ -182,6 +178,7 @@ public class HouseKeepingBOImpl implements HouseKeepingBO {
             dtos.add(new LaundryDTO(
                     customer.getLaundryId(),
                     customer.getCustomerId().getCustomerId(),
+                    customer.getCustomerId().getName(),
                     customer.getOrderHolder(),
                     customer.getPieces(),
                     customer.getExpectedDate(),
@@ -254,7 +251,5 @@ public class HouseKeepingBOImpl implements HouseKeepingBO {
     @Override
     public void deleteRoomDetails(int roomId) {
         houseKeepingDAO.delete(roomId);
-
     }
-
 }
