@@ -100,6 +100,11 @@
                     <div class="title_left">
                         <h3>Employee Salary :
                             <small>Monthly Salary Manage</small>
+                            <a href="/salarySettings">
+                                <button style="color: #3b465e !important;" type="button"
+                                        class="btnq3 btn"><i style="font-size: 185%;" class="fa fa-gear"></i>
+                                </button>
+                            </a>
                         </h3>
                     </div>
 
