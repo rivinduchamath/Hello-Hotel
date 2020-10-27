@@ -32,7 +32,7 @@ public class RestaurantTableController {
     @GetMapping("/restaurantTable")
     public String loginPage(Model model) {
         model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
-        List<RestaurantTableDTO> tableList = restaurantBO.findTables();
+        List<RestaurantTableDTO> tableList = restaurantBO.findAllTable();
         model.addAttribute("loadAllTablesTable", tableList);
         return "restaurantTable";
     }
