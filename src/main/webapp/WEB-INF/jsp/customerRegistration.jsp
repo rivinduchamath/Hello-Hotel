@@ -164,24 +164,25 @@
                 <div class="title_left">
 
                     <h3>Customer Registration
-                        <small>Welcome To Hotel Hareesha</small>
+                        <small></small>
                     </h3>
 
 
                     <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
                         <div class="col-6 col-sm-6 col-md-8 col-lg-8 col-xl-8">
                             <a href="/reservation">
-                                <button style="display: inline-block; border: 5px solid rgb(174, 182, 203);background-color: #45526e;
-                                    color: #c6d4d3;font-weight: bolder" type="button" class="btnq2 btn"><i
-                                        class="fa fa-reply">
+                                <button style="background: #ff4157 none repeat scroll 0 0;border: medium none;color: #fff;
+                                font-size: 14px;font-weight: 700;letter-spacing: 0;padding: 8px 15px;text-transform: uppercase;"
+                                        type="button" class="btnq2 btn"><i
+                                        class="">
                                     Back</i>
                                 </button>
                             </a>
                             <a href="/counterReservation">
-                                <button style=" border: 5px solid rgb(174, 182, 203);background-color: #45526e;
-                                    color: #c6d4d3;font-weight: bolder" type="button" class="btnq2 btn"><i
-                                        class="fa fa-fast-forward">
-                                    Next</i>
+                                <button style="background: #57b846 none repeat scroll 0 0;border: medium none;color: #fff;
+                                font-size: 14px;font-weight: 700;letter-spacing: 0;padding: 8px 15px;text-transform: uppercase;" type="button" class="btnq2 btn"><i
+                                        class="">
+                                    Reservation</i>
                                 </button>
                             </a>
 

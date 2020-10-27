@@ -167,14 +167,14 @@
         <div class="right_col" role="main">
             <div class="page-title">
                 <div class="title_left">
-                    <h3>Check-Out Customer
+                    <h3>Customer Check-Out
                         <small></small>
                     </h3>
                     <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
                     <div class="col-6 col-sm-6 col-md-6 col-lg-4 col-xl-4">
-                        <a href="checkIn&checkOut">
-                            <button style=" border: 5px solid rgb(174, 182, 203);background-color: #45526e;
-                                    color: #c6d4d3;font-weight: bolder" type="button"  class="btnq2 btn"><i class="fa fa-reply">
+                        <a href="reservation">
+                            <button style="background: #ff4157 none repeat scroll 0 0;border: medium none;color: #fff;
+                                    font-size: 14px;font-weight: 700;letter-spacing: 0;padding: 8px 15px;text-transform: uppercase" type="button"  class="btnq2 btn"><i class="">
                                 Back</i>
                             </button>
                         </a>

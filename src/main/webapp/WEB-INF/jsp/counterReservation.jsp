@@ -169,17 +169,17 @@
             <div class="page-title">
                 <div class="title_left">
 
-                    <h3>New Reservation
-                        <small>Welcome To Hotel Hareesha</small>
+                    <h3>Room Booking
+                        <small></small>
                     </h3>
 
 
                     <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
                         <div class="col-6 col-sm-6 col-md-8 col-lg-8 col-xl-8">
                             <a href="/customerRegistration">
-                                <button style="display: inline-block; border: 5px solid rgb(174, 182, 203);background-color: #45526e;
-                                    color: #c6d4d3;font-weight: bolder" type="button" class="btnq2 btn"><i
-                                        class="fa fa-reply">
+                                <button style="background: #ff4157 none repeat scroll 0 0;border: medium none;color: #fff;
+                                font-size: 14px;font-weight: 700;letter-spacing: 0;padding: 8px 15px;text-transform: uppercase" type="button" class="btnq2 btn"><i
+                                        class="">
                                     Back</i>
                                 </button>
                             </a>
@@ -296,6 +296,7 @@
                                 <input type="number" value="" class="form-control"
                                        required="required" name="customerId"
                                        id="customerId" placeholder="customer Id"/></div>
+                        </div>
 
 
                             <div class="form-group">
@@ -307,8 +308,7 @@
                                            required="required" name="room condition"
                                            id="name" placeholder="AC or Non AC"/></div>
 
-
-
+                            </div>
 
 
                                 <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6"><br>
@@ -316,7 +316,7 @@
                                     <input type="text" class="form-control"
                                            required="required" name="address"
                                            id="address" placeholder="check-in"/></div>
-                            </div>
+
 
 
                             <div class="form-group">
@@ -343,7 +343,7 @@
                             <button type='reset' class="btn btn-outline-success" style="top: 20px; position: relative"
                                     value="">Reset
                             </button>
-                        </div>
+
                     </form>
                 </div>
                 <%--/Input Feilds--%>
