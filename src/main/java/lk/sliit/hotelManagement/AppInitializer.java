@@ -7,7 +7,6 @@ package lk.sliit.hotelManagement;
   Time: 2:43 AM
   To change this template use File | Settings | File Templates.
 */
-
 import lk.sliit.hotelManagement.dao.manageSystemDAO.EmployeeDAO;
 import lk.sliit.hotelManagement.entity.hr.Department;
 import lk.sliit.hotelManagement.entity.manager.Employee;
