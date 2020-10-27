@@ -166,7 +166,7 @@ public class HumanResourceBOImpl implements HumanResourceBO {
         Date todaydate = new Date();
         Calendar cal = Calendar.getInstance();
         cal.add(Calendar.MONTH, -1);
-        java.util.Date dt = cal.getTime();
+        Date dt = cal.getTime();
         List<Iterable<Double>> list = new ArrayList<>();
         Iterable<Employee> allTable = employeeDAO.findAll();
 
@@ -327,7 +327,7 @@ public class HumanResourceBOImpl implements HumanResourceBO {
             settings = salarySettingsDAO.findTopByOrderByIdDesc();
         } catch (Exception e) {
         }
-         return new SalarySettingsDTO(
+        return new SalarySettingsDTO(
                 settings.getId()
         );
     }//End
@@ -445,7 +445,7 @@ public class HumanResourceBOImpl implements HumanResourceBO {
         Date todaydate = new Date();
         Calendar cal = Calendar.getInstance();
         int m = (todaydate.getMonth());
-        java.util.Date beforeWeek = cal.getTime();
+        Date beforeWeek = cal.getTime();
         Employee employee = employeeDAO.findOne(salary.getEmployeeID());
 
         salaryDAO.save(new Salary(

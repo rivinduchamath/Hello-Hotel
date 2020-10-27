@@ -17,14 +17,11 @@ public class InventoryDTO {
     private int supplierId;
     private int orderId;
     private int orderHolder;
-    //Inventory Notice Id to update State
-    private int noticeId;
-    private double currentQty;
 
     //OrderData
     private double newOrderQty;
     private double checkComplete;
-
+    private int noticeId;
 
 
 
@@ -45,7 +42,6 @@ public class InventoryDTO {
         this.date = date;
 
     }
-
 
     public InventoryDTO(int inventoryId, String text, String description, double orderQty, String type,
                         String orderLimit, double getPrice,
@@ -69,7 +65,6 @@ public class InventoryDTO {
 
     public double getNewOrderQty() {
         return newOrderQty;
-
     }
 
     public int getNoticeId() {
@@ -79,7 +74,6 @@ public class InventoryDTO {
     public void setNoticeId(int noticeId) {
         this.noticeId = noticeId;
     }
-
 
     public double getCheckComplete() {
         return checkComplete;
@@ -92,7 +86,6 @@ public class InventoryDTO {
     public void setNewOrderQty(double newOrderQty) {
         this.newOrderQty = newOrderQty;
     }
-
 
     public InventoryDTO(int inventoryId) {
         this.inventoryId = inventoryId;
