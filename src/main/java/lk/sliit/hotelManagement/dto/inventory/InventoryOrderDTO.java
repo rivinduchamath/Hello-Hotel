@@ -4,14 +4,14 @@ package lk.sliit.hotelManagement.dto.inventory;
 import java.sql.Date;
 
 public class InventoryOrderDTO {
-    private String orderId;
+    private int orderId;
     private Date date;
     private double price;
     private double quantity;
     private String supplier;
     private String inventory;
 
-    public InventoryOrderDTO(String orderId, Date date, double price, double quantity, String supplier, String inventory) {
+    public InventoryOrderDTO(int orderId, Date date, double price, double quantity, String supplier, String inventory) {
         this.orderId = orderId;
         this.date = date;
         this.price = price;
@@ -23,11 +23,11 @@ public class InventoryOrderDTO {
     public InventoryOrderDTO() {
     }
 
-    public String getOrderId() {
+    public int getOrderId() {
         return orderId;
     }
 
-    public void setOrderId(String orderId) {
+    public void setOrderId(int orderId) {
         this.orderId = orderId;
     }
 

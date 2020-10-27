@@ -114,19 +114,19 @@ public class HouseKeepingController {
 //*************************************** End Manage Rooms *************************************
 
 
+    //Load House Keeping Report
     @GetMapping("/houseKeepingReport")
     public String houseKeepingReport(Model model){
         model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
-
         return "houseKeepingReport";
     }
+    //
     @PostMapping("/houseKeepingReport")
     public ModelAndView houseKeepingReports(@ModelAttribute GetDateHouseKeepingDTO getDateHouseKeepingDTO, Model model ){
         ModelAndView modelAndView = new ModelAndView("houseKeepingReport");
         model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
 
-        List<ReservationDTO> hotelRoomDTOList  =  houseKeepingBO.findBill(getDateHouseKeepingDTO);
-
+        List<ReservationDTO> hotelRoomDTOList  =  houseKeepingBO.findBill(getDateHouseKeepingDTO);//Find reservation Details
         model.addAttribute("loadHotelRoomTable", hotelRoomDTOList);
 
         return modelAndView;

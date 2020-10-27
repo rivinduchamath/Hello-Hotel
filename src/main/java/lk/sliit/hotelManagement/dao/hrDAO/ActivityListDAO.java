@@ -5,4 +5,5 @@ import org.springframework.data.repository.CrudRepository;
 
 public interface ActivityListDAO extends CrudRepository<ActivityList,Integer> {
 
+    ActivityList findTopByOrderByActivityIdDesc();
 }

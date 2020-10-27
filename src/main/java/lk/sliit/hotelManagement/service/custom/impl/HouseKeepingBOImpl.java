@@ -197,9 +197,9 @@ public class HouseKeepingBOImpl implements HouseKeepingBO {
         laundryOrderDAO.save(all);
     }
 
-    @Override
+    @Override//Find Reservation Date Between
     public List<ReservationDTO> findBill(GetDateHouseKeepingDTO getDto) {
-        List<GetDateHouseKeepingDTO> hotelDirtyRoomDTOList = new ArrayList<>();
+
         List<ReservationDTO> reservationDTOS = new ArrayList<>();
         Iterable<Reservation> hotelRooms = reservationDAO.findAllByDateBetween(getDto.getDateIn(),getDto.getDateOut());
 

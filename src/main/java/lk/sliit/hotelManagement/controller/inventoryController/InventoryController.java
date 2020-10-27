@@ -106,13 +106,14 @@ public class InventoryController {
             } catch (NullPointerException e) {
                 inventoryDTO1.setOrderId((1));
             }
-            //////////////////////////////////////////////////////////////////
 
             ////////////////////////////////////////////////////////////
             //Add New Qty To Current Qty On Hand
             inventoryDTO1.setOrderQty(inventoryDTO.getOrderQty() + inventoryDTO1.getOrderQty());
             //Update InventoryDTO1
             inventoryBO.updateInventory(inventoryDTO1);
+
+
             return "redirect:/inventory";
         } catch (Exception w) {
             System.out.println("Error");

@@ -8,10 +8,7 @@ import lk.sliit.hotelManagement.dto.hr.*;
 
 import lk.sliit.hotelManagement.dto.manager.EmployeeDTO;
 import lk.sliit.hotelManagement.entity.houseKeeping.HotelRoom;
-import lk.sliit.hotelManagement.entity.hr.Accounts;
-import lk.sliit.hotelManagement.entity.hr.Attendance;
-import lk.sliit.hotelManagement.entity.hr.Salary;
-import lk.sliit.hotelManagement.entity.hr.SalarySettings;
+import lk.sliit.hotelManagement.entity.hr.*;
 import lk.sliit.hotelManagement.entity.manager.Employee;
 import lk.sliit.hotelManagement.service.custom.HumanResourceBO;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,8 +18,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.*;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+
 
 @Service
 @Transactional
@@ -43,6 +39,8 @@ public class HumanResourceBOImpl implements HumanResourceBO {
     SalarySettingsDAO salarySettingsDAO;
     @Autowired
     DepartmentDAO departmentDAO;
+    @Autowired
+    ActivityListDAO activityListDAO;
 
     @Override
     public void updateRoomHR(HotelRoomDTO hotelRoomDTO) {
@@ -293,17 +291,17 @@ public class HumanResourceBOImpl implements HumanResourceBO {
         return find2;
     }
 
+    //Save Etf,Epf,ServiceCharge
     @Override
     public void saveSettingSalary(SalarySettingsDTO settingsDTO) {
-        houseKeepingDAO.save(new HotelRoom(
-             /*   hotelRoomDTO.getRoomId2(),
-                hotelRoomDTO.getRoomName(),
-                hotelRoomDTO.getRoomType(),
-                hotelRoomDTO.getDescription(),
-                hotelRoomDTO.getStatus(),
-                hotelRoomDTO.getHolder(),
-                hotelRoomDTO.getPrice(),
-                hotelRoomDTO.getDate()*/
+        java.sql.Date date = new java.sql.Date(Calendar.getInstance().getTime().getTime());
+        settingsDTO.setDate(date);
+        salarySettingsDAO.save(new SalarySettings(
+                settingsDTO.getId(),
+                settingsDTO.getEtf(),
+                settingsDTO.getEpf(),
+                settingsDTO.getServiceCharge(),
+                settingsDTO.getDate()
 
         ));
     }
@@ -313,13 +311,13 @@ public class HumanResourceBOImpl implements HumanResourceBO {
     public SalarySettingsDTO findsalarySettingById(int id) {
         SalarySettings settings = null;
         try {
-            settings = salarySettingsDAO.findTopByOrderByIdDesc();
+            settings = salarySettingsDAO.findOne(id);
         } catch (Exception e) {
         }
         return new SalarySettingsDTO(
                 settings.getId()
         );
-    }//End Get Total Emp
+    }//End
 
 
     @Override
@@ -329,10 +327,92 @@ public class HumanResourceBOImpl implements HumanResourceBO {
             settings = salarySettingsDAO.findTopByOrderByIdDesc();
         } catch (Exception e) {
         }
-        return new SalarySettingsDTO(
+         return new SalarySettingsDTO(
                 settings.getId()
         );
-    }//End Get Total Emp
+    }//End
+
+    @Override
+    public ActivityListDTO findHighestActivityId() {
+        ActivityList activityList = null;
+        try {
+            activityList = activityListDAO.findTopByOrderByActivityIdDesc();
+        } catch (Exception e) {
+        }
+        return new ActivityListDTO(
+                activityList.getActivityId()
+        );
+    }//End
+
+
+    @Override
+    public ActivityListDTO findActivityById(int activityId) {
+        ActivityList settings = null;
+        try {
+            settings = activityListDAO.findOne(activityId);
+        } catch (Exception e) {
+        }
+        return new ActivityListDTO(
+                settings.getActivityId()
+        );
+    }//End
+
+    @Override
+    public void saveActivity(ActivityListDTO acti) {
+
+        java.sql.Date date = new java.sql.Date(Calendar.getInstance().getTime().getTime());
+        String sunday  = acti.getSundayIn() +" "+acti.getSundayOut();
+        String monday  = acti.getMondayIn() +" "+acti.getMondayOut();
+        String tuesday  = acti.getTuesdayIn() +" "+acti.getTuesdayOut();
+        String wed  = acti.getWednesdayIn() +" "+acti.getWednesdayOut();
+        String thurs  = acti.getThursdayOut() +" "+acti.getThursdayOut();
+        String fri  = acti.getFridayIn() +" "+acti.getFridayOut();
+        String sat  = acti.getSaturdayIn() +" "+acti.getSaturdayOut();
+        activityListDAO.save(new ActivityList(
+                acti.getActivityId(),
+                acti.getEmployeeId(),
+                sunday,
+                monday,
+                tuesday,
+                wed,
+                thurs,
+                fri,
+                sat,
+                acti.getDate()
+
+
+        ));
+    }
+
+    @Override
+    public List<ActivityListDTO> findAllActivity() {
+        Iterable<ActivityList> all = activityListDAO.findAll();
+
+        List<ActivityListDTO> find2 = new ArrayList<>();
+        for (ActivityList settings : all) {
+            Employee rmp = employeeDAO.findOne(settings.getEmployeeId());
+            find2.add(new ActivityListDTO(
+                    settings.getActivityId(),
+                    settings.getEmployeeId(),
+                    rmp.getName(),
+                    settings.getMonday(),
+                    settings.getSunday(),
+                    settings.getTuesday(),
+                    settings.getWednesday(),
+                    settings.getThursday(),
+                    settings.getFriday(),
+                    settings.getSaturday(),
+                    settings.getDate()
+            ));
+        }
+
+        return find2;
+    }
+
+    @Override
+    public void deleteActivity(int activityId) {
+        activityListDAO.delete(activityId);
+    }
 
 
     @Override

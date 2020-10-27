@@ -53,4 +53,14 @@ public interface HumanResourceBO extends SuperBO {
     SalarySettingsDTO findsalarySettingById(int id);
 
     SalarySettingsDTO findHighestSettingSalary();
+
+    ActivityListDTO findHighestActivityId();
+
+    ActivityListDTO findActivityById(int activityId);
+
+    void saveActivity(ActivityListDTO activityListDTO1);
+
+    List<ActivityListDTO> findAllActivity();
+
+    void deleteActivity(int activityId);
 }

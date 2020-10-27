@@ -242,8 +242,8 @@
                             <div class="form-group">
                                 <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
                                     <input type="hidden" class="form-control"
-                                           name="billId" value="0"
-                                           id="CBtId" placeholder="Bill ID"/></div>
+                                           name="id" value="0"
+                                          placeholder="Bill ID"/></div>
                             </div>
 
                             <div class="form-group">
@@ -262,7 +262,7 @@
                                 <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12"><br>
                                     <label>Service Charges</label>
                                     <input type="number" class="form-control"
-                                           required="required" name="serviceCharges"
+                                           required="required" name="serviceCharge"
                                            id="sc" placeholder="Service Charges"/></div>
 
                             </div>

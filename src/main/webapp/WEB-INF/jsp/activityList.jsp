@@ -1,10 +1,4 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: Rivindu Chamath
-  Date: 03-Mar-20
-  Time: 4:33 AM
-  To change this template use File | Settings | File Templates.
---%>
+
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
@@ -191,16 +185,8 @@
                 <div class="row" style="display: block;">
 
                     <div class="clearfix"></div>
-                    <!--////////////////////////////////////////////////////////////////////////////-->
 
-              <%-- <form  method="POST" action="/tablesAdd" name="errorLog">
-                    <script>
-                        window.addEventListener("load",function(){
-                            alert("${errorLog}");
-                        })
-                    </script>
-                    </form>--%>
-                    <form  method="POST" action="tablesAdd" name="tablesAdd">
+                    <form  method="POST" action="hrActivity" name="hrActivity">
                         <div style="display: none"><input id="attendanceId" name="attendanceId" value="0"></div>
 
                         <div class="col-md-6 col-sm-6 " style="float: left">
@@ -211,17 +197,20 @@
 
                         <div class="col-md-6 col-sm-6 " style="float: right">
 
+                            <input type="hidden" class="form-control"
+                                   required name="activityId" value="0"
+                                   id="id" readonly/>
 
                             <div class="form-group">
                                 <label for="itemCode">Employee Id</label>
                                 <input type="text" class="form-control"
-                                       required name="employeeID"
+                                       required name="employeeId"
                                        id="itemCode" placeholder="ID" readonly/>
                             </div>
 
                             <div class="form-group">
                                 <label for="itemDesc">Employee Name </label>
-                                <input type="text" class="form-control" id="itemDesc"
+                                <input type="text" class="form-control" id="itemDesc" required
                                        placeholder="Name">
                             </div>
                             <!-- Monday -->
@@ -234,8 +223,8 @@
                                        Start
                                 </span>
                                     </div>
-                                    <input type="text" class="form-control" required
-                                           name="inTime" id="intimeMonday"
+                                    <input type="time" class="form-control" required
+                                           name="mondayIn" id="intimeMonday"
                                            aria-label="Dollar amount (with dot and two decimal places)">
 
                                 </div>
@@ -248,8 +237,8 @@
                                        End
                                 </span>
                                     </div>
-                                    <input type="text" class="form-control" required
-                                           id="outTimeMonday"  name="outTime" value="${attendance.outTime }"
+                                    <input type="time" class="form-control" required
+                                           id="outTimeMonday"  name="mondayOut"
                                            aria-label="Dollar amount (with dot and two decimal places)"/>
 
                                 </div>
@@ -264,8 +253,8 @@
                                        Start
                                 </span>
                                     </div>
-                                    <input type="text" class="form-control" required
-                                           name="inTime" id="inTimeTuesday"
+                                    <input type="time" class="form-control" required
+                                           name="tuesdayIn" id="inTimeTuesday"
                                            aria-label="Dollar amount (with dot and two decimal places)">
 
                                 </div>
@@ -278,8 +267,8 @@
                                        End
                                 </span>
                                     </div>
-                                    <input type="text" class="form-control" required
-                                           id="outTimeTuesday"  name="outTime" value="${attendance.outTime }"
+                                    <input type="time" class="form-control" required
+                                           id="outTimeTuesday"  name="tuesdayOut"
                                            aria-label="Dollar amount (with dot and two decimal places)"/>
 
                                 </div>
@@ -294,8 +283,8 @@
                                        Start
                                 </span>
                                     </div>
-                                    <input type="text" class="form-control" required
-                                           name="inTime" id="inTimeWednesday"
+                                    <input type="time" class="form-control" required
+                                           name="wednesdayIn" id="wednesdayIn"
                                            aria-label="Dollar amount (with dot and two decimal places)">
 
                                 </div>
@@ -308,8 +297,8 @@
                                        End
                                 </span>
                                     </div>
-                                    <input type="text" class="form-control" required
-                                           id="outTimeWednesday"  name="outTime" value="${attendance.outTime }"
+                                    <input type="time" class="form-control" required
+                                           id="outTimeWednesday"  name="wednesdayOut"
                                            aria-label="Dollar amount (with dot and two decimal places)"/>
 
                                 </div>
@@ -324,8 +313,8 @@
                                        Start
                                 </span>
                                     </div>
-                                    <input type="text" class="form-control" required
-                                           name="inTime" id="inTimeThursday"
+                                    <input type="time" class="form-control" required
+                                           name="thursdayIn" id="inTimeThursday"
                                            aria-label="Dollar amount (with dot and two decimal places)">
 
                                 </div>
@@ -338,8 +327,8 @@
                                        End
                                 </span>
                                     </div>
-                                    <input type="text" class="form-control" required
-                                           id="outTimeThursday"  name="outTime" value="${attendance.outTime }"
+                                    <input type="time" class="form-control" required
+                                           id="outTimeThursday"  name="thursdayOut"
                                            aria-label="Dollar amount (with dot and two decimal places)"/>
 
                                 </div>
@@ -354,8 +343,8 @@
                                        Start
                                 </span>
                                     </div>
-                                    <input type="text" class="form-control" required
-                                           name="inTime" id="inTimeFriday"
+                                    <input type="time" class="form-control" required
+                                           name="fridayIn" id="fridayIn"
                                            aria-label="Dollar amount (with dot and two decimal places)">
 
                                 </div>
@@ -368,8 +357,8 @@
                                        End
                                 </span>
                                     </div>
-                                    <input type="text" class="form-control" required
-                                           id="outTimeFriday"  name="outTime" value="${attendance.outTime }"
+                                    <input type="time" class="form-control" required
+                                           id="outTimeFriday"  name="fridayOut"
                                            aria-label="Dollar amount (with dot and two decimal places)"/>
 
                                 </div>
@@ -384,8 +373,8 @@
                                        Start
                                 </span>
                                     </div>
-                                    <input type="text" class="form-control" required
-                                           name="inTime" id="inTimeSaturday"
+                                    <input type="time" class="form-control" required
+                                           name="saturdayIn" id="saturdayIn"
                                            aria-label="Dollar amount (with dot and two decimal places)">
 
                                 </div>
@@ -398,8 +387,8 @@
                                        End
                                 </span>
                                     </div>
-                                    <input type="text" class="form-control" required
-                                           id="outTimeSaturday"  name="outTime" value="${attendance.outTime }"
+                                    <input type="time" class="form-control" required
+                                           id="outTimeSaturday"  name="saturdayOut"
                                            aria-label="Dollar amount (with dot and two decimal places)"/>
 
                                 </div>
@@ -414,8 +403,8 @@
                                        Start
                                 </span>
                                     </div>
-                                    <input type="text" class="form-control" required
-                                           name="inTime" id="inTimeSunday"
+                                    <input type="time" class="form-control" required
+                                           name="sundayIn" id="sundayIn"
                                            aria-label="Dollar amount (with dot and two decimal places)">
 
                                 </div>
@@ -428,13 +417,26 @@
                                        End
                                 </span>
                                     </div>
-                                    <input type="text" class="form-control" required
-                                           id="outTimeSunday"  name="outTime" value="${attendance.outTime }"
+                                    <input type="time" class="form-control" required
+                                           id="outTimeSunday"  name="sundayOut"
                                            aria-label="Dollar amount (with dot and two decimal places)"/>
 
                                 </div>
                             </div>
+                            <div class="col-md-6 col-sm-6 ">
+                                <label for="itemDesc">&nbsp;</label>
+                                <div class="input-group mb-3" style="float: right">
+                                    <div class="input-group-prepend">
+                                <span class="input-group-text">
+                                       Date
+                                </span>
+                                    </div>
+                                    <input type="date" class="form-control" required
+                                           id="date"  name="date"
+                                           aria-label="Dollar amount (with dot and two decimal places)"/>
 
+                                </div>
+                            </div>
 
                             <div class="col-md-6 col-sm-6 ">
                                     </div>
@@ -489,7 +491,12 @@
                                                     </tr>
                                                     </thead>
                                                     <tbody>
-
+                                                    <c:forEach items="${loadAllUsers}" var="e">
+                                                        <tr>
+                                                            <td>${e.userId}</td>
+                                                            <td>${e.name}</td>
+                                                        </tr>
+                                                    </c:forEach>
                                                     </tbody>
 
                                                 </table>
@@ -536,6 +543,7 @@
                                                     <tr>
                                                         <th>Employee ID</th>
                                                         <th>Employee Name</th>
+                                                        <th>Date</th>
                                                         <th>Monday</th>
                                                         <th>Tuesday</th>
                                                         <th>Wednesday</th>
@@ -543,11 +551,28 @@
                                                         <th>Friday</th>
                                                         <th>Saturday</th>
                                                         <th>Sunday</th>
+                                                        <th></th>
                                                     </tr>
 
                                                     </thead>
                                                     <tbody>
-
+                                                    <c:forEach items="${listAllActivity}" var="e">
+                                                        <tr>
+                                                            <td style="display: none">${e.activityId}</td>
+                                                            <td>${e.employeeId}</td>
+                                                            <td>${e.name}</td>
+                                                            <td>${e.date}</td>
+                                                            <td>${e.mondayIn}</td>
+                                                            <td>${e.tuesdayIn}</td>
+                                                            <td>${e.wednesdayIn}</td>
+                                                            <td>${e.thursdayIn}</td>
+                                                            <td>${e.fridayIn}</td>
+                                                            <td>${e.saturdayIn}</td>
+                                                            <td>${e.sundayIn}</td>
+                                                            <td><a href="deleteActivity/${e.activityId}"><span
+                                                                    class="glyphicon glyphicon-trash"></span></a></td>
+                                                        </tr>
+                                                    </c:forEach>
                                                     </tbody>
                                                 </table>
                                             </div>

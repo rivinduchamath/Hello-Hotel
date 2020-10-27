@@ -62,4 +62,6 @@ public interface InventoryBO extends SuperBO {
     List<InventoryDTO> findAllBeverageItems();
 
     List<InventoryNoticeDTO> kitchenOrderNotices();
+
+    List<ItemTypeDTO> findInventoryDepartment();
 }

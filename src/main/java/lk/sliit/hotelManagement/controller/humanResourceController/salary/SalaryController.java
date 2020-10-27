@@ -18,6 +18,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.sql.Date;
 import java.util.List;
 
 @Controller
@@ -101,6 +102,7 @@ public class SalaryController {
         model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
         List<SalarySettingsDTO> salaryDTOS = humanResourceBO.getSalarySet();
         model.addAttribute("getSalarySettings", salaryDTOS);
+
         return "salarySettings";
     }
 
@@ -117,13 +119,14 @@ public class SalaryController {
                 if (settingsDTO.getId() == (maxId)) {
                     settingsDTO.setId((maxId));
                 } else {
-                    maxId++;
+                       maxId++;
                     settingsDTO.setId(maxId);
                 }
             }
         } catch (NullPointerException e) {
             settingsDTO.setId(1);
         }
+
         humanResourceBO.saveSettingSalary(settingsDTO);
         return "redirect:/salarySettings";
     }

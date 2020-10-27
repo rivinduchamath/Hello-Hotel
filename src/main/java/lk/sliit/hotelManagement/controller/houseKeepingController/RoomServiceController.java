@@ -50,6 +50,7 @@ public class RoomServiceController {
         response.sendRedirect("/roomService");
 
     }
+    //Delete Accept Orders
     @GetMapping(value = "deleteLaundryOrder2/{laundryId}")
     public void deleteEmployee(@PathVariable("laundryId") int id,HttpServletResponse response) throws IOException {
 

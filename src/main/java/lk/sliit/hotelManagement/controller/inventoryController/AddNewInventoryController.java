@@ -43,6 +43,14 @@ public class AddNewInventoryController {
     @PostMapping("itemTypeSave")
     public String itemTypeSave(@ModelAttribute ItemTypeDTO inventoryDTO, HttpServletRequest request) {
         request.setAttribute("mode", "MODE_UPDATE");
+
+        List<ItemTypeDTO> p1= inventoryBO.findInventoryDepartment();
+        for (ItemTypeDTO itemTypeDTO: p1)  {
+            if(itemTypeDTO.getUserType().equals(inventoryDTO.getUserType())){
+                return "redirect:/addInventoryType";
+            }
+        }
+
         inventoryDTO.setSubmittedBy(SuperController.idNo);
         inventoryBO.saveInventoryType(inventoryDTO);
         return "redirect:/addInventoryType";

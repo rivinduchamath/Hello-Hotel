@@ -46,12 +46,6 @@ public class HRController {
         return "inventoryBillsHR";
     }
 
-    @GetMapping("/activityList")
-    public String activityList(Model model){
-        model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
-        return "activityList";
-    }
-
     @GetMapping("/allAttendance")
     public String allAttendance(Model model) {
         model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));

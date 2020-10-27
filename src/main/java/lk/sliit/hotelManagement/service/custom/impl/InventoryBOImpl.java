@@ -2,11 +2,9 @@ package lk.sliit.hotelManagement.service.custom.impl;
 
 import lk.sliit.hotelManagement.dao.inventoryDAO.*;
 import lk.sliit.hotelManagement.dto.beverage.BarOrderDTO;
-import lk.sliit.hotelManagement.dto.inventory.InventoryDTO;
-import lk.sliit.hotelManagement.dto.inventory.InventoryNoticeDTO;
-import lk.sliit.hotelManagement.dto.inventory.ItemTypeDTO;
-import lk.sliit.hotelManagement.dto.inventory.SupplierDTO;
+import lk.sliit.hotelManagement.dto.inventory.*;
 import lk.sliit.hotelManagement.dto.manager.NoticeDTO;
+import lk.sliit.hotelManagement.dto.restaurant.OnlineCustomerDTO;
 import lk.sliit.hotelManagement.entity.TimeCheck;
 import lk.sliit.hotelManagement.entity.barManage.BarOrders;
 import lk.sliit.hotelManagement.entity.inventory.*;
@@ -216,7 +214,13 @@ public class InventoryBOImpl implements InventoryBO {
     @Transactional
     @Override
     public void updateInventory(InventoryDTO inventoryDTO1) {
-
+        try {
+            InventoryOrder top = inventoryOrderDAO.findTopByOrderByOrderIdDesc();
+            int x = (top.getOrderId()) + 1;
+            inventoryDTO1.setOrderId((x));
+        } catch (NullPointerException e) {
+            inventoryDTO1.setOrderId((1));
+        }
         inventoryOrderDAO.save(new InventoryOrder(
                 inventoryDTO1.getOrderId(),
                 inventoryDTO1.getDate(),
@@ -494,6 +498,20 @@ public class InventoryBOImpl implements InventoryBO {
                     notice.getInventory().getInventoryId(),
                     notice.getInventory().getText(),
                     notice.getInventory().getOrderQty()
+            ));
+        }
+        return dtos;
+    }
+
+    @Override
+    public List<ItemTypeDTO> findInventoryDepartment() {
+        Iterable<ItemType> allItems = itemTypeDAO.findAll();
+        List<ItemTypeDTO> dtos = new ArrayList<>();
+        for (ItemType itemType : allItems) {
+            dtos.add(new ItemTypeDTO(
+                   itemType.getId(),
+                    itemType.getUserType(),
+                    itemType.getSubmittedBy()
             ));
         }
         return dtos;
