@@ -173,7 +173,7 @@
                     <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
                     <div class="col-6 col-sm-6 col-md-6 col-lg-4 col-xl-4">
                         <a href="reservation">
-                            <button style="background: #ff4157 none repeat scroll 0 0;border: medium none;color: #fff;
+                            <button style="background: #828DFF none repeat scroll 0 0;border: medium none;color: #fff;
                                     font-size: 14px;font-weight: 700;letter-spacing: 0;padding: 8px 15px;text-transform: uppercase" type="button"  class="btnq2 btn"><i class="">
                                 Back</i>
                             </button>
@@ -277,19 +277,19 @@
                     <div class="form-group">
 
                         <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
-                                <label>Customer ID</label>
+                                <label>Customer Email</label>
                         <input type="text" class="form-control"
-                               required="required" name="customerID"
-                               id="customerID" placeholder="Customer ID"/></div>
+                               required="required" name="customerEmail"
+                               id="customerEmail" placeholder="min@gmail.com"/></div>
                     </div>
 
                         <div class="form-group">
 
                             <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
-                                <label>Room ID</label>
+                                <label>Reservation ID</label>
                                 <input type="text" class="form-control"
                                        required="required" name="roomID"
-                                       id="roomID" placeholder="Room ID"/></div>
+                                       id="roomID" placeholder="1"/></div>
                         </div>
 
                         <!--
@@ -395,8 +395,7 @@
                                         <table id="datatable-buttons" class="table table-striped table-bordered">
                                             <thead class="thead-light">
                                             <tr>
-                                                <th>Customer ID</th>
-                                                <th>Room ID</th>
+                                                <th>Reservation ID</th>
                                                 <th>Check-In</th>
                                                 <th>Check-Out</th>
                                                 <th>Rate</th>

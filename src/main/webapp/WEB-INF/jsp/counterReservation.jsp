@@ -1,4 +1,4 @@
-<<%--
+<%--
   Created by IntelliJ IDEA.
   User: USER
   Date: 8/6/2020
@@ -177,7 +177,7 @@
                     <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
                         <div class="col-6 col-sm-6 col-md-8 col-lg-8 col-xl-8">
                             <a href="/customerRegistration">
-                                <button style="background: #ff4157 none repeat scroll 0 0;border: medium none;color: #fff;
+                                <button style="background: #828DFF none repeat scroll 0 0;border: medium none;color: #fff;
                                 font-size: 14px;font-weight: 700;letter-spacing: 0;padding: 8px 15px;text-transform: uppercase" type="button" class="btnq2 btn"><i
                                         class="">
                                     Back</i>
@@ -285,7 +285,7 @@
 
             <%--Input Feilds--%>
             <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
-                <div class="col-12 col-sm-12 col-md-12 col-lg-5 col-xl-5">
+                <div class="col-12 col-sm-12 col-md-12 col-lg-4 col-xl-4">
                     <form method="POST" action="findAvailability">
 
                         <div class="form-group">
@@ -295,7 +295,7 @@
                                 <label>Customer Email</label>
                                 <input type="email" value="" class="form-control"
                                        required="required" name="email"
-                                       id="customerId" placeholder="customer email"/></div>
+                                       id="customerId" placeholder="min@gmail.com"/></div>
                         </div>
 
 
@@ -372,7 +372,7 @@
                                         <table id="datatable-buttons" class="table table-striped table-bordered">
                                             <thead class="thead-light">
                                             <tr>
-                                                <th>Room No</th>
+                                                <th>Room Price</th>
                                                 <th>Room Name</th>
                                                 <th>Room Type</th>
                                                 <th>Room Status</th>
