@@ -340,9 +340,9 @@
                 <div class="col-12 col-sm-12 col-md-12 col-lg-7 col-xl-7">
                     <form method="POST" action="saveCounterRooms" name="saveCounterRooms">
                         <input style="display: none" readonly required type="text" id="itemPay" name="details">
-                        <input  style="" readonly required="required" type="text" id="customer" value="${loggedCustomer.customerId}" name="customer">
-                        <input  style="" readonly required="required" type="date" id="vDate" value="${checkIn}" name="checkIn">
-                        <input readonly required ="required"type="date" id="timeIn" value="${checkOut}" name="checkOut">
+                        <input  style="" readonly required="required" type="hidden" id="customer" value="${loggedCustomer.customerId}" name="customer">
+                        <input  style="" readonly required="required" type="hidden" id="vDate" value="${checkIn}" name="checkIn">
+                        <input readonly required ="required"type="hidden" id="timeIn" value="${checkOut}" name="checkOut">
                         <button type="submit" onclick="getValue()" class="reserved-btn" id="submitButton">Submit</button>
                     </form>
                     <div class="row">
