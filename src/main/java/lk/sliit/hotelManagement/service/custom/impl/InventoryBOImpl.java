@@ -221,14 +221,17 @@ public class InventoryBOImpl implements InventoryBO {
         } catch (NullPointerException e) {
             inventoryDTO1.setOrderId((1));
         }
+
         inventoryOrderDAO.save(new InventoryOrder(
                 inventoryDTO1.getOrderId(),
                 inventoryDTO1.getDate(),
                 inventoryDTO1.getGetPrice(),
-                inventoryDTO1.getOrderQty(),
+                inventoryDTO1.getNewOrderQty(),
                 supplierDAO.findOne(inventoryDTO1.getSupplierId()),
                 inventoryDAO.findOne(inventoryDTO1.getInventoryId())
         ));
+
+
         inventoryDAO.save(new Inventory(
                 inventoryDTO1.getInventoryId(),
                 inventoryDTO1.getText(),
@@ -240,6 +243,15 @@ public class InventoryBOImpl implements InventoryBO {
                 inventoryDTO1.getSellingPrice(),
                 inventoryDTO1.getDate()
         ));
+        Inventory i3 = inventoryDAO.findOne(inventoryDTO1.getInventoryId());
+        InventoryNotice all = inventoryNoticeDAO.findOne(inventoryDTO1.getNoticeId());
+        if((i3.getOrderQty() >= all.getOrderQty())){
+
+            all.setState(true);
+            inventoryNoticeDAO.save(all);
+        }
+
+
     }
 
     @Override

@@ -82,7 +82,8 @@ public class AddNewInventoryController {
         try {
             //Get Inventory Data From Inventory Id
             inventoryDTO1 = inventoryBO.findInventory(inventoryDTO.getInventoryId());
-            //Add New Qty To Current Qty On Hand
+
+             //Add New Qty To Current Qty On Hand
             inventoryDTO1.setOrderQty(inventoryDTO.getOrderQty() + inventoryDTO1.getOrderQty());
             //Update InventoryDTO1
             inventoryBO.updateInventory(inventoryDTO1);
