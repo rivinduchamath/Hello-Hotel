@@ -1,20 +1,13 @@
 package lk.sliit.hotelManagement.service.custom.impl;
 
 import lk.sliit.hotelManagement.dao.inventoryDAO.*;
-import lk.sliit.hotelManagement.dto.beverage.BarOrderDTO;
 import lk.sliit.hotelManagement.dto.inventory.*;
-import lk.sliit.hotelManagement.dto.manager.NoticeDTO;
-import lk.sliit.hotelManagement.dto.restaurant.OnlineCustomerDTO;
-import lk.sliit.hotelManagement.entity.TimeCheck;
-import lk.sliit.hotelManagement.entity.barManage.BarOrders;
 import lk.sliit.hotelManagement.entity.inventory.*;
-import lk.sliit.hotelManagement.entity.manager.Notice;
 import lk.sliit.hotelManagement.service.custom.InventoryBO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.sql.Time;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -451,8 +444,8 @@ public class InventoryBOImpl implements InventoryBO {
     }
 
     @Override
-    public List<InventoryDTO> findKitchenStockData() {
-        Iterable<Inventory> all = inventoryDAO.findAllByTypeEquals("Kitchen");
+    public List<InventoryDTO> findStockData(String  val) {
+        Iterable<Inventory> all = inventoryDAO.findAllByTypeEquals(val);
         List<InventoryDTO> dtos = new ArrayList<>();
         for (Inventory a : all) {
             dtos.add(new InventoryDTO(
@@ -490,13 +483,13 @@ public class InventoryBOImpl implements InventoryBO {
     }
 
     @Override
-    public List<InventoryNoticeDTO> kitchenOrderNotices() {
+    public List<InventoryNoticeDTO> stockOrderNotices(String val) {
         Calendar cal = Calendar.getInstance();
         cal.add(Calendar.DATE, -7);
         java.util.Date beforeweek = cal.getTime();
         Date todaya = new Date();
         Iterable<InventoryNotice> allItems =
-                inventoryNoticeDAO.findAllByDateBetweenAndDepartmentEquals(beforeweek,todaya,"Kitchen");
+                inventoryNoticeDAO.findAllByDateBetweenAndDepartmentEquals(beforeweek,todaya,val);
         List<InventoryNoticeDTO> dtos = new ArrayList<>();
         for (InventoryNotice notice : allItems) {
             dtos.add(new InventoryNoticeDTO(
@@ -524,6 +517,30 @@ public class InventoryBOImpl implements InventoryBO {
                    itemType.getId(),
                     itemType.getUserType(),
                     itemType.getSubmittedBy()
+            ));
+        }
+        return dtos;
+    }
+
+    @Override
+    public List<InventoryOrderDTO> loadTodayInventoryOrders() {
+        Date todaydate = new Date();
+        Calendar cal = Calendar.getInstance();
+        cal.add(Calendar.DATE, -7);
+        java.util.Date beforeWeek = cal.getTime();
+        Iterable<InventoryOrder> allItems = inventoryOrderDAO.findAllByDateBetween(beforeWeek,todaydate);
+        List<InventoryOrderDTO> dtos = new ArrayList<>();
+        for (InventoryOrder itemType : allItems) {
+            dtos.add(new InventoryOrderDTO(
+                    itemType.getOrderId(),
+                    itemType.getDate(),
+                    itemType.getPrice(),
+                    itemType.getQuantity(),
+                    itemType.getSupplier().getId(),
+                    itemType.getSupplier().getName(),
+                    itemType.getInventory().getInventoryId(),
+                    itemType.getInventory().getText()
+
             ));
         }
         return dtos;
