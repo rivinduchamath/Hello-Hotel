@@ -37,6 +37,15 @@ public class BanquetAddDTO {
         this.orderState=orderState;
     }
 
+    public BanquetAddDTO(int orderId, Date date, String hallId, int noOfPlates, int menuId) {
+        this.orderId = orderId;
+        this.date = date;
+        this.hallId = hallId;
+        this.noOfPlates = noOfPlates;
+        this.menuId = menuId;
+    }
+
+
 
     public double getUnitPrise() {
         return unitPrise;

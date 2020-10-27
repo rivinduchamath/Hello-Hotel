@@ -270,6 +270,8 @@
                                     <br/>
                                     <form action="/kitchen" method="post" id="demo-form2" data-parsley-validate
                                           class="form-horizontal form-label-left">
+                                        <input type="hidden" id="foodItemId12" name="foodItemId">
+                                        <input type="hidden" name="itemName">
 
                                         <table style="border: none">
 
@@ -284,12 +286,12 @@
                                                 <td>
                                                     <div class="item form-group">
                                                         <div class=" ">
-                                                            <input type="number" id="foodItemId" name="foodItemId" required="required" class="form-control ">
+                                                            <input type="number" disabled id="foodItemId" name="foodItemId" required="required" class="form-control ">
                                                         </div>
                                                     </div>
                                                 </td>
                                             </tr>
-
+                                            <!--------Name------------->
                                             <tr>
                                                 <td>
                                                     <div class="item form-group">
@@ -301,12 +303,12 @@
                                                 <td>
                                                     <div class="item form-group">
                                                         <div class=" ">
-                                                            <input type="text" id="itemName" name="itemName" required="required" class="form-control ">
+                                                            <input type="text" disabled id="itemName" name="itemName" required="required" class="form-control ">
                                                         </div>
                                                     </div>
                                                 </td>
                                             </tr>
-
+                                            <!--------Quantity--------->
                                             <tr>
                                                 <td>
                                                     <div class="item form-group">
@@ -326,7 +328,7 @@
                                                     </div>
                                                 </td>
                                             </tr>
-
+                                            <!--------Exp date--------->
                                             <tr>
 
                                                 <td>
@@ -443,7 +445,7 @@
                                                     <th>Id</th>
                                                     <th>Item Name</th>
                                                     <th>Quantity</th>
-                                                    <th>State</th>
+                                                    <th>Expected Date</th>
                                                     <th></th>
 
                                                 </tr>
@@ -455,10 +457,15 @@
                                                         <td>${item.orderId}</td>
                                                         <td>${item.itemName}</td>
                                                         <td>${item.amount}</td>
+                                                        <td>${item.expectedDate}</td>
 
                                                         <td>
-                                                            <form action="/kitchen" method="post">
+                                                            <form action="/deleteDailyOrder" method="post">
                                                                 <input type="hidden" name="orderId" value="${item.orderId}">
+                                                                <input type="hidden" name="foodItemId" value="${item.foodItemId}">
+                                                                <input type="hidden" name="amount" value="${item.amount}">
+                                                                <input type="hidden" name="expectedDate" value="${item.expectedDate}">
+                                                                <input type="hidden" name="description" value="${item.description}">
 
                                                                 <label class="btn"
                                                                        data-toggle-class=""
@@ -515,6 +522,7 @@
     $("#datatable-foodItem tbody").on('click', 'tr', function () {
         selectedRow = $(this);
         $("#foodItemId").val($(this).find("td:first-child").text());
+        $("#foodItemId12").val($(this).find("td:first-child").text());
         $("#itemName").val($(this).find("td:nth-child(2)").text());
         selectedRow.addClass('row-selected');
     });
@@ -522,7 +530,10 @@
     $("#datatable-orders tbody").on('click', 'tr', function () {
         selectedRow = $(this);
         $("#foodItemId").val($(this).find("td:first-child").text());
+        $("#foodItemId12").val($(this).find("td:first-child").text());
         $("#itemName").val($(this).find("td:nth-child(2)").text());
+        $("#itemQuantity").val($(this).find("td:nth-child(3)").text());
+        $("#expectedDate").val($(this).find("td:nth-child(4)").text());
         selectedRow.addClass('row-selected');
     });
 

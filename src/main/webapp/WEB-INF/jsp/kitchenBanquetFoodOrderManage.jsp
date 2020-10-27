@@ -210,13 +210,19 @@
                                 </div>
                                 <div class="x_content">
                                     <br/>
-                                    <form id="demo-form2" data-parsley-validate
+                                    <form action="addBanquetFoodOrder" method="post" id="demo-form2" data-parsley-validate
                                           class="form-horizontal form-label-left">
 
-                                        <input type="hidden" value="" name="itemId" id="foodItemId">
-                                        <input type="hidden" value="" name="description">
+                                        <input type="hidden" value="" name="foodItemId" id="foodItemId">
+                                        <input type="hidden" value="${menu.menuId}" name="menuId">
+                                        <input type="hidden" value="${banquetOrderType}" name="description">
+                                        <input type="hidden" value="${banquetOrder.orderId}" name="banquetId">
+                                        <input type="hidden" value="${banquetOrder.date}" name="expectedDate">
+                                        <input type="hidden" id="stateStr" name="stateStr" value="">
+
 
                                         <table style="border: none">
+                                            <!------------Name--------------->
                                             <tr>
                                                 <td>
                                                     <div class="item form-group">
@@ -228,12 +234,12 @@
                                                 <td>
                                                     <div class="item form-group">
                                                         <div class=" ">
-                                                            <input type="text" id="itemName" required="required" class="form-control ">
+                                                            <input type="text" disabled id="itemName" required="required" class="form-control ">
                                                         </div>
                                                     </div>
                                                 </td>
                                             </tr>
-
+                                            <!------------Quantity----------->
                                             <tr>
                                                 <td>
                                                     <div class="item form-group">
@@ -246,14 +252,14 @@
                                                 <td>
                                                     <div class="item form-group">
                                                         <div class="">
-                                                            <input type="number" id="itemQuantity" name="last-name"
+                                                            <input type="number" id="itemQuantity" name="amount"
                                                                    required="required"
                                                                    class="form-control">
                                                         </div>
                                                     </div>
                                                 </td>
                                             </tr>
-
+                                            <!------------Exp date----------->
                                             <tr>
 
                                                 <td>
@@ -266,7 +272,7 @@
                                                 <td>
                                                     <div class="item form-group">
                                                         <div class=" ">
-                                                            <input type="date"  id="expectedDate" required="required" class="form-control ">
+                                                            <input type="date" disabled value="${banquetOrder.date}" id="expectedDate" required="required" class="form-control ">
                                                         </div>
                                                     </div>
                                                 </td>
@@ -367,27 +373,44 @@
                                                     <th>Id</th>
                                                     <th>Item Name</th>
                                                     <th>Quantity</th>
+                                                    <th>State</th>
                                                     <th></th>
 
                                                 </tr>
 
                                                 </thead>
                                                 <tbody>
-                                                <tr>
-                                                    <td>4</td>
-                                                    <td>Potato</td>
-                                                    <td>200</td>
-                                                    <td>
+                                                <c:forEach items="${loadOrderTable}" var="item">
+                                                    <tr>
+                                                        <td>${item.orderId}</td>
+                                                        <td>${item.itemName}</td>
+                                                        <td>${item.amount}</td>
+                                                        <td>${item.stateStr}</td>
 
-                                                        <label class="btn"
-                                                               data-toggle-class=""
-                                                               data-toggle-passive-class="btn-default">
-                                                            <input type="radio" name="gender" value="-Remove"
-                                                                   class="join-btn"><i class="fa fa-trash"></i>
-                                                        </label>
+                                                        <td>
+                                                            <form action="/deleteBanquetFoodOrder" method="post">
+                                                                <input type="hidden" name="orderId" value="${item.orderId}">
+                                                                <input type="hidden" name="foodItemId" value="${item.foodItemId}">
+                                                                <input type="hidden" name="amount" value="${item.amount}">
+                                                                <input type="hidden" name="expectedDate" value="${item.expectedDate}">
+                                                                <input type="hidden" name="description" value="${item.description}">
+                                                                <input type="hidden" name="stateStr" value="${item.stateStr}">
+                                                                <input type="hidden" value="${banquetOrder.orderId}" name="banquetId">
 
-                                                    </td>
-                                                </tr>
+
+                                                                <label class="btn"
+                                                                       data-toggle-class=""
+                                                                       data-toggle-passive-class="btn-default">
+                                                                    <input type="submit" name="gender" value="-Remove"
+                                                                           class="join-btn"><i class="fa fa-trash"></i>
+                                                                </label>
+
+                                                            </form>
+
+                                                        </td>
+
+                                                    </tr>
+                                                </c:forEach>
                                                 </tbody>
                                             </table>
                                         </div>
@@ -424,6 +447,8 @@
         selectedRow = $(this);
         $("#foodItemId").val($(this).find("td:first-child").text());
         $("#itemName").val($(this).find("td:nth-child(2)").text());
+        $("#itemQuantity").val($(this).find("td:nth-child(3)").text());
+        $("#stateStr").val($(this).find("td:nth-child(4)").text());
         selectedRow.addClass('row-selected');
     });
 

@@ -1,5 +1,6 @@
 package lk.sliit.hotelManagement.service.custom.impl;
 
+import lk.sliit.hotelManagement.controller.banquetController.BanquetUtil;
 import lk.sliit.hotelManagement.dao.banquetDAO.BanquetBillDAO;
 import lk.sliit.hotelManagement.dao.banquetDAO.BanquetOrderDAO;
 import lk.sliit.hotelManagement.dao.kitchenDAO.MenuDAO;
@@ -173,7 +174,7 @@ public class BanquetBOImpl implements BanquetBO {
 
     @Override
     public void updateBanquetStatusToCancel(int orderId) {
-        String status ="canceled";
+        String status = BanquetUtil.banquetStateCancel;
         banquetOrderDAO.updateBanStatus(status,orderId);
     }
 

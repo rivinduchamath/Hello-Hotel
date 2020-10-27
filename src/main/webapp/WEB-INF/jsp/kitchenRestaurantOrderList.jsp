@@ -92,7 +92,7 @@
                         <div class="x_panel">
                             <div class="x_title">
                                 <h2>Restaurant Food Order List<b>(Restaurant)</b><br>
-                                    <small>Total pending orders: 3</small></h2>
+                                    <small>Total pending orders: ${pendingCounter}</small></h2>
                                 <ul class="nav navbar-right panel_toolbox">
                                     <li><a class="collapse-link"></a>
                                     </li>
@@ -121,54 +121,39 @@
 
                                                 </thead>
                                                 <tbody>
-                                                <tr>
-                                                    <td>1</td>
-                                                    <td>Kottu</td>
-                                                    <td>1</td>
-                                                    <td>
-                                                        <a href="#">
-                                                            <button type="button" class="large-btn btn btn-dark" style="height: 50px; background-color: silver; color: black">Confirm</button>
-                                                        </a>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>2</td>
-                                                    <td>Fried rice</td>
-                                                    <td>1</td>
-                                                    <td>
-                                                        <a href="#">
-                                                            <button type="button" class="large-btn btn btn-dark" style="height: 50px; background-color: silver; color: black">Confirm</button>
-                                                        </a>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>1</td>
-                                                    <td>Chicken rice normal</td>
-                                                    <td>2</td>
-                                                    <td>
-                                                        <a href="#">
-                                                            <button type="button" class="large-btn btn btn-dark" style="height: 50px; background-color: silver; color: black">Confirm</button>
-                                                        </a>
-                                                    </td>
-                                                </tr>
-                                                <!------------------------------------------------
-                                                <c:forEach items="${confirmedBanquets}" var="item">
+                                                <c:forEach items="${counterOrders}" var="item">
                                                     <tr>
                                                         <td>${item.orderId}</td>
-                                                        <td>${item.date}</td>
-                                                        <td>${item.noOfPlates}</td>
+                                                        <td>${item.foodName}</td>
+                                                        <td>${item.quantity}</td>
                                                         <td>
-                                                            <form action="editBanquetFoodOrder" method="post">
-                                                                <input type="hidden" name="orderId" value="${item.orderId}">
-                                                                <input type="hidden" name="hallId" value="${item.hallId}">
-                                                                <input type="hidden" name="noOfPlates" value="${item.noOfPlates}">
-                                                                <input type="hidden" name="date" value="${item.date}">
-                                                                <input type="hidden" name="menuId" value="${item.menuId}">
-                                                                <button type="submit">Manage</button>
+                                                            <form action="confirmOrder" method="post">
+                                                                <input type="hidden" name="orderId"
+                                                                       value="${item.orderId}">
+                                                                <input type="hidden" name="foodItemID"
+                                                                       value="${item.foodItemID}">
+                                                                <input type="hidden" name="type" value="${item.type}">
+                                                                <input type="hidden" name="state" value="${item.state}">
+                                                                <input type="hidden" name="quantity"
+                                                                       value="${item.quantity}">
+                                                                <input type="hidden" name="foodName"
+                                                                       value="${item.foodName}">
+                                                                <input type="hidden" name="button"
+                                                                       value="${item.button}">
+                                                                <input type="hidden" name="index"
+                                                                       value="${item.index}">
+                                                                <input type="hidden" name="oldOrderId"
+                                                                       value="${item.oldOrderId}">
+
+                                                                <button type="submit" class="large-btn btn btn-dark"
+                                                                        style="height: 50px; background-color: silver; color: black">
+                                                                        ${item.button}
+                                                                </button>
                                                             </form>
                                                         </td>
                                                     </tr>
-                                                </c:forEach> ------------->
+                                                </c:forEach>
+
                                                 </tbody>
                                             </table>
                                         </div>
@@ -183,7 +168,7 @@
                         <div class="x_panel">
                             <div class="x_title">
                                 <h2>Restaurant Food Order List<b>(Online)</b><br>
-                                    <small>Total pending orders: 3</small></h2>
+                                    <small>Total pending orders: ${pendingOnline}</small></h2>
                                 <ul class="nav navbar-right panel_toolbox">
                                     <li><a class="collapse-link"></a>
                                     </li>
@@ -212,54 +197,38 @@
 
                                                 </thead>
                                                 <tbody>
-                                                <tr>
-                                                    <td>1</td>
-                                                    <td>Kottu</td>
-                                                    <td>1</td>
-                                                    <td>
-                                                        <a href="#">
-                                                            <button type="button" class="large-btn btn btn-dark" style="height: 50px; background-color: silver; color: black">Confirm</button>
-                                                        </a>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>2</td>
-                                                    <td>Fried rice</td>
-                                                    <td>1</td>
-                                                    <td>
-                                                        <a href="#">
-                                                            <button type="button" class="large-btn btn btn-dark" style="height: 50px; background-color: silver; color: black">Confirm</button>
-                                                        </a>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>1</td>
-                                                    <td>Chicken rice normal</td>
-                                                    <td>2</td>
-                                                    <td>
-                                                        <a href="#">
-                                                            <button type="button" class="large-btn btn btn-dark" style="height: 50px; background-color: silver; color: black">Confirm</button>
-                                                        </a>
-                                                    </td>
-                                                </tr>
-                                                <!------------------------------------------------
-                                                <c:forEach items="${confirmedBanquets}" var="item">
+                                                <c:forEach items="${onlineOrders}" var="item">
                                                     <tr>
                                                         <td>${item.orderId}</td>
-                                                        <td>${item.date}</td>
-                                                        <td>${item.noOfPlates}</td>
+                                                        <td>${item.foodName}</td>
+                                                        <td>${item.quantity}</td>
                                                         <td>
-                                                            <form action="editBanquetFoodOrder" method="post">
-                                                                <input type="hidden" name="orderId" value="${item.orderId}">
-                                                                <input type="hidden" name="hallId" value="${item.hallId}">
-                                                                <input type="hidden" name="noOfPlates" value="${item.noOfPlates}">
-                                                                <input type="hidden" name="date" value="${item.date}">
-                                                                <input type="hidden" name="menuId" value="${item.menuId}">
-                                                                <button type="submit">Manage</button>
+                                                            <form action="confirmOrder" method="post">
+                                                                <input type="hidden" name="orderId"
+                                                                       value="${item.orderId}">
+                                                                <input type="hidden" name="foodItemID"
+                                                                       value="${item.foodItemID}">
+                                                                <input type="hidden" name="type" value="${item.type}">
+                                                                <input type="hidden" name="state" value="${item.state}">
+                                                                <input type="hidden" name="quantity"
+                                                                       value="${item.quantity}">
+                                                                <input type="hidden" name="foodName"
+                                                                       value="${item.foodName}">
+                                                                <input type="hidden" name="button"
+                                                                       value="${item.button}">
+                                                                <input type="hidden" name="index"
+                                                                       value="${item.index}">
+                                                                <input type="hidden" name="oldOrderId"
+                                                                       value="${item.oldOrderId}">
+
+                                                                <button type="submit" class="large-btn btn btn-dark"
+                                                                        style="height: 50px; background-color: silver; color: black">
+                                                                        ${item.button}
+                                                                </button>
                                                             </form>
                                                         </td>
                                                     </tr>
-                                                </c:forEach> ------------->
+                                                </c:forEach>
                                                 </tbody>
                                             </table>
                                         </div>
