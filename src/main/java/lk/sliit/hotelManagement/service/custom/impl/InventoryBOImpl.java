@@ -2,7 +2,9 @@ package lk.sliit.hotelManagement.service.custom.impl;
 
 import lk.sliit.hotelManagement.dao.inventoryDAO.*;
 import lk.sliit.hotelManagement.dto.inventory.*;
+import lk.sliit.hotelManagement.dto.reservation.ReservationDTO;
 import lk.sliit.hotelManagement.entity.inventory.*;
+import lk.sliit.hotelManagement.entity.reservation.Reservation;
 import lk.sliit.hotelManagement.service.custom.InventoryBO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -545,5 +547,25 @@ public class InventoryBOImpl implements InventoryBO {
         }
         return dtos;
     }
+
+    @Override
+    public List<InventoryOrderDTO> findInventoryBill(GetDateInventoryDTO getDateInventoryDTO) {
+        List<InventoryOrderDTO> inventoryOrderDTOS = new ArrayList<>();
+        Iterable<InventoryOrder> iterable =
+                inventoryOrderDAO.findAllByDateBetween(getDateInventoryDTO.getDateIn(),getDateInventoryDTO.getDateOut());
+
+        for (InventoryOrder reservation : iterable) {
+            inventoryOrderDTOS.add(new InventoryOrderDTO(
+                    reservation.getOrderId(),
+                    reservation.getDate(),
+                    reservation.getPrice(),
+                    reservation.getQuantity(),
+                    reservation.getSupplier().getName(),
+                    reservation.getInventory().getText()
+            ));
+        }
+        return inventoryOrderDTOS;
+    }
+
 
 }

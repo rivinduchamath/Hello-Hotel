@@ -1,4 +1,4 @@
-package lk.sliit.hotelManagement.dto.inventory;
+package lk.sliit.hotelManagement.dto.houseKeeping;
 
 import lk.sliit.hotelManagement.dto.reservation.ReservationDetailDTO;
 import lk.sliit.hotelManagement.entity.reservation.ReservationDetails;

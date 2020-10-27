@@ -66,4 +66,6 @@ public interface InventoryBO extends SuperBO {
     List<ItemTypeDTO> findInventoryDepartment();
 
     List<InventoryOrderDTO> loadTodayInventoryOrders();
+
+    List<InventoryOrderDTO> findInventoryBill(GetDateInventoryDTO getDateInventoryDTO);
 }
