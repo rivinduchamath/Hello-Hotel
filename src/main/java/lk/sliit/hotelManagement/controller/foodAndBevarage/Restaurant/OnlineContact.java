@@ -18,11 +18,11 @@ public class OnlineContact {
     OnlineCustomerBO onlineCustomerBO;
     @Autowired
     IndexLoginBO indexLoginBO;
-    @GetMapping("/onlineContact")
+    @GetMapping("/onlineContact")//load Online Contact Page
     public String loadForm_validationSaveMode(Model model, HttpServletRequest request,HttpSession session) {
         try {
             model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
-            int onlineCustomerId = Integer.parseInt(session.getAttribute("userId").toString());
+            int onlineCustomerId = Integer.parseInt(session.getAttribute("userId").toString());//Print Logged User From cookies
             model.addAttribute("loggersId", onlineCustomerBO.findOne(onlineCustomerId));
             return "onlineContact";
         } catch (Exception e) {

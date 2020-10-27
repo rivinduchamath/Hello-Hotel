@@ -171,7 +171,7 @@
                     <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
                         <div class="col-6 col-sm-6 col-md-8 col-lg-8 col-xl-8">
                             <a href="/reservation">
-                                <button style="background: #ff4157 none repeat scroll 0 0;border: medium none;color: #fff;
+                                <button style="background: #828DFF none repeat scroll 0 0;border: medium none;color: #fff;
                                 font-size: 14px;font-weight: 700;letter-spacing: 0;padding: 8px 15px;text-transform: uppercase;"
                                         type="button" class="btnq2 btn"><i
                                         class="">
@@ -179,7 +179,7 @@
                                 </button>
                             </a>
                             <a href="/counterReservation">
-                                <button style="background: #57b846 none repeat scroll 0 0;border: medium none;color: #fff;
+                                <button style="background: #FF8682 none repeat scroll 0 0;border: medium none;color: #fff;
                                 font-size: 14px;font-weight: 700;letter-spacing: 0;padding: 8px 15px;text-transform: uppercase;" type="button" class="btnq2 btn"><i
                                         class="">
                                     Reservation</i>
@@ -293,13 +293,13 @@
                                     <label>Customer Name</label>
                                     <input type="text" class="form-control"
                                            required="required" name="name"
-                                           id="name" placeholder="customer name"/></div>
+                                           id="name" placeholder="John"/></div>
 
                                 <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6"><br>
                                     <label>Address</label>
                                     <input type="text" class="form-control"
                                            required="required" name="address"
-                                           id="address" placeholder="address"/></div>
+                                           id="address" placeholder="A1/16, Main Street"/></div>
                             </div>
 
 
@@ -308,13 +308,13 @@
                                     <label>Email</label>
                                     <input type="email" class="form-control"
                                            required="required" name="email"
-                                           id="email" placeholder="email"/></div>
+                                           id="email" placeholder="min@gmail.com"/></div>
 
                                 <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6"><br>
                                     <label>Mobile No</label>
-                                    <input type="number" class="form-control"
+                                    <input type="tel" class="form-control"
                                            required="required" name="contactNumber"
-                                           id="contactNumber" placeholder="mobile number"/></div>
+                                           id="contactNumber" placeholder="0777548888"/></div>
                             </div>
 
 
@@ -323,7 +323,7 @@
                                     <label>Age</label>
                                     <input type="number" class="form-control"
                                            required="required" name="noOfPlates"
-                                           id="noOfPlates" placeholder="age"/></div>
+                                           id="noOfPlates" placeholder="22"/></div>
                             </div>
 
 

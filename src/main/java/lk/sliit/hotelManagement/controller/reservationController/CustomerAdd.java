@@ -31,7 +31,7 @@ public class CustomerAdd {
     @GetMapping("/checkIn&checkOut")
     public String reservation1(Model model) {
         List<CustomerDTO> list = reservationBO.findAll();
-        model.addAttribute("loadReservationCustomer",list);
+        model.addAttribute("loadReservationCustomer", list);
         model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
 
         return "checkIn&checkOut";
@@ -40,7 +40,7 @@ public class CustomerAdd {
     @GetMapping("/customerCheckOut")
     public String checkOut(Model model) {
         List<CustomerDTO> list = reservationBO.findAll();
-        model.addAttribute("loadReservationCustomer",list);
+        model.addAttribute("loadReservationCustomer", list);
         model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
 
         return "customerCheckOut";
@@ -49,10 +49,10 @@ public class CustomerAdd {
     @GetMapping("/customerRegistration")
     public String attendance(Model model) {
         List<CustomerDTO> list = reservationBO.findAll();
-        model.addAttribute("loadReservationCustomer",list);
+        model.addAttribute("loadReservationCustomer", list);
         model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
 
-            return "customerRegistration";
+        return "customerRegistration";
     }
 
     @GetMapping("/customerLogin")
@@ -61,10 +61,11 @@ public class CustomerAdd {
         model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
         return "customerLogin";
     }
-    @PostMapping("/customerSignUp")
-    public String saveOnlineCustomer(@ModelAttribute CustomerDTO customerDTO){
 
-        if(reservationBO.findEmail(customerDTO.getEmail())){
+    @PostMapping("/customerSignUp")
+    public String saveOnlineCustomer(@ModelAttribute CustomerDTO customerDTO) {
+
+        if (reservationBO.findEmail(customerDTO.getEmail())) {
             try {
                 CustomerDTO top = reservationBO.findHighestOnlineCustomerId();
                 int x = (top.getCustomerId()) + 1;
@@ -76,6 +77,7 @@ public class CustomerAdd {
         }
         return "redirect:/customerLogin";
     }
+
     @PostMapping("/customerSignIn")
     public String onlineCustomerDetails(@ModelAttribute CustomerDTO customerDTO, Model model, HttpServletRequest request) {
         try {
@@ -94,7 +96,7 @@ public class CustomerAdd {
 
 
     @GetMapping("/roomTypes")
-    public String saveOnlineTable3(Model model,@ModelAttribute FindAvailabilityDTO findAvailabilityDTO, HttpSession session) {
+    public String saveOnlineTable3(Model model, @ModelAttribute FindAvailabilityDTO findAvailabilityDTO, HttpSession session) {
 
         model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
         List<HotelRoomDTO> hotelRoomDTOS = reservationBO.findAvilability(findAvailabilityDTO);
@@ -102,7 +104,7 @@ public class CustomerAdd {
         try {
             int onlineCustomerId = Integer.parseInt(session.getAttribute("CustomerId").toString());
             model.addAttribute("loggedCustomer", reservationBO.findId(onlineCustomerId));
-         } catch (Exception d) {
+        } catch (Exception d) {
             return "roomTypes";
         }
         return "roomTypes";
@@ -124,9 +126,15 @@ public class CustomerAdd {
 
 
     @PostMapping("/saveOverTheCounterCustomer")
-    public String saveOverTheCounterCustomer(@ModelAttribute CustomerDTO customerDTO){
-
-        if(reservationBO.findEmail(customerDTO.getEmail())) {
+    public String saveOverTheCounterCustomer(@ModelAttribute CustomerDTO customerDTO) {
+        boolean condition = true;
+        if (reservationBO.findEmail(customerDTO.getEmail())) {
+            condition = false;
+        }
+        if(customerDTO.getCustomerId() != 0){
+            condition = true;
+        }
+        if (condition) {
             try {
                 CustomerDTO customerDTO1 = reservationBO.findHighestOnlineCustomerId();
                 CustomerDTO customerDTO2 = null;
@@ -152,15 +160,17 @@ public class CustomerAdd {
     }
 
     @GetMapping(value = "/deleteCustomer/{customerId}")
-    public String deleteCustomer(@PathVariable int customerId){
-      try {
-          reservationBO.deleteCustomer(customerId);
-      } catch (Exception e){ return "redirect:/customerRegistration";}
-    return "redirect:/customerRegistration";
+    public String deleteCustomer(@PathVariable int customerId) {
+        try {
+            reservationBO.deleteCustomer(customerId);
+        } catch (Exception e) {
+            return "redirect:/customerRegistration";
+        }
+        return "redirect:/customerRegistration";
     }
 
     @PostMapping("/findAvailability")
-    public ModelAndView houseKeepingReports(@ModelAttribute FindAvailabilityDTO findAvailabilityDTO, HttpSession session, Model model,HttpServletRequest request ){
+    public ModelAndView houseKeepingReports(@ModelAttribute FindAvailabilityDTO findAvailabilityDTO, HttpSession session, Model model, HttpServletRequest request) {
         ModelAndView modelAndView = new ModelAndView("counterReservation");
         model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
         if (findAvailabilityDTO != null) {
@@ -169,13 +179,13 @@ public class CustomerAdd {
                 request.getSession().setAttribute("CustomerId", custId.getCustomerId());
                 int onlineCustomerId = Integer.parseInt(session.getAttribute("CustomerId").toString());
                 model.addAttribute("loggedCustomer", reservationBO.findId(onlineCustomerId));
-            }catch (Exception e){
+            } catch (Exception e) {
 
             }
         }
 
 
-        List<HotelRoomDTO> hotelRoomDTOS  =   reservationBO.findAvilability(findAvailabilityDTO);
+        List<HotelRoomDTO> hotelRoomDTOS = reservationBO.findAvilability(findAvailabilityDTO);
         model.addAttribute("loadRooms", hotelRoomDTOS);
         model.addAttribute("checkIn", (findAvailabilityDTO.getCheckIn()));
         model.addAttribute("checkOut", (findAvailabilityDTO.getCheckOut()));

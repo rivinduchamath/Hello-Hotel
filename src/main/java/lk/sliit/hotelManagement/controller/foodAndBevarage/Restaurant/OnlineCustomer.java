@@ -32,34 +32,36 @@ public class OnlineCustomer {
     OnlineCustomerBO onlineCustomerBO;
 
 
-    @GetMapping("/onlineCustomer")
+    @GetMapping("/onlineCustomer")//Load Online Customer Page
     public String loadForm_validationSaveMode(Model model, HttpServletRequest request) {
-        List<OnlineCustomerLocationsDTO> tableList = onlineCustomerBO.findDeliveryLocation();
+        List<OnlineCustomerLocationsDTO> tableList = onlineCustomerBO.findDeliveryLocation(); //Find Delivery
         model.addAttribute("loadLocationType", tableList);
         return "onlineCustomer";
     }
 
-    @PostMapping("/onlineCustomerSave")
+    @PostMapping("/onlineCustomerSave")//Save SignUp
     public String saveForm(@ModelAttribute OnlineCustomerDTO onlineCustomerDTO) {
 
-        try {
+        try {//Auto Generate Id
             OnlineCustomerDTO top = onlineCustomerBO.findHighestOnlineCustomerId();
             int x = (top.getOnlineCustomerId()) + 1;
             onlineCustomerDTO.setOnlineCustomerId((x));
         } catch (NullPointerException e) {
             onlineCustomerDTO.setOnlineCustomerId((1));
         }
-
+//Save customer
         onlineCustomerBO.saveOnlineCustomer(onlineCustomerDTO);
         return "redirect:/onlineCustomer";
     }
 
-
+//SignIn Page
     @PostMapping("/onlineSignIn")
     public String onlineTableDetails(@ModelAttribute OnlineCustomerDTO onlineCustomer, Model model, HttpServletRequest request) {
         try {
+            //Check validations
             OnlineCustomerDTO onlineCustomerDTO = onlineCustomerBO.findByUserNameAndPassword(onlineCustomer.getUserName(), onlineCustomer.getPassword());
             if (onlineCustomerDTO != null) {
+                //Show Logged User Name
                 request.getSession().setAttribute("userId", onlineCustomerDTO.getOnlineCustomerId());
                 return "redirect:/onlineDashboard";
             } else {//If User name And Password is not match
@@ -71,7 +73,7 @@ public class OnlineCustomer {
 
     }
 
-    @PostMapping("/sendMailFromOnline")
+    @PostMapping("/sendMailFromOnline")//Send Main from onlineContact Page
     public String sendMailFromOnline( @ModelAttribute MailDTO mailDTO, HttpSession session,Model model) {
 
         try {
@@ -122,7 +124,7 @@ public class OnlineCustomer {
         try {
             OnlineCustomerLocationsDTO tableDTO1 = onlineCustomerBO.findHighestOnlineLocationId();
             OnlineCustomerLocationsDTO tableDTO2 = null;
-            try {
+            try {//Generate Id
                 tableDTO2 = onlineCustomerBO.findOnlineLocationbyId(onlineCustomerLocationsDTO.getLocationId());
             } catch (NullPointerException d) {
                 int maxId = (tableDTO1.getLocationId());

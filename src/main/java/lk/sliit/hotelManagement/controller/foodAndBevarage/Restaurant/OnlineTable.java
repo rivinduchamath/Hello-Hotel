@@ -12,6 +12,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.sql.Date;
@@ -67,6 +69,36 @@ public class OnlineTable {
         }
         return "onlineTableDetails";
     }
+    @PostMapping("/saveOnlineTable")
+    public String saveOnlineTable(@ModelAttribute OnlineTableReservationDTO onlineOrderDTO, HttpSession session) {
+        try {
+            Time a = Time.valueOf(onlineOrderDTO.getvStatT());
+            Time a2 = Time.valueOf(onlineOrderDTO.getvEndT());
+            onlineOrderDTO.setStartTime(a);
+            onlineOrderDTO.setEndTime(a2);
+            Date date = Date.valueOf(onlineOrderDTO.getvDate());
+            onlineOrderDTO.setReservedDate(date);
+        }catch (IllegalArgumentException s){
 
+        }
+        try {
+            OnlineTableReservationDTO top = restaurantBO.findHighestOnlineTableId();
+            int x = (top.getOnlineTableReservationId()) + 1;
+            onlineOrderDTO.setOnlineTableReservationId((x));
+        } catch (NullPointerException e) {
+
+            System.out.println("In Try Catch");
+            onlineOrderDTO.setOnlineTableReservationId((1));
+        }
+
+        try {
+            int onlineCustomerId = Integer.parseInt(session.getAttribute("userId").toString());
+            onlineOrderDTO.setCustomer(onlineCustomerId);
+            restaurantBO.saveOnlineTableId(onlineOrderDTO);
+        } catch (NullPointerException d) {
+            return "redirect:/onlineTable";
+        }
+        return "redirect:/onlineTable";
+    }
 
 }
