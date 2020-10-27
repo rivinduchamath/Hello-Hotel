@@ -2,10 +2,8 @@ package lk.sliit.hotelManagement.controller.houseKeepingController;
 
 import lk.sliit.hotelManagement.controller.SuperController;
 import lk.sliit.hotelManagement.dto.houseKeeping.HotelRoomDTO;
-import lk.sliit.hotelManagement.dto.houseKeeping.RoomServiceDTO;
 import lk.sliit.hotelManagement.dto.hr.AttendanceDTO;
-import lk.sliit.hotelManagement.dto.inventory.GetDateHouseKeepingDTO;
-import lk.sliit.hotelManagement.dto.kitchen.MenuDTO;
+import lk.sliit.hotelManagement.dto.houseKeeping.GetDateHouseKeepingDTO;
 import lk.sliit.hotelManagement.dto.reservation.ReservationDTO;
 import lk.sliit.hotelManagement.service.custom.HouseKeepingBO;
 import lk.sliit.hotelManagement.service.custom.HumanResourceBO;

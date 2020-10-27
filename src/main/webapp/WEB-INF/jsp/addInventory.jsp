@@ -543,6 +543,8 @@
                                                             <form action="updateQty" method="post">
                                                                 <div class="input-group" >
                                                                     <input style="display: none" value="${e.inventoryId}" type="text" class="form-control" name="inventoryId">
+                                                                    <input style="display: none" value="${e.noticeId}" type="text" class="form-control" name="noticeId">
+                                                                    <input style="display: none" value="${e.requiredQty}" type="text" class="form-control" name="checkComplete">
                                                                     <div class="input-group mb-3">
                                                                         <input placeholder="qty" required type="number" class="form-control" name="orderQty">
                                                                         <input placeholder="price" required type="number" class="form-control"  aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" name="getPrice">

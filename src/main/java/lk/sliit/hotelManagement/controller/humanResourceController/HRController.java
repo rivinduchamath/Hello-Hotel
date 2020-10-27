@@ -40,11 +40,7 @@ public class HRController {
         return "hr";
     }
 
-    @GetMapping("/inventoryBillsHR")
-    public String inventoryBills(Model model){
-        model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
-        return "inventoryBillsHR";
-    }
+
 
     @GetMapping("/allAttendance")
     public String allAttendance(Model model) {

@@ -1,11 +1,8 @@
-package lk.sliit.hotelManagement.controller.inventoryController;
+package lk.sliit.hotelManagement.controller.humanResourceController.inventoryBill;
 
 import lk.sliit.hotelManagement.controller.SuperController;
-import lk.sliit.hotelManagement.dto.houseKeeping.GetDateHouseKeepingDTO;
 import lk.sliit.hotelManagement.dto.inventory.GetDateInventoryDTO;
 import lk.sliit.hotelManagement.dto.inventory.InventoryOrderDTO;
-import lk.sliit.hotelManagement.dto.reservation.ReservationDTO;
-import lk.sliit.hotelManagement.service.custom.HouseKeepingBO;
 import lk.sliit.hotelManagement.service.custom.HumanResourceBO;
 import lk.sliit.hotelManagement.service.custom.IndexLoginBO;
 import lk.sliit.hotelManagement.service.custom.InventoryBO;
@@ -20,7 +17,7 @@ import org.springframework.web.servlet.ModelAndView;
 import java.util.List;
 
 @Controller
-public class ReportsController {
+public class HrInventoryBillController {
     @Autowired
     IndexLoginBO indexLoginBO;
     @Autowired
@@ -28,15 +25,15 @@ public class ReportsController {
     @Autowired
     HumanResourceBO humanResourceBO;
 
-    @GetMapping("/inventoryMainReport")
+    @GetMapping("/hrDepartmentInventory")
     public String loginPage(Model model){
         model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
-        return "inventoryMainReport";
+        return "hrDepartmentInventory";
     }
 
-    @PostMapping("/inventoryMainReport")
+    @PostMapping("/hrDepartmentInventory")
     public ModelAndView houseKeepingReports(@ModelAttribute GetDateInventoryDTO getDateInventoryDTO, Model model ){
-        ModelAndView modelAndView = new ModelAndView("inventoryMainReport");
+        ModelAndView modelAndView = new ModelAndView("hrDepartmentInventory");
         model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
 
         List<InventoryOrderDTO> inventoryBill  =  inventoryBO.findInventoryBill(getDateInventoryDTO);
@@ -45,4 +42,3 @@ public class ReportsController {
         return modelAndView;
     }
 }
-

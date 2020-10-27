@@ -47,7 +47,7 @@
                     <div class="title_left">
                         <h3>Report
                             <small>Rooms Income</small>
-                            <a href="/inventory">
+                            <a href="/hr">
                                 <button style=" border: 5px solid rgb(174, 182, 203);background-color: #45526e;
                                     color: #c6d4d3;font-weight: bolder" type="button"  class="btnq2 btn"><i class="fa fa-reply">
                                     back</i>
@@ -142,7 +142,7 @@
                     </div>
 
                 </div>
-                <form action="/inventoryMainReport" method="post">
+                <form action="/hrDepartmentInventory" method="post">
                     <div class="form-group">
                         <div class="col-12 col-sm-12 col-md-12 col-lg-3 col-xl-3"> <br>
                             <label for="date">Date from</label>
@@ -262,9 +262,6 @@
 
                                     <!-- this row will not appear when printing -->
                                     <div class="row no-print">
-                                        <div class=" ">
-
-
 
                                             <ul class="nav navbar-right panel_toolbox">
                                                 <button type="submit" value="Register"
@@ -272,8 +269,6 @@
                                                         class="btn btn-dark "> Print Report <i class="fa fa-file-image-o"></i>
                                                 </button>
                                             </ul>
-
-
                                             
                                     </div>
                                 </section>

@@ -21,6 +21,11 @@ public class InventoryDTO {
     private int noticeId;
     private double currentQty;
 
+    //OrderData
+    private double newOrderQty;
+    private double checkComplete;
+
+
 
 
     public InventoryDTO() {
@@ -41,12 +46,30 @@ public class InventoryDTO {
 
     }
 
-    public double getCurrentQty() {
-        return currentQty;
+
+    public InventoryDTO(int inventoryId, String text, String description, double orderQty, String type,
+                        String orderLimit, double getPrice,
+                        double sellingPrice, Date date, int supplierId,
+                        int orderId, int orderHolder, double newOrderQty, int noticeId) {
+        this.inventoryId = inventoryId;
+        this.text = text;
+        this.description = description;
+        this.orderQty = orderQty;
+        this.type = type;
+        this.orderLimit = orderLimit;
+        this.getPrice = getPrice;
+        this.sellingPrice = sellingPrice;
+        this.date = date;
+        this.supplierId = supplierId;
+        this.orderId = orderId;
+        this.orderHolder = orderHolder;
+        this.newOrderQty = newOrderQty;
+        this.noticeId = noticeId;
     }
 
-    public void setCurrentQty(double currentQty) {
-        this.currentQty = currentQty;
+    public double getNewOrderQty() {
+        return newOrderQty;
+
     }
 
     public int getNoticeId() {
@@ -56,6 +79,20 @@ public class InventoryDTO {
     public void setNoticeId(int noticeId) {
         this.noticeId = noticeId;
     }
+
+
+    public double getCheckComplete() {
+        return checkComplete;
+    }
+
+    public void setCheckComplete(double checkComplete) {
+        this.checkComplete = checkComplete;
+    }
+
+    public void setNewOrderQty(double newOrderQty) {
+        this.newOrderQty = newOrderQty;
+    }
+
 
     public InventoryDTO(int inventoryId) {
         this.inventoryId = inventoryId;
@@ -173,8 +210,9 @@ public class InventoryDTO {
                 ", supplierId=" + supplierId +
                 ", orderId=" + orderId +
                 ", orderHolder=" + orderHolder +
+                ", newOrderQty=" + newOrderQty +
+                ", checkComplete=" + checkComplete +
                 ", noticeId=" + noticeId +
-                ", currentQty=" + currentQty +
                 '}';
     }
 }//End Class
