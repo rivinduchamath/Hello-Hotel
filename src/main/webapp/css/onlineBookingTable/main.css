@@ -147,6 +147,25 @@ iframe {
 }
 /*///////////////////////////////*/
 
+
+
+/*Book Now Button */
+.col-1-1 button1x1 {
+  background: #ff4157 none repeat scroll 0 0;
+  border: medium none;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: 0;
+  padding: 8px 15px;
+  text-transform: uppercase;
+}
+.book-now-btn:hover, .vacation-offer-details .btn.btn-default:hover{
+  background: #162541;
+}
+/*///////////////////////////////*/
+
+
 /*Booked  Button */
 .reserved-btn {
   background: #57b846 none repeat scroll 0 0;
@@ -209,7 +228,7 @@ th, td {
 }
 
 .column1 {
-  width: 13%;
+  width: 10%;
   padding-left: 40px;
 }
 
@@ -218,11 +237,11 @@ th, td {
 }
 
 .column3 {
-  width: 13%;
+  width: 8%;
 }
 
 .column4 {
-  width: 13%;
+  width: 20%;
 }
 
 .column5 {

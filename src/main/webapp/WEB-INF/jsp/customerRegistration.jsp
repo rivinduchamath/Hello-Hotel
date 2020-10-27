@@ -282,7 +282,6 @@
 
                         <div class="form-group">
 
-
                             <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
                                 <label>Customer ID</label>
                                 <input type="number" value="" class="form-control"
@@ -291,7 +290,6 @@
 
 
                             <div class="form-group">
-
 
                                 <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6"><br>
                                     <label>Customer Name</label>

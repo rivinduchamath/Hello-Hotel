@@ -306,12 +306,12 @@
 
                     <div class="form-group">
                         <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6"> <br>
-                            <label >State</label>
+                            <label >Cleaning Done ?</label>
                             <select id="status" class="form-control"
                                     style="width: 100%; border-color: lightgray"
                                     name="status">
-                                <option value="Cleaned">Cleaned</option>
-                                <option value="NotCleaned">NotCleaned</option>
+                                <option value="Cleaned">Yes</option>
+                                <option value="NotCleaned">No</option>
                             </select>
                         </div>
                     </div>
@@ -322,7 +322,7 @@
                                     style="width: 100%; border-color: lightgray"
                                     name="roomType">
                                 <option value="AC">A/C</option>
-                                <option value="NonA/C">Non.A/C</option>
+                                <option value="NonA/C">Non A/C</option>
                             </select>
                         </div>
                     </div>
