@@ -178,19 +178,19 @@
                             </div>
 
                             <div class="form-group">
-                                <label for="itemCode">Customer ID</label>
-                                <input type="text" class="form-control"
+
+                                <input  type="hidden" class="form-control"
                                        name="customerId" value="0"
                                        id="customerId" placeholder="Customer ID"/>
                             </div>
 
 
-                            <button type='button' class="btn btn-primary" style="width: 50%" id="btnAdd"
+                            <button type='button' class="btn btn-dark" style="width: 50%" id="btnAdd"
                                     value="Register">
                                 Add
                             </button>
                             <button onclick="document.getElementsByClassName('form-control').value = ''" type='reset'
-                                    class="btn btn-outline-success" value="">Reset
+                                    class="btn btn-outline-dark" value="">Reset
                             </button>
 
                         </form>
@@ -265,7 +265,7 @@
                                         </li>
                                         <button type="submit" value="Register"
                                                 style="font-weight: bold;color: white" ; onclick="getValue()"
-                                                class="btn btn-success "> Pay <i class="fa fa-file-image-o"></i>
+                                                class="btn btn-dark "> Pay <i class="fa fa-file-image-o"></i>
                                         </button>
                                     </ul>
                                 </form>

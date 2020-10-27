@@ -205,6 +205,34 @@ public class HouseKeepingBOImpl implements HouseKeepingBO {
         return reservationDTOS;
     }
 
+    @Override
+    public void changeStateToFinished(int id) {
+        LaundryOrders all = laundryOrderDAO.findOne(id);
+        all.setState("Finished");
+        laundryOrderDAO.save(all);
+    }
+
+    @Override
+    public List<LaundryDTO> findFinishedLaundryData() {
+        Iterable<LaundryOrders> all = laundryOrderDAO.findAllByStateEquals("Finished");
+
+        List<LaundryDTO> dtos = new ArrayList<>();
+        for (LaundryOrders customer: all) {
+            dtos.add(new LaundryDTO(
+                    customer.getLaundryId(),
+                    customer.getCustomerId().getCustomerId(),
+                    customer.getCustomerId().getName(),
+                    customer.getOrderHolder(),
+                    customer.getPieces(),
+                    customer.getExpectedDate(),
+                    customer.getDate(),
+                    customer.getState()
+            ));
+        }
+        return dtos;
+
+    }
+
 
     @Override//Find All Rooms
     public List<HotelRoomDTO> findRooms() {

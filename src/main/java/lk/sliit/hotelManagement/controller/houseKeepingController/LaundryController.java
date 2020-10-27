@@ -38,10 +38,19 @@ public class LaundryController {
         model.addAttribute("customerAllIn", customerDTOS);
 
         //Processing data
-        List<LaundryDTO> viewProcessing = houseKeepingBO.findProcessingLaundryData();
+        List<LaundryDTO> viewProcessing = houseKeepingBO.findFinishedLaundryData();
         model.addAttribute("viewProcessing", viewProcessing);
 
         return "laundryOrder";
+    }
+
+    //Delete Accept Orders
+    @GetMapping(value = "deleteLaundryOrder3/{laundryId}")
+    public void deleteLaundry(@PathVariable("laundryId") int id,HttpServletResponse response) throws IOException {
+
+        houseKeepingBO.deleteLaundryOrder(id);
+        response.sendRedirect("/laundryOrder");
+
     }
 
  //Save Or Update Laundry Orders
@@ -97,7 +106,7 @@ public class LaundryController {
         return "allLaundryOrders";
     }
     @GetMapping(value = "deleteLaundryOrder/{laundryId}")
-    public void deleteEmployee(@PathVariable("laundryId") int id,HttpServletResponse response) throws IOException {
+    public void deleteLaundr2(@PathVariable("laundryId") int id,HttpServletResponse response) throws IOException {
 
             houseKeepingBO.deleteLaundryOrder(id);
             response.sendRedirect("/allLaundryOrders");

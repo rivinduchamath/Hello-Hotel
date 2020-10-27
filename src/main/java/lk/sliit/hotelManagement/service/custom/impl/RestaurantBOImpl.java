@@ -88,7 +88,7 @@ public class RestaurantBOImpl implements RestaurantBO {
 
 
     @Transactional
-    @Override
+    @Override//SAve Counter Order
     public void saveRestaurantOrder(RestaurantCounterOrderDTO restaurantCounterOrderDTO) {
         java.util.List<RestaurantCounterOrderDetailDTO> list = new ArrayList<>();
         String arr = restaurantCounterOrderDTO.getDataValue();
@@ -115,14 +115,14 @@ public class RestaurantBOImpl implements RestaurantBO {
         cal.add(Calendar.DATE, 0);
         java.util.Date today = cal.getTime();
         restaurantCounterOrderDTO.setDate(today);
-        restaurantCounterOrderDAO.save(new RestaurantCounterOrder(
+        restaurantCounterOrderDAO.save(new RestaurantCounterOrder(//Save Data in restaurantCounterOrderDAO table
                 restaurantCounterOrderDTO.getOrderId(),
                 restaurantCounterOrderDTO.getOrderState(),
                 restaurantCounterOrderDTO.getQuantity(),
                 restaurantCounterOrderDTO.getDate(),
                 restaurantCounterOrderDTO.getOrderHolder()));
 
-        for (RestaurantCounterOrderDetailDTO orderDetail : list) {
+        for (RestaurantCounterOrderDetailDTO orderDetail : list) {//Save Data in restaurantCounterOrderDetail table
             restaurantCounterOrderDetail.save(new RestaurantCounterOrderDetail(
                     restaurantCounterOrderDTO.getOrderId(),
                     orderDetail.getFoodItem(),
@@ -225,9 +225,11 @@ public class RestaurantBOImpl implements RestaurantBO {
 
     @Override
     public List<RestaurantTableDTO> getAviTables(java.util.Date date, java.util.Date startTime, java.util.Date endTime) {
-
+//Find Book Table in online table reservation
         Iterable<OnlineTableReservation> all4 = onlineTableReservationDAO.getAllBetweenDates(endTime, startTime, date);
+//Find Book Table in counter table reservation
         Iterable<CounterTableReservation> all5 = counterTableReservationDAO.getAllBetweenDates(endTime, startTime, date);
+       //Find All Table
         Iterable<RestaurantTable> allTable = restaurantTableDAO.findAll();
         Iterable<OnlineTableReservationDetails> al4;
         Iterable<CounterTableReservationDetails> al5;
@@ -401,7 +403,7 @@ public class RestaurantBOImpl implements RestaurantBO {
         }
     }
 
-    @Override
+    @Override//Online table with in one month
     public List<OnlineTableReservationDTO> findTablesOnline() {
         java.util.Date todaydate = new java.util.Date();
         Calendar cal = Calendar.getInstance();
@@ -421,7 +423,7 @@ public class RestaurantBOImpl implements RestaurantBO {
     }
 
     @Override
-    public List<RestaurantOnlineOrderDTO> findOrderOnline() {
+    public List<RestaurantOnlineOrderDTO> findOrderOnline() {//Find Online Orders within One Month
         java.util.Date todaydate = new java.util.Date();
         Calendar cal = Calendar.getInstance();
         cal.add(Calendar.MONTH, -1);

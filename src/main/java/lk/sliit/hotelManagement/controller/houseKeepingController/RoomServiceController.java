@@ -50,9 +50,19 @@ public class RoomServiceController {
         response.sendRedirect("/roomService");
 
     }
+    //Change State In Laundry Orders
+    @GetMapping(value = "changeFinished/{laundryId}")
+    public void changeFinished(@PathVariable("laundryId") int id,HttpServletResponse response) throws IOException {
+
+        houseKeepingBO.changeStateToFinished(id);
+        response.sendRedirect("/roomService");
+
+    }
+
+
     //Delete Accept Orders
     @GetMapping(value = "deleteLaundryOrder2/{laundryId}")
-    public void deleteEmployee(@PathVariable("laundryId") int id,HttpServletResponse response) throws IOException {
+    public void deleteLaundry(@PathVariable("laundryId") int id,HttpServletResponse response) throws IOException {
 
         houseKeepingBO.deleteLaundryOrder(id);
         response.sendRedirect("/roomService");

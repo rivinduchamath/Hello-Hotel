@@ -88,13 +88,13 @@ public class RestaurantTableController {
     }
 
 
-    @GetMapping("/counterTableDetails")
+    @GetMapping("/counterTableDetails")//Find Available Tables
     public String checkTimeForTable(@ModelAttribute CounterTableReservationDTO counterTableReservationDTO,
                                     Model model) {
         model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
-        Time a = Time.valueOf(counterTableReservationDTO.getvStatT()+":00");
+        Time a = Time.valueOf(counterTableReservationDTO.getvStatT()+":00");//convert time to Time type
         Time a2 = Time.valueOf(counterTableReservationDTO.getvEndT()+":00");
-        counterTableReservationDTO.setStartTime(a);
+        counterTableReservationDTO.setStartTime(a);//Time set to dto
         counterTableReservationDTO.setEndTime(a2);
         Date date = Date.valueOf(counterTableReservationDTO.getvDate());
         counterTableReservationDTO.setDate(date);

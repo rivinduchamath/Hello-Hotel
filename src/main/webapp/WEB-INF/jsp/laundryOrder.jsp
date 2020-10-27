@@ -245,7 +245,7 @@
                          style="float: right; position: relative;display: inline-block">
                         <div class="x_panel">
                             <div class="x_title">
-                                <h2>Processing Orders
+                                <h2>Finished Orders
                                     <small>
                                     </small>
 
@@ -253,40 +253,50 @@
 
                                 <div class="clearfix"></div>
                             </div>
+<%--                            ///////////////////////////////////////////////--%>
                             <div class="x_content">
                                 <div class="row">
                                     <div class="col-sm-12">
                                         <div class="card-box table-responsive">
-                                            <table style="text-align: center"
-                                                   class="table table-striped jambo_table bulk_action table-bordered">
-                                                <thead class="thead-dark">
+                                            <table id="datatable-buttons1" class="table table-striped table-bordered">
+                                                <thead class="thead-light">
                                                 <tr>
                                                     <th>Customer Id</th>
+                                                    <th>Customer Name</th>
                                                     <th>Pieces</th>
                                                     <th>Expected Date</th>
                                                     <th>Date</th>
                                                     <th>Order Holder</th>
+                                                    <th></th>
 
                                                 </tr>
                                                 </thead>
 
                                                 <tbody id="tblOrder">
-                                      <c:forEach items="${viewProcessing}" var="e">
-                                          <tr>
-                                              <td>${e.customerId}</td>
-                                              <td>${e.pieces}</td>
-                                              <td>${e.expectedDate}</td>
-                                              <td>${e.date}</td>
-                                              <td scope="row">${e.orderHolder}</td>
+                                                <c:forEach items="${viewProcessing}" var="e">
+                                                    <tr>
+                                                        <td>${e.customerId}</td>
+                                                        <td>${e.customerName}</td>
+                                                        <td>${e.pieces}</td>
+                                                        <td>${e.expectedDate}</td>
+                                                        <td>${e.date}</td>
+                                                        <td scope="row">${e.orderHolder}</td>
+                                                        <td>
+                                                            <a href="deleteLaundryOrder3/${e.laundryId}" onclick="return confirm('Are you sure you want to delete?')"
+                                                               class="btn btn-xs">
+                                                                <i class="fa fa-trash-o"></i></a></td>
 
-                                          </tr>
-                                       </c:forEach>
+                                                    </tr>
+                                                </c:forEach>
                                                 </tbody>
                                             </table>
                                         </div>
                                     </div>
                                 </div>
                             </div>
+
+<%--                            ////////////////////////////////////////////////--%>
+
                         </div>
                     </div>
                     <!--///////////////////////////////////////////////////////-->

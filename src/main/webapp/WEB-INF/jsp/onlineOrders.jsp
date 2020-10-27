@@ -197,8 +197,7 @@
                                             </tr>
                                             </thead>
                                             <tbody>
-                                            <%--                                            <c:forEach items="${lias}" var="a">--%>
-                                            <tr>
+                                                  <tr>
                                                 <td>C001${a.itemId}</td>
                                                 <td>
                                                     <a>Namee}</a>
@@ -207,7 +206,7 @@
                                                 <td><button class="btn btn-secondary">Add Or Remove</button>
                                                 </td>
                                             </tr>
-                                            <%--                                            </c:forEach>--%>
+
                                             </tbody>
                                         </table>
                                         <!-- end project list -->

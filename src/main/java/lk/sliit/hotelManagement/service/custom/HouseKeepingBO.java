@@ -43,4 +43,7 @@ public interface HouseKeepingBO extends SuperBO {
 
     List<ReservationDTO> findBill(GetDateHouseKeepingDTO getDateHouseKeepingDTO);
 
+    void changeStateToFinished(int id);
+
+    List<LaundryDTO> findFinishedLaundryData();
 }
