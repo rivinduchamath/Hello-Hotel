@@ -122,8 +122,8 @@
             <div class="">
                 <div class="page-title">
                     <div class="title_left">
-                        <h3>Reservation
-                            <small>Welcome To Hotel Hareesha</small>
+                        <h3>Reservation Dashboard
+                            <small></small>
                         </h3>
                     </div>
 
@@ -210,7 +210,7 @@
                 <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
 
 
-                    <div class="col-sm-12 col-md-4 col-lg-4 col-xl-4">
+                    <div class="col-sm-12 col-md-4 col-lg-3 col-xl-3">
                         <div class="containerx">
                             <a style=" font-family: Playfair Display, Georgia, Times New Roman, serif;
                              background-color:#3d495f; color: #ffffff;font-weight: bolder"
@@ -221,18 +221,29 @@
                         <br>
                     </div>
 
-                    <div class="col-sm-12 col-md-4 col-lg-4 col-xl-4">
+                    <div class="col-sm-12 col-md-4 col-lg-3 col-xl-3">
                         <div class="containerx">
                             <a style=" font-family: Playfair Display, Georgia, Times New Roman, serif;
                              background-color:#3d495f; color: #ffffff;font-weight: bolder"
-                               href="/checkIn&checkOut" class="btnq"><h2
+                               href="/customerRegistration" class="btnq"><h2
                                     style="position: relative; letter-spacing: 1px;
-                                     margin-top: 30px">Over The Counter Reservation</h2></a>
+                                     margin-top: 30px">Counter Reservation</h2></a>
                         </div>
                         <br>
                     </div>
 
-                    <div class="col-sm-12 col-md-4 col-lg-4 col-xl-4">
+                    <div class="col-sm-12 col-md-4 col-lg-3 col-xl-3">
+                        <div class="containerx">
+                            <a style=" font-family: Playfair Display, Georgia, Times New Roman, serif;
+                             background-color:#3d495f; color: #ffffff;font-weight: bolder"
+                               href="/customerCheckOut" class="btnq"><h2
+                                    style="position: relative; letter-spacing: 1px;
+                                     margin-top: 30px">Check-Out</h2></a>
+                        </div>
+                        <br>
+                    </div>
+
+                    <div class="col-sm-12 col-md-4 col-lg-3 col-xl-3">
                         <div class="containerx">
                             <a style=" font-family: Playfair Display, Georgia, Times New Roman, serif;
                              background-color:#3d495f; color: #ffffff;font-weight: bolder"
@@ -272,7 +283,7 @@
                                     <table class="table">
                                         <thead>
                                         <tr>
-                                            <th>Reservation Id</th>
+                                            <th>Reservation ID</th>
                                             <th>Customer Name</th>
                                             <th>Mobile</th>
                                             <th>Email</th>
