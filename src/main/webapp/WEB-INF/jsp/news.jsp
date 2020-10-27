@@ -95,6 +95,7 @@
         </div>
     </section>
     <div class="clearfix"></div>
+    <!--
 
     <section class="resort-overview-block">
         <div class="container">
@@ -174,6 +175,8 @@
             </div>
         </div>
     </section>
+
+    -->
 
     <!---footer--->
     <footer>
