@@ -17,6 +17,9 @@ public class InventoryDTO {
     private int supplierId;
     private int orderId;
     private int orderHolder;
+    //Inventory Notice Id to update State
+    private int noticeId;
+    private double currentQty;
 
 
 
@@ -36,6 +39,22 @@ public class InventoryDTO {
         this.sellingPrice = sellingPrice;
         this.date = date;
 
+    }
+
+    public double getCurrentQty() {
+        return currentQty;
+    }
+
+    public void setCurrentQty(double currentQty) {
+        this.currentQty = currentQty;
+    }
+
+    public int getNoticeId() {
+        return noticeId;
+    }
+
+    public void setNoticeId(int noticeId) {
+        this.noticeId = noticeId;
     }
 
     public InventoryDTO(int inventoryId) {
@@ -154,6 +173,8 @@ public class InventoryDTO {
                 ", supplierId=" + supplierId +
                 ", orderId=" + orderId +
                 ", orderHolder=" + orderHolder +
+                ", noticeId=" + noticeId +
+                ", currentQty=" + currentQty +
                 '}';
     }
 }//End Class

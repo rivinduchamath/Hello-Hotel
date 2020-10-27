@@ -2,7 +2,10 @@ package lk.sliit.hotelManagement.service.custom.impl;
 
 import lk.sliit.hotelManagement.dao.inventoryDAO.*;
 import lk.sliit.hotelManagement.dto.beverage.BarOrderDTO;
-import lk.sliit.hotelManagement.dto.inventory.*;
+import lk.sliit.hotelManagement.dto.inventory.InventoryDTO;
+import lk.sliit.hotelManagement.dto.inventory.InventoryNoticeDTO;
+import lk.sliit.hotelManagement.dto.inventory.ItemTypeDTO;
+import lk.sliit.hotelManagement.dto.inventory.SupplierDTO;
 import lk.sliit.hotelManagement.dto.manager.NoticeDTO;
 import lk.sliit.hotelManagement.dto.restaurant.OnlineCustomerDTO;
 import lk.sliit.hotelManagement.entity.TimeCheck;
@@ -214,13 +217,7 @@ public class InventoryBOImpl implements InventoryBO {
     @Transactional
     @Override
     public void updateInventory(InventoryDTO inventoryDTO1) {
-        try {
-            InventoryOrder top = inventoryOrderDAO.findTopByOrderByOrderIdDesc();
-            int x = (top.getOrderId()) + 1;
-            inventoryDTO1.setOrderId((x));
-        } catch (NullPointerException e) {
-            inventoryDTO1.setOrderId((1));
-        }
+
         inventoryOrderDAO.save(new InventoryOrder(
                 inventoryDTO1.getOrderId(),
                 inventoryDTO1.getDate(),

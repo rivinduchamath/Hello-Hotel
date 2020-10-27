@@ -360,6 +360,8 @@
                                                     <td style="width: 20%" >
                                                             <form action="updateQty" method="post">
                                                                 <div class="input-group" >
+                                                                    <input style="display: none" value="${e.noticeId}" type="text" class="form-control" name="inventoryId">
+                                                                    <input style="display: none" value="${Double.parseDouble(e.requiredQty > 0.0 ? e.requiredQty : 0.0) }" type="text" class="form-control" name="currentQty">
                                                                     <input style="display: none" value="${e.inventoryId}" type="text" class="form-control" name="inventoryId">
                                                                     <div class="input-group mb-3">
                                                                     <input placeholder="qty" required type="number" class="form-control" name="orderQty">
