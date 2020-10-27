@@ -92,7 +92,7 @@
                 <div class="page-title">
                     <div class="title_left">
                         <h3>HR Department
-                            <small>Welcome To Hotel Hareesha</small>
+                            <small>Current Bills Management</small>
                         </h3>
                     </div>
 
@@ -176,8 +176,7 @@
                     </div>
                 </div>
                 <a href="/hr">
-                    <button style=" border: 5px solid rgb(174, 182, 203);background-color: #45526e;
-                                    color: #c6d4d3;font-weight: bolder" type="button" class="btnq2 btn"><i
+                    <button class="btn btn-secondary" style="width:8%; height:5%" type="button"><i
                             class="fa fa-reply">
                         Back</i>
                     </button>

@@ -98,8 +98,13 @@
             <div class="">
                 <div class="page-title">
                     <div class="title_left">
-                        <h3>Employee Salary :
-                            <small>Monthly Salary Manage</small>
+                        <h3>HR Department
+                            <small>Monthly Salary Management</small>
+                            <a href="/salarySettings">
+                                <button style="color: #3b465e !important;" type="button"
+                                        class="btnq3 btn"><i style="font-size: 185%;" class="fa fa-gear"></i>
+                                </button>
+                            </a>
                         </h3>
                     </div>
 
@@ -130,7 +135,7 @@
                                     <small>Click CheckBox And Pay Salary
                                     </small>
                                 </h2>
-                                <form method="POST" action="/addSalary" name="invoice">
+                                <form  action="/salaryPayment" name="invoice">
                                     <input style="display: none" type="text" id="itemPay" name="source">
                                     <ul class="nav navbar-right panel_toolbox">
                                         <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
@@ -139,13 +144,20 @@
                                                 style="font-weight: bold;color: white" ; id="name"
                                                 class="btn btn-success "> Pay <i class="fa fa-file-image-o"></i>
                                         </button>
+                                        <a href="/hr">
+                                            <button class="btn btn-secondary" style="width:100%; height:89%" type="button"><i
+                                                    class="fa fa-reply">
+                                                Back</i>
+                                            </button>
+                                        </a>
                                     </ul>
                                 </form>
 
                                 <!--href="/invoice"-->
                                 <div class="clearfix"></div>
                             </div>
-                            <button onclick="getValue();return false" ; style="float: right; font-weight: bold;color: white" ;
+                            <button onclick="getValue();return false" ;
+                                    style="float: right; font-weight: bold;color: white" ;
                                     id="btn_enable" class="btn btn-success ">Add Payment
                                 <i class="fa fa-plus-circle"></i></button>
                             <div class="x_content">
@@ -179,7 +191,7 @@
                                                                  class="avatar" alt="Avatar"></td>
                                                         <td>${e.salary}</td>
                                                         <td>${e.mobileNo}</td>
-                                                       <td class="a-center ">
+                                                        <td class="a-center ">
                                                             <input type="checkbox" class="flat checks"
                                                                    value="${e.userId}" name="table_records">
                                                         </td>
@@ -214,9 +226,14 @@
                 }
             }
 
+            if (str != '') {
+                alert(str)
+            }
+            if (str == '') {
+                alert("Not selected Items")
+            }
+            $("#itemPay").val(str);
 
-           $("#itemPay").val(str);
-            alert(str)
         }
     </script>
 
@@ -274,10 +291,10 @@
 
 <script>
     $(document).ready(function () {
-    $("#btn_enable").click(function () {
-        $("#name").prop("disabled", false);
+        $("#btn_enable").click(function () {
+            $("#name").prop("disabled", false);
+        });
     });
-});
 </script>
 <!-- Datatables -->
 <script src="../../vendors/datatables.net/js/jquery.dataTables.min.js"></script>

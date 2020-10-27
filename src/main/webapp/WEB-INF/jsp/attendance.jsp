@@ -1,10 +1,4 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: Rivindu Chamath
-  Date: 03-Mar-20
-  Time: 4:33 AM
-  To change this template use File | Settings | File Templates.
---%>
+
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
@@ -99,16 +93,22 @@
             <div class="">
                 <div class="page-title">
                     <div class="title_left">
-                        <h3>Attendance
-                            <small>Manage Attendance</small>
+                        <h3>HR Department
+                            <small>Employee Attendance Management</small>
                         </h3>
                         <a style=" float: left" href="allAttendance">
                             <button   type='submit' class="btn btn-secondary" style="width: 100%;" value="Register" >
                                Find All <i class="fa fa-forward"></i>
                             </button>
                         </a>
+                        &nbsp &nbsp
+                        <a href="/hr">
+                            <button class="btn btn-secondary" style="width: 20%; height:86%" type="button"><i
+                                    class="fa fa-reply">
+                                Back</i>
+                            </button>
+                        </a>
                     </div>
-
                     <div class="title_right">
                         <div class="col-md-5 col-sm-5   form-group pull-right top_search">
                             <!--/////-->
@@ -200,12 +200,11 @@
                         })
                     </script>
                     </form>--%>
-
                     <form  method="POST" action="tablesAdd" name="tablesAdd">
                         <div style="display: none"><input id="attendanceId" name="attendanceId" value="0"></div>
 
                         <div class="col-md-6 col-sm-6 " style="float: left">
-                            <label>Search aID</label>
+                            <label>Search ID Here</label>
                             <input type="text" style="cursor: pointer;" id="myInput" onkeyup="myFunction()" placeholder="Search By ID..">
 
                         </div>
@@ -369,8 +368,8 @@
                                         <div class="col-sm-12">
                                             <div class="card-box table-responsive">
                                                 <p class="text-muted font-13 m-b-30">
-                                                    The User Table Provide To Find Data Of Users.If You Want Edit OR Remove User You Can Find
-                                                    User And Just Click On User Row.
+                                                    This table provide Attendance Details.
+                                                    To Edit or Remove details click on the relevant row.
                                                 </p>
                                                 <table style="text-align: center" id="datatable-buttons" class="table table-striped table-bordered">
                                                     <thead class="thead-light">

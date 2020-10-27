@@ -164,24 +164,25 @@
                 <div class="title_left">
 
                     <h3>Customer Registration
-                        <small>Welcome To Hotel Hareesha</small>
+                        <small></small>
                     </h3>
 
 
                     <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
                         <div class="col-6 col-sm-6 col-md-8 col-lg-8 col-xl-8">
                             <a href="/reservation">
-                                <button style="display: inline-block; border: 5px solid rgb(174, 182, 203);background-color: #45526e;
-                                    color: #c6d4d3;font-weight: bolder" type="button" class="btnq2 btn"><i
-                                        class="fa fa-reply">
+                                <button style="background: #ff4157 none repeat scroll 0 0;border: medium none;color: #fff;
+                                font-size: 14px;font-weight: 700;letter-spacing: 0;padding: 8px 15px;text-transform: uppercase;"
+                                        type="button" class="btnq2 btn"><i
+                                        class="">
                                     Back</i>
                                 </button>
                             </a>
                             <a href="/counterReservation">
-                                <button style=" border: 5px solid rgb(174, 182, 203);background-color: #45526e;
-                                    color: #c6d4d3;font-weight: bolder" type="button" class="btnq2 btn"><i
-                                        class="fa fa-fast-forward">
-                                    Next</i>
+                                <button style="background: #57b846 none repeat scroll 0 0;border: medium none;color: #fff;
+                                font-size: 14px;font-weight: 700;letter-spacing: 0;padding: 8px 15px;text-transform: uppercase;" type="button" class="btnq2 btn"><i
+                                        class="">
+                                    Reservation</i>
                                 </button>
                             </a>
 
@@ -283,10 +284,10 @@
 
 
                             <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
-                                <label>Customer Id</label>
+                                <label>Customer ID</label>
                                 <input type="number" value="" class="form-control"
                                        required="required" name="customerId"
-                                       id="customerId" placeholder="Customer Id"/></div>
+                                       id="customerId" placeholder="customer id"/></div>
 
 
                             <div class="form-group">
@@ -296,13 +297,13 @@
                                     <label>Customer Name</label>
                                     <input type="text" class="form-control"
                                            required="required" name="name"
-                                           id="name" placeholder="Customer Name"/></div>
+                                           id="name" placeholder="customer name"/></div>
 
                                 <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6"><br>
                                     <label>Address</label>
                                     <input type="text" class="form-control"
                                            required="required" name="address"
-                                           id="address" placeholder="Address"/></div>
+                                           id="address" placeholder="address"/></div>
                             </div>
 
 
@@ -311,13 +312,13 @@
                                     <label>Email</label>
                                     <input type="email" class="form-control"
                                            required="required" name="email"
-                                           id="email" placeholder="Email"/></div>
+                                           id="email" placeholder="email"/></div>
 
                                 <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6"><br>
                                     <label>Mobile No</label>
                                     <input type="number" class="form-control"
                                            required="required" name="contactNumber"
-                                           id="contactNumber" placeholder="Mobile No"/></div>
+                                           id="contactNumber" placeholder="mobile number"/></div>
                             </div>
 
 
@@ -326,7 +327,7 @@
                                     <label>Age</label>
                                     <input type="number" class="form-control"
                                            required="required" name="noOfPlates"
-                                           id="noOfPlates" placeholder="Age"/></div>
+                                           id="noOfPlates" placeholder="age"/></div>
                             </div>
 
 
@@ -370,7 +371,7 @@
                                         <table id="datatable-buttons" class="table table-striped table-bordered">
                                             <thead class="thead-light">
                                             <tr>
-                                                <th>Customer Id</th>
+                                                <th>Customer ID</th>
                                                 <th>Name</th>
                                                 <th>Address</th>
                                                 <th>MobileNo</th>

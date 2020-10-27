@@ -1,6 +1,4 @@
 package lk.sliit.hotelManagement.entity.houseKeeping;
-
-
 import lk.sliit.hotelManagement.entity.reservation.ReservationDetails;
 
 import javax.persistence.*;
@@ -13,7 +11,7 @@ public class HotelRoom {
     @Id
     private int roomId;
     private String roomName;
-    private String roomType;//A/c Or Not
+    private String roomType;//A/C Or Not
     @Column(length = 1000)
     private String description;
     private String status;//cleaned Or Not
@@ -58,9 +56,6 @@ public class HotelRoom {
 
     public HotelRoom() {
     }
-    
-
-
 
     public String getRoomName() {
         return roomName;
@@ -77,8 +72,6 @@ public class HotelRoom {
     public void setDate(Date date) {
         this.date = date;
     }
-
-
 
     public String getStatus() {
         return status;

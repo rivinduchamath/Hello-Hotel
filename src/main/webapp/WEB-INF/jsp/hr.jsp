@@ -1,10 +1,4 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: Rivindu Chamath
-  Date: 21-May-20
-  Time: 2:43 AM
-  To change this template use File | Settings | File Templates.
---%>
+
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page import="java.util.Date" %>
@@ -173,7 +167,6 @@
                 </div>
                 <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
 
-
                     <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6">
                         <br>
                         <a href="/currentBill">
@@ -188,13 +181,13 @@
                         </a>
                     </div>
 
-
                     <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6">
                         <br>
                         <a href="/attendance">
                             <button type="button" class="large-btn btn btn-dark">Employee Attendance</button>
                         </a>
                     </div>
+
                     <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6">
                         <br>
                         <a href="/salary">
@@ -202,16 +195,24 @@
                         </a>
                     </div>
 
+                    <div class="col-sm-12 col-md-4 col-lg-4 col-xl-4">
 
-                    <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6">
                         <br>
                         <a href="/roomsHR">
                             <button type="button" class="large-btn btn btn-dark">Hotel Room Price</button>
                         </a>
+
                     </div>
-                    <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6">
+                    <div class="col-sm-12 col-md-4 col-lg-4 col-xl-4">
                         <br>
-                        <a href="#">
+                        <a href="/activityList">
+                            <button type="button" class="large-btn btn btn-dark">Activity List</button>
+                        </a>
+                    </div>
+
+                    <div class="col-sm-12 col-md-4 col-lg-4 col-xl-4">
+                        <br>
+                        <a href="/hrDepartmentInventory">
                             <button type="button" class="large-btn btn btn-dark">Inventory Bills</button>
                         </a>
                     </div>

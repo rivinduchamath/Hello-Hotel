@@ -6,11 +6,11 @@ import lk.sliit.hotelManagement.entity.houseKeeping.HotelRoom;
 import java.sql.Date;
 
 public class ReservationDetailDTO {
-    private HotelRoom roomId;
+    private int roomId;
     private Date arrivalDate;
     private Date departureDate;
 
-    public ReservationDetailDTO(HotelRoom roomId, Date arrivalDate, Date departureDate) {
+    public ReservationDetailDTO(int roomId, Date arrivalDate, Date departureDate) {
         this.roomId = roomId;
         this.arrivalDate = arrivalDate;
         this.departureDate = departureDate;
@@ -19,11 +19,11 @@ public class ReservationDetailDTO {
     public ReservationDetailDTO() {
     }
 
-    public HotelRoom getRoomId() {
+    public int getRoomId() {
         return roomId;
     }
 
-    public void setRoomId(HotelRoom roomId) {
+    public void setRoomId(int roomId) {
         this.roomId = roomId;
     }
 

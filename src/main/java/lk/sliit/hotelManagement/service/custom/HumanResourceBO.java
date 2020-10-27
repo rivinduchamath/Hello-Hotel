@@ -1,11 +1,8 @@
 package lk.sliit.hotelManagement.service.custom;
 
 import lk.sliit.hotelManagement.dto.houseKeeping.HotelRoomDTO;
-import lk.sliit.hotelManagement.dto.hr.AccountsDTO;
-import lk.sliit.hotelManagement.dto.hr.AttendanceDTO;
-import lk.sliit.hotelManagement.dto.hr.MonthlySalary;
-import lk.sliit.hotelManagement.dto.hr.SalaryDTO;
-import lk.sliit.hotelManagement.dto.hr.SalaryPay;
+import lk.sliit.hotelManagement.dto.hr.*;
+
 import lk.sliit.hotelManagement.dto.manager.EmployeeDTO;
 import lk.sliit.hotelManagement.service.SuperBO;
 
@@ -41,11 +38,29 @@ public interface HumanResourceBO extends SuperBO {
 
     void saveAccounts(AccountsDTO accountsDTO);
 
-    List<SalaryPay> getSalaryPayment(String source);
+    List<SalaryPayDTO> getSalaryPayment(String source);
 
     List<AccountsDTO> findAllAccounts();
 
     void deleteAccount(int accountId);
 
     List<EmployeeDTO> findAllsalaryStateNotFalseTot();
+
+    List<SalarySettingsDTO> getSalarySet();
+
+    void saveSettingSalary(SalarySettingsDTO settingsDTO);
+
+    SalarySettingsDTO findsalarySettingById(int id);
+
+    SalarySettingsDTO findHighestSettingSalary();
+
+    ActivityListDTO findHighestActivityId();
+
+    ActivityListDTO findActivityById(int activityId);
+
+    void saveActivity(ActivityListDTO activityListDTO1);
+
+    List<ActivityListDTO> findAllActivity();
+
+    void deleteActivity(int activityId);
 }

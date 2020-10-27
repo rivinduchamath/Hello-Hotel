@@ -51,4 +51,6 @@ public interface RestaurantBO {
     List<OnlineTableReservationDTO> findTablesOnline();
 
     List<RestaurantOnlineOrderDTO> findOrderOnline();
+
+
 }

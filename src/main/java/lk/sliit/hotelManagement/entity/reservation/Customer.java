@@ -17,6 +17,7 @@ public class Customer {
     private String contactNumber;
     private int age;
     private String state;
+    private String password;
     @OneToMany(mappedBy = "customer", cascade = {CascadeType.PERSIST,CascadeType.REFRESH, CascadeType.DETACH, CascadeType.MERGE})
     private List<Reservation> reservations = new ArrayList<>();
     @OneToMany(mappedBy = "customer", cascade = {CascadeType.PERSIST,CascadeType.REFRESH, CascadeType.DETACH, CascadeType.MERGE})
@@ -27,7 +28,17 @@ public class Customer {
     private List<BanquetOrder> banquetOrders = new ArrayList<>();
 
 
-
+    public Customer(int customerId, String email, String name,
+                    String address, String contactNumber, int age, String state, String password) {
+        this.customerId = customerId;
+        this.email = email;
+        this.name = name;
+        this.address = address;
+        this.contactNumber = contactNumber;
+        this.age = age;
+        this.state = state;
+        this.password = password;
+    }
 
     public Customer(int customerId, String email, String name, String address, String contactNumber) {
         this.customerId = customerId;
@@ -58,6 +69,14 @@ public class Customer {
     }
 
     public Customer() {
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public String getState() {

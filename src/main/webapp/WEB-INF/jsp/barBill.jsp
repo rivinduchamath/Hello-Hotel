@@ -218,33 +218,31 @@
                                                 <thead>
 
                                                 <tr>
-                                                    <th>SalaryId</th>
-                                                    <th>Emp Id</th>
-                                                    <th>Name</th>
-                                                    <th>Basic Salary</th>
-                                                    <th>OT Salary</th>
-                                                    <th>Bonus Salary</th>
-                                                    <th>Tax</th>
-                                                    <th>Total Salary</th>
+                                                    <th>Item Id</th>
+                                                    <th>Item Name</th>
+                                                    <th>Order Qty</th>
+                                                    <th>Price</th>
+                                                    <th>Total Price</th>
+
                                                 </tr>
                                                 </thead>
                                                 <tbody>
-                                                <c:forEach items="${getSalaryData}" var="e">
+
                                                     <tr>
-                                                        <td>${e.salaryId}</td>
-                                                        <td>${e.employeeID.idNo}</td>
-                                                        <td>${e.employeeID.name}</td>
-                                                        <td>${e.basicSalary}</td>
-                                                        <td>${e.otHours*e.otRate}</td>
-                                                        <td>${e.bonus}</td>
-                                                        <td>${e.incomeTax}</td>
-                                                        <td>${((e.basicSalary+e.bonus)+(e.otRate*e.otHours))-e.incomeTax}</td>
+                                                        <td>4</td>
+                                                        <td>vodka</td>
+                                                        <td>10</td>
+                                                        <td>1200</td>
+                                                        <td>12000</td>
                                                     </tr>
-                                                    <script>
-                                                        var aa = aa + ${e.otHours};
-                                                        document.getElementById("demo").innerHTML = 11;
-                                                    </script>
-                                                </c:forEach>
+                                                    <tr>
+                                                        <td>3</td>
+                                                        <td>Vine</td>
+                                                        <td>5</td>
+                                                        <td>1323</td>
+                                                        <td>6615</td>
+                                                    </tr>
+
 
                                                 </tbody>
                                             </table>
@@ -276,26 +274,19 @@
                                                     <tbody>
                                                     <tr>
                                                         <th style="width:50%">Basic Tot:</th>
-                                                        <td><span id="val2"></span></td>
+                                                        <td >18,615<span  id="val2"></span></td>
                                                     </tr>
                                                     <tr>
                                                         <th>Tax
                                                             <small style="font-weight: bold"><span id="val9"></span>
                                                             </small>
                                                         </th>
-                                                        <td><span id="val3"></span></td>
+                                                        <td>2%<span id="val3"></span></td>
                                                     </tr>
-                                                    <tr>
-                                                        <th>OT Tot:</th>
-                                                        <td><span id="val4"></span></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <th>Bonus Tot:</th>
-                                                        <td><span id="val5"></span></td>
-                                                    </tr>
+
                                                     <tr>
                                                         <th>Total:</th>
-                                                        <td><span id="val"></span></td>
+                                                        <td>18,987.3<span id="val"></span></td>
                                                     </tr>
                                                     </tbody>
                                                 </table>

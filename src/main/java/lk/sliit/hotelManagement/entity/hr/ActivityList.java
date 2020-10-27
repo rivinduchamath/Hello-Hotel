@@ -2,9 +2,8 @@ package lk.sliit.hotelManagement.entity.hr;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
-import java.util.Date;
+
+import java.sql.Date;
 
 
 @Entity
@@ -12,24 +11,32 @@ public class ActivityList {
 
     @Id
     private int activityId;
-    @Temporal(TemporalType.TIME)
-    private Date inTime;
-    @Temporal(TemporalType.TIME)
-    private Date outTime;
+    private int employeeId;
+    private String sunday;
+    private String monday;
+    private String tuesday;
+    private String wednesday;
+    private String thursday;
+    private String friday;
+    private String saturday;
     private Date date;
-    private String employeeId;
-    private String departmentId;
+
 
     public ActivityList() {
     }
 
-    public ActivityList(int activityId, Date inTime, Date outTime, Date date, String employeeId, String departmentId) {
+    public ActivityList(int activityId, int employeeId, String sunday, String monday,
+                        String tuesday, String wednesday, String thursday, String friday, String saturday, Date date) {
         this.activityId = activityId;
-        this.inTime = inTime;
-        this.outTime = outTime;
-        this.date = date;
         this.employeeId = employeeId;
-        this.departmentId = departmentId;
+        this.sunday = sunday;
+        this.monday = monday;
+        this.tuesday = tuesday;
+        this.wednesday = wednesday;
+        this.thursday = thursday;
+        this.friday = friday;
+        this.saturday = saturday;
+        this.date = date;
     }
 
     public int getActivityId() {
@@ -40,20 +47,68 @@ public class ActivityList {
         this.activityId = activityId;
     }
 
-    public Date getInTime() {
-        return inTime;
+    public int getEmployeeId() {
+        return employeeId;
     }
 
-    public void setInTime(Date inTime) {
-        this.inTime = inTime;
+    public void setEmployeeId(int employeeId) {
+        this.employeeId = employeeId;
     }
 
-    public Date getOutTime() {
-        return outTime;
+    public String getSunday() {
+        return sunday;
     }
 
-    public void setOutTime(Date outTime) {
-        this.outTime = outTime;
+    public void setSunday(String sunday) {
+        this.sunday = sunday;
+    }
+
+    public String getMonday() {
+        return monday;
+    }
+
+    public void setMonday(String monday) {
+        this.monday = monday;
+    }
+
+    public String getTuesday() {
+        return tuesday;
+    }
+
+    public void setTuesday(String tuesday) {
+        this.tuesday = tuesday;
+    }
+
+    public String getWednesday() {
+        return wednesday;
+    }
+
+    public void setWednesday(String wednesday) {
+        this.wednesday = wednesday;
+    }
+
+    public String getThursday() {
+        return thursday;
+    }
+
+    public void setThursday(String thursday) {
+        this.thursday = thursday;
+    }
+
+    public String getFriday() {
+        return friday;
+    }
+
+    public void setFriday(String friday) {
+        this.friday = friday;
+    }
+
+    public String getSaturday() {
+        return saturday;
+    }
+
+    public void setSaturday(String saturday) {
+        this.saturday = saturday;
     }
 
     public Date getDate() {
@@ -62,21 +117,5 @@ public class ActivityList {
 
     public void setDate(Date date) {
         this.date = date;
-    }
-
-    public String getEmployeeId() {
-        return employeeId;
-    }
-
-    public void setEmployeeId(String employeeId) {
-        this.employeeId = employeeId;
-    }
-
-    public String getDepartmentId() {
-        return departmentId;
-    }
-
-    public void setDepartmentId(String departmentId) {
-        this.departmentId = departmentId;
     }
 }

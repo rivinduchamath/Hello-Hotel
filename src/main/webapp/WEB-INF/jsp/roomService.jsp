@@ -299,31 +299,38 @@
                                         <table id="datatable-buttons" class="table table-striped table-bordered">
                                             <thead class="thead-light">
                                             <tr>
-                                                <th>Id</th>
-                                                <th>Name</th>
-                                                <th>Description</th>
-                                                <th>Submitted By</th>
-                                                <th>State</th>
-                                                <th>Condition</th>
+                                                <th>Customer Id</th>
+                                                <th>Customer Name</th>
+                                                <th>Pieces</th>
+                                                <th>Expected Date</th>
                                                 <th>Date</th>
-                                                <th>Delete</th>
+                                                <th>Order Holder</th>
+                                                <th>Change State</th>
+                                                <th></th>
 
                                             </tr>
 
                                             </thead>
                                             <tbody>
 
-                                            <tr>
-                                                <td>R001</td>
-                                                <td>Delux</td>
-                                                <td>Lorem</td>
-                                                <td>Cherif</td>
-                                                <td>Cleaned</td>
-                                                <td>A/C</td>
-                                                <td>2020/09/09</td>
-                                                <td>  <a href="deleteSupplier/${e.roomId}"onclick="return confirm('Are you sure you want to delete?')"  class="btn btn-xs">
-                                                    <i class="fa fa-trash-o"></i></a></td>
-                                            </tr>
+                                            <c:forEach items="${viewAcceptedOrders}" var="e">
+                                                <tr>
+                                                    <td>${e.customerId}</td>
+                                                    <td>${e.customerName}</td>
+                                                    <td>${e.pieces}</td>
+                                                    <td>${e.expectedDate}</td>
+                                                    <td>${e.date}</td>
+                                                    <td scope="row">${e.orderHolder}</td>
+                                                    <td>
+                                                        <a href="processLaundryOrder2/${e.laundryId}" onclick="return confirm('Are you sure you want to Process?')"
+                                                           class="btn btn-xs">
+                                                            <i class="fa fa-pencil"></i></a></td>
+                                                    <td>
+                                                        <a href="deleteLaundryOrder2/${e.laundryId}" onclick="return confirm('Are you sure you want to delete?')"
+                                                           class="btn btn-xs">
+                                                            <i class="fa fa-trash-o"></i></a></td>
+                                                </tr>
+                                            </c:forEach>
                                             </tbody>
                                         </table>
                                     </div>
@@ -363,31 +370,28 @@
                                             <table id="datatable-buttons1" class="table table-striped table-bordered">
                                                 <thead class="thead-light">
                                                 <tr>
-                                                    <th>Id</th>
-                                                    <th>Name</th>
-                                                    <th>Description</th>
-                                                    <th>Submi3tted By</th>
-                                                    <th>State</th>
-                                                    <th>Condition</th>
+                                                    <th>Customer Id</th>
+                                                    <th>Customer Name</th>
+                                                    <th>Pieces</th>
+                                                    <th>Expected Date</th>
                                                     <th>Date</th>
-                                                    <th>Delete</th>
+                                                    <th>Order Holder</th>
 
                                                 </tr>
-
                                                 </thead>
-                                                <tbody>
 
-                                                <tr>
-                                                    <td>R001</td>
-                                                    <td>Delux</td>
-                                                    <td>Lorem</td>
-                                                    <td>Cherif</td>
-                                                    <td>Cleaned</td>
-                                                    <td>A/C</td>
-                                                    <td>2020/09/09</td>
-                                                    <td>  <a href="deleteSupplier/${e.roomId}"onclick="return confirm('Are you sure you want to delete?')"  class="btn btn-xs">
-                                                        <i class="fa fa-trash-o"></i></a></td>
-                                                </tr>
+                                                <tbody id="tblOrder">
+                                                <c:forEach items="${viewProcessing}" var="e">
+                                                    <tr>
+                                                        <td>${e.customerId}</td>
+                                                        <td>${e.customerName}</td>
+                                                        <td>${e.pieces}</td>
+                                                        <td>${e.expectedDate}</td>
+                                                        <td>${e.date}</td>
+                                                        <td scope="row">${e.orderHolder}</td>
+
+                                                    </tr>
+                                                </c:forEach>
                                                 </tbody>
                                             </table>
                                         </div>

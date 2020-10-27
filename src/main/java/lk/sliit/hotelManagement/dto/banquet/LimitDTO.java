@@ -1,11 +1,11 @@
 package lk.sliit.hotelManagement.dto.banquet;
 
 public class LimitDTO {
-    private String limitId;
+    private int limitId;
     private String limitName;
     private double limit;
 
-    public LimitDTO(String limitId, String limitName, double limit) {
+    public LimitDTO(int limitId, String limitName, double limit) {
         this.limitId = limitId;
         this.limitName = limitName;
         this.limit = limit;
@@ -14,11 +14,11 @@ public class LimitDTO {
     public LimitDTO() {
     }
 
-    public String getLimitId() {
+    public int getLimitId() {
         return limitId;
     }
 
-    public void setLimitId(String limitId) {
+    public void setLimitId(int limitId) {
         this.limitId = limitId;
     }
 

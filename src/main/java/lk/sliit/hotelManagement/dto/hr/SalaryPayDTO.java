@@ -4,7 +4,7 @@ import lk.sliit.hotelManagement.entity.manager.Employee;
 
 import java.util.Date;
 
-public class SalaryPay {
+public class SalaryPayDTO {
     private int id;
     private double basicSalary;
     private Date date;
@@ -17,10 +17,11 @@ public class SalaryPay {
     private boolean state;
     private int employee;
     private String source;
+    private String name;
 
-    public SalaryPay(int id, double basicSalary, Date date, double etf, double epf,
+    public SalaryPayDTO(int id, double basicSalary, Date date, double etf, double epf,
                      double hours, double otHours, double salary, double serviceCharge,
-                     boolean state, int employee) {
+                     boolean state, int employee,String name) {
         this.id = id;
         this.basicSalary = basicSalary;
         this.date = date;
@@ -32,14 +33,15 @@ public class SalaryPay {
         this.serviceCharge = serviceCharge;
         this.state = state;
         this.employee = employee;
+        this.name =name;
     }
 
-    public SalaryPay() {
+    public SalaryPayDTO() {
     }
 
-    public SalaryPay( double basicSalary, Date date, double etf, double epf,
+    public SalaryPayDTO( double basicSalary, Date date, double etf, double epf,
                      double hours, double otHours, double salary, double serviceCharge,
-                     boolean state, int employee) {     this.basicSalary = basicSalary;
+                     boolean state, int employee,String name) {     this.basicSalary = basicSalary;
         this.date = date;
         this.etf = etf;
         this.epf = epf;
@@ -49,7 +51,9 @@ public class SalaryPay {
         this.serviceCharge = serviceCharge;
         this.state = state;
         this.employee = employee;
+        this.name =name;
     }
+
 
     public int getEmployee() {
         return employee;
@@ -69,6 +73,14 @@ public class SalaryPay {
 
     public int getId() {
         return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public void setId(int id) {

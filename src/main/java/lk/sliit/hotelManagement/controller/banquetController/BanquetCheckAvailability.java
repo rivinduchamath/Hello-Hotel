@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
@@ -23,13 +24,13 @@ public class BanquetCheckAvailability {
     BanquetBO banquetBO;
 
     @GetMapping("/banquetCheckAvailability")
-    public ModelAndView loginPage(Model model){
-        ModelAndView mv = new ModelAndView("banquetCheckAvailability");
+    public String loginPage(Model model){
+
         model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
 
-        return mv;
+        return "banquetCheckAvailability";
     }
-    @RequestMapping("/checkAvailability")
+    @PostMapping("/banquetCheckAvailability")
     public ModelAndView checkAvailability(@RequestParam Date date,Model model) {
         ModelAndView mv = new ModelAndView("banquetCheckAvailability");
         model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
@@ -59,7 +60,7 @@ public class BanquetCheckAvailability {
         model.addAttribute("answer3",answer3);
 
         List<BanquetAddDTO> list = banquetBO.findCheckDateBanquets(date);
-        mv.addObject("loadTable",list);
+        model.addAttribute("loadTable",list);
 
         return mv;
     }

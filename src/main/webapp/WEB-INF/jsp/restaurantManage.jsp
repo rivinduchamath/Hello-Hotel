@@ -235,7 +235,7 @@
                                                             <th>Start Time</th>
                                                             <th>End Time</th>
                                                             <th>State</th>
-                                                            <th></th>
+
 
                                                         </tr>
 
@@ -247,6 +247,7 @@
                                                                 <td>${item.date}</td>
                                                                 <td>${item.startTime}</td>
                                                                 <td>${item.endTime}</td>
+                                                                <td>confirm</td>
                                                             </tr>
                                                         </c:forEach>
                                                         </tbody>
@@ -302,9 +303,9 @@
                                                     <td>${item.orderId}</td>
                                                     <td>${item.customer}</td>
                                                     <td>${item.date}</td>
-                                                    <td>${item.orderData}</td>
-                                                    <td>${item.orderData}</td>
-                                                    <td>${item.orderData}</td>
+                                                    <td>1</td>
+                                                    <td>2</td>
+                                                    <td>confirm</td>
                                                 </tr>
                                                 </c:forEach>
                                                 </tbody>
@@ -347,6 +348,7 @@
 <script src="https://www.amcharts.com/lib/4/themes/moonrisekingdom.js"></script>
 <script src="https://www.amcharts.com/lib/4/themes/spiritedaway.js"></script>
 <script src="https://www.amcharts.com/lib/4/themes/animated.js"></script>
+<%--
 <script>
     am4core.ready(function () {
 
@@ -504,6 +506,7 @@
 
     }); // end am4core.ready()
 </script>
+--%>
 
 
 </body>
