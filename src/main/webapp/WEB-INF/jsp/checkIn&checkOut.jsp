@@ -214,9 +214,9 @@
                         <div class="containerx">
                             <a style=" font-family: Playfair Display, Georgia, Times New Roman, serif;
                              background-color:#3d495f; color: #ffffff;font-weight: bolder"
-                               href="/home" class="btnq"><h2
+                               href="/customerRegistration" class="btnq"><h2
                                     style="position: relative; letter-spacing: 1px;
-                                     margin-top: 30px">Online Reservation</h2></a>
+                                     margin-top: 30px">New Reservation</h2></a>
                         </div>
                         <br>
                     </div>
@@ -225,23 +225,13 @@
                         <div class="containerx">
                             <a style=" font-family: Playfair Display, Georgia, Times New Roman, serif;
                              background-color:#3d495f; color: #ffffff;font-weight: bolder"
-                               href="/checkIn&checkOut" class="btnq"><h2
+                               href="/customerCheckOut" class="btnq"><h2
                                     style="position: relative; letter-spacing: 1px;
-                                     margin-top: 30px">Over The Counter Reservation</h2></a>
+                                     margin-top: 30px">Check-Out</h2></a>
                         </div>
                         <br>
                     </div>
 
-                    <div class="col-sm-12 col-md-4 col-lg-4 col-xl-4">
-                        <div class="containerx">
-                            <a style=" font-family: Playfair Display, Georgia, Times New Roman, serif;
-                             background-color:#3d495f; color: #ffffff;font-weight: bolder"
-                               href="/banquetDelete" class="btnq"><h2
-                                    style="position: relative; letter-spacing: 1px;
-                                     margin-top: 30px">Daily Activity Report</h2></a>
-                        </div>
-                        <br>
-                    </div>
 
                 </div>
 

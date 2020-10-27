@@ -1,10 +1,4 @@
-<<%--
-  Created by IntelliJ IDEA.
-  User: USER
-  Date: 8/6/2020
-  Time: 9:47 PM
-  To change this template use File | Settings | File Templates.
---%>
+
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page import="java.util.Date" %>
@@ -31,13 +25,20 @@
 
     <c:if test="${not empty loginError}">
         <script>
-            window.addEventListener("load", function () {
+            window.addEventListener("load",function(){
                 alert("${loginError}");
             });
         </script>
     </c:if>
+    <%--Chrat--%>
 
-    <!-- Datatables -->
+    <script src="https://www.amcharts.com/lib/4/core.js"></script>
+    <script src="https://www.amcharts.com/lib/4/charts.js"></script>
+    <script src="https://www.amcharts.com/lib/4/themes/spiritedaway.js"></script>
+    <script src="https://www.amcharts.com/lib/4/themes/animated.js"></script>
+    <%--/Pie Chrat--%>
+
+       <!-- Datatables -->
     <link href="../../vendors/datatables.net-bs/css/dataTables.bootstrap.min.css" rel="stylesheet">
     <link href="../../vendors/datatables.net-buttons-bs/css/buttons.bootstrap.min.css" rel="stylesheet">
     <link href="../../vendors/datatables.net-fixedheader-bs/css/fixedHeader.bootstrap.min.css" rel="stylesheet">
@@ -92,7 +93,6 @@
             -webkit-transition: 0.8s ease;
             -moz-transition: 0.8s ease;
         }
-
         #chartdiv {
             width: 100%;
             height: 500px;
@@ -106,7 +106,6 @@
         .large-btn:hover {
             color: #cebbbb;
         }
-
         /*//////////////////////////////////////////////////////////////*/
 
         .containerx {
@@ -168,33 +167,19 @@
         <div class="right_col" role="main">
             <div class="page-title">
                 <div class="title_left">
-
-                    <h3>New Reservation
-                        <small>Welcome To Hotel Hareesha</small>
+                    <h3>Check-Out Customer
+                        <small></small>
                     </h3>
-
-
                     <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
-                        <div class="col-6 col-sm-6 col-md-8 col-lg-8 col-xl-8">
-                            <a href="/customerRegistration">
-                                <button style="display: inline-block; border: 5px solid rgb(174, 182, 203);background-color: #45526e;
-                                    color: #c6d4d3;font-weight: bolder" type="button" class="btnq2 btn"><i
-                                        class="fa fa-reply">
-                                    Back</i>
-                                </button>
-                            </a>
+                    <div class="col-6 col-sm-6 col-md-6 col-lg-4 col-xl-4">
+                        <a href="checkIn&checkOut">
+                            <button style=" border: 5px solid rgb(174, 182, 203);background-color: #45526e;
+                                    color: #c6d4d3;font-weight: bolder" type="button"  class="btnq2 btn"><i class="fa fa-reply">
+                                Back</i>
+                            </button>
+                        </a>
 
-                            <!--
-                            <a href="/counterReservation">
-                                <button style=" border: 5px solid rgb(174, 182, 203);background-color: #45526e;
-                                    color: #c6d4d3;font-weight: bolder" type="button" class="btnq2 btn"><i
-                                        class="fa fa-fast-forward">
-                                    Next</i>
-                                </button>
-                            </a>
-                            -->
-
-                        </div>
+                    </div>
 
                     </div>
                 </div>
@@ -285,140 +270,177 @@
 
             <%--Input Feilds--%>
             <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
-                <div class="col-12 col-sm-12 col-md-12 col-lg-5 col-xl-5">
-                    <form method="POST" action="saveOverTheCounterCustomer">
+            <div class="col-12 col-sm-12 col-md-12 col-lg-4 col-xl-4">
+                    <form action="manageRoomSave" method="post" class="form-horizontal form-label-left"
+                          data-parsley-validate
+                          id="demo-form3">
+                    <div class="form-group">
+
+                        <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
+                                <label>Customer ID</label>
+                        <input type="text" class="form-control"
+                               required="required" name="customerID"
+                               id="customerID" placeholder="Customer ID"/></div>
+                    </div>
 
                         <div class="form-group">
 
-
                             <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
-                                <label>Customer ID</label>
-                                <input type="number" value="" class="form-control"
-                                       required="required" name="customerId"
-                                       id="customerId" placeholder="customer Id"/></div>
-
-
-                            <div class="form-group">
-
-
-                                <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6"><br>
-                                    <label>Room Type</label>
-                                    <input type="text" class="form-control"
-                                           required="required" name="room condition"
-                                           id="name" placeholder="AC or Non AC"/></div>
-
-
-
-
-
-                                <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6"><br>
-                                    <label>Check-In</label>
-                                    <input type="text" class="form-control"
-                                           required="required" name="address"
-                                           id="address" placeholder="check-in"/></div>
-                            </div>
-
-
-                            <div class="form-group">
-                                <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6"><br>
-                                        <label>Check-Out</label>
-                                    <input type="text" class="form-control"
-                                           required="required" name="email"
-                                           id="email" placeholder="check-out"/></div>
-
-                                <!--
-                                <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6"><br>
-                                    <label>Mobile No</label>
-                                    <input type="number" class="form-control"
-                                           required="required" name="contactNumber"
-                                           id="contactNumber" placeholder="Mobile No"/></div>
-                                           -->
-                            </div>
-
-
-                            <button type='submit' class="btn btn-primary"
-                                    style="width: 50%; top: 20px; position: relative" value="Register">
-                                Check Availability
-                            </button>
-                            <button type='reset' class="btn btn-outline-success" style="top: 20px; position: relative"
-                                    value="">Reset
-                            </button>
+                                <label>Room ID</label>
+                                <input type="text" class="form-control"
+                                       required="required" name="roomID"
+                                       id="roomID" placeholder="Room ID"/></div>
                         </div>
-                    </form>
-                </div>
-                <%--/Input Feilds--%>
-                <%--Table--%>
-                <div class="col-12 col-sm-12 col-md-12 col-lg-7 col-xl-7">
+
+                        <!--
+                    <div class="form-group">
+
+
+                        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12"> <br>
+                            <label> Description</label>
+                            <textarea type="text" class="form-control"
+                                   required="required" name="description"
+                                      id="address" placeholder="Description"></textarea></div>
+                    </div>
+                    -->
+
+
+                    <div class="form-group">
+                        <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6"> <br>
+                            <label>Check-In</label>
+                            <input type="date" class="form-control"
+                                   required="required" name="date"
+                                   id="checkInDate" placeholder="Date"/></div>
+                        <br>
+
+                        <div class="form-group">
+                            <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6"> <br>
+                                <label>Check-Out</label>
+                                <input type="date" class="form-control"
+                                       required="required" name="date"
+                                       id="checkOutDate" placeholder="Date"/></div>
+                            <br>
+                        </div>
+
+                    </div>
+
+                        <!--
+
+                    <div class="form-group">
+                        <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6"> <br>
+                            <label >State</label>
+                            <select id="status" class="form-control"
+                                    style="width: 100%; border-color: lightgray"
+                                    name="status">
+                                <option value="Cleaned">Cleaned</option>
+                                <option value="NotCleaned">NotCleaned</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6"> <br>
+                            <label >Condition</label>
+                            <select id="roomType" class="form-control"
+                                    style="width: 100%; border-color: lightgray"
+                                    name="roomType">
+                                <option value="AC">A/C</option>
+                                <option value="NonA/C">Non.A/C</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    -->
+                    <div style="display: none" class="form-group">
+
+                        <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
+                            <input type="number" class="form-control"
+                                   name="roomId2"  value="0"
+                                   id="itemId" placeholder="Room ID"/></div>
+                    </div>
+                    <button type='submit' class="btn btn-dark" style="width: 50%; top: 20px; position: relative" value="Register">
+                        Check-Out
+                    </button>
+                    <button type='reset' class="btn btn-outline-success" style="top: 20px; position: relative" value="">Reset</button>
+
+                </form>
+            </div>
+            <%--/Input Feilds--%>
+            <%--Table--%>
+            <div class="col-12 col-sm-12 col-md-12 col-lg-8 col-xl-8">
                     <div class="row">
-                        <div class="x_panel">
-                            <div class="x_title">
-                                <h2>Find Room
-                                    <small></small>
-                                </h2>
-                                <ul class="nav navbar-right panel_toolbox">
-                                    <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
-                                    </li>
-                                    <li class="dropdown">
-                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
-                                           aria-expanded="false"><i class="fa fa-wrench"></i></a>
-                                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                            <a class="dropdown-item" href="#">Settings 1</a>
-                                        </div>
-                                    </li>
-                                    <li><a class="close-link"><i class="fa fa-close"></i></a>
-                                    </li>
-                                </ul>
-                                <div class="clearfix"></div>
-                            </div>
-                            <div class="x_content">
-                                <div class="row">
+                    <div class="x_panel">
+                        <div class="x_title">
+                            <h2>Find Reservation
+                                <small></small>
+                            </h2>
+                            <ul class="nav navbar-right panel_toolbox">
+                                <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                                </li>
+                                <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                                       aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                        <a class="dropdown-item" href="#">Settings 1</a>
+                                    </div>
+                                </li>
+                                <li><a class="close-link"><i class="fa fa-close"></i></a>
+                                </li>
+                            </ul>
+                            <div class="clearfix"></div>
+                        </div>
+                        <div class="x_content">
+                            <div class="row">
+                                <div class="col-sm-12">
                                     <div class="card-box table-responsive">
                                         <table id="datatable-buttons" class="table table-striped table-bordered">
                                             <thead class="thead-light">
                                             <tr>
-                                                <th>Room No</th>
-                                                <th>Room Name</th>
-                                                <th>Room Type</th>
-                                                <th>Room Status</th>
+                                                <th>Customer ID</th>
+                                                <th>Room ID</th>
+                                                <th>Check-In</th>
+                                                <th>Check-Out</th>
+                                                <th>Rate</th>
 
                                             </tr>
 
                                             </thead>
                                             <tbody>
-                                            <c:forEach items="${loadReservationCustomer}" var="a">
+                                            <c:forEach items="${loadHotelRoomTable}" var="room">
                                                 <tr>
-                                                    <td>${a.customerId}</td>
-                                                    <td>${a.name}</td>
-                                                    <td>${a.address}</td>
-                                                    <td>${a.contactNumber}</td>
-                                                    <td>${a.email}</td>
-                                                    <td><a href="deleteCustomer/${a.customerId}">
-                                                        <i class="fa fa-trash"></i>
-                                                    </a></td>
+                                                    <td>${room.roomId2}</td>
+                                                    <td>${room.roomName}</td>
+                                                    <td>${room.description}</td>
+                                                    <td>${room.holder}</td>
+                                                    <td>${room.status}</td>
+                                                    <td>${room.type}</td>
+                                                    <td>${room.date}</td>
+                                                    <td>  <a href="roomDelete/${room.roomId2}" onclick="return confirm('Are you sure you want to delete?')"  class="btn btn-xs">
+
+                                                    <i class="fa fa-trash-o"></i></a></td>
+
+
                                                 </tr>
                                             </c:forEach>
                                             </tbody>
                                         </table>
                                     </div>
-
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <%--/Table--%>
-
-                <%--/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////--%>
-
-
             </div>
+            <%--Table--%>
         </div>
-        <!-- /page content -->
 
-        <!-- footer content -->
-        <jsp:include page="footer.jsp"/>
-        <!-- /footer content -->
+        </div>
     </div>
+    <!-- /page content -->
+
+    <!-- footer content -->
+    <jsp:include page="footer.jsp"/>
+    <!-- /footer content -->
+</div>
 </div>
 
 
@@ -448,20 +470,28 @@
 <script src="../../build/js/custom.min.js"></script>
 <%--Pie Chart 1--%>
 
+<%--/Pie Chart 1--%>
+
+<%--Pie Chart 2--%>
+
 <script>
 
     var selectedRow = null;
     $("#datatable-buttons tbody").on('click', 'tr', function () {
         selectedRow = $(this);
-        $("#customerId").val($(this).find("td:nth-child(1)").text());
-        $("#name").val($(this).find("td:nth-child(2)").text());
+        $("#itemId").val($(this).find("td:first-child").text());
+        $("#roomName").val($(this).find("td:nth-child(2)").text());
         $("#address").val($(this).find("td:nth-child(3)").text());
-        $("#contactNumber").val($(this).find("td:nth-child(4)").text());
-        $("#email").val($(this).find("td:nth-child(5)").text());
+        $("#status").val($(this).find("td:nth-child(5)").text());
+        $("#roomType").val($(this).find("td:nth-child(6)").text());
+        $("#date").val($(this).find("td:nth-child(7)").text());
         selectedRow.addClass('row-selected');
     });
 </script>
 
 
+
+
+<%--/Pie Chart 2--%>
 </body>
 </html>
