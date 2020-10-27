@@ -253,6 +253,27 @@ public class BanquetBOImpl implements BanquetBO {
         return banquetId;
     }
 
+    @Override
+    public BanquetAddDTO findBanquetBillById(int billId) {
+        BanquetBill banquetBill = banquetBillDAO.findOne(billId);
+        BanquetOrder banquetOrder =banquetOrderDAO.findBanquetOrderByBanquetBillEquals(banquetBill);
+        return new BanquetAddDTO(
+                banquetOrder.getOrderId(),
+                banquetOrder.getCustomer().getName(),
+                banquetOrder.getCustomer().getAddress(),
+                banquetOrder.getCustomer().getContactNumber(),
+                banquetOrder.getDate(),
+                banquetOrder.getHallId(),
+                banquetOrder.getNoOfPlates(),
+                banquetOrder.getBanquetBill().getAdvancePayment(),
+                banquetOrder.getBanquetBill().getFoodPrice(),
+                banquetOrder.getBanquetBill().getOtherPrices(),
+                banquetOrder.getBanquetBill().getBillId(),
+                banquetOrder.getOrderState(),
+                banquetOrder.getBanquetBill().getTotal()
+        );
+    }
+
 
     @Override
     public int checkAvailability(Date date) {

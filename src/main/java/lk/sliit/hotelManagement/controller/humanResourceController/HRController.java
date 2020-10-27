@@ -40,6 +40,8 @@ public class HRController {
         return "hr";
     }
 
+
+
     @GetMapping("/allAttendance")
     public String allAttendance(Model model) {
         model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));

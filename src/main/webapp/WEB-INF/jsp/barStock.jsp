@@ -263,8 +263,8 @@
                                                 <th>Id</th>
                                                 <th>Name</th>
                                                 <th>Price</th>
-                                                <th>OrderLimit</th>
-                                                <th></th>
+                                                <th>Available Qty</th>
+                                                <th>Order Limit</th>
                                             </tr>
                                             </thead>
 
@@ -274,8 +274,9 @@
                                                     <td>${e.inventoryId}</td>
                                                     <td>${e.text}</td>
                                                     <td>${e.getPrice}</td>
+                                                    <td>${e.orderQty}</td>
                                                     <td>${e.orderLimit}</td>
-                                                    <td class="a-center "></td>
+
                                                 </tr>
                                             </c:forEach>
                                             </tbody>

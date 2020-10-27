@@ -28,11 +28,16 @@ public class ManageController {
     KitchenBO kitchenBO;
     @Autowired
     ManageBO manageBO;
+
+
+    //Load G.Manager Dashboard
     @GetMapping("/manage")
     public String loginPage(Model model){
         model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
         return "manage";
     }
+
+    //Generate Daily Activity Report
     @GetMapping("/kitchenDailyActivityReport")
     public String KitchenReport(Model model){
         model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
@@ -40,22 +45,25 @@ public class ManageController {
         model.addAttribute("loadFoodOrderWeek", p);
         return "kitchenDailyActivityReport";
     }
+
+    //Load DepartmentPage
     @GetMapping("loadDepartment")
     public ModelAndView loadDepartment(Model model) {
         model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo((SuperController.idNo)));
 
-        ModelAndView mav = new ModelAndView("loadDepartment");
+        ModelAndView mav = new ModelAndView("loadDepartment");//load Page Using ModelAndView
 
-        List<DepartmentDTO> p2 = manageBO.findAllDepartment();
-        model.addAttribute("loadDepartment", p2);
+        List<DepartmentDTO> p2 = manageBO.findAllDepartment(); //Load Department Table
+        model.addAttribute("loadDepartment", p2);//Set List to Jsp
 
         return mav;
     }
-    @PostMapping("/saveDepartment")
-    public String saveUser(@ModelAttribute DepartmentDTO departmentDTO, Model model) {
+    @PostMapping("/saveDepartment") //Save Department
+    public String saveUser(@ModelAttribute DepartmentDTO departmentDTO, Model model, HttpServletResponse response) throws IOException {
 
         model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
-        try {
+        try {//Generate Id Or Update Selected table Data
+
             DepartmentDTO departmentDTO1 = manageBO.findHighestDepartmentId();
             DepartmentDTO departmentDTO2 = null;
             try {
@@ -73,13 +81,31 @@ public class ManageController {
         } catch (NullPointerException e) {
             departmentDTO.setDepartmentId(1);
         }
+        List<DepartmentDTO> p2 = manageBO.findAllDepartment();//Find All Department in comboBox
+        model.addAttribute("loadDepartment", p2);
+        response.setContentType("text/html;charset=UTF-8");
+        PrintWriter out = response.getWriter();
+        for (DepartmentDTO s: p2) {
+            if(s.getDepartmentName().equals(departmentDTO.getDepartmentName())){
+                out.println("<script type=\"text/javascript\">");
+                out.println("alert('You Cant Delete this Department. This" +
+                        " Department Already Saved in Another Table');");
+                out.println("location='/loadDepartment';");
+                out.println("</script>");
+
+                return "redirect:/loadDepartment";
+            }
+        }
+
+
         manageBO.saveDepertment(departmentDTO);
         return "redirect:/loadDepartment";
     }
 
+    //Delete Department
     @RequestMapping(value = "deleteDepartment/{departmentId}")
     public String deleteDepartment(@PathVariable("departmentId") int departmentId, HttpServletResponse response) throws IOException {
-        List<EmployeeDTO> p = manageBO.findAllUser();
+        List<EmployeeDTO> p = manageBO.findAllUser(); //Find All employee to check weather Department is already In
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
         for (EmployeeDTO s: p) {
@@ -87,7 +113,7 @@ public class ManageController {
                 out.println("<script type=\"text/javascript\">");
                 out.println("alert('You Cant Delete this Department. This" +
                         " Department Already Saved in Another Table');");
-                out.println("location='/manageUser';");
+                out.println("location='/loadDepartment';");
                 out.println("</script>");
 
                 return "redirect:/loadDepartment";

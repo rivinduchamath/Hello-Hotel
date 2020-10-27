@@ -9,29 +9,19 @@ import lk.sliit.hotelManagement.dto.reservation.CustomerDTO;
 import lk.sliit.hotelManagement.dto.reservation.FindAvailabilityDTO;
 import lk.sliit.hotelManagement.dto.reservation.ReservationDTO;
 import lk.sliit.hotelManagement.dto.reservation.ReservationDetailDTO;
-import lk.sliit.hotelManagement.dto.restaurant.OnlineCustomerDTO;
-import lk.sliit.hotelManagement.dto.restaurant.RestaurantTableDTO;
-import lk.sliit.hotelManagement.dto.restaurant.restaurantCounterTable.CounterTableReservationDetailsDTO;
-import lk.sliit.hotelManagement.dto.restaurant.restaurantOnlineOrder.RestaurantOnlineOrderDTO;
+
 import lk.sliit.hotelManagement.entity.houseKeeping.HotelRoom;
 import lk.sliit.hotelManagement.entity.reservation.Customer;
 import lk.sliit.hotelManagement.entity.reservation.Reservation;
 import lk.sliit.hotelManagement.entity.reservation.ReservationDetails;
-import lk.sliit.hotelManagement.entity.restaurant.OnlineCustomer;
-import lk.sliit.hotelManagement.entity.restaurant.RestaurantTable;
-import lk.sliit.hotelManagement.entity.restaurant.counterTableReservation.CounterTableReservation;
-import lk.sliit.hotelManagement.entity.restaurant.counterTableReservation.CounterTableReservationDetails;
-import lk.sliit.hotelManagement.entity.restaurant.onlineOrder.RestaurantOnlineOrder;
-import lk.sliit.hotelManagement.entity.restaurant.onlineTableReservation.OnlineTableReservation;
-import lk.sliit.hotelManagement.entity.restaurant.onlineTableReservation.OnlineTableReservationDetails;
-import lk.sliit.hotelManagement.service.custom.HouseKeepingBO;
+
 import lk.sliit.hotelManagement.service.custom.ReservationBO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.sql.Date;
-import java.sql.Time;
+
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
@@ -82,6 +72,7 @@ public class ReservationBOImpl implements ReservationBO {
         customerDAO.delete(customerId);
     }
 
+
     @Override
     public List<HotelRoomDTO> findAvilability(FindAvailabilityDTO findAvailabilityDTO) {
         Iterable<ReservationDetails> li = reservationDetailsDAO.find(findAvailabilityDTO.getCheckIn(), findAvailabilityDTO.getCheckOut());
@@ -90,7 +81,7 @@ public class ReservationBOImpl implements ReservationBO {
         List<HotelRoom> list2 = new ArrayList<>();
 
         for (HotelRoom d : allData) {
-             for (ReservationDetails d2 : li) {
+            for (ReservationDetails d2 : li) {
                 if (d.getRoomId() != d2.getRoomId().getRoomId()) {
                     if (!list.contains(d.getRoomId())) {
                         list.add(d2.getRoomId());
@@ -150,7 +141,7 @@ public class ReservationBOImpl implements ReservationBO {
 
     @Override
     public CustomerDTO findByUserNameAndPassword(String email, String password) {
-        Customer customer = customerDAO.findByEmailAndPassword(email,password);
+        Customer customer = customerDAO.findByEmailAndPassword(email, password);
         return new CustomerDTO(
                 customer.getCustomerId(),
                 customer.getName(),
@@ -173,14 +164,14 @@ public class ReservationBOImpl implements ReservationBO {
         email = email.trim();
         Customer customer = null;
         try {
-             customer = customerDAO.findCustomerByEmailEquals( email);
+            customer = customerDAO.findCustomerByEmailEquals(email);
 
-        }catch (Exception e){
+        } catch (Exception e) {
             return true;
         }
-        if(customer == null){
+        if (customer == null) {
             return true;
-        }else {
+        } else {
             return false;
         }
     }
@@ -213,29 +204,24 @@ public class ReservationBOImpl implements ReservationBO {
                 count = 0;
             }
         }
-        System.out.println(reservationDTO.getReservationId()+"TYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY");
-        System.out.println(reservationDTO.getCustomer()+"TYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY");
-        System.out.println("FRRRRRRRRRRRRRRR"+reservationDTO);;
+
         Calendar cal = Calendar.getInstance();
 
         cal.add(Calendar.DATE, 0);
-        System.out.println("GGGGGGGG");
         java.util.Date today = cal.getTime();
-        System.out.println("UUUUUUUUUUUUUU");
         Date a = new java.sql.Date(new java.util.Date().getTime());
         reservationDTO.setDate(a);
-        System.out.println("FRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR"+reservationDTO);;
+
         reservationDAO.save(new Reservation(
 
                 reservationDTO.getReservationId(),
-                 "Online",
-                 reservationDTO.getDate(),
+                "Online",
+                reservationDTO.getDate(),
                 3,
                 customerDAO.findOne(reservationDTO.getCustomer())
-                ));
+        ));
 
         for (ReservationDetailDTO orderDetail : list) {
-            System.out.println(orderDetail+"GGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG");
             reservationDetailsDAO.save(new ReservationDetails(
 
                     reservationDTO.getReservationId(),
@@ -247,6 +233,66 @@ public class ReservationBOImpl implements ReservationBO {
         }
     }
 
+    @Override
+    public CustomerDTO findCustomerByEmail(String email) {
+        email = email.trim();
+        Customer customer = null;
+        try {
+            customer = customerDAO.findCustomerByEmailEquals(email);
 
+        } catch (Exception e) {
+            return null;
+        }
 
+        return new CustomerDTO(
+          customer.getCustomerId()
+        );
+    }
+
+    @Override
+    public void saveReservaationCounter(ReservationDTO reservationDTO) {
+        java.util.List<ReservationDetailDTO> list = new ArrayList<>();
+        String arr = reservationDTO.getDetails();
+        String yo[] = arr.split(" ");
+        int count = 0;
+        ReservationDetailDTO itm = new ReservationDetailDTO();
+        for (String str : yo) {
+            if (count == 0) {
+                itm = new ReservationDetailDTO();
+                itm.setRoomId(Integer.parseInt(str));
+                list.add(itm);
+                count = 0;
+            }
+        }
+
+        Calendar cal = Calendar.getInstance();
+
+        cal.add(Calendar.DATE, 0);
+        java.util.Date today = cal.getTime();
+        Date a = new java.sql.Date(new java.util.Date().getTime());
+        reservationDTO.setDate(a);
+
+        reservationDAO.save(new Reservation(
+
+                reservationDTO.getReservationId(),
+                "OTC",
+                reservationDTO.getDate(),
+                3,
+                customerDAO.findOne(reservationDTO.getCustomer())
+        ));
+
+        for (ReservationDetailDTO orderDetail : list) {
+            reservationDetailsDAO.save(new ReservationDetails(
+
+                    reservationDTO.getReservationId(),
+                    orderDetail.getRoomId(),
+                    reservationDTO.getCheckIn(),
+                    reservationDTO.getCheckOut()
+            ));
+
+        }
+    }
 }
+
+
+

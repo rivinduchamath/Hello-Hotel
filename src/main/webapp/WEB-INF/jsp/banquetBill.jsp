@@ -275,28 +275,30 @@
                                             <table id="datatable-buttons" class="table table-striped table-bordered">
                                                 <thead class="thead-light">
                                                 <tr>
-                                                    <th>Banquet Id</th>
+                                                    <th>Bill Id</th>
                                                     <th>Name</th>
                                                     <th>Date</th>
-                                                    <th>Bill Id</th>
                                                     <th>Advance Payment</th>
                                                     <th>Food Price</th>
                                                     <th>Other Price</th>
                                                     <th>Total Bill</th>
+                                                    <th>Print</th>
                                                 </tr>
 
                                                 </thead>
                                                 <tbody>
                                                 <c:forEach items="${loadTable}" var="e">
                                                     <tr>
-                                                        <td>${e.orderId}</td>
+                                                        <td>${e.banquetBillId}</td>
                                                         <td>${e.name}</td>
                                                         <td>${e.date}</td>
-                                                        <td>${e.banquetBillId}</td>
                                                         <td>${e.advanceFee}</td>
                                                         <td>${e.noOfPlates * e.unitPrise}</td>
                                                         <td>${e.otherPrice}</td>
                                                         <td>${(e.noOfPlates * e.unitPrise)+e.otherPrice}</td>
+                                                        <td><a href="/banquetInvoice?billId=${e.banquetBillId}">
+                                                            <button value="" id="billBtn" name="billBtn" class="btn btn-outline-danger" style="font-size: 13px;">PrintBill</button>
+                                                        </a></td>
                                                     </tr>
                                                 </c:forEach>
                                                 </tbody>
@@ -335,28 +337,10 @@
 <script src="../../vendors/jquery/dist/jquery.min.js"></script>
 <!-- Bootstrap -->
 <script src="../../vendors/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-<!-- FastClick -->
-<script src="../../vendors/fastclick/lib/fastclick.js"></script>
-<!-- NProgress -->
-<script src="../../vendors/nprogress/nprogress.js"></script>
-<!-- iCheck -->
-<script src="../../vendors/iCheck/icheck.min.js"></script>
-
-<!-- jQuery -->
-<script src="../../vendors/jquery/dist/jquery.min.js"></script>
-<!-- Bootstrap -->
-<script src="../../vendors/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-<!-- FastClick -->
-<script src="../../vendors/fastclick/lib/fastclick.js"></script>
-<!-- NProgress -->
-<script src="../../vendors/nprogress/nprogress.js"></script>
-<!-- iCheck -->
-<script src="../../vendors/iCheck/icheck.min.js"></script>
-
-
-<!-- Bootstrap -->
+<!-- Datatables -->
 <script src="../../vendors/datatables.net/js/jquery.dataTables.min.js"></script>
 <script src="../../vendors/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+<%--Show Print Buttons--%>
 <script src="../../vendors/datatables.net-buttons/js/dataTables.buttons.min.js"></script>
 <script src="../../vendors/datatables.net-buttons-bs/js/buttons.bootstrap.min.js"></script>
 <script src="../../vendors/datatables.net-buttons/js/buttons.flash.min.js"></script>
@@ -364,11 +348,12 @@
 <script src="../../vendors/datatables.net-buttons/js/buttons.print.min.js"></script>
 <script src="../../vendors/datatables.net-fixedheader/js/dataTables.fixedHeader.min.js"></script>
 <script src="../../vendors/datatables.net-keytable/js/dataTables.keyTable.min.js"></script>
+<%--Responsive Table--%>
 <script src="../../vendors/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
 <script src="../../vendors/datatables.net-responsive-bs/js/responsive.bootstrap.js"></script>
-<script src="../../vendors/datatables.net-scroller/js/dataTables.scroller.min.js"></script>
+<%--<script src="../../vendors/datatables.net-scroller/js/dataTables.scroller.min.js"></script>--%>
+<%--Print--%>
 <script src="../../vendors/jszip/dist/jszip.min.js"></script>
-<script src="../../vendors/iCheck/icheck.min.js"></script>
 <!-- Custom Theme Scripts -->
 <script src="../../build/js/custom.min.js"></script>
 
@@ -377,10 +362,10 @@
     var selectedRow = null;
     $("#datatable-buttons tbody").on('click', 'tr', function () {
         selectedRow = $(this);
-        $("#banquetBillId").val($(this).find("td:nth-child(4)").text());
-        $("#advanceFee").val($(this).find("td:nth-child(5)").text());
-        $("#foodPrice").val($(this).find("td:nth-child(6)").text());
-        $("#otherPrice").val($(this).find("td:nth-child(7)").text());
+        $("#banquetBillId").val($(this).find("td:nth-child(1)").text());
+        $("#advanceFee").val($(this).find("td:nth-child(4)").text());
+        $("#foodPrice").val($(this).find("td:nth-child(5)").text());
+        $("#otherPrice").val($(this).find("td:nth-child(6)").text());
         selectedRow.addClass('row-selected');
     });
 </script>

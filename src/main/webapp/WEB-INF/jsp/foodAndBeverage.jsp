@@ -332,11 +332,17 @@
 
 // Add data
         chart.data = [
-            <c:forEach items="${ssssssssss}" var="e">
-            {"Date": "${e.itemName}",
-            "Income": "${e.unitePrice}"
+
+            {"Date": "Sumday",
+            "Income": "${d1}"
         },
-            </c:forEach>
+            {"Date": "Sumday",
+                "Income": "${d1}"
+            },
+            {"Date": "Sumday",
+                "Income": "${d1}"
+            }
+
         ];
 // Create axes
         var categoryAxis = chart.xAxes.push(new am4charts.CategoryAxis());

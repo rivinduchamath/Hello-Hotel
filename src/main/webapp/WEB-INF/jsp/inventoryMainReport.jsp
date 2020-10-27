@@ -45,10 +45,20 @@
             <div class="">
                 <div class="page-title">
                     <div class="title_left">
-                        <h3>Invoice
-                            <small>Submit Payment And Print Bill</small>
+                        <h3>Report
+                            <small>Rooms Income</small>
+                            <a href="/inventory">
+                                <button style=" border: 5px solid rgb(174, 182, 203);background-color: #45526e;
+                                    color: #c6d4d3;font-weight: bolder" type="button"  class="btnq2 btn"><i class="fa fa-reply">
+                                    back</i>
+                                </button>
+                            </a>
                         </h3>
-                    </div>
+
+
+
+
+                           </div>
 
                     <div class="title_right">
                         <script>
@@ -129,11 +139,36 @@
 
                         </form>
 
-                        <!--////////////////////////-->
-
-                        <!--//////////////////////////-->
                     </div>
+
                 </div>
+                <form action="/inventoryMainReport" method="post">
+                    <div class="form-group">
+                        <div class="col-12 col-sm-12 col-md-12 col-lg-3 col-xl-3"> <br>
+                            <label for="date">Date from</label>
+                            <input type="date" class="form-control"
+                                   required="required" name="dateIn"
+                                   id="date" placeholder="Date from"/></div>
+                        <br>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-12 col-sm-12 col-md-12 col-lg-3 col-xl-3"> <br>
+                            <label for="date">Date to </label>
+                            <input type="date" class="form-control"
+                                   required="required" name="dateOut"
+                                   id="date1" placeholder="Date to"/>
+                        </div>
+                        <br>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-12 col-sm-12 col-md-12 col-lg-3 col-xl-3"> <br>
+                            <label for="date">Check Report </label>
+                            <input type='submit'  class="form-control btn-dark" style="width: 50%; " value="Check">
+                        </div>
+                        <br>
+                    </div>
+
+                </form>
 
                 <div class="clearfix"></div>
 
@@ -175,33 +210,14 @@
                                     </div>
                                     <!-- info row -->
                                     <div class="row invoice-info">
-                                        <div class="col-sm-4 invoice-col">
-                                            From
-                                            <address>
-                                                <strong>Chanuka Mullevidana</strong>
-                                                <br>Ambalangoda
-                                                <br>Galle, Sri Lanka
-                                                <br>Phone: 0767188591
-                                                <br>Email: it19166070@my.sliit.lk
-                                            </address>
-                                        </div>
+
+                                        <!-- /.col -->
+
                                         <!-- /.col -->
                                         <div class="col-sm-4 invoice-col">
-                                            To
-                                            <address>
-                                                <strong>Rivindu Wijayarathna</strong>
-                                                <br>Yakkalamulla
-                                                <br>Galle, Sri Lanka
-                                                <br>Phone: 0778799940
-                                                <br>Email: it18141948@my.sliit.lk
-                                            </address>
-                                        </div>
-                                        <!-- /.col -->
-                                        <div class="col-sm-4 invoice-col">
-                                            <b>Invoice #007612</b>
-                                            <br>
-                                            <br>
-                                            <b>Order ID:</b> 4F3S8J
+                                            <b>Invoice</b>
+
+                                            <b>Orders</b>
                                             <br>
                                             <b>Payment Due:</b><%=date%>
                                             <br>
@@ -214,109 +230,51 @@
                                     <!-- Table row -->
                                     <div class="row">
                                         <div class="  table">
-                                            <table id="saq" class="table table-striped">
+                                            <table id="saq" class="table table-striped" style="text-align: center">
                                                 <thead>
 
                                                 <tr>
                                                     <th>OrderId</th>
-                                                    <th>ItemId</th>
-                                                    <th>SupplierId</th>
-                                                    <th>Qty</th>
+                                                    <th>Item</th>
                                                     <th>Price</th>
-                                                    <th>Date</th>
+                                                    <th>Quantity</th>
+                                                    <th>Supplier</th>
                                                 </tr>
                                                 </thead>
                                                 <tbody>
-                                                <c:forEach items="${getSalaryData}" var="e">
-                                                    <tr>
-                                                        <td>${e.salaryId}</td>
-                                                        <td>${e.employeeID.idNo}</td>
-                                                        <td>${e.employeeID.name}</td>
-                                                        <td>${e.basicSalary}</td>
-                                                        <td>${e.otHours*e.otRate}</td>
-                                                        <td>${e.bonus}</td>
-                                                           </tr>
-                                                    <script>
-                                                        var aa = aa + ${e.otHours};
-                                                        document.getElementById("demo").innerHTML = 11;
-                                                    </script>
-                                                </c:forEach>
 
+                                                <c:forEach items="${loadInventoryBills}" var="e">
+                                                    <tr>
+                                                        <td> OD${e.orderId}</td>
+                                                        <td>${e.inventory}</td>
+                                                        <td>Rs: ${e.price}</td>
+                                                        <td> ${e.quantity}</td>
+                                                        <td>${e.supplier}</td>
+
+                                                    </tr>
+                                                </c:forEach>
                                                 </tbody>
                                             </table>
                                         </div>
                                         <!-- /.col -->
                                     </div>
-                                    <!-- /.row -->
 
-                                    <div class="row">
-                                        <!-- accepted payments column -->
-                                        <div class="col-md-6">
-                                            <p class="lead">Payment Methods:</p>
-                                            <img src="../../images/visa.png" alt="Visa">
-                                            <img src="../../images/mastercard.png" alt="Mastercard">
-                                            <img src="../../images/american-express.png" alt="American Express">
-                                            <img src="../../images/paypal.png" alt="Paypal">
-                                            <p class="text-muted well well-sm no-shadow" style="margin-top: 10px;">
-                                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus
-                                                atque corporis culpa cupiditate dolore doloremque, dolores eaque eos
-                                                ipsam itaque laborum maiores porro quis recusandae, sapiente sequi
-                                                suscipit ullam ut!
-                                            </p>
-                                        </div>
-                                        <!-- /.col -->
-                                        <div class="col-md-6">
-                                            <p class="lead">Amount Due 2/22/2014</p>
-                                            <div class="table-responsive">
-                                                <table class="table">
-                                                    <tbody>
-                                                    <tr>
-                                                        <th style="width:50%">Basic Tot:</th>
-                                                        <td><span id="val2"></span></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <th>Tax
-                                                            <small style="font-weight: bold"><span id="val9"></span>
-                                                            </small>
-                                                        </th>
-                                                        <td><span id="val3"></span></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <th> Tot:</th>
-                                                        <td><span id="val4"></span></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <th>Bonus :</th>
-                                                        <td><span id="val5"></span></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <th>Total:</th>
-                                                        <td><span id="val"></span></td>
-                                                    </tr>
-                                                    </tbody>
-                                                </table>
-                                            </div>
-                                        </div>
-                                        <!-- /.col -->
-                                    </div>
-                                    <!-- /.row -->
 
                                     <!-- this row will not appear when printing -->
                                     <div class="row no-print">
                                         <div class=" ">
 
-                                            <form method="POST" action="/deleteInvoiceSalary" name="deleteInvoiceSalary">
-                                                <input style="display: none" type="text" id="itemPay" name="SalaryId">
-                                                <ul class="nav navbar-right panel_toolbox">
-                                                    <button type="submit" value="Register"
-                                                            style="font-weight: bold;color: white" ; id="name" onclick="window.print();"
-                                                            class="btn btn-success "> Submit Payment <i class="fa fa-file-image-o"></i>
-                                                    </button>
-                                                </ul>
 
-                                            </form>
 
-                                        </div>
+                                            <ul class="nav navbar-right panel_toolbox">
+                                                <button type="submit" value="Register"
+                                                        style="font-weight: bold;color: white" ; id="name" onclick="window.print();"
+                                                        class="btn btn-dark "> Print Report <i class="fa fa-file-image-o"></i>
+                                                </button>
+                                            </ul>
+
+
+                                            
                                     </div>
                                 </section>
                             </div>

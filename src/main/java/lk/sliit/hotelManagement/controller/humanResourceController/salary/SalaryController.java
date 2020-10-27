@@ -1,9 +1,7 @@
 package lk.sliit.hotelManagement.controller.humanResourceController.salary;
 
 import lk.sliit.hotelManagement.controller.SuperController;
-import lk.sliit.hotelManagement.dto.hr.MonthlySalary;
-import lk.sliit.hotelManagement.dto.hr.SalaryDTO;
-import lk.sliit.hotelManagement.dto.hr.SalaryPayDTO;
+import lk.sliit.hotelManagement.dto.hr.*;
 import lk.sliit.hotelManagement.dto.manager.EmployeeDTO;
 import lk.sliit.hotelManagement.service.custom.HumanResourceBO;
 import lk.sliit.hotelManagement.service.custom.IndexLoginBO;
@@ -14,13 +12,13 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.sql.Date;
 import java.util.List;
 
 @Controller
@@ -98,5 +96,40 @@ public class SalaryController {
         } catch (Exception e) { }
        return "salaryPayment";
     }
+
+    @GetMapping("/salarySettings")
+    public String salarySettings(Model model){
+        model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
+        List<SalarySettingsDTO> salaryDTOS = humanResourceBO.getSalarySet();
+        model.addAttribute("getSalarySettings", salaryDTOS);
+
+        return "salarySettings";
+    }
+
+    @PostMapping("/saveSettings")
+    public String saveAccounts(@ModelAttribute SalarySettingsDTO settingsDTO, Model model) {
+        model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
+        try {
+            SalarySettingsDTO settingsDTO1 = humanResourceBO.findHighestSettingSalary();
+            SalarySettingsDTO settingsDTO2 = null;
+            try {
+                settingsDTO2 = humanResourceBO.findsalarySettingById(settingsDTO.getId());
+            } catch (NullPointerException d) {
+                int maxId = (settingsDTO1.getId());
+                if (settingsDTO.getId() == (maxId)) {
+                    settingsDTO.setId((maxId));
+                } else {
+                       maxId++;
+                    settingsDTO.setId(maxId);
+                }
+            }
+        } catch (NullPointerException e) {
+            settingsDTO.setId(1);
+        }
+
+        humanResourceBO.saveSettingSalary(settingsDTO);
+        return "redirect:/salarySettings";
+    }
+
 }
 

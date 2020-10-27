@@ -108,7 +108,7 @@
             </div>
             <div class="col-md-6 contact-form">
                 <h3>Send a <span>Message</span></h3>
-                <form action="#" method="post">
+                <form action="" method="post">
                     <input type="text" class="form-control" name="Name" placeholder="Name" required="">
                     <input type="email" class="form-control" name="Email" placeholder="Email" required="">
                     <textarea class="form-control" name="Message" placeholder="Message Here...." required=""></textarea>

@@ -92,7 +92,7 @@
                 <div class="page-title">
                     <div class="title_left">
                         <h3>HR Department
-                            <small>Welcome To Hotel Hareesha</small>
+                            <small>Accounts Management</small>
                         </h3>
                     </div>
 
@@ -187,8 +187,8 @@
                         <div class="row">
                             <div class="x_panel">
                                 <div class="x_title">
-                                    <h2>Find Users
-                                        <small>User Page</small>
+                                    <h2>Find Accounts
+                                        <small>Accounts Details</small>
                                     </h2>
                                     <ul class="nav navbar-right panel_toolbox">
                                         <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>

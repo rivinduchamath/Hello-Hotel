@@ -18,6 +18,7 @@ public interface ReservationBO extends SuperBO {
 
     List<HotelRoomDTO> findAvilability(FindAvailabilityDTO findAvailabilityDTO);
 
+
     CustomerDTO findHighestOnlineCustomerId();
 
     void saveOnlineCustomer(CustomerDTO customerDTO);
@@ -32,4 +33,8 @@ public interface ReservationBO extends SuperBO {
     ReservationDTO findTopByReservationId();
 
     void saveReservaation(ReservationDTO reservationDTO);
+
+    CustomerDTO findCustomerByEmail(String email);
+
+    void saveReservaationCounter(ReservationDTO reservationDTO);
 }

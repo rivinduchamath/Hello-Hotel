@@ -309,24 +309,19 @@
                                                 </thead>
 
                                                 <tbody>
-                                                <%--                                            <c:forEach items="${listEmployeesTableSalary}" var="e">--%>
-                                                <tr>
-                                                    <td>Milk</td>
-                                                    <td>Kamala</td>
-                                                    <td>300.00</td>
-                                                    <td>30</td>
-                                                    <td>2020/10/16</td>
+                                                <c:forEach items="${listTodayOrders}" var="e">
+                                                    <tr>
+                                                    <tr>
+                                                        <td>${e.inventory}</td>
+                                                        <td>${e.supplier}</td>
+                                                        <td>${e.price}</td>
+                                                        <td>${e.quantity}</td>
+                                                        <td>${e.date}</td>
 
-                                                </tr>
-                                                <tr>
-                                                    <td>Dal</td>
-                                                    <td>Amal.p</td>
-                                                    <td>405.00</td>
-                                                    <td>50</td>
-                                                    <td>2020/10/08</td>
 
-                                                </tr>
-                                                <%--                                            </c:forEach>--%>
+                                                    </tr>
+                                                    </tr>
+                                                </c:forEach>
                                                 </tbody>
                                             </table>
                                         </div>

@@ -1,7 +1,10 @@
 package lk.sliit.hotelManagement.dto.reservation;
 
 import lk.sliit.hotelManagement.entity.reservation.Customer;
+import lk.sliit.hotelManagement.entity.reservation.ReservationDetails;
+
 import java.sql.Date;
+import java.util.Collection;
 
 public class ReservationDTO {
 
@@ -12,6 +15,7 @@ public class ReservationDTO {
     private int noOfRooms;
     private int customer;
     private String details;
+    private  Collection<ReservationDetails>   details2;
     private Date checkIn;
     private Date checkOut;
 
@@ -45,6 +49,22 @@ public class ReservationDTO {
 
     public ReservationDTO(int reservationId) {
         this.reservationId = reservationId;
+    }
+
+    public ReservationDTO(int reservationId, int customer, Collection<ReservationDetails> details2, Date date, int noOfRooms) {
+        this.reservationId = reservationId;
+        this.customer = customer;
+        this.details2 = details2;
+        this.checkIn = date;
+        this.noOfRooms = noOfRooms;
+    }
+
+    public Collection<ReservationDetails> getDetails2() {
+        return details2;
+    }
+
+    public void setDetails2(Collection<ReservationDetails> details2) {
+        this.details2 = details2;
     }
 
     public Date getCheckIn() {

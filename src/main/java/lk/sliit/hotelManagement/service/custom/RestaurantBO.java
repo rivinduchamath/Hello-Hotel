@@ -33,7 +33,7 @@ public interface RestaurantBO {
 
     void saveTable(RestaurantTableDTO restaurantTableDTO);
 
-    List<RestaurantTableDTO> findTables();
+   /* List<RestaurantTableDTO> findTables();*/
 
     void deleteTable(int tableId);
 

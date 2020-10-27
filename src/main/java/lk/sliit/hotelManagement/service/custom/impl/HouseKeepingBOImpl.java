@@ -2,22 +2,17 @@ package lk.sliit.hotelManagement.service.custom.impl;
 
 import lk.sliit.hotelManagement.dao.houseKeepingDAO.HouseKeepingDAO;
 import lk.sliit.hotelManagement.dao.houseKeepingDAO.LaundryOrderDAO;
-import lk.sliit.hotelManagement.dao.manageSystemDAO.EmployeeDAO;
 import lk.sliit.hotelManagement.dao.reservationDAO.CustomerDAO;
+import lk.sliit.hotelManagement.dao.reservationDAO.ReservationDAO;
 import lk.sliit.hotelManagement.dto.houseKeeping.HotelRoomDTO;
 import lk.sliit.hotelManagement.dto.houseKeeping.LaundryDTO;
-import lk.sliit.hotelManagement.dto.houseKeeping.RoomServiceDTO;
-import lk.sliit.hotelManagement.dto.kitchen.FoodItemDTO;
-import lk.sliit.hotelManagement.dto.manager.EmployeeDTO;
-import lk.sliit.hotelManagement.dto.manager.NoticeDTO;
+import lk.sliit.hotelManagement.dto.houseKeeping.GetDateHouseKeepingDTO;
 import lk.sliit.hotelManagement.dto.reservation.CustomerDTO;
+import lk.sliit.hotelManagement.dto.reservation.ReservationDTO;
 import lk.sliit.hotelManagement.entity.houseKeeping.HotelRoom;
 import lk.sliit.hotelManagement.entity.houseKeeping.LaundryOrders;
-import lk.sliit.hotelManagement.entity.houseKeeping.RoomService;
-import lk.sliit.hotelManagement.entity.kitchen.FoodItem;
-import lk.sliit.hotelManagement.entity.manager.Employee;
-import lk.sliit.hotelManagement.entity.manager.Notice;
 import lk.sliit.hotelManagement.entity.reservation.Customer;
+import lk.sliit.hotelManagement.entity.reservation.Reservation;
 import lk.sliit.hotelManagement.service.custom.HouseKeepingBO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -35,6 +30,8 @@ public class HouseKeepingBOImpl implements HouseKeepingBO {
     HouseKeepingDAO houseKeepingDAO;
     @Autowired
     LaundryOrderDAO laundryOrderDAO;
+    @Autowired
+    ReservationDAO reservationDAO;
     @Autowired
     CustomerDAO customerDAO;
 
@@ -58,10 +55,7 @@ public class HouseKeepingBOImpl implements HouseKeepingBO {
         HotelRoom lastRoom = null;
         try {
             lastRoom = houseKeepingDAO.findTopByOrderByRoomIdDesc();
-        } catch (Exception e){
-
-        }
-
+        } catch (Exception e){}
         return new HotelRoomDTO(lastRoom.getRoomId());
     }
 
@@ -80,8 +74,6 @@ public class HouseKeepingBOImpl implements HouseKeepingBO {
                 hotelRoom.getDate()
         );
     }
-
-
 
     @Override
     public LaundryDTO findHighestId() {
@@ -150,6 +142,7 @@ public class HouseKeepingBOImpl implements HouseKeepingBO {
             dtos.add(new LaundryDTO(
                     customer.getLaundryId(),
                     customer.getCustomerId().getCustomerId(),
+                    customer.getCustomerId().getName(),
                     customer.getOrderHolder(),
                     customer.getPieces(),
                     customer.getExpectedDate(),
@@ -175,6 +168,7 @@ public class HouseKeepingBOImpl implements HouseKeepingBO {
             dtos.add(new LaundryDTO(
                     customer.getLaundryId(),
                     customer.getCustomerId().getCustomerId(),
+                    customer.getCustomerId().getName(),
                     customer.getOrderHolder(),
                     customer.getPieces(),
                     customer.getExpectedDate(),
@@ -192,6 +186,53 @@ public class HouseKeepingBOImpl implements HouseKeepingBO {
         all.setState("Processing");
         laundryOrderDAO.save(all);
     }
+
+    @Override//Find Reservation Date Between
+    public List<ReservationDTO> findBill(GetDateHouseKeepingDTO getDto) {
+
+        List<ReservationDTO> reservationDTOS = new ArrayList<>();
+        Iterable<Reservation> hotelRooms = reservationDAO.findAllByDateBetween(getDto.getDateIn(),getDto.getDateOut());
+
+        for (Reservation reservation : hotelRooms) {
+            reservationDTOS.add(new ReservationDTO(
+                 reservation.getReservationId(),
+                    reservation.getCustomer().getCustomerId(),
+                    reservation.getReservationDetails(),
+                    reservation.getDate(),
+                    reservation.getNoOfRooms()
+            ));
+        }
+        return reservationDTOS;
+    }
+
+    @Override
+    public void changeStateToFinished(int id) {
+        LaundryOrders all = laundryOrderDAO.findOne(id);
+        all.setState("Finished");
+        laundryOrderDAO.save(all);
+    }
+
+    @Override
+    public List<LaundryDTO> findFinishedLaundryData() {
+        Iterable<LaundryOrders> all = laundryOrderDAO.findAllByStateEquals("Finished");
+
+        List<LaundryDTO> dtos = new ArrayList<>();
+        for (LaundryOrders customer: all) {
+            dtos.add(new LaundryDTO(
+                    customer.getLaundryId(),
+                    customer.getCustomerId().getCustomerId(),
+                    customer.getCustomerId().getName(),
+                    customer.getOrderHolder(),
+                    customer.getPieces(),
+                    customer.getExpectedDate(),
+                    customer.getDate(),
+                    customer.getState()
+            ));
+        }
+        return dtos;
+
+    }
+
 
     @Override//Find All Rooms
     public List<HotelRoomDTO> findRooms() {
@@ -228,7 +269,5 @@ public class HouseKeepingBOImpl implements HouseKeepingBO {
     @Override
     public void deleteRoomDetails(int roomId) {
         houseKeepingDAO.delete(roomId);
-
     }
-
 }

@@ -243,23 +243,15 @@
                                                 </tr>
                                                 </thead>
                                                 <tbody>
-                                                <%--                                            <c:forEach items="${listEmployeesTable}" var="e">--%>
-                                                <tr>
-                                                    <td>name1</td>
-                                                    <td>100</td>
-                                                    <td>Lorem</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>name2</td>
-                                                    <td>300</td>
-                                                    <td>Lorem</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>name3</td>
-                                                    <td>40</td>
-                                                    <td>Lorem</td>
-                                                </tr>
-                                                <%--                                            </c:forEach>--%>
+                                                <c:forEach items="${listAllBeverageStock}" var="e">
+                                                    <tr>
+                                                        <td>${e.text}</td>
+                                                        <td>${e.orderQty}</td>
+                                                        <td>${e.sellingPrice}</td>
+
+                                                    </tr>
+                                                </c:forEach>
+
                                                 </tbody>
 
                                             </table>
@@ -318,24 +310,19 @@
                                                 </thead>
 
                                                 <tbody>
-                                                <%--                                            <c:forEach items="${listEmployeesTableSalary}" var="e">--%>
-                                                <tr>
-                                                    <td>Name</td>
-                                                    <td>Kamala</td>
-                                                    <td>4343</td>
-                                                    <td>200</td>
-                                                    <td>2020/09/09</td>
+                                                <c:forEach items="${listTodayOrders}" var="e">
+                                                    <tr>
+                                                    <tr>
+                                                        <td>${e.inventory}</td>
+                                                        <td>${e.supplier}</td>
+                                                        <td>${e.price}</td>
+                                                        <td>${e.quantity}</td>
+                                                        <td>${e.date}</td>
 
-                                                </tr>
-                                                <tr>
-                                                    <td>Name2</td>
-                                                    <td>Amal</td>
-                                                    <td>4313</td>
-                                                    <td>50</td>
-                                                    <td>2020/09/08</td>
 
-                                                </tr>
-                                                <%--                                            </c:forEach>--%>
+                                                    </tr>
+                                                    </tr>
+                                                </c:forEach>
                                                 </tbody>
                                             </table>
                                         </div>
@@ -383,24 +370,26 @@
                                             <tr>
                                                 <th> ItemName</th>
                                                 <th> OrderQty</th>
-                                                <th> QtyOnHand</th>
-                                                <th> Date</th>
                                                 <th> ExpectedDate</th>
+                                                <th> Date</th>
                                                 <th> OrderHolder</th>
 
                                             </tr>
                                             </thead>
                                             <tbody>
-                                            <%--                                            <c:forEach items="${listEmployeesTable}" var="e">--%>
-                                            <tr>
-                                                <td>name</td>
-                                                <td>220</td>
-                                                <td>100</td>
-                                                <td>2020/09/22</td>
-                                                <td>2020/09/29</td>
-                                                <td>Kamala</td>
-                                            </tr>
-                                            <%--                                            </c:forEach>--%>
+                                            <c:forEach items="${listBeverageNotice}" var="e">
+                                                <tr>
+                                                <tr>
+                                                    <td>${e.text}</td>
+                                                    <td>${e.orderQty}</td>
+                                                    <td>${e.expDate}</td>
+                                                    <td>${e.date}</td>
+                                                    <td>${e.orderHolder}</td>
+
+
+                                                </tr>
+                                                </tr>
+                                            </c:forEach>
                                             </tbody>
 
                                         </table>

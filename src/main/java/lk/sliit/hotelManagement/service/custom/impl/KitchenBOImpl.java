@@ -82,12 +82,13 @@ public class KitchenBOImpl implements KitchenBO {
     }
 
     @Override
-    public List<FoodItemDTO> findFoodItems() {
-        Iterable<FoodItem> foodItems = kitchenDAO.findAll();
+    public List<FoodItemDTO> findFoodItems() {//Find all Kitchen Foods
+        Iterable<FoodItem> foodItems = kitchenDAO.findAll();//call to crud repo
         List<FoodItemDTO> foodItemDTOList = new ArrayList<>();
 
         for (FoodItem item: foodItems) {
-            foodItemDTOList.add(new FoodItemDTO(item.getItemId(),
+            foodItemDTOList.add(new FoodItemDTO(
+                    item.getItemId(),
                     item.getName(),
                     item.getUnitePrice(),
                     item.getCategory(),

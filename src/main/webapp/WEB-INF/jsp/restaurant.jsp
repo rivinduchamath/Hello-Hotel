@@ -216,7 +216,7 @@
 
                     <div class="col-sm-12 col-md-3 col-lg-3 col-xl-3">
                         <a href="restaurantManage">
-                        <button type="button" class="large-btn btn btn-dark">Manage Orders</button>
+                        <button type="button" class="large-btn btn btn-dark">Manage Online Orders And Table Reservations</button>
                         </a>
                     </div>
 

@@ -223,7 +223,7 @@
                                                         </div>
                                                     </div>
 
-                                                    <button type='submit' class="btn btn-primary"
+                                                    <button type='submit' class="btn btn-dark"
                                                             style="margin-left: 1.5%; width: 12%" value="Register">
                                                         Save
                                                     </button>
@@ -406,9 +406,20 @@
                                                     class="required">*</span>
                                             </label>
                                             <div class="col-md-11 col-sm-11 ">
-                                                <input type="text" id="userType" name="userType"
-                                                       required="required"
-                                                       class="form-control ">
+
+                                                <select type="c" class="form-control"
+                                                        required="required" name="userType"
+                                                        id="amount" placeholder="Department">
+                                                    <option>Manage</option>
+                                                    <option>Kitchen</option>
+                                                    <option>Restaurant</option>
+                                                    <option>Inventory</option>
+                                                    <option>Beverage</option>
+                                                    <option>HR</option>
+                                                    <option>HouseKeeping</option>
+                                                    <option>FrontDesk</option>
+                                                </select>
+
                                             </div>
 
                                         </div>
@@ -532,6 +543,8 @@
                                                             <form action="updateQty" method="post">
                                                                 <div class="input-group" >
                                                                     <input style="display: none" value="${e.inventoryId}" type="text" class="form-control" name="inventoryId">
+                                                                    <input style="display: none" value="${e.noticeId}" type="text" class="form-control" name="noticeId">
+                                                                    <input style="display: none" value="${e.requiredQty}" type="text" class="form-control" name="checkComplete">
                                                                     <div class="input-group mb-3">
                                                                         <input placeholder="qty" required type="number" class="form-control" name="orderQty">
                                                                         <input placeholder="price" required type="number" class="form-control"  aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" name="getPrice">

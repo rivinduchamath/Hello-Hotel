@@ -45,4 +45,22 @@ public interface HumanResourceBO extends SuperBO {
     void deleteAccount(int accountId);
 
     List<EmployeeDTO> findAllsalaryStateNotFalseTot();
+
+    List<SalarySettingsDTO> getSalarySet();
+
+    void saveSettingSalary(SalarySettingsDTO settingsDTO);
+
+    SalarySettingsDTO findsalarySettingById(int id);
+
+    SalarySettingsDTO findHighestSettingSalary();
+
+    ActivityListDTO findHighestActivityId();
+
+    ActivityListDTO findActivityById(int activityId);
+
+    void saveActivity(ActivityListDTO activityListDTO1);
+
+    List<ActivityListDTO> findAllActivity();
+
+    void deleteActivity(int activityId);
 }

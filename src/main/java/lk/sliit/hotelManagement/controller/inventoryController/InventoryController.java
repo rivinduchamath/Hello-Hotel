@@ -106,16 +106,23 @@ public class InventoryController {
             } catch (NullPointerException e) {
                 inventoryDTO1.setOrderId((1));
             }
-            //////////////////////////////////////////////////////////////////
+            //Store Previous Order Qty
+            inventoryDTO1.setNewOrderQty(inventoryDTO.getOrderQty());
 
             ////////////////////////////////////////////////////////////
             //Add New Qty To Current Qty On Hand
             inventoryDTO1.setOrderQty(inventoryDTO.getOrderQty() + inventoryDTO1.getOrderQty());
+            //Set Notice Id
+            inventoryDTO1.setNoticeId(inventoryDTO.getNoticeId());
+            //Set Complete Or Not
+            inventoryDTO1.setCheckComplete(inventoryDTO.getCheckComplete());
             //Update InventoryDTO1
             inventoryBO.updateInventory(inventoryDTO1);
+
+
             return "redirect:/inventory";
         } catch (Exception w) {
-            System.out.println("Error");
+            System.out.println("Error333333333333333333333333333333333333333333333333333333333333333333333");
         }
 
         return "redirect:/inventory";

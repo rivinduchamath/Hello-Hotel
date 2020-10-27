@@ -103,12 +103,33 @@ public class OnlineReservationController {
     @PostMapping("/saveOnlineRooms")
     public String onlineCustomerDetails(@ModelAttribute ReservationDTO reservationDTO,Model model, HttpSession session) {
 
-        System.out.println(reservationDTO+"QQAAAAAAAAAAAAAAAAAAAQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ");
         try {
             int onlineCustomerId = Integer.parseInt(session.getAttribute("CustomerId").toString());
 
             model.addAttribute("loggedCustomer", reservationBO.findId(onlineCustomerId));
-            System.out.println("CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC");
+             try {
+                reservationDTO.setCustomer(onlineCustomerId);
+                ReservationDTO top = reservationBO.findTopByReservationId();
+                int x = (top.getReservationId()) + 1;
+                reservationDTO.setReservationId((x));
+            } catch (NullPointerException e) {
+                reservationDTO.setReservationId((1));
+            }
+                reservationBO.saveReservaation(reservationDTO);
+        } catch (Exception d) {
+            return "roomTypes";
+        }
+
+        return "roomTypes";
+    }
+
+    @PostMapping("/saveCounterRooms")
+    public String saveCounterRooms(@ModelAttribute ReservationDTO reservationDTO,Model model, HttpSession session) {
+
+        try {
+            int onlineCustomerId = Integer.parseInt(session.getAttribute("CustomerId").toString());
+
+            model.addAttribute("loggedCustomer", reservationBO.findId(onlineCustomerId));
             try {
                 reservationDTO.setCustomer(onlineCustomerId);
                 ReservationDTO top = reservationBO.findTopByReservationId();
@@ -118,17 +139,14 @@ public class OnlineReservationController {
                 reservationDTO.setReservationId((1));
             }
 
-                System.out.println("DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD");
-                reservationBO.saveReservaation(reservationDTO);
+            reservationBO.saveReservaationCounter(reservationDTO);
 
 
         } catch (Exception d) {
-            return "roomTypes";
+            return "redirect:/counterReservation";
         }
 
-        return "roomTypes";
+        return "redirect:/counterReservation";
     }
-
-
 }
 

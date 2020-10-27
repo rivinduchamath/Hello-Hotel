@@ -128,12 +128,12 @@
 
                     <div class="title_right">
                         <div class="col-md-5 col-sm-5   form-group pull-right top_search">
-                            <a href="allSalary">
+                         <%--   <a href="allSalary">
                                 <button type='submit' class="btn btn-secondary" style="width: 50%;float: right"
                                         value="Register">
                                     List All Payment
                                 </button>
-                            </a>
+                            </a>--%>
                         </div>
                     </div>
                 </div>
@@ -288,10 +288,8 @@
                                                 </thead>
 
                                                 <tbody id="tblOrder">
-                                                <%--                                                <c:forEach items="${listEmployeesTableSalary}" var="e">--%>
 
-                                                <%--                                                </c:forEach>--%>
-                                                </tbody>
+                                               </tbody>
                                             </table>
                                         </div>
                                     </div>

@@ -1,10 +1,7 @@
 package lk.sliit.hotelManagement.service.custom;
 
 import lk.sliit.hotelManagement.dto.beverage.BarOrderDTO;
-import lk.sliit.hotelManagement.dto.inventory.InventoryDTO;
-import lk.sliit.hotelManagement.dto.inventory.InventoryNoticeDTO;
-import lk.sliit.hotelManagement.dto.inventory.ItemTypeDTO;
-import lk.sliit.hotelManagement.dto.inventory.SupplierDTO;
+import lk.sliit.hotelManagement.dto.inventory.*;
 import lk.sliit.hotelManagement.service.SuperBO;
 
 import java.util.List;
@@ -58,8 +55,17 @@ public interface InventoryBO extends SuperBO {
 
     InventoryDTO findFoodItemById(int inventoryId);
 
-    List<InventoryDTO> findKitchenStockData();
+    List<InventoryDTO> findStockData(String  val);
+
+
     List<InventoryDTO> findAllBeverageItems();
 
-    List<InventoryNoticeDTO> kitchenOrderNotices();
+    List<InventoryNoticeDTO> stockOrderNotices(String a);
+
+
+    List<ItemTypeDTO> findInventoryDepartment();
+
+    List<InventoryOrderDTO> loadTodayInventoryOrders();
+
+    List<InventoryOrderDTO> findInventoryBill(GetDateInventoryDTO getDateInventoryDTO);
 }

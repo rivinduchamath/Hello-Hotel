@@ -5,10 +5,7 @@ import lk.sliit.hotelManagement.dto.kitchen.FoodItemDTO;
 import lk.sliit.hotelManagement.dto.restaurant.OnlineCustomerDTO;
 import lk.sliit.hotelManagement.dto.restaurant.restaurantOnlineOrder.RestaurantOnlineOrderDTO;
 import lk.sliit.hotelManagement.dto.restaurant.restaurantOnlineTable.OnlineTableReservationDTO;
-import lk.sliit.hotelManagement.service.custom.IndexLoginBO;
-import lk.sliit.hotelManagement.service.custom.KitchenBO;
-import lk.sliit.hotelManagement.service.custom.OnlineCustomerBO;
-import lk.sliit.hotelManagement.service.custom.RestaurantBO;
+import lk.sliit.hotelManagement.service.custom.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -30,6 +27,8 @@ public class OnlineOrder {
     OnlineCustomerBO onlineCustomerBO;
     @Autowired
     KitchenBO kitchenBO;
+    @Autowired
+    MailSend mailSend;
     @Autowired
     RestaurantBO restaurantBO;
 
@@ -71,6 +70,7 @@ public class OnlineOrder {
             int onlineCustomerId = Integer.parseInt(session.getAttribute("userId").toString());
             onlineOrderDTO.setCustomer(onlineCustomerId);
             restaurantBO.saveOnlineOrder(onlineOrderDTO);
+            mailSend.sendMailToOnlineCustomer(onlineOrderDTO);
         } catch (NullPointerException d) {
             return "redirect:/onlineOrder";
         }
