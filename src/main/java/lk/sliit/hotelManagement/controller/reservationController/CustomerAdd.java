@@ -129,8 +129,10 @@ public class CustomerAdd {
     }
 
     @GetMapping(value = "/deleteCustomer/{customerId}")
-    public String deleteCustpomer(@PathVariable int customerId){
-      reservationBO.deleteCustomer(customerId);
+    public String deleteCustomer(@PathVariable int customerId){
+      try {
+          reservationBO.deleteCustomer(customerId);
+      } catch (Exception e){ return "redirect:/customerRegistration";}
     return "customerRegistration";
     }
 }
