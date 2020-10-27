@@ -343,7 +343,7 @@
                         <input  style="" readonly required="required" type="hidden" id="customer" value="${loggedCustomer.customerId}" name="customer">
                         <input  style="" readonly required="required" type="hidden" id="vDate" value="${checkIn}" name="checkIn">
                         <input readonly required ="required"type="hidden" id="timeIn" value="${checkOut}" name="checkOut">
-                        <button type="submit" onclick="getValue()" class="reserved-btn" id="submitButton">Submit</button>
+                        <button style="float: right"  type="submit" onclick="getValue()" class="reserved-btn btn btn-dark" id="submitButton">Submit</button>
                     </form>
                     <div class="row">
                         <div class="x_panel">
