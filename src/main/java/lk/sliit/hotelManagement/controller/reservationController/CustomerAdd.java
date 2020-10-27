@@ -25,6 +25,24 @@ public class CustomerAdd {
     @Autowired
     IndexLoginBO indexLoginBO;
 
+    @GetMapping("/checkIn&checkOut")
+    public String reservation1(Model model) {
+        List<CustomerDTO> list = reservationBO.findAll();
+        model.addAttribute("loadReservationCustomer",list);
+        model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
+
+        return "checkIn&checkOut";
+    }
+
+    @GetMapping("/customerCheckOut")
+    public String checkOut(Model model) {
+        List<CustomerDTO> list = reservationBO.findAll();
+        model.addAttribute("loadReservationCustomer",list);
+        model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
+
+        return "customerCheckOut";
+    }
+
     @GetMapping("/customerRegistration")
     public String attendance(Model model) {
         List<CustomerDTO> list = reservationBO.findAll();
@@ -33,6 +51,7 @@ public class CustomerAdd {
 
             return "customerRegistration";
     }
+
     @GetMapping("/customerLogin")
     public String saveOnlineTable2(Model model, @ModelAttribute FindAvailabilityDTO findAvailabilityDTO, HttpSession session) {
 
