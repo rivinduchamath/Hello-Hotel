@@ -282,11 +282,9 @@
 
                         <div class="form-group">
 
-                            <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
-                                <label>Customer ID</label>
-                                <input type="number" value="" class="form-control"
+                                <input type="hidden" value="0" class="form-control"
                                        required="required" name="customerId"
-                                       id="customerId" placeholder="customer id"/></div>
+                                       id="customerId" placeholder="customer id"/>
 
 
                             <div class="form-group">

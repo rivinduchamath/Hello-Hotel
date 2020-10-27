@@ -322,7 +322,7 @@
                                     style="width: 100%; border-color: lightgray"
                                     name="roomType">
                                 <option value="AC">A/C</option>
-                                <option value="NonA/C">Non A/C</option>
+                                <option value="Non A/C">Non A/C</option>
                             </select>
                         </div>
                     </div>

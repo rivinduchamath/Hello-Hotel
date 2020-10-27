@@ -286,45 +286,33 @@
             <%--Input Feilds--%>
             <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
                 <div class="col-12 col-sm-12 col-md-12 col-lg-5 col-xl-5">
-                    <form method="POST" action="saveOverTheCounterCustomer">
+                    <form method="POST" action="findAvailability">
 
                         <div class="form-group">
 
 
                             <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
-                                <label>Customer ID</label>
-                                <input type="number" value="" class="form-control"
-                                       required="required" name="customerId"
-                                       id="customerId" placeholder="customer Id"/></div>
+                                <label>Customer Email</label>
+                                <input type="email" value="" class="form-control"
+                                       required="required" name="email"
+                                       id="customerId" placeholder="customer email"/></div>
                         </div>
-
-
-                            <div class="form-group">
-
-
-                                <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6"><br>
-                                    <label>Room Type</label>
-                                    <input type="text" class="form-control"
-                                           required="required" name="room condition"
-                                           id="name" placeholder="AC or Non AC"/></div>
-
-                            </div>
 
 
                                 <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6"><br>
                                     <label>Check-In</label>
-                                    <input type="text" class="form-control"
-                                           required="required" name="address"
-                                           id="address" placeholder="check-in"/></div>
+                                    <input type="date" class="form-control"
+                                           required="required" name="checkIn"
+                                           id="checkIn" placeholder="check-in"/></div>
 
 
 
                             <div class="form-group">
                                 <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6"><br>
                                         <label>Check-Out</label>
-                                    <input type="text" class="form-control"
-                                           required="required" name="email"
-                                           id="email" placeholder="check-out"/></div>
+                                    <input type="date" class="form-control"
+                                           required="required" name="checkOut"
+                                           id="checkOut" placeholder="check-out"/></div>
 
                                 <!--
                                 <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6"><br>
@@ -347,8 +335,16 @@
                     </form>
                 </div>
                 <%--/Input Feilds--%>
+
                 <%--Table--%>
                 <div class="col-12 col-sm-12 col-md-12 col-lg-7 col-xl-7">
+                    <form method="POST" action="saveCounterRooms" name="saveCounterRooms">
+                        <input style="display: none" readonly required type="text" id="itemPay" name="details">
+                        <input  style="" readonly required="required" type="text" id="customer" value="${loggedCustomer.customerId}" name="customer">
+                        <input  style="" readonly required="required" type="date" id="vDate" value="${checkIn}" name="checkIn">
+                        <input readonly required ="required"type="date" id="timeIn" value="${checkOut}" name="checkOut">
+                        <button type="submit" onclick="getValue()" class="reserved-btn" id="submitButton">Submit</button>
+                    </form>
                     <div class="row">
                         <div class="x_panel">
                             <div class="x_title">
@@ -380,21 +376,23 @@
                                                 <th>Room Name</th>
                                                 <th>Room Type</th>
                                                 <th>Room Status</th>
+                                                <th>Room Status</th>
+                                                <th>Room Status</th>
 
                                             </tr>
 
                                             </thead>
                                             <tbody>
-                                            <c:forEach items="${loadReservationCustomer}" var="a">
+                                            <c:forEach items="${loadRooms}" var="a">
                                                 <tr>
-                                                    <td>${a.customerId}</td>
-                                                    <td>${a.name}</td>
-                                                    <td>${a.address}</td>
-                                                    <td>${a.contactNumber}</td>
-                                                    <td>${a.email}</td>
-                                                    <td><a href="deleteCustomer/${a.customerId}">
-                                                        <i class="fa fa-trash"></i>
-                                                    </a></td>
+                                                    <td>${a.price}</td>
+                                                    <td>${a.date}</td>
+                                                    <td>${a.roomId2}</td>
+                                                    <td>${a.status}</td>
+                                                    <td>${a.type}</td>
+                                                    <td class="cell100 column5"><button onclick="myFunction(${a.roomId2})"
+                                                                                        type="button" class="book-now-btn">Book Now</button></td>
+
                                                 </tr>
                                             </c:forEach>
                                             </tbody>
@@ -461,7 +459,41 @@
         selectedRow.addClass('row-selected');
     });
 </script>
+<script>
+    var myTableArray = [];
+    var selectedRow = null;
 
+    function myFunction(x) {
+        selectedRow = $(this)
+        if (!myTableArray.includes(x)) {
+            alert("Added Table " + x);
+            myTableArray.push(x)
+        } else {
+            alert("Table " + x + " already Booked");
+        }
+    }
+
+    function getValue() {
+
+        /*  if (vDate == "" || timeIn == "" || timeOut == "") {
+              alert("Please Select Room In Table");
+              return;
+          }
+  */
+        var str, stre = "";
+        var inputArray = []
+
+        for (var i = 0; i < myTableArray.length; i++) {
+            if (!inputArray.includes(myTableArray[i])) {
+                inputArray.push(myTableArray[i])
+                str = myTableArray[i] + " "
+                stre += str;
+            }
+        }
+        alert(stre)
+        $("#itemPay").val(stre);
+    }
+</script>
 
 </body>
 </html>
