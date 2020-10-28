@@ -20,14 +20,14 @@ public class BeverageStock {
     @Autowired
     IndexLoginBO indexLoginBO;
     @GetMapping("/beverageStock")
-    public String kitchenStock(Model model){
+    public String kitchenStock(Model model){//Load Beverage Stock Page
         model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
 
-        List<InventoryDTO> p3 = inventoryBO.findStockData("Beverage");
+        List<InventoryDTO> p3 = inventoryBO.findStockData("Beverage");//Find all stock Data
         model.addAttribute("listAllBeverageStock", p3);
-        List<InventoryNoticeDTO> p = inventoryBO.stockOrderNotices("Beverage");
+        List<InventoryNoticeDTO> p = inventoryBO.stockOrderNotices("Beverage");//Stock order notice notice (1week)
         model.addAttribute("listBeverageNotice", p);
-        List<InventoryOrderDTO> p1 = inventoryBO.loadTodayInventoryOrders();
+        List<InventoryOrderDTO> p1 = inventoryBO.loadInventoryOrders();// order data (1week)
         model.addAttribute("listTodayOrders", p1);
         return "beverageStock";
     }

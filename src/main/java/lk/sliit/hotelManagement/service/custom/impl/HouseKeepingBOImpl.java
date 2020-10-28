@@ -233,6 +233,24 @@ public class HouseKeepingBOImpl implements HouseKeepingBO {
 
     }
 
+    @Override
+    public List<ReservationDTO> findAllTodayBill() {
+        List<ReservationDTO> reservationDTOS = new ArrayList<>();
+        Iterable<Reservation> hotelRooms = reservationDAO.findAllByDateEquals(new java.util.Date());
+
+        for (Reservation reservation : hotelRooms) {
+            reservationDTOS.add(new ReservationDTO(
+                    reservation.getReservationId(),
+                    reservation.getCustomer().getCustomerId(),
+                    reservation.getReservationDetails(),
+                    reservation.getDate(),
+                    reservation.getNoOfRooms()
+            ));
+        }
+        return reservationDTOS;
+    }
+
+
 
     @Override//Find All Rooms
     public List<HotelRoomDTO> findRooms() {

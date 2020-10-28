@@ -12,5 +12,6 @@ public interface InventoryOrderDAO extends CrudRepository<InventoryOrder,Integer
     InventoryOrder findTopByOrderByOrderIdDesc();
 
 
+    Iterable<InventoryOrder> findAllByDateEquals(Date date );
     Iterable<InventoryOrder> findAllByDateBetween(Date date , Date date2);
 }
