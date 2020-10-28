@@ -101,11 +101,11 @@
                     </div>
 
                 </div>
-                <div class="col-md-2  col-sm-4 col-xs-12 hidden-sm">
+                <div class="text-right">
                     <form method="POST" action="saveOnlineRooms" name="saveOnlineRooms">
                         <input style="display: none" readonly required type="text" id="itemPay" name="details">
-                        <input  style="" readonly required="required" type="date" id="vDate" value="${checkIn}" name="checkIn">
-                        <input readonly required ="required"type="date" id="timeIn" value="${checkOut}" name="checkOut">
+                        <input style="display: none" readonly required="required" type="date" id="vDate" value="${checkIn}" name="checkIn">
+                        <input style="display: none" readonly required ="required"type="date" id="timeIn" value="${checkOut}" name="checkOut">
                         <button type="submit" onclick="getValue()" class="reserved-btn" id="submitButton">Submit</button>
                     </form>
                 </div>
