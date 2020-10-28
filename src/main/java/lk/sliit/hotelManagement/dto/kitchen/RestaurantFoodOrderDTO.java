@@ -1,37 +1,40 @@
 package lk.sliit.hotelManagement.dto.kitchen;
 
+import java.util.List;
+
 public class RestaurantFoodOrderDTO {
 
-    int foodItemID;
     int orderId;
     String type;
-    double quantity;
-    String foodName;
     String state;
     String button;
+    List<RestaurantFoodItemDTO> foodItems;
     int index;
-    int oldOrderId;
 
     public RestaurantFoodOrderDTO() {
     }
 
-    public RestaurantFoodOrderDTO(int foodItemID, int orderId, String type, double quantity, String foodName, String state, String button, int index) {
-        this.foodItemID = foodItemID;
+    public RestaurantFoodOrderDTO(int orderId, String type, String state, String button, List<RestaurantFoodItemDTO> foodItems) {
         this.orderId = orderId;
         this.type = type;
-        this.quantity = quantity;
-        this.foodName = foodName;
         this.state = state;
         this.button = button;
+        this.foodItems = foodItems;
+    }
+
+    public RestaurantFoodOrderDTO(int orderId, String type, List<RestaurantFoodItemDTO> foodItems) {
+        this.orderId = orderId;
+        this.type = type;
+        this.foodItems = foodItems;
+    }
+
+    public RestaurantFoodOrderDTO(int orderId, String type, String state, String button, List<RestaurantFoodItemDTO> foodItems, int index) {
+        this.orderId = orderId;
+        this.type = type;
+        this.state = state;
+        this.button = button;
+        this.foodItems = foodItems;
         this.index = index;
-    }
-
-    public int getFoodItemID() {
-        return foodItemID;
-    }
-
-    public void setFoodItemID(int foodItemID) {
-        this.foodItemID = foodItemID;
     }
 
     public int getOrderId() {
@@ -50,22 +53,6 @@ public class RestaurantFoodOrderDTO {
         this.type = type;
     }
 
-    public double getQuantity() {
-        return quantity;
-    }
-
-    public void setQuantity(double quantity) {
-        this.quantity = quantity;
-    }
-
-    public String getFoodName() {
-        return foodName;
-    }
-
-    public void setFoodName(String foodName) {
-        this.foodName = foodName;
-    }
-
     public String getState() {
         return state;
     }
@@ -82,19 +69,19 @@ public class RestaurantFoodOrderDTO {
         this.button = button;
     }
 
+    public List<RestaurantFoodItemDTO> getFoodItems() {
+        return foodItems;
+    }
+
+    public void setFoodItems(List<RestaurantFoodItemDTO> foodItems) {
+        this.foodItems = foodItems;
+    }
+
     public int getIndex() {
         return index;
     }
 
     public void setIndex(int index) {
         this.index = index;
-    }
-
-    public int getOldOrderId() {
-        return oldOrderId;
-    }
-
-    public void setOldOrderId(int oldOrderId) {
-        this.oldOrderId = oldOrderId;
     }
 }

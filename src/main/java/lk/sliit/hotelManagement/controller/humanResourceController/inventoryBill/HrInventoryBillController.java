@@ -18,6 +18,7 @@ import java.util.List;
 
 @Controller
 public class HrInventoryBillController {
+    // automate the object creation and connect with the relevant interfaces
     @Autowired
     IndexLoginBO indexLoginBO;
     @Autowired
@@ -25,13 +26,13 @@ public class HrInventoryBillController {
     @Autowired
     HumanResourceBO humanResourceBO;
 
-    @GetMapping("/hrDepartmentInventory")
+    @GetMapping("/hrDepartmentInventory") // load the inventory bill page with data
     public String loginPage(Model model){
         model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
         return "hrDepartmentInventory";
     }
 
-    @PostMapping("/hrDepartmentInventory")
+    @PostMapping("/hrDepartmentInventory") // find inventory details
     public ModelAndView houseKeepingReports(@ModelAttribute GetDateInventoryDTO getDateInventoryDTO, Model model ){
         ModelAndView modelAndView = new ModelAndView("hrDepartmentInventory");
         model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));

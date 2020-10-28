@@ -35,6 +35,16 @@
         }
     </style>
 
+    <!--Alert box-->
+    <script>
+        function alertBox(){
+            var x = "${alert}";
+            if (!(x.trim().length === 0)){
+                alert(x);
+            }
+        }
+    </script>
+
     <!-- Datatables -->
     <link href="../../vendors/datatables.net-bs/css/dataTables.bootstrap.min.css" rel="stylesheet">
     <link href="../../vendors/datatables.net-buttons-bs/css/buttons.bootstrap.min.css" rel="stylesheet">
@@ -43,7 +53,7 @@
 
 </head>
 
-<body class="nav-md" style="cursor: pointer">
+<body class="nav-md" style="cursor: pointer" onload="alertBox()">
 <div class="container body">
     <div class="main_container">
 
@@ -505,7 +515,6 @@
     <!-- footer content -->
     <jsp:include page="footer.jsp"/>
 </div>
-
 
 <!------/autofill form script ------------------------------------------------->
 

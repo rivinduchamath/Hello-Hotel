@@ -15,5 +15,4 @@ public class PaymentController {
     @Autowired
     HumanResourceBO humanResourceBO;
 
-
 }
