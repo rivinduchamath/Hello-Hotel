@@ -37,7 +37,7 @@ public class BanquetOrderController {
     @Autowired
     InventoryBO inventoryBO;
 
-    String alertMsg = KitchenUtil.defaultAlert;
+    String alertMsg = null;
 
     @GetMapping("/banquetOrder")
     public String loginPage(Model model) {
@@ -48,8 +48,8 @@ public class BanquetOrderController {
 
     @GetMapping("/banquetFoodOrder")
     public String loadBanquetFoodOrderPage(Model model) {
+        alertMsg = null;
         model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
-        model.addAttribute("defaultAlert",KitchenUtil.defaultAlert);
         model.addAttribute("alert",alertMsg);
 
         List<BanquetAddDTO> banquetOrderDTOS = banquetBO.findNextBanquets();
@@ -67,7 +67,7 @@ public class BanquetOrderController {
 
     @PostMapping("/editBanquetFoodOrder")
     public String loadEditBanquetFoodOrder(Model model, @ModelAttribute BanquetAddDTO banquetAddDTO) {
-
+        alertMsg = null;
         model = getBanquetModel(model,banquetAddDTO);
         model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
 
@@ -77,7 +77,7 @@ public class BanquetOrderController {
 
     @PostMapping("/addBanquetFoodOrder")
     public String addKitchenFoodOrder(Model model, @ModelAttribute KitchenFoodOrderDTO kitchenFoodOrderDTO) {
-
+        alertMsg = null;
         model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
 
         BanquetAddDTO banquetAddDTO = kitchenBO.findBanquetById(kitchenFoodOrderDTO.getBanquetId());
@@ -173,12 +173,11 @@ public class BanquetOrderController {
 
     @PostMapping("/deleteBanquetFoodOrder")
     public String deleteBanquetFoodOrder(Model model, @ModelAttribute KitchenFoodOrderDTO kitchenFoodOrderDTO){
-
+        alertMsg = null;
         if (!kitchenFoodOrderDTO.getStateStr().equals(KitchenUtil.processingState)){
             //get banquet order
             BanquetAddDTO banquetAddDTO = kitchenBO.findBanquetById(kitchenFoodOrderDTO.getBanquetId());
 
-            String alert = KitchenUtil.defaultAlert;
             //get inventory
             try {
                 KitchenInventoryNoticeDTO kitchenNotice = kitchenBO.findInventoryNotice(
@@ -232,15 +231,12 @@ public class BanquetOrderController {
 
     public Model getBanquetModel(Model model, BanquetAddDTO banquetAddDTO){
 
-        model.addAttribute("defaultAlert",KitchenUtil.defaultAlert);
         model.addAttribute("alert",alertMsg);
         model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
 
         banquetAddDTO = kitchenBO.findBanquetById(banquetAddDTO.getOrderId());
 
-        System.out.println("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% "+banquetAddDTO.getMenuId()+"   "+banquetAddDTO);
         MenuDTO menuDTO = kitchenBO.findMenuItemById(banquetAddDTO.getMenuId());
-        System.out.println("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$"+menuDTO.getMenuId()+menuDTO.getName());
         List<InventoryDTO> selectedItems = new ArrayList<>();
         List<InventoryDTO> inventoryItems = kitchenBO.findKitchenInventory(KitchenUtil.department);
         List<KitchenFoodOrderDTO> kitchenFoodOrderDTOS = kitchenBO.loadKitchenFoodOrderBydateAndDescription(banquetAddDTO.getDate(), KitchenUtil.banquetFoodOrderType);

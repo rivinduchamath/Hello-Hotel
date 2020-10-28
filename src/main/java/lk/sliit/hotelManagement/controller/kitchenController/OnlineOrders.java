@@ -12,11 +12,11 @@ public class OnlineOrders {
     @Autowired
     IndexLoginBO indexLoginBO;
 
-    String alertMsg = KitchenUtil.defaultAlert;
+    String alertMsg = null;
 
     @GetMapping("/onlineOrders")
     public String loginPage(Model model) {
-        model.addAttribute("defaultAlert",KitchenUtil.defaultAlert);
+        alertMsg = null;
         model.addAttribute("alert",alertMsg);
         model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
         return "onlineOrders";

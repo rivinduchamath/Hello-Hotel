@@ -41,6 +41,16 @@
         }
     </style>
 
+    <!--Alert box-->
+    <script>
+        function alertBox(){
+            var x = "${alert}";
+            if (!(x.trim().length === 0)){
+                alert(x);
+            }
+        }
+    </script>
+
     <!-- Datatables -->
     <link href="../../vendors/datatables.net-bs/css/dataTables.bootstrap.min.css" rel="stylesheet">
     <link href="../../vendors/datatables.net-buttons-bs/css/buttons.bootstrap.min.css" rel="stylesheet">
@@ -49,7 +59,7 @@
 
 </head>
 
-<body class="nav-md" style="cursor: pointer">
+<body class="nav-md" style="cursor: pointer" onload="alertBox()">
 <div class="container body">
     <div class="main_container">
 
@@ -113,9 +123,16 @@
                                                    style="text-align: center">
                                                 <thead class="thead-light">
                                                 <tr>
-                                                    <th>OrderId</th>
-                                                    <th>Food Item</th>
-                                                    <th>Quantity</th>
+                                                    <th>OrderId: </th>
+                                                    <th>
+                                                        <table>
+                                                            <tr>
+                                                                <th>Food Item</th>
+                                                                <th>Quantity</th>
+                                                            </tr>
+
+                                                        </table>
+                                                    </th>
                                                     <th>State</th>
                                                     <th></th>
                                                 </tr>
@@ -125,27 +142,27 @@
                                                 <c:forEach items="${counterOrders}" var="item">
                                                     <tr>
                                                         <td>${item.orderId}</td>
-                                                        <td>${item.foodName}</td>
-                                                        <td>${item.quantity}</td>
+                                                        <td>
+                                                            <table>
+                                                                <c:forEach items="${item.foodItems}" var="item2">
+                                                                    <tr>
+                                                                        <td>${item2.foodName}</td>
+                                                                        <td>${item2.quantity}</td>
+                                                                    </tr>
+                                                                </c:forEach>
+
+                                                            </table>
+                                                        </td>
+
                                                         <td>${item.state}</td>
                                                         <td>
                                                             <form action="confirmOrder" method="post">
                                                                 <input type="hidden" name="orderId"
                                                                        value="${item.orderId}">
-                                                                <input type="hidden" name="foodItemID"
-                                                                       value="${item.foodItemID}">
                                                                 <input type="hidden" name="type" value="${item.type}">
                                                                 <input type="hidden" name="state" value="${item.state}">
-                                                                <input type="hidden" name="quantity"
-                                                                       value="${item.quantity}">
-                                                                <input type="hidden" name="foodName"
-                                                                       value="${item.foodName}">
-                                                                <input type="hidden" name="button"
-                                                                       value="${item.button}">
-                                                                <input type="hidden" name="index"
-                                                                       value="${item.index}">
-                                                                <input type="hidden" name="oldOrderId"
-                                                                       value="${item.oldOrderId}">
+                                                                <input type="hidden" name="button" value="${item.button}">
+
 
                                                                 <button type="submit" class="large-btn btn btn-dark"
                                                                         style="height: 50px; background-color: silver; color: black">
@@ -191,9 +208,16 @@
                                                    style="text-align: center">
                                                 <thead class="thead-light">
                                                 <tr>
-                                                    <th>OrderId</th>
-                                                    <th>Food Item</th>
-                                                    <th>Quantity</th>
+                                                    <th>OrderId: </th>
+                                                    <th>
+                                                        <table>
+                                                            <tr>
+                                                                <th>Food Item</th>
+                                                                <th>Quantity</th>
+                                                            </tr>
+
+                                                        </table>
+                                                    </th>
                                                     <th>State</th>
                                                     <th></th>
                                                 </tr>
@@ -203,27 +227,26 @@
                                                 <c:forEach items="${onlineOrders}" var="item">
                                                     <tr>
                                                         <td>${item.orderId}</td>
-                                                        <td>${item.foodName}</td>
-                                                        <td>${item.quantity}</td>
+                                                        <td>
+                                                            <table>
+                                                                <c:forEach items="${item.foodItems}" var="item2">
+                                                                    <tr>
+                                                                        <td>${item2.foodName}</td>
+                                                                        <td>${item2.quantity}</td>
+                                                                    </tr>
+                                                                </c:forEach>
+
+                                                            </table>
+                                                        </td>
+
                                                         <td>${item.state}</td>
                                                         <td>
                                                             <form action="confirmOrder" method="post">
-                                                                <input type="hidden" name="orderId"
-                                                                       value="${item.orderId}">
-                                                                <input type="hidden" name="foodItemID"
-                                                                       value="${item.foodItemID}">
+                                                                <input type="hidden" name="orderId" value="${item.orderId}">
                                                                 <input type="hidden" name="type" value="${item.type}">
                                                                 <input type="hidden" name="state" value="${item.state}">
-                                                                <input type="hidden" name="quantity"
-                                                                       value="${item.quantity}">
-                                                                <input type="hidden" name="foodName"
-                                                                       value="${item.foodName}">
-                                                                <input type="hidden" name="button"
-                                                                       value="${item.button}">
-                                                                <input type="hidden" name="index"
-                                                                       value="${item.index}">
-                                                                <input type="hidden" name="oldOrderId"
-                                                                       value="${item.oldOrderId}">
+                                                                <input type="hidden" name="button" value="${item.button}">
+
 
                                                                 <button type="submit" class="large-btn btn btn-dark"
                                                                         style="height: 50px; background-color: silver; color: black">
@@ -233,6 +256,7 @@
                                                         </td>
                                                     </tr>
                                                 </c:forEach>
+
                                                 </tbody>
                                             </table>
                                         </div>

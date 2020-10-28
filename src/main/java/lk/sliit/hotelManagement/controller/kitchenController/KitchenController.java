@@ -1,12 +1,10 @@
 package lk.sliit.hotelManagement.controller.kitchenController;
 
 import lk.sliit.hotelManagement.controller.SuperController;
-import lk.sliit.hotelManagement.dao.inventoryDAO.InventoryDAO;
 import lk.sliit.hotelManagement.dto.banquet.LimitDTO;
 import lk.sliit.hotelManagement.dto.inventory.InventoryDTO;
 import lk.sliit.hotelManagement.dto.inventory.InventoryNoticeDTO;
 import lk.sliit.hotelManagement.dto.kitchen.*;
-import lk.sliit.hotelManagement.entity.inventory.Inventory;
 import lk.sliit.hotelManagement.service.custom.IndexLoginBO;
 import lk.sliit.hotelManagement.service.custom.InventoryBO;
 import lk.sliit.hotelManagement.service.custom.KitchenBO;
@@ -35,110 +33,119 @@ public class KitchenController {
 
     @Autowired
     InventoryBO inventoryBO;
-
-    String alertMsg = KitchenUtil.defaultAlert;
+    String alertMsg = null;
 
     @GetMapping("/kitchen")
     public String loginPage(Model model) {
 
         model = getKitchenModel(model);
         model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
-
+        model.addAttribute(KitchenUtil.alertMessageName, alertMsg);
+        alertMsg = null;
         return "kitchen";
     }
 
     @PostMapping("/kitchen")
     public void addDailyKitchenFoodOrder(Model model, @ModelAttribute KitchenFoodOrderDTO kitchenFoodOrderDTO) {
-        model.addAttribute("defaultAlert",KitchenUtil.defaultAlert);
-        model.addAttribute("alert",alertMsg);
+        alertMsg = null;
+        model.addAttribute("alert", alertMsg);
         model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
 
         // validate date
-        if (kitchenFoodOrderDTO.getExpectedDate().compareTo(Date.valueOf(getDateTodayString())) == 0) {
-            //create inventory notice object
-            InventoryNoticeDTO inventoryNoticeDTO = new InventoryNoticeDTO();
-            KitchenInventoryNoticeDTO kitchenNotice;
+        if (chckOldDate(kitchenFoodOrderDTO.getExpectedDate())) {
 
-            //set values to Inventory notice
-            inventoryNoticeDTO.setDepartment(KitchenUtil.department);
-            inventoryNoticeDTO.setDate(getTodaySql());
-            inventoryNoticeDTO.setExpDate(kitchenFoodOrderDTO.getExpectedDate());
-            inventoryNoticeDTO.setOrderHolder(SuperController.idNo);
-            inventoryNoticeDTO.setState(false);
-            inventoryNoticeDTO.setInventory(kitchenFoodOrderDTO.getFoodItemId());
-            inventoryNoticeDTO.setOrderQty(0);
+            //check amount
+            if (kitchenFoodOrderDTO.getAmount() > 0){
 
-            //save data
-            int noticeId  = kitchenBO.saveInventoryNotice(inventoryNoticeDTO);
-            inventoryNoticeDTO.setNoticeId(noticeId);
+                //create inventory notice object
+                InventoryNoticeDTO inventoryNoticeDTO = new InventoryNoticeDTO();
+                KitchenInventoryNoticeDTO kitchenNotice;
 
-            //set kitchenFoodOrder description
-            kitchenFoodOrderDTO.setDescription(kitchenFoodOrderDTO.getDescription() + KitchenUtil.stringSeperator + noticeId);
+                //set values to Inventory notice
+                inventoryNoticeDTO.setDepartment(KitchenUtil.department);
+                inventoryNoticeDTO.setDate(getTodaySql());
+                inventoryNoticeDTO.setExpDate(kitchenFoodOrderDTO.getExpectedDate());
+                inventoryNoticeDTO.setOrderHolder(SuperController.idNo);
+                inventoryNoticeDTO.setState(false);
+                inventoryNoticeDTO.setInventory(kitchenFoodOrderDTO.getFoodItemId());
+                inventoryNoticeDTO.setOrderQty(0);
 
-            try{
+                //save data
+                int noticeId = kitchenBO.saveInventoryNotice(inventoryNoticeDTO);
+                inventoryNoticeDTO.setNoticeId(noticeId);
 
-                KitchenInventoryNoticeDTO existingNotice = kitchenBO.findInventoryNotice(
-                        inventoryNoticeDTO.getExpDate(),
-                        inventoryNoticeDTO.getInventoryId(),
-                        inventoryNoticeDTO.isState()
-                );
+                //set kitchenFoodOrder description
+                kitchenFoodOrderDTO.setDescription(kitchenFoodOrderDTO.getDescription() + KitchenUtil.stringSeperator + noticeId);
 
                 try {
-                    //search existing order
-                    KitchenFoodOrderDTO old = kitchenBO.getExistingKitchenFoodOrder(
-                            kitchenFoodOrderDTO.getFoodItemId(),
-                            kitchenFoodOrderDTO.getExpectedDate(),
-                            kitchenFoodOrderDTO.getDescription());
 
-                    kitchenFoodOrderDTO.setOrderId(old.getOrderId());
+                    KitchenInventoryNoticeDTO existingNotice = kitchenBO.findInventoryNotice(
+                            inventoryNoticeDTO.getExpDate(),
+                            inventoryNoticeDTO.getInventoryId(),
+                            inventoryNoticeDTO.isState()
+                    );
 
-                    //set amount in KitchenInventoryNotice
-                    inventoryNoticeDTO.setOrderQty(kitchenFoodOrderDTO.getAmount() - old.getAmount());
+                    try {
+                        //search existing order
+                        KitchenFoodOrderDTO old = kitchenBO.getExistingKitchenFoodOrder(
+                                kitchenFoodOrderDTO.getFoodItemId(),
+                                kitchenFoodOrderDTO.getExpectedDate(),
+                                kitchenFoodOrderDTO.getDescription());
+
+                        kitchenFoodOrderDTO.setOrderId(old.getOrderId());
+
+                        //set amount in KitchenInventoryNotice
+                        inventoryNoticeDTO.setOrderQty(kitchenFoodOrderDTO.getAmount() - old.getAmount());
+
+                    } catch (NullPointerException e) {
+                        kitchenFoodOrderDTO.setOrderId(KitchenUtil.defaultID);
+                        inventoryNoticeDTO.setOrderQty(kitchenFoodOrderDTO.getAmount());
+                    }
 
                 } catch (NullPointerException e) {
-                    kitchenFoodOrderDTO.setOrderId(KitchenUtil.defaultID);
-                    inventoryNoticeDTO.setOrderQty(kitchenFoodOrderDTO.getAmount());
+
+                    try {
+                        //search existing order
+                        KitchenFoodOrderDTO old = kitchenBO.getExistingKitchenFoodOrder(
+                                kitchenFoodOrderDTO.getFoodItemId(),
+                                kitchenFoodOrderDTO.getExpectedDate(),
+                                kitchenFoodOrderDTO.getDescription());
+
+                        kitchenFoodOrderDTO.setOrderId(old.getOrderId());
+
+                        //set amount in KitchenInventoryNotice
+                        inventoryNoticeDTO.setOrderQty(kitchenFoodOrderDTO.getAmount());
+
+                    } catch (NullPointerException e2) {
+                        kitchenFoodOrderDTO.setOrderId(KitchenUtil.defaultID);
+                        inventoryNoticeDTO.setOrderQty(kitchenFoodOrderDTO.getAmount());
+                    }
+
                 }
 
-            } catch (NullPointerException e){
+                kitchenBO.saveInventoryNotice(inventoryNoticeDTO);
+                kitchenBO.saveKitchenFoodOrder(kitchenFoodOrderDTO);
 
-                try {
-                    //search existing order
-                    KitchenFoodOrderDTO old = kitchenBO.getExistingKitchenFoodOrder(
-                            kitchenFoodOrderDTO.getFoodItemId(),
-                            kitchenFoodOrderDTO.getExpectedDate(),
-                            kitchenFoodOrderDTO.getDescription());
-
-                    kitchenFoodOrderDTO.setOrderId(old.getOrderId());
-
-                    //set amount in KitchenInventoryNotice
-                    inventoryNoticeDTO.setOrderQty(kitchenFoodOrderDTO.getAmount());
-
-                } catch (NullPointerException e2) {
-                    kitchenFoodOrderDTO.setOrderId(KitchenUtil.defaultID);
-                    inventoryNoticeDTO.setOrderQty(kitchenFoodOrderDTO.getAmount());
-                }
-
+            } else {
+                alertMsg = "Order quantity should be a positive value";
             }
 
-            kitchenBO.saveInventoryNotice(inventoryNoticeDTO);
-            kitchenBO.saveKitchenFoodOrder(kitchenFoodOrderDTO);
 
-            //load kitchen UI
-            loginPage(model);
         } else {
             //error alert
-            loginPage(model);
+            alertMsg = "Invalid date! Please enter again.";
         }
+
+        //load kitchen UI
+        loginPage(model);
 
     }
 
     @PostMapping("/deleteDailyOrder")
     public String deleteDailyFoodOrder(Model model, @ModelAttribute KitchenFoodOrderDTO kitchenFoodOrderDTO) {
+        alertMsg = null;
         model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
-        model.addAttribute("defaultAlert",KitchenUtil.defaultAlert);
-        model.addAttribute("alert",alertMsg);
-        String alert = KitchenUtil.defaultAlert;
+        model.addAttribute("alert", alertMsg);
         //get inventory
         try {
             KitchenInventoryNoticeDTO kitchenNotice = kitchenBO.findInventoryNotice(
@@ -170,10 +177,15 @@ public class KitchenController {
                 kitchenBO.deleteInventoryNoticeById(kitchenNotice.getNoticeId());
             }
 
+            alertMsg = "Order deleted successfully.";
+
         } catch (NullPointerException e) {
             //alert intem not found
+            alertMsg = "Delete order failed";
         } finally {
             model = getKitchenModel(model);
+            model.addAttribute(KitchenUtil.alertMessageName,alertMsg);
+            alertMsg = null;
         }
 
         return "kitchen";
@@ -182,25 +194,225 @@ public class KitchenController {
 
     @GetMapping("/kitchenReport")
     public String loadKitchenReport(Model model) {
-        model.addAttribute("defaultAlert",KitchenUtil.defaultAlert);
-        model.addAttribute("alert",alertMsg);
+        alertMsg = null;
+        model.addAttribute("alert", alertMsg);
         model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
 
-        //load online orders
+        List<RestaurantFoodOrderDTO> allFinishedOrders = kitchenBO.findReportData(new java.util.Date());
+        List<RestaurantFoodOrderDTO> onlineOrders = new ArrayList<>();
+        List<RestaurantFoodOrderDTO> counterOrders = new ArrayList<>();
+        List<RestaurantFoodItemDTO> onlineItems = new ArrayList<>();
+        List<RestaurantFoodItemDTO> counterItems = new ArrayList<>();
+        List<RestaurantFoodItemDTO> finalList = new ArrayList<>();
 
-        //load internal orders
+        //model variables for calculations
+        int totalOrders = 0;
+        int totalOnlineOrders = 0;
+        int totalCounterOrders = 0;
+        int totalItemsSold = 0;
+        int totalOnlineItemsSold = 0;
+        int totalCounterItemsSold = 0;
+        double totalOnlineIncome = 0;
+        double totalCounterIncome = 0;
+        double totalIncome = 0;
 
-        //calc total orders
+        if (!allFinishedOrders.isEmpty()){
+            //get total orders
+            totalOrders = allFinishedOrders.size();
+            //get online and counter orders
+            for (RestaurantFoodOrderDTO item: allFinishedOrders){
+                if (item.getType().equals(KitchenUtil.onlineType)){
+                    onlineOrders.add(item);
+                    totalOnlineItemsSold += item.getFoodItems().size();
 
-        //categorise food items
+                    //select online items
+                    for (RestaurantFoodItemDTO foodItem: item.getFoodItems()){
+
+                        //check existence
+                        if (onlineItems.isEmpty()){
+                            onlineItems.add(foodItem);
+                        } else {
+
+                            //check food item
+                            RestaurantFoodItemDTO found = checkFoodItemExist(onlineItems,foodItem.getFoodItemId());
+
+                            if (found != null){
+                                //remove from list
+                                onlineItems.remove(found);
+                                //set values
+                                found.setQuantity(found.getQuantity() + foodItem.getQuantity());
+                                found.setTotalPrice(found.getPrice() * found.getQuantity());
+                                //add updated obj
+                                onlineItems.add(found);
+                            } else {
+                                //item not found option
+                                onlineItems.add(foodItem);
+                            }
+
+                        }
+
+                    }
+
+                } else if (item.getType().equals(KitchenUtil.counterType)){
+                    counterOrders.add(item);
+                    totalCounterItemsSold += item.getFoodItems().size();
+
+                    //select counter items
+                    for (RestaurantFoodItemDTO foodItem: item.getFoodItems()){
+
+                        //check existence
+                        if (counterItems.isEmpty()){
+                            counterItems.add(foodItem);
+                        } else {
+
+                            //check food item
+                            RestaurantFoodItemDTO found = checkFoodItemExist(counterItems,foodItem.getFoodItemId());
+
+                            if (found != null){
+                                //remove from list
+                                counterItems.remove(found);
+                                //set values
+                                found.setQuantity(found.getQuantity() + foodItem.getQuantity());
+                                found.setTotalPrice(found.getPrice() * found.getQuantity());
+                                //add updated obj
+                                counterItems.add(found);
+                            } else {
+                                //item not found option
+                                onlineItems.add(foodItem);
+                            }
+
+                        }
+
+                    }
+                }
+            }
+            //set total items sold
+            totalItemsSold = totalCounterItemsSold + totalOnlineItemsSold;
+            //set values
+            if (!counterOrders.isEmpty()){
+                totalCounterOrders = counterOrders.size();
+
+                //get total online income
+                if (!counterItems.isEmpty()){
+                    for (RestaurantFoodItemDTO item: counterItems){
+                        totalCounterIncome += item.getTotalPrice();
+
+                    }
+                }
+
+            }
+
+            if (!onlineOrders.isEmpty()){
+                totalOnlineOrders = onlineOrders.size();
+                //get total online income
+                if (!onlineItems.isEmpty()){
+                    for (RestaurantFoodItemDTO item: onlineItems){
+                        totalOnlineIncome += item.getTotalPrice();
+                    }
+                }
+            }
+
+            //get final list
+            if(!onlineOrders.isEmpty() && !counterOrders.isEmpty()){
+
+                //find bigger one
+                if (counterItems.size() > onlineItems.size()){
+                    finalList = counterItems;
+
+                    //merge lists
+                    for (RestaurantFoodItemDTO item: finalList){
+                        RestaurantFoodItemDTO found = checkFoodItemExist(onlineItems, item.getFoodItemId());
+                        if (found != null){
+
+                            //set rates
+                            item.setSellingRateOnline(getRate(found,(int)(found.getQuantity()+item.getQuantity())));
+                            item.setSellingRateCounter(getRate(item,(int)(item.getQuantity()+found.getQuantity())));
+
+                            item.setQuantity(item.getQuantity() + found.getQuantity());
+                            item.setTotalPrice(item.getPrice() * item.getQuantity());
+
+                            //remove items from list
+                            onlineItems.remove(found);
+                            counterItems.remove(item);
+                        }
+                    }
+
+                } else {
+                    finalList = onlineItems;
+
+                    //merge lists
+                    for (RestaurantFoodItemDTO item: finalList){
+                        RestaurantFoodItemDTO found = checkFoodItemExist(counterItems, item.getFoodItemId());
+
+                        if (found != null){
+
+                            //set rates
+                            item.setSellingRateCounter(getRate(found, (int)(found.getQuantity()+item.getQuantity())));
+                            item.setSellingRateOnline(getRate(item,(int)(found.getQuantity()+item.getQuantity())));
+
+                            item.setQuantity(found.getQuantity()+item.getQuantity());
+                            item.setTotalPrice(item.getPrice() * item.getQuantity());
+
+                            //remove items
+                            counterItems.remove(found);
+                            onlineItems.remove(item);
+                        }
+                    }
+                }
+
+                if (!onlineItems.isEmpty()){
+                    for (RestaurantFoodItemDTO item: onlineItems){
+                        finalList.add(item);
+                    }
+                }
+
+                if (!counterItems.isEmpty()){
+                    for (RestaurantFoodItemDTO item: counterItems){
+                        finalList.add(item);
+                    }
+                }
+
+            } else if (!onlineItems.isEmpty() && counterItems.isEmpty()){
+                for (RestaurantFoodItemDTO item: onlineItems){
+                    finalList.add(item);
+                }
+            } else if (!counterItems.isEmpty() && onlineItems.isEmpty()){
+                for (RestaurantFoodItemDTO item: counterItems){
+                    finalList.add(item);
+                }
+            }
+
+        }
+        //calc total income
+        if (!finalList.isEmpty()){
+            for (RestaurantFoodItemDTO item: finalList){
+                totalIncome = item.getTotalPrice();
+            }
+        }
+
+        System.out.println("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&");
+        System.out.println(finalList.size());
+        System.out.println(totalItemsSold);
+        System.out.println(totalOnlineItemsSold);
+        System.out.println(totalCounterItemsSold);
+        System.out.println(totalCounterIncome);
+        System.out.println(totalOnlineIncome);
+        System.out.println(totalIncome);
+
+        model.addAttribute("table", finalList);
+        model.addAttribute("totalItemsSold",totalItemsSold);
+        model.addAttribute("totalOnline", totalOnlineItemsSold);
+        model.addAttribute("totalCounter", totalCounterItemsSold);
+        model.addAttribute("totalCounterIncome", totalCounterIncome);
+        model.addAttribute("totalOnlineIncome", totalOnlineIncome);
+        model.addAttribute("totalIncome", totalIncome);
 
         return "kitchenReport";
     }
 
     @GetMapping("/restaurantOrders")
     public String loadRestaurantOrders(Model model) {
-        model.addAttribute("defaultAlert",KitchenUtil.defaultAlert);
-        model.addAttribute("alert",alertMsg);
+        alertMsg = null;
         model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
 
         model = getRestaurantModel(model);
@@ -208,35 +420,35 @@ public class KitchenController {
     }
 
     @PostMapping("/confirmOrder")
-    public String confirmOrder(Model model, @ModelAttribute RestaurantFoodOrderDTO orderDTO){
-        model.addAttribute("defaultAlert",KitchenUtil.defaultAlert);
-        model.addAttribute("alert",alertMsg);
+    public String confirmOrder(Model model, @ModelAttribute RestaurantFoodOrderDTO orderDTO) {
+        alertMsg = null;
         model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
 
-        //check index
-        if (orderDTO.getIndex() == 0){
-
+        //check button
+        if (orderDTO.getButton().equals(KitchenUtil.accept)){
             //check state
-            if (orderDTO.getState().equals(KitchenUtil.pendingState)){
+            if (orderDTO.getState().equals(KitchenUtil.pendingState)) {
                 //take order
-                if (!kitchenBO.takeRestaurantOrder(orderDTO)){
+                if (!kitchenBO.takeRestaurantOrder(orderDTO)) {
                     alertMsg = "Order is already cancelled";
                 }
 
-            } else if (orderDTO.getState().equals(KitchenUtil.processingState)){
-
-                //check next orderid and previous order id
-                if (orderDTO.getOldOrderId() != orderDTO.getOrderId()){
-                    kitchenBO.confirmRestaurantOrder(orderDTO);
-                }
             }
+        } else if (orderDTO.getButton().equals(KitchenUtil.confirm)){
+            kitchenBO.confirmRestaurantOrder(orderDTO);
+            alertMsg = "Order id: "+orderDTO.getOrderId()+" Confirmed";
 
-        } else {
-            alertMsg = "Please take the first order.";
+        } else if (!orderDTO.getButton().equals(KitchenUtil.confirm)
+                && !orderDTO.getButton().equals(KitchenUtil.accept)){
+            alertMsg = "Please select the first order.";
         }
 
         model = getRestaurantModel(model);
-        model.addAttribute(KitchenUtil.alertMessageName, alertMsg);
+
+        if (alertMsg != null){
+            model.addAttribute(KitchenUtil.alertMessageName, alertMsg);
+        }
+
         return "kitchenRestaurantOrderList";
     }
 
@@ -346,11 +558,10 @@ public class KitchenController {
         return defaultMenu;
     }
 
-    public Model getKitchenModel(Model model){
+    public Model getKitchenModel(Model model) {
 
         model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
-        model.addAttribute("defaultAlert",KitchenUtil.defaultAlert);
-        model.addAttribute("alert",alertMsg);
+        model.addAttribute("alert", alertMsg);
 
         List<InventoryDTO> inventoryItems = kitchenBO.findKitchenInventory(KitchenUtil.department);
         List<InventoryDTO> selectedItems = new ArrayList<>();
@@ -364,9 +575,9 @@ public class KitchenController {
         if (!kitchenFoodOrderDTOS.isEmpty()) {
 
             //select inventory items
-            for (KitchenFoodOrderDTO item: kitchenFoodOrderDTOS){
-                for (InventoryDTO inventory: inventoryItems){
-                    if (item.getFoodItemId() == inventory.getInventoryId()){
+            for (KitchenFoodOrderDTO item : kitchenFoodOrderDTOS) {
+                for (InventoryDTO inventory : inventoryItems) {
+                    if (item.getFoodItemId() == inventory.getInventoryId()) {
                         item.setItemName(inventory.getText());
                         selectedItems.add(inventory);
                     }
@@ -374,7 +585,7 @@ public class KitchenController {
             }
 
             //not selected list generate
-            for (InventoryDTO selected: selectedItems){
+            for (InventoryDTO selected : selectedItems) {
                 if (inventoryItems.contains(selected))
                     inventoryItems.remove(selected);
             }
@@ -472,20 +683,55 @@ public class KitchenController {
         model.addAttribute("dailyOrderType", KitchenUtil.dailyFoodOrderType);
 
 
-
         return model;
     }
 
-    public Model getRestaurantModel(Model model){
+    public Model getRestaurantModel(Model model) {
 
         List<RestaurantFoodOrderDTO> onlineOrders = kitchenBO.getOnlineRestaurantFoodOrdersByDate(new java.util.Date());
         List<RestaurantFoodOrderDTO> couterOrders = kitchenBO.getCounterRestaurantFoodOrdersByDate(new java.util.Date());
+
         //set order table data
         model.addAttribute("onlineOrders", onlineOrders);
         model.addAttribute("pendingOnline", onlineOrders.size());
         model.addAttribute("counterOrders", couterOrders);
         model.addAttribute("pendingCounter", couterOrders.size());
+        model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
+
+        if (onlineOrders.size() == 0 && couterOrders.size() == 0){
+            alertMsg = "Pending restaurant order list is empty";
+            model.addAttribute(KitchenUtil.alertMessageName, alertMsg);
+            alertMsg = null;
+        }
+
         return model;
     }
+
+    public boolean chckOldDate(Date date){
+        Date today = Date.valueOf(getDateTodayString());
+        if (date.compareTo(today) >= 0){
+            return true;
+        }
+        return false;
+    }
+
+    public RestaurantFoodItemDTO checkFoodItemExist(List<RestaurantFoodItemDTO> list, int id){
+        int index = 0;
+
+        if (!list.isEmpty()){
+            for (int i = 0; i < list.size(); i++){
+                if (list.get(i).getFoodItemId() == id){
+                    return list.get(i);
+                }
+            }
+        }
+        return null;
+    }
+
+    public double getRate(RestaurantFoodItemDTO item, int totItemsSold){
+        return (item.getQuantity() / (float) totItemsSold) * 100;
+    }
+
+
 
 }
