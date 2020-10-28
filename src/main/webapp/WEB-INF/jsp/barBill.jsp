@@ -228,21 +228,21 @@
                                                 </thead>
                                                 <tbody>
 
+                                                <c:forEach items="${listBarOrderDetails}" var="e">
                                                     <tr>
-                                                        <td>4</td>
-                                                        <td>vodka</td>
-                                                        <td>10</td>
-                                                        <td>1200</td>
-                                                        <td>12000</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>3</td>
-                                                        <td>Vine</td>
-                                                        <td>5</td>
-                                                        <td>1323</td>
-                                                        <td>6615</td>
-                                                    </tr>
 
+                                                        <td>${e.itemCode}</td>
+                                                        <td>${e.itemName}</td>
+                                                        <td>${e.qty}</td>
+                                                        <td>${e.itemPrice}</td>
+                                                        <td>${e.itemPrice * e.qty}</td>
+
+                                                    </tr>
+                                                    <script>
+                                                        var aa = aa
+                                                        document.getElementById("demo").innerHTML = 11;
+                                                    </script>
+                                                </c:forEach>
 
                                                 </tbody>
                                             </table>
@@ -268,25 +268,29 @@
                                         </div>
                                         <!-- /.col -->
                                         <div class="col-md-6">
-                                            <p class="lead">Amount Due 2/22/2014</p>
+                                            <p class="lead">Amount Due <%=date%></p>
                                             <div class="table-responsive">
                                                 <table class="table">
                                                     <tbody>
                                                     <tr>
-                                                        <th style="width:50%">Basic Tot:</th>
-                                                        <td >18,615<span  id="val2"></span></td>
+                                                        <th>Order Id:</th>
+                                                        <td>${listBarOrders}<span id="val4"></span></td>
                                                     </tr>
                                                     <tr>
-                                                        <th>Tax
+                                                        <th style="width:50%">Tot Qty:</th>
+                                                        <td><span id="val2"></span></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>Basic Tot:
                                                             <small style="font-weight: bold"><span id="val9"></span>
                                                             </small>
                                                         </th>
-                                                        <td>2%<span id="val3"></span></td>
+                                                        <td><span id="val3"></span></td>
                                                     </tr>
 
                                                     <tr>
                                                         <th>Total:</th>
-                                                        <td>18,987.3<span id="val"></span></td>
+                                                        <td><span id="val"></span></td>
                                                     </tr>
                                                     </tbody>
                                                 </table>
@@ -300,7 +304,7 @@
                                     <div class="row no-print">
                                         <div class=" ">
 
-                                            <form method="POST" action="/deleteInvoiceSalary" name="deleteInvoiceSalary">
+
                                                 <input style="display: none" type="text" id="itemPay" name="SalaryId">
                                                 <ul class="nav navbar-right panel_toolbox">
                                                     <button type="submit" value="Register"
@@ -309,7 +313,7 @@
                                                     </button>
                                                 </ul>
 
-                                            </form>
+
 
                                         </div>
                                     </div>
@@ -339,17 +343,17 @@
     var rowCount = document.getElementById('saq').rows.length;
     var table = document.getElementById("saq"), sumVal2 = 0.0, sumVal3 = 0.0, sumVal4 = 0.0, sumVal5 = 0.0;
     var sumVal = 0.0;
-    var avgTax = 0.0;    var str = '';
+    var avgTax = 0.0;
+    var str = '';
 
 
     for (var i = 1; i < table.rows.length; i++) {
-        str = str+ (table.rows[i].cells[0].innerHTML)+" ";
-        sumVal = sumVal + parseFloat(table.rows[i].cells[7].innerHTML);
-        sumVal2 = sumVal2 + parseFloat(table.rows[i].cells[3].innerHTML);
-        sumVal3 = sumVal3 + parseFloat(table.rows[i].cells[6].innerHTML);
-        sumVal5 = sumVal5 + parseFloat(table.rows[i].cells[5].innerHTML);
-        sumVal4 = sumVal4 + parseFloat(table.rows[i].cells[4].innerHTML);
-        avgTax = sumVal3 / i;
+        str = str + (table.rows[i].cells[0].innerHTML) + " ";
+        sumVal = sumVal + parseFloat(table.rows[i].cells[4].innerHTML);
+        sumVal2 = sumVal2 + parseFloat(table.rows[i].cells[2].innerHTML);
+        sumVal3 = sumVal3 + parseFloat(table.rows[i].cells[3].innerHTML);
+
+
     }
 
 

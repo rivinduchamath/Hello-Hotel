@@ -289,14 +289,14 @@
                     <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6">
 
                         <div id="chartdiv"></div>
-                        <h6>Today Income</h6>
+                        <h6>This Week </h6>
                     </div>
                     <%--/Chart Today--%>
                     <%--Chart Yesterday--%>
                     <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6">
 
                         <div id="chartdiv1"></div>
-                       <h6>Yesterday Income</h6>
+                       <h6>Previous Week</h6>
                     </div>
                     <%--/Chart Yesterday--%>
                     <%--/Chart Income--%>
@@ -346,25 +346,25 @@
 // Add data
         chart.data = [{
             "Date": "Sunday",
-            "income": 4025
+            "income": 767
         }, {
             "Date": "Monday",
-            "income": 1882
+            "income": 98
         }, {
             "Date": "Tuesday",
-            "income": 1809
+            "income": 433
         }, {
             "Date": "Wednesday",
-            "income": 1322
+            "income": 76
         }, {
             "Date": "Thursday",
-            "income": 1122
+            "income": 222
         }, {
             "Date": "Friday",
-            "income": 1114
+            "income": 111
         }, {
             "Date": "Saturday",
-            "income": 984
+            "income": 94
         }];
 
 // Create axes
@@ -425,25 +425,25 @@
 // Add data
         chart.data = [{
             "Date": "Sunday",
-            "income": 4025
+            "income": 546
         }, {
             "Date": "Monday",
-            "income": 1882
+            "income": 684
         }, {
             "Date": "Tuesday",
-            "income": 1809
+            "income": 233
         }, {
             "Date": "Wednesday",
-            "income": 1322
+            "income": 877
         }, {
             "Date": "Thursday",
-            "income": 1122
+            "income": 223
         }, {
             "Date": "Friday",
-            "income": 1114
+            "income": 122
         }, {
             "Date": "Saturday",
-            "income": 984
+            "income": 768
         }];
 
 // Create axes

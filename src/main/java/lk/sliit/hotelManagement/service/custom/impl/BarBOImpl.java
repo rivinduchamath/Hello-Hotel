@@ -6,9 +6,11 @@ import lk.sliit.hotelManagement.dao.inventoryDAO.InventoryDAO;
 import lk.sliit.hotelManagement.dto.beverage.BarOrderDTO;
 import lk.sliit.hotelManagement.dto.beverage.BarOrderDetailDTO;
 import lk.sliit.hotelManagement.dto.inventory.InventoryDTO;
+import lk.sliit.hotelManagement.dto.kitchen.FoodItemDTO;
 import lk.sliit.hotelManagement.entity.barManage.BarOrderDetails;
 import lk.sliit.hotelManagement.entity.barManage.BarOrders;
 import lk.sliit.hotelManagement.entity.inventory.Inventory;
+import lk.sliit.hotelManagement.entity.kitchen.FoodItem;
 import lk.sliit.hotelManagement.service.custom.BarBO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -121,6 +123,22 @@ public class BarBOImpl implements BarBO {
                 orders.getOrderId ()
         );
     }//End
+
+    @Override
+    public InventoryDTO findById(int itemCode) {
+        Inventory a = inventoryDAO.findOne(itemCode);
+        InventoryDTO menuDTO = new InventoryDTO(
+                a.getInventoryId(),
+                a.getText(),
+                a.getDescription(),
+                a.getOrderQty(),
+                a.getType(),
+                a.getOrderLimit(),
+                a.getGetPrice(),
+                a.getSellingPrice(),
+                a.getDate());
+        return menuDTO;
+    }
 
 
 }
