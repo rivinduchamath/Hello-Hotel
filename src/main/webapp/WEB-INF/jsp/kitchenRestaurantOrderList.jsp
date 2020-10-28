@@ -116,6 +116,7 @@
                                                     <th>OrderId</th>
                                                     <th>Food Item</th>
                                                     <th>Quantity</th>
+                                                    <th>State</th>
                                                     <th></th>
                                                 </tr>
 
@@ -126,6 +127,7 @@
                                                         <td>${item.orderId}</td>
                                                         <td>${item.foodName}</td>
                                                         <td>${item.quantity}</td>
+                                                        <td>${item.state}</td>
                                                         <td>
                                                             <form action="confirmOrder" method="post">
                                                                 <input type="hidden" name="orderId"
@@ -192,6 +194,7 @@
                                                     <th>OrderId</th>
                                                     <th>Food Item</th>
                                                     <th>Quantity</th>
+                                                    <th>State</th>
                                                     <th></th>
                                                 </tr>
 
@@ -202,6 +205,7 @@
                                                         <td>${item.orderId}</td>
                                                         <td>${item.foodName}</td>
                                                         <td>${item.quantity}</td>
+                                                        <td>${item.state}</td>
                                                         <td>
                                                             <form action="confirmOrder" method="post">
                                                                 <input type="hidden" name="orderId"

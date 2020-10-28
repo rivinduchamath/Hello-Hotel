@@ -463,8 +463,6 @@ public class KitchenBOImpl implements KitchenBO {
                 limitDAO.save(orderLimit);
             }
 
-            System.out.println(limitDTO);
-
         }
 
 
@@ -660,14 +658,15 @@ public class KitchenBOImpl implements KitchenBO {
         try {
             onlineOrders = onlineOrderDAO.findAll();
             for (RestaurantOnlineOrder item: onlineOrders){
-                Iterable<RestaurantOnlineOrderDetails> onlineOrderDetails = onlineOrderDetailsDAO.findAllByRestaurantOnlineOrderEquals(item);
 
                 Date comp = item.getDate();
 
                 if (date.getYear() == comp.getYear() && date.getMonth() == comp.getMonth() && date.getDate() == comp.getDate()){
+
+                    Iterable<RestaurantOnlineOrderDetails> onlineOrderDetails = onlineOrderDetailsDAO.findAllByRestaurantOnlineOrderEquals(item);
                     for (RestaurantOnlineOrderDetails detail: onlineOrderDetails){
                         //check and set state
-                        if (item.getOrderState().equals(null) || item.getOrderState().equals(KitchenUtil.pendingState)){
+                        if (item.getOrderState() == null || item.getOrderState().equals(KitchenUtil.pendingState) || item.getOrderState().equals(KitchenUtil.processingState)){
                             item.setOrderState(KitchenUtil.pendingState);
 
                             //set button
@@ -728,17 +727,15 @@ public class KitchenBOImpl implements KitchenBO {
             counterOrders = counterOrderDAO.findAll();
 
             for (RestaurantCounterOrder item: counterOrders){
-                Iterable<RestaurantCounterOrderDetail> counterOrderDetails = restaurantCounterOrderDetail.findAllByRestaurantCounterOrderEquals(item);
 
                 Date comp = item.getDate();
                 if (date.getYear() == comp.getYear() && date.getMonth() == comp.getMonth() && date.getDate() == comp.getDate()){
 
+                    Iterable<RestaurantCounterOrderDetail> counterOrderDetails = restaurantCounterOrderDetail.findAllByRestaurantCounterOrderEquals(item);
                     for (RestaurantCounterOrderDetail detail: counterOrderDetails){
-
                         //check and set state
-                        if (item.getOrderState().equals(null) || item.getOrderState().equals(KitchenUtil.pendingState)){
+                        if (item.getOrderState() == null || item.getOrderState().equals(KitchenUtil.pendingState) || item.getOrderState().equals(KitchenUtil.processingState)){
                             item.setOrderState(KitchenUtil.pendingState);
-
                             //set button
                             String button = KitchenUtil.pendingState;
                             if (index == 0){
@@ -791,6 +788,7 @@ public class KitchenBOImpl implements KitchenBO {
             //check state
             if (!onlineOrder.getOrderState().equals(KitchenUtil.canceledState)){
                 onlineOrder.setOrderState(KitchenUtil.pendingState);
+                onlineOrder.setOrderId(order.getOrderId());
                 onlineOrderDAO.save(onlineOrder);
                 return true;
             } else {

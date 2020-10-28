@@ -454,7 +454,7 @@
                                                 <tbody>
                                                 <c:forEach items="${loadOrderTable}" var="item">
                                                     <tr>
-                                                        <td>${item.orderId}</td>
+                                                        <td>${item.foodItemId}</td>
                                                         <td>${item.itemName}</td>
                                                         <td>${item.amount}</td>
                                                         <td>${item.expectedDate}</td>
