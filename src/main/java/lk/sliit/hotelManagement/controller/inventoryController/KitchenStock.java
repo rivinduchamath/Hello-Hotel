@@ -23,14 +23,14 @@ public class KitchenStock {
     @Autowired
     IndexLoginBO indexLoginBO;
     @GetMapping("/kitchenStock")
-    public String kitchenStock(Model model){
+    public String kitchenStock(Model model){//Kitchen Stock Page
         model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
 
         List<InventoryDTO> p3 = inventoryBO.findStockData("Kitchen");
         model.addAttribute("listAllKitchenStock", p3);
         List<InventoryNoticeDTO> p = inventoryBO.stockOrderNotices("Kitchen");
         model.addAttribute("listKitchenNotice", p);
-        List<InventoryOrderDTO> p1 = inventoryBO.loadTodayInventoryOrders();
+        List<InventoryOrderDTO> p1 = inventoryBO.loadInventoryOrders();
         model.addAttribute("listTodayOrders", p1);
 
         return "kitchenStock";

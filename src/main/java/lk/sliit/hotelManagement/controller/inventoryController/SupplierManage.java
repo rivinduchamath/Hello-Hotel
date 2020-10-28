@@ -23,13 +23,13 @@ public class SupplierManage {
     @Autowired
     InventoryBO inventoryBO;
 
-    @GetMapping("/manageSupplier")
+    @GetMapping("/manageSupplier")//Load Page
     public String loginPage(Model model){
         model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
         SupplierDTO supplierDTO = new SupplierDTO();
         model.addAttribute("supplierDTO", supplierDTO);
         try {
-            SupplierDTO totalCount = inventoryBO.findTopByOrderBySupplierIdDesc ( );
+            SupplierDTO totalCount = inventoryBO.findTopByOrderBySupplierIdDesc ( );//Auto generate id
             int x = ( totalCount.getId ( ) )+ 1;
             model.addAttribute ( "genId", x);
         } catch (NullPointerException e) {
@@ -40,7 +40,7 @@ public class SupplierManage {
         return "manageSupplier";
     }
 
-    @PostMapping("saveSupplier")
+    @PostMapping("saveSupplier")                                            //SAve Supplier
     public String itemTypeSave(@ModelAttribute SupplierDTO supplierDTO) {
         supplierDTO.setSubmittedBy(SuperController.idNo);
         inventoryBO.saveSupplier(supplierDTO);

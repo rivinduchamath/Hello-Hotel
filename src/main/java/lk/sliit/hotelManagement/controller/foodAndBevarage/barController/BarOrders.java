@@ -27,7 +27,7 @@ public class BarOrders {
     @Autowired
     BarBO barBO;
 
-    @GetMapping("/barOrder")
+    @GetMapping("/barOrder")//Load Bar Order Page
     public String loginPage(Model model, HttpServletRequest request) {
         model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
         List<InventoryDTO> p1 = barBO.findAllBeverageItems("Beverage");
@@ -39,7 +39,7 @@ public class BarOrders {
         return "barOrder";
     }
 
-    @RequestMapping("/barSettings")
+    @RequestMapping("/barSettings")//Load All Beverage Stock Items (bar Settings
     public String barSettings1(Model model, HttpServletRequest request) {
         List<InventoryDTO> p1 = inventoryBO.findAllBeverageItems();
         model.addAttribute("loadInventoryBeverage", p1);
@@ -48,7 +48,7 @@ public class BarOrders {
         return "barSettings";
     }
 
-    @PostMapping("barBill")
+    @PostMapping("barBill")//Place bar Order and print bill
     public String loadInvoicePage(@ModelAttribute BarOrderDTO barOrderDTO, Model model, HttpServletRequest request) {
         model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
 

@@ -31,7 +31,7 @@ public class BarBOImpl implements BarBO {
     @Autowired
     BarOrdersDetailsDAO barOrdersDetailsDAO;
 
-    @Override
+    @Override//All beverage items
     public List<InventoryDTO> findAllBeverageItems(String s) {
         Iterable<Inventory> all = inventoryDAO.findAllByTypeEquals(s);
         List<InventoryDTO> dtos = new ArrayList<>();
@@ -51,7 +51,7 @@ public class BarBOImpl implements BarBO {
         return dtos;
     }
 
-    @Override
+    @Override//Find all bar Orders
     public List<BarOrderDTO> findAllBarOrders() {
         Iterable<BarOrders> all = barOrdersDAO.findAll();
         List<BarOrderDTO> dtos = new ArrayList<>();
@@ -66,7 +66,7 @@ public class BarBOImpl implements BarBO {
     }
 
     @Transactional
-    @Override
+    @Override//Spilt String and save bar
     public void saveBarOrder(BarOrderDTO barOrderDTO) {
 
         java.util.List<BarOrderDetailDTO> list = new ArrayList<BarOrderDetailDTO>();
@@ -111,7 +111,7 @@ public class BarBOImpl implements BarBO {
         }
     }
 
-    @Override
+    @Override//Find Top Bar Order Id
     public BarOrderDTO findTopByOrderByBarIdDesc() {
         BarOrders orders = null;
         try {
@@ -124,7 +124,7 @@ public class BarBOImpl implements BarBO {
         );
     }//End
 
-    @Override
+    @Override//Find One
     public InventoryDTO findById(int itemCode) {
         Inventory a = inventoryDAO.findOne(itemCode);
         InventoryDTO menuDTO = new InventoryDTO(

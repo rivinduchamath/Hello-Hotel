@@ -23,7 +23,7 @@ public class AddNewInventoryController {
     InventoryBO inventoryBO;
 
 
-    @GetMapping("/addInventoryType")
+    @GetMapping("/addInventoryType")//Add New Department in inventory
     public String loadForm_validationSaveMode(Model model, HttpServletRequest request) {
         model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
         request.setAttribute("mode", "MODE_UPDATE");
@@ -31,33 +31,32 @@ public class AddNewInventoryController {
         model.addAttribute("loadItemType", p);
         //Top Id
         try {
-            ItemTypeDTO totalCount = inventoryBO.findTopByOrderByIdDesc ( );
-            int x =  totalCount.getId (  )+ 1;
-            model.addAttribute ( "genId", x);
+            ItemTypeDTO totalCount = inventoryBO.findTopByOrderByIdDesc();
+            int x = totalCount.getId() + 1;
+            model.addAttribute("genId", x);
         } catch (NullPointerException e) {
-            model.addAttribute ( "genId", 1 );
+            model.addAttribute("genId", 1);
         }
         return "addInventory";
     }
 
-    @PostMapping("itemTypeSave")
-    public String itemTypeSave(@ModelAttribute ItemTypeDTO inventoryDTO, HttpServletRequest request) {
+    @PostMapping("itemTypeSave")//Save inventort Department
+    public String departmentSave(@ModelAttribute ItemTypeDTO inventoryDTO, HttpServletRequest request) {
         request.setAttribute("mode", "MODE_UPDATE");
 
-        List<ItemTypeDTO> p1= inventoryBO.findInventoryDepartment();
-        for (ItemTypeDTO itemTypeDTO: p1)  {
-            if(itemTypeDTO.getUserType().equals(inventoryDTO.getUserType())){
+        List<ItemTypeDTO> p1 = inventoryBO.findInventoryDepartment();
+        for (ItemTypeDTO itemTypeDTO : p1) {
+            if (itemTypeDTO.getUserType().equals(inventoryDTO.getUserType())) {
                 return "redirect:/addInventoryType";
             }
         }
-
         inventoryDTO.setSubmittedBy(SuperController.idNo);
         inventoryBO.saveInventoryType(inventoryDTO);
         return "redirect:/addInventoryType";
     }
 
-    @RequestMapping(value = "deleteInventoryItem/{id}")
-    public String deleteInventoryItem(@PathVariable("id") int id) {
+    @RequestMapping(value = "deleteInventoryItem/{id}")//delete Department
+    public String deleteDepartment(@PathVariable("id") int id) {
 
         try {
             inventoryBO.deleteInventoryType(id);
@@ -65,7 +64,8 @@ public class AddNewInventoryController {
         }
         return "redirect:/addInventoryType";
     }
-    @RequestMapping("/allInventoryNotice")
+
+    @RequestMapping("/allInventoryNotice")//Load All Inventory notice
     public String allInventoryNotice(Model model, HttpServletRequest request) {
         model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
         request.setAttribute("mode", "MODE_WATCH");
@@ -83,7 +83,7 @@ public class AddNewInventoryController {
             //Get Inventory Data From Inventory Id
             inventoryDTO1 = inventoryBO.findInventory(inventoryDTO.getInventoryId());
 
-             //Add New Qty To Current Qty On Hand
+            //Add New Qty To Current Qty On Hand
             inventoryDTO1.setOrderQty(inventoryDTO.getOrderQty() + inventoryDTO1.getOrderQty());
             //Update InventoryDTO1
             inventoryBO.updateInventory(inventoryDTO1);
@@ -94,26 +94,24 @@ public class AddNewInventoryController {
         return "redirect:/allInventoryNotice";
     }//End Update Qty On Hand Find All Notice
 
-    @PostMapping("inventoryItemSave")
+    @PostMapping("inventoryItemSave")//SAve Inventory Item
     public String saveForm(@ModelAttribute InventoryDTO inventoryDTO) {
 
         try {
-            InventoryDTO itemTypeDTO = inventoryBO.findHighestId();
-            System.out.println("ssssssssssssssssssssssssssssaaaaaaaaaaaaaaaaaaaaaaaaa"+itemTypeDTO.getInventoryId());
-            InventoryDTO inventoryDTO1 = null;
+            InventoryDTO itemTypeDTO = inventoryBO.findHighestId();//Id generate
+             InventoryDTO inventoryDTO1 = null;
             try {
                 inventoryDTO1 = inventoryBO.findFoodItemById(inventoryDTO.getInventoryId());
-            }catch (NullPointerException d){
-                System.out.println("LLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLL");
+            } catch (NullPointerException d) {
                 int maxId = (itemTypeDTO.getInventoryId());
-                if (inventoryDTO.getInventoryId()==(maxId)) {
+                if (inventoryDTO.getInventoryId() == (maxId)) {
                     inventoryDTO.setInventoryId((maxId));
                 } else {
                     maxId++;
                     inventoryDTO.setInventoryId((maxId));
                 }
             }
-        } catch (NullPointerException e){
+        } catch (NullPointerException e) {
             inventoryDTO.setInventoryId(1);
         }
         inventoryBO.saveInventoryItem(inventoryDTO);
@@ -121,7 +119,7 @@ public class AddNewInventoryController {
     }
 
 
-    @RequestMapping(value = "deleteInventory/{inventoryId}")
+    @RequestMapping(value = "deleteInventory/{inventoryId}")//Delete Inventory
     public String deleteNotice(@PathVariable("inventoryId") int inventoryId) {
 
         try {
@@ -131,14 +129,14 @@ public class AddNewInventoryController {
         return "redirect:/addInventory";
     }
 
-    @GetMapping("/addInventory")
+    @GetMapping("/addInventory")//Load Add Inventory Page
     public String loginPage(Model model, HttpServletRequest request) {
 
         model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
         request.setAttribute("mode", "MODE_REGISTER");
-        List<ItemTypeDTO> p = inventoryBO.findAll();
+        List<ItemTypeDTO> p = inventoryBO.findAll();//Load Department type
         model.addAttribute("loadItemType", p);
-        List<InventoryDTO> p1 = inventoryBO.findAllInventory();
+        List<InventoryDTO> p1 = inventoryBO.findAllInventory();//Load Items
         model.addAttribute("loadInventoryItemTable", p1);
 
         return "addInventory";

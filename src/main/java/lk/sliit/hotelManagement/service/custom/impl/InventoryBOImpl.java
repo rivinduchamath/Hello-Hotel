@@ -31,7 +31,7 @@ public class InventoryBOImpl implements InventoryBO {
     SupplierDAO supplierDAO;
 
     @Override
-    public List<ItemTypeDTO> findAll() {
+    public List<ItemTypeDTO> findAll() {//find All department type
         Iterable<ItemType> all = itemTypeDAO.findAll();
         List<ItemTypeDTO> dtos = new ArrayList<>();
         for (ItemType a : all) {
@@ -47,7 +47,7 @@ public class InventoryBOImpl implements InventoryBO {
 
 
     @Override
-    public List<InventoryDTO> findAllInventory() {
+    public List<InventoryDTO> findAllInventory() {//Find all Inventory Items
         Iterable<Inventory> all = inventoryDAO.findAll();
         List<InventoryDTO> dtos = new ArrayList<>();
         for (Inventory a : all) {
@@ -67,7 +67,7 @@ public class InventoryBOImpl implements InventoryBO {
     }
 
     @Override
-    public void saveInventoryItem(InventoryDTO inventoryDTO) {
+    public void saveInventoryItem(InventoryDTO inventoryDTO) {//Save Inventory
         inventoryDAO.save(new Inventory(
                 inventoryDTO.getInventoryId(),
                 inventoryDTO.getText(),
@@ -82,7 +82,7 @@ public class InventoryBOImpl implements InventoryBO {
     }
 
     @Override
-    public List<InventoryNoticeDTO> findDayAfterTomorrowNotice() {
+    public List<InventoryNoticeDTO> findDayAfterTomorrowNotice() {//find All Notice DayAfterTomorrow
         Calendar cal = Calendar.getInstance();
         cal.add(Calendar.DATE, 2);
         java.util.Date dayAfterTomorrow = cal.getTime();
@@ -106,7 +106,7 @@ public class InventoryBOImpl implements InventoryBO {
     }
 
     @Override
-    public List<InventoryNoticeDTO> findTodayInventoryNotice() {
+    public List<InventoryNoticeDTO> findTodayInventoryNotice() {//find All Notice Today
         Calendar cal = Calendar.getInstance();
         cal.add(Calendar.DATE, 0);
         java.util.Date today = cal.getTime();
@@ -130,7 +130,7 @@ public class InventoryBOImpl implements InventoryBO {
     }
 
     @Override
-    public List<InventoryNoticeDTO> findTomorrowInventoryNotice() {
+    public List<InventoryNoticeDTO> findTomorrowInventoryNotice() {//find All Notice Tomorrow state false(not confirmed)
         Calendar cal = Calendar.getInstance();
         cal.add(Calendar.DATE, 1);
         java.util.Date tomorrow = cal.getTime();
@@ -184,13 +184,13 @@ public class InventoryBOImpl implements InventoryBO {
         ));
     }*/
 
-    @Override
+    @Override//delete notice
     public void deleteInventoryNotice(int noticeId) {
         inventoryDAO.delete(noticeId);
     }
 
 
-    @Override
+    @Override//Find inventory by id
     public InventoryDTO findInventory(int inventoryId) {
         Inventory notice = inventoryDAO.findOne(inventoryId);
         return new InventoryDTO(
@@ -207,17 +207,17 @@ public class InventoryBOImpl implements InventoryBO {
     }
 
     @Transactional
-    @Override
+    @Override//Update when supply order
     public void updateInventory(InventoryDTO inventoryDTO1) {
         try {
-            InventoryOrder top = inventoryOrderDAO.findTopByOrderByOrderIdDesc();
+            InventoryOrder top = inventoryOrderDAO.findTopByOrderByOrderIdDesc();//Gen new id to order
             int x = (top.getOrderId()) + 1;
             inventoryDTO1.setOrderId((x));
         } catch (NullPointerException e) {
             inventoryDTO1.setOrderId((1));
         }
 
-        inventoryOrderDAO.save(new InventoryOrder(
+        inventoryOrderDAO.save(new InventoryOrder(//save order
                 inventoryDTO1.getOrderId(),
                 inventoryDTO1.getDate(),
                 inventoryDTO1.getGetPrice(),
@@ -227,7 +227,7 @@ public class InventoryBOImpl implements InventoryBO {
         ));
 
 
-        inventoryDAO.save(new Inventory(
+        inventoryDAO.save(new Inventory(//save inventory
                 inventoryDTO1.getInventoryId(),
                 inventoryDTO1.getText(),
                 inventoryDTO1.getDescription(),
@@ -249,7 +249,7 @@ public class InventoryBOImpl implements InventoryBO {
 
     }
 
-    @Override
+    @Override// load all inventory
     public List<InventoryNoticeDTO> findAllInventoryNotice() {
         Iterable<InventoryNotice> all = inventoryNoticeDAO.findAll();
         List<InventoryNoticeDTO> dtos = new ArrayList<>();
@@ -270,13 +270,13 @@ public class InventoryBOImpl implements InventoryBO {
         return dtos;
     }
 
-    @Override
+    @Override//delete department type
     public void deleteInventoryType(int id) {
         itemTypeDAO.delete(id);
     }
 
     @Override
-    public ItemTypeDTO findTopByOrderByIdDesc() {
+    public ItemTypeDTO findTopByOrderByIdDesc() {//find top department type
         ItemType itemType = null;
         try {
             itemType = itemTypeDAO.findTopByOrderByIdDesc();
@@ -289,7 +289,7 @@ public class InventoryBOImpl implements InventoryBO {
     }//End Get Total Emp
 
     @Override
-    public void saveInventoryType(ItemTypeDTO inventoryDTO) {
+    public void saveInventoryType(ItemTypeDTO inventoryDTO) {//save department type
         itemTypeDAO.save(new ItemType(
                 inventoryDTO.getId(),
                 inventoryDTO.getUserType(),
@@ -298,7 +298,7 @@ public class InventoryBOImpl implements InventoryBO {
     }
 
     @Override
-    public void saveSupplier(SupplierDTO supplierDTO) {
+    public void saveSupplier(SupplierDTO supplierDTO) {//supplier save
         supplierDAO.save(new Supplier(
                 supplierDTO.getId(),
                 supplierDTO.getName(),
@@ -314,7 +314,7 @@ public class InventoryBOImpl implements InventoryBO {
     }
 
     @Override
-    public List<SupplierDTO> findAllSuppliers() {
+    public List<SupplierDTO> findAllSuppliers() {//Find all supplier
         Iterable<Supplier> all = supplierDAO.findAll();
         List<SupplierDTO> dtos = new ArrayList<>();
         for (Supplier a : all) {
@@ -336,7 +336,7 @@ public class InventoryBOImpl implements InventoryBO {
     }
 
     @Override
-    public SupplierDTO findTopByOrderBySupplierIdDesc() {
+    public SupplierDTO findTopByOrderBySupplierIdDesc() {//find top supplier id to generate id
         Supplier supplier = null;
         try {
             supplier = supplierDAO.findTopByOrderByIdDesc();
@@ -351,7 +351,7 @@ public class InventoryBOImpl implements InventoryBO {
     @Override
     public void deleteSupplier(int userId) {
         supplierDAO.delete(userId);
-    }
+    }//delete supplier
 
     @Override
     public InventoryNoticeDTO findTopByBarNoticeIdDesc() {
@@ -366,13 +366,13 @@ public class InventoryBOImpl implements InventoryBO {
     }//End Get Total
 
     @Override
-    public void saveOrderNotice(InventoryNoticeDTO noticeDTO) {
+    public void saveOrderNotice(InventoryNoticeDTO noticeDTO) {//Add order notice to inventory
         noticeDTO.setDepartment("Beverage");
         java.sql.Date date = new java.sql.Date(Calendar.getInstance().getTime().getTime());
         noticeDTO.setDate(date);
         noticeDTO.setState(false);
         try {
-            InventoryNotice notice = inventoryNoticeDAO.findInventoryNoticeByInventoryAndExpDateEquals(
+            InventoryNotice notice = inventoryNoticeDAO.findInventoryNoticeByInventoryAndExpDateEquals(//If already have notice in today update notice
                     inventoryDAO.findOne(noticeDTO.getInventoryId()), noticeDTO.getExpDate());
             noticeDTO.setNoticeId(notice.getNoticeId());
             noticeDTO.setOrderQty((noticeDTO.getOrderQty() + notice.getOrderQty()));
@@ -392,7 +392,7 @@ public class InventoryBOImpl implements InventoryBO {
         ));
     }
 
-    @Override
+    @Override//top online order
     public InventoryDTO findTopByOrderByOrderIdDesc() {
         InventoryOrder orders = null;
         try {
@@ -406,7 +406,7 @@ public class InventoryBOImpl implements InventoryBO {
     }//End
 
     @Override
-    public boolean findOne(int supplierId) {
+    public boolean findOne(int supplierId) {//find supplier
         System.out.println(supplierId + "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee");
         Supplier supplier = null;
         try {
@@ -428,7 +428,7 @@ public class InventoryBOImpl implements InventoryBO {
     }
 
     @Override
-    public InventoryDTO findFoodItemById(int inventoryId) {
+    public InventoryDTO findFoodItemById(int inventoryId) {//find food item (find one)
         Inventory inventoryDTO1 = inventoryDAO.findOne(inventoryId);
         return new InventoryDTO(
                 inventoryDTO1.getInventoryId(),
@@ -446,7 +446,7 @@ public class InventoryBOImpl implements InventoryBO {
     }
 
     @Override
-    public List<InventoryDTO> findStockData(String  val) {
+    public List<InventoryDTO> findStockData(String  val) { //find all dep type equal
         Iterable<Inventory> all = inventoryDAO.findAllByTypeEquals(val);
         List<InventoryDTO> dtos = new ArrayList<>();
         for (Inventory a : all) {
@@ -465,7 +465,7 @@ public class InventoryBOImpl implements InventoryBO {
         return dtos;
     }
     @Override
-    public List<InventoryDTO> findAllBeverageItems() {
+    public List<InventoryDTO> findAllBeverageItems() {//Find all inventory items type beverage
         Iterable<Inventory> all = inventoryDAO.findAllByTypeEquals("Beverage");
         List<InventoryDTO> dtos = new ArrayList<>();
         for (Inventory a : all) {
@@ -484,7 +484,7 @@ public class InventoryBOImpl implements InventoryBO {
         return dtos;
     }
 
-    @Override
+    @Override//find all notice within 7 days
     public List<InventoryNoticeDTO> stockOrderNotices(String val) {
         Calendar cal = Calendar.getInstance();
         cal.add(Calendar.DATE, -7);
@@ -510,7 +510,7 @@ public class InventoryBOImpl implements InventoryBO {
         return dtos;
     }
 
-    @Override
+    @Override//Load all InventoryDepartments
     public List<ItemTypeDTO> findInventoryDepartment() {
         Iterable<ItemType> allItems = itemTypeDAO.findAll();
         List<ItemTypeDTO> dtos = new ArrayList<>();
@@ -524,8 +524,8 @@ public class InventoryBOImpl implements InventoryBO {
         return dtos;
     }
 
-    @Override
-    public List<InventoryOrderDTO> loadTodayInventoryOrders() {
+    @Override//load inventory orders
+    public List<InventoryOrderDTO> loadInventoryOrders() {
         Date todaydate = new Date();
         Calendar cal = Calendar.getInstance();
         cal.add(Calendar.DATE, -7);
@@ -549,7 +549,7 @@ public class InventoryBOImpl implements InventoryBO {
     }
 
 
-    @Override
+    @Override//load inventory Bills
     public List<InventoryOrderDTO> findInventoryBill(GetDateInventoryDTO getDateInventoryDTO) {
         List<InventoryOrderDTO> inventoryOrderDTOS = new ArrayList<>();
         Iterable<InventoryOrder> iterable =

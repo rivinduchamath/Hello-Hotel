@@ -26,7 +26,7 @@ public class BarStockController {
     @Autowired
     InventoryBO inventoryBO;
 
-    @GetMapping("/barStock")
+    @GetMapping("/barStock")//Load Bar Stock Page
     public String loginPage(Model model, HttpServletRequest request) {
         model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
         List<InventoryDTO> p1 = barBO.findAllBeverageItems("Beverage");
@@ -38,7 +38,7 @@ public class BarStockController {
         return "barStock";
     }
 
-    @PostMapping("addBarNotice")
+    @PostMapping("addBarNotice")//Add Stock Orders to Inventory from Bar
     public String addBarNotice(@ModelAttribute InventoryNoticeDTO noticeDTO, Model model, HttpServletRequest request) {
         model.addAttribute ( "loggerName", indexLoginBO.getEmployeeByIdNo ( SuperController.idNo ) );
 
@@ -53,6 +53,6 @@ public class BarStockController {
         inventoryBO.saveOrderNotice(noticeDTO);
 
 
-        return "invoice";
+        return "barStock";
     }
 }
