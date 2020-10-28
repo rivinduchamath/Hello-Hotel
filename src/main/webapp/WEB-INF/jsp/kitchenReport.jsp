@@ -225,8 +225,7 @@
                                                     <th>Sold Quantity</th>
                                                     <th>Unite Price</th>
                                                     <th>Total</th>
-                                                    <th>Selling Rate Counter</th>
-                                                    <th>Selling Rate Online</th>
+
                                                 </tr>
                                                 </thead>
                                                 <tbody>
@@ -239,8 +238,6 @@
                                                         <td>${e.quantity}</td>
                                                         <td>${e.price}</td>
                                                         <td>${e.totalPrice}</td>
-                                                        <td>${e.sellingRateCounter}</td>
-                                                        <td>${e.sellingRateOnline}</td>
 
                                                     </tr>
                                                     <script>

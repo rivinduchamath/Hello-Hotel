@@ -347,7 +347,6 @@ public class KitchenController {
                     //merge lists
                     for (RestaurantFoodItemDTO item: finalList){
                         RestaurantFoodItemDTO found = checkFoodItemExist(counterItems, item.getFoodItemId());
-                        System.out.println(found);
 
                         if (found.getFoodItemId() != KitchenUtil.defaultID){
 
@@ -385,7 +384,6 @@ public class KitchenController {
                 //merge lists
                 for (RestaurantFoodItemDTO item: finalList){
                     RestaurantFoodItemDTO found = checkFoodItemExist(counterItems, item.getFoodItemId());
-                    System.out.println(found);
 
                     if (found.getFoodItemId() != KitchenUtil.defaultID){
 
@@ -414,7 +412,6 @@ public class KitchenController {
             for (RestaurantFoodItemDTO itemDTO:counterItems){
                 finalList.add(itemDTO);
             }
-            System.out.println("((((((((((((((((((((((((((((((((((((Cou"+finalList.size());
             //merge lists
             for (RestaurantFoodItemDTO item: finalList){
                 RestaurantFoodItemDTO found = checkFoodItemExist(onlineItems, item.getFoodItemId());
@@ -443,20 +440,9 @@ public class KitchenController {
 
         }
         //calc total income
-        if (!finalList.isEmpty()){
-            for (RestaurantFoodItemDTO item: finalList){
-                totalIncome = item.getTotalPrice();
-            }
-        }
+        totalIncome = totalCounterIncome + totalOnlineIncome;
 
-        System.out.println("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&");
-        System.out.println(finalList.size());
-        System.out.println(totalItemsSold);
-        System.out.println(totalOnlineItemsSold);
-        System.out.println(totalCounterItemsSold);
-        System.out.println(totalCounterIncome);
-        System.out.println(totalOnlineIncome);
-        System.out.println(totalIncome);
+
 
         model.addAttribute("table", finalList);
         model.addAttribute("totalItemsSold",totalItemsSold);
