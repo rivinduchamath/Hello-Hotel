@@ -35,48 +35,37 @@ public class RestaurantController {
     @Autowired
     KitchenBO kitchenBO;
 
-    @GetMapping("/restaurant")
+    @GetMapping("/restaurant")//Restaurant Dashboard
     public String loginPage(Model model) {
         model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
         return "restaurant";
     }
 
 
-    @GetMapping("/restaurantOrder")
+    @GetMapping("/restaurantOrder")//Load Restaurant Order Form
     public String restaurantOrders(Model model, HttpServletRequest request) {
         model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
-        //List<FoodItemDTO> p1 = restaurantBO.findAllFoodItems("Restaurant");
-        List<FoodItemDTO> p1 = kitchenBO.findFoodItems();
 
+        List<FoodItemDTO> p1 = kitchenBO.findFoodItems();//Find Food Items
         if (p1.isEmpty()) {
             request.setAttribute("loginError", "Not Any Fond Items" +
                     " Please Add Food Items ");
         }
-        for (FoodItemDTO d : p1) {
-            System.out.println(d);
-        }
-        model.addAttribute("loadInventoryRestaurantTable", p1);
+        model.addAttribute("loadInventoryRestaurantTable", p1);//load Data to table
         return "restaurantOrder";
     }
 
-    @GetMapping("/restaurantBill")
-    public String restaurantBill(Model model) {
-        model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
-        return "restaurantBill";
-    }
-
-
-    @PostMapping("invoice")
+    @PostMapping("invoice")//Print Invoice
     public String loadInvoicePage(@ModelAttribute RestaurantCounterOrderDTO restaurantCounterOrderDTO, Model model, HttpServletRequest request) {
         model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
 
-        try {
+        try { //
             restaurantCounterOrderDTO.setCustomerId(SuperController.idNo);
-            RestaurantCounterOrderDTO top = restaurantBO.findTopByOrderByRestIdDesc();
+            RestaurantCounterOrderDTO top = restaurantBO.findTopByOrderByRestIdDesc();//find Highest Id to Save Order
             int x = (top.getOrderId()) + 1;
             restaurantCounterOrderDTO.setOrderId((x));
         } catch (NullPointerException e) {
-            restaurantCounterOrderDTO.setOrderId((1));
+            restaurantCounterOrderDTO.setOrderId((1));//Set Id as 1 when Initial Round
         }
         try {
             restaurantBO.saveRestaurantOrder(restaurantCounterOrderDTO);
@@ -86,7 +75,7 @@ public class RestaurantController {
             String yo[] = arr.split(" ");
             int count = 0;
             RestaurantCounterOrderDetailDTO itm = new RestaurantCounterOrderDetailDTO();
-            for (String str : yo) {
+            for (String str : yo) {//Read String and add to list
                 if (count == 0) {
                     itm = new RestaurantCounterOrderDetailDTO();
                     itm.setFoodItem(Integer.parseInt(str));
@@ -109,7 +98,7 @@ public class RestaurantController {
             }
 
             model.addAttribute("listCounterOrders", restaurantCounterOrderDTO.getOrderId());
-            model.addAttribute("listCounterOrderDetails", list);
+            model.addAttribute("listCounterOrderDetails", list);//Load Data to Payment
 
         } catch (Exception e) {
             return "redirect:/restaurantOrder";
@@ -123,16 +112,20 @@ public class RestaurantController {
         return "invoice";
     }
 
-    @GetMapping("/restaurantManage")
+    @GetMapping("/restaurantManage")//Load Online Orders and Online Table
     public String restaurantManage(Model model) {
         model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
 
-        List<RestaurantOnlineOrderDTO> tableList = restaurantBO.findOrderOnline();
+        List<RestaurantOnlineOrderDTO> tableList = restaurantBO.findOrderOnline();//Online Orders with in one month
         model.addAttribute("listAllOnlineOrders", tableList);
-        List<OnlineTableReservationDTO> tableList1 = restaurantBO.findTablesOnline();
+        List<OnlineTableReservationDTO> tableList1 = restaurantBO.findTablesOnline();//Online Table in one month
         model.addAttribute("onlineTableReservation", tableList1);
-
         return "restaurantManage";
+    }
+    @GetMapping("/restaurantBill")
+    public String restaurantBill(Model model) {
+        model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
+        return "restaurantBill";
     }
 
 

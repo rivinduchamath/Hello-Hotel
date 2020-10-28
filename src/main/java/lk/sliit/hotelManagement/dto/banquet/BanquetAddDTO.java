@@ -23,6 +23,9 @@ public class BanquetAddDTO {
     private double total;
     private double unitPrise;
 
+    public BanquetAddDTO() {
+    }
+
     public BanquetAddDTO(int orderId, int billId, Date date, String name, String contactNumber, String hallId, int menuId, int noOfPlates, double advancePayment, double total, String orderState) {
         this.orderId=orderId;
         this.banquetBillId=billId;
@@ -36,6 +39,15 @@ public class BanquetAddDTO {
         this.total=total;
         this.orderState=orderState;
     }
+
+    public BanquetAddDTO(int orderId, Date date, String hallId, int noOfPlates, int menuId) {
+        this.orderId = orderId;
+        this.date = date;
+        this.hallId = hallId;
+        this.noOfPlates = noOfPlates;
+        this.menuId = menuId;
+    }
+
 
 
     public double getUnitPrise() {

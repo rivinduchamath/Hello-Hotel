@@ -25,9 +25,14 @@ public class FoodItemManageController {
     @Autowired
     KitchenBO kitchenBO;
 
+    String alertMsg = KitchenUtil.defaultAlert;
+
     @GetMapping("/manageMenu")
     public String loginPage(Model model) {
         model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
+        model.addAttribute("defaultAlert",KitchenUtil.defaultAlert);
+        model.addAttribute("alert",alertMsg);
+
         List<FoodItemDTO> foodItemList = kitchenBO.findFoodItems();
         FoodItemDTO foodItemDTO = new FoodItemDTO();
         model.addAttribute("foodItemDTO", foodItemDTO);
@@ -38,6 +43,9 @@ public class FoodItemManageController {
 
     @PostMapping("/saveFoodItem")
     public String addNew(Model model, @ModelAttribute FoodItemDTO foodItemDTO) {
+        model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
+        model.addAttribute("defaultAlert",KitchenUtil.defaultAlert);
+        model.addAttribute("alert",alertMsg);
 
         try {
             FoodItemDTO foodItemDTO2 = kitchenBO.findHighestId();
@@ -63,7 +71,11 @@ public class FoodItemManageController {
     }
 
     @GetMapping(value = "deleteFoodItem/{itemId}")
-    public String deleteFoodItem(@PathVariable("itemId") int foodItemId, HttpServletResponse response) {
+    public String deleteFoodItem(Model model,@PathVariable("itemId") int foodItemId, HttpServletResponse response) {
+        model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
+        model.addAttribute("defaultAlert",KitchenUtil.defaultAlert);
+        model.addAttribute("alert",alertMsg);
+
         List<RestaurantCounterOrderDetailDTO> p = kitchenBO.findAllOrders();
         for (RestaurantCounterOrderDetailDTO s : p) {
             if (s.getFoodItem() == foodItemId) {

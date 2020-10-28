@@ -5,10 +5,7 @@ import lk.sliit.hotelManagement.dto.kitchen.FoodItemDTO;
 import lk.sliit.hotelManagement.dto.restaurant.OnlineCustomerDTO;
 import lk.sliit.hotelManagement.dto.restaurant.restaurantOnlineOrder.RestaurantOnlineOrderDTO;
 import lk.sliit.hotelManagement.dto.restaurant.restaurantOnlineTable.OnlineTableReservationDTO;
-import lk.sliit.hotelManagement.service.custom.IndexLoginBO;
-import lk.sliit.hotelManagement.service.custom.KitchenBO;
-import lk.sliit.hotelManagement.service.custom.OnlineCustomerBO;
-import lk.sliit.hotelManagement.service.custom.RestaurantBO;
+import lk.sliit.hotelManagement.service.custom.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -31,12 +28,14 @@ public class OnlineOrder {
     @Autowired
     KitchenBO kitchenBO;
     @Autowired
+    MailSend mailSend;
+    @Autowired
     RestaurantBO restaurantBO;
 
-    @GetMapping("/onlineOrder")
+    @GetMapping("/onlineOrder")//Load Online Order Page
     public String loadForm_validationSaveMode(Model model, HttpSession session, HttpServletRequest request) {
 
-        try {
+        try {//Load Data when customer Sign In
             int onlineCustomerId = Integer.parseInt(session.getAttribute("userId").toString());
             model.addAttribute("loggerId", onlineCustomerBO.findOne(onlineCustomerId));
 //            Load All Food
@@ -53,7 +52,7 @@ public class OnlineOrder {
         return "onlineOrder";
 
     }
-    @PostMapping("/saveOnlineOrder")
+    @PostMapping("/saveOnlineOrder")//SAve Online Order
     public String saveForm(@ModelAttribute RestaurantOnlineOrderDTO onlineOrderDTO, HttpSession session) {
 
         try {
@@ -71,41 +70,12 @@ public class OnlineOrder {
             int onlineCustomerId = Integer.parseInt(session.getAttribute("userId").toString());
             onlineOrderDTO.setCustomer(onlineCustomerId);
             restaurantBO.saveOnlineOrder(onlineOrderDTO);
+            mailSend.sendMailToOnlineCustomer(onlineOrderDTO);
         } catch (NullPointerException d) {
             return "redirect:/onlineOrder";
         }
         return "redirect:/onlineOrder";
     }
-    @PostMapping("/saveOnlineTable")
-    public String saveOnlineTable(@ModelAttribute OnlineTableReservationDTO onlineOrderDTO, HttpSession session) {
-         try {
-           Time a = Time.valueOf(onlineOrderDTO.getvStatT());
-           Time a2 = Time.valueOf(onlineOrderDTO.getvEndT());
-           onlineOrderDTO.setStartTime(a);
-           onlineOrderDTO.setEndTime(a2);
-           Date date = Date.valueOf(onlineOrderDTO.getvDate());
-           onlineOrderDTO.setReservedDate(date);
-       }catch (IllegalArgumentException s){
 
-       }
-       try {
-            OnlineTableReservationDTO top = restaurantBO.findHighestOnlineTableId();
-            int x = (top.getOnlineTableReservationId()) + 1;
-            onlineOrderDTO.setOnlineTableReservationId((x));
-        } catch (NullPointerException e) {
-
-            System.out.println("In Try Catch");
-            onlineOrderDTO.setOnlineTableReservationId((1));
-        }
-
-        try {
-            int onlineCustomerId = Integer.parseInt(session.getAttribute("userId").toString());
-            onlineOrderDTO.setCustomer(onlineCustomerId);
-            restaurantBO.saveOnlineTableId(onlineOrderDTO);
-        } catch (NullPointerException d) {
-            return "redirect:/onlineTable";
-        }
-        return "redirect:/onlineTable";
-    }
 
 }

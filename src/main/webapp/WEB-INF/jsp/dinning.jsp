@@ -102,12 +102,20 @@
             <div class="row">
 
                 <div class="col-md-9 col-sm-8 col-xs-12">
-                    <h2 class="blog-title-head">Lorem Ipsum Dolor Sit amet</h2>
+                    <h2 class="blog-title-head">The Authentic Chinese Restaurant</h2>
                     <p class="user-info">Posted by <a>Admin</a> in <a>General</a> | <a>10 Comments</a></p>
                     <div class="blog-image-single margin-top-small">
                         <img src="../../images/reservation/banner2.png" class="img-responsive">
                     </div>
-                    <p class="blog-desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do </p>
+                    <p class="blog-desc">At Hotel Hareesha we invite you to enjoy the varied flavours of Dongbei, Sichuan and Canton. Succulent meats, fresh seafood, delicate dim sum, a range of Chinese teas and cocktails all feature in our extensive menu, allowing you to indulge in a true feast.
+                        Our weekday lunch set menu features intricate delicacies including flavourful soups, the finest dim sum, meats, seafood, rice and noodles. Available from Tuesday to Friday.
+
+                    Location - Level 3
+                    Lunch - 12 noon to 3pm, Tuesday to Sunday
+                    Dinner - 6.30pm to 11pm, Tuesday to Sunday
+                    Weekend Yum Cha Lunch - 12noon to 3pm, Saturday and Sunday.
+
+                    </p>
 
                     <div class="clearfix"></div>
                     <div class="single-bottom comment-form">

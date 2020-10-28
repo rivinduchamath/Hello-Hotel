@@ -85,7 +85,7 @@
                             <li class="active"><a href="onlineDashboard">Dashboard</a></li>
                             <li><a href="onlineOrder">Order</a></li>
                             <li><a href="onlineTable">Table</a></li>
-                            <li><a href="#">About Us</a></li>
+                            <li><a href="about">About Us</a></li>
                             <li><a href="onlineContact">Contacts</a></li>
                         </ul>
                     </nav>

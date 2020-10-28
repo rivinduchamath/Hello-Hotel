@@ -15,7 +15,7 @@
     <!--===============================================================================================-->
     <link rel="icon" type="image/png" href="../../images/onlineBookingTable/icons/favicon.png"/>
     <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="../../vendors/onlineBookingTable/bootstrap/css/bootstrap.min.css">
+   <!-- <link rel="stylesheet" type="text/css" href="../../vendors/onlineBookingTable/bootstrap/css/bootstrap.min.css"> -->
     <!--===============================================================================================-->
     <link rel="stylesheet" type="text/css" href="../../fonts/onlineBookingTable/font-awesome-4.7.0/css/font-awesome.min.css">
     <!--===============================================================================================-->
@@ -27,6 +27,7 @@
     <!--===============================================================================================-->
     <link rel="stylesheet" type="text/css" href="../../css/onlineBookingTable/util.css">
     <link rel="stylesheet" type="text/css" href="../../css/onlineBookingTable/main.css">
+
 
 
     <!-- Bootstrap core CSS -->
@@ -105,7 +106,7 @@
                         <input style="display: none" readonly required type="text" id="itemPay" name="details">
                         <input  style="" readonly required="required" type="date" id="vDate" value="${checkIn}" name="checkIn">
                         <input readonly required ="required"type="date" id="timeIn" value="${checkOut}" name="checkOut">
-                        <button type="submit" onclick="getValue()" class="col-1-1 button1x1" id="submitButton">Submit</button>
+                        <button type="submit" onclick="getValue()" class="reserved-btn" id="submitButton">Submit</button>
                     </form>
                 </div>
             </div>
@@ -145,7 +146,7 @@
                             <td class="cell100 column2">${a.roomName}</td>
                             <td class="cell100 column3">${a.type}</td>
                             <td class="cell100 column4">${a.description}</td>
-                            <td class="cell100 column4">${a.status}</td>
+                           <!-- <td class="cell100 column4">${a.status}</td> -->
                             <td class="cell100 column5"><button onclick="myFunction(${a.roomId2})"
                                                                 type="button" class="book-now-btn">Book Now</button></td>
                         </tr>

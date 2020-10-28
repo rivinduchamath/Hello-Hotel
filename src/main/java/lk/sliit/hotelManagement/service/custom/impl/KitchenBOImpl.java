@@ -1,5 +1,7 @@
 package lk.sliit.hotelManagement.service.custom.impl;
 
+import lk.sliit.hotelManagement.controller.banquetController.BanquetAdd;
+import lk.sliit.hotelManagement.dao.banquetDAO.BanquetOrderDAO;
 import lk.sliit.hotelManagement.dao.banquetDAO.LimitDAO;
 import lk.sliit.hotelManagement.dao.inventoryDAO.InventoryDAO;
 import lk.sliit.hotelManagement.dao.inventoryDAO.InventoryNoticeDAO;
@@ -7,14 +9,18 @@ import lk.sliit.hotelManagement.dao.kitchenDAO.KitchenDAO;
 import lk.sliit.hotelManagement.dao.kitchenDAO.KitchenFoodOrderDAO;
 import lk.sliit.hotelManagement.dao.kitchenDAO.MenuDAO;
 import lk.sliit.hotelManagement.dao.kitchenDAO.MenuDetailsDAO;
+import lk.sliit.hotelManagement.dao.restaurantDAO.counterOrderDAO.RestaurantCounterOrderDAO;
 import lk.sliit.hotelManagement.dao.restaurantDAO.counterOrderDAO.RestaurantCounterOrderDetailDAO;
+import lk.sliit.hotelManagement.dao.restaurantDAO.onlineOrderDAO.RestaurantOnlineOrderDAO;
 import lk.sliit.hotelManagement.dao.restaurantDAO.onlineOrderDAO.RestaurantOnlineOrderDetailsDAO;
+import lk.sliit.hotelManagement.dto.banquet.BanquetAddDTO;
 import lk.sliit.hotelManagement.dto.banquet.LimitDTO;
 import lk.sliit.hotelManagement.dto.inventory.InventoryDTO;
 import lk.sliit.hotelManagement.dto.inventory.InventoryNoticeDTO;
 import lk.sliit.hotelManagement.dto.kitchen.*;
 import lk.sliit.hotelManagement.controller.kitchenController.KitchenUtil;
 import lk.sliit.hotelManagement.dto.restaurant.restaurantCounterOrder.RestaurantCounterOrderDetailDTO;
+import lk.sliit.hotelManagement.entity.banquet.BanquetOrder;
 import lk.sliit.hotelManagement.entity.banquet.OrderLimit;
 import lk.sliit.hotelManagement.entity.inventory.Inventory;
 import lk.sliit.hotelManagement.entity.inventory.InventoryNotice;
@@ -22,7 +28,10 @@ import lk.sliit.hotelManagement.entity.kitchen.FoodItem;
 import lk.sliit.hotelManagement.entity.kitchen.KitchenFoodOrders;
 import lk.sliit.hotelManagement.entity.kitchen.Menu;
 import lk.sliit.hotelManagement.entity.kitchen.MenuDetails;
+import lk.sliit.hotelManagement.entity.restaurant.counterOrder.RestaurantCounterOrder;
 import lk.sliit.hotelManagement.entity.restaurant.counterOrder.RestaurantCounterOrderDetail;
+import lk.sliit.hotelManagement.entity.restaurant.onlineOrder.RestaurantOnlineOrder;
+import lk.sliit.hotelManagement.entity.restaurant.onlineOrder.RestaurantOnlineOrderDetails;
 import lk.sliit.hotelManagement.service.custom.KitchenBO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -55,6 +64,12 @@ public class KitchenBOImpl implements KitchenBO {
     LimitDAO limitDAO;
     @Autowired
     InventoryDAO inventoryDAO;
+    @Autowired
+    BanquetOrderDAO banquetOrderDAO;
+    @Autowired
+    RestaurantCounterOrderDAO counterOrderDAO;
+    @Autowired
+    RestaurantOnlineOrderDAO onlineOrderDAO;
 
     @Override
     public void saveFoodItem(FoodItemDTO foodItemDTO) {
@@ -67,12 +82,13 @@ public class KitchenBOImpl implements KitchenBO {
     }
 
     @Override
-    public List<FoodItemDTO> findFoodItems() {
-        Iterable<FoodItem> foodItems = kitchenDAO.findAll();
+    public List<FoodItemDTO> findFoodItems() {//Find all Kitchen Foods
+        Iterable<FoodItem> foodItems = kitchenDAO.findAll();//call to crud repo
         List<FoodItemDTO> foodItemDTOList = new ArrayList<>();
 
         for (FoodItem item: foodItems) {
-            foodItemDTOList.add(new FoodItemDTO(item.getItemId(),
+            foodItemDTOList.add(new FoodItemDTO(
+                    item.getItemId(),
                     item.getName(),
                     item.getUnitePrice(),
                     item.getCategory(),
@@ -275,6 +291,8 @@ public class KitchenBOImpl implements KitchenBO {
             } catch (Exception e) {
                 lastID = 1;
             }
+        } else {
+            lastID = kitchenFoodOrderDTO.getOrderId();
         }
         kitchenFoodOrderDAO.save(new KitchenFoodOrders(
                 lastID,
@@ -305,23 +323,51 @@ public class KitchenBOImpl implements KitchenBO {
 
     @Override
     public List<KitchenFoodOrderDTO> loadKitchenFoodOrderBydateAndDescription(java.sql.Date date, String  description) {
-        Iterable<KitchenFoodOrders> kitchenFoodOrders = kitchenFoodOrderDAO.findTopByExpectedDateAndDescriptionEquals(date,description);
-        List<KitchenFoodOrderDTO> kitchenFoodOrderDTOS = new ArrayList<>();
+        List<KitchenFoodOrderDTO> returnList = new ArrayList<>();
+        Iterable<KitchenFoodOrders>  kitchenFoodOrders = kitchenFoodOrderDAO.findAllByExpectedDateAndDescriptionStartsWith(date, description);
 
         for (KitchenFoodOrders item: kitchenFoodOrders){
-            kitchenFoodOrderDTOS.add(new KitchenFoodOrderDTO(
+            returnList.add(new KitchenFoodOrderDTO(
                     item.getOrderId(),
                     item.getFoodItemId(),
                     item.getDescription(),
-                    item.getAmount(),item.getExpectedDate()
+                    item.getAmount(),
+                    item.getExpectedDate()
             ));
         }
-        return kitchenFoodOrderDTOS;
+        if (description.equals(KitchenUtil.banquetFoodOrderType)) {
+
+            kitchenFoodOrders = kitchenFoodOrderDAO.findAllByExpectedDateAndDescriptionStartsWith(date, KitchenUtil.confimedBanquet);
+            for (KitchenFoodOrders item: kitchenFoodOrders){
+                returnList.add(new KitchenFoodOrderDTO(
+                        item.getOrderId(),
+                        item.getFoodItemId(),
+                        item.getDescription(),
+                        item.getAmount(),
+                        item.getExpectedDate()
+                ));
+            }
+        }
+
+
+        return returnList;
     }
 
     @Override
-    public List<KitchenFoodOrderDTO> loadKitchenFoodOrderByDescription(String description) {
-        return null;
+    public List<KitchenFoodOrderDTO> findAllKitchenFoodOrders() {
+        List<KitchenFoodOrderDTO> orders = new ArrayList<>();
+        Iterable<KitchenFoodOrders> foodOrders = kitchenFoodOrderDAO.findAll();
+
+        for (KitchenFoodOrders item: foodOrders){
+            orders.add(new KitchenFoodOrderDTO(
+                    item.getOrderId(),
+                    item.getFoodItemId(),
+                    item.getDescription(),
+                    item.getAmount(),
+                    item.getExpectedDate()
+            ));
+        }
+        return orders;
     }
 
     @Override
@@ -417,8 +463,6 @@ public class KitchenBOImpl implements KitchenBO {
                 limitDAO.save(orderLimit);
             }
 
-            System.out.println(limitDTO);
-
         }
 
 
@@ -436,14 +480,29 @@ public class KitchenBOImpl implements KitchenBO {
     }
 
     @Override
-    public void saveInventoryNotice(KitchenInventoryNoticeDTO inventoryNoticeDTO) {
+    public int saveInventoryNotice(InventoryNoticeDTO inventoryNoticeDTO) {
 
         try {
-            InventoryNotice notice = inventoryNoticeDAO.findInventoryNoticeByInventoryAndExpDateEquals(
-                    inventoryNoticeDTO.getInventory(), inventoryNoticeDTO.getExpDate());
+            InventoryNotice notice = inventoryNoticeDAO.findInventoryNoticeByExpDateAndDepartmentAndInventoryAndStateEquals(
+                    inventoryNoticeDTO.getExpDate(),
+                    inventoryNoticeDTO.getDepartment(),
+                    inventoryDAO.findOne(inventoryNoticeDTO.getInventory()),
+                    inventoryNoticeDTO.isState());
+
             inventoryNoticeDTO.setNoticeId(notice.getNoticeId());
             inventoryNoticeDTO.setOrderQty((inventoryNoticeDTO.getOrderQty() + notice.getOrderQty()));
+
         } catch (Exception e) {
+            int id = 1;
+
+            try{
+                id = inventoryNoticeDAO.findTopByOrderByNoticeIdDesc().getNoticeId();
+                id++;
+                inventoryNoticeDTO.setNoticeId(id);
+            } catch (NullPointerException e1){
+                id = 1;
+                inventoryNoticeDTO.setNoticeId(id);
+            }
         }
 
         inventoryNoticeDAO.save(new InventoryNotice(
@@ -454,15 +513,23 @@ public class KitchenBOImpl implements KitchenBO {
                 inventoryNoticeDTO.getExpDate(),
                 inventoryNoticeDTO.getOrderHolder(),
                 inventoryNoticeDTO.isState(),
-                inventoryNoticeDTO.getInventory()
+                inventoryDAO.findOne(inventoryNoticeDTO.getInventory())
 
         ));
+
+        return inventoryNoticeDTO.getNoticeId();
     }
 
+    @Override
+    public void deleteInventoryNoticeById(int id) {
+        inventoryNoticeDAO.delete(id);
+    }
 
     @Override
-    public KitchenInventoryNoticeDTO findInventoryNotice(java.sql.Date date, int foodItemId) {
-        InventoryNotice inventoryNotice = inventoryNoticeDAO.findInventoryNoticeByExpDateAndDepartmentAndInventoryEquals(date,KitchenUtil.department,foodItemId);
+    public KitchenInventoryNoticeDTO findInventoryNotice(java.sql.Date date, int foodItemId, boolean state) {
+
+        InventoryNotice inventoryNotice = inventoryNoticeDAO.findInventoryNoticeByExpDateAndDepartmentAndInventoryAndStateEquals( date, KitchenUtil.department, inventoryDAO.findOne(foodItemId),state);
+
         return new KitchenInventoryNoticeDTO(
                 inventoryNotice.getNoticeId(),
                 inventoryNotice.getDepartment(),
@@ -479,6 +546,12 @@ public class KitchenBOImpl implements KitchenBO {
     public int findMaxKitchenOrderId() {
         KitchenFoodOrders kitchenFoodOrders = kitchenFoodOrderDAO.findTopByOrderByOrderIdDesc();
         return kitchenFoodOrders.getOrderId();
+    }
+
+    @Override
+    public int findInventoryNoticeId() {
+
+        return inventoryNoticeDAO.findTopByOrderByNoticeIdDesc().getNoticeId();
     }
 
     @Override
@@ -502,14 +575,254 @@ public class KitchenBOImpl implements KitchenBO {
     }
 
     @Override
+    public void whenNoticeConfirmed(int noticeId) {
+        List<KitchenFoodOrderDTO> orders = findAllKitchenFoodOrders();
+        
+        for (KitchenFoodOrderDTO item: orders){
+            String[] strArry = item.getDescription().split(KitchenUtil.stringSeperator);
+
+            if (Integer.parseInt(strArry[1]) == noticeId && strArry[0].equals(KitchenUtil.dailyFoodOrderType)){
+                kitchenFoodOrderDAO.delete(item.getOrderId());
+            } else if (Integer.parseInt(strArry[1]) == noticeId && strArry[0].equals(KitchenUtil.banquetFoodOrderType)){
+                item.setDescription(KitchenUtil.confimedBanquet+KitchenUtil.stringSeperator+strArry[1]);
+                kitchenFoodOrderDAO.save(new KitchenFoodOrders(
+                        item.getOrderId(),
+                        item.getFoodItemId(),
+                        item.getDescription(),
+                        item.getAmount(),
+                        item.getExpectedDate()
+                ));
+            }
+        }
+    }
+
+    @Override
     public KitchenFoodOrderDTO getExistingKitchenFoodOrder(int foodItemId, java.sql.Date expectedDate, String description) {
         KitchenFoodOrders kitchenFoodOrders = kitchenFoodOrderDAO.findKitchenFoodOrdersByExpectedDateAndFoodItemIdAndDescriptionEquals(expectedDate,foodItemId, description);
+
         return new KitchenFoodOrderDTO(
                 kitchenFoodOrders.getOrderId(),
+                kitchenFoodOrders.getFoodItemId(),
                 kitchenFoodOrders.getDescription(),
                 kitchenFoodOrders.getAmount(),
                 kitchenFoodOrders.getExpectedDate()
         );
+    }
+
+    @Override
+    public BanquetAddDTO findBanquetById(int id) {
+        BanquetOrder banquetOrder = banquetOrderDAO.findOne(id);
+        return new BanquetAddDTO(
+                banquetOrder.getOrderId(),
+                banquetOrder.getDate(),
+                banquetOrder.getHallId(),
+                banquetOrder.getNoOfPlates(),
+                banquetOrder.getMenu().getMenuId()
+        );
+    }
+
+    @Override
+    public void whenBanquetCancelled(int id) {
+        BanquetOrder banquet = banquetOrderDAO.findOne(id);
+        Iterable<KitchenFoodOrders> orders = kitchenFoodOrderDAO.findAllByExpectedDateAndDescriptionStartsWith(banquet.getDate(),KitchenUtil.banquetFoodOrderType);
+
+        for (KitchenFoodOrders item: orders){
+            String[] strArry = item.getDescription().split(KitchenUtil.stringSeperator);
+
+            if (id == Integer.parseInt(strArry[2])){
+                kitchenFoodOrderDAO.delete(item.getOrderId());
+                InventoryNotice inventoryNotice = inventoryNoticeDAO.findOne(Integer.parseInt(strArry[1]));
+
+                if (!inventoryNotice.isState()){
+                    if (item.getAmount() < inventoryNotice.getOrderQty()){
+                        inventoryNotice.setOrderQty(inventoryNotice.getOrderQty()-item.getAmount());
+                        inventoryNoticeDAO.save(inventoryNotice);
+                    } else if (item.getAmount() == inventoryNotice.getOrderQty()){
+                        inventoryNoticeDAO.delete(inventoryNotice.getNoticeId());
+                    }
+                }
+
+            }
+        }
+    }
+
+    @Override
+    public List<RestaurantFoodOrderDTO> getOnlineRestaurantFoodOrdersByDate(Date date) {
+
+        List<RestaurantFoodOrderDTO> returnList = new ArrayList<>();
+        Iterable<RestaurantOnlineOrder> onlineOrders;
+        int index = 0;
+        int oldOrderId = 0;
+
+        //get online orders
+        try {
+            onlineOrders = onlineOrderDAO.findAll();
+            for (RestaurantOnlineOrder item: onlineOrders){
+
+                Date comp = item.getDate();
+
+                if (date.getYear() == comp.getYear() && date.getMonth() == comp.getMonth() && date.getDate() == comp.getDate()){
+
+                    Iterable<RestaurantOnlineOrderDetails> onlineOrderDetails = onlineOrderDetailsDAO.findAllByRestaurantOnlineOrderEquals(item);
+                    for (RestaurantOnlineOrderDetails detail: onlineOrderDetails){
+                        //check and set state
+                        if (item.getOrderState() == null || item.getOrderState().equals(KitchenUtil.pendingState) || item.getOrderState().equals(KitchenUtil.processingState)){
+                            item.setOrderState(KitchenUtil.pendingState);
+
+                            //set button
+                            String button = KitchenUtil.pendingState;
+                            if (index == 0){
+                                button = KitchenUtil.accept;
+                            }
+
+                            //add item to the list
+                            RestaurantFoodOrderDTO saveItem = new RestaurantFoodOrderDTO(
+                                    detail.getFoodItem().getItemId(),
+                                    item.getOrderId(),
+                                    KitchenUtil.onlineType,
+                                    detail.getQuantity(),
+                                    detail.getFoodItem().getName(),
+                                    item.getOrderState(),
+                                    button,
+                                    index
+                            );
+
+
+                            if (index > 0){
+                                saveItem.setOldOrderId(oldOrderId);
+                                oldOrderId = saveItem.getOrderId();
+                            } else {
+                                saveItem.setOldOrderId(0);
+                                oldOrderId = saveItem.getOrderId();
+                            }
+
+                            returnList.add(saveItem);
+
+                            index++;
+                        }
+
+                    }
+                }
+
+
+            }
+        } catch (NullPointerException e){
+
+        }
+
+        return returnList;
+    }
+
+    @Override
+    public List<RestaurantFoodOrderDTO> getCounterRestaurantFoodOrdersByDate(Date date) {
+
+        List<RestaurantFoodOrderDTO> returnList = new ArrayList<>();
+        Iterable<RestaurantCounterOrder> counterOrders;
+
+        int index = 0;
+        int oldOrderId = 0;
+
+        //get counter orders
+        try {
+            counterOrders = counterOrderDAO.findAll();
+
+            for (RestaurantCounterOrder item: counterOrders){
+
+                Date comp = item.getDate();
+                if (date.getYear() == comp.getYear() && date.getMonth() == comp.getMonth() && date.getDate() == comp.getDate()){
+
+                    Iterable<RestaurantCounterOrderDetail> counterOrderDetails = restaurantCounterOrderDetail.findAllByRestaurantCounterOrderEquals(item);
+                    for (RestaurantCounterOrderDetail detail: counterOrderDetails){
+                        //check and set state
+                        if (item.getOrderState() == null || item.getOrderState().equals(KitchenUtil.pendingState) || item.getOrderState().equals(KitchenUtil.processingState)){
+                            item.setOrderState(KitchenUtil.pendingState);
+                            //set button
+                            String button = KitchenUtil.pendingState;
+                            if (index == 0){
+                                button = KitchenUtil.accept;
+                            }
+
+                            //add item to the list
+                            RestaurantFoodOrderDTO saveItem = new RestaurantFoodOrderDTO(
+                                    detail.getFoodItem().getItemId(),
+                                    item.getOrderId(),
+                                    KitchenUtil.counterType,
+                                    detail.getQuantity(),
+                                    detail.getFoodItem().getName(),
+                                    item.getOrderState(),
+                                    button,
+                                    index
+                            );
+
+                            if (index > 0){
+                                saveItem.setOldOrderId(oldOrderId);
+                                oldOrderId = saveItem.getOrderId();
+                            } else {
+                                saveItem.setOldOrderId(0);
+                                oldOrderId = saveItem.getOrderId();
+                            }
+
+                            returnList.add(saveItem);
+
+                            index++;
+                        }
+
+                    }
+
+                }
+            }
+        } catch (NullPointerException e){
+
+        }
+
+        return returnList;
+    }
+
+    @Override
+    public boolean takeRestaurantOrder(RestaurantFoodOrderDTO order) {
+
+        //check order type
+        if (order.getType().equals(KitchenUtil.onlineType)){
+            RestaurantOnlineOrder onlineOrder = onlineOrderDAO.findOne(order.getOrderId());
+
+            //check state
+            if (!onlineOrder.getOrderState().equals(KitchenUtil.canceledState)){
+                onlineOrder.setOrderState(KitchenUtil.pendingState);
+                onlineOrder.setOrderId(order.getOrderId());
+                onlineOrderDAO.save(onlineOrder);
+                return true;
+            } else {
+                return false;
+            }
+        } else if (order.getType().equals(KitchenUtil.counterType)){
+            RestaurantCounterOrder counterOrder = counterOrderDAO.findOne(order.getOrderId());
+
+            //check state
+            if (!counterOrder.getOrderState().equals(KitchenUtil.canceledState)){
+                counterOrder.setOrderState(KitchenUtil.processingState);
+                counterOrderDAO.save(counterOrder);
+                return true;
+            } else {
+                return false;
+            }
+        }
+        return false;
+    }
+
+    @Override
+    public void confirmRestaurantOrder(RestaurantFoodOrderDTO orderDTO) {
+
+        if (orderDTO.getType().equals(KitchenUtil.onlineType)){
+            RestaurantOnlineOrder onlineOrder = onlineOrderDAO.findOne(orderDTO.getOrderId());
+            onlineOrder.setOrderState(KitchenUtil.finishedState);
+            onlineOrderDAO.save(onlineOrder);
+
+        } else if (orderDTO.getType().equals(KitchenUtil.counterType)){
+            RestaurantCounterOrder counterOrder = counterOrderDAO.findOne(orderDTO.getOrderId());
+            counterOrder.setOrderState(KitchenUtil.finishedState);
+            counterOrderDAO.save(counterOrder);
+        }
+
     }
 
 
