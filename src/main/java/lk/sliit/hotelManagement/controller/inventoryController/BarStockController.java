@@ -53,6 +53,6 @@ public class BarStockController {
         inventoryBO.saveOrderNotice(noticeDTO);
 
 
-        return "barStock";
+        return "redirect:/barStock";
     }
 }

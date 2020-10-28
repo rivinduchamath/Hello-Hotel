@@ -568,5 +568,24 @@ public class InventoryBOImpl implements InventoryBO {
         return inventoryOrderDTOS;
     }
 
+    @Override
+    public List<InventoryOrderDTO> findInventoryBillToday() {
+        List<InventoryOrderDTO> inventoryOrderDTOS = new ArrayList<>();
+        Iterable<InventoryOrder> iterable =
+                inventoryOrderDAO.findAllByDateEquals(new Date());
+
+        for (InventoryOrder reservation : iterable) {
+            inventoryOrderDTOS.add(new InventoryOrderDTO(
+                    reservation.getOrderId(),
+                    reservation.getDate(),
+                    reservation.getPrice(),
+                    reservation.getQuantity(),
+                    reservation.getSupplier().getName(),
+                    reservation.getInventory().getText()
+            ));
+        }
+        return inventoryOrderDTOS;
+    }
+
 
 }
