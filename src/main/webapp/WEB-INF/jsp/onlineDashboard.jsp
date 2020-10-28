@@ -102,19 +102,19 @@
                                         <strong>Italian<span>Fettuccine</span></strong>
                                         <b>Dish of the Day</b>
                                         <p>
-											<span>Lorem ipsum dolamet consectetur<br>
-											adipisicing elit, sed do eiusmod tempor aliqua enim ad minim veniam, quis nosinci- didunt ut labore et dolore.</span>
+											<span>For Italian Food Lovers<br>
+											Try some delicious italian fettuccine made by our food specialists</span>
                                         </p>
                                     </div>
                                 </li>
                                 <li>
                                     <img src="../../onlineRestaurant/restaurant/images/img2.jpg" alt="">
                                     <div class="banner">
-                                        <strong>succulent<span>meat</span></strong>
+                                        <strong>Succulent<span>meat</span></strong>
                                         <b>Dish of the Day</b>
                                         <p>
-											<span>Lorem ipsum dolamet consectetur <br>
-											adipisicing elit, sed do eiusmod tempor aliqua enim ad minim veniam, quis nosinci- didunt ut labore et dolore.</span>
+											<span>For meat lovers<br>
+											Try some spicy and sweet meat with some baked potatoes</span>
                                         </p>
                                     </div>
                                 </li>
@@ -124,8 +124,8 @@
                                         <strong>French-Style<span>Tartlet</span></strong>
                                         <b>Dish of the Day</b>
                                         <p>
-											<span>Lorem ipsum dolamet consectetur <br>
-											adipisicing elit, sed do eiusmod tempor aliqua enim ad minim veniam, quis nosinci- didunt ut labore et dolore.</span>
+											<span>For French Food Lovers<br>
+											Try some Tartlets with cheese sauce with you family</span>
                                         </p>
                                     </div>
                                 </li>
@@ -147,7 +147,7 @@
                                 <div>
                                     <h2>Welcome <span>to Us!</span></h2>
                                     <figure><img src="../../onlineRestaurant/restaurant/images/page1_img1.jpg" alt="" ></figure>
-                                    <p class="pad_bot1">This <a href="http://blog.templatemonster.com/2011/08/01/free-website-template-jquery-slider-typography-restaurant/" class="list_1">Deliccio Template</a> goes with two packages – with PSD source files and without them. PSD source is available for free for the registered members.</p>
+                                    <p class="pad_bot1">Hotel <a href="http://blog.templatemonster.com/2011/08/01/free-website-template-jquery-slider-typography-restaurant/" class="list_1">Hareesha</a> Resort offers accommodations in Yakkalamulla with free WiFi and a spa center. The resort has an outdoor pool and views of the pool, and guests can enjoy a drink at the bar. Free private parking is available on site.</p>
                                     <a href="#" class="button1">Read More</a>
                                 </div>
                             </div>
@@ -157,7 +157,7 @@
                                 <div>
                                     <h2>About <span>Us</span></h2>
                                     <figure><img src="../../onlineRestaurant/restaurant/images/page1_img2.jpg" alt="" ></figure>
-                                    <p class="pad_bot1">This is one of <a href="http://blog.templatemonster.com/free-website-templates/" target="_blank">free website templates</a> created by TemplateMonster.com team. This website template is optimized for 1024x768 screen res.</p>
+                                    <p class="pad_bot1">For more information: <br>Visit: <a href="/home"> Hareesha Online Reservations</a> <br> Email: hotelhareesha@gmail.com</a> <br> call: 011 -2976284 <br> fax: 011-2976284 <br> customer hotline: 077-7890438</p>
                                     <a href="#" class="button1">Read More</a>
                                 </div>
                             </div>
@@ -168,10 +168,10 @@
                                     <h2>Our <span>Services</span></h2>
                                     <figure><img src="../../onlineRestaurant/restaurant/images/page1_img3.jpg" alt="" ></figure>
                                     <ul class="list1 pad_bot1">
-                                        <li><a href="#">Lorem ipsum dolor sit amet</a></li>
-                                        <li><a href="#">Consectetur adipisicing elit sed</a></li>
-                                        <li><a href="#">Eiusmod tempor incididunt labore</a></li>
-                                        <li><a href="#">Ut enim ad minim veniam</a></li>
+                                        <li><a href="#">Hall reservations for your special days</a></li>
+                                        <li><a href="#">Vacation facility with our great customer service</a></li>
+                                        <li><a href="#">Delicious food to your doorsteps</a></li>
+                                        <li><a href="#">Reserve your tables for breakfast, lunch & dinner</a></li>
                                     </ul>
                                     <a href="#" class="button1">Read More</a>
                                 </div>
@@ -194,15 +194,15 @@
                             <div class="wrapper pad_bot2">
                                 <figure class="left marg_right1"><img src="../../onlineRestaurant/restaurant/images/page1_img4.jpg" alt=""></figure>
                                 <p>
-                                    <a href="#">20.07. Sed perspiciatis</a><br>
-                                    Unde omnis iste natus error volu accusantium doloremque.
+                                    <a href="#">20.11.14. Happy Halloween</a><br>
+                                    Halloween Party with Halloween Special Foods
                                 </p>
                             </div>
                             <div class="wrapper">
                                 <figure class="left marg_right1"><img src="../../onlineRestaurant/restaurant/images/page1_img5.jpg" alt=""></figure>
                                 <p>
-                                    <a href="#">18.07. Quasi architecto</a><br>
-                                    Beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem.
+                                    <a href="#">20.12.25. Merry Christmas</a><br>
+                                    Christmas Special Food with Loving Santa
                                 </p>
                             </div>
                         </div></div>
@@ -210,15 +210,15 @@
                             <div class="wrapper pad_bot2">
                                 <figure class="left marg_right1"><img src="../../onlineRestaurant/restaurant/images/page1_img6.jpg" alt=""></figure>
                                 <p>
-                                    <a href="#">11.07. Laudaum totam</a><br>
-                                    Rem aperiam, eaque ipsa quae ab illo inventore veritatis.
+                                    <a href="#">20.11.06.Anniversary</a><br>
+                                    Hotel Hareesha's Anniversary Party.
                                 </p>
                             </div>
                             <div class="wrapper">
                                 <figure class="left marg_right1"><img src="../../onlineRestaurant/restaurant/images/page1_img7.jpg" alt=""></figure>
                                 <p>
-                                    <a href="#">09.07. Volups asrnatur</a> <br>
-                                    Aut odit aut fugit, sed quia consequuntur magni dolores eos qui.
+                                    <a href="#">20.12.31. Happy New Year</a> <br>
+                                    Start your New year With Our Food.
                                 </p>
                             </div>
                         </div></div>
@@ -230,22 +230,22 @@
                         <li class="row">
                             <span>1</span>
                             <p>
-                                “Remperam eaquepsa quae abillo inventore vertatis.”
+                                “Very Friendly staff and very fast service in any circumstances”
                                 <img src="../../onlineRestaurant/restaurant/images/signature1.jpg" alt="">
                             </p>
                         </li>
                         <li class="row">
                             <span>2</span>
                             <p>
-                                “Quasi arctecto beatae vitae dicta sunt explicabo.”
+                                “Nice location and staff considering about customer satisfaction always”
                                 <img src="../../onlineRestaurant/restaurant/images/signature2.jpg" alt="">
                             </p>
                         </li>
                         <li class="row">
                             <span>3</span>
                             <p>
-                                “Nemo enim ipsam volupta<br>
-                                tem quia voluptas.”<img src="../../onlineRestaurant/restaurant/images/signature3.jpg" alt="">
+                                “Cool and carlm place to visit." <br>
+                                <img src="../../onlineRestaurant/restaurant/images/signature3.jpg" alt="">
                             </p>
                         </li>
                     </ul>
