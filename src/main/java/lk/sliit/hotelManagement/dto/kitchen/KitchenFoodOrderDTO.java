@@ -13,15 +13,12 @@ public class KitchenFoodOrderDTO {
     private Date expectedDate;
 
     String itemName;
+    boolean state;
+    int menuId;
+    int banquetId;
+    String stateStr;
 
     public KitchenFoodOrderDTO() {
-    }
-
-    public KitchenFoodOrderDTO(int foodItemId, String description, double amount, Date expectedDate) {
-        this.foodItemId = foodItemId;
-        this.description = description;
-        this.amount = amount;
-        this.expectedDate = expectedDate;
     }
 
     public KitchenFoodOrderDTO(int orderId, int foodItemId, String description, double amount, Date expectedDate) {
@@ -29,6 +26,59 @@ public class KitchenFoodOrderDTO {
         this.foodItemId = foodItemId;
         this.description = description;
         this.amount = amount;
+        this.expectedDate = expectedDate;
+    }
+
+    public KitchenFoodOrderDTO(int orderId, int foodItemId, String description, double amount, Date expectedDate,
+                               String itemName, boolean state, int menuId, int banquetId) {
+        this.orderId = orderId;
+        this.foodItemId = foodItemId;
+        this.description = description;
+        this.amount = amount;
+        this.expectedDate = expectedDate;
+        this.itemName = itemName;
+        this.state = state;
+        this.menuId = menuId;
+        this.banquetId = banquetId;
+    }
+
+    public int getOrderId() {
+        return orderId;
+    }
+
+    public void setOrderId(int orderId) {
+        this.orderId = orderId;
+    }
+
+    public int getFoodItemId() {
+        return foodItemId;
+    }
+
+    public void setFoodItemId(int foodItemId) {
+        this.foodItemId = foodItemId;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public double getAmount() {
+        return amount;
+    }
+
+    public void setAmount(double amount) {
+        this.amount = amount;
+    }
+
+    public Date getExpectedDate() {
+        return expectedDate;
+    }
+
+    public void setExpectedDate(Date expectedDate) {
         this.expectedDate = expectedDate;
     }
 
@@ -40,45 +90,35 @@ public class KitchenFoodOrderDTO {
         this.itemName = itemName;
     }
 
-    public int getOrderId() {
-        return orderId;
+    public boolean isState() {
+        return state;
     }
 
-    public int getFoodItemId() {
-        return foodItemId;
+    public void setState(boolean state) {
+        this.state = state;
     }
 
-    public String getDescription() {
-        return description;
+    public int getMenuId() {
+        return menuId;
     }
 
-    public double getAmount() {
-        return amount;
+    public void setMenuId(int menuId) {
+        this.menuId = menuId;
     }
 
-    public Date getExpectedDate() {
-        return expectedDate;
+    public int getBanquetId() {
+        return banquetId;
     }
 
-    public void setOrderId(int orderId) {
-        this.orderId = orderId;
+    public void setBanquetId(int banquetId) {
+        this.banquetId = banquetId;
     }
 
-    public void setFoodItemId(int foodItemId) {
-        this.foodItemId = foodItemId;
+    public String getStateStr() {
+        return stateStr;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setStateStr(String stateStr) {
+        this.stateStr = stateStr;
     }
-
-    public void setAmount(double amount) {
-        this.amount = amount;
-    }
-
-    public void setExpectedDate(Date expectedDate) {
-        this.expectedDate = expectedDate;
-    }
-
-
 }

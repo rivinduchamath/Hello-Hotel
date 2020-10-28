@@ -32,34 +32,36 @@ public class OnlineCustomer {
     OnlineCustomerBO onlineCustomerBO;
 
 
-    @GetMapping("/onlineCustomer")
+    @GetMapping("/onlineCustomer")//Load Online Customer Page
     public String loadForm_validationSaveMode(Model model, HttpServletRequest request) {
-        List<OnlineCustomerLocationsDTO> tableList = onlineCustomerBO.findDeliveryLocation();
+        List<OnlineCustomerLocationsDTO> tableList = onlineCustomerBO.findDeliveryLocation(); //Find Delivery
         model.addAttribute("loadLocationType", tableList);
         return "onlineCustomer";
     }
 
-    @PostMapping("/onlineCustomerSave")
+    @PostMapping("/onlineCustomerSave")//Save SignUp
     public String saveForm(@ModelAttribute OnlineCustomerDTO onlineCustomerDTO) {
 
-        try {
+        try {//Auto Generate Id
             OnlineCustomerDTO top = onlineCustomerBO.findHighestOnlineCustomerId();
             int x = (top.getOnlineCustomerId()) + 1;
             onlineCustomerDTO.setOnlineCustomerId((x));
         } catch (NullPointerException e) {
             onlineCustomerDTO.setOnlineCustomerId((1));
         }
-
+//Save customer
         onlineCustomerBO.saveOnlineCustomer(onlineCustomerDTO);
         return "redirect:/onlineCustomer";
     }
 
-
+//SignIn Page
     @PostMapping("/onlineSignIn")
     public String onlineTableDetails(@ModelAttribute OnlineCustomerDTO onlineCustomer, Model model, HttpServletRequest request) {
         try {
+            //Check validations
             OnlineCustomerDTO onlineCustomerDTO = onlineCustomerBO.findByUserNameAndPassword(onlineCustomer.getUserName(), onlineCustomer.getPassword());
             if (onlineCustomerDTO != null) {
+                //Show Logged User Name
                 request.getSession().setAttribute("userId", onlineCustomerDTO.getOnlineCustomerId());
                 return "redirect:/onlineDashboard";
             } else {//If User name And Password is not match
@@ -71,12 +73,12 @@ public class OnlineCustomer {
 
     }
 
-    @PostMapping("/sendMailFromOnline")
+    @PostMapping("/sendMailFromOnline")//Send Mail from onlineContact Page
     public String sendMailFromOnline( @ModelAttribute MailDTO mailDTO, HttpSession session,Model model) {
 
         try {
             int onlineCustomerId = Integer.parseInt(session.getAttribute("userId").toString());
-            OnlineCustomerDTO onlineCustomerDTO = onlineCustomerBO.findOne(onlineCustomerId);
+            OnlineCustomerDTO onlineCustomerDTO = onlineCustomerBO.findOne(onlineCustomerId);//Find Customer From cookie
             mailDTO.setCustomerAddress(onlineCustomerDTO.getAddress());
             mailDTO.setCustomerName(onlineCustomerDTO.getName());
             mailDTO.setEmail(onlineCustomerDTO.getEmail());
@@ -100,14 +102,14 @@ public class OnlineCustomer {
         return "onlineDashboard";
     }
 
-    @GetMapping("/addLocation")
+    @GetMapping("/addLocation")//Add Location Page
     public String addCustomerLocations(Model model) {
         model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
         List<OnlineCustomerLocationsDTO> tableList = onlineCustomerBO.findDeliveryLocation();
         model.addAttribute("loadDeliveryLocations", tableList);
         return "addLocation";
     }
-    @GetMapping(value = "deleteLocation/{locationId}")
+    @GetMapping(value = "deleteLocation/{locationId}")//Delete location
     public void deleteTable(@PathVariable("locationId") int locationId, HttpServletResponse response) {
         onlineCustomerBO.deleteLocation(locationId);
         try {
@@ -122,7 +124,7 @@ public class OnlineCustomer {
         try {
             OnlineCustomerLocationsDTO tableDTO1 = onlineCustomerBO.findHighestOnlineLocationId();
             OnlineCustomerLocationsDTO tableDTO2 = null;
-            try {
+            try {//Generate Id
                 tableDTO2 = onlineCustomerBO.findOnlineLocationbyId(onlineCustomerLocationsDTO.getLocationId());
             } catch (NullPointerException d) {
                 int maxId = (tableDTO1.getLocationId());

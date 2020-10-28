@@ -75,7 +75,7 @@ public class RestaurantController {
             String yo[] = arr.split(" ");
             int count = 0;
             RestaurantCounterOrderDetailDTO itm = new RestaurantCounterOrderDetailDTO();
-            for (String str : yo) {
+            for (String str : yo) {//Read String and add to list
                 if (count == 0) {
                     itm = new RestaurantCounterOrderDetailDTO();
                     itm.setFoodItem(Integer.parseInt(str));

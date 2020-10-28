@@ -11,9 +11,6 @@ public interface KitchenDAO extends CrudRepository<FoodItem,Integer> {
 
     Iterable<FoodItem> findAllByCategoryEquals(String restaurant);
 
-    @Query("from FoodItem where category!=?1")
-    Iterable<FoodItem> findOnlyFoods(String category);
-
     @Query(value = "from FoodItem where category=?1")
     Iterable<FoodItem> findAllIngredients(String category);
 }

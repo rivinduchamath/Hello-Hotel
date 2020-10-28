@@ -1,5 +1,6 @@
 package lk.sliit.hotelManagement.service.custom;
 
+import lk.sliit.hotelManagement.dto.banquet.BanquetAddDTO;
 import lk.sliit.hotelManagement.dto.banquet.LimitDTO;
 import lk.sliit.hotelManagement.dto.inventory.InventoryDTO;
 import lk.sliit.hotelManagement.dto.inventory.InventoryNoticeDTO;
@@ -68,7 +69,7 @@ public interface KitchenBO extends SuperBO {
 
     List<KitchenFoodOrderDTO> loadKitchenFoodOrderBydateAndDescription(Date date, String description);
 
-    List<KitchenFoodOrderDTO> loadKitchenFoodOrderByDescription(String description);
+    List<KitchenFoodOrderDTO> findAllKitchenFoodOrders();
 
 
 
@@ -82,13 +83,32 @@ public interface KitchenBO extends SuperBO {
 
 
 
-    void saveInventoryNotice(KitchenInventoryNoticeDTO inventoryNoticeDTO);
+    int saveInventoryNotice(InventoryNoticeDTO inventoryNoticeDTO);
 
-    KitchenInventoryNoticeDTO findInventoryNotice(Date date, int foodItemId);
+    void deleteInventoryNoticeById(int id);
+
+    KitchenInventoryNoticeDTO findInventoryNotice(Date date, int foodItemId, boolean state);
 
     int findMaxKitchenOrderId();
 
+    int findInventoryNoticeId();
+
     List<InventoryDTO> findKitchenInventory(String s);
 
+    void whenNoticeConfirmed(int noticeId);
+
     KitchenFoodOrderDTO getExistingKitchenFoodOrder(int foodItemId, Date expectedDate, String description);
+
+
+    BanquetAddDTO findBanquetById(int id);
+
+    void whenBanquetCancelled(int id);
+
+    List<RestaurantFoodOrderDTO> getOnlineRestaurantFoodOrdersByDate(java.util.Date date);
+
+    List<RestaurantFoodOrderDTO> getCounterRestaurantFoodOrdersByDate(java.util.Date date);
+    
+    boolean takeRestaurantOrder(RestaurantFoodOrderDTO order);
+
+    void confirmRestaurantOrder(RestaurantFoodOrderDTO orderDTO);
 }

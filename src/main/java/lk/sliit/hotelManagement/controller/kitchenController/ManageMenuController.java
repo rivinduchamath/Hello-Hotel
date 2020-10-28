@@ -24,9 +24,13 @@ public class ManageMenuController {
     @Autowired
     KitchenBO kitchenBO;
 
+    String alertMsg = KitchenUtil.defaultAlert;
+
     @PostMapping("/FoodPacks")
     public String addFoodPack(Model model, @ModelAttribute MenuDTO menuDTO) {
         model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
+        model.addAttribute("defaultAlert",KitchenUtil.defaultAlert);
+        model.addAttribute("alert",alertMsg);
         model.addAttribute("menuCategories", KitchenUtil.menuCategories);
 
         try {
@@ -53,6 +57,8 @@ public class ManageMenuController {
 
     @GetMapping("/manageFoodPacks")
     public String foodPackPage(Model model) {
+        model.addAttribute("defaultAlert",KitchenUtil.defaultAlert);
+        model.addAttribute("alert",alertMsg);
         model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
         List<MenuDTO> menuItemList = kitchenBO.findMenuItems();
         List<FoodItemDTO> foodItemDTOList = kitchenBO.findFoodItems();
@@ -66,6 +72,8 @@ public class ManageMenuController {
     @GetMapping(value = "/deleteFoodPackage/{menuId}")
     public void deleteMenuItem(Model model, @PathVariable("menuId") int menuItemId, HttpServletResponse response) {
         model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
+        model.addAttribute("defaultAlert",KitchenUtil.defaultAlert);
+        model.addAttribute("alert",alertMsg);
         model.addAttribute("menuCategories", KitchenUtil.menuCategories);
 
         try {
@@ -86,6 +94,8 @@ public class ManageMenuController {
     @GetMapping("/editFoodPack")
     public String editFoodPack(Model model, @ModelAttribute MenuDTO menuDTO) {
         model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
+        model.addAttribute("defaultAlert",KitchenUtil.defaultAlert);
+        model.addAttribute("alert",alertMsg);
         model.addAttribute("menuItem", kitchenBO.findMenuItemById(menuDTO.getMenuId()));
 
         List<FoodItemDTO> foodItemDTOS = kitchenBO.findFoodItems();
@@ -107,6 +117,8 @@ public class ManageMenuController {
     @GetMapping("/addItemToPack")
     public String addItemToPack(Model model, @ModelAttribute MenuDetailsDTO menuDTO) {
         model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
+        model.addAttribute("defaultAlert",KitchenUtil.defaultAlert);
+        model.addAttribute("alert",alertMsg);
         model.addAttribute("menuItem", kitchenBO.findMenuItemById(menuDTO.getMenuID()));
         kitchenBO.saveFoodDetail(menuDTO);
 
@@ -129,6 +141,8 @@ public class ManageMenuController {
     @GetMapping(value = "/removeItemFromPack")
     public String deleteFoodItemFromPack(Model model, @ModelAttribute MenuDetailsDTO menuDetailsDTO) {
         model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
+        model.addAttribute("defaultAlert",KitchenUtil.defaultAlert);
+        model.addAttribute("alert",alertMsg);
 
         MenuDTO menuDTO = kitchenBO.findMenuItemById(menuDetailsDTO.getMenuID());
         model.addAttribute("menuItem", menuDTO);
