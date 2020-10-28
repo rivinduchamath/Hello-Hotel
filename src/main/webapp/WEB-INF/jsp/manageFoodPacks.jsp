@@ -116,7 +116,7 @@
                                                 <label class="label-align">Unit Price: <span class="required">* &nbsp; &nbsp; &nbsp;</span>
                                                 </label>
                                                 <div class="">
-                                                    <input class="form-control" id="unitPrice" name="unitPrice"
+                                                    <input class="form-control" id="unitPrice" name="unitPrice" value="0"
                                                            required="required"
                                                            type="number">
                                                 </div>
@@ -177,7 +177,6 @@
                                                         <th>Name</th>
                                                         <th>Type</th>
                                                         <th>Unit Price</th>
-                                                        <th>Image</th>
                                                         <th></th>
 
                                                     </tr>
@@ -190,7 +189,6 @@
                                                             <td>${item.name}</td>
                                                             <td>${item.type}</td>
                                                             <td>${item.unitPrice}</td>
-                                                            <td>${item.picture}</td>
                                                             <td>
                                                                 <form action="editFoodPack" >
                                                                     <input type="hidden" name ="menuId"  value="${item.menuId}">
