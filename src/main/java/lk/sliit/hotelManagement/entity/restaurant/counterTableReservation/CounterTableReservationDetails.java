@@ -32,6 +32,10 @@ public class CounterTableReservationDetails {
     public CounterTableReservationDetails() {
     }
 
+    public CounterTableReservationDetails(int counterTableReserveId, int tableId) {
+        this.counterTableReservationDetailsPK = new CounterTableReservationDetailsPK(counterTableReserveId,tableId);
+    }
+
     public CounterTableReservationDetailsPK getCounterTableReservationDetailsPK() {
         return counterTableReservationDetailsPK;
     }

@@ -28,5 +28,7 @@ public interface SalaryDAO extends CrudRepository<Salary,Integer> {
     @Query("SELECT SUM(m.hours) FROM Salary m where  m.employeeID.userId = :userId")
     double findAllByDateBetweenAndEmployeeID_UserIdEqual(@Param("userId")int userId);
 
+
+
     // void findSalariesByDateMonthAndEmployeeIDEquals(int m, int employeeID);
 }
