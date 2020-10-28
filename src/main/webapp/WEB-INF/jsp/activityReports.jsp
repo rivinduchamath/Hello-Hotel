@@ -122,9 +122,24 @@
             <div class="">
                 <div class="page-title">
                     <div class="title_left">
-                        <h3>Reservation Dashboard
+                        <h3>Daily Activity Reports
                             <small></small>
                         </h3>
+
+                        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                            <div class="col-6 col-sm-6 col-md-8 col-lg-8 col-xl-8">
+                                <a href="/reservation">
+                                    <button style="background: #828DFF none repeat scroll 0 0;border: medium none;color: #fff;
+                                font-size: 14px;font-weight: 700;letter-spacing: 0;padding: 8px 15px;text-transform: uppercase;"
+                                            type="button" class="btnq2 btn"><i
+                                            class="">
+                                        Back</i>
+                                    </button>
+                                </a>
+
+                            </div>
+                        </div>
+
                     </div>
 
                     <div class="title_right">
@@ -214,9 +229,21 @@
                         <div class="containerx">
                             <a style=" font-family: Playfair Display, Georgia, Times New Roman, serif;
                              background-color:#3d495f; color: #ffffff;font-weight: bolder"
-                               href="/home" class="btnq"><h2
+                               href="/banquetDelete" class="btnq"><h2
                                     style="position: relative; letter-spacing: 1px;
-                                     margin-top: 30px">Online Reservation</h2></a>
+                                     margin-top: 30px">Banquet Report</h2></a>
+                        </div>
+                        <br>
+                    </div>
+
+
+                    <div class="col-sm-12 col-md-4 col-lg-3 col-xl-3">
+                        <div class="containerx">
+                            <a style=" font-family: Playfair Display, Georgia, Times New Roman, serif;
+                             background-color:#3d495f; color: #ffffff;font-weight: bolder"
+                               href="/kitchenDailyActivityReport" class="btnq"><h2
+                                    style="position: relative; letter-spacing: 1px;
+                                     margin-top: 30px">Kitchen Report</h2></a>
                         </div>
                         <br>
                     </div>
@@ -225,9 +252,9 @@
                         <div class="containerx">
                             <a style=" font-family: Playfair Display, Georgia, Times New Roman, serif;
                              background-color:#3d495f; color: #ffffff;font-weight: bolder"
-                               href="/customerRegistration" class="btnq"><h2
+                               href="/houseKeepingReport" class="btnq"><h2
                                     style="position: relative; letter-spacing: 1px;
-                                     margin-top: 30px">Counter Reservation</h2></a>
+                                     margin-top: 30px">House Keeping Report</h2></a>
                         </div>
                         <br>
                     </div>
@@ -236,88 +263,15 @@
                         <div class="containerx">
                             <a style=" font-family: Playfair Display, Georgia, Times New Roman, serif;
                              background-color:#3d495f; color: #ffffff;font-weight: bolder"
-                               href="/customerCheckOut" class="btnq"><h2
+                               href="/restaurantDailyActivityReport" class="btnq"><h2
                                     style="position: relative; letter-spacing: 1px;
-                                     margin-top: 30px">Check-Out</h2></a>
-                        </div>
-                        <br>
-                    </div>
-
-                    <div class="col-sm-12 col-md-4 col-lg-3 col-xl-3">
-                        <div class="containerx">
-                            <a style=" font-family: Playfair Display, Georgia, Times New Roman, serif;
-                             background-color:#3d495f; color: #ffffff;font-weight: bolder"
-                               href="/activityReports" class="btnq"><h2
-                                    style="position: relative; letter-spacing: 1px;
-                                     margin-top: 30px">Daily Activity Reports</h2></a>
+                                     margin-top: 30px">Restaurant Report</h2></a>
                         </div>
                         <br>
                     </div>
 
                 </div>
 
-                <%--                    /////////////////////////////////////////////////////--%>
-                <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
-                    <div class="row" style="display: block;">
-                        <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
-                            <div class="x_panel">
-                                <div class="x_title">
-                                    <h2>Latest Reservations</h2>
-                                    <ul class="nav navbar-right panel_toolbox">
-                                        <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
-                                        </li>
-                                        <li class="dropdown">
-                                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
-                                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                                <a class="dropdown-item" href="#">Settings 1</a>
-                                                <a class="dropdown-item" href="#">Settings 2</a>
-                                            </div>
-                                        </li>
-                                        <li><a class="close-link"><i class="fa fa-close"></i></a>
-                                        </li>
-                                    </ul>
-                                    <div class="clearfix"></div>
-                                </div>
-                                <div class="x_content">
-
-                                    <table class="table">
-                                        <thead>
-                                        <tr>
-                                            <th>Reservation ID</th>
-                                            <th>Customer Name</th>
-                                            <th>Mobile</th>
-                                            <th>Email</th>
-                                            <th>No of Rooms</th>
-
-                                        </tr>
-                                        </thead>
-                                        <tbody>
-                                        <c:forEach items="${loadTable1}" var="e">
-                                            <tr>
-                                                <td>${e.orderId}</td>
-                                                <td>${e.name}</td>
-                                                <td>${e.contactNumber}</td>
-                                                <td>${e.date}</td>
-                                                <td>${e.hallId}</td>
-                                                <td>${e.noOfPlates}</td>
-                                                <td>${e.advanceFee}</td>
-                                                <td>${e.orderState}</td>
-                                                <td><a href="/updateBanquetStatus?orderId=${e.orderId}">
-                                                    <button value="" id="billBtn" name="billBtn" class="btn btn-outline-success" style="font-size: 12px;">confirmed</button>
-                                                </a></td>
-                                            </tr>
-                                        </c:forEach>
-
-                                        </tbody>
-                                    </table>
-
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-                <%--/////////////////////////////////////////////    /////////////////////////////////////////////--%>
 
 
 

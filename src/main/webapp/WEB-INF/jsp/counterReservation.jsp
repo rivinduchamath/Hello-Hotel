@@ -372,11 +372,11 @@
                                         <table id="datatable-buttons" class="table table-striped table-bordered">
                                             <thead class="thead-light">
                                             <tr>
-                                                <th>Room Price</th>
-                                                <th>Room Name</th>
+                                                <th>Room ID</th>
                                                 <th>Room Type</th>
-                                                <th>Room Status</th>
-                                                <th>Room Status</th>
+                                                <th>Room Price</th>
+                                                <th>Available From</th>
+                                                <th>Room Condition</th>
                                                 <th>Room Status</th>
 
                                             </tr>
@@ -385,11 +385,11 @@
                                             <tbody>
                                             <c:forEach items="${loadRooms}" var="a">
                                                 <tr>
+                                                    <td>${a.roomId2}</td>
+                                                    <td>${a.type}</td>
                                                     <td>${a.price}</td>
                                                     <td>${a.date}</td>
-                                                    <td>${a.roomId2}</td>
                                                     <td>${a.status}</td>
-                                                    <td>${a.type}</td>
                                                     <td class="cell100 column5"><button onclick="myFunction(${a.roomId2})"
                                                                                         type="button" class="book-now-btn">Book Now</button></td>
 

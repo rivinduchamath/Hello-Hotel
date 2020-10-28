@@ -1,4 +1,3 @@
-
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page import="java.util.Date" %>
@@ -12,6 +11,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="icon" type="image/png" href="../../images/icons/gdfgd.png"/>
+    <title>Employee Management </title>
 
     <!-- Bootstrap -->
     <link href="../../vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -24,20 +24,22 @@
     <link href="../../build/css/custom.min.css" rel="stylesheet">
 
     <%
-        SimpleDateFormat sdf = new SimpleDateFormat ( "dd-MM-yyyy" );
-        String date = sdf.format ( new Date ( ) );
+        SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
+        String date = sdf.format(new Date());
     %>
 </head>
 
 <body class="nav-md" style="cursor: pointer">
 <div class="container body">
     <div class="main_container">
+
+
         <!-- Side header -->
-        <jsp:include page="sideHeader.jsp" />
+        <jsp:include page="sideHeader.jsp"/>
         <!-- /Side header -->
 
         <!-- Top header -->
-        <jsp:include page="topHeader.jsp" />
+        <jsp:include page="topHeader.jsp"/>
         <!-- /Top header -->
 
         <!-- page content -->
@@ -45,8 +47,8 @@
             <div class="">
                 <div class="page-title">
                     <div class="title_left">
-                        <h3>Invoice
-                            <small>Submit Payment And Print Bill</small>
+                        <h3>Kitchen Report
+                            <small>Daily restaurant food order report.</small>
                         </h3>
                     </div>
 
@@ -141,8 +143,8 @@
                     <div class="col-md-12">
                         <div class="x_panel">
                             <div class="x_title">
-                                <h2>Invoice Print
-                                    <small>Employee invoice</small>
+                                <h2>Kitchen report Print
+                                    <small>Daliy restaurant food order report.</small>
                                 </h2>
                                 <ul class="nav navbar-right panel_toolbox">
                                     <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
@@ -167,7 +169,7 @@
                                     <div class="row">
                                         <div class="  invoice-header">
                                             <h1>
-                                                <i class="fa fa-globe"></i> Invoice.
+                                                <i class="fa fa-globe"></i> Daily restaurant food order report.
                                                 <small><%=date%>
                                                 </small>
                                             </h1>
@@ -178,18 +180,17 @@
                                         <div class="col-sm-4 invoice-col">
                                             From
                                             <address>
-                                                <strong>Chanuka Mullevidana</strong>
-                                                <br>Ambalangoda
-                                                <br>Galle, Sri Lanka
-                                                <br>Phone: 0767188591
-                                                <br>Email: it19166070@my.sliit.lk
+                                                <strong>${loggerName.name}</strong>
+                                                <br>${loggerName.address}
+                                                <br>${loggerName.email}
                                             </address>
                                         </div>
                                         <!-- /.col -->
                                         <div class="col-sm-4 invoice-col">
                                             To
                                             <address>
-                                                <strong>Rivindu Wijayarathna</strong>
+                                                <strong>Restaurant Manager</strong>
+                                                <br>Hotel Harisha
                                                 <br>Yakkalamulla
                                                 <br>Galle, Sri Lanka
                                                 <br>Phone: 0778799940
@@ -218,24 +219,28 @@
                                                 <thead>
 
                                                 <tr>
-                                                    <th>Item Id</th>
-                                                    <th>Item Name</th>
-                                                    <th>Order Qty</th>
-                                                    <th>Price</th>
-                                                    <th>Total Price</th>
 
+                                                    <th>Food Id</th>
+                                                    <th>Name</th>
+                                                    <th>Sold Quantity</th>
+                                                    <th>Unite Price</th>
+                                                    <th>Total</th>
+                                                    <th>Selling Rate Counter</th>
+                                                    <th>Selling Rate Online</th>
                                                 </tr>
                                                 </thead>
                                                 <tbody>
 
-                                                <c:forEach items="${listBarOrderDetails}" var="e">
+                                                <c:forEach items="${table}" var="e">
                                                     <tr>
 
-                                                        <td>${e.itemCode}</td>
-                                                        <td>${e.itemName}</td>
-                                                        <td>${e.qty}</td>
-                                                        <td>${e.itemPrice}</td>
-                                                        <td>${e.itemPrice * e.qty}</td>
+                                                        <td>${e.foodItemId}</td>
+                                                        <td>${e.foodName}</td>
+                                                        <td>${e.quantity}</td>
+                                                        <td>${e.price}</td>
+                                                        <td>${e.totalPrice}</td>
+                                                        <td>${e.sellingRateCounter}</td>
+                                                        <td>${e.sellingRateOnline}</td>
 
                                                     </tr>
                                                     <script>
@@ -252,45 +257,44 @@
                                     <!-- /.row -->
 
                                     <div class="row">
-                                        <!-- accepted payments column -->
+
                                         <div class="col-md-6">
-                                            <p class="lead">Payment Methods:</p>
-                                            <img src="../../images/visa.png" alt="Visa">
-                                            <img src="../../images/mastercard.png" alt="Mastercard">
-                                            <img src="../../images/american-express.png" alt="American Express">
-                                            <img src="../../images/paypal.png" alt="Paypal">
-                                            <p class="text-muted well well-sm no-shadow" style="margin-top: 10px;">
-                                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus
-                                                atque corporis culpa cupiditate dolore doloremque, dolores eaque eos
-                                                ipsam itaque laborum maiores porro quis recusandae, sapiente sequi
-                                                suscipit ullam ut!
-                                            </p>
-                                        </div>
-                                        <!-- /.col -->
-                                        <div class="col-md-6">
-                                            <p class="lead">Amount Due <%=date%></p>
+                                            <p class="lead">Report Summary of <%=date%></p>
                                             <div class="table-responsive">
                                                 <table class="table">
                                                     <tbody>
                                                     <tr>
-                                                        <th>Order Id:</th>
-                                                        <td>${listBarOrders}<span id="val4"></span></td>
+                                                        <th>Total sels:</th>
+
+                                                        <td>${totalItemsSold}<span id="val7"></span></td>
+
                                                     </tr>
                                                     <tr>
-                                                        <th style="width:50%">Tot Qty:</th>
-                                                        <td><span id="val2"></span></td>
+                                                        <th style="width:50%">Tot Counter sels:</th>
+                                                        <td><span id="val2">${totalCounter}</span></td>
                                                     </tr>
                                                     <tr>
-                                                        <th>Basic Tot:
-                                                            <small style="font-weight: bold"><span id="val9"></span>
+                                                        <th style="width:50%">Tot Counter Income:</th>
+                                                        <td><span id="val3">${totalCounterIncome}</span></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>Tot Online sels:
+                                                            <small style="font-weight: bold">${totalOnline}<span id="val9"></span>
                                                             </small>
                                                         </th>
-                                                        <td><span id="val3"></span></td>
+                                                        <td><span id="val4"></span></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>Tot Online Income:
+                                                            <small style="font-weight: bold">${totalOnlineIncome}<span id="val9"></span>
+                                                            </small>
+                                                        </th>
+                                                        <td><span id="val5"></span></td>
                                                     </tr>
 
                                                     <tr>
-                                                        <th>Total:</th>
-                                                        <td><span id="val"></span></td>
+                                                        <th>Total Income:</th>
+                                                        <td><span id="val6">${totalIncome}</span></td>
                                                     </tr>
                                                     </tbody>
                                                 </table>
@@ -304,16 +308,19 @@
                                     <div class="row no-print">
                                         <div class=" ">
 
-
+                                            <form method="POST" action=""
+                                                  name="deleteInvoiceSalary">
                                                 <input style="display: none" type="text" id="itemPay" name="SalaryId">
                                                 <ul class="nav navbar-right panel_toolbox">
                                                     <button type="submit" value="Register"
-                                                            style="font-weight: bold;color: white" ; id="name" onclick="window.print();"
-                                                            class="btn btn-success "> Submit Payment <i class="fa fa-file-image-o"></i>
+                                                            style="font-weight: bold;color: white" ; id="name"
+                                                            onclick="window.print();"
+                                                            class="btn btn-success "> Submit Report <i
+                                                            class="fa fa-file-image-o"></i>
                                                     </button>
                                                 </ul>
 
-
+                                            </form>
 
                                         </div>
                                     </div>
@@ -324,15 +331,15 @@
                 </div>
             </div>
         </div>
-        <!-- /page content -->
 
-
-
-
-        <!-- footer content -->
-        <jsp:include page="footer.jsp" />
+        <footer>
+            <div class="pull-right">
+                Copyright © Kitchen Management 2020.<a href="https://rivinduchamath.github.io/pro/">Created by Wusitha
+                Mullevidana</a>
+            </div>
+            <div class="clearfix"></div>
+        </footer>
         <!-- /footer content -->
-
     </div>
 </div>
 
@@ -358,7 +365,7 @@
 
 
     document.getElementById("val").innerHTML = "Rs: " + sumVal;
-    document.getElementById("val2").innerHTML = sumVal2;
+    document.getElementById("val2").innerHTML = "Rs: " + sumVal2;
     document.getElementById("val3").innerHTML = "Rs: " + sumVal3;
     document.getElementById("val5").innerHTML = "Rs: " + sumVal5;
     document.getElementById("val4").innerHTML = "Rs: " + sumVal4;

@@ -224,7 +224,7 @@
                                                     <th>Food Id</th>
                                                     <th>Name</th>
                                                     <th>Order Quantity</th>
-                                                    <th>Unite Price</th>
+                                                    <th>Unit Price</th>
                                                     <th>Total</th>
                                                 </tr>
                                                 </thead>
@@ -274,7 +274,7 @@
                                                 <table class="table">
                                                     <tbody>
                                                     <tr>
-                                                        <th>Tax:</th>
+                                                        <th>Bill Id:</th>
                                                         <td>${listCounterOrders}<span id="val4"></span></td>
                                                     </tr>
                                                     <tr>
@@ -282,7 +282,7 @@
                                                         <td><span id="val2"></span></td>
                                                     </tr>
                                                     <tr>
-                                                        <th>Basic Tot:
+                                                        <th>Unit Price:
                                                             <small style="font-weight: bold"><span id="val9"></span>
                                                             </small>
                                                         </th>
@@ -362,12 +362,12 @@
 
 
     document.getElementById("val").innerHTML = "Rs: " + sumVal;
-    document.getElementById("val2").innerHTML = "Rs: " + sumVal2;
+    document.getElementById("val2").innerHTML =  sumVal2;
     document.getElementById("val3").innerHTML = "Rs: " + sumVal3;
     document.getElementById("val5").innerHTML = "Rs: " + sumVal5;
     document.getElementById("val4").innerHTML = "Rs: " + sumVal4;
     document.getElementById("val9").innerHTML = "(avg)" + avgTax + "%";
-    $("#itemPay").val(str);
+
 
 </script>
 

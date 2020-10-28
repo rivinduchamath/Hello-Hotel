@@ -20,8 +20,12 @@ public class ReservationController {
     public String loginPage(Model model){
         model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
         return "reservation";
+    }
 
-
+    @GetMapping("/activityReports")
+    public String reportPage(Model model) {
+        model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
+        return "activityReports";
     }
 }
 

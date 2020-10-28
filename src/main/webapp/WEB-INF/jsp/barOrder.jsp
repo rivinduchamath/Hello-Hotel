@@ -290,9 +290,6 @@
                                                 </thead>
 
                                                 <tbody id="tblOrder">
-                                                <%--                                                <c:forEach items="${listEmployeesTableSalary}" var="e">--%>
-
-                                                <%--                                                </c:forEach>--%>
                                                 </tbody>
                                             </table>
                                         </div>

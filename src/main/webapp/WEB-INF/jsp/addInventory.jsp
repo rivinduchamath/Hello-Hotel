@@ -59,7 +59,10 @@
                                             Back</i>
                                         </button>
                                     </a>
-
+                                    <button type="button" style=" border: 5px solid rgb(174, 182, 203);background-color: #45526e;
+                                    color: #0b837a;font-weight: bolder" class="btnq2 btn" onclick="getdata();">
+                                        Demo
+                                    </button>
                                 </div>
                             </div>
 
@@ -216,7 +219,7 @@
                                                             <label class="col-form-label col-md-11 col-sm-11"
                                                                    for="date">Date</label>
                                                             <div class="col-md-11 col-sm-11 ">
-                                                                <input id="date" class="date-picker form-control"
+                                                                <input required id="date" class="date-picker form-control"
                                                                        type="date"
                                                                        name="date">
                                                             </div>
@@ -376,6 +379,9 @@
                                     <i class="fa fa-mail-reply"> Back</i>
                                 </button>
                             </a>
+                            <a>
+
+                            </a>
                         </div>
                     </div>
                     <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
@@ -471,9 +477,7 @@
                     </div>
                 </div>
             </c:when>
-
-            <%--%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%--%>
-            <c:when test="${mode=='MODE_WATCH' }">
+   <c:when test="${mode=='MODE_WATCH' }">
                 <div class="right_col" role="main">
 
 
@@ -563,12 +567,8 @@
                                                         </td>
                                                         <td>
                                                                 ${e.qtyOnHand < e.orderQty ? "Incomplete" : "Complete"}
-                                                                <%-- <td><c:url value="" var="url">
-                                                                     <c:param name="StudentID" value="${students.studentID}" />
-                                                                 </c:url> <a href="${url}">Edit</a></td>--%>
                                                         </td>
                                                     </tr>
-
 
                                                 </c:forEach>
 
@@ -622,6 +622,18 @@
             $("#date").val($(this).find("td:nth-child(9)").text());
             selectedRow.addClass('row-selected');
         });
+    }
+
+    function getdata(){
+        $("#title").val("Vine");
+        $("#description").val("8% Alcohol French Vine");
+        $("#qty").val("50").text();
+        $("#setType").val("Beverage").text();
+        $("#limit").val("100");
+        $("#price").val("200.00");
+        $("#sellingPrice").val("250").text();
+
+        selectedRow.addClass('row-selected');
     }
 </script>
 
