@@ -359,7 +359,7 @@
     $("#itemPay").val(str);
     document.getElementById("val").innerHTML = "Rs: " + sumVal;
     document.getElementById("val2").innerHTML = "Rs: " + sumVal2;
-    document.getElementById("val3").innerHTML = "Rs: " + sumVal3;
+    document.getElementById("val3").innerHTML = sumVal3;
     document.getElementById("val5").innerHTML = "Rs: " + sumVal5;
     document.getElementById("val4").innerHTML = "Rs: " + sumVal4;
     document.getElementById("val9").innerHTML = "(avg)" + avgTax + "%";

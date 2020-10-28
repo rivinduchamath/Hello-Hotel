@@ -418,16 +418,35 @@ public class HumanResourceBOImpl implements HumanResourceBO {
 
     @Override
     public List<AttendanceDTO> findAllAttendance() {
-        return null;
+        Iterable<Attendance> attendances = null;
+        try {
+            attendances = attendanceDAO.findAll();
+        } catch (Exception e) {
+        }
+        List<AttendanceDTO> dtos = new ArrayList<>();
+        for (Attendance attendance : attendances) {
+            dtos.add(new AttendanceDTO(
+                    attendance.getAttendanceId(),
+                    attendance.getDate(),
+                    attendance.getInTime(),
+                    attendance.getOutTime(),
+                    attendance.getOvertimeHours(),
+                    attendance.getEmployeeID().getUserId(),
+                    attendance.getEmployeeID().getName(),
+                    attendance.getEmployeeID().getPosition(),
+                    attendance.getEmployeeID().getImage()
+            ));
+        }
+        return dtos;
     }
 
     @Override
     public void deleteSalary(String s) {
         try {
             int id = Integer.parseInt(s);
-            System.out.println("DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD");
+
             Iterable<Salary> salaries = salaryDAO.findAll();
-            System.out.println("RRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR"+ salaries);
+
 
             for (Salary d: salaries) {
                 if(d.getEmployeeID().getUserId() == id){
