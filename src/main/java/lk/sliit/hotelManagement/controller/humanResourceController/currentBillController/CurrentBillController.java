@@ -30,7 +30,7 @@ public class CurrentBillController {
     @Autowired
     CurrentBO currentBO;
 
-    @GetMapping ("/currentBill")
+    @GetMapping ("/currentBill")//load Curernt bill page
     public ModelAndView loadCurrentBillDetails(Model model) {
         ModelAndView modelAndView = new ModelAndView("currentBill");
         model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
@@ -39,7 +39,7 @@ public class CurrentBillController {
         return modelAndView;
     }
 
-    @PostMapping("saveCurrentBill")
+    @PostMapping("saveCurrentBill")//save Current
     public String saveCurrentBillForm(@ModelAttribute CurrentBillDTO currentBillDTO){
         try {
 
@@ -50,9 +50,9 @@ public class CurrentBillController {
 
             }catch (NullPointerException d){
                 int maxId = (current.getBillId());
-                if (currentBillDTO.getBillId()==(maxId)) {
+                if (currentBillDTO.getBillId()==(maxId)) {//Update Bill Id
                     currentBillDTO.setBillId((maxId));
-                } else {
+                } else {//New Current bill
                     maxId++;
                     currentBillDTO.setBillId((maxId));
                 }
@@ -61,13 +61,12 @@ public class CurrentBillController {
         } catch (NullPointerException e){
             currentBillDTO.setBillId(1);
         }
-        currentBO.saveCurrentBill(currentBillDTO);
+        currentBO.saveCurrentBill(currentBillDTO);//save
         return "redirect:/currentBill";
     }
 
     @RequestMapping(value = "deleteCurrentBill/{billId}")
     public void deleteEmployee(@PathVariable("billId") int billId, HttpServletResponse response) throws IOException {
-
 
             currentBO.deleteCurrentBill(billId);
             response.sendRedirect("/currentBill");

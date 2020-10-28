@@ -179,14 +179,14 @@ public class RestaurantBOImpl implements RestaurantBO {
 
 
     @Override
-    public void saveOnlineOrder(RestaurantOnlineOrderDTO onlineOrderDTO) {
+    public void saveOnlineOrder(RestaurantOnlineOrderDTO onlineOrderDTO) {//place Restaurant Online Order
         java.util.List<RestaurantOnlineOrderDetailsDTO> list = new ArrayList<>();
         String arr = onlineOrderDTO.getOrderData();
 
         String yo[] = arr.split(" ");
         int count = 0;
         RestaurantOnlineOrderDetailsDTO itm = new RestaurantOnlineOrderDetailsDTO();
-        for (String str : yo) {
+        for (String str : yo) {//Read string array
             if (count == 0) {
                 itm = new RestaurantOnlineOrderDetailsDTO();
                 itm.setFoodItem(Integer.parseInt(str));
@@ -202,17 +202,17 @@ public class RestaurantBOImpl implements RestaurantBO {
                 count = 0;
             }
         }
-        Calendar cal = Calendar.getInstance();
+        Calendar cal = Calendar.getInstance();//calculate date
         cal.add(Calendar.DATE, 0);
         java.util.Date today = cal.getTime();
         onlineOrderDTO.setDate(today);
-        onlineOrderDAO.save(new RestaurantOnlineOrder(
+        onlineOrderDAO.save(new RestaurantOnlineOrder(//Save Order
                 onlineOrderDTO.getOrderId(),
                 onlineOrderDTO.getOrderState(),
                 onlineOrderDTO.getDate(),
                 onlineCustomerDAO.findOne(onlineOrderDTO.getCustomer())));
 
-        for (RestaurantOnlineOrderDetailsDTO orderDetail : list) {
+        for (RestaurantOnlineOrderDetailsDTO orderDetail : list) {//Save Order detail
             onlineOrderDetailsDAO.save(new RestaurantOnlineOrderDetails(
                     onlineOrderDTO.getOrderId(),
                     orderDetail.getFoodItem(),
@@ -279,7 +279,7 @@ public class RestaurantBOImpl implements RestaurantBO {
         return dtoList;
     }
 
-    @Override
+    @Override//Find Booked Table
     public List<CounterTableReservationDTO> getBookedTables() {
         java.util.Date date = new java.util.Date();
         List<CounterTableReservationDTO> list = new ArrayList<>();
@@ -288,14 +288,16 @@ public class RestaurantBOImpl implements RestaurantBO {
         Iterable<OnlineTableReservation> onlineTableReservations = null;
         Iterable<CounterTableReservation> counterTableReservations = null;
         try {
-
+//Find Online Booked Tables
             onlineTableReservations = onlineTableReservationDAO.findOnlineTableReservationByReservedDateEquals(date);
+      //Find Counter Booked Tables
             counterTableReservations = counterTableReservationDAO.findCounterTableReservationByDateEquals(date);
         } catch (NullPointerException e) {
         }
 
+        //Add data
         for (OnlineTableReservation d2 : onlineTableReservations) {
-            list4 = d2.getOrderDetails();
+            list4 = d2.getOrderDetails();//Get data from Detail Table
             for (OnlineTableReservationDetails a : list4) {
 
                 list.add(new CounterTableReservationDTO(
@@ -307,7 +309,7 @@ public class RestaurantBOImpl implements RestaurantBO {
             }
         }
         for (CounterTableReservation d2 : counterTableReservations) {
-            list5 = d2.getOrderDetails();
+            list5 = d2.getOrderDetails();//Get data from Detail Table
             for (CounterTableReservationDetails a : list5) {
 
                 list.add(new CounterTableReservationDTO(
@@ -323,18 +325,18 @@ public class RestaurantBOImpl implements RestaurantBO {
         return list;
     }
 
-    @Override
+    @Override//SAve Table In counter
     public void saveCounterTableId(CounterTableReservationDTO onlineOrderDTO) {
         java.util.List<CounterTableReservationDetailsDTO> list = new ArrayList<>();
         String arr = onlineOrderDTO.getOrderData();
-        String yo[] = arr.split(" ");
+        String yo[] = arr.split(" "); // Add booked table String to array
         int count = 0;
         CounterTableReservationDetailsDTO itm = new CounterTableReservationDetailsDTO();
-        for (String str : yo) {
+        for (String str : yo) {//read array
             if (count == 0) {
                 itm = new CounterTableReservationDetailsDTO();
                 itm.setTableId(Integer.parseInt(str));
-                list.add(itm);
+                list.add(itm);//Add List
                 count = 0;
             }
         }
@@ -342,35 +344,34 @@ public class RestaurantBOImpl implements RestaurantBO {
         cal.add(Calendar.DATE, 0);
         java.util.Date today = cal.getTime();
         onlineOrderDTO.setDate(today);
-        counterTableReservationDAO.save(new CounterTableReservation(
+        counterTableReservationDAO.save(new CounterTableReservation(//Save In counter table
 
                 onlineOrderDTO.getCounterTableReserveId(),
                 Time.valueOf(onlineOrderDTO.getvStatT()),
                 Time.valueOf(onlineOrderDTO.getvEndT()),
-                3,
+                list.size(),//Set table quantity
                 Date.valueOf(onlineOrderDTO.getvDate())
         ));
 
-        for (CounterTableReservationDetailsDTO orderDetail : list) {
+        for (CounterTableReservationDetailsDTO orderDetail : list) {//Save Table Details
             counterTableReservationDetailsDAO.save(new CounterTableReservationDetails(
                     onlineOrderDTO.getCounterTableReserveId(),
-                    orderDetail.getTableId(),
-                    0,
-                    0
+                    orderDetail.getTableId()
+                    ,500,list.size()
             ));
 
         }
     }
 
     @Override
-    public void saveOnlineTableId(OnlineTableReservationDTO onlineOrderDTO) {
+    public void saveOnlineTableId(OnlineTableReservationDTO onlineOrderDTO) {//SAve Table In online
         java.util.List<OnlineTableReservationDetailsDTO> list = new ArrayList<>();
         String arr = onlineOrderDTO.getOrderData();
 
-        String yo[] = arr.split(" ");
+        String yo[] = arr.split(" ");// Add booked table String to array
         int count = 0;
         OnlineTableReservationDetailsDTO itm = new OnlineTableReservationDetailsDTO();
-        for (String str : yo) {
+        for (String str : yo) {//read array
             if (count == 0) {
                 itm = new OnlineTableReservationDetailsDTO();
                 itm.setTableId(Integer.parseInt(str));
@@ -383,22 +384,22 @@ public class RestaurantBOImpl implements RestaurantBO {
         cal.add(Calendar.DATE, 0);
         java.util.Date today = cal.getTime();
         onlineOrderDTO.setDate(today);
-        onlineTableReservationDAO.save(new OnlineTableReservation(
+        onlineTableReservationDAO.save(new OnlineTableReservation(//Save In counter table
                 onlineOrderDTO.getOnlineTableReservationId(),
                 Date.valueOf(onlineOrderDTO.getvDate()),
                 onlineOrderDTO.getDate(),
                 Time.valueOf(onlineOrderDTO.getvStatT()),
                 Time.valueOf(onlineOrderDTO.getvEndT()),
-                2,
+                list.size(),
                 onlineCustomerDAO.findOne(onlineOrderDTO.getCustomer())));
 
 
-        for (OnlineTableReservationDetailsDTO orderDetail : list) {
+        for (OnlineTableReservationDetailsDTO orderDetail : list) {//Save Table Details
             onlineTableReservationDetailsDAO.save(new OnlineTableReservationDetails(
                     orderDetail.getTableId(),
-                    onlineOrderDTO.getOnlineTableReservationId(),
-                    0,
-                    0));
+                    onlineOrderDTO.getOnlineTableReservationId()
+                    ,500,list.size()
+                    ));
 
         }
     }
@@ -409,6 +410,7 @@ public class RestaurantBOImpl implements RestaurantBO {
         Calendar cal = Calendar.getInstance();
         cal.add(Calendar.MONTH, -1);
         java.util.Date dt = cal.getTime();
+        //Find all Date Between(before 1 month)
         Iterable<OnlineTableReservation> all4 = onlineTableReservationDAO.findAllByReservedDateBetween(dt, todaydate);
         List<OnlineTableReservationDTO> tableDTOList = new ArrayList<>();
         for (OnlineTableReservation item : all4) {
@@ -428,7 +430,7 @@ public class RestaurantBOImpl implements RestaurantBO {
         Calendar cal = Calendar.getInstance();
         cal.add(Calendar.MONTH, -1);
         java.util.Date dt = cal.getTime();
-        Iterable<RestaurantOnlineOrder> all4 = onlineOrderDAO.findAllByDateBetween(dt, todaydate);
+        Iterable<RestaurantOnlineOrder> all4 = onlineOrderDAO.findAllByDateBetween(dt, todaydate);//Find all Date Between(before 1 month)
         List<RestaurantOnlineOrderDTO> tableDTOList = new ArrayList<>();
         for (RestaurantOnlineOrder item : all4) {
             tableDTOList.add(new RestaurantOnlineOrderDTO(
@@ -461,20 +463,7 @@ public class RestaurantBOImpl implements RestaurantBO {
                         restaurantTableDTO.getUnitPrice()));
     }
 
-    /*@Override
-    public List<RestaurantTableDTO> findTables() {//Find Tables (find All)
-        Iterable<RestaurantTable> tables = restaurantTableDAO.findAll();
-        List<RestaurantTableDTO> tableDTOList = new ArrayList<>();
 
-        for (RestaurantTable item : tables) {
-            tableDTOList.add(new RestaurantTableDTO(
-                    item.getTableId(),
-                    item.getType(),
-                    item.getUnitPrice()
-            ));
-        }
-        return tableDTOList;
-    }*/
 
     @Override//Delete table
     public void deleteTable(int tableId) {
