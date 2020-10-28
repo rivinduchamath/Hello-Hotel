@@ -308,8 +308,7 @@
                                     <div class="row no-print">
                                         <div class=" ">
 
-                                            <form method="POST" action=""
-                                                  name="deleteInvoiceSalary">
+
                                                 <input style="display: none" type="text" id="itemPay" name="SalaryId">
                                                 <ul class="nav navbar-right panel_toolbox">
                                                     <button type="submit" value="Register"
@@ -320,7 +319,7 @@
                                                     </button>
                                                 </ul>
 
-                                            </form>
+
 
                                         </div>
                                     </div>
