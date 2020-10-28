@@ -29,7 +29,8 @@ public class BanquetInvoice {
         return mv;
     }
     @RequestMapping("banquetInvoice")
-    public String getInvoiceEmpty() {
+    public String getInvoiceEmpty(Model model) {
+        model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
         return "banquetInvoice";
     }
 
