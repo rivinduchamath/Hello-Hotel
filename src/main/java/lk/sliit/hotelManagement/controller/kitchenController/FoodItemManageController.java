@@ -25,12 +25,12 @@ public class FoodItemManageController {
     @Autowired
     KitchenBO kitchenBO;
 
-    String alertMsg = KitchenUtil.defaultAlert;
+    String alertMsg = null;
 
     @GetMapping("/manageMenu")
     public String loginPage(Model model) {
+        alertMsg = null;
         model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
-        model.addAttribute("defaultAlert",KitchenUtil.defaultAlert);
         model.addAttribute("alert",alertMsg);
 
         List<FoodItemDTO> foodItemList = kitchenBO.findFoodItems();
@@ -43,8 +43,8 @@ public class FoodItemManageController {
 
     @PostMapping("/saveFoodItem")
     public String addNew(Model model, @ModelAttribute FoodItemDTO foodItemDTO) {
+        alertMsg = null;
         model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
-        model.addAttribute("defaultAlert",KitchenUtil.defaultAlert);
         model.addAttribute("alert",alertMsg);
 
         try {
@@ -72,8 +72,8 @@ public class FoodItemManageController {
 
     @GetMapping(value = "deleteFoodItem/{itemId}")
     public String deleteFoodItem(Model model,@PathVariable("itemId") int foodItemId, HttpServletResponse response) {
+        alertMsg = null;
         model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
-        model.addAttribute("defaultAlert",KitchenUtil.defaultAlert);
         model.addAttribute("alert",alertMsg);
 
         List<RestaurantCounterOrderDetailDTO> p = kitchenBO.findAllOrders();

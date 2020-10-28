@@ -146,7 +146,7 @@ public class HRController { //HR controller class
         humanResourceBO.saveSalary(totalCount);
 
     }
-//update today salary
+    //update today salary
     private void salaryManage(int eId, double ot,double hours) {
         List<SalaryDTO> salaryDTOS = null;
         int employeeID = 0, salaryId = 0;

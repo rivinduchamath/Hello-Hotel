@@ -20,7 +20,6 @@ public class KitchenUtil {
     public static final String emptyFoodItem = "Food item is empty";
     public static final String dailyFoodOrderType = "Daily";
     public static final String banquetFoodOrderType = "Banquet";
-    public static final String defaultAlert = "ZZzz";
     public static final String alertMessageName = "alert";
     public static final String confimedBanquet = "ConfirmedBanquet";
     public static final String processingState = "Processing";

@@ -180,34 +180,34 @@
                                         <div class="col-sm-4 invoice-col">
                                             From
                                             <address>
-                                                <strong>Chanuka Mullevidana</strong>
-                                                <br>Ambalangoda
+                                                <strong>Manager</strong>
+                                                <br>Hotel Hareesha
                                                 <br>Galle, Sri Lanka
-                                                <br>Phone: 0767188591
-                                                <br>Email: it19166070@my.sliit.lk
+                                                <br>------------------
+                                                <br>(signature)
                                             </address>
                                         </div>
                                         <!-- /.col -->
                                         <div class="col-sm-4 invoice-col">
                                             To
                                             <address>
-                                                <strong>Rivindu Wijayarathna</strong>
-                                                <br>Yakkalamulla
-                                                <br>Galle, Sri Lanka
-                                                <br>Phone: 0778799940
-                                                <br>Email: it18141948@my.sliit.lk
+                                                <strong>Name:---------------------</strong>
+                                                <br>------------------------------
+                                                <br>------------------------------
+                                                <br>phone:---------------------
+                                                <br>Email:----------------------
                                             </address>
                                         </div>
                                         <!-- /.col -->
                                         <div class="col-sm-4 invoice-col">
-                                            <b>Invoice #007612</b>
+                                            <b>Invoice No: -----------</b>
                                             <br>
                                             <br>
-                                            <b>Order ID:</b> 4F3S8J
+                                            <b>Order ID:</b> --------------------
                                             <br>
                                             <b>Payment Due:</b><%=date%>
                                             <br>
-                                            <b>Account:</b> 968-34567
+                                            <b>Account:</b> ---------------------
                                         </div>
                                         <!-- /.col -->
                                     </div>
@@ -261,10 +261,11 @@
                                             <img src="../../images/american-express.png" alt="American Express">
                                             <img src="../../images/paypal.png" alt="Paypal">
                                             <p class="text-muted well well-sm no-shadow" style="margin-top: 10px;">
-                                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus
-                                                atque corporis culpa cupiditate dolore doloremque, dolores eaque eos
-                                                ipsam itaque laborum maiores porro quis recusandae, sapiente sequi
-                                                suscipit ullam ut!
+                                                This is a legal document provided by Hotel Hareesha©, Galle, Sri Lanka
+                                                <br>
+                                                For more information:
+                                                <br>
+                                                Contact us: 011-2976284
                                             </p>
                                         </div>
                                         <!-- /.col -->
@@ -330,15 +331,11 @@
         <!-- /page content -->
 
 
+
         <!-- footer content -->
-        <footer>
-            <div class="pull-right">
-                Copyright © Employee Management 2020.<a href="https://rivinduchamath.github.io/pro/">Created by Chanuka
-                Mullevidana</a>
-            </div>
-            <div class="clearfix"></div>
-        </footer>
+        <jsp:include page="footer.jsp"/>
         <!-- /footer content -->
+
     </div>
 </div>
 

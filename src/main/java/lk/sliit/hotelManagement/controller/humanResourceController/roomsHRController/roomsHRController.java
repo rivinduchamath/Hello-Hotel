@@ -16,7 +16,7 @@ import java.util.List;
 
 @Controller
 public class roomsHRController {
-
+    // automate the object creation and connect with the relevant interfaces
     @Autowired
     IndexLoginBO indexLoginBO;
     @Autowired
@@ -25,7 +25,7 @@ public class roomsHRController {
     HumanResourceBO humanResourceBO;
 
 
-    @GetMapping("/roomsHR")
+    @GetMapping("/roomsHR") // load the rooms prices page with data
     public String roomsHR(Model model) {
         model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
         List<HotelRoomDTO> hotelRoomDTOList = houseKeepingBO.findRooms();
@@ -33,12 +33,12 @@ public class roomsHRController {
         return "roomsHR";
     }
 
-    @PostMapping("/updateRoomHR")
+    @PostMapping("/updateRoomHR") // update rooms prices
     public String updateRoomHR(@ModelAttribute HotelRoomDTO hotelRoomDTO, Model model) {
         model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
-        hotelRoomDTO.setHolder(SuperController.idNo);
+        hotelRoomDTO.setHolder(SuperController.idNo); // get hotel room id
         HotelRoomDTO hotelRoomDTO1 = null;
-        try {
+        try { // get room details
             hotelRoomDTO1 = houseKeepingBO.findRoomIdByID(hotelRoomDTO.getRoomId2());
             hotelRoomDTO.setDate(hotelRoomDTO1.getDate());
             hotelRoomDTO.setStatus(hotelRoomDTO1.getStatus());

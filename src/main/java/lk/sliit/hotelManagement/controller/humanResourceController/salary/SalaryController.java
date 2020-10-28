@@ -23,6 +23,7 @@ import java.util.List;
 
 @Controller
 public class SalaryController {
+    // automate the object creation and connect with the relevant interfaces
     @Autowired
     IndexLoginBO indexLoginBO;
     @Autowired
@@ -59,7 +60,7 @@ public class SalaryController {
         return mav;
     }
 
-    @PostMapping("salarySave")
+    @PostMapping("salarySave") // save salary details
     public String loadInvoicePage(@ModelAttribute SalaryDTO salaryDTO, Model model, HttpServletRequest request) {
         model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
 
@@ -85,7 +86,7 @@ public class SalaryController {
         return "redirect:/salary";
     }
 
-    @GetMapping("salaryPayment")
+    @GetMapping("salaryPayment") // load payment invoice page
     public String loadInvoicePage(@ModelAttribute SalaryPayDTO salaryDTO, Model model) throws IOException {
         ModelAndView mav = new ModelAndView("salaryPayment");
         model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
@@ -97,7 +98,7 @@ public class SalaryController {
        return "salaryPayment";
     }
 
-    @GetMapping("/salarySettings")
+    @GetMapping("/salarySettings") // load salary settings page
     public String salarySettings(Model model){
         model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
         List<SalarySettingsDTO> salaryDTOS = humanResourceBO.getSalarySet();
@@ -106,7 +107,7 @@ public class SalaryController {
         return "salarySettings";
     }
 
-    @PostMapping("/saveSettings")
+    @PostMapping("/saveSettings") // save settings
     public String saveAccounts(@ModelAttribute SalarySettingsDTO settingsDTO, Model model) {
         model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
         try {
@@ -136,10 +137,10 @@ public class SalaryController {
     public String deleteSalary(@ModelAttribute SalaryDTO salaryDTO, Model model) {
         //Pass All Data as a String And Add Only Salary Id To a String array
         String[] sourceAry = salaryDTO.getSource ( ).split ( " " );
-        System.out.println(sourceAry +"RYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY");
+
         //Delete Salary From Salary Table
         for (String s : sourceAry) {
-            System.out.println(s+"EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE");
+
             humanResourceBO.deleteSalary ( s );
         }
         return "redirect:/salary";
