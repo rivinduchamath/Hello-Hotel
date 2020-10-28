@@ -15,4 +15,6 @@ public interface RestaurantCounterOrderDAO extends CrudRepository<RestaurantCoun
     Iterable<RestaurantCounterOrder> findAllByOrderIdEquals(int orderId);
 
     Iterable<RestaurantCounterOrder> findAllByDateEquals(Date date);
+
+    Iterable<RestaurantCounterOrder> findAllByOrderStateEquals(String state);
 }

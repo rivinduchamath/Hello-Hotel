@@ -11,4 +11,6 @@ public interface RestaurantOnlineOrderDAO extends CrudRepository<RestaurantOnlin
     Iterable<RestaurantOnlineOrder> findAllByDateBetween(Date dt, Date todaydate);
 
     Iterable<RestaurantOnlineOrder> findAllByDateEquals(Date date);
+
+    Iterable<RestaurantOnlineOrder> findAllByOrderStateEquals(String state);
 }

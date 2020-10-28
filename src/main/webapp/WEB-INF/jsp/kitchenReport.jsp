@@ -11,7 +11,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="icon" type="image/png" href="../../images/icons/gdfgd.png"/>
-    <title>Employee Management </title>
+    <title>Kitchen Report </title>
 
     <!-- Bootstrap -->
     <link href="../../vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -225,8 +225,7 @@
                                                     <th>Sold Quantity</th>
                                                     <th>Unite Price</th>
                                                     <th>Total</th>
-                                                    <th>Selling Rate Counter</th>
-                                                    <th>Selling Rate Online</th>
+
                                                 </tr>
                                                 </thead>
                                                 <tbody>
@@ -239,8 +238,6 @@
                                                         <td>${e.quantity}</td>
                                                         <td>${e.price}</td>
                                                         <td>${e.totalPrice}</td>
-                                                        <td>${e.sellingRateCounter}</td>
-                                                        <td>${e.sellingRateOnline}</td>
 
                                                     </tr>
                                                     <script>
