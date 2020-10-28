@@ -196,7 +196,7 @@ public class HumanResourceBOImpl implements HumanResourceBO {
         for (String value : sourceAry) {
             list.add(value);
         }
-
+SalarySettings  s= salarySettingsDAO.findTopByOrderByIdDesc();
         addPayment(list);
         Double all4 = 0.0;
         Double all5 = 0.0;
@@ -208,12 +208,12 @@ public class HumanResourceBOImpl implements HumanResourceBO {
             dtoList.add(new SalaryPayDTO(
                     employee.getSalary(),
                     new Date(),
-                    0,
-                    0,
+                    s.getEtf(),
+                    s.getEpf(),
                     all5,
                     all4,
                     employee.getSalary(),
-                    0,
+                    s.getServiceCharge(),
                     false,
                     employee.getUserId(),
                     employee.getName()
