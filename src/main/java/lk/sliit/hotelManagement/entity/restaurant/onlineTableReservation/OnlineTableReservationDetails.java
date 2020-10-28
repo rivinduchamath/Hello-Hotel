@@ -38,6 +38,10 @@ public class OnlineTableReservationDetails {
     public OnlineTableReservationDetails() {
     }
 
+    public OnlineTableReservationDetails(int tableId, int onlineTableId) {
+        this.onlineTableReservationDetailsPK = new OnlineTableReservationDetailsPK(onlineTableId, tableId);
+    }
+
     public OnlineTableReservationDetailsPK getOnlineTableReservationDetailsPK() {
         return onlineTableReservationDetailsPK;
     }
