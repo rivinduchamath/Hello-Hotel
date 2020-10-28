@@ -872,13 +872,13 @@ public class KitchenBOImpl implements KitchenBO {
         List<RestaurantFoodItemDTO> foodItemDTOS = new ArrayList<>();
 
         try {
-            Iterable<RestaurantOnlineOrder> onlineOrders = onlineOrderDAO.findAll();
+            Iterable<RestaurantOnlineOrder> onlineOrders = onlineOrderDAO.findAllByOrderStateEquals(KitchenUtil.finishedState);
             for (RestaurantOnlineOrder item : onlineOrders){
                 Date comp = item.getDate();
 
                 if (date.getYear() == comp.getYear()
                         && date.getMonth() == comp.getMonth()
-                        && date.getDate() == comp.getDate() && item.getOrderState().equals(KitchenUtil.finishedState)){
+                        && date.getDate() == comp.getDate()){
 
                     //set order details list
                     if (!foodItemDTOS.isEmpty()){
@@ -895,7 +895,7 @@ public class KitchenBOImpl implements KitchenBO {
                         foodItemDTOS.add(new RestaurantFoodItemDTO(
                                 detail.getFoodItem().getItemId(),
                                 item.getOrderId(),
-                                detail.getFoodItem().getName(),
+                                kitchenDAO.findOne(detail.getFoodItem().getItemId()).getName(),
                                 detail.getQuantity(),
                                 detail.getUnitePrice()
                         ));
@@ -913,7 +913,7 @@ public class KitchenBOImpl implements KitchenBO {
 
         //load counter finished orders
         try {
-            Iterable<RestaurantCounterOrder> onlineOrders = counterOrderDAO.findAll();
+            Iterable<RestaurantCounterOrder> onlineOrders = counterOrderDAO.findAllByOrderStateEquals(KitchenUtil.finishedState);
             for (RestaurantCounterOrder item : onlineOrders){
                 Date comp = item.getDate();
 
@@ -936,7 +936,7 @@ public class KitchenBOImpl implements KitchenBO {
                         foodItemDTOS.add(new RestaurantFoodItemDTO(
                                 detail.getFoodItem().getItemId(),
                                 item.getOrderId(),
-                                detail.getFoodItem().getName(),
+                                kitchenDAO.findOne(detail.getFoodItem().getItemId()).getName(),
                                 detail.getQuantity(),
                                 detail.getUnitePrice()
                         ));
