@@ -331,19 +331,25 @@
 
 
 // Add data
-        chart.data = [
-
-            {"Date": "Sumday",
-            "Income": "${d1}"
-        },
-            {"Date": "Sumday",
-                "Income": "${d1}"
-            },
-            {"Date": "Sumday",
-                "Income": "${d1}"
-            }
-
-        ];
+        chart.data = [{
+            "Date": "Sunday",
+            "Income": 433
+        }, {
+            "Date": "Monday",
+            "Income": 565
+        }, {
+            "Date": "Tuesday",
+            "Income": 23
+        }, {
+            "Date": "Wednesday",
+            "Income": 445
+        }, {
+            "Date": "Friday",
+            "Income": 763
+        }, {
+            "Date": "Saturday",
+            "Income": 1032
+        }];
 // Create axes
         var categoryAxis = chart.xAxes.push(new am4charts.CategoryAxis());
         categoryAxis.dataFields.category = "Date";

@@ -45,8 +45,8 @@
             <div class="">
                 <div class="page-title">
                     <div class="title_left">
-                        <h3>Invoice
-                            <small>Submit Payment And Print Bill</small>
+                        <h3>Daily Report
+                            <small>Submit Print Bill</small>
                         </h3>
                     </div>
 
@@ -141,8 +141,8 @@
                     <div class="col-md-12">
                         <div class="x_panel">
                             <div class="x_title">
-                                <h2>Invoice Print
-                                    <small>Employee invoice</small>
+                                <h2>Daily activity Report
+                                    <small></small>
                                 </h2>
                                 <ul class="nav navbar-right panel_toolbox">
                                     <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
@@ -173,143 +173,82 @@
                                             </h1>
                                         </div>
                                     </div>
-                                    <!-- info row -->
-                                    <div class="row invoice-info">
-                                        <div class="col-sm-4 invoice-col">
-                                            From
-                                            <address>
-                                                <strong>Chanuka Mullevidana</strong>
-                                                <br>Ambalangoda
-                                                <br>Galle, Sri Lanka
-                                                <br>Phone: 0767188591
-                                                <br>Email: it19166070@my.sliit.lk
-                                            </address>
-                                        </div>
-                                        <!-- /.col -->
-                                        <div class="col-sm-4 invoice-col">
-                                            To
-                                            <address>
-                                                <strong>Rivindu Wijayarathna</strong>
-                                                <br>Yakkalamulla
-                                                <br>Galle, Sri Lanka
-                                                <br>Phone: 0778799940
-                                                <br>Email: it18141948@my.sliit.lk
-                                            </address>
-                                        </div>
-                                        <!-- /.col -->
-                                        <div class="col-sm-4 invoice-col">
-                                            <b>Invoice #007612</b>
-                                            <br>
-                                            <br>
-                                            <b>Order ID:</b> 4F3S8J
-                                            <br>
-                                            <b>Payment Due:</b><%=date%>
-                                            <br>
-                                            <b>Account:</b> 968-34567
-                                        </div>
-                                        <!-- /.col -->
-                                    </div>
-                                    <!-- /.row -->
-
-                                    <!-- Table row -->
+                                    <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                                    <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
+                                   <h3>Reservation Income</h3>
                                     <div class="row">
                                         <div class="  table">
-                                            <table id="saq" class="table table-striped">
-                                                <thead>
+                                            <table id="saq" class="table table-striped" style="text-align: center">
+                                                <thead class="btn-dark">
 
                                                 <tr>
-                                                    <th>SalaryId</th>
-                                                    <th>Emp Id</th>
-                                                    <th>Name</th>
-                                                    <th>Basic Salary</th>
-                                                    <th>OT Salary</th>
-                                                    <th>Bonus Salary</th>
-                                                    <th>Tax</th>
-                                                    <th>Total Salary</th>
+                                                    <th>Id</th>
+                                                    <th>Customer Id</th>
+                                                    <th>N Rooms</th>
+                                                    <th>Date</th>
                                                 </tr>
                                                 </thead>
                                                 <tbody>
-                                                <c:forEach items="${getSalaryData}" var="e">
-                                                    <tr>
-                                                        <td>${e.salaryId}</td>
-                                                        <td>${e.employeeID.idNo}</td>
-                                                        <td>${e.employeeID.name}</td>
-                                                        <td>${e.basicSalary}</td>
-                                                        <td>${e.otHours*e.otRate}</td>
-                                                        <td>${e.bonus}</td>
-                                                        <td>${e.incomeTax}</td>
-                                                        <td>${((e.basicSalary+e.bonus)+(e.otRate*e.otHours))-e.incomeTax}</td>
-                                                    </tr>
-                                                    <script>
-                                                        var aa = aa + ${e.otHours};
-                                                        document.getElementById("demo").innerHTML = 11;
-                                                    </script>
-                                                </c:forEach>
 
+                                                <c:forEach items="${loadHotelRoomTable}" var="e">
+                                                    <tr>
+                                                        <td>${e.reservationId}</td>
+                                                        <td>${e.customer}</td>
+                                                        <td>${e.noOfRooms}</td>
+                                                        <td>${e.checkIn}</td>
+
+                                                    </tr>
+                                                </c:forEach>
                                                 </tbody>
                                             </table>
                                         </div>
                                         <!-- /.col -->
                                     </div>
+                                    <!-- /
+                                    .row -->
+                                    </div>
+                                    <div></div>
                                     <!-- /.row -->
+                                    <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
+                                        <h3>Inventory Orders</h3>
+                                        <div class="row">
+                                            <div class="  table">
+                                                <table id="saq1" class="table table-striped">
+                                                    <thead>
 
-                                    <div class="row">
-                                        <!-- accepted payments column -->
-                                        <div class="col-md-6">
-                                            <p class="lead">Payment Methods:</p>
-                                            <img src="../../images/visa.png" alt="Visa">
-                                            <img src="../../images/mastercard.png" alt="Mastercard">
-                                            <img src="../../images/american-express.png" alt="American Express">
-                                            <img src="../../images/paypal.png" alt="Paypal">
-                                            <p class="text-muted well well-sm no-shadow" style="margin-top: 10px;">
-                                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus
-                                                atque corporis culpa cupiditate dolore doloremque, dolores eaque eos
-                                                ipsam itaque laborum maiores porro quis recusandae, sapiente sequi
-                                                suscipit ullam ut!
-                                            </p>
-                                        </div>
-                                        <!-- /.col -->
-                                        <div class="col-md-6">
-                                            <p class="lead">Amount Due 2/22/2014</p>
-                                            <div class="table-responsive">
-                                                <table class="table">
+                                                    <tr>
+                                                        <th>OrderId</th>
+                                                        <th>Item</th>
+                                                        <th>Price</th>
+                                                        <th>Quantity</th>
+                                                        <th>Supplier</th>
+                                                    </tr>
+                                                    </thead>
                                                     <tbody>
-                                                    <tr>
-                                                        <th style="width:50%">Basic Tot:</th>
-                                                        <td><span id="val2"></span></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <th>Tax
-                                                            <small style="font-weight: bold"><span id="val9"></span>
-                                                            </small>
-                                                        </th>
-                                                        <td><span id="val3"></span></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <th>OT Tot:</th>
-                                                        <td><span id="val4"></span></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <th>Bonus Tot:</th>
-                                                        <td><span id="val5"></span></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <th>Total:</th>
-                                                        <td><span id="val"></span></td>
-                                                    </tr>
+
+                                                    <c:forEach items="${loadInventoryBills}" var="e">
+                                                        <tr>
+                                                            <td> OD${e.orderId}</td>
+                                                            <td>${e.inventory}</td>
+                                                            <td>Rs: ${e.price}</td>
+                                                            <td> ${e.quantity}</td>
+                                                            <td>${e.supplier}</td>
+
+                                                        </tr>
+                                                    </c:forEach>
                                                     </tbody>
                                                 </table>
                                             </div>
+                                            <!-- /.col -->
                                         </div>
-                                        <!-- /.col -->
+                                        <!-- /.row -->
                                     </div>
-                                    <!-- /.row -->
-
+                                    </div>
                                     <!-- this row will not appear when printing -->
                                     <div class="row no-print">
                                         <div class=" ">
 
-                                            <form method="POST" action="/deleteInvoiceSalary" name="deleteInvoiceSalary">
+
                                                 <input style="display: none" type="text" id="itemPay" name="SalaryId">
                                                 <ul class="nav navbar-right panel_toolbox">
                                                     <button type="submit" value="Register"
@@ -318,7 +257,7 @@
                                                     </button>
                                                 </ul>
 
-                                            </form>
+
 
                                         </div>
                                     </div>

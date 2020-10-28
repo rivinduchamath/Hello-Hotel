@@ -9,4 +9,6 @@ public interface ReservationDAO extends CrudRepository<Reservation,Integer> {
     Reservation findTopByOrderByReservationIdDesc();
 
     Iterable<Reservation> findAllByDateBetween(Date dateIn, Date dateOut);
+
+    Iterable<Reservation> findAllByDateEquals(Date date);
 }

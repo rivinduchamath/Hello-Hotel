@@ -122,7 +122,7 @@ public class InventoryController {
 
             return "redirect:/inventory";
         } catch (Exception w) {
-            System.out.println("Error333333333333333333333333333333333333333333333333333333333333333333333");
+
         }
 
         return "redirect:/inventory";

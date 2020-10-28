@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
 public class BarBill {
-    @Autowired
+    @Autowired//Load Bar Bill
     IndexLoginBO indexLoginBO;
     @GetMapping("/barBill")
     public String loginPage(Model model){

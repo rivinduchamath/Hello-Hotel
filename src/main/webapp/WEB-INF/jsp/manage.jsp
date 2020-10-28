@@ -173,31 +173,19 @@
                 </div>
 
                 <div class="col-sm-12 col-md-3 col-lg-3 col-xl-3">
-                    <a href="manageUser">
+                    <a href="hr">
                         <button type="button" class="large-btn btn btn-dark">HR Manage</button></a>
                 </div>
 
                 <div class="col-sm-12 col-md-3 col-lg-3 col-xl-3">
-                    <a href="manageF&B">
-                        <button type="button" class="large-btn btn btn-dark">Food & Beverage</button></a>
+                    <a href="manageDailyActivityReport">
+                        <button type="button" class="large-btn btn btn-dark">Daily Activity Report</button></a>
                 </div>
                 <div class="col-sm-12 col-md-3 col-lg-3 col-xl-3">
                     <a href="kitchenDailyActivityReport">
                         <button type="button" class="large-btn btn btn-dark">Kitchen Report</button></a>
                 </div>
-                <div class="col-sm-12 col-md-4 col-lg-4 col-xl-4">
-                    <a href="manageDailyActivityReport">
-                        <button type="button" class="large-btn btn btn-dark">Daily Activity Report</button></a>
-                </div>
 
-                <div class="col-sm-12 col-md-4 col-lg-4 col-xl-4">
-                    <a href="manageMonthlyReport">
-                        <button type="button" class="large-btn btn btn-dark">Monthly Activity Report</button></a>
-                </div>
-                <div class="col-sm-12 col-md-4 col-lg-4 col-xl-4">
-                    <a href="manageAnnualReport">
-                        <button type="button" class="large-btn btn btn-dark">Annual Report</button></a>
-                </div>
             </div>
             <%--/Button--%>
 

@@ -12,7 +12,7 @@ public class BarManageController {
     @Autowired
     IndexLoginBO indexLoginBO;
 
-    @GetMapping("/bar")
+    @GetMapping("/bar")//Load Bar Dashboard
     public String loginPage(Model model) {
         model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
         return "bar";

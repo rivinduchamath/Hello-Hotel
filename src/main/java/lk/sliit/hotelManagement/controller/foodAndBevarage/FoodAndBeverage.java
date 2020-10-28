@@ -21,8 +21,7 @@ public class FoodAndBeverage {
     @GetMapping("/foodAndBeverage")//Load FoodBev Dashboard
     public String loadFAndB(Model model) {
         model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
-        List<FoodItemDTO> p1 = kitchenBO.findFoodItems();
-        model.addAttribute("d1", p1.get(0));
+
         return "foodAndBeverage";
     }
 

@@ -28,13 +28,13 @@ public class ReportsController {
     @Autowired
     HumanResourceBO humanResourceBO;
 
-    @GetMapping("/inventoryMainReport")
+    @GetMapping("/inventoryMainReport")//Main Report
     public String loginPage(Model model){
         model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
         return "inventoryMainReport";
     }
 
-    @PostMapping("/inventoryMainReport")
+    @PostMapping("/inventoryMainReport")//Find by date
     public ModelAndView houseKeepingReports(@ModelAttribute GetDateInventoryDTO getDateInventoryDTO, Model model ){
         ModelAndView modelAndView = new ModelAndView("inventoryMainReport");
         model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
