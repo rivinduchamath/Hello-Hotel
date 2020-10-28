@@ -4,6 +4,7 @@ import lk.sliit.hotelManagement.controller.SuperController;
 import lk.sliit.hotelManagement.dto.banquet.BanquetAddDTO;
 import lk.sliit.hotelManagement.dto.banquet.BanquetBillDTO;
 import lk.sliit.hotelManagement.dto.banquet.BanquetOrderDTO;
+import lk.sliit.hotelManagement.dto.manager.EmployeeDTO;
 import lk.sliit.hotelManagement.dto.reservation.CustomerDTO;
 import lk.sliit.hotelManagement.service.custom.BanquetBO;
 import lk.sliit.hotelManagement.service.custom.IndexLoginBO;
@@ -72,6 +73,8 @@ public class BanquetAdd {
                 if (banquetAddDTO.getHallId().equals("No 1")){
                     int count1=banquetBO.checkHall1Availability(banquetAddDTO.getDate());
                     if(count1<1) {
+                        EmployeeDTO employeeDTO=(indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
+                        banquetAddDTO.setSubmittedBy(employeeDTO.getName());
                         banquetBO.saveBanquet(banquetAddDTO);
                         request.setAttribute("successfulMsg","added successfully");
                     }
@@ -82,6 +85,8 @@ public class BanquetAdd {
                 if (banquetAddDTO.getHallId().equals("No 2")){
                     int count2=banquetBO.checkHall2Availability(banquetAddDTO.getDate());
                     if(count2 <1) {
+                        EmployeeDTO employeeDTO=(indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
+                        banquetAddDTO.setSubmittedBy(employeeDTO.getName());
                         banquetBO.saveBanquet(banquetAddDTO);
                         request.setAttribute("successfulMsg","added successfully");
                     }
