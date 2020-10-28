@@ -182,7 +182,7 @@
                         <button type="button" class="large-btn btn btn-dark">Daily Activity Report</button></a>
                 </div>
                 <div class="col-sm-12 col-md-3 col-lg-3 col-xl-3">
-                    <a href="kitchenDailyActivityReport">
+                    <a href="kitchenReport">
                         <button type="button" class="large-btn btn btn-dark">Kitchen Report</button></a>
                 </div>
 
