@@ -304,8 +304,9 @@
                                     <div class="row no-print">
                                         <div class=" ">
 
-
-                                                <input style="display: none" type="text" id="itemPay" name="SalaryId">
+                                            <form method="POST" action="deleteSalaryTable"
+                                                  name="deleteSalaryTable">
+                                                <input style="display: none" type="text" id="itemPay" name="source">
                                                 <ul class="nav navbar-right panel_toolbox">
                                                     <button type="submit" value="Register"
                                                             style="font-weight: bold;color: white" ; id="name"
@@ -315,6 +316,7 @@
                                                     </button>
                                                 </ul>
 
+                                            </form>
 
                                         </div>
                                     </div>
@@ -356,18 +358,15 @@
         sumVal = sumVal + parseFloat(table.rows[i].cells[4].innerHTML);
         sumVal2 = sumVal2 + parseFloat(table.rows[i].cells[2].innerHTML);
         sumVal3 = sumVal3 + parseFloat(table.rows[i].cells[3].innerHTML);
-
-
     }
-
-
+    $("#itemPay").val(str);
     document.getElementById("val").innerHTML = "Rs: " + sumVal;
     document.getElementById("val2").innerHTML = "Rs: " + sumVal2;
     document.getElementById("val3").innerHTML = "Rs: " + sumVal3;
     document.getElementById("val5").innerHTML = "Rs: " + sumVal5;
     document.getElementById("val4").innerHTML = "Rs: " + sumVal4;
     document.getElementById("val9").innerHTML = "(avg)" + avgTax + "%";
-    $("#itemPay").val(str);
+
 
 </script>
 

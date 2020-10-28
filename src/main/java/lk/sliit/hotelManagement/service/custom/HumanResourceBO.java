@@ -65,4 +65,6 @@ public interface HumanResourceBO extends SuperBO {
     void deleteActivity(int activityId);
 
     List<AttendanceDTO>  findAllAttendance();
+
+    void deleteSalary(String s);
 }

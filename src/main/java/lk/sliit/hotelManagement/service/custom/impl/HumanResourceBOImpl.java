@@ -18,6 +18,8 @@ import org.springframework.transaction.annotation.Transactional;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 
 @Service
@@ -417,6 +419,24 @@ public class HumanResourceBOImpl implements HumanResourceBO {
     @Override
     public List<AttendanceDTO> findAllAttendance() {
         return null;
+    }
+
+    @Override
+    public void deleteSalary(String s) {
+        try {
+            int id = Integer.parseInt(s);
+            System.out.println("DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD");
+            Iterable<Salary> salaries = salaryDAO.findAll();
+            System.out.println("RRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR"+ salaries);
+
+            for (Salary d: salaries) {
+                if(d.getEmployeeID().getUserId() == id){
+                    salaryDAO.delete (d.getSalaryId());
+                }
+            }
+        }catch (Exception e){
+
+        }
     }
 
 

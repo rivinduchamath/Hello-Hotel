@@ -131,5 +131,18 @@ public class SalaryController {
         return "redirect:/salarySettings";
     }
 
+
+    @PostMapping("deleteSalaryTable")//When Payment Is Complete Delete Salary Data Which Clicked
+    public String deleteSalary(@ModelAttribute SalaryDTO salaryDTO, Model model) {
+        //Pass All Data as a String And Add Only Salary Id To a String array
+        String[] sourceAry = salaryDTO.getSource ( ).split ( " " );
+        System.out.println(sourceAry +"RYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY");
+        //Delete Salary From Salary Table
+        for (String s : sourceAry) {
+            System.out.println(s+"EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE");
+            humanResourceBO.deleteSalary ( s );
+        }
+        return "redirect:/salary";
+    }//End Delete Method
 }
 
