@@ -73,12 +73,12 @@ public class OnlineCustomer {
 
     }
 
-    @PostMapping("/sendMailFromOnline")//Send Main from onlineContact Page
+    @PostMapping("/sendMailFromOnline")//Send Mail from onlineContact Page
     public String sendMailFromOnline( @ModelAttribute MailDTO mailDTO, HttpSession session,Model model) {
 
         try {
             int onlineCustomerId = Integer.parseInt(session.getAttribute("userId").toString());
-            OnlineCustomerDTO onlineCustomerDTO = onlineCustomerBO.findOne(onlineCustomerId);
+            OnlineCustomerDTO onlineCustomerDTO = onlineCustomerBO.findOne(onlineCustomerId);//Find Customer From cookie
             mailDTO.setCustomerAddress(onlineCustomerDTO.getAddress());
             mailDTO.setCustomerName(onlineCustomerDTO.getName());
             mailDTO.setEmail(onlineCustomerDTO.getEmail());
@@ -102,14 +102,14 @@ public class OnlineCustomer {
         return "onlineDashboard";
     }
 
-    @GetMapping("/addLocation")
+    @GetMapping("/addLocation")//Add Location Page
     public String addCustomerLocations(Model model) {
         model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
         List<OnlineCustomerLocationsDTO> tableList = onlineCustomerBO.findDeliveryLocation();
         model.addAttribute("loadDeliveryLocations", tableList);
         return "addLocation";
     }
-    @GetMapping(value = "deleteLocation/{locationId}")
+    @GetMapping(value = "deleteLocation/{locationId}")//Delete location
     public void deleteTable(@PathVariable("locationId") int locationId, HttpServletResponse response) {
         onlineCustomerBO.deleteLocation(locationId);
         try {
