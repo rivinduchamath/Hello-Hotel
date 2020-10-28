@@ -193,14 +193,12 @@
                                         </div>
 
                                         <div class="col-sm-4 invoice-col">
-                                            <b>Report #007612</b>
-                                            <br>
+                                            <b>Last 7 day Report</b>
                                             <br>
                                             <b>Department:</b> Banquet Department
                                             <br>
                                             <b>Generate Date:</b><%=date%>
                                             <br>
-                                            <b>Account:</b> 968-34567
                                         </div>
                                         <!-- /.col -->
                                     </div>
@@ -314,7 +312,7 @@
                                                 <ul class="nav navbar-right panel_toolbox">
                                                     <button type="submit" value="Register"
                                                             style="font-weight: bold;color: white" ; id="name" onclick="window.print();"
-                                                            class="btn btn-success "> Submit Payment <i class="fa fa-file-image-o"></i>
+                                                            class="btn btn-success "> Print Report <i class="fa fa-file-image-o"></i>
                                                     </button>
                                                 </ul>
 

@@ -28,11 +28,11 @@ public class OnlineTable {
     RestaurantBO restaurantBO;
     @Autowired
     OnlineCustomerBO onlineCustomerBO;
-    @GetMapping("/onlineTable")
+    @GetMapping("/onlineTable")//Load online table page
     public String loadForm_validationSaveMode(Model model,  HttpSession session,HttpServletRequest request) {
         model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
 
-        try {
+        try {//Get User In cookies
             int onlineCustomerId = Integer.parseInt(session.getAttribute("userId").toString());
             model.addAttribute("loggerId", onlineCustomerBO.findOne(onlineCustomerId));
         } catch (Exception d) {
@@ -48,7 +48,7 @@ public class OnlineTable {
 
 
 
-    @GetMapping("/checkTimeForTable")
+    @GetMapping("/checkTimeForTable")//Check available tables
     public String checkTimeForTable(@ModelAttribute OnlineTableReservationDTO onlineTable, Model model, HttpSession session) {
         Time a = Time.valueOf(onlineTable.getvStatT()+":00");
         Time a2 = Time.valueOf(onlineTable.getvEndT()+":00");
@@ -56,12 +56,14 @@ public class OnlineTable {
         onlineTable.setEndTime(a2);
         Date date =Date.valueOf(onlineTable.getvDate());
         onlineTable.setReservedDate(date);
-        model.addAttribute("reservedDate", (onlineTable.getReservedDate()));
+        model.addAttribute("reservedDate", (onlineTable.getReservedDate()));//Set Values to next Page
         model.addAttribute("timeIn", (onlineTable.getStartTime()));
         model.addAttribute("timeOut", (onlineTable.getEndTime()));
+
+        //find available tables
         List<RestaurantTableDTO> p2 =restaurantBO.getAviTables(onlineTable.getReservedDate(),onlineTable.getStartTime(),onlineTable.getEndTime());
         model.addAttribute("loadAllTables", p2);
-        try {
+        try {//Load Logged Customer
             int onlineCustomerId = Integer.parseInt(session.getAttribute("userId").toString());
             model.addAttribute("loggerId", onlineCustomerBO.findOne(onlineCustomerId));
         } catch (NullPointerException d) {
@@ -69,7 +71,7 @@ public class OnlineTable {
         }
         return "onlineTableDetails";
     }
-    @PostMapping("/saveOnlineTable")
+    @PostMapping("/saveOnlineTable")//Save Online table
     public String saveOnlineTable(@ModelAttribute OnlineTableReservationDTO onlineOrderDTO, HttpSession session) {
         try {
             Time a = Time.valueOf(onlineOrderDTO.getvStatT());
@@ -81,8 +83,8 @@ public class OnlineTable {
         }catch (IllegalArgumentException s){
 
         }
-        try {
-            OnlineTableReservationDTO top = restaurantBO.findHighestOnlineTableId();
+        try {//Auto generate Id
+            OnlineTableReservationDTO top = restaurantBO.findHighestOnlineTableId();//Find highest
             int x = (top.getOnlineTableReservationId()) + 1;
             onlineOrderDTO.setOnlineTableReservationId((x));
         } catch (NullPointerException e) {
@@ -91,10 +93,10 @@ public class OnlineTable {
             onlineOrderDTO.setOnlineTableReservationId((1));
         }
 
-        try {
+        try {//Get Logged Customer
             int onlineCustomerId = Integer.parseInt(session.getAttribute("userId").toString());
             onlineOrderDTO.setCustomer(onlineCustomerId);
-            restaurantBO.saveOnlineTableId(onlineOrderDTO);
+            restaurantBO.saveOnlineTableId(onlineOrderDTO);//SAve Online Table
         } catch (NullPointerException d) {
             return "redirect:/onlineTable";
         }

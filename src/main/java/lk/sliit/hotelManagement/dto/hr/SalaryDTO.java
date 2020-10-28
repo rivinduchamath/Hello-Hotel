@@ -19,6 +19,8 @@ public class SalaryDTO {
     Date date;
     private String  image;
 
+    private String source;
+
 
     public SalaryDTO() {
     }
@@ -65,6 +67,14 @@ public class SalaryDTO {
         this.hours = hours;
         this.date =date;
         this.employeeID = employeeID;
+    }
+
+    public String getSource() {
+        return source;
+    }
+
+    public void setSource(String source) {
+        this.source = source;
     }
 
     public boolean isState() {
@@ -187,6 +197,7 @@ public class SalaryDTO {
                 ", state=" + state +
                 ", date=" + date +
                 ", image='" + image + '\'' +
+                ", source='" + source + '\'' +
                 '}';
     }
 }

@@ -609,7 +609,7 @@
 
     function getValue() {
         var selectedRow = null;
-        $("#datatable-buttons tbody").on('click', 'tr', function () {
+        $("#datatable-buttons2 tbody").on('click', 'tr', function () {
             selectedRow = $(this);
             $("#itemId").val($(this).find("td:first-child").text());
             $("#title").val($(this).find("td:nth-child(2)").text());

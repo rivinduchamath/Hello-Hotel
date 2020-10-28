@@ -47,8 +47,8 @@
             <div class="">
                 <div class="page-title">
                     <div class="title_left">
-                        <h3>Invoice
-                            <small>Submit Payment And Print Bill</small>
+                        <h3>Hotel Hareesha
+                            <small>Banquet Bill</small>
                         </h3>
                     </div>
 
@@ -143,8 +143,8 @@
                     <div class="col-md-12">
                         <div class="x_panel">
                             <div class="x_title">
-                                <h2>Invoice Print
-                                    <small>Employee invoice</small>
+                                <h2>Banquet Bill Print
+                                    <small>Banquet invoice</small>
                                 </h2>
                                 <ul class="nav navbar-right panel_toolbox">
                                     <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
@@ -169,7 +169,7 @@
                                     <div class="row">
                                         <div class="  invoice-header">
                                             <h1>
-                                                <i class="fa fa-globe"></i> Invoice.
+                                                <i class="fa fa-globe"></i> Banquet Bill
                                                 <small><%=date%>
                                                 </small>
                                             </h1>
@@ -178,36 +178,23 @@
                                     <!-- info row -->
                                     <div class="row invoice-info">
                                         <div class="col-sm-4 invoice-col">
-                                            From
+                                            Address:
                                             <address>
-                                                <strong>Chanuka Mullevidana</strong>
-                                                <br>Ambalangoda
+                                                <strong>Hotel Hareesha </strong>
                                                 <br>Galle, Sri Lanka
                                                 <br>Phone: 0767188591
-                                                <br>Email: it19166070@my.sliit.lk
+                                                <br>Email: HotelHareesha@gmail.lk
                                             </address>
                                         </div>
-                                        <!-- /.col -->
+
                                         <div class="col-sm-4 invoice-col">
-                                            To
-                                            <address>
-                                                <strong>Rivindu Wijayarathna</strong>
-                                                <br>Yakkalamulla
-                                                <br>Galle, Sri Lanka
-                                                <br>Phone: 0778799940
-                                                <br>Email: it18141948@my.sliit.lk
-                                            </address>
-                                        </div>
-                                        <!-- /.col -->
-                                        <div class="col-sm-4 invoice-col">
-                                            <b>Invoice #007612</b>
+                                            <b>Banquet Bill</b>
                                             <br>
+                                            <b>Department:</b> Banquet Department
                                             <br>
-                                            <b>Order ID:</b> 4F3S8J
+                                            <b>Generate Date:</b><%=date%>
                                             <br>
-                                            <b>Payment Due:</b><%=date%>
-                                            <br>
-                                            <b>Account:</b> 968-34567
+
                                         </div>
                                         <!-- /.col -->
                                     </div>
@@ -274,16 +261,13 @@
                                         </div>
                                         <!-- /.col -->
                                         <div class="col-md-7">
-                                            <p class="lead">Amount Due <%=date%></p>
+                                            <p class="lead">Total Bill  <%=date%></p>
                                             <div class="table-responsive">
                                                 <table class="table">
                                                     <tbody>
+
                                                     <tr>
-                                                        <th>Tax&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:0.0</th>
-                                                        <td><span id="val4"></span></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <th style="width:50%">Tot Qty&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:${data.noOfPlates}</th>
+                                                        <th style="width:50%">No.Plates&nbsp;:${data.noOfPlates}</th>
                                                         <td><span id="val2"></span></td>
                                                     </tr>
                                                     <tr>
@@ -307,10 +291,9 @@
                                             <img src="../../images/american-express.png" alt="American Express">
                                             <img src="../../images/paypal.png" alt="Paypal">
                                             <p class="text-muted well well-sm no-shadow" style="margin-top: 10px;">
-                                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus
-                                                atque corporis culpa cupiditate dolore doloremque, dolores eaque eos
-                                                ipsam itaque laborum maiores porro quis recusandae, sapiente sequi
-                                                suscipit ullam ut!
+                                                Hotel Hareesha is a guest house grade A hotel Which is situated in Galle.
+                                                Over the years they have come a long way in winning the hearts of local as well as foreign tourists.
+
                                             </p>
                                         </div>
 
@@ -330,7 +313,7 @@
                                                     <button type="submit" value="Register"
                                                             style="font-weight: bold;color: white" ; id="name"
                                                             onclick="window.print();"
-                                                            class="btn btn-success "> Submit Payment <i
+                                                            class="btn btn-success "> Print Bill <i
                                                             class="fa fa-file-image-o"></i>
                                                     </button>
                                                 </ul>

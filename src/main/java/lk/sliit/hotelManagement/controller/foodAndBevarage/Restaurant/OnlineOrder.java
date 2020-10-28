@@ -32,10 +32,10 @@ public class OnlineOrder {
     @Autowired
     RestaurantBO restaurantBO;
 
-    @GetMapping("/onlineOrder")
+    @GetMapping("/onlineOrder")//Load Online Order Page
     public String loadForm_validationSaveMode(Model model, HttpSession session, HttpServletRequest request) {
 
-        try {
+        try {//Load Data when customer Sign In
             int onlineCustomerId = Integer.parseInt(session.getAttribute("userId").toString());
             model.addAttribute("loggerId", onlineCustomerBO.findOne(onlineCustomerId));
 //            Load All Food
@@ -52,7 +52,7 @@ public class OnlineOrder {
         return "onlineOrder";
 
     }
-    @PostMapping("/saveOnlineOrder")
+    @PostMapping("/saveOnlineOrder")//SAve Online Order
     public String saveForm(@ModelAttribute RestaurantOnlineOrderDTO onlineOrderDTO, HttpSession session) {
 
         try {

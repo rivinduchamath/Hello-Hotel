@@ -35,7 +35,7 @@ public class HouseKeepingBOImpl implements HouseKeepingBO {
     @Autowired
     CustomerDAO customerDAO;
 
-    @Override
+    @Override//SAve Room
     public void saveRoomDetails(HotelRoomDTO hotelRoomDTO) {
         houseKeepingDAO.save(new HotelRoom(
                 hotelRoomDTO.getRoomId2(),
@@ -60,7 +60,7 @@ public class HouseKeepingBOImpl implements HouseKeepingBO {
     }
 
 
-    @Override
+    @Override//Room Find
     public HotelRoomDTO findRoomIdByID(int roomId) {
         HotelRoom hotelRoom = houseKeepingDAO.findOne(roomId);
         return new HotelRoomDTO(
@@ -86,7 +86,7 @@ public class HouseKeepingBOImpl implements HouseKeepingBO {
         return new LaundryDTO(laundryOrders.getLaundryId());
     }
 
-    @Override
+    @Override//Find Laundry Order by Id
     public LaundryDTO findLaundryOrderById(int laundryId) {
         LaundryOrders laundryOrders = laundryOrderDAO.findOne(laundryId);
         return new LaundryDTO(
@@ -99,7 +99,7 @@ public class HouseKeepingBOImpl implements HouseKeepingBO {
         );
     }
 
-    @Override
+    @Override//Save Laundry Order
     public void saveLaundry(LaundryDTO laundryDTO) {
         Date a = new java.sql.Date(new java.util.Date().getTime());
         laundryDTO.setDate(a);
@@ -114,8 +114,8 @@ public class HouseKeepingBOImpl implements HouseKeepingBO {
         ));
     }
 
-    @Override
-    public List<CustomerDTO> findCustomers() {
+    @Override//Find already in customers
+        public List<CustomerDTO> findCustomers() {
         Iterable<Customer> all = customerDAO.findAllByStateEquals("In");
 
         List<CustomerDTO> dtos = new ArrayList<>();
@@ -133,7 +133,7 @@ public class HouseKeepingBOImpl implements HouseKeepingBO {
 
     }
 
-    @Override
+    @Override//Find Accept Orders
     public List<LaundryDTO> findLaundryData() {
         Iterable<LaundryOrders> all = laundryOrderDAO.findAllByStateEquals("Accept");
 
@@ -159,7 +159,7 @@ public class HouseKeepingBOImpl implements HouseKeepingBO {
         laundryOrderDAO.delete(id);
     }
 
-    @Override
+    @Override//Find Processing Orders
     public List<LaundryDTO> findProcessingLaundryData() {
         Iterable<LaundryOrders> all = laundryOrderDAO.findAllByStateEquals("Processing");
 
@@ -205,7 +205,7 @@ public class HouseKeepingBOImpl implements HouseKeepingBO {
         return reservationDTOS;
     }
 
-    @Override
+    @Override//Change Processing order to Finish
     public void changeStateToFinished(int id) {
         LaundryOrders all = laundryOrderDAO.findOne(id);
         all.setState("Finished");
@@ -213,7 +213,7 @@ public class HouseKeepingBOImpl implements HouseKeepingBO {
     }
 
     @Override
-    public List<LaundryDTO> findFinishedLaundryData() {
+    public List<LaundryDTO> findFinishedLaundryData() {//Find Finished orders
         Iterable<LaundryOrders> all = laundryOrderDAO.findAllByStateEquals("Finished");
 
         List<LaundryDTO> dtos = new ArrayList<>();
@@ -232,6 +232,24 @@ public class HouseKeepingBOImpl implements HouseKeepingBO {
         return dtos;
 
     }
+
+    @Override
+    public List<ReservationDTO> findAllTodayBill() {
+        List<ReservationDTO> reservationDTOS = new ArrayList<>();
+        Iterable<Reservation> hotelRooms = reservationDAO.findAllByDateEquals(new java.util.Date());
+
+        for (Reservation reservation : hotelRooms) {
+            reservationDTOS.add(new ReservationDTO(
+                    reservation.getReservationId(),
+                    reservation.getCustomer().getCustomerId(),
+                    reservation.getReservationDetails(),
+                    reservation.getDate(),
+                    reservation.getNoOfRooms()
+            ));
+        }
+        return reservationDTOS;
+    }
+
 
 
     @Override//Find All Rooms

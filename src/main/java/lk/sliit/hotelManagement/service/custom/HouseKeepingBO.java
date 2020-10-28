@@ -46,4 +46,6 @@ public interface HouseKeepingBO extends SuperBO {
     void changeStateToFinished(int id);
 
     List<LaundryDTO> findFinishedLaundryData();
+
+    List<ReservationDTO> findAllTodayBill();
 }
