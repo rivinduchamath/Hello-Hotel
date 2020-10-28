@@ -18,6 +18,8 @@ import org.springframework.transaction.annotation.Transactional;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 
 @Service
@@ -161,7 +163,7 @@ public class HumanResourceBOImpl implements HumanResourceBO {
     }
 
     @Override
-    public List<MonthlySalary> findAllUserwithOT() {
+    public List<MonthlySalary> findAllUserList() {
 
         Date todaydate = new Date();
         Calendar cal = Calendar.getInstance();
@@ -196,7 +198,7 @@ public class HumanResourceBOImpl implements HumanResourceBO {
         for (String value : sourceAry) {
             list.add(value);
         }
-
+        SalarySettings s = salarySettingsDAO.findTopByOrderByIdDesc();
         addPayment(list);
         Double all4 = 0.0;
         Double all5 = 0.0;
@@ -208,12 +210,12 @@ public class HumanResourceBOImpl implements HumanResourceBO {
             dtoList.add(new SalaryPayDTO(
                     employee.getSalary(),
                     new Date(),
-                    0,
-                    0,
+                    s.getEtf(),
+                    s.getEpf(),
                     all5,
                     all4,
                     employee.getSalary(),
-                    0,
+                    s.getServiceCharge(),
                     false,
                     employee.getUserId(),
                     employee.getName()
@@ -412,6 +414,29 @@ public class HumanResourceBOImpl implements HumanResourceBO {
     @Override
     public void deleteActivity(int activityId) {
         activityListDAO.delete(activityId);
+    }
+
+    @Override
+    public List<AttendanceDTO> findAllAttendance() {
+        return null;
+    }
+
+    @Override
+    public void deleteSalary(String s) {
+        try {
+            int id = Integer.parseInt(s);
+            System.out.println("DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD");
+            Iterable<Salary> salaries = salaryDAO.findAll();
+            System.out.println("RRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR"+ salaries);
+
+            for (Salary d: salaries) {
+                if(d.getEmployeeID().getUserId() == id){
+                    salaryDAO.delete (d.getSalaryId());
+                }
+            }
+        }catch (Exception e){
+
+        }
     }
 
 

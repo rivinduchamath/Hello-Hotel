@@ -49,7 +49,7 @@ public class HRController { //HR controller class
         List<EmployeeDTO> p = manageBO.findAllUser();
         model.addAttribute("loadAllUsers", p);
         // get today attendance details
-        model.addAttribute("listAttendance", humanResourceBO.findTodayAttendance());
+        model.addAttribute("listAttendance", humanResourceBO.findAllAttendance());
         return "allAttendance";
     }
 
@@ -107,7 +107,7 @@ public class HRController { //HR controller class
             employeeID = a.getEmployeeID();//add EmployeeID From Attendance
             attendanceID = a.getAttendanceId();//add AttendanceId From Attendance
             if (employeeID == (eId)) {//Check JSP Employee ID Already in today attendance
-                attendance.setAttendanceId(attendanceID); //IF true Set Attendance Id and save
+                attendance.setAttendanceId(attendanceID); //IF true Set Attendance Id and update
                 humanResourceBO.saveOrUpdate(attendance);
                 salaryManage(eId, attendance.getOvertimeHours() , hours);
                 return "redirect:/attendance";
@@ -123,12 +123,12 @@ public class HRController { //HR controller class
         }
         // pass attendance details to the salary management
         newSalaryManage(attendance.getEmployeeID(),attendance.getOvertimeHours(),hours);
-        humanResourceBO.saveOrUpdate(attendance);
+        humanResourceBO.saveOrUpdate(attendance);//Attendance save
 
         return "redirect:/attendance";
     }//End addTodayAttendance Method
 
-    // salary calculation
+    // save new Salary
     private void newSalaryManage(int eId, double overtimeHours,double hours) {
         // create new salaryDTO object
         SalaryDTO totalCount = new SalaryDTO();
@@ -146,7 +146,7 @@ public class HRController { //HR controller class
         humanResourceBO.saveSalary(totalCount);
 
     }
-
+//update today salary
     private void salaryManage(int eId, double ot,double hours) {
         List<SalaryDTO> salaryDTOS = null;
         int employeeID = 0, salaryId = 0;
