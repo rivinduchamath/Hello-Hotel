@@ -236,13 +236,13 @@
                                                         <th>In Time</th>
                                                         <th>Out Time</th>
                                                         <th>OT Hours</th>
-                                                        <th>Delete</th>
+
                                                     </tr>
 
                                                     </thead>
                                                     <tbody>
-                                                    <c:forEach items="${listAttendanceTable}" var="e">
-
+                                                    <c:forEach items="${listAttendance}" var="e">
+                                                    <tr>
                                                         <td>${e.attendanceId}</td>
                                                         <td>${e.date}</td>
                                                         <td>${e.employeeID}</td>
@@ -251,7 +251,7 @@
                                                         <td>
                                                             <ul class="list-inline">
                                                                 <li>
-                                                                    <img src="../../images/icons/${e.pic}"
+                                                                    <img src="${e.pic}"
                                                                          class="avatar" alt="Avatar">
                                                                 </li>
                                                             </ul>
@@ -259,7 +259,7 @@
                                                         <td>${e.inTime}</td>
                                                         <td>${e.outTime}</td>
                                                         <td>${e.overtimeHours}</td>
-
+                                                    </tr>
                                                     </c:forEach>
                                                     </tbody>
                                                 </table>

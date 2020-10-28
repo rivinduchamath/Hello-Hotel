@@ -67,7 +67,7 @@ public class CurrentBOImpl implements CurrentBO {
         CurrentBill lastCurrentBillId = null;
         try{
             lastCurrentBillId = currentBillDAO.findTopByOrderByBillIdDesc();
-            System.out.println(lastCurrentBillId.getBillId());
+
         }catch(Exception e){
 
         } return new CurrentBillDTO(lastCurrentBillId.getBillId());

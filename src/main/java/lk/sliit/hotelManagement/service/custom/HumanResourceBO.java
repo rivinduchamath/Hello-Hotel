@@ -22,7 +22,7 @@ public interface HumanResourceBO extends SuperBO {
 
     List<SalaryDTO> findAllSalary();
 
-    List<MonthlySalary> findAllUserwithOT();
+    List<MonthlySalary> findAllUserList();
 
     SalaryDTO findHighestSalaryId();
 
@@ -63,4 +63,6 @@ public interface HumanResourceBO extends SuperBO {
     List<ActivityListDTO> findAllActivity();
 
     void deleteActivity(int activityId);
+
+    List<AttendanceDTO>  findAllAttendance();
 }

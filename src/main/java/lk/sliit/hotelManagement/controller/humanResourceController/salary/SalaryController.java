@@ -30,10 +30,10 @@ public class SalaryController {
     @Autowired
     HumanResourceBO humanResourceBO;
 
-    @GetMapping("/salary")
+    @GetMapping("/salary")//Load Page
     public ModelAndView salary(Model model) {
         ModelAndView mav = new ModelAndView("salary");
-        List<MonthlySalary> p = humanResourceBO.findAllUserwithOT();
+        List<MonthlySalary> p = humanResourceBO.findAllUserList();
         List<SalaryDTO> p2 = humanResourceBO.findAllsalaryStateNotFalse();
         List<EmployeeDTO> p3 = humanResourceBO.findAllsalaryStateNotFalseTot();
         model.addAttribute("loadAllUsers", p);

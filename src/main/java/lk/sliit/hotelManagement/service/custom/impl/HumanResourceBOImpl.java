@@ -161,7 +161,7 @@ public class HumanResourceBOImpl implements HumanResourceBO {
     }
 
     @Override
-    public List<MonthlySalary> findAllUserwithOT() {
+    public List<MonthlySalary> findAllUserList() {
 
         Date todaydate = new Date();
         Calendar cal = Calendar.getInstance();
@@ -196,7 +196,7 @@ public class HumanResourceBOImpl implements HumanResourceBO {
         for (String value : sourceAry) {
             list.add(value);
         }
-SalarySettings  s= salarySettingsDAO.findTopByOrderByIdDesc();
+        SalarySettings s = salarySettingsDAO.findTopByOrderByIdDesc();
         addPayment(list);
         Double all4 = 0.0;
         Double all5 = 0.0;
@@ -412,6 +412,11 @@ SalarySettings  s= salarySettingsDAO.findTopByOrderByIdDesc();
     @Override
     public void deleteActivity(int activityId) {
         activityListDAO.delete(activityId);
+    }
+
+    @Override
+    public List<AttendanceDTO> findAllAttendance() {
+        return null;
     }
 
 
