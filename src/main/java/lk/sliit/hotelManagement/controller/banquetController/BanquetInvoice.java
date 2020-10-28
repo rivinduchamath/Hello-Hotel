@@ -28,5 +28,9 @@ public class BanquetInvoice {
 
         return mv;
     }
+    @RequestMapping("banquetInvoice")
+    public String getInvoiceEmpty() {
+        return "banquetInvoice";
+    }
 
 }
