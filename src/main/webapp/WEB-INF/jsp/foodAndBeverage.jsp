@@ -188,21 +188,14 @@
                         <button type="button" class="large-btn btn btn-dark">Beverage</button></a>
                 </div>
 
-                <div class="col-sm-12 col-md-3 col-lg-3 col-xl-3"> <br>
-                    <a href="restaurantDailyActivityReport">
-                        <button type="button" class="large-btn btn btn-dark">Daily Activity Report Restaurant</button></a>
+
+                <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6">  <br>
+                    <a href="/kitchenStock">
+                        <button type="button" class="large-btn btn btn-dark">Kitchen Inventory</button></a>
                 </div>
-                <div class="col-sm-12 col-md-3 col-lg-3 col-xl-3"> <br>
-                    <a href="beverageDailyActivityReport">
-                        <button type="button" class="large-btn btn btn-dark">Daily Activity Report Beverage</button></a>
-                </div>
-                <div class="col-sm-12 col-md-3 col-lg-3 col-xl-3">  <br>
-                    <a href="restaurantStock">
-                        <button type="button" class="large-btn btn btn-dark">Restaurant Inventory</button></a>
-                </div>
-                <div class="col-sm-12 col-md-3 col-lg-3 col-xl-3">
+                <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6">
                     <br>
-                    <a href="barStock">
+                    <a href="/beverageStock">
                         <button type="button" class="large-btn btn btn-dark">Beverage Inventory</button></a>
                 </div>
             </div>
