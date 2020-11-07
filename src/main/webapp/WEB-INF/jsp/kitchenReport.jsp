@@ -310,7 +310,7 @@
                                         <div class=" ">
 
                                             <form action="/kitchen"
-                                                  name="deleteInvoiceSalary">
+                                                  name="printReport">
                                                 <input style="display: none" type="text" id="itemPay" name="SalaryId">
                                                 <ul class="nav navbar-right panel_toolbox">
                                                     <button type="submit" value="Register"
@@ -321,7 +321,7 @@
                                                     </button>
                                                 </ul>
 
-                                            </form>
+
 
                                         </div>
                                     </div>

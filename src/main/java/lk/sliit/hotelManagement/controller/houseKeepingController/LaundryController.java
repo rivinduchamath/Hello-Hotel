@@ -27,7 +27,7 @@ public class LaundryController {
     HouseKeepingBO houseKeepingBO;
     @Autowired
     HumanResourceBO humanResourceBO;
-    //*************************************** Laundry Manage Dashboard  *************************************
+    //*************************************** Laundry Manage Dashboard  ***********************************
     //Load Dashboard Page
     @GetMapping("/laundryOrder")
     public String housekeeping(Model model) {

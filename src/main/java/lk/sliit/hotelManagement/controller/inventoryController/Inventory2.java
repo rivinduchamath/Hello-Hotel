@@ -12,8 +12,9 @@ public class Inventory2 {
 
     @Autowired
     IndexLoginBO indexLoginBO;
+
     @GetMapping("/addInventory2")
-    public String kitchenStock(Model model){
+    public String kitchenStock(Model model) {
         model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
         return "addInventory2";
     }
