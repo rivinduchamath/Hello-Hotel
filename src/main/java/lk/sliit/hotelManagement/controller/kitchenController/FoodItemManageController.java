@@ -85,6 +85,8 @@ public class FoodItemManageController {
         try{
             kitchenBO.deleteFoodItem(foodItemId);
         } catch (Exception e){
+            alertMsg = "Delete food item failed";
+            model.addAttribute(KitchenUtil.alertMessageName,alertMsg);
             return "redirect:/manageMenu";
         }
 

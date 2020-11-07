@@ -225,6 +225,8 @@
                                                     <th>Sold Quantity</th>
                                                     <th>Unite Price</th>
                                                     <th>Total</th>
+                                                    <th>Online selling rate</th>
+                                                    <th>Counter selling rate</th>
 
                                                 </tr>
                                                 </thead>
@@ -238,6 +240,8 @@
                                                         <td>${e.quantity}</td>
                                                         <td>${e.price}</td>
                                                         <td>${e.totalPrice}</td>
+                                                        <td>${e.sellingRateOnline}</td>
+                                                        <td>${e.sellingRateCounter}</td>
 
                                                     </tr>
                                                     <script>
@@ -305,7 +309,7 @@
                                     <div class="row no-print">
                                         <div class=" ">
 
-                                            <form method="POST" action=""
+                                            <form action="/kitchen"
                                                   name="deleteInvoiceSalary">
                                                 <input style="display: none" type="text" id="itemPay" name="SalaryId">
                                                 <ul class="nav navbar-right panel_toolbox">
