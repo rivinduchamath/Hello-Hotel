@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import javax.servlet.http.HttpServletResponse;
 import java.sql.Date;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -54,7 +55,7 @@ public class KitchenController {
     }
 
     @PostMapping("/kitchen")
-    public void addDailyKitchenFoodOrder(Model model, @ModelAttribute KitchenFoodOrderDTO kitchenFoodOrderDTO) {
+    public void addDailyKitchenFoodOrder(Model model, @ModelAttribute KitchenFoodOrderDTO kitchenFoodOrderDTO, HttpServletResponse response) {
         alertMsg = null;
         model.addAttribute(KitchenUtil.alertMessageName, alertMsg);
         model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
@@ -144,13 +145,17 @@ public class KitchenController {
             alertMsg = "Invalid date! Please enter again.";
         }
 
-        //load kitchen UI
-        loginPage(model);
+        model = getKitchenModel(model);
+        model.addAttribute(KitchenUtil.alertMessageName, alertMsg);
+
+        try {
+            response.sendRedirect("/kitchen");
+        } catch (Exception e){}
 
     }
 
     @PostMapping("/deleteDailyOrder")
-    public String deleteDailyFoodOrder(Model model, @ModelAttribute KitchenFoodOrderDTO kitchenFoodOrderDTO) {
+    public void deleteDailyFoodOrder(Model model, @ModelAttribute KitchenFoodOrderDTO kitchenFoodOrderDTO, HttpServletResponse response) {
         alertMsg = null;
         model.addAttribute("loggerName", indexLoginBO.getEmployeeByIdNo(SuperController.idNo));
         model.addAttribute("alert", alertMsg);
@@ -196,7 +201,9 @@ public class KitchenController {
             alertMsg = null;
         }
 
-        return "kitchen";
+        try {
+            response.sendRedirect("/kitchen");
+        } catch (Exception e){}
 
     }
 
