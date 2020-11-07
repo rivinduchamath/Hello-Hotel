@@ -11,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
@@ -27,6 +28,7 @@ public class LaundryController {
     HouseKeepingBO houseKeepingBO;
     @Autowired
     HumanResourceBO humanResourceBO;
+
     //*************************************** Laundry Manage Dashboard  ***********************************
     //Load Dashboard Page
     @GetMapping("/laundryOrder")
@@ -46,14 +48,14 @@ public class LaundryController {
 
     //Delete Accept Orders
     @GetMapping(value = "deleteLaundryOrder3/{laundryId}")
-    public void deleteLaundry(@PathVariable("laundryId") int id,HttpServletResponse response) throws IOException {
+    public void deleteLaundry(@PathVariable("laundryId") int id, HttpServletResponse response) throws IOException {
 
         houseKeepingBO.deleteLaundryOrder(id);
         response.sendRedirect("/laundryOrder");
 
     }
 
- //Save Or Update Laundry Orders
+    //Save Or Update Laundry Orders
     @PostMapping("/laundryOrder")
     public ModelAndView saveForLaundry(@ModelAttribute LaundryDTO laundryDTO, Model model, HttpServletRequest request) {
 
@@ -105,16 +107,18 @@ public class LaundryController {
 
         return "allLaundryOrders";
     }
-    @GetMapping(value = "deleteLaundryOrder/{laundryId}")
-    public void deleteLaundr2(@PathVariable("laundryId") int id,HttpServletResponse response) throws IOException {
 
-            houseKeepingBO.deleteLaundryOrder(id);
-            response.sendRedirect("/allLaundryOrders");
+    @GetMapping(value = "deleteLaundryOrder/{laundryId}")
+    public void deleteLaundr2(@PathVariable("laundryId") int id, HttpServletResponse response) throws IOException {
+
+        houseKeepingBO.deleteLaundryOrder(id);
+        response.sendRedirect("/allLaundryOrders");
 
     }
-//Change State In Laundry Orders
+
+    //Change State In Laundry Orders
     @GetMapping(value = "processLaundryOrder/{laundryId}")
-    public void processLaundryOrder(@PathVariable("laundryId") int id,HttpServletResponse response) throws IOException {
+    public void processLaundryOrder(@PathVariable("laundryId") int id, HttpServletResponse response) throws IOException {
 
         houseKeepingBO.changeState(id);
         response.sendRedirect("/allLaundryOrders");
