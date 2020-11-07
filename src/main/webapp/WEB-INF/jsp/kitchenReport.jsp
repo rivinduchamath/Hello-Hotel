@@ -279,18 +279,12 @@
                                                         <td><span id="val3">${totalCounterIncome}</span></td>
                                                     </tr>
                                                     <tr>
-                                                        <th>Tot Online sels:
-                                                            <small style="font-weight: bold">${totalOnline}<span id="val9"></span>
-                                                            </small>
-                                                        </th>
-                                                        <td><span id="val4"></span></td>
+                                                        <th>Tot Online sels:</th>
+                                                        <td><span id="val4">${totalOnline}</span></td>
                                                     </tr>
                                                     <tr>
-                                                        <th>Tot Online Income:
-                                                            <small style="font-weight: bold">${totalOnlineIncome}<span id="val9"></span>
-                                                            </small>
-                                                        </th>
-                                                        <td><span id="val5"></span></td>
+                                                        <th>Tot Online Income:</th>
+                                                        <td><span id="val5">${totalOnlineIncome}</span></td>
                                                     </tr>
 
                                                     <tr>

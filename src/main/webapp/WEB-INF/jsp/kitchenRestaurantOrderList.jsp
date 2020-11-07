@@ -85,7 +85,7 @@
 
             <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
                 <div class="col-sm-12 col-md-2 col-lg-2 col-xl-2">
-                    <a href="/kitchen">
+                    <a href="/kitchenNoAlert">
                         <button type="button" class="large-btn btn btn-dark" style="height: 50px"><i
                                 class="fa fa-mail-reply">
                             Back</i>

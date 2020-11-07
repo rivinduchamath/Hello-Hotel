@@ -895,44 +895,33 @@ public class KitchenBOImpl implements KitchenBO {
 
             }
 
-            System.out.println("==========================================================");
-            for (RestaurantFoodItemDTO item:foodItemDTOS){
-                System.out.println(item.getFoodItemId());
-                System.out.println(item.getFoodName());
-                System.out.println("--------------------");
-            }
-
             //set food item list
 
             if (!foodItemDTOS.isEmpty()){
 
                 while (!foodItemDTOS.isEmpty()){
                     //select 1st item
-                    RestaurantFoodItemDTO selectedItem = foodItemDTOS.get(0);
-                    selectedItem.setQuantity(0);
+                    RestaurantFoodItemDTO selectedItem = foodItemDTOS.remove(0);
+                    List<RestaurantFoodItemDTO> remove = new ArrayList<>();
 
-                    int index = 0;
-                    List<Integer> indexes = new ArrayList<>();
                     //get total food item info
                     if (!foodItemDTOS.isEmpty()){
 
                         for (RestaurantFoodItemDTO item:foodItemDTOS){
                             if (selectedItem.getFoodItemId() == item.getFoodItemId()){
                                 selectedItem.setQuantity(item.getQuantity() + selectedItem.getQuantity());
-                                indexes.add(index);
+                                remove.add(item);
                             }
-
-                            index++;
                         }
-
-                        //remove selected item from foodItemDTOS
-                        for (Integer item: indexes){
-                            foodItemDTOS.remove(item);
-                        }
-
-                        selectedList.add(selectedItem);
-
                     }
+
+
+                    //remove selected item from foodItemDTOS
+                    if (!remove.isEmpty())
+                        foodItemDTOS.removeAll(remove);
+
+                    selectedList.add(selectedItem);
+
                 }
 
                 //set total price
@@ -980,43 +969,33 @@ public class KitchenBOImpl implements KitchenBO {
 
                 }
             }
-            System.out.println("==========================================================");
-            for (RestaurantFoodItemDTO item:foodItemDTOS){
-                System.out.println(item.getFoodItemId());
-                System.out.println(item.getFoodName());
-                System.out.println("--------------------");
-            }
 
             //set food item list
             if (!foodItemDTOS.isEmpty()){
 
                 while (!foodItemDTOS.isEmpty()){
                     //select 1st item
-                    RestaurantFoodItemDTO selectedItem = foodItemDTOS.get(0);
-                    selectedItem.setQuantity(0);
+                    RestaurantFoodItemDTO selectedItem = foodItemDTOS.remove(0);
+                    List<RestaurantFoodItemDTO> remove = new ArrayList<>();
 
-                    int index = 0;
-                    List<Integer> indexes = new ArrayList<>();
                     //get total food item info
                     if (!foodItemDTOS.isEmpty()){
 
                         for (RestaurantFoodItemDTO item:foodItemDTOS){
                             if (selectedItem.getFoodItemId() == item.getFoodItemId()){
                                 selectedItem.setQuantity(item.getQuantity() + selectedItem.getQuantity());
-                                indexes.add(index);
+                                remove.add(item);
                             }
-
-                            index++;
                         }
-
-                        //remove selected item from foodItemDTOS
-                        for (Integer item: indexes){
-                            foodItemDTOS.remove(item);
-                        }
-
-                        selectedList.add(selectedItem);
-
                     }
+
+
+                    //remove selected item from foodItemDTOS
+                    if (!remove.isEmpty())
+                        foodItemDTOS.removeAll(remove);
+
+                    selectedList.add(selectedItem);
+
                 }
 
                 //set total price
