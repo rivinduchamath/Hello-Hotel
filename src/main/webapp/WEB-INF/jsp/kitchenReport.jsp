@@ -335,8 +335,7 @@
 
         <footer>
             <div class="pull-right">
-                Copyright © Kitchen Management 2020.<a href="https://rivinduchamath.github.io/pro/">Created by Wusitha
-                Mullevidana</a>
+                Copyright © Kitchen Management 2020.<a href="https://rivinduchamath.github.io/pro/">Created by Wusitha Madeewa</a>
             </div>
             <div class="clearfix"></div>
         </footer>
