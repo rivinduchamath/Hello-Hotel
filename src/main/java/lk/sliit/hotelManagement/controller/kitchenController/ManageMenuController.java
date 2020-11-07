@@ -80,6 +80,9 @@ public class ManageMenuController {
             kitchenBO.deleteMenuItem(menuItemId);
         } catch (Exception e){
 
+            alertMsg = "Delete food item failed";
+            model.addAttribute(KitchenUtil.alertMessageName, alertMsg);
+
         }
 
         try {

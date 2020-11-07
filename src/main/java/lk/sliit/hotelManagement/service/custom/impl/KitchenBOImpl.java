@@ -287,7 +287,7 @@ public class KitchenBOImpl implements KitchenBO {
         Menu item = menuDAO.findOne(menuItemId);
         FoodItem foodItem = kitchenDAO.findOne(foodItemId);
         item.setUnitPrice(item.getUnitPrice() - foodItem.getUnitePrice());
-        menuDetailsDAO.deleteMenuDetailsByFoodItemAndMenuEquals(foodItem,item);
+        menuDetailsDAO.deleteMenuDetailsByFoodItemAndMenuEquals(foodItem, item);
 
         //save menu
         menuDAO.save(item);
@@ -662,7 +662,7 @@ public class KitchenBOImpl implements KitchenBO {
     @Override
     public List<RestaurantFoodOrderDTO> getOnlineRestaurantFoodOrdersByDate(Date date) {
         List<RestaurantFoodOrderDTO> returnList = new ArrayList<>();
-        List<RestaurantFoodItemDTO> foodItemDTOS = new ArrayList<>();
+        List<RestaurantFoodItemDTO> foodItemDTOS;
         Iterable<RestaurantOnlineOrder> onlineOrders;
         int index = 0;
 
@@ -680,30 +680,26 @@ public class KitchenBOImpl implements KitchenBO {
                             || item.getOrderState().equals(KitchenUtil.pendingState)
                             || item.getOrderState().equals(KitchenUtil.processingState)) {
 
-                    //set state and button
-                    String button = KitchenUtil.pendingState;
+                        //set state and button
+                        String button = KitchenUtil.pendingState;
 
-                    if (index == 0) {
-                        button = KitchenUtil.accept;
-                    }
-
-                    if (item.getOrderState() == null) {
-                        item.setOrderState(KitchenUtil.pendingState);
-                    }
-
-                    if (item.getOrderState().equals(KitchenUtil.processingState)) {
-                        button = KitchenUtil.confirm;
-                    }
-
-
-                    //reset food item list
-                    if (!foodItemDTOS.isEmpty()) {
-                        for (int i = 0; i < foodItemDTOS.size(); i++) {
-                            foodItemDTOS.remove(i);
+                        if (index == 0) {
+                            button = KitchenUtil.accept;
                         }
-                    }
+
+                        if (item.getOrderState() == null) {
+                            item.setOrderState(KitchenUtil.pendingState);
+                        }
+
+                        if (item.getOrderState().equals(KitchenUtil.processingState)) {
+                            button = KitchenUtil.confirm;
+                        }
 
                         Iterable<RestaurantOnlineOrderDetails> onlineOrderDetails = onlineOrderDetailsDAO.findAllByRestaurantOnlineOrderEquals(item);
+
+                        //create food item list
+                        foodItemDTOS = new ArrayList<>();
+
                         for (RestaurantOnlineOrderDetails detail : onlineOrderDetails) {
                             //set food items list
                             foodItemDTOS.add(new RestaurantFoodItemDTO(
@@ -744,7 +740,7 @@ public class KitchenBOImpl implements KitchenBO {
     public List<RestaurantFoodOrderDTO> getCounterRestaurantFoodOrdersByDate(Date date) {
 
         List<RestaurantFoodOrderDTO> returnList = new ArrayList<>();
-        List<RestaurantFoodItemDTO> foodItemDTOS = new ArrayList<>();
+        List<RestaurantFoodItemDTO> foodItemDTOS;
         Iterable<RestaurantCounterOrder> counterOrders;
         int index = 0;
         //get counter orders
@@ -776,14 +772,11 @@ public class KitchenBOImpl implements KitchenBO {
                         }
 
 
-                        //reset food item list
-                        if (!foodItemDTOS.isEmpty()) {
-                            for (int i = 0; i < foodItemDTOS.size(); i++) {
-                                foodItemDTOS.remove(i);
-                            }
-                        }
-
                         Iterable<RestaurantCounterOrderDetail> counterOrderDetails = restaurantCounterOrderDetail.findAllByRestaurantCounterOrderEquals(item);
+
+                        //create food item list
+                        foodItemDTOS = new ArrayList<>();
+
                         for (RestaurantCounterOrderDetail detail : counterOrderDetails) {
                             //set food items list
                             foodItemDTOS.add(new RestaurantFoodItemDTO(
@@ -829,7 +822,7 @@ public class KitchenBOImpl implements KitchenBO {
             //check state
             if (!onlineOrder.getOrderState().equals(KitchenUtil.canceledState)
                     || !onlineOrder.getOrderState().equals(KitchenUtil.finishedState)) {
-                onlineOrder.setOrderState(KitchenUtil.pendingState);
+                onlineOrder.setOrderState(KitchenUtil.processingState);
                 onlineOrderDAO.save(onlineOrder);
                 return true;
             }
@@ -869,88 +862,156 @@ public class KitchenBOImpl implements KitchenBO {
     public List<RestaurantFoodOrderDTO> findReportData(Date date) {
         //load online finished orders
         List<RestaurantFoodOrderDTO> returnlist = new ArrayList<>();
-        List<RestaurantFoodItemDTO> foodItemDTOS = new ArrayList<>();
+        List<RestaurantFoodItemDTO> foodItemDTOS, selectedList;
+        RestaurantFoodOrderDTO order;
 
         try {
             Iterable<RestaurantOnlineOrder> onlineOrders = onlineOrderDAO.findAllByOrderStateEquals(KitchenUtil.finishedState);
-            for (RestaurantOnlineOrder item : onlineOrders){
+            foodItemDTOS = new ArrayList<>();
+            selectedList = new ArrayList<>();
+
+            for (RestaurantOnlineOrder item : onlineOrders) {
                 Date comp = item.getDate();
 
                 if (date.getYear() == comp.getYear()
                         && date.getMonth() == comp.getMonth()
-                        && date.getDate() == comp.getDate()){
-
-                    //set order details list
-                    if (!foodItemDTOS.isEmpty()){
-
-                        //remove old items
-                        for (int i  = 0;  i < foodItemDTOS.size(); i++){
-                            foodItemDTOS.remove(i);
-                        }
-                    }
+                        && date.getDate() == comp.getDate()) {
 
                     //load order details
                     Iterable<RestaurantOnlineOrderDetails> details = onlineOrderDetailsDAO.findAllByRestaurantOnlineOrderEquals(item);
-                    for (RestaurantOnlineOrderDetails detail: details){
+                    for (RestaurantOnlineOrderDetails detail : details) {
+
                         foodItemDTOS.add(new RestaurantFoodItemDTO(
                                 detail.getFoodItem().getItemId(),
                                 item.getOrderId(),
-                                kitchenDAO.findOne(detail.getFoodItem().getItemId()).getName(),
+                                detail.getFoodItem().getName(),
                                 detail.getQuantity(),
                                 detail.getUnitePrice()
                         ));
+
                     }
 
-                    //create return list
-                    returnlist.add(new RestaurantFoodOrderDTO(
-                            item.getOrderId(),
-                            KitchenUtil.onlineType,
-                            foodItemDTOS
-                    ));
+                }
+
+            }
+
+            //set food item list
+
+            if (!foodItemDTOS.isEmpty()){
+
+                while (!foodItemDTOS.isEmpty()){
+                    //select 1st item
+                    RestaurantFoodItemDTO selectedItem = foodItemDTOS.remove(0);
+                    List<RestaurantFoodItemDTO> remove = new ArrayList<>();
+
+                    //get total food item info
+                    if (!foodItemDTOS.isEmpty()){
+
+                        for (RestaurantFoodItemDTO item:foodItemDTOS){
+                            if (selectedItem.getFoodItemId() == item.getFoodItemId()){
+                                selectedItem.setQuantity(item.getQuantity() + selectedItem.getQuantity());
+                                remove.add(item);
+                            }
+                        }
+                    }
+
+
+                    //remove selected item from foodItemDTOS
+                    if (!remove.isEmpty())
+                        foodItemDTOS.removeAll(remove);
+
+                    selectedList.add(selectedItem);
+
+                }
+
+                //set total price
+                for (RestaurantFoodItemDTO item:selectedList){
+                    item.setTotalPrice(item.getQuantity() * item.getPrice());
                 }
             }
-        } catch (NullPointerException e){}
+
+            order = new RestaurantFoodOrderDTO();
+            order.setFoodItems(selectedList);
+            order.setType(KitchenUtil.onlineType);
+            returnlist.add(order);
+
+        } catch (
+                NullPointerException e) {
+        }
 
         //load counter finished orders
         try {
-            Iterable<RestaurantCounterOrder> onlineOrders = counterOrderDAO.findAllByOrderStateEquals(KitchenUtil.finishedState);
-            for (RestaurantCounterOrder item : onlineOrders){
+            Iterable<RestaurantCounterOrder> coubterOrders = counterOrderDAO.findAllByOrderStateEquals(KitchenUtil.finishedState);
+            foodItemDTOS = new ArrayList<>();
+            selectedList = new ArrayList<>();
+
+            for (RestaurantCounterOrder item : coubterOrders) {
                 Date comp = item.getDate();
 
                 if (date.getYear() == comp.getYear()
                         && date.getMonth() == comp.getMonth()
-                        && date.getDate() == comp.getDate() && item.getOrderState().equals(KitchenUtil.finishedState)){
-
-                    //set order details list
-                    if (!foodItemDTOS.isEmpty()){
-
-                        //remove old items
-                        for (int i  = 0;  i < foodItemDTOS.size(); i++){
-                            foodItemDTOS.remove(i);
-                        }
-                    }
+                        && date.getDate() == comp.getDate()) {
 
                     //load order details
                     Iterable<RestaurantCounterOrderDetail> details = restaurantCounterOrderDetail.findAllByRestaurantCounterOrderEquals(item);
-                    for (RestaurantCounterOrderDetail detail: details){
+
+                    for (RestaurantCounterOrderDetail detail : details) {
+
                         foodItemDTOS.add(new RestaurantFoodItemDTO(
                                 detail.getFoodItem().getItemId(),
                                 item.getOrderId(),
-                                kitchenDAO.findOne(detail.getFoodItem().getItemId()).getName(),
+                                detail.getFoodItem().getName(),
                                 detail.getQuantity(),
                                 detail.getUnitePrice()
                         ));
+
                     }
 
-                    //create return list
-                    returnlist.add(new RestaurantFoodOrderDTO(
-                            item.getOrderId(),
-                            KitchenUtil.counterType,
-                            foodItemDTOS
-                    ));
                 }
             }
-        } catch (NullPointerException e){}
+
+            //set food item list
+            if (!foodItemDTOS.isEmpty()){
+
+                while (!foodItemDTOS.isEmpty()){
+                    //select 1st item
+                    RestaurantFoodItemDTO selectedItem = foodItemDTOS.remove(0);
+                    List<RestaurantFoodItemDTO> remove = new ArrayList<>();
+
+                    //get total food item info
+                    if (!foodItemDTOS.isEmpty()){
+
+                        for (RestaurantFoodItemDTO item:foodItemDTOS){
+                            if (selectedItem.getFoodItemId() == item.getFoodItemId()){
+                                selectedItem.setQuantity(item.getQuantity() + selectedItem.getQuantity());
+                                remove.add(item);
+                            }
+                        }
+                    }
+
+
+                    //remove selected item from foodItemDTOS
+                    if (!remove.isEmpty())
+                        foodItemDTOS.removeAll(remove);
+
+                    selectedList.add(selectedItem);
+
+                }
+
+                //set total price
+                for (RestaurantFoodItemDTO item:selectedList){
+                    item.setTotalPrice(item.getQuantity() * item.getPrice());
+                }
+
+            }
+            order = new RestaurantFoodOrderDTO();
+            order.setType(KitchenUtil.counterType);
+            order.setFoodItems(selectedList);
+            returnlist.add(order);
+
+        } catch (
+                NullPointerException e) {
+        }
 
         return returnlist;
     }

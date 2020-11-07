@@ -225,6 +225,8 @@
                                                     <th>Sold Quantity</th>
                                                     <th>Unite Price</th>
                                                     <th>Total</th>
+                                                    <th>Online selling rate</th>
+                                                    <th>Counter selling rate</th>
 
                                                 </tr>
                                                 </thead>
@@ -238,6 +240,8 @@
                                                         <td>${e.quantity}</td>
                                                         <td>${e.price}</td>
                                                         <td>${e.totalPrice}</td>
+                                                        <td>${e.sellingRateOnline}</td>
+                                                        <td>${e.sellingRateCounter}</td>
 
                                                     </tr>
                                                     <script>
@@ -275,18 +279,12 @@
                                                         <td><span id="val3">${totalCounterIncome}</span></td>
                                                     </tr>
                                                     <tr>
-                                                        <th>Tot Online sels:
-                                                            <small style="font-weight: bold">${totalOnline}<span id="val9"></span>
-                                                            </small>
-                                                        </th>
-                                                        <td><span id="val4"></span></td>
+                                                        <th>Tot Online sels:</th>
+                                                        <td><span id="val4">${totalOnline}</span></td>
                                                     </tr>
                                                     <tr>
-                                                        <th>Tot Online Income:
-                                                            <small style="font-weight: bold">${totalOnlineIncome}<span id="val9"></span>
-                                                            </small>
-                                                        </th>
-                                                        <td><span id="val5"></span></td>
+                                                        <th>Tot Online Income:</th>
+                                                        <td><span id="val5">${totalOnlineIncome}</span></td>
                                                     </tr>
 
                                                     <tr>
@@ -305,7 +303,8 @@
                                     <div class="row no-print">
                                         <div class=" ">
 
-
+                                            <form action="/kitchen"
+                                                  name="printReport">
                                                 <input style="display: none" type="text" id="itemPay" name="SalaryId">
                                                 <ul class="nav navbar-right panel_toolbox">
                                                     <button type="submit" value="Register"
@@ -330,8 +329,7 @@
 
         <footer>
             <div class="pull-right">
-                Copyright © Kitchen Management 2020.<a href="https://rivinduchamath.github.io/pro/">Created by Wusitha
-                Mullevidana</a>
+                Copyright © Kitchen Management 2020.<a href="https://rivinduchamath.github.io/pro/">Created by Wusitha Madeewa</a>
             </div>
             <div class="clearfix"></div>
         </footer>

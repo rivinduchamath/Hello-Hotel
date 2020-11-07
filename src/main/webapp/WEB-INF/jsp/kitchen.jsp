@@ -130,7 +130,7 @@
                             </div>
                             <div class="x_content">
                                 <div class="row">
-                                    <div class="col-sm-12">
+                                    <div class="col-sm-12" >
                                         <div class="card-box table-responsive">
                                             <table class="table table-striped table-bordered"
                                                    id="datatable-buttons4"
