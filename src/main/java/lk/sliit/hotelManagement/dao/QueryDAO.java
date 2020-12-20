@@ -1,5 +1,3 @@
 package lk.sliit.hotelManagement.dao;
 
-public interface QueryDAO {
-
-}
+public interface QueryDAO {}

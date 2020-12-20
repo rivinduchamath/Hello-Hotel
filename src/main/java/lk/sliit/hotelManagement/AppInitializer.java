@@ -43,13 +43,13 @@ public class AppInitializer {
                             "Colombo",
                             "Admin",
                             "1",
-                             date,
+                            date,
                             "Female",
                             2112122,
-                             date,
+                            date,
                             "https://res.cloudinary.com/dwdv5hhga/image/upload/v1600203476/oyt7fspuxa2crzakssl5.jpg",
                             new Department(1,"Manage")
-                           )
+                    )
                     )
             );
         };
