@@ -1,4 +1,13 @@
 # Hello-Hotel 🎉
+
+This is a Web Base Management System developed for Managing
+Hotel Day - today works. This application covers all activities in the
+hotel including Registrations, Employee Management, Bill Printing,
+Account Control, Result analyzing,
+Food and Beverage Details, and Issuing Rooms etc.... My Role:
+Engaged in requirements gathering, developing, testing and
+deployment. (Duration: May 2020 – November 2020(7Months)
+
 ![Open Source Love svg1](https://badges.frapsoft.com/os/v1/open-source.svg?v=103) 
 ![Repo Size](https://img.shields.io/github/repo-size/rivinduchamath/Hello-Hotel) 
 ![count](https://img.shields.io/github/languages/count/rivinduchamath/Hello-Hotel) 
